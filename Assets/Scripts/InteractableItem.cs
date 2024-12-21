@@ -1,6 +1,7 @@
 using UnityEngine;
+using UnityEngine.Events;
 
-public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpenable, IReadable
+public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpenable, IReadable, IPressable, IPlaceable
 {
     public enum InteractableType
     {
@@ -8,6 +9,8 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         Throwable,
         Openable,
         Readable,
+        Pressable,
+        Placeable
     }
 
     public InteractableType interactableType;
@@ -18,6 +21,10 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     [SerializeField] private ReadableTextData readableTextData;
     private bool isActualReading;
     private bool isActualOpen;
+    private bool isActualPreesed;
+    [SerializeField] private UnityEvent onAllWallButtonPressed;
+    [SerializeField] private GameObject objectToPlace;
+    [SerializeField] private BoxCollider boxCollider;
 
     public void OnPickUp()
     {
@@ -65,7 +72,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
             {
                 Inventory.Instance.RemoveItemFromInventoryByID(requiredItemId);
                 UIManager.Instance.RemoveItemFromUIByID(requiredItemId);
-                animator.SetTrigger("Open");
+                animator.SetTrigger("Interact");
                 isActualOpen = true;
             }
             else
@@ -117,12 +124,47 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
 
     public void OnStopRead()
     {
-        UIManager.Instance.readablePanel.HideReadablePanel();
-        UIManager.Instance.readablePanel.headerTextUI.text = "";
-        UIManager.Instance.readablePanel.mainTextUI.text = "";
-        UIManager.Instance.readablePanel.signatureTextUI.text = "";
-        isActualReading = false;
+        if (interactableType == InteractableType.Readable)
+        {
+            UIManager.Instance.readablePanel.HideReadablePanel();
+            UIManager.Instance.readablePanel.headerTextUI.text = "";
+            UIManager.Instance.readablePanel.mainTextUI.text = "";
+            UIManager.Instance.readablePanel.signatureTextUI.text = "";
+            isActualReading = false;
+        }
     }
 
+    public void OnPress()
+    {
+        if (interactableType == InteractableType.Pressable)
+        {
+            isActualPreesed = true;
+            animator.SetTrigger("Interact");
+            onAllWallButtonPressed?.Invoke();
+        }
+    }
 
+    public bool IsPressed()
+    {
+        return isActualPreesed;
+    }
+
+    public void CheckIfIsPressed()
+    {
+        IsPressed();
+    }
+
+    public void PlaceObject()
+    {
+        if(interactableType == InteractableType.Placeable)
+        {
+            if (UIManager.Instance != null && UIManager.Instance.GetSelectedItemId() == requiredItemId)
+            {
+                boxCollider.enabled = false;
+                objectToPlace.SetActive(true);
+                Inventory.Instance.RemoveItemFromInventoryByID(requiredItemId);
+                UIManager.Instance.RemoveItemFromUIByID(requiredItemId);
+            }
+        }    
+    }
 }

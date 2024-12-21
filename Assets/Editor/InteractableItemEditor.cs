@@ -31,7 +31,18 @@ public class InteractableItemEditor : Editor
             case InteractableItem.InteractableType.Readable:
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("readableTextData"), new GUIContent("Readable Text Data"));
                 break;
+
+            case InteractableItem.InteractableType.Pressable:
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("onAllWallButtonPressed"), new GUIContent("On All Wall Button Pressed"));
+                break;
+
+            case InteractableItem.InteractableType.Placeable:
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("objectToPlace"), new GUIContent("Object To Place"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("boxCollider"), new GUIContent("Box Collider"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("requiredItemId"), new GUIContent("Required Item ID"));
+                break;
         }
+        
 
         // Zapisanie zmian w obiekcie
         serializedObject.ApplyModifiedProperties();

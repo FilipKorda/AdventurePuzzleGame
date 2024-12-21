@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Playables;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerBehaviour : MonoBehaviour
@@ -28,6 +29,8 @@ public class PlayerBehaviour : MonoBehaviour
     private IBookThrowable lastIBookThrowable;
     private IOpenable lastIOpenable;
     private IReadable lastIReadable;
+    private IPressable lastIPressable;
+    private IPlaceable lastIPlaceable;
 
     private CharacterController characterController;
     private Vector2 inputMovement;
@@ -96,6 +99,8 @@ public class PlayerBehaviour : MonoBehaviour
                 lastIReadable?.OnRead();
             }
 
+            lastIPressable?.OnPress();
+            lastIPlaceable?.PlaceObject();
         }
     }
 
@@ -145,6 +150,8 @@ public class PlayerBehaviour : MonoBehaviour
         lastIBookThrowable = null;
         lastIOpenable = null;
         lastIReadable = null;
+        lastIPressable = null;
+        lastIPlaceable = null;
 
         if (Physics.Raycast(ray, out RaycastHit hit, raycastRange, interactableLayer))
         {
@@ -168,6 +175,15 @@ public class PlayerBehaviour : MonoBehaviour
                     case InteractableItem.InteractableType.Readable:
                         lastIReadable = interactableObject;
                         break;
+
+                    case InteractableItem.InteractableType.Pressable:
+                        lastIPressable = interactableObject;
+                        break;
+
+                    case InteractableItem.InteractableType.Placeable:
+                        lastIPlaceable = interactableObject;
+                        break;
+
                 }
             }
 
