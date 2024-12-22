@@ -6,18 +6,18 @@ using UnityEngine.Playables;
 public class PlayerBehaviour : MonoBehaviour
 {
     [Header("Movement Settings")]
-    public float moveSpeed = 5f;
-    public float sensitivity = 10f;
+    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float sensitivity = 10f;
     private float gravity = -9.81f;
 
     [Header("Camera Settings")]
-    public Transform cameraTransform;
-    public float minLookAngle = -60f;
-    public float maxLookAngle = 60f;
+    [SerializeField] private Transform cameraTransform;
+    [SerializeField] private float minLookAngle = -60f;
+    [SerializeField] private float maxLookAngle = 60f;
 
     [Header("Raycast Detector")]
-    public float raycastRange = 5f;
-    public LayerMask interactableLayer;
+    [SerializeField] private float raycastRange = 5f;
+    [SerializeField] private LayerMask interactableLayer;
 
     [Header("Center Of Screen Dot")]
     [SerializeField] private GameObject centerOfScreen;
@@ -101,6 +101,7 @@ public class PlayerBehaviour : MonoBehaviour
 
             lastIPressable?.OnPress();
             lastIPlaceable?.PlaceObject();
+         
         }
     }
 
@@ -183,7 +184,6 @@ public class PlayerBehaviour : MonoBehaviour
                     case InteractableItem.InteractableType.Placeable:
                         lastIPlaceable = interactableObject;
                         break;
-
                 }
             }
 

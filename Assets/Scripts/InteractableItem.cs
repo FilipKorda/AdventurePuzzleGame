@@ -24,7 +24,9 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     private bool isActualPreesed;
     [SerializeField] private UnityEvent onAllWallButtonPressed;
     [SerializeField] private GameObject objectToPlace;
-    [SerializeField] private BoxCollider boxCollider;
+    [SerializeField] private BoxCollider boxCollider;  
+    [SerializeField] private int requiredUses = 3;
+    private int toolUsageCount = 0;
 
     public void OnPickUp()
     {
@@ -156,7 +158,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
 
     public void PlaceObject()
     {
-        if(interactableType == InteractableType.Placeable)
+        if (interactableType == InteractableType.Placeable)
         {
             if (UIManager.Instance != null && UIManager.Instance.GetSelectedItemId() == requiredItemId)
             {
@@ -165,6 +167,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
                 Inventory.Instance.RemoveItemFromInventoryByID(requiredItemId);
                 UIManager.Instance.RemoveItemFromUIByID(requiredItemId);
             }
-        }    
+        }
     }
+
 }

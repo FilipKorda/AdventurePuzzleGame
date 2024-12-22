@@ -128,7 +128,7 @@ MonoBehaviour:
   interactableType: 5
   itemName: Przedmiot
   itemSprite: {fileID: 0}
-  requiredItemId: 6
+  requiredItemId: 5
   animator: {fileID: 0}
   readableTextData: {fileID: 0}
   onAllWallButtonPressed:
