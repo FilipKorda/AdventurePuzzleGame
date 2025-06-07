@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: ReadableTextData
   m_EditorClassIdentifier: 
   headerText: Siema Title
-  mainText: main text abrakadabra kurwy i magia
+  mainText: "main text abrakadabra nic tu nie ma aale zawsze moze by\u0107 xd"
   signatureText: Signature

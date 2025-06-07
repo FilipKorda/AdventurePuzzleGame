@@ -7,5 +7,6 @@ public class Information
     //Key_Rusty - 4
     //Switch_Lever - 5
     //Shovel - 6
+    //key in bag - 7
 
 }
