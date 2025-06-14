@@ -32,4 +32,9 @@ public class SceneLoader : MonoBehaviour
             yield return null;
         }
     }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
 }
