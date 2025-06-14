@@ -80,6 +80,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e8de3c78bf8d07f4db67b03c1597a3e4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6699176403113613703}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e8de3c78bf8d07f4db67b03c1597a3e4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3058773464838085940}
   m_SourcePrefab: {fileID: 100100000, guid: e8de3c78bf8d07f4db67b03c1597a3e4, type: 3}
 --- !u!4 &339498173084325254 stripped
 Transform:
@@ -128,7 +131,8 @@ MonoBehaviour:
   interactableType: 5
   itemName: Przedmiot
   itemSprite: {fileID: 0}
-  requiredItemId: 5
+  itemId: 0
+  requiredItemIds: 
   animator: {fileID: 0}
   readableTextData: {fileID: 0}
   onAllWallButtonPressed:
@@ -136,6 +140,7 @@ MonoBehaviour:
       m_Calls: []
   objectToPlace: {fileID: 1754029707020837006}
   boxCollider: {fileID: 6699176403113613703}
+  requiredUses: 3
 --- !u!65 &6699176403113613703
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -157,6 +162,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.27094144, y: 0.5586729, z: 0.17533185}
   m_Center: {x: 0, y: 0, z: 0.18766403}
+--- !u!114 &3058773464838085940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1152344702077734716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59af910242603eb4592c02878d60a5f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boolVariable: {fileID: 11400000, guid: 0bbba113f07d93b4d90fa3f9ebc13463, type: 2}
 --- !u!1001 &1483647353552936415
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -258,7 +276,8 @@ MonoBehaviour:
   interactableType: 4
   itemName: Przedmiot
   itemSprite: {fileID: 0}
-  requiredItemId: 0
+  itemId: 0
+  requiredItemIds: 
   animator: {fileID: 3753904568454258898}
   readableTextData: {fileID: 0}
   onAllWallButtonPressed:
@@ -266,6 +285,7 @@ MonoBehaviour:
       m_Calls: []
   objectToPlace: {fileID: 0}
   boxCollider: {fileID: 0}
+  requiredUses: 3
 --- !u!65 &1531878102542362646
 BoxCollider:
   m_ObjectHideFlags: 0

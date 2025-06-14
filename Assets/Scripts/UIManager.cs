@@ -40,9 +40,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    /// <summary>
     /// Dodaje przedmiot do UI (ekranu).
-    /// </summary>
     public void AddItemToUI(IPickupable ipickupable)
     {
         GameObject itemSlot = Instantiate(itemSlotPrefab, inventoryPanel);
@@ -58,9 +56,7 @@ public class UIManager : MonoBehaviour
 
     }
 
-    /// <summary>
     /// Usuwa przedmiot z UI.
-    /// </summary>
     public void RemoveItemFromUIByID(int itemId)
     {
         foreach (var itemSlot in itemSlots)

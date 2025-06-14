@@ -3,6 +3,9 @@ using System.Collections;
 
 public class LockPickGameMode : MonoBehaviour
 {
+    [Header("Animator")]
+    [SerializeField] private Animator animator;
+
     [Header("Obiekty do poruszenia")]
     [SerializeField] private GameObject left;
     [SerializeField] private GameObject lowerLeft;
@@ -12,6 +15,10 @@ public class LockPickGameMode : MonoBehaviour
 
     [Header("G³ówny Lock Pick")]
     [SerializeField] private GameObject lockPick;
+    [SerializeField] private float lockPickRotationDuration = 1.0f;
+    [SerializeField] private RectTransform lockPickRectTransform;
+    private Quaternion originalRotation;
+    private Coroutine rotationCoroutine;
     private Vector3[] lockPickPositions;
     private int currentLockPickIndex = 4;
     private Coroutine moveCoroutineLockPick;
@@ -44,14 +51,16 @@ public class LockPickGameMode : MonoBehaviour
     private Coroutine moveCoroutineLowerRight;
     private Coroutine moveCoroutineRight;
 
-    private int currentSequenceStep = 0; 
+    private int currentSequenceStep = 0;
     private int[] correctSequenceOrder;
+
+    private bool blockMoveAndInteract = true;
 
     private void OnEnable()
     {
         InitOriginalPosition();
         InitLockPick();
-        InitGameSequence(); 
+        InitGameSequence();
     }
 
     private void OnDisable()
@@ -99,12 +108,6 @@ public class LockPickGameMode : MonoBehaviour
         objectToMove.transform.position = endPos;
     }
 
-    private void StartMoveLockPickObject(ref Coroutine coroutineRef, GameObject part, Vector3 targetPosition)
-    {
-        if (coroutineRef != null) { StopCoroutine(coroutineRef); }
-        coroutineRef = StartCoroutine(MoveLockPickObject(part, targetPosition, moveSpeed));
-    }
-
     private IEnumerator MoveLockPickObject(GameObject objectToMove, Vector3 endPos, float speed)
     {
         float journeyProgress = 0f;
@@ -120,6 +123,8 @@ public class LockPickGameMode : MonoBehaviour
 
     private void Update()
     {
+        if (blockMoveAndInteract) return;
+
         if (currentSequenceStep < correctSequenceOrder.Length)
         {
             if (Input.GetKeyDown(KeyCode.A)) { MoveLockPickLeft(); }
@@ -178,17 +183,19 @@ public class LockPickGameMode : MonoBehaviour
     }
 
     private void InitGameSequence()
-    {     
+    {
         correctSequenceOrder = new int[] { 0, 1, 4, 2, 3 };
-        currentSequenceStep = 0; 
+        currentSequenceStep = 0;
+        blockMoveAndInteract = false;
     }
 
     private void TryActivateLockPart()
-    {
+    {      
         int expectedIndex = correctSequenceOrder[currentSequenceStep];
 
         if (currentLockPickIndex == expectedIndex)
         {
+            RotateLockPickObject();
             Debug.Log($"<color=green>Dobry ruch! Krok {currentSequenceStep + 1} zaliczony.</color>");
 
             if (isLeft) MoveLeftUp();
@@ -201,7 +208,7 @@ public class LockPickGameMode : MonoBehaviour
 
             if (currentSequenceStep >= correctSequenceOrder.Length)
             {
-                WinGame();
+                StartCoroutine(WinGame());
             }
         }
         else
@@ -211,8 +218,74 @@ public class LockPickGameMode : MonoBehaviour
         }
     }
 
-    private void WinGame()
+    public void RotateLockPickObject()
     {
+        if (rotationCoroutine != null)
+        {
+            StopCoroutine(rotationCoroutine);
+        }
+
+        rotationCoroutine = StartCoroutine(RotateObject());
+    }
+
+    private IEnumerator RotateObject()
+    {
+        float elapsedTime = 0f;
+        Quaternion targetRotation = Quaternion.Euler(0, 0, -30);
+     
+        while (elapsedTime < lockPickRotationDuration)
+        {
+            if (lockPickRectTransform.localScale != Vector3.zero)
+            {
+                lockPickRectTransform.rotation = Quaternion.Slerp(
+                    originalRotation,
+                    targetRotation,
+                    elapsedTime / lockPickRotationDuration
+                );
+            }
+            else
+            {
+                Debug.LogWarning("Skala obiektu jest zerowa! Nie mo¿na interpolowaæ rotacji.");
+                yield break; 
+            }
+
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        lockPickRectTransform.rotation = targetRotation;
+
+        yield return null;
+
+        while (elapsedTime < lockPickRotationDuration)
+        {
+            lockPickRectTransform.rotation = Quaternion.Slerp(targetRotation, originalRotation, elapsedTime / lockPickRotationDuration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        lockPickRectTransform.rotation = originalRotation;
+        rotationCoroutine = null;
+    }
+
+    private IEnumerator WinGame()
+    {
+        blockMoveAndInteract = true;
+        yield return new WaitForSeconds(0.5f);
+
+        Inventory.Instance.RemoveItemFromInventoryByID(15);
+        UIManager.Instance.RemoveItemFromUIByID(15);
+        UIManager.Instance.lockPickPanel.HideLockPickPanel();
+
+        if (animator != null)
+        {
+            animator.SetTrigger("Open");
+        }
+        else
+        {
+            Debug.Log("Nie masz animatora");
+        }
+
         Debug.Log("<color=yellow>GRATULACJE! ZAMEK OTWARTY!</color>");
     }
 

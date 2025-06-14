@@ -97,6 +97,10 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
                 Inventory.Instance.RemoveItemFromInventoryByID(selectedId);
                 UIManager.Instance.RemoveItemFromUIByID(selectedId);
             }
+            else
+            {
+                Debug.Log($"Nie mo¿na otworzyæ {gameObject.name}. Brak odpowiedniego przedmiotu.");
+            }
         }
     }
 
@@ -185,8 +189,15 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     {
         if (interactableType == InteractableType.LockPick)
         {
-            UIManager.Instance.lockPickPanel.ShowLockPickPanel();
-            isLockPicking = true;
+            if (UIManager.Instance != null && requiredItemIds.Contains(UIManager.Instance.GetSelectedItemId()))
+            {
+                UIManager.Instance.lockPickPanel.ShowLockPickPanel();
+                isLockPicking = true;
+            }
+            else
+            {
+                Debug.Log($"Nie mo¿na otworzyæ {gameObject.name}. Brak odpowiedniego przedmiotu.");
+            }
         }
     }
 
