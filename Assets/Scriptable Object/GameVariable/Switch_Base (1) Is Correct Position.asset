@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74c27ce17ac706a40ad302adff5ae7c4, type: 3}
   m_Name: Switch_Base (1) Is Correct Position
   m_EditorClassIdentifier: 
-  Value: 0
+  value: 0

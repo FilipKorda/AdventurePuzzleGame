@@ -5,7 +5,7 @@ public class SwitchBaseManager : MonoBehaviour
 {
     [SerializeField] private BoolVariable[] boolVariables;
     private bool allSwitchesActivated = false;
-
+    [SerializeField] private Animator animator;
     [SerializeField] private BoxCollider[] boxColliders;
 
     private void OnEnable()
@@ -32,7 +32,8 @@ public class SwitchBaseManager : MonoBehaviour
         {
             Debug.Log("Sukces! Wszystkie prze³¹czniki s¹ ON!");
             DisableBoxColliders();
-            allSwitchesActivated = true;      
+            animator.SetTrigger("Interact");
+            allSwitchesActivated = true;
         }
     }
 
