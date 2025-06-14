@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Transform inventoryPanel;
     [SerializeField] private GameObject itemSlotPrefab;
     public ReadablePanel readablePanel;
+    public LockPickPanel lockPickPanel;
     private List<ItemSlot> itemSlots = new();
     private int selectedItemId = -1;
 

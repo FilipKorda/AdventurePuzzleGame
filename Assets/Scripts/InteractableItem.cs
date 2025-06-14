@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using System.Linq;
 
-public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpenable, IReadable, IPressable, IPlaceable
+public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpenable, IReadable, IPressable, IPlaceable, ILockPick
 {
     public enum InteractableType
     {
@@ -11,7 +11,8 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         Openable,
         Readable,
         Pressable,
-        Placeable
+        Placeable,
+        LockPick
     }
 
     public InteractableType interactableType;
@@ -20,11 +21,11 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
 
     [Header("ID (if Pickupable)")]
     [Tooltip("ID tego przedmiotu, jeœli mo¿na go podnieœæ i umieœciæ w ekwipunku.")]
-    [SerializeField] private int itemId; // ID samego przedmiotu
+    [SerializeField] private int itemId;
 
     [Header("Requirements (if Openable, Placeable, etc.)")]
     [Tooltip("Lista ID przedmiotów z ekwipunku, które s¹ wymagane do tej interakcji.")]
-    [SerializeField] private int[] requiredItemIds; // Lista ID wymaganych przedmiotów
+    [SerializeField] private int[] requiredItemIds;
 
     [Header("Components & Events")]
     [SerializeField] private Animator animator;
@@ -36,10 +37,8 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     private bool isActualReading;
     private bool isActualOpen;
     private bool isActualPreesed;
+    private bool isLockPicking;
     [SerializeField] private int requiredUses = 3;
-    private int toolUsageCount = 0;
-
-    // --- Metody interfejsu IPickupable ---
 
     public void OnPickUp()
     {
@@ -50,7 +49,6 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         }
     }
 
-    // ZWRACA ID SAMEGO PRZEDMIOTU (dla ekwipunku)
     public int GetItemId() => itemId;
 
     public void DestroyInteractable() => Destroy(gameObject);
@@ -59,19 +57,25 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
 
     public Sprite GetItemSprite() => itemSprite;
 
-    // --- Pozosta³e metody interakcji ---
 
     public void OpenObject()
     {
         if (interactableType == InteractableType.Openable)
         {
-            // Sprawdzamy, czy wybrany przedmiot ma ID z listy WYMAGANYCH ID
             if (UIManager.Instance != null && requiredItemIds.Contains(UIManager.Instance.GetSelectedItemId()))
             {
                 int selectedId = UIManager.Instance.GetSelectedItemId();
                 Inventory.Instance.RemoveItemFromInventoryByID(selectedId);
                 UIManager.Instance.RemoveItemFromUIByID(selectedId);
-                animator.SetTrigger("Interact");
+                if (animator != null)
+                {
+                    animator.SetTrigger("Interact");
+                }
+                else
+                {
+                    Debug.Log("Nie masz animatora");
+                }
+
                 isActualOpen = true;
             }
             else
@@ -85,7 +89,6 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     {
         if (interactableType == InteractableType.Placeable)
         {
-            // Sprawdzamy, czy wybrany przedmiot ma ID z listy WYMAGANYCH ID
             if (UIManager.Instance != null && requiredItemIds.Contains(UIManager.Instance.GetSelectedItemId()))
             {
                 boxCollider.enabled = false;
@@ -97,9 +100,6 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         }
     }
 
-    // ... reszta metod (OnRead, OnPress, etc.) pozostaje bez zmian ...
-
-    #region Pozosta³e metody bez zmian
     public void OnBookThrow()
     {
         if (interactableType == InteractableType.Throwable)
@@ -124,10 +124,17 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     {
         if (interactableType == InteractableType.Openable)
         {
-            if (isActualOpen) // Za³ó¿my, ¿e zamykanie nie wymaga klucza
+            if (isActualOpen)
             {
                 isActualOpen = false;
-                animator.SetTrigger("Close");
+                if (animator != null)
+                {
+                    animator.SetTrigger("Close");
+                }
+                else
+                {
+                    Debug.Log("Nie masz animatora");
+                }
             }
         }
     }
@@ -160,12 +167,37 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         if (interactableType == InteractableType.Pressable)
         {
             isActualPreesed = true;
-            animator.SetTrigger("Interact");
+            if (animator != null)
+            {
+                animator.SetTrigger("Interact");
+            }
+            else
+            {
+                Debug.Log("Nie masz animatora");
+            }
             onAllWallButtonPressed?.Invoke();
         }
     }
 
     public bool IsPressed() => isActualPreesed;
 
-    #endregion
+    public void StartLockPick()
+    {
+        if (interactableType == InteractableType.LockPick)
+        {
+            UIManager.Instance.lockPickPanel.ShowLockPickPanel();
+            isLockPicking = true;
+        }
+    }
+
+    public bool IsLockPicking() => isLockPicking;
+
+    public void StopLockPicking()
+    {
+        if (interactableType == InteractableType.LockPick)
+        {
+            UIManager.Instance.lockPickPanel.HideLockPickPanel();
+            isLockPicking = false;
+        }
+    }
 }

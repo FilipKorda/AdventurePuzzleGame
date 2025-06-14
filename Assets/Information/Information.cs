@@ -1,6 +1,5 @@
 public class Information 
 {
-    //Fork - 0
     //Bone - 1
     //Knife - 2
     //Spear - 3
@@ -13,5 +12,9 @@ public class Information
     //Knife (3) - 10
     //Key_Golden - 11
     //hammer - 12
+    //Switch_Lever (2) - 13
+    //Fork - 14
+    //LockPick - 15
+
 
 }

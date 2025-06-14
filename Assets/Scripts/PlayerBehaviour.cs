@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Playables;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerBehaviour : MonoBehaviour
@@ -31,6 +30,7 @@ public class PlayerBehaviour : MonoBehaviour
     private IReadable lastIReadable;
     private IPressable lastIPressable;
     private IPlaceable lastIPlaceable;
+    private ILockPick lastILockPick;
 
     private CharacterController characterController;
     private Vector2 inputMovement;
@@ -63,12 +63,14 @@ public class PlayerBehaviour : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
+        if (lastILockPick != null && lastILockPick.IsLockPicking()) return;
         if (lastIReadable != null && lastIReadable.IsReading()) return;
         inputMovement = context.ReadValue<Vector2>();
     }
 
     public void OnLook(InputAction.CallbackContext context)
     {
+        if (lastILockPick != null && lastILockPick.IsLockPicking()) return;
         if (lastIReadable != null && lastIReadable.IsReading()) return;
         inputLook = context.ReadValue<Vector2>();
     }
@@ -99,9 +101,19 @@ public class PlayerBehaviour : MonoBehaviour
                 lastIReadable?.OnRead();
             }
 
+            if (lastILockPick != null && lastILockPick.IsLockPicking())
+            {
+                lastILockPick?.StopLockPicking();
+            }
+            else
+            {
+                lastILockPick?.StartLockPick();
+            }
+
+
             lastIPressable?.OnPress();
             lastIPlaceable?.PlaceObject();
-         
+                   
         }
     }
 
@@ -153,6 +165,7 @@ public class PlayerBehaviour : MonoBehaviour
         lastIReadable = null;
         lastIPressable = null;
         lastIPlaceable = null;
+        lastILockPick = null;
 
         if (Physics.Raycast(ray, out RaycastHit hit, raycastRange, interactableLayer))
         {
@@ -183,6 +196,9 @@ public class PlayerBehaviour : MonoBehaviour
 
                     case InteractableItem.InteractableType.Placeable:
                         lastIPlaceable = interactableObject;
+                        break;
+                    case InteractableItem.InteractableType.LockPick:
+                        lastILockPick = interactableObject;
                         break;
                 }
             }
