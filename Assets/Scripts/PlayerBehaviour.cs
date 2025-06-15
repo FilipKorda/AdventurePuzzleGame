@@ -8,6 +8,7 @@ public class PlayerBehaviour : MonoBehaviour
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float sensitivity = 10f;
     private float gravity = -9.81f;
+    [SerializeField] private float climbSpeed = 3f; // --- NOWY KOD ---
 
     [Header("Camera Settings")]
     [SerializeField] private Transform cameraTransform;
@@ -39,6 +40,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     private float cameraVerticalRotation = 0f;
     private Inventory playerInventory;
+    private bool isClimbing = false; // --- NOWY KOD ---
 
     private void Awake()
     {
@@ -75,7 +77,6 @@ public class PlayerBehaviour : MonoBehaviour
         inputLook = context.ReadValue<Vector2>();
     }
 
-    //podczepione w inspektorze Playera
     public void OnInteract(InputAction.CallbackContext context)
     {
         if (context.performed)
@@ -110,10 +111,9 @@ public class PlayerBehaviour : MonoBehaviour
                 lastILockPick?.StartLockPick();
             }
 
-
             lastIPressable?.OnPress();
             lastIPlaceable?.PlaceObject();
-                   
+
         }
     }
 
@@ -123,10 +123,12 @@ public class PlayerBehaviour : MonoBehaviour
         HandleMovement();
         HandleLook();
         ApplyGravity();
+        HandleClimbing(); 
     }
 
     private void HandleMovement()
     {
+        if (isClimbing) { return; } 
         Vector3 moveDirection = transform.right * inputMovement.x + transform.forward * inputMovement.y;
         characterController.Move(moveSpeed * Time.deltaTime * moveDirection);
     }
@@ -145,6 +147,8 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void ApplyGravity()
     {
+        if (isClimbing) { velocity.y = 0; return; } 
+
         if (characterController.isGrounded && velocity.y < 0)
         {
             velocity.y = -2f;
@@ -215,7 +219,36 @@ public class PlayerBehaviour : MonoBehaviour
         LerpCenterOfScreenSize();
     }
 
+    private void HandleClimbing()
+    {
+        if (!isClimbing) { return; }
 
+        if (characterController.isGrounded && inputMovement.y < -0.1f)
+        {
+            isClimbing = false;
+            return; 
+        }
+       
+
+        Vector3 climbDirection = new Vector3(0, inputMovement.y, 0);
+        characterController.Move(climbSpeed * Time.deltaTime * climbDirection);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Ladder"))
+        {
+            isClimbing = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Ladder"))
+        {
+            isClimbing = false;
+        }
+    }
 
     private void UpdateDotVisibility(bool isVisible)
     {

@@ -15,6 +15,5 @@ public class Information
     //Switch_Lever (2) - 13
     //Fork - 14
     //LockPick - 15
-
-
+    //Flint - 16
 }
