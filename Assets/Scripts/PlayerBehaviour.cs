@@ -32,6 +32,7 @@ public class PlayerBehaviour : MonoBehaviour
     private IPressable lastIPressable;
     private IPlaceable lastIPlaceable;
     private ILockPick lastILockPick;
+    private IFillable lastIFillable;
 
     private CharacterController characterController;
     private Vector2 inputMovement;
@@ -40,7 +41,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     private float cameraVerticalRotation = 0f;
     private Inventory playerInventory;
-    private bool isClimbing = false; // --- NOWY KOD ---
+    private bool isClimbing = false; 
 
     private void Awake()
     {
@@ -113,7 +114,7 @@ public class PlayerBehaviour : MonoBehaviour
 
             lastIPressable?.OnPress();
             lastIPlaceable?.PlaceObject();
-
+            lastIFillable?.OnFill();
         }
     }
 
@@ -170,6 +171,7 @@ public class PlayerBehaviour : MonoBehaviour
         lastIPressable = null;
         lastIPlaceable = null;
         lastILockPick = null;
+        lastIFillable = null;
 
         if (Physics.Raycast(ray, out RaycastHit hit, raycastRange, interactableLayer))
         {
@@ -203,6 +205,9 @@ public class PlayerBehaviour : MonoBehaviour
                         break;
                     case InteractableItem.InteractableType.LockPick:
                         lastILockPick = interactableObject;
+                        break;
+                    case InteractableItem.InteractableType.Fillable:
+                        lastIFillable = interactableObject;
                         break;
                 }
             }

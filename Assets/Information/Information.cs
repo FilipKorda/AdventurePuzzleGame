@@ -16,4 +16,9 @@ public class Information
     //Fork - 14
     //LockPick - 15
     //Flint - 16
+    //Empty Bucket - 17
+    //Water Bucket - 18
+    //Acid Bucket - 19
+    //Blood Bucket - 20
+    //Wine Bucket - 21
 }

@@ -14,6 +14,9 @@ public class InteractableItemEditor : Editor
     private SerializedProperty onAllWallButtonPressedProp;
     private SerializedProperty objectToPlaceProp;
     private SerializedProperty boxColliderProp;
+    private SerializedProperty canOpenWithNoSelectedItem;
+    private SerializedProperty providedLiquidTypeProp;
+    private SerializedProperty fillMappingProp;
 
     private void OnEnable()
     {
@@ -27,6 +30,9 @@ public class InteractableItemEditor : Editor
         onAllWallButtonPressedProp = serializedObject.FindProperty("onAllWallButtonPressed");
         objectToPlaceProp = serializedObject.FindProperty("objectToPlace");
         boxColliderProp = serializedObject.FindProperty("boxCollider");
+        canOpenWithNoSelectedItem = serializedObject.FindProperty("canOpenWithNoSelectedItem");
+        providedLiquidTypeProp = serializedObject.FindProperty("providedLiquidType");
+        fillMappingProp = serializedObject.FindProperty("fillMapping");
     }
 
     public override void OnInspectorGUI()
@@ -55,6 +61,7 @@ public class InteractableItemEditor : Editor
             case InteractableItem.InteractableType.Openable:
                 EditorGUILayout.PropertyField(requiredItemIdsProp, new GUIContent("Required Item IDs"));
                 EditorGUILayout.PropertyField(animatorProp, new GUIContent("Animator"));
+                EditorGUILayout.PropertyField(canOpenWithNoSelectedItem, new GUIContent("Bool Can Open With seleted Item"));
                 EditorGUILayout.HelpBox("Wymaga przedmiotu (lub przedmiotów) o podanych ID, aby mo¿na by³o go otworzyæ.", MessageType.Info);
                 break;
 
@@ -80,6 +87,11 @@ public class InteractableItemEditor : Editor
             case InteractableItem.InteractableType.LockPick:
                 EditorGUILayout.PropertyField(itemIdProp, new GUIContent("Item ID"));
                 EditorGUILayout.HelpBox("Potrzebujesz tego itemu o tym ID ¿eby otowrzyæ k³ótke", MessageType.Info);
+                break;
+            case InteractableItem.InteractableType.Fillable:
+                EditorGUILayout.PropertyField(providedLiquidTypeProp, new GUIContent("Liquid Type"));
+                EditorGUILayout.PropertyField(fillMappingProp, new GUIContent("Fill Mapping"), true);
+                EditorGUILayout.HelpBox("Okreœl typ p³ynu i zmapuj pusty pojemnik na jego nape³nion¹ wersjê.", MessageType.Info);
                 break;
         }
 
