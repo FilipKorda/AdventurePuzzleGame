@@ -21,4 +21,7 @@ public class Information
     //Acid Bucket - 19
     //Blood Bucket - 20
     //Wine Bucket - 21
+    //Leafs - 22
+    //Plant Root - 23
+    //Raw Meat - 24
 }

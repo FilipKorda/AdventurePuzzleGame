@@ -187,9 +187,21 @@ MonoBehaviour:
   interactableType: 2
   itemName: Przedmiot
   itemSprite: {fileID: 0}
-  requiredItemId: -1
+  itemId: 0
+  requiredItemIds: 
   animator: {fileID: 5756710078703344881}
   readableTextData: {fileID: 0}
+  onAllWallButtonPressed:
+    m_PersistentCalls:
+      m_Calls: []
+  objectToPlace: {fileID: 0}
+  boxCollider: {fileID: 0}
+  canOpenWithNoSelectedItem: 1
+  requiredUses: 3
+  providedLiquidType: 0
+  fillMapping:
+    requiredEmptyItem: {fileID: 0}
+    resultingFilledItem: {fileID: 0}
 --- !u!95 &5756710078703344881
 Animator:
   serializedVersion: 7

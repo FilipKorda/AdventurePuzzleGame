@@ -8,7 +8,7 @@ public class PlayerBehaviour : MonoBehaviour
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float sensitivity = 10f;
     private float gravity = -9.81f;
-    [SerializeField] private float climbSpeed = 3f; // --- NOWY KOD ---
+    [SerializeField] private float climbSpeed = 3f;
 
     [Header("Camera Settings")]
     [SerializeField] private Transform cameraTransform;
@@ -33,6 +33,7 @@ public class PlayerBehaviour : MonoBehaviour
     private IPlaceable lastIPlaceable;
     private ILockPick lastILockPick;
     private IFillable lastIFillable;
+    private IPickupARenewableItem lastIPickupARenewableItem;
 
     private CharacterController characterController;
     private Vector2 inputMovement;
@@ -115,6 +116,7 @@ public class PlayerBehaviour : MonoBehaviour
             lastIPressable?.OnPress();
             lastIPlaceable?.PlaceObject();
             lastIFillable?.OnFill();
+            lastIPickupARenewableItem?.OnPickupARenewableItem();
         }
     }
 
@@ -172,12 +174,12 @@ public class PlayerBehaviour : MonoBehaviour
         lastIPlaceable = null;
         lastILockPick = null;
         lastIFillable = null;
+        lastIPickupARenewableItem = null;
 
         if (Physics.Raycast(ray, out RaycastHit hit, raycastRange, interactableLayer))
         {
             if (hit.collider.TryGetComponent<InteractableItem>(out var interactableObject))
             {
-                // Rozró¿niamy typ na podstawie wartoœci interactableType
                 switch (interactableObject.interactableType)
                 {
                     case InteractableItem.InteractableType.Pickupable:
@@ -203,11 +205,17 @@ public class PlayerBehaviour : MonoBehaviour
                     case InteractableItem.InteractableType.Placeable:
                         lastIPlaceable = interactableObject;
                         break;
+
                     case InteractableItem.InteractableType.LockPick:
                         lastILockPick = interactableObject;
                         break;
+
                     case InteractableItem.InteractableType.Fillable:
                         lastIFillable = interactableObject;
+                        break;
+
+                    case InteractableItem.InteractableType.PickupARenewableItem:
+                        lastIPickupARenewableItem = interactableObject;
                         break;
                 }
             }

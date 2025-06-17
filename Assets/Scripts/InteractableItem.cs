@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using System.Linq;
 
-public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpenable, IReadable, IPressable, IPlaceable, ILockPick, IFillable
+public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpenable, IReadable, IPressable, IPlaceable, ILockPick, IFillable, IPickupARenewableItem
 {
     public enum InteractableType
     {
@@ -13,7 +13,8 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         Pressable,
         Placeable,
         LockPick,
-        Fillable
+        Fillable,
+        PickupARenewableItem
     }
 
     public InteractableType interactableType;
@@ -48,6 +49,15 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
 
     [Tooltip("Lista mapowañ, które definiuj¹, jaki pusty pojemnik zamienia siê w jaki nape³niony.")]
     [SerializeField] private FillMapping fillMapping;
+
+
+    public void OnPickupARenewableItem()
+    {
+        if (interactableType == InteractableType.PickupARenewableItem)
+        {
+            Inventory.Instance.AddItemToInventory(this);
+        }
+    }
 
     public void OnPickUp()
     {

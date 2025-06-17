@@ -167,9 +167,21 @@ MonoBehaviour:
   interactableType: 2
   itemName: Przedmiot
   itemSprite: {fileID: 0}
-  requiredItemId: 5
+  itemId: 0
+  requiredItemIds: 
   animator: {fileID: 4096355287033639584}
   readableTextData: {fileID: 0}
+  onAllWallButtonPressed:
+    m_PersistentCalls:
+      m_Calls: []
+  objectToPlace: {fileID: 0}
+  boxCollider: {fileID: 0}
+  canOpenWithNoSelectedItem: 0
+  requiredUses: 3
+  providedLiquidType: 0
+  fillMapping:
+    requiredEmptyItem: {fileID: 0}
+    resultingFilledItem: {fileID: 0}
 --- !u!4 &829414539873111357 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c5ad9d55f3f826e44ad8d392fc6b9b89, type: 3}
@@ -407,9 +419,21 @@ MonoBehaviour:
   interactableType: 2
   itemName: Przedmiot
   itemSprite: {fileID: 0}
-  requiredItemId: -1
+  itemId: 0
+  requiredItemIds: 
   animator: {fileID: 7785698734697683255}
   readableTextData: {fileID: 0}
+  onAllWallButtonPressed:
+    m_PersistentCalls:
+      m_Calls: []
+  objectToPlace: {fileID: 0}
+  boxCollider: {fileID: 0}
+  canOpenWithNoSelectedItem: 1
+  requiredUses: 3
+  providedLiquidType: 0
+  fillMapping:
+    requiredEmptyItem: {fileID: 0}
+    resultingFilledItem: {fileID: 0}
 --- !u!95 &7785698734697683255
 Animator:
   serializedVersion: 7

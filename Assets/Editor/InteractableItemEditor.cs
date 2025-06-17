@@ -93,6 +93,10 @@ public class InteractableItemEditor : Editor
                 EditorGUILayout.PropertyField(fillMappingProp, new GUIContent("Fill Mapping"), true);
                 EditorGUILayout.HelpBox("Okreœl typ p³ynu i zmapuj pusty pojemnik na jego nape³nion¹ wersjê.", MessageType.Info);
                 break;
+            case InteractableItem.InteractableType.PickupARenewableItem:
+                EditorGUILayout.PropertyField(itemIdProp, new GUIContent("Item ID"));
+                EditorGUILayout.HelpBox("To jest ID tego przedmiotu, gdy znajdzie siê w ekwipunku.", MessageType.Info);
+                break;
         }
 
         serializedObject.ApplyModifiedProperties();
