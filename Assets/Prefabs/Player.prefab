@@ -289,8 +289,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f5d72f40b1fbaa41946a63693c67e59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gamepadSensitivity: 0.6
+  mouseSensitivity: 10
   moveSpeed: 5
   sensitivity: 15
+  climbSpeed: 3
   cameraTransform: {fileID: 2603889717382775948}
   minLookAngle: -60
   maxLookAngle: 60

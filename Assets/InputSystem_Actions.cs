@@ -278,7 +278,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""143bb1cd-cc10-4eca-a2f0-a3664166fe91"",
-                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Gamepad"",
@@ -464,17 +464,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""b3f66d0b-7751-423f-908b-a11c5bd95930"",
-                    ""path"": ""<Gamepad>/buttonNorth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Interact"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""4f4649ac-64a8-4a73-af11-b3faef356a4d"",
                     ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
@@ -523,7 +512,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""name"": ""Cancel"",
                     ""type"": ""Button"",
                     ""id"": ""15cef263-9014-4fd5-94d9-4e4a6234a6ef"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -635,6 +624,24 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""UINavigateRight"",
+                    ""type"": ""Button"",
+                    ""id"": ""200adb24-ca46-492c-9e6b-1ffa54c1deff"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""UINavigateLeft"",
+                    ""type"": ""Button"",
+                    ""id"": ""36fa33b2-9f26-4e58-a46f-b81cc88119cb"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -1110,6 +1117,28 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""action"": ""SelectSlot5"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""db6d4016-04f9-4d02-8b68-b809b019026b"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""UINavigateRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""773649b8-cedc-4c5f-83b9-8d28fe17e0aa"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""UINavigateLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -1205,6 +1234,8 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_UI_SelectSlot3 = m_UI.FindAction("SelectSlot3", throwIfNotFound: true);
         m_UI_SelectSlot4 = m_UI.FindAction("SelectSlot4", throwIfNotFound: true);
         m_UI_SelectSlot5 = m_UI.FindAction("SelectSlot5", throwIfNotFound: true);
+        m_UI_UINavigateRight = m_UI.FindAction("UINavigateRight", throwIfNotFound: true);
+        m_UI_UINavigateLeft = m_UI.FindAction("UINavigateLeft", throwIfNotFound: true);
     }
 
     ~@InputSystem_Actions()
@@ -1397,6 +1428,8 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_UI_SelectSlot3;
     private readonly InputAction m_UI_SelectSlot4;
     private readonly InputAction m_UI_SelectSlot5;
+    private readonly InputAction m_UI_UINavigateRight;
+    private readonly InputAction m_UI_UINavigateLeft;
     public struct UIActions
     {
         private @InputSystem_Actions m_Wrapper;
@@ -1416,6 +1449,8 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         public InputAction @SelectSlot3 => m_Wrapper.m_UI_SelectSlot3;
         public InputAction @SelectSlot4 => m_Wrapper.m_UI_SelectSlot4;
         public InputAction @SelectSlot5 => m_Wrapper.m_UI_SelectSlot5;
+        public InputAction @UINavigateRight => m_Wrapper.m_UI_UINavigateRight;
+        public InputAction @UINavigateLeft => m_Wrapper.m_UI_UINavigateLeft;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1470,6 +1505,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @SelectSlot5.started += instance.OnSelectSlot5;
             @SelectSlot5.performed += instance.OnSelectSlot5;
             @SelectSlot5.canceled += instance.OnSelectSlot5;
+            @UINavigateRight.started += instance.OnUINavigateRight;
+            @UINavigateRight.performed += instance.OnUINavigateRight;
+            @UINavigateRight.canceled += instance.OnUINavigateRight;
+            @UINavigateLeft.started += instance.OnUINavigateLeft;
+            @UINavigateLeft.performed += instance.OnUINavigateLeft;
+            @UINavigateLeft.canceled += instance.OnUINavigateLeft;
         }
 
         private void UnregisterCallbacks(IUIActions instance)
@@ -1519,6 +1560,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @SelectSlot5.started -= instance.OnSelectSlot5;
             @SelectSlot5.performed -= instance.OnSelectSlot5;
             @SelectSlot5.canceled -= instance.OnSelectSlot5;
+            @UINavigateRight.started -= instance.OnUINavigateRight;
+            @UINavigateRight.performed -= instance.OnUINavigateRight;
+            @UINavigateRight.canceled -= instance.OnUINavigateRight;
+            @UINavigateLeft.started -= instance.OnUINavigateLeft;
+            @UINavigateLeft.performed -= instance.OnUINavigateLeft;
+            @UINavigateLeft.canceled -= instance.OnUINavigateLeft;
         }
 
         public void RemoveCallbacks(IUIActions instance)
@@ -1610,5 +1657,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         void OnSelectSlot3(InputAction.CallbackContext context);
         void OnSelectSlot4(InputAction.CallbackContext context);
         void OnSelectSlot5(InputAction.CallbackContext context);
+        void OnUINavigateRight(InputAction.CallbackContext context);
+        void OnUINavigateLeft(InputAction.CallbackContext context);
     }
 }

@@ -4,6 +4,11 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerBehaviour : MonoBehaviour
 {
+
+    [Header("Sensitivity Settings")]
+    [SerializeField] private float gamepadSensitivity = 0.5f;
+    [SerializeField] private float mouseSensitivity = 10f;
+
     [Header("Movement Settings")]
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float sensitivity = 10f;
@@ -77,8 +82,20 @@ public class PlayerBehaviour : MonoBehaviour
     {
         if (lastILockPick != null && lastILockPick.IsLockPicking()) return;
         if (lastIReadable != null && lastIReadable.IsReading()) return;
-        inputLook = context.ReadValue<Vector2>();
+
+        Vector2 rawInput = context.ReadValue<Vector2>();
+
+        if (context.control.device is Mouse)
+        {
+            inputLook = mouseSensitivity * Time.deltaTime * rawInput;
+        }
+        else 
+        {
+            inputLook = rawInput * gamepadSensitivity;
+        }
     }
+
+
 
     public void OnInteract(InputAction.CallbackContext context)
     {
@@ -90,7 +107,6 @@ public class PlayerBehaviour : MonoBehaviour
             lastIPlaceable?.PlaceObject();
 
             lastIAlchemyStation?.AddIngredient();
-           // lastIAlchemyStation?.TakeSolutionMixture();
 
             lastIFillable?.OnFill();
             lastIPickupARenewableItem?.OnPickupARenewableItem();
@@ -145,10 +161,10 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void HandleLook()
     {
-        float mouseX = inputLook.x * sensitivity * Time.deltaTime;
+        float mouseX = inputLook.x; // Ju¿ przeskalowane w OnLook
         transform.Rotate(Vector3.up * mouseX);
 
-        float mouseY = inputLook.y * sensitivity * Time.deltaTime;
+        float mouseY = inputLook.y; // Ju¿ przeskalowane w OnLook
         cameraVerticalRotation -= mouseY;
         cameraVerticalRotation = Mathf.Clamp(cameraVerticalRotation, minLookAngle, maxLookAngle);
 

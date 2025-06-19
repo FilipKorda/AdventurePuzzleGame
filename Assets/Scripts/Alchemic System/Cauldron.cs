@@ -6,10 +6,13 @@ public class Cauldron : MonoBehaviour
 {
     [Tooltip("Lista wszystkich przepisów, które ten kocio³ mo¿e uwarzyæ.")]
     [SerializeField] private List<AlchemyRecipe> availableRecipes;
+    [SerializeField] private MultiStageMover multiStageMover;
 
     private List<int> currentIngredients = new List<int>();
 
     private InteractableItem readySolution = null;
+
+    public InteractableItem emptyBucket;
 
     public void AddIngredient(int itemId)
     {
@@ -19,11 +22,24 @@ public class Cauldron : MonoBehaviour
             return;
         }
 
+        multiStageMover.MoveWaterUp();
         Debug.Log($"Dodano sk³adnik o ID: {itemId} do kot³a.");
         currentIngredients.Add(itemId);
 
-        Inventory.Instance.RemoveItemFromInventoryByID(itemId);
-        UIManager.Instance.RemoveItemFromUIByID(itemId);
+        if (itemId == (int)ItemID.AcidBucket || itemId == (int)ItemID.WaterBucket ||
+              itemId == (int)ItemID.BloodBucket || itemId == (int)ItemID.EmptyBucket)
+        {
+            Inventory.Instance.RemoveItemFromInventoryByID(itemId);
+            UIManager.Instance.RemoveItemFromUIByID(itemId);
+
+            Inventory.Instance.AddItemToInventory(emptyBucket);
+        }
+        else
+        {
+            Inventory.Instance.RemoveItemFromInventoryByID(itemId);
+            UIManager.Instance.RemoveItemFromUIByID(itemId);
+        }
+
 
         CheckForMatchingRecipe();
     }
@@ -40,9 +56,9 @@ public class Cauldron : MonoBehaviour
             {
                 Debug.Log($"Uda³o siê uwarzyæ: {recipe.resultingPotion.GetItemName()}!");
                 readySolution = recipe.resultingPotion;
-                currentIngredients.Clear(); 
+                currentIngredients.Clear();
 
-      
+
                 return;
             }
         }
@@ -57,8 +73,9 @@ public class Cauldron : MonoBehaviour
     {
         if (HasReadySolution())
         {
+            multiStageMover.ResetObjectState();
             InteractableItem solutionToReturn = readySolution;
-            readySolution = null; 
+            readySolution = null;
             Debug.Log("Pobrano roztwór z kot³a.");
             return solutionToReturn;
         }
