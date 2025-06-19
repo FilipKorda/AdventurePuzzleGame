@@ -34,6 +34,7 @@ public class PlayerBehaviour : MonoBehaviour
     private ILockPick lastILockPick;
     private IFillable lastIFillable;
     private IPickupARenewableItem lastIPickupARenewableItem;
+    private IAlchemyStation lastIAlchemyStation;
 
     private CharacterController characterController;
     private Vector2 inputMovement;
@@ -85,6 +86,15 @@ public class PlayerBehaviour : MonoBehaviour
         {
             lastIpickupable?.OnPickUp();
             lastIBookThrowable?.OnBookThrow();
+            lastIPressable?.OnPress();
+            lastIPlaceable?.PlaceObject();
+
+            lastIAlchemyStation?.AddIngredient();
+           // lastIAlchemyStation?.TakeSolutionMixture();
+
+            lastIFillable?.OnFill();
+            lastIPickupARenewableItem?.OnPickupARenewableItem();
+
 
             if (lastIOpenable != null && lastIOpenable.IsOpen())
             {
@@ -113,10 +123,7 @@ public class PlayerBehaviour : MonoBehaviour
                 lastILockPick?.StartLockPick();
             }
 
-            lastIPressable?.OnPress();
-            lastIPlaceable?.PlaceObject();
-            lastIFillable?.OnFill();
-            lastIPickupARenewableItem?.OnPickupARenewableItem();
+        
         }
     }
 
@@ -175,6 +182,7 @@ public class PlayerBehaviour : MonoBehaviour
         lastILockPick = null;
         lastIFillable = null;
         lastIPickupARenewableItem = null;
+        lastIAlchemyStation = null;
 
         if (Physics.Raycast(ray, out RaycastHit hit, raycastRange, interactableLayer))
         {
@@ -216,6 +224,10 @@ public class PlayerBehaviour : MonoBehaviour
 
                     case InteractableItem.InteractableType.PickupARenewableItem:
                         lastIPickupARenewableItem = interactableObject;
+                        break;
+
+                    case InteractableItem.InteractableType.AlchemyStation:
+                        lastIAlchemyStation = interactableObject;
                         break;
                 }
             }

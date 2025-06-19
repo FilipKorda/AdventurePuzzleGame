@@ -129,7 +129,7 @@ public class UIManager : MonoBehaviour
         {
             return itemSlots[selectedItemId].GetItemId();
         }
-        return -1; // Wartoœæ oznaczaj¹ca brak zaznaczonego przedmiotu
+        return 0; // Wartoœæ oznaczaj¹ca brak zaznaczonego przedmiotu czyli uzywanie  przedmiotów krych nie zbierasz, dŸwignie, skrzynie itd
     }
  
 }

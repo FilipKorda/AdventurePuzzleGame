@@ -17,6 +17,7 @@ public class InteractableItemEditor : Editor
     private SerializedProperty canOpenWithNoSelectedItem;
     private SerializedProperty providedLiquidTypeProp;
     private SerializedProperty fillMappingProp;
+    private SerializedProperty cauldronStation;
 
     private void OnEnable()
     {
@@ -33,6 +34,7 @@ public class InteractableItemEditor : Editor
         canOpenWithNoSelectedItem = serializedObject.FindProperty("canOpenWithNoSelectedItem");
         providedLiquidTypeProp = serializedObject.FindProperty("providedLiquidType");
         fillMappingProp = serializedObject.FindProperty("fillMapping");
+        cauldronStation = serializedObject.FindProperty("cauldron");
     }
 
     public override void OnInspectorGUI()
@@ -96,6 +98,10 @@ public class InteractableItemEditor : Editor
             case InteractableItem.InteractableType.PickupARenewableItem:
                 EditorGUILayout.PropertyField(itemIdProp, new GUIContent("Item ID"));
                 EditorGUILayout.HelpBox("To jest ID tego przedmiotu, gdy znajdzie siê w ekwipunku.", MessageType.Info);
+                break;
+            case InteractableItem.InteractableType.AlchemyStation:
+                EditorGUILayout.PropertyField(cauldronStation, new GUIContent("Cauldron"));
+                EditorGUILayout.HelpBox(".", MessageType.Info);
                 break;
         }
 

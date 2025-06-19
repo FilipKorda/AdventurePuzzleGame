@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using System.Linq;
 
-public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpenable, IReadable, IPressable, IPlaceable, ILockPick, IFillable, IPickupARenewableItem
+public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpenable, IReadable, IPressable, IPlaceable, ILockPick, IFillable, IPickupARenewableItem, IAlchemyStation
 {
     public enum InteractableType
     {
@@ -14,7 +14,8 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         Placeable,
         LockPick,
         Fillable,
-        PickupARenewableItem
+        PickupARenewableItem,
+        AlchemyStation
     }
 
     public InteractableType interactableType;
@@ -50,6 +51,52 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     [Tooltip("Lista mapowañ, które definiuj¹, jaki pusty pojemnik zamienia siê w jaki nape³niony.")]
     [SerializeField] private FillMapping fillMapping;
 
+    [Header("Alchemy Settings (if AlchemyStation)")]
+    [Tooltip("Referencja do komponentu Cauldron na tym obiekcie.")]
+    [SerializeField] private Cauldron cauldron;
+
+
+    public void AddIngredient()
+    {
+        if (interactableType != InteractableType.AlchemyStation || cauldron == null) return;
+
+        int selectedItemIdAsInt = UIManager.Instance.GetSelectedItemId();
+        ItemID selectedItemId = (ItemID)selectedItemIdAsInt;
+
+        if (selectedItemId == ItemID.PlantRoot || selectedItemId == ItemID.Leafs ||
+            selectedItemId == ItemID.RawMeat || selectedItemId == ItemID.WineBucket ||
+                selectedItemId == ItemID.AcidBucket || selectedItemId == ItemID.WaterBucket ||
+              selectedItemId == ItemID.BloodBucket || selectedItemId == ItemID.EmptyBucket)
+        {
+            if (cauldron != null && cauldron.HasReadySolution() && selectedItemId == ItemID.EmptyBucket)
+            {
+                ItemID requiredEmptyContainerId = ItemID.EmptyBucket;
+
+                if (selectedItemId == requiredEmptyContainerId)
+                {
+                    Inventory.Instance.RemoveItemFromInventoryByID(selectedItemIdAsInt);
+                    UIManager.Instance.RemoveItemFromUIByID(selectedItemIdAsInt);
+
+                    InteractableItem newPotion = cauldron.TakeSolution();
+                    Inventory.Instance.AddItemToInventory(newPotion);
+
+                    Debug.Log($"Nape³niono pojemnik. Otrzymano: {newPotion.GetItemName()}");
+                }
+                else
+                {
+                    Debug.Log("Wybierz pusty pojemnik, aby nabraæ roztwór.");
+                }
+            }
+            else if (selectedItemId != ItemID.EmptyBucket)
+            {
+                cauldron.AddIngredient(selectedItemIdAsInt);
+            }
+        }
+        else
+        {
+            Debug.Log("Wybierz sk³adnik z ekwipunku, aby go dodaæ do kot³a.");
+        }
+    }
 
     public void OnPickupARenewableItem()
     {
@@ -76,13 +123,12 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
 
     public Sprite GetItemSprite() => itemSprite;
 
-
     public void OnFill()
     {
         if (interactableType != InteractableType.Fillable) return;
 
-        int selectedItemId = UIManager.Instance.GetSelectedItemId();
-        if (selectedItemId == -1)
+        int selectedId = UIManager.Instance.GetSelectedItemId();
+        if (selectedId == -1)
         {
             Debug.Log("Musisz wybraæ pusty pojemnik, aby go nape³niæ.");
             return;
@@ -94,7 +140,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
             return;
         }
 
-        if (fillMapping.requiredEmptyItem.GetItemId() == selectedItemId)
+        if (fillMapping.requiredEmptyItem.GetItemId() == selectedId)
         {
             if (fillMapping.resultingFilledItem == null)
             {
@@ -102,8 +148,8 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
                 return;
             }
 
-            Inventory.Instance.RemoveItemFromInventoryByID(selectedItemId);
-            UIManager.Instance.RemoveItemFromUIByID(selectedItemId);
+            Inventory.Instance.RemoveItemFromInventoryByID(selectedId);
+            UIManager.Instance.RemoveItemFromUIByID(selectedId);
             Inventory.Instance.AddItemToInventory(fillMapping.resultingFilledItem);
 
             Debug.Log($"Nape³niono '{fillMapping.requiredEmptyItem.GetItemName()}' p³ynem typu '{providedLiquidType}'. Otrzymano: {fillMapping.resultingFilledItem.GetItemName()}");
@@ -114,7 +160,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     {
         if (interactableType == InteractableType.Openable)
         {
-            if(canOpenWithNoSelectedItem)
+            if (canOpenWithNoSelectedItem)
             {
                 if (animator != null)
                 {
@@ -151,7 +197,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
                 }
             }
 
-          
+
         }
     }
 
@@ -282,7 +328,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         }
     }
 
-    [System.Serializable] 
+    [System.Serializable]
     public class FillMapping
     {
         [Tooltip("Pusty przedmiot, który gracz musi trzymaæ (np. prefab Pustego Wiadra).")]
@@ -291,4 +337,34 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         [Tooltip("Przedmiot, który gracz otrzyma po nape³nieniu (np. prefab Wiadra z Wod¹).")]
         public InteractableItem resultingFilledItem;
     }
+}
+
+public enum ItemID
+{
+    None = 0,
+    Bone = 1,
+    Knife = 2,
+    Spear = 3,
+    Key_Rusty = 4,
+    Switch_Lever = 5,
+    Shovel = 6,
+    Key_Rusty_1 = 7,
+    Knife_1 = 8,
+    Knife_2 = 9,
+    Knife_3 = 10,
+    Key_Golden = 11,
+    hammer = 12,
+    Switch_Lever_2 = 13,
+    Fork = 14,
+    LockPick = 15,
+    Flint = 16,
+    EmptyBucket = 17,
+    WaterBucket = 18,
+    AcidBucket = 19,
+    BloodBucket = 20,
+    WineBucket = 21,
+    Leafs = 22,
+    PlantRoot = 23,
+    RawMeat = 24,
+    NiceWater = 25
 }
