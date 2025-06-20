@@ -9,10 +9,13 @@ public class Cauldron : MonoBehaviour
     [SerializeField] private MultiStageMover multiStageMover;
 
     private List<int> currentIngredients = new List<int>();
+    private int maxIngredientsInRecipe = 5;
 
     private InteractableItem readySolution = null;
 
     public InteractableItem emptyBucket;
+
+    public InteractableItem badRecipiesSolution;
 
     public void AddIngredient(int itemId)
     {
@@ -50,18 +53,27 @@ public class Cauldron : MonoBehaviour
 
         foreach (var recipe in availableRecipes)
         {
-            var sortedRecipeIngredients = recipe.ingredientItemIds.OrderBy(id => id).ToList();
-
-            if (currentIngredients.SequenceEqual(sortedRecipeIngredients))
+            if (currentIngredients.Count == recipe.ingredientItemIds.Count)
             {
-                Debug.Log($"Uda³o siê uwarzyæ: {recipe.resultingPotion.GetItemName()}!");
-                readySolution = recipe.resultingPotion;
-                currentIngredients.Clear();
+                var sortedRecipeIngredients = recipe.ingredientItemIds.OrderBy(id => id).ToList();
 
-
-                return;
+                if (currentIngredients.SequenceEqual(sortedRecipeIngredients))
+                {
+                    Debug.Log($"Uda³o siê uwarzyæ: {recipe.resultingPotion.GetItemName()}!");
+                    readySolution = recipe.resultingPotion;
+                    currentIngredients.Clear();
+                    return; 
+                }
             }
         }
+
+        if (currentIngredients.Count >= maxIngredientsInRecipe)
+        {
+            Debug.Log("Nie uda³o siê uwarzyæ eliksira. Sk³adniki nie pasuj¹ do ¿adnego przepisu.");
+            readySolution = badRecipiesSolution; 
+            currentIngredients.Clear(); 
+        }
+
     }
 
     public bool HasReadySolution()

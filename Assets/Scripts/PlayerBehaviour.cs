@@ -48,7 +48,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     private float cameraVerticalRotation = 0f;
     private Inventory playerInventory;
-    private bool isClimbing = false; 
+    private bool isClimbing = false;
 
     private void Awake()
     {
@@ -89,13 +89,11 @@ public class PlayerBehaviour : MonoBehaviour
         {
             inputLook = mouseSensitivity * Time.deltaTime * rawInput;
         }
-        else 
+        else
         {
             inputLook = rawInput * gamepadSensitivity;
         }
     }
-
-
 
     public void OnInteract(InputAction.CallbackContext context)
     {
@@ -110,7 +108,6 @@ public class PlayerBehaviour : MonoBehaviour
 
             lastIFillable?.OnFill();
             lastIPickupARenewableItem?.OnPickupARenewableItem();
-
 
             if (lastIOpenable != null && lastIOpenable.IsOpen())
             {
@@ -139,7 +136,7 @@ public class PlayerBehaviour : MonoBehaviour
                 lastILockPick?.StartLockPick();
             }
 
-        
+
         }
     }
 
@@ -149,22 +146,22 @@ public class PlayerBehaviour : MonoBehaviour
         HandleMovement();
         HandleLook();
         ApplyGravity();
-        HandleClimbing(); 
+        HandleClimbing();
     }
 
     private void HandleMovement()
     {
-        if (isClimbing) { return; } 
+        if (isClimbing) { return; }
         Vector3 moveDirection = transform.right * inputMovement.x + transform.forward * inputMovement.y;
         characterController.Move(moveSpeed * Time.deltaTime * moveDirection);
     }
 
     private void HandleLook()
     {
-        float mouseX = inputLook.x; // Ju¿ przeskalowane w OnLook
+        float mouseX = inputLook.x; 
         transform.Rotate(Vector3.up * mouseX);
 
-        float mouseY = inputLook.y; // Ju¿ przeskalowane w OnLook
+        float mouseY = inputLook.y; 
         cameraVerticalRotation -= mouseY;
         cameraVerticalRotation = Mathf.Clamp(cameraVerticalRotation, minLookAngle, maxLookAngle);
 
@@ -173,7 +170,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void ApplyGravity()
     {
-        if (isClimbing) { velocity.y = 0; return; } 
+        if (isClimbing) { velocity.y = 0; return; }
 
         if (characterController.isGrounded && velocity.y < 0)
         {
@@ -267,9 +264,9 @@ public class PlayerBehaviour : MonoBehaviour
         if (characterController.isGrounded && inputMovement.y < -0.1f)
         {
             isClimbing = false;
-            return; 
+            return;
         }
-       
+
 
         Vector3 climbDirection = new Vector3(0, inputMovement.y, 0);
         characterController.Move(climbSpeed * Time.deltaTime * climbDirection);

@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -6860895033569716450, guid: affe7203ad95ac04884cd98a039abd27, type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: affe7203ad95ac04884cd98a039abd27, type: 3}
       propertyPath: m_Name
       value: Bucket (Empty)
@@ -63,6 +67,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 100000, guid: affe7203ad95ac04884cd98a039abd27, type: 3}
       insertIndex: -1
       addedObject: {fileID: 814136047089109301}
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: affe7203ad95ac04884cd98a039abd27, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4607813644921867848}
   m_SourcePrefab: {fileID: 100100000, guid: affe7203ad95ac04884cd98a039abd27, type: 3}
 --- !u!1 &8005856282656556956 stripped
 GameObject:
@@ -94,8 +101,37 @@ MonoBehaviour:
   objectToPlace: {fileID: 0}
   boxCollider: {fileID: 0}
   canOpenWithNoSelectedItem: 0
+  itemPrefab: {fileID: 8005856282656556956, guid: 799696738b431a4429ab3db1cf2dc03d, type: 3}
   requiredUses: 3
   providedLiquidType: 0
   fillMapping:
     requiredEmptyItem: {fileID: 0}
     resultingFilledItem: {fileID: 0}
+  cauldron: {fileID: 0}
+--- !u!54 &4607813644921867848
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8005856282656556956}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

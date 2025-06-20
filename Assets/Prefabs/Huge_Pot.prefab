@@ -131,8 +131,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   availableRecipes:
   - {fileID: 11400000, guid: 76e69cc75534575479c03e32a3f54b01, type: 2}
+  - {fileID: 11400000, guid: 115090b806b936740a6caf8eaa9055bf, type: 2}
+  - {fileID: 11400000, guid: 393d8e91fed28d04ebfcd37e109b7359, type: 2}
+  - {fileID: 11400000, guid: d6f7ccf9685988544afbb9fcc3364ee4, type: 2}
+  - {fileID: 11400000, guid: d0277e93e9ed22543b3dc0a0d9a8a390, type: 2}
+  - {fileID: 11400000, guid: 1e4553b8c62d0f14ab83789896ce5249, type: 2}
+  - {fileID: 11400000, guid: eb2705fe84f49744dafb3547114ac460, type: 2}
+  - {fileID: 11400000, guid: 06601a72e7f3f78408f44333ba48516b, type: 2}
+  - {fileID: 11400000, guid: dfcfea2a86445644fb92744985111267, type: 2}
+  - {fileID: 11400000, guid: e909c7f31bfd9ce4a96e662e30171107, type: 2}
   multiStageMover: {fileID: 4121678524257410134}
   emptyBucket: {fileID: 814136047089109301, guid: 3a6bd28da04519d4c8ec996256064773, type: 3}
+  badRecipiesSolution: {fileID: 502079108960079588, guid: cd7b93caeb8b31d4a96d4971bf84ad92, type: 3}
 --- !u!1 &3130330516371600845
 GameObject:
   m_ObjectHideFlags: 0

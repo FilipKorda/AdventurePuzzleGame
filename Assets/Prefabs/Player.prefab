@@ -31,7 +31,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2894146433829765567}
   m_Father: {fileID: 3870059820769821162}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &8489812725524509388
@@ -440,6 +441,34 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 9caa3d8a-6b2f-4e8e-8bad-6ede561bd9be
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9138b309-eb70-4eda-ba68-1c592e19d3e5
+    m_ActionName: 'UI/UI Selection[/Keyboard/1,/Keyboard/2,/Keyboard/3,/Keyboard/4,/Keyboard/5]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8c55c73f-1802-4567-8028-4d81a18b906e
+    m_ActionName: 'UI/SelectSlot2[/Keyboard/2]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e59152f7-bc8c-43a5-ad40-9cc7a15e66d8
+    m_ActionName: 'UI/SelectSlot3[/Keyboard/3]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c0ec493c-52db-4255-ba2d-48780a36f61b
+    m_ActionName: 'UI/SelectSlot4[/Keyboard/4]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1f11c0e1-a801-48e6-bd21-579041ef90f6
+    m_ActionName: 'UI/SelectSlot5[/Keyboard/5]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 200adb24-ca46-492c-9e6b-1ffa54c1deff
+    m_ActionName: UI/UINavigateRight
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 36fa33b2-9f26-4e58-a46f-b81cc88119cb
+    m_ActionName: UI/UINavigateLeft
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -457,3 +486,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea062ab9f4b65b743826f8d419b9c529, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropPoint: {fileID: 2894146433829765567}
+--- !u!1 &8815092824352967941
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2894146433829765567}
+  m_Layer: 0
+  m_Name: DropPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2894146433829765567
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8815092824352967941}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.23, y: -0.32, z: 0.57}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2603889717382775948}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

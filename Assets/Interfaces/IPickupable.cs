@@ -6,5 +6,6 @@ public interface IPickupable
     int GetItemId();
     void DestroyInteractable();
     string GetItemName();
-    Sprite GetItemSprite();  
+    Sprite GetItemSprite();
+    GameObject GetItemPrefab();
 }

@@ -38,6 +38,10 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     [SerializeField] private BoxCollider boxCollider;
     public bool canOpenWithNoSelectedItem = false;
 
+    [Header("Drop Settings")]
+    [Tooltip("Prefab do stworzenia obiektu po wyrzuceniu go z ekwipunku. Przeci¹gnij tutaj prefab tego przedmiotu.")]
+    [SerializeField] private GameObject itemPrefab;
+
     private bool isActualReading;
     private bool isActualOpen;
     private bool isActualPreesed;
@@ -55,6 +59,16 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     [Tooltip("Referencja do komponentu Cauldron na tym obiekcie.")]
     [SerializeField] private Cauldron cauldron;
 
+
+    public GameObject GetItemPrefab()
+    {
+        if (itemPrefab == null)
+        {
+            Debug.LogError($"B³¹d krytyczny: Przedmiot '{itemName}' (ID: {itemId}) nie ma przypisanego prefabu w polu 'Item Prefab'! Nie mo¿na go wyrzuciæ.");
+            return null;
+        }
+        return itemPrefab;
+    }
 
     public void AddIngredient()
     {

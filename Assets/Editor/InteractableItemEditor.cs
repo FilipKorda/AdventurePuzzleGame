@@ -18,6 +18,7 @@ public class InteractableItemEditor : Editor
     private SerializedProperty providedLiquidTypeProp;
     private SerializedProperty fillMappingProp;
     private SerializedProperty cauldronStation;
+    private SerializedProperty itemPrefab;
 
     private void OnEnable()
     {
@@ -35,6 +36,7 @@ public class InteractableItemEditor : Editor
         providedLiquidTypeProp = serializedObject.FindProperty("providedLiquidType");
         fillMappingProp = serializedObject.FindProperty("fillMapping");
         cauldronStation = serializedObject.FindProperty("cauldron");
+        itemPrefab = serializedObject.FindProperty("itemPrefab");
     }
 
     public override void OnInspectorGUI()
@@ -57,6 +59,7 @@ public class InteractableItemEditor : Editor
         {
             case InteractableItem.InteractableType.Pickupable:
                 EditorGUILayout.PropertyField(itemIdProp, new GUIContent("Item ID"));
+                EditorGUILayout.PropertyField(itemPrefab, new GUIContent("Item to Drop From UI"));
                 EditorGUILayout.HelpBox("To jest ID tego przedmiotu, gdy znajdzie siê w ekwipunku.", MessageType.Info);
                 break;
 

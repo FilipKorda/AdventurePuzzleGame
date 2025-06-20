@@ -25,5 +25,6 @@ public enum ItemID
     Leafs = 22,
     PlantRoot = 23,
     RawMeat = 24,
-    NiceWater = 25
+    NiceWater = 25,
+    MudWater = 26
 }

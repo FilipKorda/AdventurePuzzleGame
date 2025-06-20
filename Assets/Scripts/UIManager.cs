@@ -21,11 +21,12 @@ public class UIManager : MonoBehaviour
     [SerializeField] private InputActionReference navigateNextAction;
     [SerializeField] private InputActionReference navigatePreviousAction;
 
+    [SerializeField] private InputActionReference dropItemAction;
+
     private void OnEnable()
     {
         RegisterSelectItemActions();
 
-        // NOWA REJESTRACJA AKCJI PADA
         if (navigateNextAction != null)
         {
             navigateNextAction.action.Enable();
@@ -35,6 +36,11 @@ public class UIManager : MonoBehaviour
         {
             navigatePreviousAction.action.Enable();
             navigatePreviousAction.action.performed += OnNavigatePrevious;
+        }
+        if (dropItemAction != null)
+        {
+            dropItemAction.action.Enable();
+            dropItemAction.action.performed += OnDropItemPerformed;
         }
     }
 
@@ -52,6 +58,11 @@ public class UIManager : MonoBehaviour
             navigatePreviousAction.action.performed -= OnNavigatePrevious;
             navigatePreviousAction.action.Disable();
         }
+        if (dropItemAction != null)
+        {
+            dropItemAction.action.performed -= OnDropItemPerformed;
+            dropItemAction.action.Disable();
+        }
     }
 
     private void Awake()
@@ -63,6 +74,19 @@ public class UIManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
+        }
+    }
+
+    private void OnDropItemPerformed(InputAction.CallbackContext context)
+    {
+        int currentSelectedId = GetSelectedItemId();
+        if (currentSelectedId != 0)
+        {
+            Inventory.Instance.DropItemByID(currentSelectedId);
+        }
+        else
+        {
+            Debug.Log("Nie wybrano ¿adnego przedmiotu do wyrzucenia.");
         }
     }
 
