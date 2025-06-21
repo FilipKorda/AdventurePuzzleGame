@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7de79416d7e0eb6439b0a8a09cdd5247, type: 3}
-  m_Name: Water
+  m_Name: Wine Potion
   m_EditorClassIdentifier: 
-  ingredientItemIds: 1200000012000000120000001200000012000000
-  resultingPotion: {fileID: 3096892419514706705, guid: f181114e518daac4fb7ce64d02cd2438, type: 3}
+  ingredientItemIds: 1500000015000000150000001500000015000000
+  resultingPotion: {fileID: 431574494893404513, guid: d76ad08fdde3de9418bcdfc02f5263eb, type: 3}

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7de79416d7e0eb6439b0a8a09cdd5247, type: 3}
-  m_Name: Angry Time
+  m_Name: Acid Potion
   m_EditorClassIdentifier: 
-  ingredientItemIds: 1700000018000000150000001200000012000000
-  resultingPotion: {fileID: 3096892419514706705, guid: f181114e518daac4fb7ce64d02cd2438, type: 3}
+  ingredientItemIds: 1300000013000000130000001300000013000000
+  resultingPotion: {fileID: 5675334526335100304, guid: c3bb659ec0030914191064d664266acf, type: 3}

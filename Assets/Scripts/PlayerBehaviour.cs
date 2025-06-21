@@ -1,9 +1,13 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerBehaviour : MonoBehaviour
 {
+    [SerializeField] private Transform playerTransform;
 
     [Header("Sensitivity Settings")]
     [SerializeField] private float gamepadSensitivity = 0.5f;
@@ -11,7 +15,6 @@ public class PlayerBehaviour : MonoBehaviour
 
     [Header("Movement Settings")]
     [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private float sensitivity = 10f;
     private float gravity = -9.81f;
     [SerializeField] private float climbSpeed = 3f;
 
@@ -50,6 +53,75 @@ public class PlayerBehaviour : MonoBehaviour
     private Inventory playerInventory;
     private bool isClimbing = false;
 
+    private bool isApplyNiceWaterActive = false;
+    private bool isAngryTimeActive = false;
+
+    [Header("Drunk Effect Settings")]
+    [Tooltip("Jak bardzo kamera chwieje siê na boki. Powinna byæ to ma³a wartoœæ.")]
+    [SerializeField] private float drunkSwayAmount = 0.5f;
+    [Tooltip("Jak WOLNO kamera chwieje siê na boki. Niska wartoœæ = wolne bujanie.")]
+    [SerializeField] private float drunkSwaySpeed = 0.15f;
+    [Tooltip("Jak bardzo ruch gracza jest 'chwiejny'.")]
+    [SerializeField] private float drunkMovementStaggerAmount = 0.2f;
+    [Tooltip("Jak WOLNO zmienia siê kierunek chwiania siê. Niska wartoœæ = powolne zmiany.")]
+    [SerializeField] private float drunkMovementStaggerSpeed = 0.1f;
+    [Header("Drunk Sluggishness Settings")]
+    [Tooltip("Mno¿nik prêdkoœci w stanie upojenia (np. 0.6 to 60% normalnej prêdkoœci).")]
+    [Range(0.1f, 1f)]
+    [SerializeField] private float drunkMoveSpeedMultiplier = 0.6f;
+    [Tooltip("Jak bardzo opóŸniony/ociê¿a³y jest ruch. Ni¿sze wartoœci = wiêksze opóŸnienie.")]
+    [SerializeField] private float drunkMovementSmoothing = 4f;
+    [Tooltip("Jak bardzo opóŸnione/ociê¿a³e jest rozgl¹danie siê. Ni¿sze wartoœci = wiêksze opóŸnienie.")]
+    [SerializeField] private float drunkLookSmoothing = 3f;
+    [Header("Drunk Visual Effects")]
+    [SerializeField] private Camera _playerCamera;
+    [Tooltip("Normalne pole widzenia kamery.")]
+    [SerializeField] private float normalFOV = 60f;
+    [Tooltip("Pole widzenia kamery podczas efektu upojenia.")]
+    [SerializeField] private float drunkFOV = 50f;
+    [Tooltip("Prêdkoœæ, z jak¹ zmienia siê pole widzenia.")]
+    [SerializeField] private float fovChangeSpeed = 2f;
+    [Header("Drunk Blur Effect")]
+    [Tooltip("Przypisz tutaj obiekt 'Post-Process Volume' ze sceny.")]
+    [SerializeField] private Volume postProcessVolume;
+    [Tooltip("Minimalna odleg³oœæ, na której skupia siê wzrok (w metrach).")]
+    [SerializeField] private float minFocusDistance = 0.1f;
+    [Tooltip("Maksymalna odleg³oœæ, na której skupia siê wzrok (w metrach).")]
+    [SerializeField] private float maxFocusDistance = 10f;
+    [Tooltip("Prêdkoœæ, z jak¹ zmienia siê odleg³oœæ ogniskowania (p³ywanie wzroku).")]
+    [SerializeField] private float focusChangeSpeed = 0.5f;
+
+    [Header("Acid Visual Effect")]
+    [Tooltip("Kolor filtra nak³adanego na ekran podczas efektu kwasu.")]
+    [SerializeField] private Color acidColorFilter = new Color(0.1f, 0.9f, 0.2f, 1f);
+    [Tooltip("Docelowa wartoœæ nasycenia (Saturation) podczas efektu kwasu.")]
+    [SerializeField] private float acidSaturationTarget = 100f;
+    [SerializeField] private float acidContrastTarget = -30f;
+    [Tooltip("Prêdkoœæ, z jak¹ zmieniaj¹ siê efekty wizualne kwasu.")]
+    [SerializeField] private float acidEffectChangeSpeed = 1.5f;
+
+    private Color _defaultColorFilter = Color.white;
+
+    private Vector2 _smoothedDrunkMoveInput;
+    private Vector2 _smoothedDrunkLookInput;
+    private bool isDrunk = false;
+    private bool isAcidEffectActive = false;
+    private Coroutine activeDrunkCoroutine;
+    private Coroutine activeAcidCoroutine;
+    private Coroutine activeNiceWaterCoroutine;
+    private Coroutine activeMudWaterCoroutine;
+    private Coroutine activeLeafsGoodsCoroutine;
+    private Coroutine activeAngryTimeCoroutine;
+
+    private DepthOfField _depthOfFieldEffect;
+    private ColorAdjustments _colorAdjustmentsEffect;
+    private ChromaticAberration chromaticAberration;
+    private LensDistortion lensDistortion;
+  
+
+  
+   
+
     private void Awake()
     {
         characterController = GetComponent<CharacterController>();
@@ -57,6 +129,19 @@ public class PlayerBehaviour : MonoBehaviour
         if (cameraTransform == null)
         {
             Debug.LogError("Camera Transform is not assigned!");
+        }
+
+        if (postProcessVolume != null)
+        {
+            postProcessVolume.profile.TryGet(out _depthOfFieldEffect);
+            postProcessVolume.profile.TryGet(out _colorAdjustmentsEffect);
+
+            postProcessVolume.profile.TryGet(out chromaticAberration);
+            postProcessVolume.profile.TryGet(out lensDistortion);
+        }
+        else
+        {
+            Debug.LogWarning("Nie przypisano Post-Process Volume do PlayerBehaviour! Efekty wizualne nie bêd¹ dzia³aæ.");
         }
     }
 
@@ -66,6 +151,9 @@ public class PlayerBehaviour : MonoBehaviour
         {
             playerInventory = gameObject.AddComponent<Inventory>();
         }
+
+        if (_depthOfFieldEffect != null) _depthOfFieldEffect.active = false;
+        if (_colorAdjustmentsEffect != null) _colorAdjustmentsEffect.active = false;
 
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -142,26 +230,70 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void Update()
     {
+        HandleFOV();
         HandleRaycast();
         HandleMovement();
         HandleLook();
         ApplyGravity();
         HandleClimbing();
+        HandleDrunkBlur();
+    }
+
+    private void HandleFOV()
+    {
+        if (_playerCamera == null && !isDrunk) return;
+
+        float targetFOV = isDrunk ? drunkFOV : normalFOV;
+
+        _playerCamera.fieldOfView = Mathf.Lerp(_playerCamera.fieldOfView, targetFOV, fovChangeSpeed * Time.deltaTime);
     }
 
     private void HandleMovement()
     {
         if (isClimbing) { return; }
-        Vector3 moveDirection = transform.right * inputMovement.x + transform.forward * inputMovement.y;
-        characterController.Move(moveSpeed * Time.deltaTime * moveDirection);
+
+        Vector2 finalMoveInput = inputMovement;
+        float finalMoveSpeed = moveSpeed;
+
+        if (isDrunk)
+        {
+            _smoothedDrunkMoveInput = Vector2.Lerp(_smoothedDrunkMoveInput, inputMovement, drunkMovementSmoothing * Time.deltaTime);
+            finalMoveInput = _smoothedDrunkMoveInput;
+
+            finalMoveSpeed *= drunkMoveSpeedMultiplier;
+        }
+
+        Vector3 moveDirection = transform.right * finalMoveInput.x + transform.forward * finalMoveInput.y;
+
+        if (isDrunk)
+        {
+            float staggerX = (Mathf.PerlinNoise(Time.time * drunkMovementStaggerSpeed, 0) * 2 - 1) * drunkMovementStaggerAmount;
+            float staggerZ = (Mathf.PerlinNoise(0, Time.time * drunkMovementStaggerSpeed) * 2 - 1) * drunkMovementStaggerAmount;
+            moveDirection += new Vector3(staggerX, 0, staggerZ);
+        }
+
+        characterController.Move(finalMoveSpeed * Time.deltaTime * moveDirection);
     }
 
     private void HandleLook()
     {
-        float mouseX = inputLook.x; 
+        Vector2 finalLookInput = inputLook;
+
+        if (isDrunk)
+        {
+            _smoothedDrunkLookInput = Vector2.Lerp(_smoothedDrunkLookInput, inputLook, drunkLookSmoothing * Time.deltaTime);
+            finalLookInput = _smoothedDrunkLookInput;
+
+            float swayX = Mathf.Sin(Time.time * drunkSwaySpeed) * drunkSwayAmount;
+            float swayY = Mathf.Cos(Time.time * drunkSwaySpeed * 0.7f) * drunkSwayAmount;
+
+            finalLookInput += new Vector2(swayX, swayY) * Time.deltaTime;
+        }
+
+        float mouseX = finalLookInput.x;
         transform.Rotate(Vector3.up * mouseX);
 
-        float mouseY = inputLook.y; 
+        float mouseY = finalLookInput.y;
         cameraVerticalRotation -= mouseY;
         cameraVerticalRotation = Mathf.Clamp(cameraVerticalRotation, minLookAngle, maxLookAngle);
 
@@ -298,4 +430,307 @@ public class PlayerBehaviour : MonoBehaviour
         RectTransform rectTransform = centerOfScreen.GetComponent<RectTransform>();
         rectTransform.sizeDelta = Vector2.Lerp(rectTransform.sizeDelta, centerOfScreenTargetSize, centerOfScreenScaleSpeed * Time.deltaTime);
     }
+
+    #region DrunkEffect
+    public void ApplyDrunkEffect(float duration)
+    {
+        if (activeDrunkCoroutine != null) StopCoroutine(activeDrunkCoroutine);
+        activeDrunkCoroutine = StartCoroutine(DrunkCoroutine(duration));
+    }
+
+    private IEnumerator DrunkCoroutine(float duration)
+    {
+        isDrunk = true;
+        if (_depthOfFieldEffect != null) _depthOfFieldEffect.active = true;
+
+        Debug.Log("Efekt pijañstwa aktywny na " + duration + " sekund.");
+        yield return new WaitForSeconds(duration);
+
+        isDrunk = false;
+
+        if (_depthOfFieldEffect != null) _depthOfFieldEffect.active = false;
+
+        activeDrunkCoroutine = null;
+        Debug.Log("Efekt pijañstwa zakoñczony.");
+    }
+    private void HandleDrunkBlur()
+    {
+        if (_depthOfFieldEffect == null && !isDrunk) return;
+
+        float sineWave = (Mathf.Sin(Time.time * focusChangeSpeed) + 1) / 2.0f;
+
+        float newFocusDistance = Mathf.Lerp(minFocusDistance, maxFocusDistance, sineWave);
+
+        _depthOfFieldEffect.focusDistance.value = newFocusDistance;
+    }
+
+    #endregion
+
+    #region AcidEffect
+    public void ApplyAcidEffect(float duration)
+    {
+        if (activeAcidCoroutine != null) StopCoroutine(activeAcidCoroutine);
+        activeAcidCoroutine = StartCoroutine(AcidCoroutine(duration));
+    }
+
+    private IEnumerator AcidCoroutine(float duration)
+    {
+        if (_colorAdjustmentsEffect != null) _colorAdjustmentsEffect.active = true;
+        isAcidEffectActive = true;
+
+        float startSaturation = _colorAdjustmentsEffect.saturation.value;
+        float startContrast = _colorAdjustmentsEffect.contrast.value;
+        Color startColor = _colorAdjustmentsEffect.colorFilter.value;
+
+        float originalGamepadSensitivity = gamepadSensitivity;
+        float originalMouseSensitivity = mouseSensitivity;
+        float originalMoveSpeed = moveSpeed;
+
+        gamepadSensitivity /= 2f;
+        mouseSensitivity /= 2f;
+        moveSpeed /= 2f;
+
+        float transitionDuration = acidEffectChangeSpeed;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < transitionDuration)
+        {
+            float t = elapsedTime / transitionDuration;
+
+            _colorAdjustmentsEffect.saturation.value = Mathf.Lerp(startSaturation, acidSaturationTarget, t);
+            _colorAdjustmentsEffect.contrast.value = Mathf.Lerp(startContrast, acidContrastTarget, t);
+            _colorAdjustmentsEffect.colorFilter.value = Color.Lerp(startColor, acidColorFilter, t);
+
+            elapsedTime += Time.deltaTime;
+
+            yield return null;
+        }
+
+        _colorAdjustmentsEffect.saturation.value = acidSaturationTarget;
+        _colorAdjustmentsEffect.contrast.value = acidContrastTarget;
+        _colorAdjustmentsEffect.colorFilter.value = acidColorFilter;
+
+        yield return new WaitForSeconds(duration);
+
+        gamepadSensitivity = originalGamepadSensitivity;
+        mouseSensitivity = originalMouseSensitivity;
+        moveSpeed = originalMoveSpeed;
+
+        elapsedTime = 0f;
+        startSaturation = _colorAdjustmentsEffect.saturation.value;
+        startContrast = _colorAdjustmentsEffect.contrast.value;
+        startColor = _colorAdjustmentsEffect.colorFilter.value;
+
+        while (elapsedTime < transitionDuration)
+        {
+            float t = elapsedTime / transitionDuration;
+
+            _colorAdjustmentsEffect.saturation.value = Mathf.Lerp(startSaturation, 0f, t);
+            _colorAdjustmentsEffect.contrast.value = Mathf.Lerp(startContrast, 0f, t);
+            _colorAdjustmentsEffect.colorFilter.value = Color.Lerp(startColor, _defaultColorFilter, t);
+
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        _colorAdjustmentsEffect.saturation.value = 0f;
+        _colorAdjustmentsEffect.contrast.value = 0f;
+        _colorAdjustmentsEffect.colorFilter.value = _defaultColorFilter;
+        if (_colorAdjustmentsEffect != null) _colorAdjustmentsEffect.active = false;
+
+        isAcidEffectActive = false;
+        activeAcidCoroutine = null;
+    }
+
+    #endregion
+
+    #region NiceWaterEffect
+    public void ApplyNiceWaterEffect(float duration)
+    {
+        if (activeNiceWaterCoroutine != null) StopCoroutine(activeNiceWaterCoroutine);
+        activeNiceWaterCoroutine = StartCoroutine(NiceWaterCoroutine(duration));
+    }
+    private IEnumerator NiceWaterCoroutine(float duration)
+    {
+        if (chromaticAberration != null) chromaticAberration.active = true;
+        if (lensDistortion != null) lensDistortion.active = true;
+
+        float originalMoveSpeed = moveSpeed;
+        float originalClimbSpeed = climbSpeed;
+
+        climbSpeed *= 2f;
+        moveSpeed *= 2f;
+
+        float transitionTime = 1f;
+        float timer = 0f;
+
+        while (timer < transitionTime)
+        {
+            float progress = timer / transitionTime;
+
+            if (chromaticAberration != null) chromaticAberration.intensity.value = Mathf.Lerp(0, 1f, progress);
+            if (lensDistortion != null) lensDistortion.intensity.value = Mathf.Lerp(0, -0.4f, progress);
+
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
+        if (chromaticAberration != null) chromaticAberration.intensity.value = 1f;
+        if (lensDistortion != null) lensDistortion.intensity.value = -0.5f;
+
+        yield return new WaitForSeconds(duration - (transitionTime * 2));
+
+        timer = 0f;
+        while (timer < transitionTime)
+        {
+            float progress = timer / transitionTime;
+
+            if (chromaticAberration != null) chromaticAberration.intensity.value = Mathf.Lerp(1f, 0, progress);
+            if (lensDistortion != null) lensDistortion.intensity.value = Mathf.Lerp(-0.5f, 0, progress);
+
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
+        if (chromaticAberration != null) chromaticAberration.intensity.value = 0f;
+        if (lensDistortion != null) lensDistortion.intensity.value = 0f;
+
+        climbSpeed = originalClimbSpeed;
+        moveSpeed = originalMoveSpeed;
+
+        activeNiceWaterCoroutine = null;
+
+        if (chromaticAberration != null) chromaticAberration.active = false;
+        if (lensDistortion != null) lensDistortion.active = false;
+    }
+    #endregion
+
+    #region No Effect
+
+    public void NoEffect()
+    {
+        Debug.LogWarning("No Effect");
+    }
+
+    #endregion
+
+    #region Mud Water Effect
+
+    public void MudWaterEffect(float duration)
+    {
+        if (activeMudWaterCoroutine != null) StopCoroutine(activeMudWaterCoroutine);
+        activeMudWaterCoroutine = StartCoroutine(MudWaterCoroutine(duration));
+    }
+
+    private IEnumerator MudWaterCoroutine(float duration)
+    {
+        if (playerTransform == null)
+        {
+            Debug.LogError("Player Transform nie jest przypisany!");
+            yield break;
+        }
+
+        float transitionTime = 1f;
+
+        Vector3 originalScale = playerTransform.localScale;
+        Vector3 targetScale = originalScale / 2f;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < transitionTime)
+        {
+            playerTransform.localScale = Vector3.Lerp(originalScale, targetScale, elapsedTime / transitionTime);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        playerTransform.localScale = targetScale;
+
+        yield return new WaitForSeconds(duration);
+
+        elapsedTime = 0f;
+
+        if (playerTransform != null)
+        {
+            Vector3 currentScale = playerTransform.localScale;
+
+            while (elapsedTime < transitionTime)
+            {
+                playerTransform.localScale = Vector3.Lerp(currentScale, originalScale, elapsedTime / transitionTime);
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+
+            playerTransform.localScale = originalScale;
+        }
+    }
+    #endregion
+
+    #region LeafGoodsEffect
+    public void LeafGoods(float duration)
+    {
+        if (activeLeafsGoodsCoroutine != null) StopCoroutine(activeLeafsGoodsCoroutine);
+        activeLeafsGoodsCoroutine = StartCoroutine(LeafGoodCoroutine(duration));
+    }
+
+    private IEnumerator LeafGoodCoroutine(float duration)
+    {
+        if (playerTransform == null)
+        {
+            Debug.LogError("Player Transform nie jest przypisany!");
+            yield break;
+        }
+
+        float transitionTime = 0.5f;
+
+        Vector3 originalScale = playerTransform.localScale;
+        Vector3 targetScale = originalScale * 2f;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < transitionTime)
+        {
+            playerTransform.localScale = Vector3.Lerp(originalScale, targetScale, elapsedTime / transitionTime);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        playerTransform.localScale = targetScale;
+
+        yield return new WaitForSeconds(duration);
+
+        elapsedTime = 0f;
+
+        if (playerTransform != null)
+        {
+            Vector3 currentScale = playerTransform.localScale;
+
+            while (elapsedTime < transitionTime)
+            {
+                playerTransform.localScale = Vector3.Lerp(currentScale, originalScale, elapsedTime / transitionTime);
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+
+            playerTransform.localScale = originalScale;
+        }
+    }
+    #endregion
+
+    #region Angry Time Effect
+    public void ApplyAngryTime(float duration)
+    {
+        if (activeAngryTimeCoroutine != null) StopCoroutine(activeAngryTimeCoroutine);
+        activeAngryTimeCoroutine = StartCoroutine(AngryTimeCoroutine(duration));
+    }
+
+    private IEnumerator AngryTimeCoroutine(float duration)
+    {
+
+
+        yield return new WaitForSeconds(duration);
+
+    
+
+        activeAngryTimeCoroutine = null;
+    }
+    #endregion
 }

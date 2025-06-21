@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7de79416d7e0eb6439b0a8a09cdd5247, type: 3}
-  m_Name: Blood
+  m_Name: Bad Mood Potion
   m_EditorClassIdentifier: 
-  ingredientItemIds: 1400000014000000140000001400000014000000
-  resultingPotion: {fileID: 3096892419514706705, guid: f181114e518daac4fb7ce64d02cd2438, type: 3}
+  ingredientItemIds: 1700000018000000140000001200000012000000
+  resultingPotion: {fileID: 3096892419514706705, guid: 9e630bda0f1db604998ec9d15c255c22, type: 3}

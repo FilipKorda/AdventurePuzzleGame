@@ -13,7 +13,7 @@ public class UIManager : MonoBehaviour
     public ReadablePanel readablePanel;
     public LockPickPanel lockPickPanel;
     private List<ItemSlot> itemSlots = new();
-    private int selectedItemId = -1; 
+    private int selectedItemId = -1;
 
     [Header("Input Settings")]
     [SerializeField] private InputActionReference[] selectItemActions;
@@ -22,6 +22,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private InputActionReference navigatePreviousAction;
 
     [SerializeField] private InputActionReference dropItemAction;
+    [SerializeField] private InputActionReference drinkOrEatAction;
 
     private void OnEnable()
     {
@@ -41,6 +42,11 @@ public class UIManager : MonoBehaviour
         {
             dropItemAction.action.Enable();
             dropItemAction.action.performed += OnDropItemPerformed;
+        }
+        if (drinkOrEatAction != null)
+        {
+            drinkOrEatAction.action.Enable();
+            drinkOrEatAction.action.performed += OnDrinkOrEatPerformed;
         }
     }
 
@@ -63,6 +69,11 @@ public class UIManager : MonoBehaviour
             dropItemAction.action.performed -= OnDropItemPerformed;
             dropItemAction.action.Disable();
         }
+        if (drinkOrEatAction != null)
+        {
+            drinkOrEatAction.action.performed -= OnDrinkOrEatPerformed;
+            drinkOrEatAction.action.Disable();
+        }
     }
 
     private void Awake()
@@ -75,6 +86,108 @@ public class UIManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void OnDrinkOrEatPerformed(InputAction.CallbackContext context)
+    {
+        int currentSelectedId = GetSelectedItemId();
+        if (currentSelectedId == 0)
+        {
+            Debug.Log("Nie wybrano ¿adnego przedmiotu do u¿ycia.");
+            return;
+        }
+
+        if (Ailments.Instance == null)
+        {
+            Debug.LogError("Brak instancji Ailments na scenie!");
+            return;
+        }
+
+        switch ((ItemID)currentSelectedId)
+        {
+            case ItemID.WaterBucket:
+                UseConsumableItem(currentSelectedId);
+                Debug.Log("Wypito (WaterBucket).");
+                Ailments.Instance.ApplyWaterBucketEffect(); 
+                break;
+
+            case ItemID.AcidBucket:
+                UseConsumableItem(currentSelectedId);
+                Debug.Log("Wypito (AcidBucket).");
+                Ailments.Instance.ApplyAcidBucketEffect(); 
+                break;
+
+            case ItemID.BloodBucket:
+                UseConsumableItem(currentSelectedId);
+                Debug.Log("Wypito (BloodBucket).");
+                Ailments.Instance.ApplyBloodBucketEffect(); 
+                break;
+
+            case ItemID.WineBucket:
+                UseConsumableItem(currentSelectedId);
+                Debug.Log("Wypito (WineBucket).");
+                Ailments.Instance.ApplyWineBucketEffect(); 
+                break;
+
+            case ItemID.RawMeat:
+                UseConsumableItem(currentSelectedId);
+                Debug.Log("Zjedzono (RawMeat).");
+                Ailments.Instance.ApplyRawMeatEffect(); 
+                break;
+
+            case ItemID.NiceWater:
+                UseConsumableItem(currentSelectedId);
+                Debug.Log("Wypito (NiceWater).");
+                Ailments.Instance.ApplyNiceWaterEffect();
+                break;
+
+            case ItemID.MudWater:
+                UseConsumableItem(currentSelectedId);
+                Debug.Log("Wypito (MudWater).");
+                Ailments.Instance.ApplyMudWaterEffect();
+                break;
+
+            case ItemID.LeafGoods:
+                UseConsumableItem(currentSelectedId);
+                Debug.Log("Zjedzono (LeafGoods).");
+                Ailments.Instance.ApplyLeafGoodsEffect(); 
+                break;
+
+            case ItemID.AngryTime:
+                UseConsumableItem(currentSelectedId);
+                Debug.Log("Zjedzono (AngryTime).");
+                Ailments.Instance.ApplyAngryTimeEffect(); 
+                break;
+
+            case ItemID.BadMood:
+                UseConsumableItem(currentSelectedId);
+                Debug.Log("Zjedzono (BadMood).");
+                Ailments.Instance.ApplyBadMoodEffect(); 
+                break;
+
+            case ItemID.GoodSoup:
+                UseConsumableItem(currentSelectedId);
+                Debug.Log("Zjedzono (GoodSoup).");
+                Ailments.Instance.ApplyGoodSoupEffect();
+                break;
+
+            case ItemID.HolyCow:
+                UseConsumableItem(currentSelectedId);
+                Debug.Log("Zjedzono (HolyCow).");
+                Ailments.Instance.ApplyHolyCowEffect(); 
+                break;
+
+            default:
+                Debug.Log("Tego przedmiotu nie mo¿na zjeœæ ani wypiæ.");
+                break;
+        }
+    }
+
+
+    private void UseConsumableItem(int itemId)
+    {
+        Inventory.Instance.RemoveItemFromInventoryByID(itemId);
+        RemoveItemFromUIByID(itemId);
     }
 
     private void OnDropItemPerformed(InputAction.CallbackContext context)
@@ -118,7 +231,7 @@ public class UIManager : MonoBehaviour
                     itemSlots[i].SetHighlighted(false);
                     Destroy(itemSlots[i].gameObject);
                     itemSlots.RemoveAt(i);
-                    selectedItemId = -1; 
+                    selectedItemId = -1;
 
                     if (itemSlots.Count > 0)
                     {
@@ -146,7 +259,7 @@ public class UIManager : MonoBehaviour
         for (int i = 0; i < selectItemActions.Length; i++)
         {
             int index = i;
-            selectItemActions[i].action.Enable(); 
+            selectItemActions[i].action.Enable();
             selectItemActions[i].action.performed += context => OnSelectItemPerformed(index);
         }
     }
@@ -188,7 +301,7 @@ public class UIManager : MonoBehaviour
         int prevIndex = selectedItemId - 1;
         if (prevIndex < 0)
         {
-            prevIndex = itemSlots.Count - 1; 
+            prevIndex = itemSlots.Count - 1;
         }
         SelectItem(prevIndex);
     }

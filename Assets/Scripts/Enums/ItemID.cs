@@ -26,5 +26,10 @@ public enum ItemID
     PlantRoot = 23,
     RawMeat = 24,
     NiceWater = 25,
-    MudWater = 26
+    MudWater = 26,
+    LeafGoods = 27,
+    AngryTime = 28,
+    BadMood = 29,
+    GoodSoup = 30,
+    HolyCow = 31
 }

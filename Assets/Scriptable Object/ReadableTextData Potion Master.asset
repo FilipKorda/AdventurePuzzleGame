@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddef7cfa2c2972b49b175cbb357ebc81, type: 3}
+  m_Name: ReadableTextData Potion Master
+  m_EditorClassIdentifier: 
+  headerText: Potion Master Tips
+  mainText: "Zazwyczaj kazdy wywar potrzebuje 3 lirow wody czyli innym slowem 3 wiader
+    pelnych wody. W sumie tez maksymalna ilosc skladnik\xF3w to 5, zawsze jest 5,
+    nigdy nie ma wiecej niz 5 sk\u0142anik\xF3w, chyba......"
+  signatureText: Potion Master

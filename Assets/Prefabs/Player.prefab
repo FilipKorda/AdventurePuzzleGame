@@ -138,6 +138,55 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!1 &5254463656913342399
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 870265639223053869}
+  - component: {fileID: 8806556488537226361}
+  m_Layer: 0
+  m_Name: Drunk Effect Volume
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &870265639223053869
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5254463656913342399}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 33.201, y: -11.66, z: 25.759}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3870059820769821162}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8806556488537226361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5254463656913342399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IsGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 8130b7b05321c0c419788560bbb0c4c4, type: 2}
 --- !u!1 &6371058212479402174
 GameObject:
   m_ObjectHideFlags: 0
@@ -175,6 +224,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2603889717382775948}
+  - {fileID: 870265639223053869}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &55306390556127752
@@ -290,10 +340,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f5d72f40b1fbaa41946a63693c67e59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerTransform: {fileID: 3870059820769821162}
   gamepadSensitivity: 0.6
   mouseSensitivity: 10
   moveSpeed: 5
-  sensitivity: 15
   climbSpeed: 3
   cameraTransform: {fileID: 2603889717382775948}
   minLookAngle: -60
@@ -304,6 +354,27 @@ MonoBehaviour:
     m_Bits: 8
   centerOfScreen: {fileID: 0}
   dot: {fileID: 0}
+  drunkSwayAmount: 8
+  drunkSwaySpeed: 12.5
+  drunkMovementStaggerAmount: 0.8
+  drunkMovementStaggerSpeed: 1
+  drunkMoveSpeedMultiplier: 0.65
+  drunkMovementSmoothing: 4
+  drunkLookSmoothing: 3
+  _playerCamera: {fileID: 8489812725524509388}
+  normalFOV: 60
+  drunkFOV: 40
+  fovChangeSpeed: 4
+  postProcessVolume: {fileID: 8806556488537226361}
+  minFocusDistance: 0.1
+  maxFocusDistance: 5
+  focusChangeSpeed: 3
+  acidColorFilter: {r: 0.28862584, g: 0.8867924, b: 0.36193058, a: 1}
+  acidSaturationTarget: 100
+  acidContrastTarget: -20
+  acidEffectChangeSpeed: 1.5
+  rb: {fileID: 0}
+  angryCustomGravity: {x: 0, y: -4.9, z: 0}
 --- !u!114 &4922775154563705814
 MonoBehaviour:
   m_ObjectHideFlags: 0

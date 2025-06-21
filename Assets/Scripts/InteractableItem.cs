@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using System.Linq;
 
-public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpenable, IReadable, IPressable, IPlaceable, ILockPick, IFillable, IPickupARenewableItem, IAlchemyStation
+public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpenable, IReadable, IPressable, IPlaceable, ILockPick, IFillable, IPickupARenewableItem, IAlchemyStation, IDrinkableEatable
 {
     public enum InteractableType
     {
@@ -15,7 +15,8 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         LockPick,
         Fillable,
         PickupARenewableItem,
-        AlchemyStation
+        AlchemyStation,
+        DrinkableEatable
     }
 
     public InteractableType interactableType;
@@ -59,6 +60,11 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     [Tooltip("Referencja do komponentu Cauldron na tym obiekcie.")]
     [SerializeField] private Cauldron cauldron;
 
+
+    public void DrinkOrEat()
+    {
+
+    }
 
     public GameObject GetItemPrefab()
     {
