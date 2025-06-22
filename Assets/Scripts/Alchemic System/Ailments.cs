@@ -64,7 +64,7 @@ public class Ailments : MonoBehaviour
 
     public void ApplyBadMoodEffect()
     {
-        Debug.Log("Efekt z Ailments: Zjedzono 'BadMood'. Wszystko wydaje siê gorsze.");
+        playerBehaviour.BadMoodTeleport(10);
     }
 
     public void ApplyGoodSoupEffect()

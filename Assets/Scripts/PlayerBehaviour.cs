@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.XR;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
@@ -100,6 +101,18 @@ public class PlayerBehaviour : MonoBehaviour
     [Tooltip("Prêdkoœæ, z jak¹ zmieniaj¹ siê efekty wizualne kwasu.")]
     [SerializeField] private float acidEffectChangeSpeed = 1.5f;
 
+    [Header("Flying Effect")]
+    [SerializeField] private float flySpeed = 5f;
+    public float playerSpeed = 5.0f;
+    public float gravityValue = -9.81f;
+    private bool isFlying = false;
+
+    [Header("Teleport Effect")]
+    [Tooltip("Punkty, miêdzy którymi gracz bêdzie siê teleportowa³.")]
+    [SerializeField] private Transform[] teleportPoints;
+    [Tooltip("Odstêp czasowy miêdzy teleportacjami.")]
+    [SerializeField] private float teleportInterval = 0.75f;
+
     private Color _defaultColorFilter = Color.white;
 
     private Vector2 _smoothedDrunkMoveInput;
@@ -112,15 +125,16 @@ public class PlayerBehaviour : MonoBehaviour
     private Coroutine activeMudWaterCoroutine;
     private Coroutine activeLeafsGoodsCoroutine;
     private Coroutine activeAngryTimeCoroutine;
+    private Coroutine activeTeleportCoroutine;
 
     private DepthOfField _depthOfFieldEffect;
     private ColorAdjustments _colorAdjustmentsEffect;
     private ChromaticAberration chromaticAberration;
     private LensDistortion lensDistortion;
-  
 
-  
-   
+
+
+
 
     private void Awake()
     {
@@ -302,7 +316,11 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void ApplyGravity()
     {
-        if (isClimbing) { velocity.y = 0; return; }
+        if (isClimbing || isFlying)
+        {
+            velocity.y = 0; 
+            return;         
+        }
 
         if (characterController.isGrounded && velocity.y < 0)
         {
@@ -724,13 +742,56 @@ public class PlayerBehaviour : MonoBehaviour
 
     private IEnumerator AngryTimeCoroutine(float duration)
     {
+        isFlying = true;
+        velocity.y = 0;
 
+        float timer = 0f;
 
-        yield return new WaitForSeconds(duration);
+        while (timer < duration)
+        {
+            Vector3 flyMovement = Vector3.up * flySpeed;
+            characterController.Move(flyMovement * Time.deltaTime);
 
-    
+            timer += Time.deltaTime;
+            yield return null;
+        }
 
+        isFlying = false;
         activeAngryTimeCoroutine = null;
     }
+    #endregion
+
+    #region BadMoodEffect
+
+    public void BadMoodTeleport(float duration) 
+    {
+        if (activeTeleportCoroutine != null) StopCoroutine(activeTeleportCoroutine);
+
+        activeTeleportCoroutine = StartCoroutine(TeleportCoroutine(duration));
+    }
+
+    private IEnumerator TeleportCoroutine(float duration)
+    {
+        float timer = 0f;
+        int currentPointIndex = 0;
+
+        while (timer < duration)
+        {
+            Transform targetPoint = teleportPoints[currentPointIndex];
+
+            characterController.enabled = false;
+            transform.position = targetPoint.position;
+            characterController.enabled = true;
+
+            currentPointIndex = (currentPointIndex + 1) % teleportPoints.Length;
+
+            yield return new WaitForSeconds(teleportInterval);
+
+            timer += teleportInterval;
+        }
+
+        activeTeleportCoroutine = null; 
+    }
+
     #endregion
 }
