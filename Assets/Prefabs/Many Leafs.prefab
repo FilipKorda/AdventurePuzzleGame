@@ -133,11 +133,13 @@ MonoBehaviour:
   objectToPlace: {fileID: 0}
   boxCollider: {fileID: 0}
   canOpenWithNoSelectedItem: 0
+  itemPrefab: {fileID: 8854708381635335146, guid: 490100a009be3e74b97d7c968e0a50a0, type: 3}
   requiredUses: 3
   providedLiquidType: 0
   fillMapping:
     requiredEmptyItem: {fileID: 0}
     resultingFilledItem: {fileID: 0}
+  cauldron: {fileID: 0}
 --- !u!1001 &394150118094309251
 PrefabInstance:
   m_ObjectHideFlags: 0

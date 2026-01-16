@@ -1,7 +1,6 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.XR;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
@@ -38,8 +37,10 @@ public class PlayerBehaviour : MonoBehaviour
     private IBookThrowable lastIBookThrowable;
     private IOpenable lastIOpenable;
     private IReadable lastIReadable;
+    private IReadableAndInteractable lastIReadableAndInteractable;
     private IPressable lastIPressable;
     private IPlaceable lastIPlaceable;
+    private IRecipePlaceable lastIRecipePlaceable;
     private ILockPick lastILockPick;
     private IFillable lastIFillable;
     private IPickupARenewableItem lastIPickupARenewableItem;
@@ -177,6 +178,7 @@ public class PlayerBehaviour : MonoBehaviour
     {
         if (lastILockPick != null && lastILockPick.IsLockPicking()) return;
         if (lastIReadable != null && lastIReadable.IsReading()) return;
+        if (lastIReadableAndInteractable != null && lastIReadableAndInteractable.IsReadingInteractable()) return;
         inputMovement = context.ReadValue<Vector2>();
     }
 
@@ -184,6 +186,7 @@ public class PlayerBehaviour : MonoBehaviour
     {
         if (lastILockPick != null && lastILockPick.IsLockPicking()) return;
         if (lastIReadable != null && lastIReadable.IsReading()) return;
+        if (lastIReadableAndInteractable != null && lastIReadableAndInteractable.IsReadingInteractable()) return;
 
         Vector2 rawInput = context.ReadValue<Vector2>();
 
@@ -205,6 +208,7 @@ public class PlayerBehaviour : MonoBehaviour
             lastIBookThrowable?.OnBookThrow();
             lastIPressable?.OnPress();
             lastIPlaceable?.PlaceObject();
+            lastIRecipePlaceable?.PlaceRecipeObject();
 
             lastIAlchemyStation?.AddIngredient();
 
@@ -236,6 +240,15 @@ public class PlayerBehaviour : MonoBehaviour
             else
             {
                 lastILockPick?.StartLockPick();
+            }
+
+            if(lastIReadableAndInteractable != null && lastIReadableAndInteractable.IsReadingInteractable())
+            {
+                lastIReadableAndInteractable?.OnStopReadInteractable();
+            }
+            else
+            {
+                lastIReadableAndInteractable?.OnReadInteractable();
             }
 
 
@@ -342,10 +355,12 @@ public class PlayerBehaviour : MonoBehaviour
         lastIReadable = null;
         lastIPressable = null;
         lastIPlaceable = null;
+        lastIRecipePlaceable = null;
         lastILockPick = null;
         lastIFillable = null;
         lastIPickupARenewableItem = null;
         lastIAlchemyStation = null;
+        lastIReadableAndInteractable = null;
 
         if (Physics.Raycast(ray, out RaycastHit hit, raycastRange, interactableLayer))
         {
@@ -391,6 +406,14 @@ public class PlayerBehaviour : MonoBehaviour
 
                     case InteractableItem.InteractableType.AlchemyStation:
                         lastIAlchemyStation = interactableObject;
+                        break;
+
+                    case InteractableItem.InteractableType.ReadableAndInteractableItem:
+                        lastIReadableAndInteractable = interactableObject;
+                        break;
+
+                    case InteractableItem.InteractableType.PlaceRecipe:
+                        lastIRecipePlaceable = interactableObject;
                         break;
                 }
             }

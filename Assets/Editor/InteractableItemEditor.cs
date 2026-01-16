@@ -19,6 +19,20 @@ public class InteractableItemEditor : Editor
     private SerializedProperty fillMappingProp;
     private SerializedProperty cauldronStation;
     private SerializedProperty itemPrefab;
+    private SerializedProperty readableAndInteractableTextData;
+    private SerializedProperty isAlchemyRecipe;
+    private SerializedProperty requiredItemIds;
+    private SerializedProperty scroll_BigAcidPotion;
+    private SerializedProperty scroll_SmallAngryTimePotion;
+    private SerializedProperty scroll_ElderBadMoodPotion;
+    private SerializedProperty scroll_OpenBloodPotion;
+    private SerializedProperty scroll_BigGoodSoup;
+    private SerializedProperty scroll_SmallHolyCowPotion;
+    private SerializedProperty scroll_ElderLeafGoods;
+    private SerializedProperty scroll_OpenNiceWater;
+    private SerializedProperty scroll_BigWaterPotion;
+    private SerializedProperty scroll_SmallWinePotion;
+    private SerializedProperty recipesCounter;
 
     private void OnEnable()
     {
@@ -37,6 +51,20 @@ public class InteractableItemEditor : Editor
         fillMappingProp = serializedObject.FindProperty("fillMapping");
         cauldronStation = serializedObject.FindProperty("cauldron");
         itemPrefab = serializedObject.FindProperty("itemPrefab");
+        readableAndInteractableTextData = serializedObject.FindProperty("readableAndInteractableTextData");
+        isAlchemyRecipe = serializedObject.FindProperty("isAlchemyRecipe");
+        requiredItemIds = serializedObject.FindProperty("requiredItemIds");
+        scroll_BigAcidPotion = serializedObject.FindProperty("scroll_BigAcidPotion");
+        scroll_SmallAngryTimePotion = serializedObject.FindProperty("scroll_SmallAngryTimePotion");
+        scroll_ElderBadMoodPotion = serializedObject.FindProperty("scroll_ElderBadMoodPotion");
+        scroll_OpenBloodPotion = serializedObject.FindProperty("scroll_OpenBloodPotion");
+        scroll_BigGoodSoup = serializedObject.FindProperty("scroll_BigGoodSoup");
+        scroll_SmallHolyCowPotion = serializedObject.FindProperty("scroll_SmallHolyCowPotion");
+        scroll_ElderLeafGoods = serializedObject.FindProperty("scroll_ElderLeafGoods");
+        scroll_OpenNiceWater = serializedObject.FindProperty("scroll_OpenNiceWater");
+        scroll_BigWaterPotion = serializedObject.FindProperty("scroll_BigWaterPotion");
+        scroll_SmallWinePotion = serializedObject.FindProperty("scroll_SmallWinePotion");
+        recipesCounter = serializedObject.FindProperty("recipesCounter");
     }
 
     public override void OnInspectorGUI()
@@ -60,6 +88,7 @@ public class InteractableItemEditor : Editor
             case InteractableItem.InteractableType.Pickupable:
                 EditorGUILayout.PropertyField(itemIdProp, new GUIContent("Item ID"));
                 EditorGUILayout.PropertyField(itemPrefab, new GUIContent("Item to Drop From UI"));
+                EditorGUILayout.PropertyField(isAlchemyRecipe, new GUIContent("Is Item Alchemy recipe?"));
                 EditorGUILayout.HelpBox("To jest ID tego przedmiotu, gdy znajdzie siê w ekwipunku.", MessageType.Info);
                 break;
 
@@ -100,11 +129,41 @@ public class InteractableItemEditor : Editor
                 break;
             case InteractableItem.InteractableType.PickupARenewableItem:
                 EditorGUILayout.PropertyField(itemIdProp, new GUIContent("Item ID"));
+                EditorGUILayout.PropertyField(itemPrefab, new GUIContent("Item to Drop From UI"));
                 EditorGUILayout.HelpBox("To jest ID tego przedmiotu, gdy znajdzie siê w ekwipunku.", MessageType.Info);
                 break;
             case InteractableItem.InteractableType.AlchemyStation:
                 EditorGUILayout.PropertyField(cauldronStation, new GUIContent("Cauldron"));
                 EditorGUILayout.HelpBox(".", MessageType.Info);
+                break;
+            case InteractableItem.InteractableType.ReadableAndInteractableItem:
+                EditorGUILayout.PropertyField(readableAndInteractableTextData, new GUIContent("Readable Text Data"));
+                EditorGUILayout.PropertyField(scroll_BigAcidPotion, new GUIContent(""));
+                EditorGUILayout.PropertyField(scroll_SmallAngryTimePotion, new GUIContent(""));
+                EditorGUILayout.PropertyField(scroll_ElderBadMoodPotion, new GUIContent(""));
+                EditorGUILayout.PropertyField(scroll_OpenBloodPotion, new GUIContent(""));
+                EditorGUILayout.PropertyField(scroll_BigGoodSoup, new GUIContent(""));
+                EditorGUILayout.PropertyField(scroll_SmallHolyCowPotion, new GUIContent(""));
+                EditorGUILayout.PropertyField(scroll_ElderLeafGoods, new GUIContent(""));
+                EditorGUILayout.PropertyField(scroll_OpenNiceWater, new GUIContent(""));
+                EditorGUILayout.PropertyField(scroll_BigWaterPotion, new GUIContent(""));
+                EditorGUILayout.PropertyField(scroll_SmallWinePotion, new GUIContent(""));
+                break;
+            case InteractableItem.InteractableType.PlaceRecipe:
+                EditorGUILayout.PropertyField(requiredItemIds, new GUIContent("Required Items ID"));
+                EditorGUILayout.PropertyField(readableAndInteractableTextData, new GUIContent("Readable And Interactable TextData"));
+                EditorGUILayout.PropertyField(scroll_BigAcidPotion, new GUIContent(""));
+                EditorGUILayout.PropertyField(scroll_SmallAngryTimePotion, new GUIContent(""));
+                EditorGUILayout.PropertyField(scroll_ElderBadMoodPotion, new GUIContent(""));
+                EditorGUILayout.PropertyField(scroll_OpenBloodPotion, new GUIContent(""));
+                EditorGUILayout.PropertyField(scroll_BigGoodSoup, new GUIContent(""));
+                EditorGUILayout.PropertyField(scroll_SmallHolyCowPotion, new GUIContent(""));
+                EditorGUILayout.PropertyField(scroll_ElderLeafGoods, new GUIContent(""));
+                EditorGUILayout.PropertyField(scroll_OpenNiceWater, new GUIContent(""));
+                EditorGUILayout.PropertyField(scroll_BigWaterPotion, new GUIContent(""));
+                EditorGUILayout.PropertyField(scroll_SmallWinePotion, new GUIContent(""));
+                EditorGUILayout.PropertyField(boxColliderProp, new GUIContent("Box Collider"));
+                EditorGUILayout.PropertyField(recipesCounter, new GUIContent("Recipes Counter"));
                 break;
         }
 

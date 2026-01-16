@@ -192,6 +192,7 @@ MonoBehaviour:
   requiredItemIds: 11000000
   animator: {fileID: 0}
   readableTextData: {fileID: 0}
+  readableAndInteractableTextData: {fileID: 0}
   onAllWallButtonPressed:
     m_PersistentCalls:
       m_Calls: []
@@ -199,12 +200,25 @@ MonoBehaviour:
   boxCollider: {fileID: 0}
   canOpenWithNoSelectedItem: 0
   itemPrefab: {fileID: 0}
+  isActualReading: 0
+  isAlchemyRecipe: 0
   requiredUses: 3
   providedLiquidType: 1
   fillMapping:
     requiredEmptyItem: {fileID: 814136047089109301, guid: 3a6bd28da04519d4c8ec996256064773, type: 3}
     resultingFilledItem: {fileID: 0}
   cauldron: {fileID: 0}
+  scroll_BigAcidPotion: {fileID: 0}
+  scroll_SmallAngryTimePotion: {fileID: 0}
+  scroll_ElderBadMoodPotion: {fileID: 0}
+  scroll_OpenBloodPotion: {fileID: 0}
+  scroll_BigGoodSoup: {fileID: 0}
+  scroll_SmallHolyCowPotion: {fileID: 0}
+  scroll_ElderLeafGoods: {fileID: 0}
+  scroll_OpenNiceWater: {fileID: 0}
+  scroll_BigWaterPotion: {fileID: 0}
+  scroll_SmallWinePotion: {fileID: 0}
+  recipesCounter: {fileID: 0}
 --- !u!1001 &3343509
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -835,10 +849,10 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 21723854}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -1723,6 +1737,7 @@ MonoBehaviour:
   requiredItemIds: 11000000
   animator: {fileID: 0}
   readableTextData: {fileID: 0}
+  readableAndInteractableTextData: {fileID: 0}
   onAllWallButtonPressed:
     m_PersistentCalls:
       m_Calls: []
@@ -1730,12 +1745,25 @@ MonoBehaviour:
   boxCollider: {fileID: 0}
   canOpenWithNoSelectedItem: 0
   itemPrefab: {fileID: 0}
+  isActualReading: 0
+  isAlchemyRecipe: 0
   requiredUses: 3
   providedLiquidType: 3
   fillMapping:
     requiredEmptyItem: {fileID: 814136047089109301, guid: 3a6bd28da04519d4c8ec996256064773, type: 3}
     resultingFilledItem: {fileID: 5675334526335100304, guid: c3bb659ec0030914191064d664266acf, type: 3}
   cauldron: {fileID: 0}
+  scroll_BigAcidPotion: {fileID: 0}
+  scroll_SmallAngryTimePotion: {fileID: 0}
+  scroll_ElderBadMoodPotion: {fileID: 0}
+  scroll_OpenBloodPotion: {fileID: 0}
+  scroll_BigGoodSoup: {fileID: 0}
+  scroll_SmallHolyCowPotion: {fileID: 0}
+  scroll_ElderLeafGoods: {fileID: 0}
+  scroll_OpenNiceWater: {fileID: 0}
+  scroll_BigWaterPotion: {fileID: 0}
+  scroll_SmallWinePotion: {fileID: 0}
+  recipesCounter: {fileID: 0}
 --- !u!65 &45240526
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2545,17 +2573,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Version: 3
   m_UsePipelineSettings: 1
   m_AdditionalLightsShadowResolutionTier: 2
-  m_LightLayerMask: 1
-  m_RenderingLayers: 1
   m_CustomShadowLayers: 0
-  m_ShadowLayerMask: 1
-  m_ShadowRenderingLayers: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+  m_RenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_ShadowRenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_Version: 4
+  m_LightLayerMask: 1
+  m_ShadowLayerMask: 1
+  m_RenderingLayers: 1
+  m_ShadowRenderingLayers: 1
 --- !u!108 &66058927
 Light:
   m_ObjectHideFlags: 0
@@ -2564,14 +2598,14 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 66058925}
   m_Enabled: 1
-  serializedVersion: 11
+  serializedVersion: 12
   m_Type: 1
   m_Color: {r: 0.6981132, g: 0.6981132, b: 0.6981132, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
-  m_CookieSize: 10
+  m_CookieSize2D: {x: 10, y: 10}
   m_Shadows:
     m_Type: 0
     m_Resolution: -1
@@ -4091,6 +4125,121 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 582457359612b134a8060cfe3d02fbf4, type: 3}
+--- !u!1001 &120439191
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 100000, guid: 1cc69bcd5c8feea4493059cb89fd3104, type: 3}
+      propertyPath: m_Name
+      value: Scroll_Elder (Bad Mood Potion)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 1cc69bcd5c8feea4493059cb89fd3104, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1cc69bcd5c8feea4493059cb89fd3104, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -11.832
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1cc69bcd5c8feea4493059cb89fd3104, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 15.459
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1cc69bcd5c8feea4493059cb89fd3104, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -10.079
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1cc69bcd5c8feea4493059cb89fd3104, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.2620643
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1cc69bcd5c8feea4493059cb89fd3104, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1cc69bcd5c8feea4493059cb89fd3104, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.96505046
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1cc69bcd5c8feea4493059cb89fd3104, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1cc69bcd5c8feea4493059cb89fd3104, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1cc69bcd5c8feea4493059cb89fd3104, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 149.615
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1cc69bcd5c8feea4493059cb89fd3104, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: 1cc69bcd5c8feea4493059cb89fd3104, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 120439193}
+  m_SourcePrefab: {fileID: 100100000, guid: 1cc69bcd5c8feea4493059cb89fd3104, type: 3}
+--- !u!1 &120439192 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 1cc69bcd5c8feea4493059cb89fd3104, type: 3}
+  m_PrefabInstance: {fileID: 120439191}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &120439193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 120439192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 837845a591c957e44808bdf6bd871042, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractableItem
+  interactableType: 0
+  itemName: Bad Mood Potion Recipe
+  itemSprite: {fileID: 0}
+  itemId: 28
+  requiredItemIds: 
+  animator: {fileID: 0}
+  readableTextData: {fileID: 0}
+  readableAndInteractableTextData: {fileID: 0}
+  onAllWallButtonPressed:
+    m_PersistentCalls:
+      m_Calls: []
+  objectToPlace: {fileID: 0}
+  boxCollider: {fileID: 0}
+  canOpenWithNoSelectedItem: 0
+  itemPrefab: {fileID: 0}
+  isActualReading: 0
+  isAlchemyRecipe: 1
+  requiredUses: 3
+  providedLiquidType: 0
+  fillMapping:
+    requiredEmptyItem: {fileID: 0}
+    resultingFilledItem: {fileID: 0}
+  cauldron: {fileID: 0}
+  scroll_BigAcidPotion: {fileID: 0}
+  scroll_SmallAngryTimePotion: {fileID: 0}
+  scroll_ElderBadMoodPotion: {fileID: 0}
+  scroll_OpenBloodPotion: {fileID: 0}
+  scroll_BigGoodSoup: {fileID: 0}
+  scroll_SmallHolyCowPotion: {fileID: 0}
+  scroll_ElderLeafGoods: {fileID: 0}
+  scroll_OpenNiceWater: {fileID: 0}
+  scroll_BigWaterPotion: {fileID: 0}
+  scroll_SmallWinePotion: {fileID: 0}
+  recipesCounter: {fileID: 0}
 --- !u!1001 &120833084
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4426,10 +4575,10 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 129983277}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -5999,10 +6148,10 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 158957986}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -6336,10 +6485,10 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 173036916}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -6617,6 +6766,121 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20f2ea214cfe0d748b1b4b8ad965af69, type: 3}
+--- !u!1001 &194789987
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 100000, guid: 1da1c0220f154654db607bfbdae2c3bd, type: 3}
+      propertyPath: m_Name
+      value: Scroll_Big (Water Potion)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 1da1c0220f154654db607bfbdae2c3bd, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1da1c0220f154654db607bfbdae2c3bd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 13.856171
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1da1c0220f154654db607bfbdae2c3bd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.4998
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1da1c0220f154654db607bfbdae2c3bd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -24.181082
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1da1c0220f154654db607bfbdae2c3bd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.8520899
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1da1c0220f154654db607bfbdae2c3bd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.00000001862303
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1da1c0220f154654db607bfbdae2c3bd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.5233956
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1da1c0220f154654db607bfbdae2c3bd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.000000011439174
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1da1c0220f154654db607bfbdae2c3bd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1da1c0220f154654db607bfbdae2c3bd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -63.121
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1da1c0220f154654db607bfbdae2c3bd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: 1da1c0220f154654db607bfbdae2c3bd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 194789989}
+  m_SourcePrefab: {fileID: 100100000, guid: 1da1c0220f154654db607bfbdae2c3bd, type: 3}
+--- !u!1 &194789988 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 1da1c0220f154654db607bfbdae2c3bd, type: 3}
+  m_PrefabInstance: {fileID: 194789987}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &194789989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 194789988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 837845a591c957e44808bdf6bd871042, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractableItem
+  interactableType: 0
+  itemName: Water Potion Recipe
+  itemSprite: {fileID: 0}
+  itemId: 34
+  requiredItemIds: 
+  animator: {fileID: 0}
+  readableTextData: {fileID: 0}
+  readableAndInteractableTextData: {fileID: 0}
+  onAllWallButtonPressed:
+    m_PersistentCalls:
+      m_Calls: []
+  objectToPlace: {fileID: 0}
+  boxCollider: {fileID: 0}
+  canOpenWithNoSelectedItem: 0
+  itemPrefab: {fileID: 0}
+  isActualReading: 0
+  isAlchemyRecipe: 1
+  requiredUses: 3
+  providedLiquidType: 0
+  fillMapping:
+    requiredEmptyItem: {fileID: 0}
+    resultingFilledItem: {fileID: 0}
+  cauldron: {fileID: 0}
+  scroll_BigAcidPotion: {fileID: 0}
+  scroll_SmallAngryTimePotion: {fileID: 0}
+  scroll_ElderBadMoodPotion: {fileID: 0}
+  scroll_OpenBloodPotion: {fileID: 0}
+  scroll_BigGoodSoup: {fileID: 0}
+  scroll_SmallHolyCowPotion: {fileID: 0}
+  scroll_ElderLeafGoods: {fileID: 0}
+  scroll_OpenNiceWater: {fileID: 0}
+  scroll_BigWaterPotion: {fileID: 0}
+  scroll_SmallWinePotion: {fileID: 0}
+  recipesCounter: {fileID: 0}
 --- !u!1001 &195076289
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6891,10 +7155,10 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 201939300}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -7951,6 +8215,121 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 4fe4fc7683c898747998c195978256cc, type: 3}
   m_PrefabInstance: {fileID: 230939336}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &233387278
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 100000, guid: 07c11632f362e9544a7c89ada554f4f7, type: 3}
+      propertyPath: m_Name
+      value: Scroll_Small (Holy Cow Potion)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 07c11632f362e9544a7c89ada554f4f7, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 07c11632f362e9544a7c89ada554f4f7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.6037678
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 07c11632f362e9544a7c89ada554f4f7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 11.377
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 07c11632f362e9544a7c89ada554f4f7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -15.09104
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 07c11632f362e9544a7c89ada554f4f7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.97581095
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 07c11632f362e9544a7c89ada554f4f7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.000000021327033
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 07c11632f362e9544a7c89ada554f4f7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.21861602
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 07c11632f362e9544a7c89ada554f4f7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.000000004778007
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 07c11632f362e9544a7c89ada554f4f7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 07c11632f362e9544a7c89ada554f4f7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -25.256
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 07c11632f362e9544a7c89ada554f4f7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: 07c11632f362e9544a7c89ada554f4f7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 233387280}
+  m_SourcePrefab: {fileID: 100100000, guid: 07c11632f362e9544a7c89ada554f4f7, type: 3}
+--- !u!1 &233387279 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 07c11632f362e9544a7c89ada554f4f7, type: 3}
+  m_PrefabInstance: {fileID: 233387278}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &233387280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 233387279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 837845a591c957e44808bdf6bd871042, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractableItem
+  interactableType: 0
+  itemName: Holy Cow Potion Recipe
+  itemSprite: {fileID: 0}
+  itemId: 31
+  requiredItemIds: 
+  animator: {fileID: 0}
+  readableTextData: {fileID: 0}
+  readableAndInteractableTextData: {fileID: 0}
+  onAllWallButtonPressed:
+    m_PersistentCalls:
+      m_Calls: []
+  objectToPlace: {fileID: 0}
+  boxCollider: {fileID: 0}
+  canOpenWithNoSelectedItem: 0
+  itemPrefab: {fileID: 0}
+  isActualReading: 0
+  isAlchemyRecipe: 1
+  requiredUses: 3
+  providedLiquidType: 0
+  fillMapping:
+    requiredEmptyItem: {fileID: 0}
+    resultingFilledItem: {fileID: 0}
+  cauldron: {fileID: 0}
+  scroll_BigAcidPotion: {fileID: 0}
+  scroll_SmallAngryTimePotion: {fileID: 0}
+  scroll_ElderBadMoodPotion: {fileID: 0}
+  scroll_OpenBloodPotion: {fileID: 0}
+  scroll_BigGoodSoup: {fileID: 0}
+  scroll_SmallHolyCowPotion: {fileID: 0}
+  scroll_ElderLeafGoods: {fileID: 0}
+  scroll_OpenNiceWater: {fileID: 0}
+  scroll_BigWaterPotion: {fileID: 0}
+  scroll_SmallWinePotion: {fileID: 0}
+  recipesCounter: {fileID: 0}
 --- !u!1001 &234683796
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8082,6 +8461,67 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4fe4fc7683c898747998c195978256cc, type: 3}
+--- !u!1 &239524045
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 239524046}
+  - component: {fileID: 239524047}
+  - component: {fileID: 239524048}
+  m_Layer: 5
+  m_Name: Recipes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &239524046
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 239524045}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 758394558}
+  - {fileID: 1770584935}
+  m_Father: {fileID: 615368066}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &239524047
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 239524045}
+  m_CullTransparentMesh: 1
+--- !u!114 &239524048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 239524045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73b5a2cb96efbf84da5aa7b9fb94a512, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RecipesCounter
+  recipeAmountText: {fileID: 1770584936}
+  recipeAmount: 0
 --- !u!1 &241156248
 GameObject:
   m_ObjectHideFlags: 0
@@ -8134,6 +8574,7 @@ MonoBehaviour:
   requiredItemIds: 
   animator: {fileID: 0}
   readableTextData: {fileID: 0}
+  readableAndInteractableTextData: {fileID: 0}
   onAllWallButtonPressed:
     m_PersistentCalls:
       m_Calls: []
@@ -8141,12 +8582,25 @@ MonoBehaviour:
   boxCollider: {fileID: 0}
   canOpenWithNoSelectedItem: 0
   itemPrefab: {fileID: 0}
+  isActualReading: 0
+  isAlchemyRecipe: 0
   requiredUses: 3
   providedLiquidType: 4
   fillMapping:
     requiredEmptyItem: {fileID: 814136047089109301, guid: 3a6bd28da04519d4c8ec996256064773, type: 3}
     resultingFilledItem: {fileID: 431574494893404513, guid: d76ad08fdde3de9418bcdfc02f5263eb, type: 3}
   cauldron: {fileID: 0}
+  scroll_BigAcidPotion: {fileID: 0}
+  scroll_SmallAngryTimePotion: {fileID: 0}
+  scroll_ElderBadMoodPotion: {fileID: 0}
+  scroll_OpenBloodPotion: {fileID: 0}
+  scroll_BigGoodSoup: {fileID: 0}
+  scroll_SmallHolyCowPotion: {fileID: 0}
+  scroll_ElderLeafGoods: {fileID: 0}
+  scroll_OpenNiceWater: {fileID: 0}
+  scroll_BigWaterPotion: {fileID: 0}
+  scroll_SmallWinePotion: {fileID: 0}
+  recipesCounter: {fileID: 0}
 --- !u!65 &241156251
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9148,10 +9602,10 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 274843588}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -11202,10 +11656,10 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 344459058}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -11393,6 +11847,7 @@ MonoBehaviour:
   requiredItemIds: 
   animator: {fileID: 0}
   readableTextData: {fileID: 0}
+  readableAndInteractableTextData: {fileID: 0}
   onAllWallButtonPressed:
     m_PersistentCalls:
       m_Calls: []
@@ -11400,12 +11855,25 @@ MonoBehaviour:
   boxCollider: {fileID: 0}
   canOpenWithNoSelectedItem: 0
   itemPrefab: {fileID: 0}
+  isActualReading: 0
+  isAlchemyRecipe: 0
   requiredUses: 3
   providedLiquidType: 2
   fillMapping:
     requiredEmptyItem: {fileID: 814136047089109301, guid: 3a6bd28da04519d4c8ec996256064773, type: 3}
     resultingFilledItem: {fileID: 518945431815517603, guid: 27e3e6ee9b3ec6d4dad27a45a4db69f9, type: 3}
   cauldron: {fileID: 0}
+  scroll_BigAcidPotion: {fileID: 0}
+  scroll_SmallAngryTimePotion: {fileID: 0}
+  scroll_ElderBadMoodPotion: {fileID: 0}
+  scroll_OpenBloodPotion: {fileID: 0}
+  scroll_BigGoodSoup: {fileID: 0}
+  scroll_SmallHolyCowPotion: {fileID: 0}
+  scroll_ElderLeafGoods: {fileID: 0}
+  scroll_OpenNiceWater: {fileID: 0}
+  scroll_BigWaterPotion: {fileID: 0}
+  scroll_SmallWinePotion: {fileID: 0}
+  recipesCounter: {fileID: 0}
 --- !u!1001 &355248230
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13156,6 +13624,121 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 7eb3c1e408f48cd4597148e13d3f14c8, type: 3}
   m_PrefabInstance: {fileID: 1370124190}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &412961382
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 100000, guid: 1da1c0220f154654db607bfbdae2c3bd, type: 3}
+      propertyPath: m_Name
+      value: Scroll_Big (Good Soup)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 1da1c0220f154654db607bfbdae2c3bd, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1da1c0220f154654db607bfbdae2c3bd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7.796
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1da1c0220f154654db607bfbdae2c3bd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.023
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1da1c0220f154654db607bfbdae2c3bd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.346
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1da1c0220f154654db607bfbdae2c3bd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9987896
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1da1c0220f154654db607bfbdae2c3bd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.000000021829257
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1da1c0220f154654db607bfbdae2c3bd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.049186617
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1da1c0220f154654db607bfbdae2c3bd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.0000000010750077
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1da1c0220f154654db607bfbdae2c3bd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1da1c0220f154654db607bfbdae2c3bd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -5.639
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1da1c0220f154654db607bfbdae2c3bd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: 1da1c0220f154654db607bfbdae2c3bd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 412961384}
+  m_SourcePrefab: {fileID: 100100000, guid: 1da1c0220f154654db607bfbdae2c3bd, type: 3}
+--- !u!1 &412961383 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 1da1c0220f154654db607bfbdae2c3bd, type: 3}
+  m_PrefabInstance: {fileID: 412961382}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &412961384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 412961383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 837845a591c957e44808bdf6bd871042, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractableItem
+  interactableType: 0
+  itemName: Good Soup Recipe
+  itemSprite: {fileID: 0}
+  itemId: 30
+  requiredItemIds: 
+  animator: {fileID: 0}
+  readableTextData: {fileID: 0}
+  readableAndInteractableTextData: {fileID: 0}
+  onAllWallButtonPressed:
+    m_PersistentCalls:
+      m_Calls: []
+  objectToPlace: {fileID: 0}
+  boxCollider: {fileID: 0}
+  canOpenWithNoSelectedItem: 0
+  itemPrefab: {fileID: 0}
+  isActualReading: 0
+  isAlchemyRecipe: 1
+  requiredUses: 3
+  providedLiquidType: 0
+  fillMapping:
+    requiredEmptyItem: {fileID: 0}
+    resultingFilledItem: {fileID: 0}
+  cauldron: {fileID: 0}
+  scroll_BigAcidPotion: {fileID: 0}
+  scroll_SmallAngryTimePotion: {fileID: 0}
+  scroll_ElderBadMoodPotion: {fileID: 0}
+  scroll_OpenBloodPotion: {fileID: 0}
+  scroll_BigGoodSoup: {fileID: 0}
+  scroll_SmallHolyCowPotion: {fileID: 0}
+  scroll_ElderLeafGoods: {fileID: 0}
+  scroll_OpenNiceWater: {fileID: 0}
+  scroll_BigWaterPotion: {fileID: 0}
+  scroll_SmallWinePotion: {fileID: 0}
+  recipesCounter: {fileID: 0}
 --- !u!1001 &415248578
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15518,6 +16101,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -16234,10 +16818,10 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 508410565}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -16547,10 +17131,10 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 523361263}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -16638,6 +17222,121 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 07d8ac3c883232446bcd9a3222fbff1f, type: 3}
   m_PrefabInstance: {fileID: 524133671}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &524740549
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 100000, guid: ac8910006b2a62947a9342d2b6ddfa2a, type: 3}
+      propertyPath: m_Name
+      value: Scroll_Open (Blood Potion)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ac8910006b2a62947a9342d2b6ddfa2a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: ac8910006b2a62947a9342d2b6ddfa2a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -47.720043
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: ac8910006b2a62947a9342d2b6ddfa2a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 13.715
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: ac8910006b2a62947a9342d2b6ddfa2a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -12.601455
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: ac8910006b2a62947a9342d2b6ddfa2a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9995266
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: ac8910006b2a62947a9342d2b6ddfa2a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.030752294
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: ac8910006b2a62947a9342d2b6ddfa2a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.000029278935
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: ac8910006b2a62947a9342d2b6ddfa2a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.0009516406
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: ac8910006b2a62947a9342d2b6ddfa2a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 3.525
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: ac8910006b2a62947a9342d2b6ddfa2a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -0.007
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: ac8910006b2a62947a9342d2b6ddfa2a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -0.109
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: ac8910006b2a62947a9342d2b6ddfa2a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 524740551}
+  m_SourcePrefab: {fileID: 100100000, guid: ac8910006b2a62947a9342d2b6ddfa2a, type: 3}
+--- !u!1 &524740550 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: ac8910006b2a62947a9342d2b6ddfa2a, type: 3}
+  m_PrefabInstance: {fileID: 524740549}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &524740551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524740550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 837845a591c957e44808bdf6bd871042, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractableItem
+  interactableType: 0
+  itemName: Blood Potion Recpie
+  itemSprite: {fileID: 0}
+  itemId: 29
+  requiredItemIds: 
+  animator: {fileID: 0}
+  readableTextData: {fileID: 0}
+  readableAndInteractableTextData: {fileID: 0}
+  onAllWallButtonPressed:
+    m_PersistentCalls:
+      m_Calls: []
+  objectToPlace: {fileID: 0}
+  boxCollider: {fileID: 0}
+  canOpenWithNoSelectedItem: 0
+  itemPrefab: {fileID: 0}
+  isActualReading: 0
+  isAlchemyRecipe: 1
+  requiredUses: 3
+  providedLiquidType: 0
+  fillMapping:
+    requiredEmptyItem: {fileID: 0}
+    resultingFilledItem: {fileID: 0}
+  cauldron: {fileID: 0}
+  scroll_BigAcidPotion: {fileID: 0}
+  scroll_SmallAngryTimePotion: {fileID: 0}
+  scroll_ElderBadMoodPotion: {fileID: 0}
+  scroll_OpenBloodPotion: {fileID: 0}
+  scroll_BigGoodSoup: {fileID: 0}
+  scroll_SmallHolyCowPotion: {fileID: 0}
+  scroll_ElderLeafGoods: {fileID: 0}
+  scroll_OpenNiceWater: {fileID: 0}
+  scroll_BigWaterPotion: {fileID: 0}
+  scroll_SmallWinePotion: {fileID: 0}
+  recipesCounter: {fileID: 0}
 --- !u!1001 &524779748
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19236,7 +19935,9 @@ RectTransform:
   m_Children:
   - {fileID: 492154452}
   - {fileID: 1557918870}
+  - {fileID: 239524046}
   - {fileID: 306239655}
+  - {fileID: 907575773}
   - {fileID: 150729210}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -19259,7 +19960,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventoryPanel: {fileID: 1368547207}
   itemSlotPrefab: {fileID: 1122082848004785307, guid: 36b57611ff91d1b438df1b353dac9522, type: 3}
+  bookWithAlchemiaRecepisItem: {fileID: 1190840742}
   readablePanel: {fileID: 306239659}
+  readableAndInteractablePanel: {fileID: 907575778}
   lockPickPanel: {fileID: 150729211}
   selectItemActions:
   - {fileID: 3314995610237833460, guid: 052faaac586de48259a63d0c4782560b, type: 3}
@@ -19271,6 +19974,8 @@ MonoBehaviour:
   navigatePreviousAction: {fileID: 5100073175782037821, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   dropItemAction: {fileID: 2681939238484663525, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   drinkOrEatAction: {fileID: -2669292600360073537, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  nextPageAction: {fileID: 946878874}
+  previousPageAction: {fileID: 1712825287}
 --- !u!1001 &617023247
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22809,10 +23514,10 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 748838421}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -23019,6 +23724,81 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 63909009afc9c704591595c2ef356487, type: 3}
   m_PrefabInstance: {fileID: 1819675369}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &758394557
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 758394558}
+  - component: {fileID: 758394560}
+  - component: {fileID: 758394559}
+  m_Layer: 5
+  m_Name: recipes Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &758394558
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 758394557}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 239524046}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 14.899902, y: 14.299927}
+  m_SizeDelta: {x: 25, y: 25}
+  m_Pivot: {x: 0, y: 0}
+--- !u!114 &758394559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 758394557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 235de58f9cf561f42b7ffb2631db366a, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &758394560
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 758394557}
+  m_CullTransparentMesh: 1
 --- !u!1001 &759396451
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25615,6 +26395,7 @@ MonoBehaviour:
   requiredItemIds: 11000000
   animator: {fileID: 0}
   readableTextData: {fileID: 0}
+  readableAndInteractableTextData: {fileID: 0}
   onAllWallButtonPressed:
     m_PersistentCalls:
       m_Calls: []
@@ -25622,12 +26403,25 @@ MonoBehaviour:
   boxCollider: {fileID: 0}
   canOpenWithNoSelectedItem: 0
   itemPrefab: {fileID: 0}
+  isActualReading: 0
+  isAlchemyRecipe: 0
   requiredUses: 3
   providedLiquidType: 4
   fillMapping:
     requiredEmptyItem: {fileID: 814136047089109301, guid: 3a6bd28da04519d4c8ec996256064773, type: 3}
     resultingFilledItem: {fileID: 0}
   cauldron: {fileID: 0}
+  scroll_BigAcidPotion: {fileID: 0}
+  scroll_SmallAngryTimePotion: {fileID: 0}
+  scroll_ElderBadMoodPotion: {fileID: 0}
+  scroll_OpenBloodPotion: {fileID: 0}
+  scroll_BigGoodSoup: {fileID: 0}
+  scroll_SmallHolyCowPotion: {fileID: 0}
+  scroll_ElderLeafGoods: {fileID: 0}
+  scroll_OpenNiceWater: {fileID: 0}
+  scroll_BigWaterPotion: {fileID: 0}
+  scroll_SmallWinePotion: {fileID: 0}
+  recipesCounter: {fileID: 0}
 --- !u!65 &834249858
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26873,7 +27667,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 20.277}
+  m_AnchoredPosition: {x: 0, y: 20.276978}
   m_SizeDelta: {x: 0, y: -40.5541}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &869992485
@@ -26934,6 +27728,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -27266,6 +28061,7 @@ MonoBehaviour:
   requiredItemIds: 11000000
   animator: {fileID: 0}
   readableTextData: {fileID: 0}
+  readableAndInteractableTextData: {fileID: 0}
   onAllWallButtonPressed:
     m_PersistentCalls:
       m_Calls: []
@@ -27273,12 +28069,25 @@ MonoBehaviour:
   boxCollider: {fileID: 0}
   canOpenWithNoSelectedItem: 0
   itemPrefab: {fileID: 0}
+  isActualReading: 0
+  isAlchemyRecipe: 0
   requiredUses: 3
   providedLiquidType: 3
   fillMapping:
     requiredEmptyItem: {fileID: 814136047089109301, guid: 3a6bd28da04519d4c8ec996256064773, type: 3}
     resultingFilledItem: {fileID: 0}
   cauldron: {fileID: 0}
+  scroll_BigAcidPotion: {fileID: 0}
+  scroll_SmallAngryTimePotion: {fileID: 0}
+  scroll_ElderBadMoodPotion: {fileID: 0}
+  scroll_OpenBloodPotion: {fileID: 0}
+  scroll_BigGoodSoup: {fileID: 0}
+  scroll_SmallHolyCowPotion: {fileID: 0}
+  scroll_ElderLeafGoods: {fileID: 0}
+  scroll_OpenNiceWater: {fileID: 0}
+  scroll_BigWaterPotion: {fileID: 0}
+  scroll_SmallWinePotion: {fileID: 0}
+  recipesCounter: {fileID: 0}
 --- !u!65 &880512711
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -27476,6 +28285,7 @@ MonoBehaviour:
   requiredItemIds: 
   animator: {fileID: 0}
   readableTextData: {fileID: 0}
+  readableAndInteractableTextData: {fileID: 0}
   onAllWallButtonPressed:
     m_PersistentCalls:
       m_Calls: []
@@ -27483,12 +28293,25 @@ MonoBehaviour:
   boxCollider: {fileID: 0}
   canOpenWithNoSelectedItem: 0
   itemPrefab: {fileID: 0}
+  isActualReading: 0
+  isAlchemyRecipe: 0
   requiredUses: 3
   providedLiquidType: 1
   fillMapping:
     requiredEmptyItem: {fileID: 814136047089109301, guid: 3a6bd28da04519d4c8ec996256064773, type: 3}
     resultingFilledItem: {fileID: 5254114108026127670, guid: db52224365d349b4ab912d7632f06adf, type: 3}
   cauldron: {fileID: 0}
+  scroll_BigAcidPotion: {fileID: 0}
+  scroll_SmallAngryTimePotion: {fileID: 0}
+  scroll_ElderBadMoodPotion: {fileID: 0}
+  scroll_OpenBloodPotion: {fileID: 0}
+  scroll_BigGoodSoup: {fileID: 0}
+  scroll_SmallHolyCowPotion: {fileID: 0}
+  scroll_ElderLeafGoods: {fileID: 0}
+  scroll_OpenNiceWater: {fileID: 0}
+  scroll_BigWaterPotion: {fileID: 0}
+  scroll_SmallWinePotion: {fileID: 0}
+  recipesCounter: {fileID: 0}
 --- !u!65 &888994357
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -27551,6 +28374,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -27572,9 +28397,11 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &888994360
 MeshFilter:
@@ -28401,6 +29228,127 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 20f2ea214cfe0d748b1b4b8ad965af69, type: 3}
   m_PrefabInstance: {fileID: 568493912}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &907575772
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 907575773}
+  - component: {fileID: 907575777}
+  - component: {fileID: 907575776}
+  - component: {fileID: 907575775}
+  - component: {fileID: 907575778}
+  m_Layer: 5
+  m_Name: 'Readable And Interactable Panel '
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &907575773
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907575772}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1674101942}
+  - {fileID: 1145314670}
+  - {fileID: 1045229550}
+  m_Father: {fileID: 615368066}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -562.6}
+  m_SizeDelta: {x: 817.671, y: 609}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &907575775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907575772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 4
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
+--- !u!114 &907575776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907575772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.5529412}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &907575777
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907575772}
+  m_CullTransparentMesh: 1
+--- !u!114 &907575778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907575772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df6bcc372558a77488114aaa9037f605, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ReadableAndInteractablePanel
+  headerTextUI: {fileID: 975337373}
+  mainTextUI: {fileID: 1827093582}
+  pressEorQTextUI: {fileID: 1019763206}
 --- !u!1001 &910810429
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28737,10 +29685,10 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 924134501}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -29243,6 +30191,20 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20f2ea214cfe0d748b1b4b8ad965af69, type: 3}
+--- !u!114 &946878874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
+  m_Name: UI/Alchemia Recepies E
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.InputActionReference
+  m_Asset: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  m_ActionId: d41ccb19-28af-42af-983f-0cd60c7a37c7
 --- !u!1001 &948048844
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30294,6 +31256,143 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a7b7742953990b40bf20a6df76a1cb1, type: 3}
+--- !u!1 &975337371
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 975337372}
+  - component: {fileID: 975337374}
+  - component: {fileID: 975337373}
+  m_Layer: 5
+  m_Name: Header Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &975337372
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 975337371}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1674101942}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 20.276978}
+  m_SizeDelta: {x: 0, y: -40.5541}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &975337373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 975337371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Title
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 201a24140b0d13f43a359014d5b531d4, type: 2}
+  m_sharedMaterial: {fileID: 764859979571453843, guid: 201a24140b0d13f43a359014d5b531d4, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 36
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_characterHorizontalScale: 1
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &975337374
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 975337371}
+  m_CullTransparentMesh: 1
 --- !u!1001 &977719407
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30722,6 +31821,7 @@ MonoBehaviour:
   requiredItemIds: 10000000
   animator: {fileID: 0}
   readableTextData: {fileID: 0}
+  readableAndInteractableTextData: {fileID: 0}
   onAllWallButtonPressed:
     m_PersistentCalls:
       m_Calls: []
@@ -30729,12 +31829,25 @@ MonoBehaviour:
   boxCollider: {fileID: 996551190}
   canOpenWithNoSelectedItem: 0
   itemPrefab: {fileID: 0}
+  isActualReading: 0
+  isAlchemyRecipe: 0
   requiredUses: 3
   providedLiquidType: 0
   fillMapping:
     requiredEmptyItem: {fileID: 0}
     resultingFilledItem: {fileID: 0}
   cauldron: {fileID: 0}
+  scroll_BigAcidPotion: {fileID: 0}
+  scroll_SmallAngryTimePotion: {fileID: 0}
+  scroll_ElderBadMoodPotion: {fileID: 0}
+  scroll_OpenBloodPotion: {fileID: 0}
+  scroll_BigGoodSoup: {fileID: 0}
+  scroll_SmallHolyCowPotion: {fileID: 0}
+  scroll_ElderLeafGoods: {fileID: 0}
+  scroll_OpenNiceWater: {fileID: 0}
+  scroll_BigWaterPotion: {fileID: 0}
+  scroll_SmallWinePotion: {fileID: 0}
+  recipesCounter: {fileID: 0}
 --- !u!1001 &996996794
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31152,10 +32265,10 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1013675202}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -31344,6 +32457,143 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 6a987db90277a804ca12763b4edaac0d, type: 3}
   m_PrefabInstance: {fileID: 1018535571}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1019763204
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1019763205}
+  - component: {fileID: 1019763207}
+  - component: {fileID: 1019763206}
+  m_Layer: 5
+  m_Name: pressEorQTextUI (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1019763205
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019763204}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1045229550}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -15, y: -46.231667}
+  m_SizeDelta: {x: -30, y: -92.4633}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1019763206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019763204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Press E or Q
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 201a24140b0d13f43a359014d5b531d4, type: 2}
+  m_sharedMaterial: {fileID: 764859979571453843, guid: 201a24140b0d13f43a359014d5b531d4, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 30
+  m_fontSizeBase: 30
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 4
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_characterHorizontalScale: 1
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1019763207
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019763204}
+  m_CullTransparentMesh: 1
 --- !u!1001 &1020506333
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31895,6 +33145,82 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 053045d0926c27f46b1a625fbb577e49, type: 3}
   m_PrefabInstance: {fileID: 1043105460}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1045229549
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1045229550}
+  - component: {fileID: 1045229552}
+  - component: {fileID: 1045229551}
+  m_Layer: 5
+  m_Name: Signature
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1045229550
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1045229549}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1019763205}
+  m_Father: {fileID: 907575773}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 408.8355, y: -507.5}
+  m_SizeDelta: {x: 817.671, y: 203}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1045229551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1045229549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1045229552
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1045229549}
+  m_CullTransparentMesh: 1
 --- !u!1001 &1049098573
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32164,6 +33490,121 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 827885f9c6f8d734c894e9ee1ed7b6e7, type: 3}
   m_PrefabInstance: {fileID: 200575665}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1056954890
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 100000, guid: 1cc69bcd5c8feea4493059cb89fd3104, type: 3}
+      propertyPath: m_Name
+      value: Scroll_Elder (Leaf Goods)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 1cc69bcd5c8feea4493059cb89fd3104, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1cc69bcd5c8feea4493059cb89fd3104, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 17.016
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1cc69bcd5c8feea4493059cb89fd3104, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 10.478
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1cc69bcd5c8feea4493059cb89fd3104, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -12.969
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1cc69bcd5c8feea4493059cb89fd3104, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.40035507
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1cc69bcd5c8feea4493059cb89fd3104, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1cc69bcd5c8feea4493059cb89fd3104, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.9163601
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1cc69bcd5c8feea4493059cb89fd3104, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1cc69bcd5c8feea4493059cb89fd3104, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1cc69bcd5c8feea4493059cb89fd3104, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 227.201
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1cc69bcd5c8feea4493059cb89fd3104, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: 1cc69bcd5c8feea4493059cb89fd3104, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1056954892}
+  m_SourcePrefab: {fileID: 100100000, guid: 1cc69bcd5c8feea4493059cb89fd3104, type: 3}
+--- !u!1 &1056954891 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 1cc69bcd5c8feea4493059cb89fd3104, type: 3}
+  m_PrefabInstance: {fileID: 1056954890}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1056954892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1056954891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 837845a591c957e44808bdf6bd871042, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractableItem
+  interactableType: 0
+  itemName: Leaf Goods Recipe
+  itemSprite: {fileID: 0}
+  itemId: 32
+  requiredItemIds: 
+  animator: {fileID: 0}
+  readableTextData: {fileID: 0}
+  readableAndInteractableTextData: {fileID: 0}
+  onAllWallButtonPressed:
+    m_PersistentCalls:
+      m_Calls: []
+  objectToPlace: {fileID: 0}
+  boxCollider: {fileID: 0}
+  canOpenWithNoSelectedItem: 0
+  itemPrefab: {fileID: 0}
+  isActualReading: 0
+  isAlchemyRecipe: 1
+  requiredUses: 3
+  providedLiquidType: 0
+  fillMapping:
+    requiredEmptyItem: {fileID: 0}
+    resultingFilledItem: {fileID: 0}
+  cauldron: {fileID: 0}
+  scroll_BigAcidPotion: {fileID: 0}
+  scroll_SmallAngryTimePotion: {fileID: 0}
+  scroll_ElderBadMoodPotion: {fileID: 0}
+  scroll_OpenBloodPotion: {fileID: 0}
+  scroll_BigGoodSoup: {fileID: 0}
+  scroll_SmallHolyCowPotion: {fileID: 0}
+  scroll_ElderLeafGoods: {fileID: 0}
+  scroll_OpenNiceWater: {fileID: 0}
+  scroll_BigWaterPotion: {fileID: 0}
+  scroll_SmallWinePotion: {fileID: 0}
+  recipesCounter: {fileID: 0}
 --- !u!1001 &1060628346
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33301,6 +34742,7 @@ MonoBehaviour:
   requiredItemIds: 0200000008000000090000000a000000
   animator: {fileID: 1763925952}
   readableTextData: {fileID: 0}
+  readableAndInteractableTextData: {fileID: 0}
   onAllWallButtonPressed:
     m_PersistentCalls:
       m_Calls: []
@@ -33308,12 +34750,25 @@ MonoBehaviour:
   boxCollider: {fileID: 0}
   canOpenWithNoSelectedItem: 0
   itemPrefab: {fileID: 0}
+  isActualReading: 0
+  isAlchemyRecipe: 0
   requiredUses: 3
   providedLiquidType: 0
   fillMapping:
     requiredEmptyItem: {fileID: 0}
     resultingFilledItem: {fileID: 0}
   cauldron: {fileID: 0}
+  scroll_BigAcidPotion: {fileID: 0}
+  scroll_SmallAngryTimePotion: {fileID: 0}
+  scroll_ElderBadMoodPotion: {fileID: 0}
+  scroll_OpenBloodPotion: {fileID: 0}
+  scroll_BigGoodSoup: {fileID: 0}
+  scroll_SmallHolyCowPotion: {fileID: 0}
+  scroll_ElderLeafGoods: {fileID: 0}
+  scroll_OpenNiceWater: {fileID: 0}
+  scroll_BigWaterPotion: {fileID: 0}
+  scroll_SmallWinePotion: {fileID: 0}
+  recipesCounter: {fileID: 0}
 --- !u!65 &1090704756
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -33355,6 +34810,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -33376,9 +34833,11 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &1090704758
 MeshFilter:
@@ -34435,6 +35894,82 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 20f2ea214cfe0d748b1b4b8ad965af69, type: 3}
   m_PrefabInstance: {fileID: 658076572}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1145314669
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1145314670}
+  - component: {fileID: 1145314672}
+  - component: {fileID: 1145314671}
+  m_Layer: 5
+  m_Name: MainText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1145314670
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1145314669}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1827093581}
+  m_Father: {fileID: 907575773}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 408.8355, y: -304.5}
+  m_SizeDelta: {x: 817.671, y: 203}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1145314671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1145314669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1145314672
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1145314669}
+  m_CullTransparentMesh: 1
 --- !u!1001 &1147077659
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35040,10 +36575,10 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1157442521}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -35733,10 +37268,10 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1183001919}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -35770,10 +37305,10 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1185094498}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -36139,6 +37674,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20f2ea214cfe0d748b1b4b8ad965af69, type: 3}
+--- !u!114 &1190840742 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8684576393369360604, guid: 6ddc72c5511ecdb40bb9dd7b8a8155d7, type: 3}
+  m_PrefabInstance: {fileID: 4553780734884724768}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 837845a591c957e44808bdf6bd871042, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1191114616
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36395,9 +37941,10 @@ MonoBehaviour:
   itemName: Przedmiot
   itemSprite: {fileID: 0}
   itemId: 0
-  requiredItemIds: ffffffff
+  requiredItemIds: 00000000
   animator: {fileID: 3753904568100200689}
   readableTextData: {fileID: 0}
+  readableAndInteractableTextData: {fileID: 0}
   onAllWallButtonPressed:
     m_PersistentCalls:
       m_Calls: []
@@ -36405,12 +37952,25 @@ MonoBehaviour:
   boxCollider: {fileID: 0}
   canOpenWithNoSelectedItem: 0
   itemPrefab: {fileID: 0}
+  isActualReading: 0
+  isAlchemyRecipe: 0
   requiredUses: 3
   providedLiquidType: 0
   fillMapping:
     requiredEmptyItem: {fileID: 0}
     resultingFilledItem: {fileID: 0}
   cauldron: {fileID: 0}
+  scroll_BigAcidPotion: {fileID: 0}
+  scroll_SmallAngryTimePotion: {fileID: 0}
+  scroll_ElderBadMoodPotion: {fileID: 0}
+  scroll_OpenBloodPotion: {fileID: 0}
+  scroll_BigGoodSoup: {fileID: 0}
+  scroll_SmallHolyCowPotion: {fileID: 0}
+  scroll_ElderLeafGoods: {fileID: 0}
+  scroll_OpenNiceWater: {fileID: 0}
+  scroll_BigWaterPotion: {fileID: 0}
+  scroll_SmallWinePotion: {fileID: 0}
+  recipesCounter: {fileID: 0}
 --- !u!65 &1192712785 stripped
 BoxCollider:
   m_CorrespondingSourceObject: {fileID: 9124816776277727873, guid: 8072e1dc4bbcc414e8b749396acc9fac, type: 3}
@@ -36451,7 +38011,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!199 &1196221654
 ParticleSystemRenderer:
-  serializedVersion: 6
+  serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -36470,6 +38030,8 @@ ParticleSystemRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -36491,9 +38053,11 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_RenderMode: 4
   m_MeshDistribution: 0
   m_SortMode: 0
@@ -36525,7 +38089,6 @@ ParticleSystemRenderer:
   m_MeshWeighting1: 1
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
-  m_MaskInteraction: 0
 --- !u!198 &1196221655
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -42388,10 +43951,10 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1239950149}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -42961,10 +44524,10 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 203307929}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -46667,6 +48230,121 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 99e55592c6d88984cb6b00f2455032dc, type: 3}
   m_PrefabInstance: {fileID: 1407003343}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1409754992
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 100000, guid: 07c11632f362e9544a7c89ada554f4f7, type: 3}
+      propertyPath: m_Name
+      value: Scroll_Small (Angry Time Potion)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 07c11632f362e9544a7c89ada554f4f7, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 07c11632f362e9544a7c89ada554f4f7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.82473
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 07c11632f362e9544a7c89ada554f4f7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.304
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 07c11632f362e9544a7c89ada554f4f7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 9.034585
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 07c11632f362e9544a7c89ada554f4f7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.99158216
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 07c11632f362e9544a7c89ada554f4f7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.000000021671735
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 07c11632f362e9544a7c89ada554f4f7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.1294791
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 07c11632f362e9544a7c89ada554f4f7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.0000000028298561
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 07c11632f362e9544a7c89ada554f4f7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 07c11632f362e9544a7c89ada554f4f7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -14.879
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 07c11632f362e9544a7c89ada554f4f7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: 07c11632f362e9544a7c89ada554f4f7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1409754994}
+  m_SourcePrefab: {fileID: 100100000, guid: 07c11632f362e9544a7c89ada554f4f7, type: 3}
+--- !u!1 &1409754993 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 07c11632f362e9544a7c89ada554f4f7, type: 3}
+  m_PrefabInstance: {fileID: 1409754992}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1409754994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1409754993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 837845a591c957e44808bdf6bd871042, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractableItem
+  interactableType: 0
+  itemName: Angry Time Potion Recipe
+  itemSprite: {fileID: 0}
+  itemId: 27
+  requiredItemIds: 
+  animator: {fileID: 0}
+  readableTextData: {fileID: 0}
+  readableAndInteractableTextData: {fileID: 0}
+  onAllWallButtonPressed:
+    m_PersistentCalls:
+      m_Calls: []
+  objectToPlace: {fileID: 0}
+  boxCollider: {fileID: 0}
+  canOpenWithNoSelectedItem: 0
+  itemPrefab: {fileID: 0}
+  isActualReading: 0
+  isAlchemyRecipe: 1
+  requiredUses: 3
+  providedLiquidType: 0
+  fillMapping:
+    requiredEmptyItem: {fileID: 0}
+    resultingFilledItem: {fileID: 0}
+  cauldron: {fileID: 0}
+  scroll_BigAcidPotion: {fileID: 0}
+  scroll_SmallAngryTimePotion: {fileID: 0}
+  scroll_ElderBadMoodPotion: {fileID: 0}
+  scroll_OpenBloodPotion: {fileID: 0}
+  scroll_BigGoodSoup: {fileID: 0}
+  scroll_SmallHolyCowPotion: {fileID: 0}
+  scroll_ElderLeafGoods: {fileID: 0}
+  scroll_OpenNiceWater: {fileID: 0}
+  scroll_BigWaterPotion: {fileID: 0}
+  scroll_SmallWinePotion: {fileID: 0}
+  recipesCounter: {fileID: 0}
 --- !u!4 &1411364693 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 20f2ea214cfe0d748b1b4b8ad965af69, type: 3}
@@ -47142,21 +48820,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 293876208}
     m_Modifications:
+    - target: {fileID: -5328151342214025545, guid: 166178cc0f9c8524f85b91757563d337, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -5328151342214025545, guid: 166178cc0f9c8524f85b91757563d337, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1415523983821612480, guid: 166178cc0f9c8524f85b91757563d337, type: 3}
       propertyPath: itemId
       value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2153753261579615391, guid: 166178cc0f9c8524f85b91757563d337, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.010211546
+      value: 0.0102
       objectReference: {fileID: 0}
     - target: {fileID: 2153753261579615391, guid: 166178cc0f9c8524f85b91757563d337, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.14721686
+      value: 0.1425
       objectReference: {fileID: 0}
     - target: {fileID: 2153753261579615391, guid: 166178cc0f9c8524f85b91757563d337, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.06325347
+      value: 0.0635
       objectReference: {fileID: 0}
     - target: {fileID: 2153753261579615391, guid: 166178cc0f9c8524f85b91757563d337, type: 3}
       propertyPath: m_LocalRotation.w
@@ -47807,10 +49493,10 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1448004726}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -51724,6 +53410,7 @@ MonoBehaviour:
   requiredItemIds: 0200000008000000090000000a000000
   animator: {fileID: 1485441081}
   readableTextData: {fileID: 0}
+  readableAndInteractableTextData: {fileID: 0}
   onAllWallButtonPressed:
     m_PersistentCalls:
       m_Calls: []
@@ -51731,12 +53418,25 @@ MonoBehaviour:
   boxCollider: {fileID: 0}
   canOpenWithNoSelectedItem: 0
   itemPrefab: {fileID: 0}
+  isActualReading: 0
+  isAlchemyRecipe: 0
   requiredUses: 3
   providedLiquidType: 0
   fillMapping:
     requiredEmptyItem: {fileID: 0}
     resultingFilledItem: {fileID: 0}
   cauldron: {fileID: 0}
+  scroll_BigAcidPotion: {fileID: 0}
+  scroll_SmallAngryTimePotion: {fileID: 0}
+  scroll_ElderBadMoodPotion: {fileID: 0}
+  scroll_OpenBloodPotion: {fileID: 0}
+  scroll_BigGoodSoup: {fileID: 0}
+  scroll_SmallHolyCowPotion: {fileID: 0}
+  scroll_ElderLeafGoods: {fileID: 0}
+  scroll_OpenNiceWater: {fileID: 0}
+  scroll_BigWaterPotion: {fileID: 0}
+  scroll_SmallWinePotion: {fileID: 0}
+  recipesCounter: {fileID: 0}
 --- !u!65 &1627324555
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -51778,6 +53478,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -51799,9 +53501,11 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &1627324557
 MeshFilter:
@@ -52686,6 +54390,82 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8005856282656725948, guid: 3a6bd28da04519d4c8ec996256064773, type: 3}
   m_PrefabInstance: {fileID: 250054952}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1674101941
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1674101942}
+  - component: {fileID: 1674101944}
+  - component: {fileID: 1674101943}
+  m_Layer: 5
+  m_Name: Header
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1674101942
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1674101941}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 975337372}
+  m_Father: {fileID: 907575773}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 408.8355, y: 0}
+  m_SizeDelta: {x: 817.671, y: 203}
+  m_Pivot: {x: 0.5, y: 1}
+--- !u!114 &1674101943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1674101941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1674101944
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1674101941}
+  m_CullTransparentMesh: 1
 --- !u!4 &1674321544 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 20f2ea214cfe0d748b1b4b8ad965af69, type: 3}
@@ -52847,7 +54627,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!199 &1681221194
 ParticleSystemRenderer:
-  serializedVersion: 6
+  serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -52866,6 +54646,8 @@ ParticleSystemRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -52887,9 +54669,11 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_RenderMode: 4
   m_MeshDistribution: 0
   m_SortMode: 0
@@ -52921,7 +54705,6 @@ ParticleSystemRenderer:
   m_MeshWeighting1: 1
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
-  m_MaskInteraction: 0
 --- !u!198 &1681221195
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -58117,6 +59900,7 @@ MonoBehaviour:
   requiredItemIds: 00000000
   animator: {fileID: 961556300}
   readableTextData: {fileID: 0}
+  readableAndInteractableTextData: {fileID: 0}
   onAllWallButtonPressed:
     m_PersistentCalls:
       m_Calls: []
@@ -58124,12 +59908,25 @@ MonoBehaviour:
   boxCollider: {fileID: 0}
   canOpenWithNoSelectedItem: 1
   itemPrefab: {fileID: 0}
+  isActualReading: 0
+  isAlchemyRecipe: 0
   requiredUses: 3
   providedLiquidType: 0
   fillMapping:
     requiredEmptyItem: {fileID: 0}
     resultingFilledItem: {fileID: 0}
   cauldron: {fileID: 0}
+  scroll_BigAcidPotion: {fileID: 0}
+  scroll_SmallAngryTimePotion: {fileID: 0}
+  scroll_ElderBadMoodPotion: {fileID: 0}
+  scroll_OpenBloodPotion: {fileID: 0}
+  scroll_BigGoodSoup: {fileID: 0}
+  scroll_SmallHolyCowPotion: {fileID: 0}
+  scroll_ElderLeafGoods: {fileID: 0}
+  scroll_OpenNiceWater: {fileID: 0}
+  scroll_BigWaterPotion: {fileID: 0}
+  scroll_SmallWinePotion: {fileID: 0}
+  recipesCounter: {fileID: 0}
 --- !u!1001 &1693330270
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -58622,10 +60419,10 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1703544233}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -58652,6 +60449,121 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 4fe4fc7683c898747998c195978256cc, type: 3}
   m_PrefabInstance: {fileID: 1437082073}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1706927377
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 100000, guid: 1da1c0220f154654db607bfbdae2c3bd, type: 3}
+      propertyPath: m_Name
+      value: Scroll_Big (Acid Potion)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 1da1c0220f154654db607bfbdae2c3bd, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1da1c0220f154654db607bfbdae2c3bd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 12.023385
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1da1c0220f154654db607bfbdae2c3bd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.3271
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1da1c0220f154654db607bfbdae2c3bd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 6.155175
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1da1c0220f154654db607bfbdae2c3bd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.87553304
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1da1c0220f154654db607bfbdae2c3bd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.000000019135387
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1da1c0220f154654db607bfbdae2c3bd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.48315826
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1da1c0220f154654db607bfbdae2c3bd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.000000010559762
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1da1c0220f154654db607bfbdae2c3bd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1da1c0220f154654db607bfbdae2c3bd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 57.784
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1da1c0220f154654db607bfbdae2c3bd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: 1da1c0220f154654db607bfbdae2c3bd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1706927379}
+  m_SourcePrefab: {fileID: 100100000, guid: 1da1c0220f154654db607bfbdae2c3bd, type: 3}
+--- !u!1 &1706927378 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 1da1c0220f154654db607bfbdae2c3bd, type: 3}
+  m_PrefabInstance: {fileID: 1706927377}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1706927379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1706927378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 837845a591c957e44808bdf6bd871042, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractableItem
+  interactableType: 0
+  itemName: Acid Potion Recipe
+  itemSprite: {fileID: 0}
+  itemId: 26
+  requiredItemIds: 
+  animator: {fileID: 0}
+  readableTextData: {fileID: 0}
+  readableAndInteractableTextData: {fileID: 0}
+  onAllWallButtonPressed:
+    m_PersistentCalls:
+      m_Calls: []
+  objectToPlace: {fileID: 0}
+  boxCollider: {fileID: 0}
+  canOpenWithNoSelectedItem: 0
+  itemPrefab: {fileID: 0}
+  isActualReading: 0
+  isAlchemyRecipe: 1
+  requiredUses: 3
+  providedLiquidType: 0
+  fillMapping:
+    requiredEmptyItem: {fileID: 0}
+    resultingFilledItem: {fileID: 0}
+  cauldron: {fileID: 0}
+  scroll_BigAcidPotion: {fileID: 0}
+  scroll_SmallAngryTimePotion: {fileID: 0}
+  scroll_ElderBadMoodPotion: {fileID: 0}
+  scroll_OpenBloodPotion: {fileID: 0}
+  scroll_BigGoodSoup: {fileID: 0}
+  scroll_SmallHolyCowPotion: {fileID: 0}
+  scroll_ElderLeafGoods: {fileID: 0}
+  scroll_OpenNiceWater: {fileID: 0}
+  scroll_BigWaterPotion: {fileID: 0}
+  scroll_SmallWinePotion: {fileID: 0}
+  recipesCounter: {fileID: 0}
 --- !u!1001 &1708796349
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -58801,6 +60713,20 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 7eb3c1e408f48cd4597148e13d3f14c8, type: 3}
   m_PrefabInstance: {fileID: 1401523328}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1712825287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
+  m_Name: UI/Alchemia  Recepies Q
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.InputActionReference
+  m_Asset: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  m_ActionId: 2da54183-cd0d-445d-84b4-43b4bc0aa217
 --- !u!4 &1712910483 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 20f2ea214cfe0d748b1b4b8ad965af69, type: 3}
@@ -59754,6 +61680,7 @@ MonoBehaviour:
   requiredItemIds: 0f000000
   animator: {fileID: 0}
   readableTextData: {fileID: 0}
+  readableAndInteractableTextData: {fileID: 0}
   onAllWallButtonPressed:
     m_PersistentCalls:
       m_Calls: []
@@ -59761,12 +61688,25 @@ MonoBehaviour:
   boxCollider: {fileID: 0}
   canOpenWithNoSelectedItem: 0
   itemPrefab: {fileID: 0}
+  isActualReading: 0
+  isAlchemyRecipe: 0
   requiredUses: 3
   providedLiquidType: 0
   fillMapping:
     requiredEmptyItem: {fileID: 0}
     resultingFilledItem: {fileID: 0}
   cauldron: {fileID: 0}
+  scroll_BigAcidPotion: {fileID: 0}
+  scroll_SmallAngryTimePotion: {fileID: 0}
+  scroll_ElderBadMoodPotion: {fileID: 0}
+  scroll_OpenBloodPotion: {fileID: 0}
+  scroll_BigGoodSoup: {fileID: 0}
+  scroll_SmallHolyCowPotion: {fileID: 0}
+  scroll_ElderLeafGoods: {fileID: 0}
+  scroll_OpenNiceWater: {fileID: 0}
+  scroll_BigWaterPotion: {fileID: 0}
+  scroll_SmallWinePotion: {fileID: 0}
+  recipesCounter: {fileID: 0}
 --- !u!65 &1742375472
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -60776,6 +62716,143 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a7b7742953990b40bf20a6df76a1cb1, type: 3}
+--- !u!1 &1770584934
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1770584935}
+  - component: {fileID: 1770584937}
+  - component: {fileID: 1770584936}
+  m_Layer: 5
+  m_Name: Amount of recipes Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1770584935
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770584934}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 239524046}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 40.269775, y: 14.299927}
+  m_SizeDelta: {x: 55.118, y: 25}
+  m_Pivot: {x: 0, y: 0}
+--- !u!114 &1770584936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770584934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 0
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 201a24140b0d13f43a359014d5b531d4, type: 2}
+  m_sharedMaterial: {fileID: 764859979571453843, guid: 201a24140b0d13f43a359014d5b531d4, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 36
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_characterHorizontalScale: 1
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1770584937
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770584934}
+  m_CullTransparentMesh: 1
 --- !u!1001 &1770995441
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -62620,6 +64697,144 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7eb3c1e408f48cd4597148e13d3f14c8, type: 3}
+--- !u!1 &1827093580
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1827093581}
+  - component: {fileID: 1827093583}
+  - component: {fileID: 1827093582}
+  m_Layer: 5
+  m_Name: Main Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1827093581
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1827093580}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1145314670}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: -12.1663}
+  m_SizeDelta: {x: -48.6648, y: 121.662}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1827093582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1827093580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: It to make a type specimen book. Itmore recently with desktop publishing
+    software like Aldus PageMaker including versi
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 201a24140b0d13f43a359014d5b531d4, type: 2}
+  m_sharedMaterial: {fileID: 764859979571453843, guid: 201a24140b0d13f43a359014d5b531d4, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 30
+  m_fontSizeBase: 30
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 8
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_characterHorizontalScale: 1
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.5
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1827093583
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1827093580}
+  m_CullTransparentMesh: 1
 --- !u!1001 &1830932375
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -62838,10 +65053,10 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1834917853}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -63521,6 +65736,7 @@ MonoBehaviour:
   requiredItemIds: 0200000008000000090000000a000000
   animator: {fileID: 2070327489}
   readableTextData: {fileID: 0}
+  readableAndInteractableTextData: {fileID: 0}
   onAllWallButtonPressed:
     m_PersistentCalls:
       m_Calls: []
@@ -63528,12 +65744,25 @@ MonoBehaviour:
   boxCollider: {fileID: 0}
   canOpenWithNoSelectedItem: 0
   itemPrefab: {fileID: 0}
+  isActualReading: 0
+  isAlchemyRecipe: 0
   requiredUses: 3
   providedLiquidType: 0
   fillMapping:
     requiredEmptyItem: {fileID: 0}
     resultingFilledItem: {fileID: 0}
   cauldron: {fileID: 0}
+  scroll_BigAcidPotion: {fileID: 0}
+  scroll_SmallAngryTimePotion: {fileID: 0}
+  scroll_ElderBadMoodPotion: {fileID: 0}
+  scroll_OpenBloodPotion: {fileID: 0}
+  scroll_BigGoodSoup: {fileID: 0}
+  scroll_SmallHolyCowPotion: {fileID: 0}
+  scroll_ElderLeafGoods: {fileID: 0}
+  scroll_OpenNiceWater: {fileID: 0}
+  scroll_BigWaterPotion: {fileID: 0}
+  scroll_SmallWinePotion: {fileID: 0}
+  recipesCounter: {fileID: 0}
 --- !u!65 &1863839622
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -63575,6 +65804,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -63596,9 +65827,11 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &1863839624
 MeshFilter:
@@ -64111,10 +66344,10 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1880628303}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -66818,10 +69051,10 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1972356681}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -68794,19 +71027,33 @@ MonoBehaviour:
   requiredItemIds: 
   animator: {fileID: 0}
   readableTextData: {fileID: 0}
+  readableAndInteractableTextData: {fileID: 0}
   onAllWallButtonPressed:
     m_PersistentCalls:
       m_Calls: []
   objectToPlace: {fileID: 0}
   boxCollider: {fileID: 0}
   canOpenWithNoSelectedItem: 0
-  itemPrefab: {fileID: 0}
+  itemPrefab: {fileID: 3134569903766315360, guid: 70d91f9aa70f5b24997ae89a34effdf8, type: 3}
+  isActualReading: 0
+  isAlchemyRecipe: 0
   requiredUses: 3
   providedLiquidType: 0
   fillMapping:
     requiredEmptyItem: {fileID: 0}
     resultingFilledItem: {fileID: 0}
   cauldron: {fileID: 0}
+  scroll_BigAcidPotion: {fileID: 0}
+  scroll_SmallAngryTimePotion: {fileID: 0}
+  scroll_ElderBadMoodPotion: {fileID: 0}
+  scroll_OpenBloodPotion: {fileID: 0}
+  scroll_BigGoodSoup: {fileID: 0}
+  scroll_SmallHolyCowPotion: {fileID: 0}
+  scroll_ElderLeafGoods: {fileID: 0}
+  scroll_OpenNiceWater: {fileID: 0}
+  scroll_BigWaterPotion: {fileID: 0}
+  scroll_SmallWinePotion: {fileID: 0}
+  recipesCounter: {fileID: 0}
 --- !u!1001 &2025944945
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -68922,6 +71169,7 @@ MonoBehaviour:
   requiredItemIds: 0200000008000000090000000a000000
   animator: {fileID: 153553077}
   readableTextData: {fileID: 0}
+  readableAndInteractableTextData: {fileID: 0}
   onAllWallButtonPressed:
     m_PersistentCalls:
       m_Calls: []
@@ -68929,12 +71177,25 @@ MonoBehaviour:
   boxCollider: {fileID: 0}
   canOpenWithNoSelectedItem: 0
   itemPrefab: {fileID: 0}
+  isActualReading: 0
+  isAlchemyRecipe: 0
   requiredUses: 3
   providedLiquidType: 0
   fillMapping:
     requiredEmptyItem: {fileID: 0}
     resultingFilledItem: {fileID: 0}
   cauldron: {fileID: 0}
+  scroll_BigAcidPotion: {fileID: 0}
+  scroll_SmallAngryTimePotion: {fileID: 0}
+  scroll_ElderBadMoodPotion: {fileID: 0}
+  scroll_OpenBloodPotion: {fileID: 0}
+  scroll_BigGoodSoup: {fileID: 0}
+  scroll_SmallHolyCowPotion: {fileID: 0}
+  scroll_ElderLeafGoods: {fileID: 0}
+  scroll_OpenNiceWater: {fileID: 0}
+  scroll_BigWaterPotion: {fileID: 0}
+  scroll_SmallWinePotion: {fileID: 0}
+  recipesCounter: {fileID: 0}
 --- !u!65 &2026182346
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -68976,6 +71237,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -68997,9 +71260,11 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &2026182348
 MeshFilter:
@@ -69243,6 +71508,7 @@ MonoBehaviour:
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -70098,7 +72364,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 200, y: -0}
+  m_AnchoredPosition: {x: 200, y: 0}
   m_SizeDelta: {x: 400, y: 203}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &2058290865
@@ -70827,6 +73093,121 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: f5112dfda82958c409df9989d8ea074c, type: 3}
   m_PrefabInstance: {fileID: 2075120108}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2076100628
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 100000, guid: 07c11632f362e9544a7c89ada554f4f7, type: 3}
+      propertyPath: m_Name
+      value: Scroll_Small (Wine Potion)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 07c11632f362e9544a7c89ada554f4f7, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 07c11632f362e9544a7c89ada554f4f7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7.6334224
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 07c11632f362e9544a7c89ada554f4f7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 11.341
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 07c11632f362e9544a7c89ada554f4f7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -25.795929
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 07c11632f362e9544a7c89ada554f4f7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9952889
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 07c11632f362e9544a7c89ada554f4f7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.00000002175273
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 07c11632f362e9544a7c89ada554f4f7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.09695451
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 07c11632f362e9544a7c89ada554f4f7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.0000000021190076
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 07c11632f362e9544a7c89ada554f4f7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 07c11632f362e9544a7c89ada554f4f7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 11.128
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 07c11632f362e9544a7c89ada554f4f7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: 07c11632f362e9544a7c89ada554f4f7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2076100630}
+  m_SourcePrefab: {fileID: 100100000, guid: 07c11632f362e9544a7c89ada554f4f7, type: 3}
+--- !u!1 &2076100629 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 07c11632f362e9544a7c89ada554f4f7, type: 3}
+  m_PrefabInstance: {fileID: 2076100628}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2076100630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2076100629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 837845a591c957e44808bdf6bd871042, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractableItem
+  interactableType: 0
+  itemName: Wine Potion Recipe
+  itemSprite: {fileID: 0}
+  itemId: 35
+  requiredItemIds: 
+  animator: {fileID: 0}
+  readableTextData: {fileID: 0}
+  readableAndInteractableTextData: {fileID: 0}
+  onAllWallButtonPressed:
+    m_PersistentCalls:
+      m_Calls: []
+  objectToPlace: {fileID: 0}
+  boxCollider: {fileID: 0}
+  canOpenWithNoSelectedItem: 0
+  itemPrefab: {fileID: 0}
+  isActualReading: 0
+  isAlchemyRecipe: 1
+  requiredUses: 3
+  providedLiquidType: 0
+  fillMapping:
+    requiredEmptyItem: {fileID: 0}
+    resultingFilledItem: {fileID: 0}
+  cauldron: {fileID: 0}
+  scroll_BigAcidPotion: {fileID: 0}
+  scroll_SmallAngryTimePotion: {fileID: 0}
+  scroll_ElderBadMoodPotion: {fileID: 0}
+  scroll_OpenBloodPotion: {fileID: 0}
+  scroll_BigGoodSoup: {fileID: 0}
+  scroll_SmallHolyCowPotion: {fileID: 0}
+  scroll_ElderLeafGoods: {fileID: 0}
+  scroll_OpenNiceWater: {fileID: 0}
+  scroll_BigWaterPotion: {fileID: 0}
+  scroll_SmallWinePotion: {fileID: 0}
+  recipesCounter: {fileID: 0}
 --- !u!4 &2076642824 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 20f2ea214cfe0d748b1b4b8ad965af69, type: 3}
@@ -71890,10 +74271,10 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2103579758}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -72467,10 +74848,10 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2120185083}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -72582,10 +74963,10 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2126039232}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -73019,6 +75400,121 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: abc79cf4f617be04ebeaad85084160eb, type: 3}
+--- !u!1001 &2141547095
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 100000, guid: ac8910006b2a62947a9342d2b6ddfa2a, type: 3}
+      propertyPath: m_Name
+      value: Scroll_Open (Nice Water)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ac8910006b2a62947a9342d2b6ddfa2a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: ac8910006b2a62947a9342d2b6ddfa2a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 8.073628
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: ac8910006b2a62947a9342d2b6ddfa2a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -6.887
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: ac8910006b2a62947a9342d2b6ddfa2a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -40.187
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: ac8910006b2a62947a9342d2b6ddfa2a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.990239
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: ac8910006b2a62947a9342d2b6ddfa2a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.06680012
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: ac8910006b2a62947a9342d2b6ddfa2a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.008233472
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: ac8910006b2a62947a9342d2b6ddfa2a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.12205222
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: ac8910006b2a62947a9342d2b6ddfa2a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 7.486
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: ac8910006b2a62947a9342d2b6ddfa2a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 1.885
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: ac8910006b2a62947a9342d2b6ddfa2a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 14.176
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: ac8910006b2a62947a9342d2b6ddfa2a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2141547097}
+  m_SourcePrefab: {fileID: 100100000, guid: ac8910006b2a62947a9342d2b6ddfa2a, type: 3}
+--- !u!1 &2141547096 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: ac8910006b2a62947a9342d2b6ddfa2a, type: 3}
+  m_PrefabInstance: {fileID: 2141547095}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2141547097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2141547096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 837845a591c957e44808bdf6bd871042, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractableItem
+  interactableType: 0
+  itemName: Nice Water Recpie
+  itemSprite: {fileID: 0}
+  itemId: 33
+  requiredItemIds: 
+  animator: {fileID: 0}
+  readableTextData: {fileID: 0}
+  readableAndInteractableTextData: {fileID: 0}
+  onAllWallButtonPressed:
+    m_PersistentCalls:
+      m_Calls: []
+  objectToPlace: {fileID: 0}
+  boxCollider: {fileID: 0}
+  canOpenWithNoSelectedItem: 0
+  itemPrefab: {fileID: 0}
+  isActualReading: 0
+  isAlchemyRecipe: 1
+  requiredUses: 3
+  providedLiquidType: 0
+  fillMapping:
+    requiredEmptyItem: {fileID: 0}
+    resultingFilledItem: {fileID: 0}
+  cauldron: {fileID: 0}
+  scroll_BigAcidPotion: {fileID: 0}
+  scroll_SmallAngryTimePotion: {fileID: 0}
+  scroll_ElderBadMoodPotion: {fileID: 0}
+  scroll_OpenBloodPotion: {fileID: 0}
+  scroll_BigGoodSoup: {fileID: 0}
+  scroll_SmallHolyCowPotion: {fileID: 0}
+  scroll_ElderLeafGoods: {fileID: 0}
+  scroll_OpenNiceWater: {fileID: 0}
+  scroll_BigWaterPotion: {fileID: 0}
+  scroll_SmallWinePotion: {fileID: 0}
+  recipesCounter: {fileID: 0}
 --- !u!4 &2145900875 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 7eb3c1e408f48cd4597148e13d3f14c8, type: 3}
@@ -74065,6 +76561,7 @@ MonoBehaviour:
   requiredItemIds: 0e000000
   animator: {fileID: 0}
   readableTextData: {fileID: 0}
+  readableAndInteractableTextData: {fileID: 0}
   onAllWallButtonPressed:
     m_PersistentCalls:
       m_Calls: []
@@ -74072,12 +76569,25 @@ MonoBehaviour:
   boxCollider: {fileID: 6699176402765126052}
   canOpenWithNoSelectedItem: 0
   itemPrefab: {fileID: 0}
+  isActualReading: 0
+  isAlchemyRecipe: 0
   requiredUses: 3
   providedLiquidType: 0
   fillMapping:
     requiredEmptyItem: {fileID: 0}
     resultingFilledItem: {fileID: 0}
   cauldron: {fileID: 0}
+  scroll_BigAcidPotion: {fileID: 0}
+  scroll_SmallAngryTimePotion: {fileID: 0}
+  scroll_ElderBadMoodPotion: {fileID: 0}
+  scroll_OpenBloodPotion: {fileID: 0}
+  scroll_BigGoodSoup: {fileID: 0}
+  scroll_SmallHolyCowPotion: {fileID: 0}
+  scroll_ElderLeafGoods: {fileID: 0}
+  scroll_OpenNiceWater: {fileID: 0}
+  scroll_BigWaterPotion: {fileID: 0}
+  scroll_SmallWinePotion: {fileID: 0}
+  recipesCounter: {fileID: 0}
 --- !u!114 &2056077835023473934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74097,6 +76607,7 @@ MonoBehaviour:
   requiredItemIds: 050000000d000000
   animator: {fileID: 0}
   readableTextData: {fileID: 0}
+  readableAndInteractableTextData: {fileID: 0}
   onAllWallButtonPressed:
     m_PersistentCalls:
       m_Calls: []
@@ -74104,12 +76615,25 @@ MonoBehaviour:
   boxCollider: {fileID: 6699176402877544930}
   canOpenWithNoSelectedItem: 0
   itemPrefab: {fileID: 0}
+  isActualReading: 0
+  isAlchemyRecipe: 0
   requiredUses: 3
   providedLiquidType: 0
   fillMapping:
     requiredEmptyItem: {fileID: 0}
     resultingFilledItem: {fileID: 0}
   cauldron: {fileID: 0}
+  scroll_BigAcidPotion: {fileID: 0}
+  scroll_SmallAngryTimePotion: {fileID: 0}
+  scroll_ElderBadMoodPotion: {fileID: 0}
+  scroll_OpenBloodPotion: {fileID: 0}
+  scroll_BigGoodSoup: {fileID: 0}
+  scroll_SmallHolyCowPotion: {fileID: 0}
+  scroll_ElderLeafGoods: {fileID: 0}
+  scroll_OpenNiceWater: {fileID: 0}
+  scroll_BigWaterPotion: {fileID: 0}
+  scroll_SmallWinePotion: {fileID: 0}
+  recipesCounter: {fileID: 0}
 --- !u!114 &2056077835336463155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74129,6 +76653,7 @@ MonoBehaviour:
   requiredItemIds: 0d00000005000000
   animator: {fileID: 0}
   readableTextData: {fileID: 0}
+  readableAndInteractableTextData: {fileID: 0}
   onAllWallButtonPressed:
     m_PersistentCalls:
       m_Calls: []
@@ -74136,12 +76661,25 @@ MonoBehaviour:
   boxCollider: {fileID: 6699176402049669087}
   canOpenWithNoSelectedItem: 0
   itemPrefab: {fileID: 0}
+  isActualReading: 0
+  isAlchemyRecipe: 0
   requiredUses: 3
   providedLiquidType: 0
   fillMapping:
     requiredEmptyItem: {fileID: 0}
     resultingFilledItem: {fileID: 0}
   cauldron: {fileID: 0}
+  scroll_BigAcidPotion: {fileID: 0}
+  scroll_SmallAngryTimePotion: {fileID: 0}
+  scroll_ElderBadMoodPotion: {fileID: 0}
+  scroll_OpenBloodPotion: {fileID: 0}
+  scroll_BigGoodSoup: {fileID: 0}
+  scroll_SmallHolyCowPotion: {fileID: 0}
+  scroll_ElderLeafGoods: {fileID: 0}
+  scroll_OpenNiceWater: {fileID: 0}
+  scroll_BigWaterPotion: {fileID: 0}
+  scroll_SmallWinePotion: {fileID: 0}
+  recipesCounter: {fileID: 0}
 --- !u!1001 &2211493968687838611
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -74881,6 +77419,14 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 960708944}
+    - target: {fileID: 5943996288528322486, guid: ca8291e9ea229bd4f8477e50f39273ef, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5943996288528322486, guid: ca8291e9ea229bd4f8477e50f39273ef, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -74965,10 +77511,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1082134499}
     m_Modifications:
-    - target: {fileID: 8684576393369360604, guid: 6ddc72c5511ecdb40bb9dd7b8a8155d7, type: 3}
-      propertyPath: readableTextData
+    - target: {fileID: 5338457348800576441, guid: 6ddc72c5511ecdb40bb9dd7b8a8155d7, type: 3}
+      propertyPath: recipesCounter
       value: 
-      objectReference: {fileID: 11400000, guid: ea8d71cf5a0571c4a86cb0a1f88f2160, type: 2}
+      objectReference: {fileID: 239524048}
     - target: {fileID: 9118161118047212184, guid: 6ddc72c5511ecdb40bb9dd7b8a8155d7, type: 3}
       propertyPath: m_Name
       value: Desk
@@ -75471,15 +78017,15 @@ PrefabInstance:
       objectReference: {fileID: 623220842}
     - target: {fileID: 3870059820769821162, guid: 13f4cb170fb0bd248ad9de5797fbd0e0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -33.68
+      value: -43.77
       objectReference: {fileID: 0}
     - target: {fileID: 3870059820769821162, guid: 13f4cb170fb0bd248ad9de5797fbd0e0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 11.66
+      value: 14.082
       objectReference: {fileID: 0}
     - target: {fileID: 3870059820769821162, guid: 13f4cb170fb0bd248ad9de5797fbd0e0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -24.8
+      value: -14.32
       objectReference: {fileID: 0}
     - target: {fileID: 3870059820769821162, guid: 13f4cb170fb0bd248ad9de5797fbd0e0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -75513,6 +78059,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6777279263115178933, guid: 13f4cb170fb0bd248ad9de5797fbd0e0, type: 3}
+      propertyPath: recipesCounter
+      value: 
+      objectReference: {fileID: 239524048}
     - target: {fileID: 8489812725524509388, guid: 13f4cb170fb0bd248ad9de5797fbd0e0, type: 3}
       propertyPath: field of view
       value: 89.073944
@@ -75970,6 +78520,7 @@ MonoBehaviour:
   requiredItemIds: 00000000
   animator: {fileID: 3753904568213913783}
   readableTextData: {fileID: 0}
+  readableAndInteractableTextData: {fileID: 0}
   onAllWallButtonPressed:
     m_PersistentCalls:
       m_Calls: []
@@ -75977,12 +78528,25 @@ MonoBehaviour:
   boxCollider: {fileID: 0}
   canOpenWithNoSelectedItem: 0
   itemPrefab: {fileID: 0}
+  isActualReading: 0
+  isAlchemyRecipe: 0
   requiredUses: 3
   providedLiquidType: 0
   fillMapping:
     requiredEmptyItem: {fileID: 0}
     resultingFilledItem: {fileID: 0}
   cauldron: {fileID: 0}
+  scroll_BigAcidPotion: {fileID: 0}
+  scroll_SmallAngryTimePotion: {fileID: 0}
+  scroll_ElderBadMoodPotion: {fileID: 0}
+  scroll_OpenBloodPotion: {fileID: 0}
+  scroll_BigGoodSoup: {fileID: 0}
+  scroll_SmallHolyCowPotion: {fileID: 0}
+  scroll_ElderLeafGoods: {fileID: 0}
+  scroll_OpenNiceWater: {fileID: 0}
+  scroll_BigWaterPotion: {fileID: 0}
+  scroll_SmallWinePotion: {fileID: 0}
+  recipesCounter: {fileID: 0}
 --- !u!114 &7602390656402323183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76002,6 +78566,7 @@ MonoBehaviour:
   requiredItemIds: 00000000
   animator: {fileID: 3753904567389204106}
   readableTextData: {fileID: 0}
+  readableAndInteractableTextData: {fileID: 0}
   onAllWallButtonPressed:
     m_PersistentCalls:
       m_Calls: []
@@ -76009,12 +78574,25 @@ MonoBehaviour:
   boxCollider: {fileID: 0}
   canOpenWithNoSelectedItem: 0
   itemPrefab: {fileID: 0}
+  isActualReading: 0
+  isAlchemyRecipe: 0
   requiredUses: 3
   providedLiquidType: 0
   fillMapping:
     requiredEmptyItem: {fileID: 0}
     resultingFilledItem: {fileID: 0}
   cauldron: {fileID: 0}
+  scroll_BigAcidPotion: {fileID: 0}
+  scroll_SmallAngryTimePotion: {fileID: 0}
+  scroll_ElderBadMoodPotion: {fileID: 0}
+  scroll_OpenBloodPotion: {fileID: 0}
+  scroll_BigGoodSoup: {fileID: 0}
+  scroll_SmallHolyCowPotion: {fileID: 0}
+  scroll_ElderLeafGoods: {fileID: 0}
+  scroll_OpenNiceWater: {fileID: 0}
+  scroll_BigWaterPotion: {fileID: 0}
+  scroll_SmallWinePotion: {fileID: 0}
+  recipesCounter: {fileID: 0}
 --- !u!1001 &7677901371602409885
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -76274,6 +78852,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 896970806}
     m_Modifications:
+    - target: {fileID: 816931365228480868, guid: 2508a205597ee3e4a8d78c359af84289, type: 3}
+      propertyPath: itemPrefab
+      value: 
+      objectReference: {fileID: 8768967844936638733, guid: c8eb0609aa936364e9a4516a2010282c, type: 3}
     - target: {fileID: 8708615955229627766, guid: 2508a205597ee3e4a8d78c359af84289, type: 3}
       propertyPath: m_LocalPosition.x
       value: 18.681
@@ -76409,3 +78991,13 @@ SceneRoots:
   - {fileID: 636352119}
   - {fileID: 1855244440}
   - {fileID: 1649275886}
+  - {fileID: 1706927377}
+  - {fileID: 1409754992}
+  - {fileID: 120439191}
+  - {fileID: 524740549}
+  - {fileID: 412961382}
+  - {fileID: 233387278}
+  - {fileID: 1056954890}
+  - {fileID: 2141547095}
+  - {fileID: 194789987}
+  - {fileID: 2076100628}

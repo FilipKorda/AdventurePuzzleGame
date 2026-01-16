@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
@@ -9,6 +10,8 @@ public class Inventory : MonoBehaviour
 
     [Header("Drop Settings")]
     [SerializeField] private Transform dropPoint;
+    [Header("Recpie Counter")]
+    [SerializeField] private RecipesCounter recipesCounter;
 
     private void Awake()
     {
@@ -29,10 +32,40 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    public bool HasItemWithId(int itemId)
+    {
+        return inventory.Any(item => item.GetItemId() == itemId);
+    }
+
+    // Dla wydajnoœci przekszta³camy do HashSet
+    public int CountItemsWithIds(IEnumerable<int> ids)
+    {
+        if (ids == null) return 0;
+        var set = ids is HashSet<int> hs ? hs : new HashSet<int>(ids);
+        return inventory.Count(item => set.Contains(item.GetItemId()));
+    }
+
     public void AddItemToInventory(IPickupable iPickupable)
     {
         inventory.Add(iPickupable);
         UIManager.Instance.AddItemToUI(iPickupable);
+    }
+
+    public void AddToInventoryAlchemyRecipe(IPickupable iPickupable)
+    {
+        Debug.LogWarning($"Dodano przedmiot do alchemicznego przepisu: {iPickupable.GetItemId()}");
+        inventory.Add(iPickupable);
+        recipesCounter.UpdateRecipeCount();
+    }
+
+    public void RemoveFromInventoryAlchemyRecipe(int itemId)
+    {
+        IPickupable itemToRemove = inventory.Find(item => item.GetItemId() == itemId);
+        if (itemToRemove != null)
+        {
+            inventory.Remove(itemToRemove);
+            Debug.LogWarning($"Usuniêto przedmiot: {itemToRemove.GetItemId()}");
+        }
     }
 
     public void RemoveItemFromInventoryByID(int itemId)

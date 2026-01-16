@@ -1,7 +1,9 @@
 public class Information
 {
-    //Bone = 1
-    //  Knife = 2
+    //ITEMS ID:
+
+    // Bone = 1
+    // Knife = 2
     // Spear = 3
     // Key_Rusty = 4
     // Switch_Lever = 5
@@ -9,11 +11,11 @@ public class Information
     // Key_Rusty_1 = 7
     // Knife_1 = 8
     // Knife_2 = 9
-    //  pKnife_3 = 10
+    // pKnife_3 = 10
     // puey_Golden = 11
-    //hammer = 12
+    // hammer = 12
     // Switch_Lever_2 = 13
-    //  pFork = 14
+    // pFork = 14
     // LockPick = 15
     // Flint = 16
     // EmptyBucket = 17
@@ -24,5 +26,16 @@ public class Information
     // Leafs = 22
     // PlantRoot = 23
     // RawMeat = 24
-    // NiceWater = 2
+    // NiceWater = 25
+    // Acid Potion Recipe = 26
+    // Angry Time Potion Recipe = 27
+    // Bad Mood Potion Recipe = 28
+    // Blood Potion Recipe = 29
+    // Good Soup Recipe = 30
+    // Holy Cow Potion Recipe = 31
+    // Leaf Goods Recipe = 32
+    // Nice Water Recpie = 33
+    // Water Potion Recipe = 34
+    // Wine Potion Recipe = 35
+
 }

@@ -10,7 +10,9 @@ public class UIManager : MonoBehaviour
     [Header("UI References")]
     [SerializeField] private Transform inventoryPanel;
     [SerializeField] private GameObject itemSlotPrefab;
+    [SerializeField] private InteractableItem bookWithAlchemiaRecepisItem;
     public ReadablePanel readablePanel;
+    public ReadableAndInteractablePanel readableAndInteractablePanel;
     public LockPickPanel lockPickPanel;
     private List<ItemSlot> itemSlots = new();
     private int selectedItemId = -1;
@@ -23,6 +25,9 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private InputActionReference dropItemAction;
     [SerializeField] private InputActionReference drinkOrEatAction;
+
+    public InputActionReference nextPageAction;
+    public InputActionReference previousPageAction;
 
     private void OnEnable()
     {
@@ -48,6 +53,12 @@ public class UIManager : MonoBehaviour
             drinkOrEatAction.action.Enable();
             drinkOrEatAction.action.performed += OnDrinkOrEatPerformed;
         }
+
+        if (nextPageAction != null)
+            nextPageAction.action.performed += OnNextPage;
+
+        if (previousPageAction != null)
+            previousPageAction.action.performed += OnPreviousPage;
     }
 
     private void OnDisable()
@@ -74,6 +85,12 @@ public class UIManager : MonoBehaviour
             drinkOrEatAction.action.performed -= OnDrinkOrEatPerformed;
             drinkOrEatAction.action.Disable();
         }
+
+        if (nextPageAction != null)
+            nextPageAction.action.performed -= OnNextPage;
+
+        if (previousPageAction != null)
+            previousPageAction.action.performed -= OnPreviousPage;
     }
 
     private void Awake()
@@ -87,6 +104,55 @@ public class UIManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    private void OnNextPage(InputAction.CallbackContext context)
+    {
+        if (!bookWithAlchemiaRecepisItem.isActualReading) return;
+        var data = bookWithAlchemiaRecepisItem.readableAndInteractableTextData;
+        if (data == null || data.bookPages == null) return;
+
+        int start = Mathf.Clamp(data.currentPageIndex, 0, data.bookPages.Length - 1);
+        int nextIndex = start;
+        for (int i = start + 1; i < data.bookPages.Length; i++)
+        {
+            if (data.IsPageUnlocked(i))
+            {
+                nextIndex = i;
+                break;
+            }
+        }
+
+        if (nextIndex != start)
+        {
+            data.currentPageIndex = nextIndex;
+            readableAndInteractablePanel.mainTextUI.text = data.bookPages[data.currentPageIndex];
+        }
+    }
+
+    private void OnPreviousPage(InputAction.CallbackContext context)
+    {
+        if (!bookWithAlchemiaRecepisItem.isActualReading) return;
+        var data = bookWithAlchemiaRecepisItem.readableAndInteractableTextData;
+        if (data == null || data.bookPages == null) return;
+
+        int start = Mathf.Clamp(data.currentPageIndex, 0, data.bookPages.Length - 1);
+        int prevIndex = start;
+        for (int i = start - 1; i >= 0; i--)
+        {
+            if (data.IsPageUnlocked(i))
+            {
+                prevIndex = i;
+                break;
+            }
+        }
+
+        if (prevIndex != start)
+        {
+            data.currentPageIndex = prevIndex;
+            readableAndInteractablePanel.mainTextUI.text = data.bookPages[data.currentPageIndex];
+        }
+    }
+
 
     private void OnDrinkOrEatPerformed(InputAction.CallbackContext context)
     {
@@ -108,31 +174,31 @@ public class UIManager : MonoBehaviour
             case ItemID.WaterBucket:
                 UseConsumableItem(currentSelectedId);
                 Debug.Log("Wypito (WaterBucket).");
-                Ailments.Instance.ApplyWaterBucketEffect(); 
+                Ailments.Instance.ApplyWaterBucketEffect();
                 break;
 
             case ItemID.AcidBucket:
                 UseConsumableItem(currentSelectedId);
                 Debug.Log("Wypito (AcidBucket).");
-                Ailments.Instance.ApplyAcidBucketEffect(); 
+                Ailments.Instance.ApplyAcidBucketEffect();
                 break;
 
             case ItemID.BloodBucket:
                 UseConsumableItem(currentSelectedId);
                 Debug.Log("Wypito (BloodBucket).");
-                Ailments.Instance.ApplyBloodBucketEffect(); 
+                Ailments.Instance.ApplyBloodBucketEffect();
                 break;
 
             case ItemID.WineBucket:
                 UseConsumableItem(currentSelectedId);
                 Debug.Log("Wypito (WineBucket).");
-                Ailments.Instance.ApplyWineBucketEffect(); 
+                Ailments.Instance.ApplyWineBucketEffect();
                 break;
 
             case ItemID.RawMeat:
                 UseConsumableItem(currentSelectedId);
                 Debug.Log("Zjedzono (RawMeat).");
-                Ailments.Instance.ApplyRawMeatEffect(); 
+                Ailments.Instance.ApplyRawMeatEffect();
                 break;
 
             case ItemID.NiceWater:
@@ -150,19 +216,19 @@ public class UIManager : MonoBehaviour
             case ItemID.LeafGoods:
                 UseConsumableItem(currentSelectedId);
                 Debug.Log("Zjedzono (LeafGoods).");
-                Ailments.Instance.ApplyLeafGoodsEffect(); 
+                Ailments.Instance.ApplyLeafGoodsEffect();
                 break;
 
             case ItemID.AngryTime:
                 UseConsumableItem(currentSelectedId);
                 Debug.Log("Zjedzono (AngryTime).");
-                Ailments.Instance.ApplyAngryTimeEffect(); 
+                Ailments.Instance.ApplyAngryTimeEffect();
                 break;
 
             case ItemID.BadMood:
                 UseConsumableItem(currentSelectedId);
                 Debug.Log("Zjedzono (BadMood).");
-                Ailments.Instance.ApplyBadMoodEffect(); 
+                Ailments.Instance.ApplyBadMoodEffect();
                 break;
 
             case ItemID.GoodSoup:
@@ -174,7 +240,7 @@ public class UIManager : MonoBehaviour
             case ItemID.HolyCow:
                 UseConsumableItem(currentSelectedId);
                 Debug.Log("Zjedzono (HolyCow).");
-                Ailments.Instance.ApplyHolyCowEffect(); 
+                Ailments.Instance.ApplyHolyCowEffect();
                 break;
 
             default:

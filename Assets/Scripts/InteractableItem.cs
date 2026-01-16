@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using System.Linq;
 
-public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpenable, IReadable, IPressable, IPlaceable, ILockPick, IFillable, IPickupARenewableItem, IAlchemyStation
+public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpenable, IReadable, IPressable, IPlaceable, ILockPick, IFillable, IPickupARenewableItem, IAlchemyStation, IReadableAndInteractable, IRecipePlaceable
 {
     public enum InteractableType
     {
@@ -15,7 +15,9 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         LockPick,
         Fillable,
         PickupARenewableItem,
-        AlchemyStation
+        AlchemyStation,
+        ReadableAndInteractableItem,
+        PlaceRecipe,
     }
 
     public InteractableType interactableType;
@@ -33,6 +35,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     [Header("Components & Events")]
     [SerializeField] private Animator animator;
     [SerializeField] private ReadableTextData readableTextData;
+    [SerializeField] public ReadableAndInteractableTextData readableAndInteractableTextData;
     [SerializeField] private UnityEvent onAllWallButtonPressed;
     [SerializeField] private GameObject objectToPlace;
     [SerializeField] private BoxCollider boxCollider;
@@ -42,10 +45,11 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     [Tooltip("Prefab do stworzenia obiektu po wyrzuceniu go z ekwipunku. Przeci¹gnij tutaj prefab tego przedmiotu.")]
     [SerializeField] private GameObject itemPrefab;
 
-    private bool isActualReading;
+    public bool isActualReading;
     private bool isActualOpen;
     private bool isActualPreesed;
     private bool isLockPicking;
+    public bool isAlchemyRecipe = false;
     [SerializeField] private int requiredUses = 3;
 
     [Header("Fillable Source Settings (if Fillable)")]
@@ -58,6 +62,20 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     [Header("Alchemy Settings (if AlchemyStation)")]
     [Tooltip("Referencja do komponentu Cauldron na tym obiekcie.")]
     [SerializeField] private Cauldron cauldron;
+
+    [Header("Recipes")]
+    [SerializeField] private GameObject scroll_BigAcidPotion;
+    [SerializeField] private GameObject scroll_SmallAngryTimePotion;
+    [SerializeField] private GameObject scroll_ElderBadMoodPotion;
+    [SerializeField] private GameObject scroll_OpenBloodPotion;
+    [SerializeField] private GameObject scroll_BigGoodSoup;
+    [SerializeField] private GameObject scroll_SmallHolyCowPotion;
+    [SerializeField] private GameObject scroll_ElderLeafGoods;
+    [SerializeField] private GameObject scroll_OpenNiceWater;
+    [SerializeField] private GameObject scroll_BigWaterPotion;
+    [SerializeField] private GameObject scroll_SmallWinePotion;
+
+    [SerializeField] private RecipesCounter recipesCounter;
 
     public GameObject GetItemPrefab()
     {
@@ -121,10 +139,15 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
 
     public void OnPickUp()
     {
-        if (interactableType == InteractableType.Pickupable)
+        if (!isAlchemyRecipe && interactableType == InteractableType.Pickupable)
         {
             DestroyInteractable();
             Inventory.Instance.AddItemToInventory(this);
+        }
+        else if (isAlchemyRecipe && interactableType == InteractableType.Pickupable)
+        {
+            DestroyInteractable();
+            Inventory.Instance.AddToInventoryAlchemyRecipe(this);
         }
     }
 
@@ -233,6 +256,89 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         }
     }
 
+    public void PlaceRecipeObject()
+    {
+        if (interactableType != InteractableType.PlaceRecipe)
+            return;
+
+        foreach (int requiredId in requiredItemIds)
+        {
+            if (!Inventory.Instance.HasItemWithId(requiredId))
+                continue;
+
+            if (requiredId == 26)
+            {
+                scroll_BigAcidPotion.SetActive(true);
+                readableAndInteractableTextData.UnlockPageForRecipeId(requiredId);
+            }
+            else if (requiredId == 27)
+            {
+                scroll_SmallAngryTimePotion.SetActive(true);
+                readableAndInteractableTextData.UnlockPageForRecipeId(requiredId);
+            }
+            else if (requiredId == 28)
+            {
+                scroll_ElderBadMoodPotion.SetActive(true);
+                readableAndInteractableTextData.UnlockPageForRecipeId(requiredId);
+            }
+            else if (requiredId == 29)
+            {
+                scroll_OpenBloodPotion.SetActive(true);
+                readableAndInteractableTextData.UnlockPageForRecipeId(requiredId);
+            }
+            else if (requiredId == 30)
+            {
+                scroll_BigGoodSoup.SetActive(true);
+                readableAndInteractableTextData.UnlockPageForRecipeId(requiredId);
+            }
+            else if (requiredId == 31)
+            {
+                scroll_SmallHolyCowPotion.SetActive(true);
+                readableAndInteractableTextData.UnlockPageForRecipeId(requiredId);
+            }
+            else if (requiredId == 32)
+            {
+                scroll_ElderLeafGoods.SetActive(true);
+                readableAndInteractableTextData.UnlockPageForRecipeId(requiredId);
+            }
+            else if (requiredId == 33)
+            {
+                scroll_OpenNiceWater.SetActive(true);
+                readableAndInteractableTextData.UnlockPageForRecipeId(requiredId);
+            }
+            else if (requiredId == 34)
+            {
+                scroll_BigWaterPotion.SetActive(true);
+                readableAndInteractableTextData.UnlockPageForRecipeId(requiredId);
+            }
+            else if (requiredId == 35)
+            {
+                scroll_SmallWinePotion.SetActive(true);
+                readableAndInteractableTextData.UnlockPageForRecipeId(requiredId);
+            }
+
+            Inventory.Instance.RemoveFromInventoryAlchemyRecipe(requiredId);
+            Debug.LogWarning($"Znaleziono i usuniêto item o ID: {requiredId}");
+        }
+
+        if (
+            scroll_BigAcidPotion.activeSelf &&
+            scroll_SmallAngryTimePotion.activeSelf &&
+            scroll_ElderBadMoodPotion.activeSelf &&
+            scroll_OpenBloodPotion.activeSelf &&
+            scroll_BigGoodSoup.activeSelf &&
+            scroll_SmallHolyCowPotion.activeSelf &&
+            scroll_ElderLeafGoods.activeSelf &&
+            scroll_OpenNiceWater.activeSelf &&
+            scroll_BigWaterPotion.activeSelf &&
+            scroll_SmallWinePotion.activeSelf
+        )
+        {
+            boxCollider.enabled = false;
+            recipesCounter.DisableThisGameObject();
+        }
+    }
+
     public void OnBookThrow()
     {
         if (interactableType == InteractableType.Throwable)
@@ -282,7 +388,44 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
             UIManager.Instance.readablePanel.signatureTextUI.text = readableTextData.signatureText;
             isActualReading = true;
         }
+
     }
+
+    public void OnReadInteractable()
+    {
+        if (interactableType == InteractableType.ReadableAndInteractableItem)
+        {
+            UIManager.Instance.readableAndInteractablePanel.ShowReadablePanel();
+            UIManager.Instance.readableAndInteractablePanel.headerTextUI.text = readableAndInteractableTextData.headerText;
+
+            int safeIndex = 0;
+            if (readableAndInteractableTextData != null && readableAndInteractableTextData.bookPages != null)
+            {
+                readableAndInteractableTextData.currentPageIndex = readableAndInteractableTextData.GetFirstUnlockedPageIndex();
+
+                safeIndex = Mathf.Clamp(readableAndInteractableTextData.currentPageIndex, 0, readableAndInteractableTextData.bookPages.Length - 1);
+                UIManager.Instance.readableAndInteractablePanel.mainTextUI.text = readableAndInteractableTextData.bookPages[safeIndex];
+                UIManager.Instance.readableAndInteractablePanel.pressEorQTextUI.text = readableAndInteractableTextData.pressEorQText;
+            }
+
+            isActualReading = true;
+
+            UIManager.Instance.nextPageAction.action.Enable();
+            UIManager.Instance.previousPageAction.action.Enable();
+        }
+    }
+
+
+    public void OnStopReadInteractable()
+    {
+        if (interactableType == InteractableType.ReadableAndInteractableItem)
+        {
+            UIManager.Instance.readableAndInteractablePanel.HideReadablePanel();
+            isActualReading = false;
+        }
+    }
+    public bool IsReadingInteractable() => isActualReading;
+
 
     public bool IsReading() => isActualReading;
 

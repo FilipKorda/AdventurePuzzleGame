@@ -1,4 +1,5 @@
 {
+    "version": 1,
     "name": "InputSystem_Actions",
     "maps": [
         {
@@ -505,6 +506,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Alchemia  Recepies Q",
+                    "type": "Button",
+                    "id": "2da54183-cd0d-445d-84b4-43b4bc0aa217",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Alchemia Recepies E",
+                    "type": "Button",
+                    "id": "d41ccb19-28af-42af-983f-0cd60c7a37c7",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -1000,6 +1019,28 @@
                     "processors": "",
                     "groups": ";Gamepad",
                     "action": "UINavigateLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d2e4cff8-9f08-4cf2-a6be-8e03d17383b2",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Alchemia  Recepies Q",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8521b9ac-c189-4e24-a747-7c3e1ae596da",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Alchemia Recepies E",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -1,0 +1,152 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a187f96881cd664294eea016acec52b, type: 3}
+  m_Name: ReadableAndInteractableTextData
+  m_EditorClassIdentifier: Assembly-CSharp::ReadableAndInteractableTextData
+  headerText: Mikstury
+  bookPages:
+  - "Tutaj mo\u017Cesz sprawdza\u0107 swoje receptury na mikstury,\nje\u017Celi jakie\u015B
+    posiadasz mo\u017Cesz je w\u0142o\u017Cy\u0107 pod ten st\xF3\u0142, \nwtedy
+    odrazu je zobaczysz w ksi\u0105\u017Cce. \nUwa\u017Caj bo jest ich a\u017C 10."
+  - 'ACID POTION
+
+    Do Wytworzenia mikstury potrzebujesz:
+
+    19
+
+    19
+
+    19
+
+    19
+
+    19'
+  - 'ANGRY TIME POTION
+
+    Do Wytworzenia mikstury potrzebujesz:
+
+    23
+
+    24
+
+    21
+
+    18
+
+    18'
+  - 'BAD MOOD POTION
+
+    Do Wytworzenia mikstury potrzebujesz:
+
+    23
+
+    24
+
+    20
+
+    18
+
+    19'
+  - 'BLOOD POTION
+
+    Do Wytworzenia mikstury potrzebujesz:
+
+    20
+
+    20
+
+    20
+
+    20
+
+    20'
+  - 'GOOD SOUP POTION
+
+    Do Wytworzenia mikstury potrzebujesz:
+
+    23
+
+    24
+
+    19
+
+    18
+
+    18'
+  - 'HOLY COW POTION
+
+    Do Wytworzenia mikstury potrzebujesz:
+
+    24
+
+    24
+
+    22
+
+    18
+
+    18'
+  - 'LEAF GOODS POTION
+
+    Do Wytworzenia mikstury potrzebujesz:
+
+    22
+
+    22
+
+    18
+
+    18
+
+    18'
+  - 'NICE WATER POTION
+
+    Do Wytworzenia mikstury potrzebujesz:
+
+    23
+
+    24
+
+    18
+
+    18
+
+    18'
+  - 'WATER POTION
+
+    Do Wytworzenia mikstury potrzebujesz:
+
+    18
+
+    18
+
+    18
+
+    18
+
+    18'
+  - 'WINE POTION
+
+    Do Wytworzenia mikstury potrzebujesz:
+
+    21
+
+    21
+
+    21
+
+    21
+
+    21'
+  pressEorQText: Press E or Q
+  currentPageIndex: 0
+  unlockedPages: 0100000000000000000000
