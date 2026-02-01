@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 using System.Linq;
+using System.Collections;
 
 public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpenable, IReadable, IPressable, IPlaceable, ILockPick, IFillable, IPickupARenewableItem, IAlchemyStation, IReadableAndInteractable, IRecipePlaceable
 {
@@ -77,6 +78,13 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
 
     [SerializeField] private RecipesCounter recipesCounter;
 
+
+    [SerializeField] private GameObject endPanel;
+    [SerializeField] private bool isEndPanel;
+
+
+
+
     public GameObject GetItemPrefab()
     {
         if (itemPrefab == null)
@@ -141,8 +149,15 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     {
         if (!isAlchemyRecipe && interactableType == InteractableType.Pickupable)
         {
-            DestroyInteractable();
-            Inventory.Instance.AddItemToInventory(this);
+            bool added = Inventory.Instance.AddItemToInventory(this);
+            if (added)
+            {
+                DestroyInteractable();
+            }
+            else
+            {
+                Debug.Log("Nie mo¿na podnieœæ przedmiotu — pe³ny ekwipunek. Przedmiot pozostaje in the world.");
+            }
         }
         else if (isAlchemyRecipe && interactableType == InteractableType.Pickupable)
         {
@@ -200,7 +215,16 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
             {
                 if (animator != null)
                 {
-                    animator.SetTrigger("Interact");
+                    if (isEndPanel)
+                    {
+                        animator.SetTrigger("Interact");
+                        StartEndPanel();
+                    }
+                    else
+                    {
+                        animator.SetTrigger("Interact");
+                    }
+
                 }
                 else
                 {
@@ -235,6 +259,17 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
 
 
         }
+    }
+
+    private void StartEndPanel()
+    {
+        StartCoroutine(CouritineEndPanel());
+    }
+
+    private IEnumerator CouritineEndPanel()
+    {
+        yield return new WaitForSeconds(1.3f);
+        endPanel.SetActive(true);      
     }
 
     public void PlaceObject()
@@ -318,6 +353,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
             }
 
             Inventory.Instance.RemoveFromInventoryAlchemyRecipe(requiredId);
+            recipesCounter.UpdateRecipeCount();
             Debug.LogWarning($"Znaleziono i usuniêto item o ID: {requiredId}");
         }
 

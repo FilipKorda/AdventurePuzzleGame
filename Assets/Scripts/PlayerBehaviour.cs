@@ -114,6 +114,10 @@ public class PlayerBehaviour : MonoBehaviour
     [Tooltip("Odstêp czasowy miêdzy teleportacjami.")]
     [SerializeField] private float teleportInterval = 0.75f;
 
+    [Header("Open Door Effect")]
+    [SerializeField] private Renderer hiddenDoorRenderer;
+    [SerializeField] private BoxCollider boxColliderHiddenDoor;
+
     private Color _defaultColorFilter = Color.white;
 
     private Vector2 _smoothedDrunkMoveInput;
@@ -127,13 +131,14 @@ public class PlayerBehaviour : MonoBehaviour
     private Coroutine activeLeafsGoodsCoroutine;
     private Coroutine activeAngryTimeCoroutine;
     private Coroutine activeTeleportCoroutine;
+    private Coroutine hiddenDoorCoroutine;
 
     private DepthOfField _depthOfFieldEffect;
     private ColorAdjustments _colorAdjustmentsEffect;
     private ChromaticAberration chromaticAberration;
     private LensDistortion lensDistortion;
 
-
+    public bool disablePlayer = false;
 
 
 
@@ -176,6 +181,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
+        if (disablePlayer) { return; }
         if (lastILockPick != null && lastILockPick.IsLockPicking()) return;
         if (lastIReadable != null && lastIReadable.IsReading()) return;
         if (lastIReadableAndInteractable != null && lastIReadableAndInteractable.IsReadingInteractable()) return;
@@ -184,6 +190,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     public void OnLook(InputAction.CallbackContext context)
     {
+        if (disablePlayer) { return; }
         if (lastILockPick != null && lastILockPick.IsLockPicking()) return;
         if (lastIReadable != null && lastIReadable.IsReading()) return;
         if (lastIReadableAndInteractable != null && lastIReadableAndInteractable.IsReadingInteractable()) return;
@@ -202,6 +209,8 @@ public class PlayerBehaviour : MonoBehaviour
 
     public void OnInteract(InputAction.CallbackContext context)
     {
+        if (disablePlayer) { return; }
+
         if (context.performed)
         {
             lastIpickupable?.OnPickUp();
@@ -242,7 +251,7 @@ public class PlayerBehaviour : MonoBehaviour
                 lastILockPick?.StartLockPick();
             }
 
-            if(lastIReadableAndInteractable != null && lastIReadableAndInteractable.IsReadingInteractable())
+            if (lastIReadableAndInteractable != null && lastIReadableAndInteractable.IsReadingInteractable())
             {
                 lastIReadableAndInteractable?.OnStopReadInteractable();
             }
@@ -268,6 +277,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void HandleFOV()
     {
+        if(disablePlayer) { return; }
         if (_playerCamera == null && !isDrunk) return;
 
         float targetFOV = isDrunk ? drunkFOV : normalFOV;
@@ -277,6 +287,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void HandleMovement()
     {
+        if (disablePlayer) { return; }
         if (isClimbing) { return; }
 
         Vector2 finalMoveInput = inputMovement;
@@ -304,6 +315,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void HandleLook()
     {
+        if (disablePlayer) { return; }
         Vector2 finalLookInput = inputLook;
 
         if (isDrunk)
@@ -329,10 +341,11 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void ApplyGravity()
     {
+        if(disablePlayer) { return; }
         if (isClimbing || isFlying)
         {
-            velocity.y = 0; 
-            return;         
+            velocity.y = 0;
+            return;
         }
 
         if (characterController.isGrounded && velocity.y < 0)
@@ -346,6 +359,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void HandleRaycast()
     {
+        if(disablePlayer) { return; }
         Ray ray = new(cameraTransform.position, cameraTransform.forward);
 
         // Resetowanie referencji
@@ -432,6 +446,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void HandleClimbing()
     {
+        if(disablePlayer) { return; }
         if (!isClimbing) { return; }
 
         if (characterController.isGrounded && inputMovement.y < -0.1f)
@@ -447,6 +462,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if(disablePlayer) { return; }
         if (other.CompareTag("Ladder"))
         {
             isClimbing = true;
@@ -786,7 +802,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     #region BadMoodEffect
 
-    public void BadMoodTeleport(float duration) 
+    public void BadMoodTeleport(float duration)
     {
         if (activeTeleportCoroutine != null) StopCoroutine(activeTeleportCoroutine);
 
@@ -813,8 +829,43 @@ public class PlayerBehaviour : MonoBehaviour
             timer += teleportInterval;
         }
 
-        activeTeleportCoroutine = null; 
+        activeTeleportCoroutine = null;
     }
 
+    #endregion
+
+    #region Open Hidden Door Effect
+    public void OpenHiddenDoor(float duration)
+    {
+        if (hiddenDoorCoroutine != null) StopCoroutine(hiddenDoorCoroutine);
+        hiddenDoorCoroutine = StartCoroutine(OpenHiddenCoroutine(duration));
+    }
+
+    private IEnumerator OpenHiddenCoroutine(float duration)
+    {
+        Material mat = hiddenDoorRenderer.material;
+
+        float t = 0f;
+        while (t < 1f)
+        {
+            t += Time.deltaTime / 3;
+            mat.SetFloat("_Dissolve", t);
+            yield return null;
+        }
+
+        boxColliderHiddenDoor.enabled = false;
+
+        yield return new WaitForSeconds(duration);
+
+        boxColliderHiddenDoor.enabled = true;
+
+        t = 1f;
+        while (t > 0f)
+        {
+            t -= Time.deltaTime / 3;
+            mat.SetFloat("_Dissolve", t);
+            yield return null;
+        }
+    }
     #endregion
 }

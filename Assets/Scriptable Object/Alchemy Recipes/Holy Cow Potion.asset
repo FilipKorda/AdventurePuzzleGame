@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ingredientItemIds: 1800000018000000160000001200000012000000
   resultingPotion: {fileID: 3096892419514706705, guid: bbe80e71cf0017c4db45a86f9793a9e5, type: 3}
+  recipeMat: {fileID: 2100000, guid: 541229957910f2b4c87e89d1e4a7c3f1, type: 2}
+  brewingTime: 9

@@ -610,6 +610,15 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ESC"",
+                    ""type"": ""Button"",
+                    ""id"": ""d21b13f6-82b6-4364-8403-da15801dcd60"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -1129,6 +1138,17 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""action"": ""Alchemia Recepies E"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""01a3aaf7-0f1e-409e-b6e4-478403a7e6dd"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ESC"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -1225,6 +1245,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_UI_UINavigateLeft = m_UI.FindAction("UINavigateLeft", throwIfNotFound: true);
         m_UI_AlchemiaRecepiesQ = m_UI.FindAction("Alchemia  Recepies Q", throwIfNotFound: true);
         m_UI_AlchemiaRecepiesE = m_UI.FindAction("Alchemia Recepies E", throwIfNotFound: true);
+        m_UI_ESC = m_UI.FindAction("ESC", throwIfNotFound: true);
     }
 
     ~@InputSystem_Actions()
@@ -1476,6 +1497,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_UI_UINavigateLeft;
     private readonly InputAction m_UI_AlchemiaRecepiesQ;
     private readonly InputAction m_UI_AlchemiaRecepiesE;
+    private readonly InputAction m_UI_ESC;
     /// <summary>
     /// Provides access to input actions defined in input action map "UI".
     /// </summary>
@@ -1564,6 +1586,10 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @AlchemiaRecepiesE => m_Wrapper.m_UI_AlchemiaRecepiesE;
         /// <summary>
+        /// Provides access to the underlying input action "UI/ESC".
+        /// </summary>
+        public InputAction @ESC => m_Wrapper.m_UI_ESC;
+        /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
         public InputActionMap Get() { return m_Wrapper.m_UI; }
@@ -1646,6 +1672,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @AlchemiaRecepiesE.started += instance.OnAlchemiaRecepiesE;
             @AlchemiaRecepiesE.performed += instance.OnAlchemiaRecepiesE;
             @AlchemiaRecepiesE.canceled += instance.OnAlchemiaRecepiesE;
+            @ESC.started += instance.OnESC;
+            @ESC.performed += instance.OnESC;
+            @ESC.canceled += instance.OnESC;
         }
 
         /// <summary>
@@ -1714,6 +1743,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @AlchemiaRecepiesE.started -= instance.OnAlchemiaRecepiesE;
             @AlchemiaRecepiesE.performed -= instance.OnAlchemiaRecepiesE;
             @AlchemiaRecepiesE.canceled -= instance.OnAlchemiaRecepiesE;
+            @ESC.started -= instance.OnESC;
+            @ESC.performed -= instance.OnESC;
+            @ESC.canceled -= instance.OnESC;
         }
 
         /// <summary>
@@ -2002,5 +2034,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnAlchemiaRecepiesE(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "ESC" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnESC(InputAction.CallbackContext context);
     }
 }

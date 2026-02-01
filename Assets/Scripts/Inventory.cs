@@ -37,7 +37,6 @@ public class Inventory : MonoBehaviour
         return inventory.Any(item => item.GetItemId() == itemId);
     }
 
-    // Dla wydajnoœci przekszta³camy do HashSet
     public int CountItemsWithIds(IEnumerable<int> ids)
     {
         if (ids == null) return 0;
@@ -45,10 +44,17 @@ public class Inventory : MonoBehaviour
         return inventory.Count(item => set.Contains(item.GetItemId()));
     }
 
-    public void AddItemToInventory(IPickupable iPickupable)
+    public bool AddItemToInventory(IPickupable iPickupable)
     {
+        if (UIManager.Instance != null && !UIManager.Instance.CanAddItemToUI())
+        {
+            Debug.Log("Nie mo¿na podnieœæ przedmiotu — masz ju¿ maksymaln¹ liczbê przedmiotów, które mo¿esz nosiæ.");
+            return false;
+        }
+
         inventory.Add(iPickupable);
-        UIManager.Instance.AddItemToUI(iPickupable);
+        UIManager.Instance?.AddItemToUI(iPickupable);
+        return true;
     }
 
     public void AddToInventoryAlchemyRecipe(IPickupable iPickupable)

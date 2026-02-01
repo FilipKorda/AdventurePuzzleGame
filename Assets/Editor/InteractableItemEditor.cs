@@ -33,6 +33,8 @@ public class InteractableItemEditor : Editor
     private SerializedProperty scroll_BigWaterPotion;
     private SerializedProperty scroll_SmallWinePotion;
     private SerializedProperty recipesCounter;
+    private SerializedProperty endPanel;
+    private SerializedProperty isEndPanel;
 
     private void OnEnable()
     {
@@ -65,6 +67,8 @@ public class InteractableItemEditor : Editor
         scroll_BigWaterPotion = serializedObject.FindProperty("scroll_BigWaterPotion");
         scroll_SmallWinePotion = serializedObject.FindProperty("scroll_SmallWinePotion");
         recipesCounter = serializedObject.FindProperty("recipesCounter");
+        endPanel = serializedObject.FindProperty("endPanel");
+        isEndPanel = serializedObject.FindProperty("isEndPanel");
     }
 
     public override void OnInspectorGUI()
@@ -96,6 +100,8 @@ public class InteractableItemEditor : Editor
                 EditorGUILayout.PropertyField(requiredItemIdsProp, new GUIContent("Required Item IDs"));
                 EditorGUILayout.PropertyField(animatorProp, new GUIContent("Animator"));
                 EditorGUILayout.PropertyField(canOpenWithNoSelectedItem, new GUIContent("Bool Can Open With seleted Item"));
+                EditorGUILayout.PropertyField(endPanel, new GUIContent("End Panel"));
+                EditorGUILayout.PropertyField(isEndPanel, new GUIContent("Is End Panel"));
                 EditorGUILayout.HelpBox("Wymaga przedmiotu (lub przedmiotów) o podanych ID, aby mo¿na by³o go otworzyæ.", MessageType.Info);
                 break;
 

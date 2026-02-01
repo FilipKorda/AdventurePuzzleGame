@@ -9,4 +9,8 @@ public class AlchemyRecipe : ScriptableObject
 
     [Tooltip("Prefab przedmiotu, który powstaje po uwarzeniu eliksiru (np. 'Fiolka z Eliksirem Si³y').")]
     public InteractableItem resultingPotion;
+
+    public Material recipeMat;
+
+    public float brewingTime = 5f;
 }

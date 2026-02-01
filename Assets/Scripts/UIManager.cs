@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -17,8 +18,12 @@ public class UIManager : MonoBehaviour
     private List<ItemSlot> itemSlots = new();
     private int selectedItemId = -1;
 
+    [Header("Inventory Settings")]
+    [SerializeField] private int maxVisibleSlots = 5;
+
     [Header("Input Settings")]
     [SerializeField] private InputActionReference[] selectItemActions;
+   
 
     [SerializeField] private InputActionReference navigateNextAction;
     [SerializeField] private InputActionReference navigatePreviousAction;
@@ -28,6 +33,9 @@ public class UIManager : MonoBehaviour
 
     public InputActionReference nextPageAction;
     public InputActionReference previousPageAction;
+
+    [SerializeField] private TextMeshProUGUI itemNameText;
+    private System.Action<InputAction.CallbackContext>[] selectItemPerformedCallbacks;
 
     private void OnEnable()
     {
@@ -269,8 +277,19 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public bool CanAddItemToUI()
+    {
+        return itemSlots.Count < maxVisibleSlots;
+    }
+
     public void AddItemToUI(IPickupable ipickupable)
     {
+        if (!CanAddItemToUI())
+        {
+            Debug.Log("Osi¹gniêto maksymaln¹ liczbê przedmiotów, które mo¿esz nosiæ.");
+            return;
+        }
+
         GameObject itemSlot = Instantiate(itemSlotPrefab, inventoryPanel);
 
         if (itemSlot.TryGetComponent<ItemSlot>(out var itemSlotScript))
@@ -303,6 +322,14 @@ public class UIManager : MonoBehaviour
                     {
                         SelectItem(0);
                     }
+                    else
+                    {
+                        // jeœli nie ma elementów, wyczyœæ tekst nazwy
+                        if (itemNameText != null)
+                        {
+                            itemNameText.text = string.Empty;
+                        }
+                    }
                 }
                 else
                 {
@@ -322,24 +349,41 @@ public class UIManager : MonoBehaviour
 
     private void RegisterSelectItemActions()
     {
+        if (selectItemActions == null) return;
+
+        selectItemPerformedCallbacks = new System.Action<InputAction.CallbackContext>[selectItemActions.Length];
+
         for (int i = 0; i < selectItemActions.Length; i++)
         {
             int index = i;
-            selectItemActions[i].action.Enable();
-            selectItemActions[i].action.performed += context => OnSelectItemPerformed(index);
+            var actionRef = selectItemActions[i];
+            if (actionRef == null || actionRef.action == null) continue;
+
+            // zapamiêtujemy callback, ¿eby potem poprawnie go odpi¹æ
+            selectItemPerformedCallbacks[i] = context => OnSelectItemPerformed(index);
+            actionRef.action.Enable();
+            actionRef.action.performed += selectItemPerformedCallbacks[i];
         }
     }
 
     private void UnregisterSelectItemActions()
     {
-        foreach (var actionRef in selectItemActions)
+        if (selectItemActions == null) return;
+
+        for (int i = 0; i < selectItemActions.Length; i++)
         {
-            if (actionRef != null && actionRef.action != null)
+            var actionRef = selectItemActions[i];
+            if (actionRef == null || actionRef.action == null) continue;
+
+            if (selectItemPerformedCallbacks != null && i < selectItemPerformedCallbacks.Length && selectItemPerformedCallbacks[i] != null)
             {
-                actionRef.action.performed -= context => OnSelectItemPerformed(System.Array.IndexOf(selectItemActions, actionRef));
-                actionRef.action.Disable();
+                actionRef.action.performed -= selectItemPerformedCallbacks[i];
+                selectItemPerformedCallbacks[i] = null;
             }
+            actionRef.action.Disable();
         }
+
+        selectItemPerformedCallbacks = null;
     }
 
     private void OnNavigateNext(InputAction.CallbackContext context)
@@ -389,6 +433,10 @@ public class UIManager : MonoBehaviour
                 itemSlots[selectedItemId].SetHighlighted(false);
             }
             selectedItemId = -1;
+            if (itemNameText != null)
+            {
+                itemNameText.text = string.Empty;
+            }
             return;
         }
 
@@ -400,6 +448,11 @@ public class UIManager : MonoBehaviour
         selectedItemId = index;
 
         itemSlots[selectedItemId].SetHighlighted(true);
+        // ustawiamy nazwê zaznaczonego przedmiotu w UI
+        if (itemNameText != null)
+        {
+            itemNameText.text = itemSlots[selectedItemId].GetItemName();
+        }
         Debug.Log($"Zaznaczono element: {itemSlots[selectedItemId].GetItemName()} (ItemID: {itemSlots[selectedItemId].GetItemId()})");
     }
 

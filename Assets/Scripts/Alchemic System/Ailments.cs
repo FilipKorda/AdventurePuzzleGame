@@ -76,5 +76,6 @@ public class Ailments : MonoBehaviour
     public void ApplyHolyCowEffect()
     {
         Debug.Log("Efekt z Ailments: Zjedzono 'HolyCow'. Czujesz siê b³ogos³awiony.");
+        playerBehaviour.OpenHiddenDoor(7);
     }
 }
