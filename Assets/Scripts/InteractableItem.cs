@@ -1,7 +1,8 @@
+using System.Collections;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
-using System.Linq;
-using System.Collections;
+using UnityEngine.Localization;
 
 public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpenable, IReadable, IPressable, IPlaceable, ILockPick, IFillable, IPickupARenewableItem, IAlchemyStation, IReadableAndInteractable, IRecipePlaceable
 {
@@ -23,6 +24,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
 
     public InteractableType interactableType;
     [SerializeField] private string itemName = "Przedmiot";
+    [SerializeField] private LocalizedString localizeItemName;
     [SerializeField] private Sprite itemSprite;
 
     [Header("ID (if Pickupable)")]
@@ -84,12 +86,11 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
 
 
 
-
     public GameObject GetItemPrefab()
     {
         if (itemPrefab == null)
         {
-            Debug.LogError($"B³¹d krytyczny: Przedmiot '{itemName}' (ID: {itemId}) nie ma przypisanego prefabu w polu 'Item Prefab'! Nie mo¿na go wyrzuciæ.");
+            Debug.LogError($"B³¹d krytyczny: Przedmiot '{GetItemName()}' (ID: {itemId}) nie ma przypisanego prefabu w polu 'Item Prefab'! Nie mo¿na go wyrzuciæ.");
             return null;
         }
         return itemPrefab;
@@ -170,7 +171,23 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
 
     public void DestroyInteractable() => Destroy(gameObject);
 
-    public string GetItemName() => itemName;
+    public string GetItemName()
+    {
+        try
+        {
+            if (localizeItemName != null)
+            {
+                var localized = localizeItemName.GetLocalizedString();
+                if (!string.IsNullOrEmpty(localized))
+                    return localized;
+            }
+        }
+        catch
+        {
+        }
+
+        return itemName;
+    }
 
     public Sprite GetItemSprite() => itemSprite;
 
@@ -269,7 +286,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     private IEnumerator CouritineEndPanel()
     {
         yield return new WaitForSeconds(1.3f);
-        endPanel.SetActive(true);      
+        endPanel.SetActive(true);
     }
 
     public void PlaceObject()
@@ -419,9 +436,15 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         if (interactableType == InteractableType.Readable)
         {
             UIManager.Instance.readablePanel.ShowReadablePanel();
-            UIManager.Instance.readablePanel.headerTextUI.text = readableTextData.headerText;
-            UIManager.Instance.readablePanel.mainTextUI.text = readableTextData.mainText;
-            UIManager.Instance.readablePanel.signatureTextUI.text = readableTextData.signatureText;
+            UIManager.Instance.readablePanel.headerTextUI.text =
+           readableTextData.localizeHeader.GetLocalizedString();
+
+            UIManager.Instance.readablePanel.mainTextUI.text =
+                readableTextData.localizeMainText.GetLocalizedString();
+
+            UIManager.Instance.readablePanel.signatureTextUI.text =
+               readableTextData.localizeSignature.GetLocalizedString();
+
             isActualReading = true;
         }
 
@@ -432,7 +455,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         if (interactableType == InteractableType.ReadableAndInteractableItem)
         {
             UIManager.Instance.readableAndInteractablePanel.ShowReadablePanel();
-            UIManager.Instance.readableAndInteractablePanel.headerTextUI.text = readableAndInteractableTextData.headerText;
+            UIManager.Instance.readableAndInteractablePanel.headerTextUI.text = readableAndInteractableTextData.headerText.GetLocalizedString();
 
             int safeIndex = 0;
             if (readableAndInteractableTextData != null && readableAndInteractableTextData.bookPages != null)
@@ -440,8 +463,8 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
                 readableAndInteractableTextData.currentPageIndex = readableAndInteractableTextData.GetFirstUnlockedPageIndex();
 
                 safeIndex = Mathf.Clamp(readableAndInteractableTextData.currentPageIndex, 0, readableAndInteractableTextData.bookPages.Length - 1);
-                UIManager.Instance.readableAndInteractablePanel.mainTextUI.text = readableAndInteractableTextData.bookPages[safeIndex];
-                UIManager.Instance.readableAndInteractablePanel.pressEorQTextUI.text = readableAndInteractableTextData.pressEorQText;
+                UIManager.Instance.readableAndInteractablePanel.mainTextUI.text = readableAndInteractableTextData.bookPages[safeIndex].GetLocalizedString();
+                UIManager.Instance.readableAndInteractablePanel.pressEorQTextUI.text = readableAndInteractableTextData.pressEorQText.GetLocalizedString();
             }
 
             isActualReading = true;

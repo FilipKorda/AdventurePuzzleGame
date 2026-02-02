@@ -72,11 +72,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactableType: 0
   itemName: Leafs
+  localizeItemName:
+    m_TableReference:
+      m_TableCollectionName: GUID:d126a2aaffb817f4f9fefa17fce8e709
+    m_TableEntryReference:
+      m_KeyId: 431474626560
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   itemSprite: {fileID: 0}
   itemId: 22
   requiredItemIds: 
   animator: {fileID: 0}
   readableTextData: {fileID: 0}
+  readableAndInteractableTextData: {fileID: 0}
   onAllWallButtonPressed:
     m_PersistentCalls:
       m_Calls: []
@@ -84,12 +94,30 @@ MonoBehaviour:
   boxCollider: {fileID: 0}
   canOpenWithNoSelectedItem: 0
   itemPrefab: {fileID: 8854708381635335146, guid: 9daf9afeb198c9b4cadf85b40b212c35, type: 3}
+  isActualReading: 0
+  isAlchemyRecipe: 0
   requiredUses: 3
   providedLiquidType: 0
   fillMapping:
     requiredEmptyItem: {fileID: 0}
     resultingFilledItem: {fileID: 0}
   cauldron: {fileID: 0}
+  scroll_BigAcidPotion: {fileID: 0}
+  scroll_SmallAngryTimePotion: {fileID: 0}
+  scroll_ElderBadMoodPotion: {fileID: 0}
+  scroll_OpenBloodPotion: {fileID: 0}
+  scroll_BigGoodSoup: {fileID: 0}
+  scroll_SmallHolyCowPotion: {fileID: 0}
+  scroll_ElderLeafGoods: {fileID: 0}
+  scroll_OpenNiceWater: {fileID: 0}
+  scroll_BigWaterPotion: {fileID: 0}
+  scroll_SmallWinePotion: {fileID: 0}
+  recipesCounter: {fileID: 0}
+  endPanel: {fileID: 0}
+  isEndPanel: 0
+  references:
+    version: 2
+    RefIds: []
 --- !u!54 &-5469169097978628831
 Rigidbody:
   m_ObjectHideFlags: 0

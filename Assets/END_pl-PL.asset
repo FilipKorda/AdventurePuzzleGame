@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: END_pl-PL
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.StringTable
+  m_LocaleId:
+    m_Code: pl-PL
+  m_SharedData: {fileID: 11400000, guid: 430bc3819c599f347a823650784c8a53, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 10748186624
+    m_Localized: TO KONIEC
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49008627712
+    m_Localized: DZIEKI ZA GRANIE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51374215168
+    m_Localized: DEMO SIE SKONCZYLO
+    m_Metadata:
+      m_Items: []
+  - m_Id: 63403479040
+    m_Localized: "DRUGA D\u0179WIGNIA ROBI TO SAMO"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 75432742912
+    m_Localized: POZDRAWIAM SERDECZNIE I ZYCZE SMACZNEJ KAWUSI
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

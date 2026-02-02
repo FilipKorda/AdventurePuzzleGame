@@ -212,8 +212,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactableType: 0
   itemName: Bad Mood
-  itemSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  itemId: 29
+  localizeItemName:
+    m_TableReference:
+      m_TableCollectionName: GUID:d126a2aaffb817f4f9fefa17fce8e709
+    m_TableEntryReference:
+      m_KeyId: 9954683801600
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  itemSprite: {fileID: 21300000, guid: a09825c010a0bea43951e996ee4390da, type: 3}
+  itemId: 40
   requiredItemIds: 
   animator: {fileID: 0}
   readableTextData: {fileID: 0}
@@ -244,6 +253,11 @@ MonoBehaviour:
   scroll_BigWaterPotion: {fileID: 0}
   scroll_SmallWinePotion: {fileID: 0}
   recipesCounter: {fileID: 0}
+  endPanel: {fileID: 0}
+  isEndPanel: 0
+  references:
+    version: 2
+    RefIds: []
 --- !u!54 &7722151831859636880
 Rigidbody:
   m_ObjectHideFlags: 0

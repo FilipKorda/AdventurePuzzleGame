@@ -1,0 +1,97 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Books_pl-PL
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.StringTable
+  m_LocaleId:
+    m_Code: pl-PL
+  m_SharedData: {fileID: 11400000, guid: 2ab2a260766ac7e4faccb436c2c36527, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 21837926400
+    m_Localized: "main text abrakadabra nic tu nie ma aale zawsze moze by\u0107 xd"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 331545333760
+    m_Localized: "Siema tytu\u0142"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 397169414144
+    m_Localized: Podpis
+    m_Metadata:
+      m_Items: []
+  - m_Id: 790054064128
+    m_Localized: "Kocio\u0142"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 919670640640
+    m_Localized: "Mozna sobie wywarzy\u0107 mikstury o roznych efektach ubocznych,
+      te efekty moga byc dobre albo zle. Jest  jedna mikstura ktora pomoze ci sie
+      stad wydostac. Ale nie pamietam jaka jest to  receptury."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1013933428736
+    m_Localized: Mistrz Mikstur
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1236848103424
+    m_Localized: "Wiem jak sie wydosta\u0107"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1373414641664
+    m_Localized: "Zegnam was, ju\u017C wiem jak sie wydostac, Uciekam. Przez te kraty
+      wszystko widac, pierwsza dzwignia ma byc w do\u0142, \u015Brodkowa ma by\u0107
+      w do\u0142  i ta trzecia ma by\u0107 w g\xF3re. Ale nigdy nie moge ich znale\u017C\u0107.
+      MOze komus sie te wskak\xF3wki przydadza!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1523553947648
+    m_Localized: Wiezien
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1768056705024
+    m_Localized: KONIEC?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1847127724032
+    m_Localized: "Wybierz m\u0105drz\u0119 praw\u0105 d\u017Awignie albo lew\u0105
+      d\u017Awigni\u0119."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2031823900672
+    m_Localized: Dev
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2163269193728
+    m_Localized: "Wskaz\xF3wka Mistrza Eliksir\xF3w"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2326666694656
+    m_Localized: "Zazwyczaj kazdy wywar potrzebuje 3 lirow wody czyli innym slowem
+      3 wiader pelnych wody. W sumie tez maksymalna ilosc skladnik\xF3w to 5, zawsze
+      jest 5, nigdy nie ma wiecej niz 5 sk\u0142anik\xF3w, chyba......"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2560226512896
+    m_Localized: Receptury
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2686479257600
+    m_Localized: "W tym miejscu sa wszedzie rozrzucone papirusy z przepisami na mikstury.
+      Mozesz je znlae\u017C\u0107 i przenie\u015B\u0107 w jedno miejsce zeby miec
+      do nich szybki dostep."
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

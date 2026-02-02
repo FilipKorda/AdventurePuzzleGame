@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: BookRecpies Shared Data
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.SharedTableData
+  m_TableCollectionName: BookRecpies
+  m_TableCollectionNameGuidString: 196636a49d964714d8f9360b2e97f7b1
+  m_Entries:
+  - m_Id: 5996040192
+    m_Key: BookRecpie
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45493800960
+    m_Key: BookRecpie1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55203614720
+    m_Key: BookRecpie2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 63952932864
+    m_Key: BookRecpie3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 145494396928
+    m_Key: BookRecpie4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 195620524032
+    m_Key: BookRecpie5
+    m_Metadata:
+      m_Items: []
+  - m_Id: 197868670976
+    m_Key: BookRecpie6
+    m_Metadata:
+      m_Items: []
+  - m_Id: 199512838144
+    m_Key: BookRecpie7
+    m_Metadata:
+      m_Items: []
+  - m_Id: 200850821120
+    m_Key: BookRecpie8
+    m_Metadata:
+      m_Items: []
+  - m_Id: 403037245440
+    m_Key: BookRecpie9
+    m_Metadata:
+      m_Items: []
+  - m_Id: 442920882176
+    m_Key: BookRecpie10
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1435066716160
+    m_Key: Mixtures
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1518764052480
+    m_Key: QiE
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 602285035798921294
+  references:
+    version: 2
+    RefIds:
+    - rid: 602285035798921294
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1770024450301

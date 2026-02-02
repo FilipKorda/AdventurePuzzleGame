@@ -1,12 +1,13 @@
 using UnityEngine;
+using UnityEngine.Localization;
 
 [CreateAssetMenu(fileName = "ReadableAndInteractableTextData", menuName = "ScriptableObjects/ReadableAndInteractableTextData")]
 public class ReadableAndInteractableTextData : ScriptableObject
 {
     [Header("Text to Display")]
-    public string headerText;
-    [TextArea(7,7)] public string[] bookPages;
-    public string pressEorQText;
+    public LocalizedString headerText;
+    public LocalizedString[] bookPages;
+    public LocalizedString pressEorQText;
 
     public int currentPageIndex;
 
@@ -40,9 +41,7 @@ public class ReadableAndInteractableTextData : ScriptableObject
     {
         if (bookPages == null) return false;
         if (index < 0 || index >= bookPages.Length) return false;
-
         if (index == 0) return true;
-
         if (unlockedPages == null) return false;
         return unlockedPages[index];
     }
@@ -50,7 +49,6 @@ public class ReadableAndInteractableTextData : ScriptableObject
     public void UnlockPage(int index)
     {
         if (bookPages == null) return;
-
         if (index == 0) return;
 
         if (unlockedPages == null || unlockedPages.Length != bookPages.Length)
@@ -75,7 +73,7 @@ public class ReadableAndInteractableTextData : ScriptableObject
         const int recipeIdBase = 25;
         int index = recipeId - recipeIdBase;
         if (bookPages == null) return;
-        if (index >= 1 && index < bookPages.Length) 
+        if (index >= 1 && index < bookPages.Length)
             UnlockPage(index);
     }
 }

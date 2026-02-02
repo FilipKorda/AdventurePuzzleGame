@@ -35,6 +35,7 @@ public class InteractableItemEditor : Editor
     private SerializedProperty recipesCounter;
     private SerializedProperty endPanel;
     private SerializedProperty isEndPanel;
+    private SerializedProperty localizeItemName;
 
     private void OnEnable()
     {
@@ -69,6 +70,7 @@ public class InteractableItemEditor : Editor
         recipesCounter = serializedObject.FindProperty("recipesCounter");
         endPanel = serializedObject.FindProperty("endPanel");
         isEndPanel = serializedObject.FindProperty("isEndPanel");
+        localizeItemName = serializedObject.FindProperty("localizeItemName");
     }
 
     public override void OnInspectorGUI()
@@ -93,6 +95,7 @@ public class InteractableItemEditor : Editor
                 EditorGUILayout.PropertyField(itemIdProp, new GUIContent("Item ID"));
                 EditorGUILayout.PropertyField(itemPrefab, new GUIContent("Item to Drop From UI"));
                 EditorGUILayout.PropertyField(isAlchemyRecipe, new GUIContent("Is Item Alchemy recipe?"));
+                EditorGUILayout.PropertyField(localizeItemName, new GUIContent("Localize Item Name"));
                 EditorGUILayout.HelpBox("To jest ID tego przedmiotu, gdy znajdzie siê w ekwipunku.", MessageType.Info);
                 break;
 

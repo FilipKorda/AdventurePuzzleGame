@@ -10,6 +10,7 @@ public class PausePanel : MonoBehaviour
     [SerializeField] private InputActionReference pauseAction;
 
     private bool isPaused;
+    private bool allowPause = true;
 
     private void OnEnable()
     {
@@ -25,6 +26,9 @@ public class PausePanel : MonoBehaviour
 
     private void OnPause(InputAction.CallbackContext context)
     {
+        if (!allowPause)
+            return;
+
         if (isPaused)
             ResumeGame();
         else
@@ -66,5 +70,10 @@ public class PausePanel : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene(mainMenuSceneName);
+    }
+
+    public void SetAllowPause(bool value)
+    {
+        allowPause = value;
     }
 }

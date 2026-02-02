@@ -1,0 +1,167 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Items_pl-PL
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.StringTable
+  m_LocaleId:
+    m_Code: pl-PL
+  m_SharedData: {fileID: 11400000, guid: d126a2aaffb817f4f9fefa17fce8e709, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 415657906176
+    m_Localized: Wino
+    m_Metadata:
+      m_Items: []
+  - m_Id: 646789222400
+    m_Localized: Receptura Mikstura Wna
+    m_Metadata:
+      m_Items: []
+  - m_Id: 377250664448
+    m_Localized: Woda
+    m_Metadata:
+      m_Items: []
+  - m_Id: 633799462912
+    m_Localized: Receptura Mikstury Wody
+    m_Metadata:
+      m_Items: []
+  - m_Id: 200628523008
+    m_Localized: "D\u017Awignia"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 149537705984
+    m_Localized: "W\u0142\xF3cznia"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 216222945280
+    m_Localized: "\u0141opata"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 485669228544
+    m_Localized: "Surowe mi\u0119so"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 284787232768
+    m_Localized: "Z\u0142oty klucz"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472125820928
+    m_Localized: Korzenie
+    m_Metadata:
+      m_Items: []
+  - m_Id: 325048356864
+    m_Localized: Widelec
+    m_Metadata:
+      m_Items: []
+  - m_Id: 499145527296
+    m_Localized: Dobra  Woda
+    m_Metadata:
+      m_Items: []
+  - m_Id: 618817409024
+    m_Localized: 'Receptura Dobrej Wody '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 337237004288
+    m_Localized: Wytrych
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431474626560
+    m_Localized: "Li\u015Bcie"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 125089107968
+    m_Localized: "N\xF3\u017C"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 188087554048
+    m_Localized: Brudny Klucz
+    m_Metadata:
+      m_Items: []
+  - m_Id: 607333404672
+    m_Localized: "Przepis na produkty li\u015Bciaste"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 594700161024
+    m_Localized: "\r\nPrzepis na eliksir \u015Bwi\u0119tej krowy"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 300595564544
+    m_Localized: "M\u0142ot"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 580632465408
+    m_Localized: "Dobry przepis na zup\u0119"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 349232713728
+    m_Localized: "Krzemie\u0144"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 364537729024
+    m_Localized: Puste Wiadro
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5798907904
+    m_Localized: "Ko\u015B\u0107"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 398951993344
+    m_Localized: Wiadro Krwi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 568540286976
+    m_Localized: Przepis na eliksir krwi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 544171380736
+    m_Localized: "Przepis na eliksir z\u0142ego nastroju"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 529680060416
+    m_Localized: Przepis na eliksir gniewnego czasu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 388235546624
+    m_Localized: Wiadro z kwasem
+    m_Metadata:
+      m_Items: []
+  - m_Id: 513045450752
+    m_Localized: Przepis na eliksir kwasowy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6415140016128
+    m_Localized: Brudna Woda
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9392995192832
+    m_Localized: "Wiadro \u015Bwi\u0119tej krowy"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8548002320384
+    m_Localized: Wiadro dobrych lisci
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9668690989056
+    m_Localized: Dobra Zupa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9954683801600
+    m_Localized: "Z\u0142y Humor"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10359811624960
+    m_Localized: "Z\u0142y czas"
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

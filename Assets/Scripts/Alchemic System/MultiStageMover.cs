@@ -19,6 +19,8 @@ public class MultiStageMover : MonoBehaviour
     private int currentStage = 0;
     private bool isMoving = false;
 
+    public GameObject fireObject;
+
     void Start()
     {
         originalPosition = objectToMove.transform.position;
@@ -28,6 +30,12 @@ public class MultiStageMover : MonoBehaviour
 
     public void MoveWaterUp()
     {
+        if(fireObject.activeSelf == false)
+        {
+            Debug.Log("Nie mo¿na przesun¹æ obiektu - ogieñ jest wy³¹czony.");
+            return;
+        }
+
         moveCoroutine = StartCoroutine(MoveObjectToNextStage());
     }
 

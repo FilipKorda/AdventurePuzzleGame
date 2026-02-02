@@ -12,141 +12,115 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a187f96881cd664294eea016acec52b, type: 3}
   m_Name: ReadableAndInteractableTextData
   m_EditorClassIdentifier: Assembly-CSharp::ReadableAndInteractableTextData
-  headerText: Mikstury
+  headerText:
+    m_TableReference:
+      m_TableCollectionName: GUID:196636a49d964714d8f9360b2e97f7b1
+    m_TableEntryReference:
+      m_KeyId: 1435066716160
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   bookPages:
-  - "Tutaj mo\u017Cesz sprawdza\u0107 swoje receptury na mikstury,\nje\u017Celi jakie\u015B
-    posiadasz mo\u017Cesz je w\u0142o\u017Cy\u0107 pod ten st\xF3\u0142, \nwtedy
-    odrazu je zobaczysz w ksi\u0105\u017Cce. \nUwa\u017Caj bo jest ich a\u017C 10."
-  - 'ACID POTION
-
-    Do Wytworzenia mikstury potrzebujesz:
-
-    19
-
-    19
-
-    19
-
-    19
-
-    19'
-  - 'ANGRY TIME POTION
-
-    Do Wytworzenia mikstury potrzebujesz:
-
-    23
-
-    24
-
-    21
-
-    18
-
-    18'
-  - 'BAD MOOD POTION
-
-    Do Wytworzenia mikstury potrzebujesz:
-
-    23
-
-    24
-
-    20
-
-    18
-
-    19'
-  - 'BLOOD POTION
-
-    Do Wytworzenia mikstury potrzebujesz:
-
-    20
-
-    20
-
-    20
-
-    20
-
-    20'
-  - 'GOOD SOUP POTION
-
-    Do Wytworzenia mikstury potrzebujesz:
-
-    23
-
-    24
-
-    19
-
-    18
-
-    18'
-  - 'HOLY COW POTION
-
-    Do Wytworzenia mikstury potrzebujesz:
-
-    24
-
-    24
-
-    22
-
-    18
-
-    18'
-  - 'LEAF GOODS POTION
-
-    Do Wytworzenia mikstury potrzebujesz:
-
-    22
-
-    22
-
-    18
-
-    18
-
-    18'
-  - 'NICE WATER POTION
-
-    Do Wytworzenia mikstury potrzebujesz:
-
-    23
-
-    24
-
-    18
-
-    18
-
-    18'
-  - 'WATER POTION
-
-    Do Wytworzenia mikstury potrzebujesz:
-
-    18
-
-    18
-
-    18
-
-    18
-
-    18'
-  - 'WINE POTION
-
-    Do Wytworzenia mikstury potrzebujesz:
-
-    21
-
-    21
-
-    21
-
-    21
-
-    21'
-  pressEorQText: Press E or Q
-  currentPageIndex: 0
+  - m_TableReference:
+      m_TableCollectionName: GUID:196636a49d964714d8f9360b2e97f7b1
+    m_TableEntryReference:
+      m_KeyId: 5996040192
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:196636a49d964714d8f9360b2e97f7b1
+    m_TableEntryReference:
+      m_KeyId: 45493800960
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:196636a49d964714d8f9360b2e97f7b1
+    m_TableEntryReference:
+      m_KeyId: 55203614720
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:196636a49d964714d8f9360b2e97f7b1
+    m_TableEntryReference:
+      m_KeyId: 63952932864
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:196636a49d964714d8f9360b2e97f7b1
+    m_TableEntryReference:
+      m_KeyId: 145494396928
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:196636a49d964714d8f9360b2e97f7b1
+    m_TableEntryReference:
+      m_KeyId: 195620524032
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:196636a49d964714d8f9360b2e97f7b1
+    m_TableEntryReference:
+      m_KeyId: 197868670976
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:196636a49d964714d8f9360b2e97f7b1
+    m_TableEntryReference:
+      m_KeyId: 199512838144
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:196636a49d964714d8f9360b2e97f7b1
+    m_TableEntryReference:
+      m_KeyId: 200850821120
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:196636a49d964714d8f9360b2e97f7b1
+    m_TableEntryReference:
+      m_KeyId: 403037245440
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:196636a49d964714d8f9360b2e97f7b1
+    m_TableEntryReference:
+      m_KeyId: 442920882176
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  pressEorQText:
+    m_TableReference:
+      m_TableCollectionName: GUID:196636a49d964714d8f9360b2e97f7b1
+    m_TableEntryReference:
+      m_KeyId: 1518764052480
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  currentPageIndex: 4
   unlockedPages: 0100000000000000000000
+  references:
+    version: 2
+    RefIds: []

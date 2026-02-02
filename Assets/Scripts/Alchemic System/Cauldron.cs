@@ -34,6 +34,8 @@ public class Cauldron : MonoBehaviour
     [SerializeField] private float badRecipeBrewingTime = 3f;
     [SerializeField] private ParticleSystem ps;
 
+    public GameObject fireObject;
+
     private void Awake()
     {
         if (cylinder != null)
@@ -68,6 +70,12 @@ public class Cauldron : MonoBehaviour
 
     public void AddIngredient(int itemId)
     {
+        if(multiStageMover.fireObject.activeSelf == false)
+        {
+            Debug.Log("Podpal ogieñ zanim  bedziesz wk³adaæ sk³adniki  do kocio³a.");
+            return;
+        }
+
         if (HasReadySolution())
         {
             Debug.Log("Kocio³ zawiera ju¿ gotowy roztwór. Opró¿nij go najpierw.");
@@ -113,6 +121,12 @@ public class Cauldron : MonoBehaviour
 
                 if (currentIngredients.SequenceEqual(sortedRecipeIngredients))
                 {
+                    if (!IsFireActive())
+                    {
+                        Debug.Log("Nie mo¿na rozpocz¹æ gotowania — ogieñ jest zgaszony. W³¹cz ogieñ, aby zacz¹æ gotowaæ.");
+                        return;
+                    }
+
                     Debug.Log($"Rozpoczynanie gotowania: {recipe.resultingPotion.GetItemName()} (czas: {recipe.brewingTime}s)");
 
                     StartBrewing(recipe);
@@ -124,11 +138,28 @@ public class Cauldron : MonoBehaviour
 
         if (currentIngredients.Count >= maxIngredientsInRecipe)
         {
+            if (!IsFireActive())
+            {
+                Debug.Log("Nie mo¿na rozpocz¹æ gotowania — ogieñ jest zgaszony. W³¹cz ogieñ, aby zacz¹æ gotowaæ.");
+                return;
+            }
+
             Debug.Log("Nie uda³o siê uwarzyæ eliksira. Sk³adniki nie pasuj¹ do ¿adnego przepisu.");
 
             StartBrewingBadRecipe();
             currentIngredients.Clear();
         }
+    }
+
+    private bool IsFireActive()
+    {
+        if (fireObject == null)
+        {
+            Debug.LogWarning("Brak przypisanego 'fireObject' w komponencie Cauldron.");
+            return false;
+        }
+
+        return fireObject.activeInHierarchy;
     }
 
     private void StartBrewing(AlchemyRecipe recipe)

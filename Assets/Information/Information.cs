@@ -12,7 +12,7 @@ public class Information
     // Knife_1 = 8
     // Knife_2 = 9
     // pKnife_3 = 10
-    // puey_Golden = 11
+    // Key_Golden = 11
     // hammer = 12
     // Switch_Lever_2 = 13
     // pFork = 14
@@ -37,5 +37,11 @@ public class Information
     // Nice Water Recpie = 33
     // Water Potion Recipe = 34
     // Wine Potion Recipe = 35
+    // Mud  Water = 36
+    // Leaf Good Bucket = 37
+    // Holy Cow Bucket = 38
+    // Good Soup Bucket = 39
+    // Bad Mood Bucket = 40
+    // Angry Time Bucket = 41
 
 }

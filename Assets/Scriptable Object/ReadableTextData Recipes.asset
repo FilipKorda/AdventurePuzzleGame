@@ -17,3 +17,33 @@ MonoBehaviour:
     Mozesz je znlae\u017C\u0107 i przenie\u015B\u0107 w jedno miejsce zeby miec do
     nich szybki dostep."
   signatureText: Potion Masster
+  localizeHeader:
+    m_TableReference:
+      m_TableCollectionName: GUID:2ab2a260766ac7e4faccb436c2c36527
+    m_TableEntryReference:
+      m_KeyId: 2560226512896
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  localizeMainText:
+    m_TableReference:
+      m_TableCollectionName: GUID:2ab2a260766ac7e4faccb436c2c36527
+    m_TableEntryReference:
+      m_KeyId: 2686479257600
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  localizeSignature:
+    m_TableReference:
+      m_TableCollectionName: GUID:2ab2a260766ac7e4faccb436c2c36527
+    m_TableEntryReference:
+      m_KeyId: 1013933428736
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  references:
+    version: 2
+    RefIds: []

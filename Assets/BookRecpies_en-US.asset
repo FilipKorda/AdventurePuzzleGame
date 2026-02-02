@@ -1,0 +1,203 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: BookRecpies_en-US
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.StringTable
+  m_LocaleId:
+    m_Code: en-US
+  m_SharedData: {fileID: 11400000, guid: 196636a49d964714d8f9360b2e97f7b1, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 1518764052480
+    m_Localized: Q and E
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5996040192
+    m_Localized: 'Here you can check your potion recipes.
+
+      If you have any,
+      you can place them under this table,
+
+      then you''ll immediately see them
+      in the book.
+
+      Be careful, there are 10 of them.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45493800960
+    m_Localized: 'ACID POTION
+
+      To craft this potion, you need:
+
+      19
+
+      19
+
+      19
+
+      19
+
+      19'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55203614720
+    m_Localized: 'ANGRY TIME POTION
+
+      To craft this potion you need:
+
+      23
+
+      24
+
+      21
+
+      18
+
+      18'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 63952932864
+    m_Localized: 'BAD MOOD POTION
+
+      To craft this potion you will need:
+
+      23
+
+      24
+
+      20
+
+      18
+
+      19'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 145494396928
+    m_Localized: 'BLOOD POTION
+
+      To craft this potion you will need:
+
+      20
+
+      20
+
+      20
+
+      20
+
+      20'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 195620524032
+    m_Localized: 'GOOD SOUP POTION
+
+      To craft this potion you will need:
+
+      23
+
+      24
+
+      19
+
+      18
+
+      18'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 197868670976
+    m_Localized: 'HOLY COW POTION
+
+      To craft this potion you will need:
+
+      24
+
+      24
+
+      22
+
+      18
+
+      18'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 199512838144
+    m_Localized: 'LEAF GOODS POTION
+
+      To craft this potion, you will need:
+
+      22
+
+      22
+
+      18
+
+      18
+
+      18'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 200850821120
+    m_Localized: 'NICE WATER POTION
+
+      To craft this potion, you will need:
+
+      23
+
+      24
+
+      18
+
+      18
+
+      18'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 403037245440
+    m_Localized: 'WATER POTION
+
+      To craft this potion, you need:
+
+      18
+
+      18
+
+      18
+
+      18
+
+      18'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 442920882176
+    m_Localized: 'WINE POTION
+
+      To craft this potion, you need:
+
+      21
+
+      21
+
+      21
+
+      21
+
+      21'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1435066716160
+    m_Localized: Potions
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

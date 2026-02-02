@@ -133,7 +133,8 @@ public class UIManager : MonoBehaviour
         if (nextIndex != start)
         {
             data.currentPageIndex = nextIndex;
-            readableAndInteractablePanel.mainTextUI.text = data.bookPages[data.currentPageIndex];
+            readableAndInteractablePanel.mainTextUI.text =
+                data.bookPages[data.currentPageIndex].GetLocalizedString();
         }
     }
 
@@ -157,7 +158,8 @@ public class UIManager : MonoBehaviour
         if (prevIndex != start)
         {
             data.currentPageIndex = prevIndex;
-            readableAndInteractablePanel.mainTextUI.text = data.bookPages[data.currentPageIndex];
+            readableAndInteractablePanel.mainTextUI.text =
+                data.bookPages[data.currentPageIndex].GetLocalizedString();
         }
     }
 
@@ -221,31 +223,31 @@ public class UIManager : MonoBehaviour
                 Ailments.Instance.ApplyMudWaterEffect();
                 break;
 
-            case ItemID.LeafGoods:
+            case ItemID.LeafGoodBucket:
                 UseConsumableItem(currentSelectedId);
                 Debug.Log("Zjedzono (LeafGoods).");
                 Ailments.Instance.ApplyLeafGoodsEffect();
                 break;
 
-            case ItemID.AngryTime:
+            case ItemID.AngryTimeBucket:
                 UseConsumableItem(currentSelectedId);
                 Debug.Log("Zjedzono (AngryTime).");
                 Ailments.Instance.ApplyAngryTimeEffect();
                 break;
 
-            case ItemID.BadMood:
+            case ItemID.BadMoodBucket:
                 UseConsumableItem(currentSelectedId);
                 Debug.Log("Zjedzono (BadMood).");
                 Ailments.Instance.ApplyBadMoodEffect();
                 break;
 
-            case ItemID.GoodSoup:
+            case ItemID.GoodSoupBucket:
                 UseConsumableItem(currentSelectedId);
                 Debug.Log("Zjedzono (GoodSoup).");
                 Ailments.Instance.ApplyGoodSoupEffect();
                 break;
 
-            case ItemID.HolyCow:
+            case ItemID.HolyCowBucket:
                 UseConsumableItem(currentSelectedId);
                 Debug.Log("Zjedzono (HolyCow).");
                 Ailments.Instance.ApplyHolyCowEffect();
@@ -266,6 +268,12 @@ public class UIManager : MonoBehaviour
 
     private void OnDropItemPerformed(InputAction.CallbackContext context)
     {
+        if (readableAndInteractablePanel != null && readableAndInteractablePanel.gameObject.activeInHierarchy)
+        {
+            Debug.Log("Nie mo¿na wyrzuciæ przedmiotu podczas przegl¹dania czytanej strony.");
+            return;
+        }
+
         int currentSelectedId = GetSelectedItemId();
         if (currentSelectedId != 0)
         {
@@ -324,7 +332,6 @@ public class UIManager : MonoBehaviour
                     }
                     else
                     {
-                        // jeœli nie ma elementów, wyczyœæ tekst nazwy
                         if (itemNameText != null)
                         {
                             itemNameText.text = string.Empty;

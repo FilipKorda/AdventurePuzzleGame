@@ -15,3 +15,33 @@ MonoBehaviour:
   headerText: Siema Title
   mainText: "main text abrakadabra nic tu nie ma aale zawsze moze by\u0107 xd"
   signatureText: Signature
+  localizeHeader:
+    m_TableReference:
+      m_TableCollectionName: GUID:2ab2a260766ac7e4faccb436c2c36527
+    m_TableEntryReference:
+      m_KeyId: 331545333760
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  localizeMainText:
+    m_TableReference:
+      m_TableCollectionName: GUID:2ab2a260766ac7e4faccb436c2c36527
+    m_TableEntryReference:
+      m_KeyId: 21837926400
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  localizeSignature:
+    m_TableReference:
+      m_TableCollectionName: GUID:2ab2a260766ac7e4faccb436c2c36527
+    m_TableEntryReference:
+      m_KeyId: 397169414144
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  references:
+    version: 2
+    RefIds: []

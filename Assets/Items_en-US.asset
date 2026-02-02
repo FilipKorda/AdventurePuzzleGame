@@ -1,0 +1,167 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Items_en-US
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.StringTable
+  m_LocaleId:
+    m_Code: en-US
+  m_SharedData: {fileID: 11400000, guid: d126a2aaffb817f4f9fefa17fce8e709, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 646789222400
+    m_Localized: Wine Potion Recipe
+    m_Metadata:
+      m_Items: []
+  - m_Id: 633799462912
+    m_Localized: Water Potion Recipe
+    m_Metadata:
+      m_Items: []
+  - m_Id: 618817409024
+    m_Localized: Nice Water Recpie
+    m_Metadata:
+      m_Items: []
+  - m_Id: 607333404672
+    m_Localized: Leaf Goods Recipe
+    m_Metadata:
+      m_Items: []
+  - m_Id: 594700161024
+    m_Localized: Holy Cow Potion Recipe
+    m_Metadata:
+      m_Items: []
+  - m_Id: 580632465408
+    m_Localized: Good Soup Recipe
+    m_Metadata:
+      m_Items: []
+  - m_Id: 568540286976
+    m_Localized: Blood Potion Recipe
+    m_Metadata:
+      m_Items: []
+  - m_Id: 544171380736
+    m_Localized: Bad Mood Potion Recipe
+    m_Metadata:
+      m_Items: []
+  - m_Id: 529680060416
+    m_Localized: Angry Time Potion Recipe
+    m_Metadata:
+      m_Items: []
+  - m_Id: 513045450752
+    m_Localized: Acid Potion Recipe
+    m_Metadata:
+      m_Items: []
+  - m_Id: 499145527296
+    m_Localized: Nice Water
+    m_Metadata:
+      m_Items: []
+  - m_Id: 485669228544
+    m_Localized: Raw Meat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472125820928
+    m_Localized: Plant Root
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431474626560
+    m_Localized: Leafs
+    m_Metadata:
+      m_Items: []
+  - m_Id: 415657906176
+    m_Localized: Wine Bucket
+    m_Metadata:
+      m_Items: []
+  - m_Id: 398951993344
+    m_Localized: Blood Bucket
+    m_Metadata:
+      m_Items: []
+  - m_Id: 388235546624
+    m_Localized: Acid Bucket
+    m_Metadata:
+      m_Items: []
+  - m_Id: 377250664448
+    m_Localized: Water Bucket
+    m_Metadata:
+      m_Items: []
+  - m_Id: 364537729024
+    m_Localized: Empty Bucket
+    m_Metadata:
+      m_Items: []
+  - m_Id: 349232713728
+    m_Localized: Flint
+    m_Metadata:
+      m_Items: []
+  - m_Id: 337237004288
+    m_Localized: LockPick
+    m_Metadata:
+      m_Items: []
+  - m_Id: 325048356864
+    m_Localized: Fork
+    m_Metadata:
+      m_Items: []
+  - m_Id: 300595564544
+    m_Localized: Hammer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 216222945280
+    m_Localized: Shovel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 200628523008
+    m_Localized: Switch Lever
+    m_Metadata:
+      m_Items: []
+  - m_Id: 188087554048
+    m_Localized: Key Rusty
+    m_Metadata:
+      m_Items: []
+  - m_Id: 149537705984
+    m_Localized: Spear
+    m_Metadata:
+      m_Items: []
+  - m_Id: 125089107968
+    m_Localized: Knife
+    m_Metadata:
+      m_Items: []
+  - m_Id: 284787232768
+    m_Localized: Golden Key
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5798907904
+    m_Localized: Bone
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6415140016128
+    m_Localized: Mud Water
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8548002320384
+    m_Localized: Leaf Good Bucket
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9392995192832
+    m_Localized: Holy Cow Bucket
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9668690989056
+    m_Localized: Good Soup Bucket
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9954683801600
+    m_Localized: Bad Mood Bucket
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10359811624960
+    m_Localized: Angry Time Bucket
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

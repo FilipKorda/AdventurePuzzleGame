@@ -1,0 +1,117 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Books Shared Data
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.SharedTableData
+  m_TableCollectionName: Books
+  m_TableCollectionNameGuidString: 2ab2a260766ac7e4faccb436c2c36527
+  m_Entries:
+  - m_Id: 21837926400
+    m_Key: ReadableTextData
+    m_Metadata:
+      m_Items: []
+  - m_Id: 331545333760
+    m_Key: ReadableTextData_siemaTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 397169414144
+    m_Key: 'ReadableTextData_Signature
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 790054064128
+    m_Key: 'ReadableTextData_Cauldron '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 919670640640
+    m_Key: ReadableTextData_MainTextCauldron
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1013933428736
+    m_Key: 'ReadableTextData_PotionMaster
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1236848103424
+    m_Key: 'ReadableTextData_GetOut
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1373414641664
+    m_Key: 'ReadableTextData_GetOutMainText
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1523553947648
+    m_Key: 'ReadableTextData_GetOutSignature
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1768056705024
+    m_Key: 'ReadableTextData_End
+
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1847127724032
+    m_Key: 'ReadableTextData_EndMainText
+
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2031823900672
+    m_Key: 'ReadableTextData_EndSignature
+
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2163269193728
+    m_Key: 'ReadableTextData_PotionMasterTip
+
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2326666694656
+    m_Key: 'ReadableTextData_PotionMasterTipMainText
+
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2560226512896
+    m_Key: ReadableTextData_Recipes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2686479257600
+    m_Key: ReadableTextData_RecipesMainText
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 602285015674913004
+  references:
+    version: 2
+    RefIds:
+    - rid: 602285015674913004
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1769948587877

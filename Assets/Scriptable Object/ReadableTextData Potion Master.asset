@@ -17,3 +17,33 @@ MonoBehaviour:
     pelnych wody. W sumie tez maksymalna ilosc skladnik\xF3w to 5, zawsze jest 5,
     nigdy nie ma wiecej niz 5 sk\u0142anik\xF3w, chyba......"
   signatureText: Potion Master
+  localizeHeader:
+    m_TableReference:
+      m_TableCollectionName: GUID:2ab2a260766ac7e4faccb436c2c36527
+    m_TableEntryReference:
+      m_KeyId: 2163269193728
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  localizeMainText:
+    m_TableReference:
+      m_TableCollectionName: GUID:2ab2a260766ac7e4faccb436c2c36527
+    m_TableEntryReference:
+      m_KeyId: 2326666694656
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  localizeSignature:
+    m_TableReference:
+      m_TableCollectionName: GUID:2ab2a260766ac7e4faccb436c2c36527
+    m_TableEntryReference:
+      m_KeyId: 1013933428736
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  references:
+    version: 2
+    RefIds: []

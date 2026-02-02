@@ -15,3 +15,33 @@ MonoBehaviour:
   headerText: KONIEC?
   mainText: "Wybierz m\u0105drz\u0119 praw\u0105 d\u017Awignie albo lew\u0105 d\u017Awigni\u0119."
   signatureText: Dev
+  localizeHeader:
+    m_TableReference:
+      m_TableCollectionName: GUID:2ab2a260766ac7e4faccb436c2c36527
+    m_TableEntryReference:
+      m_KeyId: 1768056705024
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  localizeMainText:
+    m_TableReference:
+      m_TableCollectionName: GUID:2ab2a260766ac7e4faccb436c2c36527
+    m_TableEntryReference:
+      m_KeyId: 1847127724032
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  localizeSignature:
+    m_TableReference:
+      m_TableCollectionName: GUID:2ab2a260766ac7e4faccb436c2c36527
+    m_TableEntryReference:
+      m_KeyId: 2031823900672
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  references:
+    version: 2
+    RefIds: []

@@ -62,6 +62,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -83,9 +85,11 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!136 &5954808884032438607
 CapsuleCollider:
@@ -208,11 +212,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactableType: 0
   itemName: Angry Time
-  itemSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  itemId: 28
+  localizeItemName:
+    m_TableReference:
+      m_TableCollectionName: GUID:d126a2aaffb817f4f9fefa17fce8e709
+    m_TableEntryReference:
+      m_KeyId: 10359811624960
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  itemSprite: {fileID: 21300000, guid: a09825c010a0bea43951e996ee4390da, type: 3}
+  itemId: 41
   requiredItemIds: 
   animator: {fileID: 0}
   readableTextData: {fileID: 0}
+  readableAndInteractableTextData: {fileID: 0}
   onAllWallButtonPressed:
     m_PersistentCalls:
       m_Calls: []
@@ -220,12 +234,30 @@ MonoBehaviour:
   boxCollider: {fileID: 0}
   canOpenWithNoSelectedItem: 0
   itemPrefab: {fileID: 291080727614174349, guid: 9d5c0a57c1fffcd4c869bd6acfd26494, type: 3}
+  isActualReading: 0
+  isAlchemyRecipe: 0
   requiredUses: 3
   providedLiquidType: 0
   fillMapping:
     requiredEmptyItem: {fileID: 0}
     resultingFilledItem: {fileID: 0}
   cauldron: {fileID: 0}
+  scroll_BigAcidPotion: {fileID: 0}
+  scroll_SmallAngryTimePotion: {fileID: 0}
+  scroll_ElderBadMoodPotion: {fileID: 0}
+  scroll_OpenBloodPotion: {fileID: 0}
+  scroll_BigGoodSoup: {fileID: 0}
+  scroll_SmallHolyCowPotion: {fileID: 0}
+  scroll_ElderLeafGoods: {fileID: 0}
+  scroll_OpenNiceWater: {fileID: 0}
+  scroll_BigWaterPotion: {fileID: 0}
+  scroll_SmallWinePotion: {fileID: 0}
+  recipesCounter: {fileID: 0}
+  endPanel: {fileID: 0}
+  isEndPanel: 0
+  references:
+    version: 2
+    RefIds: []
 --- !u!54 &7722151831859636880
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -233,10 +265,10 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 291080727614174349}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}

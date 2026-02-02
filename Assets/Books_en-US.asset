@@ -1,0 +1,95 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Books_en-US
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.StringTable
+  m_LocaleId:
+    m_Code: en-US
+  m_SharedData: {fileID: 11400000, guid: 2ab2a260766ac7e4faccb436c2c36527, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 21837926400
+    m_Localized: main Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 331545333760
+    m_Localized: Hello Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 397169414144
+    m_Localized: Signature
+    m_Metadata:
+      m_Items: []
+  - m_Id: 790054064128
+    m_Localized: 'Cauldron '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 919670640640
+    m_Localized: You can brew potions with various side effects, and these effects
+      can be good or bad. There's one potion that will help you get out of here.
+      But I don't remember the recipe.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1013933428736
+    m_Localized: Potion Master
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1236848103424
+    m_Localized: I know how to get out
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1373414641664
+    m_Localized: Goodbye, I know how to get out. I'm running. You can see everything
+      through these bars. The first lever is supposed to be down, the middle one
+      is supposed to be down, and the third one is supposed to be up. But I can never
+      find them. Maybe these tips will be useful to someone!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1523553947648
+    m_Localized: Prisoner
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1768056705024
+    m_Localized: END?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1847127724032
+    m_Localized: Choose wisely the right lever or the left lever.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2031823900672
+    m_Localized: Dev
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2163269193728
+    m_Localized: Potion Master Tip
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2326666694656
+    m_Localized: Typically, each brew requires 3 liters of water, or in other words,
+      3 buckets full of water. The maximum number of ingredients is 5, always 5,
+      never more than 5, unless...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2560226512896
+    m_Localized: Recipes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2686479257600
+    m_Localized: Papyri with potion recipes are scattered throughout this area. You
+      can find them and move them to one place for quick access.
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

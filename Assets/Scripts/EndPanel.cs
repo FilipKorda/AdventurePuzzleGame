@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class EndPanel : MonoBehaviour
 {
@@ -9,20 +10,40 @@ public class EndPanel : MonoBehaviour
     [SerializeField] private TextMeshProUGUI thierdText;
     [SerializeField] private TextMeshProUGUI fourthText;
     [SerializeField] private TextMeshProUGUI fifthText;
+    [SerializeField] private TextMeshProUGUI sixText;
+
+    [SerializeField] private Image sixButton;
+    [SerializeField] private Button button;
 
     [SerializeField] private float fadeDuration = 1f;
     [SerializeField] private float delayBetweenTexts = 0.5f;
     [SerializeField] private PlayerBehaviour playerBehaviour;
+
+    [SerializeField] private PausePanel pausePanel;
+
     private void OnEnable()
     {
         StartCoroutine(StartEndPanel());
     }
 
+    private void OnDisable()
+    {
+        if (pausePanel != null)
+            pausePanel.SetAllowPause(true);
+    }
+
     private IEnumerator StartEndPanel()
     {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+
+        if (pausePanel != null)
+            pausePanel.SetAllowPause(false);
+
+        button.interactable = false;
         playerBehaviour.disablePlayer = true;
 
-        SetAlpha(0f, firstText, secondText, thierdText, fourthText, fifthText);
+        SetAlpha(0f, firstText, secondText, thierdText, fourthText, fifthText, sixText);
 
         yield return FadeText(firstText);
         yield return new WaitForSeconds(delayBetweenTexts);
@@ -37,6 +58,9 @@ public class EndPanel : MonoBehaviour
         yield return new WaitForSeconds(delayBetweenTexts);
 
         yield return FadeText(fifthText);
+        yield return new WaitForSeconds(delayBetweenTexts);
+
+        yield return FadeButtonText(sixText, sixButton);      
     }
 
     private IEnumerator FadeText(TextMeshProUGUI text)
@@ -54,6 +78,29 @@ public class EndPanel : MonoBehaviour
 
         color.a = 1f;
         text.color = color;
+    }
+
+    private IEnumerator FadeButtonText(TextMeshProUGUI text, Image buttonImage)
+    {
+        float time = 0f;
+        Color color = text.color;
+        Color colortwo = buttonImage.color;
+
+        while (time < fadeDuration)
+        {
+            time += Time.deltaTime;
+            color.a = Mathf.Lerp(0f, 1f, time / fadeDuration);
+            colortwo.a = Mathf.Lerp(0f, 1f, time / fadeDuration);
+            text.color = color;
+            buttonImage.color = colortwo;
+            yield return null;
+        }
+
+        color.a = 1f;
+        colortwo.a = 1f;
+        text.color = color;
+        buttonImage.color = colortwo;
+        button.interactable = true;
     }
 
     private void SetAlpha(float value, params TextMeshProUGUI[] texts)
