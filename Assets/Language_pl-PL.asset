@@ -54,6 +54,14 @@ MonoBehaviour:
     m_Localized: Graj
     m_Metadata:
       m_Items: []
+  - m_Id: 371684018507776
+    m_Localized: "Rozdzielczo\u015B\u0107"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 372188916240384
+    m_Localized: "Pe\u0142en  Obraz"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

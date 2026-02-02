@@ -255,6 +255,7 @@ MonoBehaviour:
   recipesCounter: {fileID: 0}
   endPanel: {fileID: 0}
   isEndPanel: 0
+  localizationString: {fileID: 11400000, guid: f0de87e12044b394f8f5ec5e537bee58, type: 2}
   references:
     version: 2
     RefIds: []

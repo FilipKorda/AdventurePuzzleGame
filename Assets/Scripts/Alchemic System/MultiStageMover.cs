@@ -1,5 +1,6 @@
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
+using UnityEngine.Localization;
 
 public class MultiStageMover : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class MultiStageMover : MonoBehaviour
     private bool isMoving = false;
 
     public GameObject fireObject;
+    public LocalizedString localizeString;
 
     void Start()
     {
@@ -32,6 +34,7 @@ public class MultiStageMover : MonoBehaviour
     {
         if(fireObject.activeSelf == false)
         {
+            NotificationSystem.Instance.ShowNotification(localizeString, 3);
             Debug.Log("Nie mo¿na przesun¹æ obiektu - ogieñ jest wy³¹czony.");
             return;
         }

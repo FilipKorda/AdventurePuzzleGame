@@ -36,6 +36,8 @@ public class InteractableItemEditor : Editor
     private SerializedProperty endPanel;
     private SerializedProperty isEndPanel;
     private SerializedProperty localizeItemName;
+    private SerializedProperty localizationString;
+    private SerializedProperty localizationTwoString;
 
     private void OnEnable()
     {
@@ -71,6 +73,8 @@ public class InteractableItemEditor : Editor
         endPanel = serializedObject.FindProperty("endPanel");
         isEndPanel = serializedObject.FindProperty("isEndPanel");
         localizeItemName = serializedObject.FindProperty("localizeItemName");
+        localizationString = serializedObject.FindProperty("localizationString");
+        localizationTwoString = serializedObject.FindProperty("localizationTwoString");
     }
 
     public override void OnInspectorGUI()
@@ -96,6 +100,7 @@ public class InteractableItemEditor : Editor
                 EditorGUILayout.PropertyField(itemPrefab, new GUIContent("Item to Drop From UI"));
                 EditorGUILayout.PropertyField(isAlchemyRecipe, new GUIContent("Is Item Alchemy recipe?"));
                 EditorGUILayout.PropertyField(localizeItemName, new GUIContent("Localize Item Name"));
+                EditorGUILayout.PropertyField(localizationString, new GUIContent("Localization String"));
                 EditorGUILayout.HelpBox("To jest ID tego przedmiotu, gdy znajdzie siê w ekwipunku.", MessageType.Info);
                 break;
 
@@ -105,6 +110,7 @@ public class InteractableItemEditor : Editor
                 EditorGUILayout.PropertyField(canOpenWithNoSelectedItem, new GUIContent("Bool Can Open With seleted Item"));
                 EditorGUILayout.PropertyField(endPanel, new GUIContent("End Panel"));
                 EditorGUILayout.PropertyField(isEndPanel, new GUIContent("Is End Panel"));
+                EditorGUILayout.PropertyField(localizationString, new GUIContent("Localization String"));
                 EditorGUILayout.HelpBox("Wymaga przedmiotu (lub przedmiotów) o podanych ID, aby mo¿na by³o go otworzyæ.", MessageType.Info);
                 break;
 
@@ -125,24 +131,30 @@ public class InteractableItemEditor : Editor
                 EditorGUILayout.PropertyField(requiredItemIdsProp, new GUIContent("Required Item ID"));
                 EditorGUILayout.PropertyField(objectToPlaceProp, new GUIContent("Object To Place"));
                 EditorGUILayout.PropertyField(boxColliderProp, new GUIContent("Interaction Collider"));
+                EditorGUILayout.PropertyField(localizationString, new GUIContent("Localization String"));
                 EditorGUILayout.HelpBox("Wymaga przedmiotu o podanym ID, aby umieœciæ obiekt w œwiecie.", MessageType.Info);
                 break;
             case InteractableItem.InteractableType.LockPick:
                 EditorGUILayout.PropertyField(itemIdProp, new GUIContent("Item ID"));
+                EditorGUILayout.PropertyField(localizationString, new GUIContent("Localization String"));
                 EditorGUILayout.HelpBox("Potrzebujesz tego itemu o tym ID ¿eby otowrzyæ k³ótke", MessageType.Info);
                 break;
             case InteractableItem.InteractableType.Fillable:
                 EditorGUILayout.PropertyField(providedLiquidTypeProp, new GUIContent("Liquid Type"));
                 EditorGUILayout.PropertyField(fillMappingProp, new GUIContent("Fill Mapping"), true);
+                EditorGUILayout.PropertyField(localizationString, new GUIContent("Localization String"));
                 EditorGUILayout.HelpBox("Okreœl typ p³ynu i zmapuj pusty pojemnik na jego nape³nion¹ wersjê.", MessageType.Info);
                 break;
             case InteractableItem.InteractableType.PickupARenewableItem:
                 EditorGUILayout.PropertyField(itemIdProp, new GUIContent("Item ID"));
                 EditorGUILayout.PropertyField(itemPrefab, new GUIContent("Item to Drop From UI"));
+                EditorGUILayout.PropertyField(localizationString, new GUIContent("Localization String"));
                 EditorGUILayout.HelpBox("To jest ID tego przedmiotu, gdy znajdzie siê w ekwipunku.", MessageType.Info);
                 break;
             case InteractableItem.InteractableType.AlchemyStation:
                 EditorGUILayout.PropertyField(cauldronStation, new GUIContent("Cauldron"));
+                EditorGUILayout.PropertyField(localizationString, new GUIContent("Localization String"));
+                EditorGUILayout.PropertyField(localizationTwoString, new GUIContent("localization Two String"));
                 EditorGUILayout.HelpBox(".", MessageType.Info);
                 break;
             case InteractableItem.InteractableType.ReadableAndInteractableItem:

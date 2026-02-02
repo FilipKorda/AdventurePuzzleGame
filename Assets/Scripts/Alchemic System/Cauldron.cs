@@ -1,7 +1,8 @@
-using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
+using UnityEngine;
+using UnityEngine.Localization;
 
 public class Cauldron : MonoBehaviour
 {
@@ -25,7 +26,7 @@ public class Cauldron : MonoBehaviour
     [SerializeField] private Material badRecipeMaterial;
     private Material initialCylinderMaterial;
 
-    private bool isBrewing = false;
+    public bool isBrewing = false;
     private AlchemyRecipe currentRecipe = null;
     private float remainingBrewingTime = 0f;
     private Material targetMaterial = null;
@@ -35,6 +36,12 @@ public class Cauldron : MonoBehaviour
     [SerializeField] private ParticleSystem ps;
 
     public GameObject fireObject;
+
+    public LocalizedString localizeString;
+    public LocalizedString localizeTwoString;
+    public LocalizedString localizeThreeString;
+    public LocalizedString localizeStringGetMixture;
+
 
     private void Awake()
     {
@@ -72,19 +79,15 @@ public class Cauldron : MonoBehaviour
     {
         if(multiStageMover.fireObject.activeSelf == false)
         {
-            Debug.Log("Podpal ogieñ zanim  bedziesz wk³adaæ sk³adniki  do kocio³a.");
+            NotificationSystem.Instance.ShowNotification(localizeString, 3);
+          //  Debug.Log("Podpal ogieñ zanim  bedziesz wk³adaæ sk³adniki  do kocio³a.");
             return;
         }
 
         if (HasReadySolution())
         {
-            Debug.Log("Kocio³ zawiera ju¿ gotowy roztwór. Opró¿nij go najpierw.");
-            return;
-        }
-
-        if (isBrewing)
-        {
-            Debug.Log("Mikstura jest w trakcie gotowania — poczekaj a¿ proces siê zakoñczy.");
+            NotificationSystem.Instance.ShowNotification(localizeTwoString, 3);
+          //  Debug.Log("Kocio³ zawiera ju¿ gotowy roztwór. Opró¿nij go najpierw.");
             return;
         }
 
@@ -123,7 +126,8 @@ public class Cauldron : MonoBehaviour
                 {
                     if (!IsFireActive())
                     {
-                        Debug.Log("Nie mo¿na rozpocz¹æ gotowania — ogieñ jest zgaszony. W³¹cz ogieñ, aby zacz¹æ gotowaæ.");
+                        NotificationSystem.Instance.ShowNotification(localizeString, 3);
+                        //Debug.Log("Nie mo¿na rozpocz¹æ gotowania — ogieñ jest zgaszony. W³¹cz ogieñ, aby zacz¹æ gotowaæ.");
                         return;
                     }
 
@@ -140,11 +144,10 @@ public class Cauldron : MonoBehaviour
         {
             if (!IsFireActive())
             {
-                Debug.Log("Nie mo¿na rozpocz¹æ gotowania — ogieñ jest zgaszony. W³¹cz ogieñ, aby zacz¹æ gotowaæ.");
+                NotificationSystem.Instance.ShowNotification(localizeString, 3);
+                //Debug.Log("Nie mo¿na rozpocz¹æ gotowania — ogieñ jest zgaszony. W³¹cz ogieñ, aby zacz¹æ gotowaæ.");
                 return;
             }
-
-            Debug.Log("Nie uda³o siê uwarzyæ eliksira. Sk³adniki nie pasuj¹ do ¿adnego przepisu.");
 
             StartBrewingBadRecipe();
             currentIngredients.Clear();
@@ -269,6 +272,7 @@ public class Cauldron : MonoBehaviour
                 cylinder.material = initialCylinderMaterial;
             }
 
+            NotificationSystem.Instance.ShowNotification(localizeStringGetMixture, 3);
             Debug.Log("Pobrano roztwór z kot³a.");
             return solutionToReturn;
         }

@@ -1,0 +1,88 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Notification Shared Data
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.SharedTableData
+  m_TableCollectionName: Notification
+  m_TableCollectionNameGuidString: 35546b6b8ebaa304486aa3efa25ad9aa
+  m_Entries:
+  - m_Id: 10504916992
+    m_Key: Notification0
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2274539884544
+    m_Key: U Dont  have  Key
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3388463140864
+    m_Key: U Dont  have  Knife
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3953540747264
+    m_Key: U Dont  have  Shovel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4117886160896
+    m_Key: U Dont  have  Hammer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5719669886976
+    m_Key: U Dont  have  Lever
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6849158205440
+    m_Key: U Dont  have  Fork
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7168336351232
+    m_Key: U Dont  have  Lock  Pick
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13095684820992
+    m_Key: U Dont  have  Flint
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27964513472512
+    m_Key: Empty Bucket Notification
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29559070412800
+    m_Key: Choose Ingridient to add
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30581130022912
+    m_Key: Fire campfire
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31113806630912
+    m_Key: Cauldron Have Mixture
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31485489074176
+    m_Key: PreperingMixture
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39498971107328
+    m_Key: GetMixture
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 602285035798921460
+  references:
+    version: 2
+    RefIds:
+    - rid: 602285035798921460
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1770048552538

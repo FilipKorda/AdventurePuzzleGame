@@ -85,6 +85,9 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     [SerializeField] private bool isEndPanel;
 
 
+    [SerializeField] private LOcalizeString localizationString;
+    [SerializeField] private LOcalizeString localizationTwoString;
+
 
     public GameObject GetItemPrefab()
     {
@@ -113,7 +116,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
                 ItemID requiredEmptyContainerId = ItemID.EmptyBucket;
 
                 if (selectedItemId == requiredEmptyContainerId)
-                {
+                {                   
                     Inventory.Instance.RemoveItemFromInventoryByID(selectedItemIdAsInt);
                     UIManager.Instance.RemoveItemFromUIByID(selectedItemIdAsInt);
 
@@ -124,6 +127,8 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
                 }
                 else
                 {
+                    if (localizationString.localizeString != null)
+                        NotificationSystem.Instance.ShowNotification(localizationString.localizeString, 3);
                     Debug.Log("Wybierz pusty pojemnik, aby nabraæ roztwór.");
                 }
             }
@@ -131,10 +136,35 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
             {
                 cauldron.AddIngredient(selectedItemIdAsInt);
             }
+            else
+            {
+                if(cauldron.isBrewing)
+                {
+                    NotificationSystem.Instance.ShowNotification(cauldron.localizeThreeString, 3);
+                }
+                else
+                {
+                    if (localizationTwoString.localizeString != null)
+                        NotificationSystem.Instance.ShowNotification(localizationTwoString.localizeString, 3);
+                }
+             
+            }
         }
         else
         {
-            Debug.Log("Wybierz sk³adnik z ekwipunku, aby go dodaæ do kot³a.");
+            if(cauldron.HasReadySolution())
+            {
+                if (localizationString.localizeString != null)
+                    NotificationSystem.Instance.ShowNotification(localizationString.localizeString, 3);
+                Debug.Log("Wybierz pusty pojemnik, aby nabraæ roztwór.");
+            }     
+            else
+            {
+                if (localizationTwoString.localizeString != null)
+                    NotificationSystem.Instance.ShowNotification(localizationTwoString.localizeString, 3);
+
+                Debug.Log("Wybierz sk³adnik z ekwipunku, aby go dodaæ do kot³a.");
+            }
         }
     }
 
@@ -142,8 +172,18 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     {
         if (interactableType == InteractableType.PickupARenewableItem)
         {
-            Inventory.Instance.AddItemToInventory(this);
+            if (UIManager.Instance != null && !UIManager.Instance.CanAddItemToUI())
+            {
+                if (localizationString.localizeString != null)
+                    NotificationSystem.Instance.ShowNotification(localizationString.localizeString, 3);
+            }
+            else
+            {
+                Inventory.Instance.AddItemToInventory(this);
+            }
+
         }
+
     }
 
     public void OnPickUp()
@@ -157,7 +197,9 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
             }
             else
             {
-                Debug.Log("Nie mo¿na podnieœæ przedmiotu — pe³ny ekwipunek. Przedmiot pozostaje in the world.");
+                if (localizationString.localizeString != null)
+                    NotificationSystem.Instance.ShowNotification(localizationString.localizeString, 3);
+
             }
         }
         else if (isAlchemyRecipe && interactableType == InteractableType.Pickupable)
@@ -198,7 +240,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         int selectedId = UIManager.Instance.GetSelectedItemId();
         if (selectedId == -1)
         {
-            Debug.Log("Musisz wybraæ pusty pojemnik, aby go nape³niæ.");
+            Debug.Log("Musisz wybraæ pusty wiadro, aby go nape³niæ.");
             return;
         }
 
@@ -270,7 +312,8 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
                 }
                 else
                 {
-                    Debug.Log($"Nie mo¿na otworzyæ {gameObject.name}. Brak odpowiedniego przedmiotu.");
+                    if (localizationString.localizeString != null)
+                        NotificationSystem.Instance.ShowNotification(localizationString.localizeString, 3);
                 }
             }
 
@@ -303,7 +346,8 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
             }
             else
             {
-                Debug.Log($"Nie mo¿na otworzyæ {gameObject.name}. Brak odpowiedniego przedmiotu.");
+                if (localizationString.localizeString != null)
+                    NotificationSystem.Instance.ShowNotification(localizationString.localizeString, 3);
             }
         }
     }
@@ -527,7 +571,8 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
             }
             else
             {
-                Debug.Log($"Nie mo¿na otworzyæ {gameObject.name}. Brak odpowiedniego przedmiotu.");
+                if (localizationString.localizeString != null)
+                    NotificationSystem.Instance.ShowNotification(localizationString.localizeString, 3);
             }
         }
     }

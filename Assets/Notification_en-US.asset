@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Notification_en-US
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.StringTable
+  m_LocaleId:
+    m_Code: en-US
+  m_SharedData: {fileID: 11400000, guid: 35546b6b8ebaa304486aa3efa25ad9aa, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 10504916992
+    m_Localized: Cannot pick up item - full inventory
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2274539884544
+    m_Localized: This can't be done. Find the key.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3388463140864
+    m_Localized: This can't be done. Find a knife.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3953540747264
+    m_Localized: This can't be done. Find a shovel.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4117886160896
+    m_Localized: This can't be done. Find the hammer.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5719669886976
+    m_Localized: This can't be done. Find the lever.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6849158205440
+    m_Localized: This can't be done. Find the Fork.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7168336351232
+    m_Localized: This can't be done. Find the lockpick.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13095684820992
+    m_Localized: This can't be done. Find the Flint.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27964513472512
+    m_Localized: You must select an empty bucket to fill it.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29559070412800
+    m_Localized: Select an ingredient from your inventory to add it to the cauldron.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30581130022912
+    m_Localized: Light the fire before putting the ingredients into the cauldron.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31113806630912
+    m_Localized: The kettle already contains the prepared solution. Empty it first.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31485489074176
+    m_Localized: The mixture is cooking - wait until the process is finished
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39498971107328
+    m_Localized: The solution was taken from the Cauldron
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []
