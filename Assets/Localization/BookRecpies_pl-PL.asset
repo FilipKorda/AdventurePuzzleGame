@@ -1,0 +1,108 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: BookRecpies_pl-PL
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.StringTable
+  m_LocaleId:
+    m_Code: pl-PL
+  m_SharedData: {fileID: 11400000, guid: 196636a49d964714d8f9360b2e97f7b1, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 5996040192
+    m_Localized: "Tutaj mo\u017Cesz sprawdza\u0107 swoje receptury na mikstury,\nje\u017Celi
+      jakie\u015B posiadasz mo\u017Cesz je w\u0142o\u017Cy\u0107 pod ten st\xF3\u0142,
+      \nwtedy odrazu je zobaczysz w ksi\u0105\u017Cce. \nUwa\u017Caj bo jest ich
+      a\u017C 10."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45493800960
+    m_Localized: "MIKSTURA KWASOWA\nDo Wytworzenia mikstury potrzebujesz:\nWiadro
+      z kwasem <sprite name=\"Bucketsof_0\">\nWiadro z kwasem <sprite name=\"Bucketsof_0\">\nWiadro
+      z kwasem <sprite name=\"Bucketsof_0\">\nKorze\u0144 <sprite name=\"Items_8\">\nWiadro
+      z wod\u0105 <sprite name=\"Bucketsof_1\">"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55203614720
+    m_Localized: "MIKSTURA Z\u0141EGO  CZASU\nDo Wytworzenia mikstury potrzebujesz:\nKorze\u0144
+      <sprite name=\"Items_8\">\nSurowe Mi\u0119so <sprite name=\"Items_7\">\nWiadro
+      wina <sprite name=\"Bucketsof_3\">\nWiadro z wod\u0105 <sprite name=\"Bucketsof_1\">\nWiadro
+      z wod\u0105 <sprite name=\"Bucketsof_1\">"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 63952932864
+    m_Localized: "MIKSTURA Z\u0141EGO HUMORU\nDo Wytworzenia mikstury potrzebujesz:\nKorze\u0144
+      <sprite name=\"Items_8\">\nSurowe Mi\u0119so <sprite name=\"Items_8\">\nWiadro
+      krwi  <sprite name=\"Bucketsof_2\">\nWiadro z wod\u0105 <sprite name=\"Bucketsof_1\">\nWiadro
+      z kwasem <sprite name=\"Bucketsof_0\">"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 145494396928
+    m_Localized: "MIKSTURA KRWI\nDo Wytworzenia mikstury potrzebujesz:\nWiadro krwi
+      <sprite name=\"Bucketsof_2\">\nWiadro krwi <sprite name=\"Bucketsof_2\">\nWiadro
+      krwi <sprite name=\"Bucketsof_2\">\nWiadro z wod\u0105 <sprite name=\"Bucketsof_1\">\nLi\u015Bcie 
+      <sprite name=\"Items_5\">"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 195620524032
+    m_Localized: "MIKSTURA DOBREJ ZUPY\nDo Wytworzenia mikstury potrzebujesz:\nKorze\u0144
+      <sprite name=\"Items_8\">\nSurowe Mi\u0119so <sprite name=\"Items_7\">\nWiadro
+      z kwasem <sprite name=\"Bucketsof_0\">\nWiadro z wod\u0105  <sprite name=\"Bucketsof_1\">\nWiadro
+      z wod\u0105  <sprite name=\"Bucketsof_1\">"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 197868670976
+    m_Localized: "MIKSTURA \u015AWI\u0118TEJ KROWY\nDo Wytworzenia mikstury potrzebujesz:\nSurowe
+      Mi\u0119so  <sprite name=\"Items_7\">\nSurowe Mi\u0119so <sprite name=\"Items_7\">\nLi\u015Bcie
+      <sprite name=\"Items_5\">\nWiadro z wod\u0105 <sprite name=\"Bucketsof_1\">\nWiadro
+      krwi <sprite name=\"Bucketsof_2\">"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 199512838144
+    m_Localized: "MIKSTURA DOBRYCH LI\u015ACI\nDo Wytworzenia mikstury potrzebujesz:\nLi\u015Bcie 
+      <sprite name=\"Items_5\">\nLi\u015Bcie  <sprite name=\"Items_5\">\nWiadro z
+      wod\u0105 <sprite name=\"Bucketsof_1\">\nWiadro z wod\u0105 <sprite name=\"Bucketsof_1\">\nKorze\u0144
+      <sprite name=\"Items_8\">"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 200850821120
+    m_Localized: "MIKSTURA DOBREJ  WODY\nDo Wytworzenia mikstury potrzebujesz:\nKorze\u0144
+      <sprite name=\"Items_8\">\nSurowe Mi\u0119so <sprite name=\"Items_7\">\nWiadro
+      z wod\u0105 <sprite name=\"Bucketsof_1\">\nWiadro z wod\u0105 <sprite name=\"Bucketsof_1\">\nWiadro
+      wina <sprite name=\"Bucketsof_3\">"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 403037245440
+    m_Localized: "MIKSTURA WODY\nDo Wytworzenia mikstury potrzebujesz:\nWiadro z
+      wod\u0105 <sprite name=\"Bucketsof_1\">\nWiadro z wod\u0105  <sprite name=\"Bucketsof_1\">\nWiadro
+      z wod\u0105 <sprite name=\"Bucketsof_1\">\nWiadro z wod\u0105 <sprite name=\"Bucketsof_1\">\nSurowe
+      Mi\u0119so  <sprite name=\"Items_7\">"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 442920882176
+    m_Localized: "MIKSTURA  WINA\nDo Wytworzenia mikstury potrzebujesz:\nWiadro wina
+      <sprite name=\"Bucketsof_3\">\nWiadro wina <sprite name=\"Bucketsof_3\">\nLi\u015Bcie
+      <sprite name=\"Items_5\">\nWiadro z wod\u0105 <sprite name=\"Bucketsof_1\">\nWiadro
+      z wod\u0105 <sprite name=\"Bucketsof_1\">"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1435066716160
+    m_Localized: Mikstury
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1518764052480
+    m_Localized: Q i E
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

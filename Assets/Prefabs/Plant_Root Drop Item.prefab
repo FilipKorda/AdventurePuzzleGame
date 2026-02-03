@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Convex
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -6860895033569716450, guid: 88572447e83b2514ab33f918fad7afea, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 88572447e83b2514ab33f918fad7afea, type: 3}
       propertyPath: m_Name
       value: Plant_Root Drop Item
@@ -82,6 +86,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 100000, guid: 88572447e83b2514ab33f918fad7afea, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4515455038400047833}
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: 88572447e83b2514ab33f918fad7afea, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3135985341634538973}
   m_SourcePrefab: {fileID: 100100000, guid: 88572447e83b2514ab33f918fad7afea, type: 3}
 --- !u!1 &8768967844936638733 stripped
 GameObject:
@@ -146,6 +153,7 @@ MonoBehaviour:
   endPanel: {fileID: 0}
   isEndPanel: 0
   localizationString: {fileID: 11400000, guid: f0de87e12044b394f8f5ec5e537bee58, type: 2}
+  localizationTwoString: {fileID: 0}
   references:
     version: 2
     RefIds: []
@@ -176,3 +184,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &3135985341634538973
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8768967844936638733}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.17900299, y: 0.037046872, z: 0.27257302}
+  m_Center: {x: -0.0019061565, y: 0.0031338963, z: -0.12264739}

@@ -213,8 +213,9 @@ public class LockPickGameMode : MonoBehaviour
         }
         else
         {
-            Debug.Log($"<color=red>Z³y ruch! Oczekiwano pozycji '{GetCurrentLockPickPositionName(expectedIndex)}', a jesteœ na '{GetCurrentLockPickPositionName()}'.</color>");
-            ResetGame();
+            Debug.LogError($"<color=red>Z³y ruch! Oczekiwano pozycji '{GetCurrentLockPickPositionName(expectedIndex)}', a jesteœ na '{GetCurrentLockPickPositionName()}'.</color>");
+            
+            StartCoroutine(PlayWrongMoveAndReset());
         }
     }
 
@@ -247,6 +248,64 @@ public class LockPickGameMode : MonoBehaviour
             {
                 Debug.LogWarning("Skala obiektu jest zerowa! Nie mo¿na interpolowaæ rotacji.");
                 yield break; 
+            }
+
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        lockPickRectTransform.rotation = targetRotation;
+
+        yield return null;
+
+        while (elapsedTime < lockPickRotationDuration)
+        {
+            lockPickRectTransform.rotation = Quaternion.Slerp(targetRotation, originalRotation, elapsedTime / lockPickRotationDuration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        lockPickRectTransform.rotation = originalRotation;
+        rotationCoroutine = null;
+    }
+
+    private IEnumerator PlayWrongMoveAndReset()
+    {
+        blockMoveAndInteract = true;
+
+        if (rotationCoroutine != null)
+        {
+            StopCoroutine(rotationCoroutine);
+        }
+
+        rotationCoroutine = StartCoroutine(RotateObjectFaul());
+      
+        yield return rotationCoroutine;
+
+        ResetGame();
+
+        blockMoveAndInteract = false;
+    }
+
+    private IEnumerator RotateObjectFaul()
+    {
+        float elapsedTime = 0f;
+        Quaternion targetRotation = Quaternion.Euler(0, 0, -7);
+
+        while (elapsedTime < lockPickRotationDuration)
+        {
+            if (lockPickRectTransform.localScale != Vector3.zero)
+            {
+                lockPickRectTransform.rotation = Quaternion.Slerp(
+                    originalRotation,
+                    targetRotation,
+                    elapsedTime / lockPickRotationDuration
+                );
+            }
+            else
+            {
+                Debug.LogWarning("Skala obiektu jest zerowa! Nie mo¿na interpolowaæ rotacji.");
+                yield break;
             }
 
             elapsedTime += Time.deltaTime;

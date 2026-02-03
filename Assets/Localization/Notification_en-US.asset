@@ -78,6 +78,11 @@ MonoBehaviour:
     m_Localized: The solution was taken from the Cauldron
     m_Metadata:
       m_Items: []
+  - m_Id: 322717163474944
+    m_Localized: "Find the correct sequence\nPress [A-D] to move the lockpick \nPress
+      [E] to confirm your selection"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

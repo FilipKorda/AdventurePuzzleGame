@@ -124,9 +124,9 @@ MonoBehaviour:
   itemName: Leaf
   localizeItemName:
     m_TableReference:
-      m_TableCollectionName: 
+      m_TableCollectionName: GUID:d126a2aaffb817f4f9fefa17fce8e709
     m_TableEntryReference:
-      m_KeyId: 0
+      m_KeyId: 431474626560
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -166,6 +166,7 @@ MonoBehaviour:
   endPanel: {fileID: 0}
   isEndPanel: 0
   localizationString: {fileID: 11400000, guid: f0de87e12044b394f8f5ec5e537bee58, type: 2}
+  localizationTwoString: {fileID: 0}
   references:
     version: 2
     RefIds: []

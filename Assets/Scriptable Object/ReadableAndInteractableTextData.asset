@@ -120,7 +120,7 @@ MonoBehaviour:
     m_WaitForCompletion: 0
     m_LocalVariables: []
   currentPageIndex: 4
-  unlockedPages: 0100000000000000000000
+  unlockedPages: 0101010101010101010101
   references:
     version: 2
     RefIds: []

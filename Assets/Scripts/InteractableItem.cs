@@ -80,10 +80,8 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
 
     [SerializeField] private RecipesCounter recipesCounter;
 
-
     [SerializeField] private GameObject endPanel;
     [SerializeField] private bool isEndPanel;
-
 
     [SerializeField] private LOcalizeString localizationString;
     [SerializeField] private LOcalizeString localizationTwoString;

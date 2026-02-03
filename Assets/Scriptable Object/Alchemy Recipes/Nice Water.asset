@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7de79416d7e0eb6439b0a8a09cdd5247, type: 3}
   m_Name: Nice Water
   m_EditorClassIdentifier: 
-  ingredientItemIds: 1700000018000000120000001200000012000000
+  ingredientItemIds: 1700000018000000120000001200000015000000
   resultingPotion: {fileID: 3096892419514706705, guid: f181114e518daac4fb7ce64d02cd2438, type: 3}
   recipeMat: {fileID: 2100000, guid: d6c148069f9201f4182a4866589b81f2, type: 2}
   brewingTime: 7

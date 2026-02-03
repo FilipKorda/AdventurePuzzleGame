@@ -75,6 +75,10 @@ MonoBehaviour:
     m_Key: GetMixture
     m_Metadata:
       m_Items: []
+  - m_Id: 322717163474944
+    m_Key: NotificationLockPick
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

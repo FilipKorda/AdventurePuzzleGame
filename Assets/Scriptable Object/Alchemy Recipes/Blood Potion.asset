@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7de79416d7e0eb6439b0a8a09cdd5247, type: 3}
   m_Name: Blood Potion
   m_EditorClassIdentifier: 
-  ingredientItemIds: 1400000014000000140000001400000014000000
+  ingredientItemIds: 1400000014000000140000001200000016000000
   resultingPotion: {fileID: 518945431815517603, guid: 27e3e6ee9b3ec6d4dad27a45a4db69f9, type: 3}
   recipeMat: {fileID: 2100000, guid: cd55f75cf7236aa44949d7a6a9b012e9, type: 2}
   brewingTime: 9

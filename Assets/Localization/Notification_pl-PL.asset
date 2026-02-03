@@ -82,6 +82,11 @@ MonoBehaviour:
     m_Localized: "Pobrano roztw\xF3r z kot\u0142a"
     m_Metadata:
       m_Items: []
+  - m_Id: 322717163474944
+    m_Localized: "Znajd\u017A poprawn\u0105 sekwencje\nNacisnij [A-D] aby przesuwac
+      wytrych\nNacisnij [E] aby zatwierdzic wybor"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7de79416d7e0eb6439b0a8a09cdd5247, type: 3}
   m_Name: Wine Potion
   m_EditorClassIdentifier: 
-  ingredientItemIds: 1500000015000000150000001500000015000000
+  ingredientItemIds: 1500000015000000160000001200000012000000
   resultingPotion: {fileID: 431574494893404513, guid: d76ad08fdde3de9418bcdfc02f5263eb, type: 3}
   recipeMat: {fileID: 2100000, guid: 13ba3b1a1148b954183b8373507e2d7c, type: 2}
   brewingTime: 11

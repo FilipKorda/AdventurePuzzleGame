@@ -16,7 +16,8 @@ MonoBehaviour:
     m_Code: en-US
   m_SharedData: {fileID: 11400000, guid: 196636a49d964714d8f9360b2e97f7b1, type: 2}
   m_Metadata:
-    m_Items: []
+    m_Items:
+    - rid: 602285059237740620
   m_TableData:
   - m_Id: 1518764052480
     m_Localized: Q and E
@@ -33,21 +34,24 @@ MonoBehaviour:
 
       Be careful, there are 10 of them.'
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 602285059237740620
   - m_Id: 45493800960
     m_Localized: 'ACID POTION
 
       To craft this potion, you need:
 
-      19
+      Acid
+      Bucket
 
-      19
+      Acid Bucket
 
-      19
+      Acid Bucket
 
-      19
+      Plant Root
 
-      19'
+      Water
+      Bucket'
     m_Metadata:
       m_Items: []
   - m_Id: 55203614720
@@ -55,15 +59,16 @@ MonoBehaviour:
 
       To craft this potion you need:
 
-      23
+      Plant
+      Root
 
-      24
+      Raw Meat
 
-      21
+      Wine Bucket
 
-      18
+      Water Bucket
 
-      18'
+      Water Bucket'
     m_Metadata:
       m_Items: []
   - m_Id: 63952932864
@@ -71,15 +76,16 @@ MonoBehaviour:
 
       To craft this potion you will need:
 
-      23
+      Plant
+      Root
 
-      24
+      Raw Meat
 
-      20
+      Blood Bucket
 
-      18
+      Water Bucket
 
-      19'
+      Acid Bucket'
     m_Metadata:
       m_Items: []
   - m_Id: 145494396928
@@ -87,15 +93,16 @@ MonoBehaviour:
 
       To craft this potion you will need:
 
-      20
+      Blood
+      Bucket
 
-      20
+      Blood Bucket
 
-      20
+      Blood Bucket
 
-      20
+      Water Bucket
 
-      20'
+      Leafs'
     m_Metadata:
       m_Items: []
   - m_Id: 195620524032
@@ -103,15 +110,16 @@ MonoBehaviour:
 
       To craft this potion you will need:
 
-      23
+      Plant
+      Root
 
-      24
+      Raw Meat
 
-      19
+      Acid Bucket
 
-      18
+      Water Bucket
 
-      18'
+      Water Bucket'
     m_Metadata:
       m_Items: []
   - m_Id: 197868670976
@@ -119,15 +127,16 @@ MonoBehaviour:
 
       To craft this potion you will need:
 
-      24
+      Raw
+      Meat
 
-      24
+      Raw Meat
 
-      22
+      Leafs
 
-      18
+      Water Bucket
 
-      18'
+      Blood Bucket'
     m_Metadata:
       m_Items: []
   - m_Id: 199512838144
@@ -135,15 +144,16 @@ MonoBehaviour:
 
       To craft this potion, you will need:
 
-      22
+      Leafs
 
-      22
+      Leafs
 
-      18
+      Water
+      Bucket
 
-      18
+      Water Bucket
 
-      18'
+      Plant Root'
     m_Metadata:
       m_Items: []
   - m_Id: 200850821120
@@ -151,15 +161,16 @@ MonoBehaviour:
 
       To craft this potion, you will need:
 
-      23
+      Plant
+      Root
 
-      24
+      Raw Meat
 
-      18
+      Water Bucket
 
-      18
+      Water Bucket
 
-      18'
+      Wine Bucket'
     m_Metadata:
       m_Items: []
   - m_Id: 403037245440
@@ -167,15 +178,17 @@ MonoBehaviour:
 
       To craft this potion, you need:
 
-      18
+      Water
+      Bucket
 
-      18
+      Water Bucket
 
-      18
+      Water Bucket
 
-      18
+      Water Bucket
 
-      18'
+      Raw
+      Meat'
     m_Metadata:
       m_Items: []
   - m_Id: 442920882176
@@ -183,15 +196,16 @@ MonoBehaviour:
 
       To craft this potion, you need:
 
-      21
+      Wine
+      Bucket
 
-      21
+      Wine Bucket
 
-      21
+      Leafs
 
-      21
+      Water Bucket
 
-      21'
+      Water Bucket'
     m_Metadata:
       m_Items: []
   - m_Id: 1435066716160
@@ -200,4 +214,10 @@ MonoBehaviour:
       m_Items: []
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 602285059237740620
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 
+        m_SharedEntries:
+        - id: 5996040192

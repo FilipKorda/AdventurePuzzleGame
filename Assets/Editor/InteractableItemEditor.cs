@@ -149,6 +149,7 @@ public class InteractableItemEditor : Editor
                 EditorGUILayout.PropertyField(itemIdProp, new GUIContent("Item ID"));
                 EditorGUILayout.PropertyField(itemPrefab, new GUIContent("Item to Drop From UI"));
                 EditorGUILayout.PropertyField(localizationString, new GUIContent("Localization String"));
+                EditorGUILayout.PropertyField(localizeItemName, new GUIContent("Localize Item Name"));
                 EditorGUILayout.HelpBox("To jest ID tego przedmiotu, gdy znajdzie siê w ekwipunku.", MessageType.Info);
                 break;
             case InteractableItem.InteractableType.AlchemyStation:

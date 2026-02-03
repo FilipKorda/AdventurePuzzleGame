@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LOcalizeString
   localizeString:
     m_TableReference:
-      m_TableCollectionName: GUID:d126a2aaffb817f4f9fefa17fce8e709
+      m_TableCollectionName: GUID:35546b6b8ebaa304486aa3efa25ad9aa
     m_TableEntryReference:
-      m_KeyId: 337237004288
+      m_KeyId: 7168336351232
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0

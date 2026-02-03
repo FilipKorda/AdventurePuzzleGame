@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7de79416d7e0eb6439b0a8a09cdd5247, type: 3}
   m_Name: Acid Potion
   m_EditorClassIdentifier: 
-  ingredientItemIds: 1300000013000000130000001300000013000000
+  ingredientItemIds: 1300000013000000130000001700000012000000
   resultingPotion: {fileID: 5675334526335100304, guid: c3bb659ec0030914191064d664266acf, type: 3}
   recipeMat: {fileID: 2100000, guid: c8b7942fd2baf6040957aee8f6da41f0, type: 2}
   brewingTime: 6

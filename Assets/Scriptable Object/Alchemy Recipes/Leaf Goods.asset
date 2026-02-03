@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7de79416d7e0eb6439b0a8a09cdd5247, type: 3}
   m_Name: Leaf Goods
   m_EditorClassIdentifier: 
-  ingredientItemIds: 1600000016000000120000001200000012000000
+  ingredientItemIds: 1600000016000000120000001200000017000000
   resultingPotion: {fileID: 3096892419514706705, guid: 192f3e52d1c87524eab58633c16fd79f, type: 3}
   recipeMat: {fileID: 2100000, guid: ab4d1e3be7464e4468ce0d26a729c341, type: 2}
   brewingTime: 8
