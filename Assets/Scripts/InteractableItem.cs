@@ -114,7 +114,9 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
                 ItemID requiredEmptyContainerId = ItemID.EmptyBucket;
 
                 if (selectedItemId == requiredEmptyContainerId)
-                {                   
+                {
+                    Services.Audio.PlaySFX("FillBucketWithPotion");
+
                     Inventory.Instance.RemoveItemFromInventoryByID(selectedItemIdAsInt);
                     UIManager.Instance.RemoveItemFromUIByID(selectedItemIdAsInt);
 
@@ -133,10 +135,28 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
             else if (selectedItemId != ItemID.EmptyBucket)
             {
                 cauldron.AddIngredient(selectedItemIdAsInt);
+
+                if (selectedItemId == ItemID.WineBucket || selectedItemId == ItemID.AcidBucket ||
+                      selectedItemId == ItemID.WaterBucket || selectedItemId == ItemID.BloodBucket)
+                {
+                    Services.Audio.PlaySFX("PourWater");
+                }
+                else if (selectedItemId == ItemID.PlantRoot)
+                {
+                    Services.Audio.PlaySFX("AddRoot");
+                }
+                else if (selectedItemId == ItemID.Leafs)
+                {
+                    Services.Audio.PlaySFX("AddLeafs");
+                }
+                else
+                {
+                    Services.Audio.PlaySFX("AddRawMeat");
+                }
             }
             else
             {
-                if(cauldron.isBrewing)
+                if (cauldron.isBrewing)
                 {
                     NotificationSystem.Instance.ShowNotification(cauldron.localizeThreeString, 3);
                 }
@@ -145,17 +165,17 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
                     if (localizationTwoString.localizeString != null)
                         NotificationSystem.Instance.ShowNotification(localizationTwoString.localizeString, 3);
                 }
-             
+
             }
         }
         else
         {
-            if(cauldron.HasReadySolution())
+            if (cauldron.HasReadySolution())
             {
                 if (localizationString.localizeString != null)
                     NotificationSystem.Instance.ShowNotification(localizationString.localizeString, 3);
                 Debug.Log("Wybierz pusty pojemnik, aby nabraæ roztwór.");
-            }     
+            }
             else
             {
                 if (localizationTwoString.localizeString != null)
@@ -191,6 +211,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
             bool added = Inventory.Instance.AddItemToInventory(this);
             if (added)
             {
+                Services.Audio.PlaySFX("PickUpItem");
                 DestroyInteractable();
             }
             else
@@ -202,6 +223,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         }
         else if (isAlchemyRecipe && interactableType == InteractableType.Pickupable)
         {
+            Services.Audio.PlaySFX("GrabRecipe");
             DestroyInteractable();
             Inventory.Instance.AddToInventoryAlchemyRecipe(this);
         }
@@ -294,9 +316,21 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
             {
                 if (UIManager.Instance != null && requiredItemIds.Contains(UIManager.Instance.GetSelectedItemId()))
                 {
+
                     int selectedId = UIManager.Instance.GetSelectedItemId();
+
+                    if (selectedId == 4 || selectedId == 7 || selectedId == 11)
+                    {
+                        Services.Audio.PlaySFX("UseKeyToOpenDoor");
+                    }
+                    else if (selectedId == 2 || selectedId == 8 || selectedId == 9 || selectedId == 10)
+                    {
+                        Services.Audio.PlaySFX("KnifeCut");
+                    }
+
                     Inventory.Instance.RemoveItemFromInventoryByID(selectedId);
                     UIManager.Instance.RemoveItemFromUIByID(selectedId);
+
                     if (animator != null)
                     {
                         animator.SetTrigger("Interact");
@@ -339,6 +373,18 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
                 boxCollider.enabled = false;
                 objectToPlace.SetActive(true);
                 int selectedId = UIManager.Instance.GetSelectedItemId();
+
+                if (selectedId == 16)
+                {
+                    Services.Audio.PlaySFX("StartFire");
+                    Services.Audio.PlayOnLoopSFX("FirePlayOnLoop");
+
+                }
+                else
+                {
+                    Services.Audio.PlaySFX("PlaceObject");
+                }
+
                 Inventory.Instance.RemoveItemFromInventoryByID(selectedId);
                 UIManager.Instance.RemoveItemFromUIByID(selectedId);
             }
@@ -440,10 +486,10 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         {
             if (TryGetComponent<Rigidbody>(out var rb))
             {
+                Services.Audio.PlaySFX("ThrowBook");
                 Vector3 throwDirection = transform.forward;
                 float throwForce = 5f;
                 rb.AddForce(throwDirection * throwForce, ForceMode.Impulse);
-                Debug.Log($"Throwing {gameObject.name} with force {throwForce} in direction {throwDirection}!");
             }
             else
             {
@@ -477,6 +523,8 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     {
         if (interactableType == InteractableType.Readable)
         {
+            Services.Audio.PlaySFX("ReadBook");
+
             UIManager.Instance.readablePanel.ShowReadablePanel();
             UIManager.Instance.readablePanel.headerTextUI.text =
            readableTextData.localizeHeader.GetLocalizedString();
@@ -534,6 +582,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     {
         if (interactableType == InteractableType.Readable)
         {
+            Services.Audio.PlaySFX("ReadBook");
             UIManager.Instance.readablePanel.HideReadablePanel();
             isActualReading = false;
         }
@@ -552,6 +601,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
             {
                 Debug.Log("Nie masz animatora");
             }
+            Services.Audio.PlaySFX("WallButtonPress");
             onAllWallButtonPressed?.Invoke();
         }
     }
@@ -564,6 +614,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         {
             if (UIManager.Instance != null && requiredItemIds.Contains(UIManager.Instance.GetSelectedItemId()))
             {
+                Services.Audio.PlaySFX("EnterLockPicking");
                 UIManager.Instance.lockPickPanel.ShowLockPickPanel();
                 isLockPicking = true;
             }
@@ -581,6 +632,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     {
         if (interactableType == InteractableType.LockPick)
         {
+            Services.Audio.PlaySFX("StopLockPicking");
             UIManager.Instance.lockPickPanel.HideLockPickPanel();
             isLockPicking = false;
         }

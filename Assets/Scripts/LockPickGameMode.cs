@@ -198,6 +198,8 @@ public class LockPickGameMode : MonoBehaviour
             RotateLockPickObject();
             Debug.Log($"<color=green>Dobry ruch! Krok {currentSequenceStep + 1} zaliczony.</color>");
 
+            Services.Audio.PlaySFX("LockPickCorrect");
+            
             if (isLeft) MoveLeftUp();
             if (isLowerLeft) MoveLowerLeftUp();
             if (isMiddle) MoveMiddleUp();
@@ -214,7 +216,7 @@ public class LockPickGameMode : MonoBehaviour
         else
         {
             Debug.LogError($"<color=red>Z³y ruch! Oczekiwano pozycji '{GetCurrentLockPickPositionName(expectedIndex)}', a jesteœ na '{GetCurrentLockPickPositionName()}'.</color>");
-            
+            Services.Audio.PlaySFX("LockPickFail");
             StartCoroutine(PlayWrongMoveAndReset());
         }
     }
@@ -246,7 +248,7 @@ public class LockPickGameMode : MonoBehaviour
             }
             else
             {
-                Debug.LogWarning("Skala obiektu jest zerowa! Nie mo¿na interpolowaæ rotacji.");
+                Debug.LogWarning("Skala obiektu jest zerowa! Nie mo¿na interpolowaæ rotacji.");               
                 yield break; 
             }
 

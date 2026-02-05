@@ -497,6 +497,8 @@ public class PlayerBehaviour : MonoBehaviour
 
     private IEnumerator DrunkCoroutine(float duration)
     {
+        yield return new WaitForSeconds(2);
+        Services.Audio.PlaySFX("MagicAfterDrink");
         isDrunk = true;
         if (_depthOfFieldEffect != null) _depthOfFieldEffect.active = true;
 
@@ -532,6 +534,8 @@ public class PlayerBehaviour : MonoBehaviour
 
     private IEnumerator AcidCoroutine(float duration)
     {
+        yield return new WaitForSeconds(2);
+        Services.Audio.PlaySFX("MagicAfterDrink");
         if (_colorAdjustmentsEffect != null) _colorAdjustmentsEffect.active = true;
         isAcidEffectActive = true;
 
@@ -609,6 +613,8 @@ public class PlayerBehaviour : MonoBehaviour
     }
     private IEnumerator NiceWaterCoroutine(float duration)
     {
+        yield return new WaitForSeconds(2);
+        Services.Audio.PlaySFX("MagicAfterDrink");
         if (chromaticAberration != null) chromaticAberration.active = true;
         if (lensDistortion != null) lensDistortion.active = true;
 
@@ -681,6 +687,8 @@ public class PlayerBehaviour : MonoBehaviour
 
     private IEnumerator MudWaterCoroutine(float duration)
     {
+        yield return new WaitForSeconds(2);
+        Services.Audio.PlaySFX("MagicAfterDrink");
         if (playerTransform == null)
         {
             Debug.LogError("Player Transform nie jest przypisany!");
@@ -731,6 +739,8 @@ public class PlayerBehaviour : MonoBehaviour
 
     private IEnumerator LeafGoodCoroutine(float duration)
     {
+        yield return new WaitForSeconds(2);
+        Services.Audio.PlaySFX("MagicAfterDrink");
         if (playerTransform == null)
         {
             Debug.LogError("Player Transform nie jest przypisany!");
@@ -781,6 +791,8 @@ public class PlayerBehaviour : MonoBehaviour
 
     private IEnumerator AngryTimeCoroutine(float duration)
     {
+        yield return new WaitForSeconds(2);
+        Services.Audio.PlaySFX("MagicAfterDrink");
         isFlying = true;
         velocity.y = 0;
 
@@ -811,6 +823,8 @@ public class PlayerBehaviour : MonoBehaviour
 
     private IEnumerator TeleportCoroutine(float duration)
     {
+        yield return new WaitForSeconds(2);
+        Services.Audio.PlaySFX("MagicAfterDrink");
         float timer = 0f;
         int currentPointIndex = 0;
 
@@ -843,6 +857,9 @@ public class PlayerBehaviour : MonoBehaviour
 
     private IEnumerator OpenHiddenCoroutine(float duration)
     {
+        yield return new WaitForSeconds(2);
+        Services.Audio.PlaySFX("OpenHiddenDoor");
+
         Material mat = hiddenDoorRenderer.material;
 
         float t = 0f;

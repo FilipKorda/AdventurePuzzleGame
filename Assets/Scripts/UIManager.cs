@@ -262,6 +262,7 @@ public class UIManager : MonoBehaviour
 
     private void UseConsumableItem(int itemId)
     {
+        Services.Audio.PlaySFX("Drink");
         Inventory.Instance.RemoveItemFromInventoryByID(itemId);
         RemoveItemFromUIByID(itemId);
     }
@@ -277,6 +278,7 @@ public class UIManager : MonoBehaviour
         int currentSelectedId = GetSelectedItemId();
         if (currentSelectedId != 0)
         {
+            Services.Audio.PlaySFX("DropItem");
             Inventory.Instance.DropItemByID(currentSelectedId);
         }
         else

@@ -77,17 +77,17 @@ public class Cauldron : MonoBehaviour
 
     public void AddIngredient(int itemId)
     {
-        if(multiStageMover.fireObject.activeSelf == false)
+        if (multiStageMover.fireObject.activeSelf == false)
         {
             NotificationSystem.Instance.ShowNotification(localizeString, 3);
-          //  Debug.Log("Podpal ogieñ zanim  bedziesz wk³adaæ sk³adniki  do kocio³a.");
+            //  Debug.Log("Podpal ogieñ zanim  bedziesz wk³adaæ sk³adniki  do kocio³a.");
             return;
         }
 
         if (HasReadySolution())
         {
             NotificationSystem.Instance.ShowNotification(localizeTwoString, 3);
-          //  Debug.Log("Kocio³ zawiera ju¿ gotowy roztwór. Opró¿nij go najpierw.");
+            //  Debug.Log("Kocio³ zawiera ju¿ gotowy roztwór. Opró¿nij go najpierw.");
             return;
         }
 
@@ -188,6 +188,27 @@ public class Cauldron : MonoBehaviour
 
         if (ps != null && !ps.isPlaying)
         {
+            if (recipe.brewingTime == 6)
+            {
+                Services.Audio.PlaySFX("BolingWater6");
+            }
+            else if (recipe.brewingTime == 7)
+            {
+                Services.Audio.PlaySFX("NiceWaterBoling");
+            }
+            else if (recipe.brewingTime == 9)
+            {
+                Services.Audio.PlaySFX("BloodBoiling");
+            }
+            else if (recipe.brewingTime == 11)
+            {
+                Services.Audio.PlaySFX("WineBoiling");
+            }
+            else
+            {
+                Services.Audio.PlaySFX("BoilingWater");
+            }
+
             ps.Play();
         }
     }
@@ -216,6 +237,7 @@ public class Cauldron : MonoBehaviour
         if (ps != null && !ps.isPlaying)
         {
             ps.Play();
+            Services.Audio.PlaySFX("BoilingWater");
         }
     }
 
