@@ -62,6 +62,18 @@ MonoBehaviour:
     m_Localized: "Pe\u0142en  Obraz"
     m_Metadata:
       m_Items: []
+  - m_Id: 4051452165378048
+    m_Localized: "G\u0142o\u015Bno\u015B\u0107"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4051510306820096
+    m_Localized: Muzyka
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4051557496934400
+    m_Localized: Sfx
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

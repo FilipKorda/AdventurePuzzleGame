@@ -130,7 +130,6 @@ MonoBehaviour:
   m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
-  m_Version: 2
   m_TaaSettings:
     m_Quality: 3
     m_FrameInfluence: 0.1
@@ -138,6 +137,7 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+  m_Version: 2
 --- !u!1 &5254463656913342399
 GameObject:
   m_ObjectHideFlags: 0
@@ -203,6 +203,7 @@ GameObject:
   - component: {fileID: 708021625724910837}
   - component: {fileID: 4922775154563705814}
   - component: {fileID: 6777279263115178933}
+  - component: {fileID: 3228317829877042417}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -255,6 +256,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -276,9 +279,11 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!136 &5472436243944631489
 CapsuleCollider:
@@ -388,6 +393,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   teleportInterval: 0.75
+  hiddenDoorRenderer: {fileID: 0}
+  boxColliderHiddenDoor: {fileID: 0}
+  disablePlayer: 0
 --- !u!114 &4922775154563705814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -559,6 +567,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropPoint: {fileID: 2894146433829765567}
+  recipesCounter: {fileID: 0}
+--- !u!114 &3228317829877042417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6371058212479402174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec4158b3262277040a0b5492c13035b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerRegister
 --- !u!1 &8815092824352967941
 GameObject:
   m_ObjectHideFlags: 0

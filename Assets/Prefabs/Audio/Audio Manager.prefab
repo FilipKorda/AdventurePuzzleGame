@@ -380,6 +380,10 @@ MonoBehaviour:
     Clip: {fileID: 8300000, guid: a70efb4df5c8fab42a889d70049e2f10, type: 3}
   - Id: OpenHiddenDoor
     Clip: {fileID: 8300000, guid: 3f928d2faaa6a084399a878fec8acdb9, type: 3}
+  - Id: OpenHiddenDoor
+    Clip: {fileID: 8300000, guid: 3f928d2faaa6a084399a878fec8acdb9, type: 3}
+  - Id: Music_1
+    Clip: {fileID: 8300000, guid: 0e56259553c03e94eb7a3b6c57d0c1bd, type: 3}
   sfxSourcePrefab: {fileID: 6808787666201464470, guid: 561a59515f73e424ba170ae966f504e9, type: 3}
   playerTransform: {fileID: 0}
   loopInnerRadius: 1.5

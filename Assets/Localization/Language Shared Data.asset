@@ -65,6 +65,18 @@ MonoBehaviour:
     m_Key: Language_Fullscreen
     m_Metadata:
       m_Items: []
+  - m_Id: 4051452165378048
+    m_Key: Volume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4051510306820096
+    m_Key: Music
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4051557496934400
+    m_Key: SFX
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
