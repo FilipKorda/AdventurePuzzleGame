@@ -127,6 +127,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::InteractableItem
   interactableType: 11
   itemName: Recipe Place Holder
+  localizeItemName:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   itemSprite: {fileID: 0}
   itemId: 0
   requiredItemIds: 1a0000001b0000001c0000001d0000001e0000001f00000020000000210000002200000023000000
@@ -159,6 +168,13 @@ MonoBehaviour:
   scroll_BigWaterPotion: {fileID: 3473487173736764420}
   scroll_SmallWinePotion: {fileID: 5711425333290172968}
   recipesCounter: {fileID: 0}
+  endPanel: {fileID: 0}
+  isEndPanel: 0
+  localizationString: {fileID: 11400000, guid: c5591fe899ce4f440b4f4f26d2c84188, type: 2}
+  localizationTwoString: {fileID: 0}
+  references:
+    version: 2
+    RefIds: []
 --- !u!1001 &1389732777609725113
 PrefabInstance:
   m_ObjectHideFlags: 0

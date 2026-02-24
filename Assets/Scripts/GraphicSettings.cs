@@ -10,36 +10,36 @@ public class GraphicSettings : MonoBehaviour
     private const string PrefHeightKey = "Graphics_Height";
     private const string PrefFullscreenKey = "Graphics_Fullscreen";
 
+    private bool currentFullscreen;
+
     private void Start()
     {
         int width = PlayerPrefs.GetInt(PrefWidthKey, resolution3.x);
         int height = PlayerPrefs.GetInt(PrefHeightKey, resolution3.y);
-        bool fullscreen = PlayerPrefs.GetInt(PrefFullscreenKey, Screen.fullScreen ? 1 : 0) == 1;
+        currentFullscreen = PlayerPrefs.GetInt(PrefFullscreenKey, 1) == 1;
 
-        ApplyResolution(width, height, fullscreen);
+        ApplyResolution(width, height, currentFullscreen);
     }
 
-    // Pod³¹czyæ do przycisku 1
     public void SetResolution1()
     {
-        ApplyAndSave(resolution1.x, resolution1.y, Screen.fullScreen);
+        ApplyAndSave(resolution1.x, resolution1.y, currentFullscreen);
     }
 
-    // Pod³¹czyæ do przycisku 2
     public void SetResolution2()
     {
-        ApplyAndSave(resolution2.x, resolution2.y, Screen.fullScreen);
+        ApplyAndSave(resolution2.x, resolution2.y, currentFullscreen);
     }
 
-    // Pod³¹czyæ do przycisku 3
     public void SetResolution3()
     {
-        ApplyAndSave(resolution3.x, resolution3.y, Screen.fullScreen);
+        ApplyAndSave(resolution3.x, resolution3.y, currentFullscreen);
     }
 
     public void SetFullscreen(bool fullscreen)
     {
-        ApplyAndSave(Screen.width, Screen.height, fullscreen);
+        currentFullscreen = fullscreen;
+        ApplyAndSave(Screen.width, Screen.height, currentFullscreen);
     }
 
     private void ApplyAndSave(int width, int height, bool fullscreen)

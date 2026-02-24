@@ -5,17 +5,11 @@ public class AudioManager : MonoBehaviour, IAudioService
 {
     static AudioManager instance;
 
-    [SerializeField] private AudioSource sfxSource;
-    [SerializeField] private AudioSource musicSource;
-    [SerializeField] private SoundData[] sounds;
+    AudioSource musicSource;
+    AudioSource sfxSource;
 
-    [Header("Looped SFX Prefab")]
-    [SerializeField] private GameObject sfxSourcePrefab;
-
-    [SerializeField] private float loopInnerRadius = 2f;
-    [SerializeField] private float loopOuterRadius = 15f;
-    [SerializeField] private float loopFadeSpeed = 5f;
-    [SerializeField] private float loopMinVolume = 0f;
+    [SerializeField] SoundData[] sounds;
+    [SerializeField] GameObject sfxSourcePrefab;
 
     Dictionary<string, AudioClip> soundMap;
     Dictionary<string, ProximityAudio> activeLoopSources = new();
@@ -34,91 +28,116 @@ public class AudioManager : MonoBehaviour, IAudioService
         instance = this;
         DontDestroyOnLoad(gameObject);
 
+        EnsureSources();
+        EnsureSoundMap();
+
+        musicSource.volume = PlayerPrefs.GetFloat(MusicVolumeKey, 1f);
+        sfxSource.volume = PlayerPrefs.GetFloat(SFXVolumeKey, 1f);
+
         Services.RegisterAudio(this);
-
-        soundMap = new Dictionary<string, AudioClip>();
-        foreach (var sound in sounds)
-            soundMap[sound.Id] = sound.Clip;
-
-        float musicVolume = PlayerPrefs.GetFloat("MusicVolume", 1f);
-        float sfxVolume = PlayerPrefs.GetFloat("SFXVolume", 1f);
-
-        musicSource.volume = musicVolume;
-        sfxSource.volume = sfxVolume;
     }
 
-    void Start()
+    private void Start()
     {
         PlayMusic("Music_1");
     }
 
+    void EnsureSources()
+    {
+        if (musicSource != null && sfxSource != null) return;
+
+        var sources = GetComponents<AudioSource>();
+
+        if (sources.Length >= 2)
+        {
+            musicSource = sources[0];
+            sfxSource = sources[1];
+            return;
+        }
+
+        musicSource = gameObject.AddComponent<AudioSource>();
+        sfxSource = gameObject.AddComponent<AudioSource>();
+        musicSource.loop = true;
+    }
+
+    void EnsureSoundMap()
+    {
+        if (soundMap != null) return;
+
+        soundMap = new Dictionary<string, AudioClip>();
+        foreach (var s in sounds)
+            soundMap[s.Id] = s.Clip;
+    }
+
+    public void PlayMusic(string id)
+    {
+        EnsureSources();
+        EnsureSoundMap();
+
+        if (!soundMap.TryGetValue(id, out var clip)) return;
+
+        musicSource.clip = clip;
+        musicSource.Play();
+    }
+
+    public void StopMusic()
+    {
+        EnsureSources();
+        musicSource.Stop();
+    }
+
     public void PlaySFX(string id)
     {
+        EnsureSources();
+        EnsureSoundMap();
+
         if (soundMap.TryGetValue(id, out var clip))
             sfxSource.PlayOneShot(clip);
     }
 
     public void PlayOnLoopSFX(string id)
     {
+        EnsureSoundMap();
+        EnsureSources();
+
         if (!soundMap.TryGetValue(id, out var clip)) return;
         if (sfxSourcePrefab == null) return;
 
         if (activeLoopSources.TryGetValue(id, out var existing) && existing != null)
-        {
-            if (!existing.AudioSource.isPlaying)
-                existing.AudioSource.Play();
             return;
-        }
 
         var player = PlayerLocator.PlayerTransform;
         if (player == null) return;
+
         var go = Instantiate(sfxSourcePrefab, player.position, Quaternion.identity);
         var prox = go.GetComponent<ProximityAudio>();
         var src = go.GetComponent<AudioSource>();
 
+        if (prox == null || src == null)
+        {
+            Destroy(go);
+            return;
+        }
+
         src.clip = clip;
         src.loop = true;
-        src.playOnAwake = false;
         src.volume = sfxSource.volume;
         src.Play();
 
-        prox.Initialize(player, loopInnerRadius, loopOuterRadius, loopFadeSpeed, loopMinVolume);
-
-
+        prox.Initialize(player, 2f, 15f, 5f, 0f);
         activeLoopSources[id] = prox;
-    }
-
-    public void PlayMusic(string id)
-    {
-        if (!soundMap.TryGetValue(id, out var clip)) return;
-
-        musicSource.clip = clip;
-        musicSource.loop = true;
-        musicSource.Play();
-    }
-
-    public void StopMusic()
-    {
-        musicSource.Stop();
-    }
-
-    public void StopLoopSFX(string id)
-    {
-        if (activeLoopSources.TryGetValue(id, out var prox) && prox != null)
-        {
-            prox.StopAndDestroy();
-            activeLoopSources.Remove(id);
-        }
     }
 
     public void SetMusicVolume(float value)
     {
+        EnsureSources();
         musicSource.volume = value;
         PlayerPrefs.SetFloat(MusicVolumeKey, value);
     }
 
     public void SetSFXVolume(float value)
     {
+        EnsureSources();
         sfxSource.volume = value;
         PlayerPrefs.SetFloat(SFXVolumeKey, value);
 
@@ -129,11 +148,13 @@ public class AudioManager : MonoBehaviour, IAudioService
 
     public float GetMusicVolume()
     {
+        EnsureSources();
         return musicSource.volume;
     }
 
     public float GetSFXVolume()
     {
+        EnsureSources();
         return sfxSource.volume;
     }
 }

@@ -76,6 +76,14 @@ MonoBehaviour:
     m_Localized: Sfx
     m_Metadata:
       m_Items: []
+  - m_Id: 8351823297794048
+    m_Localized: Sensitivity
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8351925173243904
+    m_Localized: Mouse
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

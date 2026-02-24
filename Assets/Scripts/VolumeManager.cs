@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,8 +7,11 @@ public class VolumeManager : MonoBehaviour
     [SerializeField] Slider musicSlider;
     [SerializeField] Slider sfxSlider;
 
-    void Start()
+    IEnumerator Start()
     {
+        while (Services.Audio == null)
+            yield return null;
+
         musicSlider.value = Services.Audio.GetMusicVolume();
         sfxSlider.value = Services.Audio.GetSFXVolume();
 

@@ -83,6 +83,14 @@ MonoBehaviour:
       [E] to confirm your selection"
     m_Metadata:
       m_Items: []
+  - m_Id: 5751635437703168
+    m_Localized: You dont have recipes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5759029861437440
+    m_Localized: First Open Lock
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

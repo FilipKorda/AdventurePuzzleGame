@@ -186,6 +186,7 @@ public class InteractableItemEditor : Editor
                 EditorGUILayout.PropertyField(scroll_SmallWinePotion, new GUIContent(""));
                 EditorGUILayout.PropertyField(boxColliderProp, new GUIContent("Box Collider"));
                 EditorGUILayout.PropertyField(recipesCounter, new GUIContent("Recipes Counter"));
+                EditorGUILayout.PropertyField(localizationString, new GUIContent("Localization String"));
                 break;
         }
 

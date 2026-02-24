@@ -119,8 +119,8 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
-  currentPageIndex: 4
-  unlockedPages: 0101010101010101010101
+  currentPageIndex: 0
+  unlockedPages: 0100000000000000000000
   references:
     version: 2
     RefIds: []

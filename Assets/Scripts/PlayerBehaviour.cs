@@ -10,7 +10,7 @@ public class PlayerBehaviour : MonoBehaviour
     [SerializeField] private Transform playerTransform;
 
     [Header("Sensitivity Settings")]
-    [SerializeField] private float gamepadSensitivity = 0.5f;
+    [SerializeField] private float gamepadSensitivity = 100f;
     [SerializeField] private float mouseSensitivity = 10f;
 
     [Header("Movement Settings")]
@@ -199,11 +199,11 @@ public class PlayerBehaviour : MonoBehaviour
 
         if (context.control.device is Mouse)
         {
-            inputLook = mouseSensitivity * Time.deltaTime * rawInput;
+            inputLook = MouseSensitivitySettings.MouseSensitivity * mouseSensitivity * Time.deltaTime * rawInput;
         }
         else
         {
-            inputLook = rawInput * gamepadSensitivity;
+            inputLook = MouseSensitivitySettings.MouseSensitivity * gamepadSensitivity * Time.deltaTime * rawInput;
         }
     }
 
@@ -277,7 +277,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void HandleFOV()
     {
-        if(disablePlayer) { return; }
+        if (disablePlayer) { return; }
         if (_playerCamera == null && !isDrunk) return;
 
         float targetFOV = isDrunk ? drunkFOV : normalFOV;
@@ -341,7 +341,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void ApplyGravity()
     {
-        if(disablePlayer) { return; }
+        if (disablePlayer) { return; }
         if (isClimbing || isFlying)
         {
             velocity.y = 0;
@@ -359,7 +359,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void HandleRaycast()
     {
-        if(disablePlayer) { return; }
+        if (disablePlayer) { return; }
         Ray ray = new(cameraTransform.position, cameraTransform.forward);
 
         // Resetowanie referencji
@@ -446,7 +446,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void HandleClimbing()
     {
-        if(disablePlayer) { return; }
+        if (disablePlayer) { return; }
         if (!isClimbing) { return; }
 
         if (characterController.isGrounded && inputMovement.y < -0.1f)
@@ -462,7 +462,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(disablePlayer) { return; }
+        if (disablePlayer) { return; }
         if (other.CompareTag("Ladder"))
         {
             isClimbing = true;

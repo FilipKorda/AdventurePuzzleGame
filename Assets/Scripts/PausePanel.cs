@@ -43,6 +43,7 @@ public class PausePanel : MonoBehaviour
 
         pausePanel.SetActive(true);
         isPaused = true;
+
     }
 
     public void ResumeGame()

@@ -307,6 +307,9 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
                 }
                 else
                 {
+
+                    if (localizationString.localizeString != null)
+                        NotificationSystem.Instance.ShowNotification(localizationString.localizeString, 3);
                     Debug.Log("Nie masz animatora");
                 }
 
@@ -404,7 +407,13 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         foreach (int requiredId in requiredItemIds)
         {
             if (!Inventory.Instance.HasItemWithId(requiredId))
+            {
+                if (localizationString.localizeString != null)
+                    NotificationSystem.Instance.ShowNotification(localizationString.localizeString, 3);
+
                 continue;
+            }
+              
 
             if (requiredId == 26)
             {
@@ -455,12 +464,13 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
             {
                 scroll_SmallWinePotion.SetActive(true);
                 readableAndInteractableTextData.UnlockPageForRecipeId(requiredId);
-            }
+            }    
 
             Inventory.Instance.RemoveFromInventoryAlchemyRecipe(requiredId);
             recipesCounter.UpdateRecipeCount();
             Debug.LogWarning($"Znaleziono i usuniêto item o ID: {requiredId}");
         }
+
 
         if (
             scroll_BigAcidPotion.activeSelf &&

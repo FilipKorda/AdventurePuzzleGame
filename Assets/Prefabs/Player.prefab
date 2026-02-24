@@ -346,7 +346,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 3870059820769821162}
-  gamepadSensitivity: 0.6
+  gamepadSensitivity: 100
   mouseSensitivity: 10
   moveSpeed: 5
   climbSpeed: 3

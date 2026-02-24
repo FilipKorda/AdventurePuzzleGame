@@ -87,6 +87,14 @@ MonoBehaviour:
       wytrych\nNacisnij [E] aby zatwierdzic wybor"
     m_Metadata:
       m_Items: []
+  - m_Id: 5751635437703168
+    m_Localized: Nie posiadasz recept
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5759029861437440
+    m_Localized: "Najpierw otw\xF3rz k\u0142\xF3dke"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
