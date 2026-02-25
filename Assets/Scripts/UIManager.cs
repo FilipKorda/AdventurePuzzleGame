@@ -14,6 +14,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private InteractableItem bookWithAlchemiaRecepisItem;
     public ReadablePanel readablePanel;
     public ReadableAndInteractablePanel readableAndInteractablePanel;
+    [SerializeField] private GameObject gameModeLockPickPanel;
     public LockPickPanel lockPickPanel;
     private List<ItemSlot> itemSlots = new();
     private int selectedItemId = -1;
@@ -269,7 +270,7 @@ public class UIManager : MonoBehaviour
 
     private void OnDropItemPerformed(InputAction.CallbackContext context)
     {
-        if (readableAndInteractablePanel != null && readableAndInteractablePanel.gameObject.activeInHierarchy)
+        if (readableAndInteractablePanel != null && readableAndInteractablePanel.gameObject.activeInHierarchy || gameModeLockPickPanel.activeInHierarchy)
         {
             Debug.Log("Nie mo¿na wyrzuciæ przedmiotu podczas przegl¹dania czytanej strony.");
             return;

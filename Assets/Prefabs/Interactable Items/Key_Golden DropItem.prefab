@@ -99,7 +99,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.10611395, y: 0.020000063, z: 0.28178757}
+  m_Size: {x: 0.17, y: 0.08, z: 0.3}
   m_Center: {x: 0, y: -0.00000020256266, z: 0.06416008}
 --- !u!114 &1415523983821612480
 MonoBehaviour:
@@ -117,9 +117,9 @@ MonoBehaviour:
   itemName: Golden Key
   localizeItemName:
     m_TableReference:
-      m_TableCollectionName: 
+      m_TableCollectionName: GUID:d126a2aaffb817f4f9fefa17fce8e709
     m_TableEntryReference:
-      m_KeyId: 0
+      m_KeyId: 284787232768
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0

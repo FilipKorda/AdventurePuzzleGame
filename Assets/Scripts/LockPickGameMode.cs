@@ -1,5 +1,6 @@
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class LockPickGameMode : MonoBehaviour
 {
@@ -56,16 +57,48 @@ public class LockPickGameMode : MonoBehaviour
 
     private bool blockMoveAndInteract = true;
 
-    private void OnEnable()
+    private InputSystem_Actions input;
+
+    private void Awake()
     {
         InitOriginalPosition();
+    }
+
+    private void OnEnable()
+    {
         InitLockPick();
         InitGameSequence();
+
+        input = new InputSystem_Actions();
+
+        input.LockPick.Enable();
+
+        input.LockPick.MoveLeft.performed += OnMoveLeft;
+        input.LockPick.MoveRight.performed += OnMoveRight;
+        input.LockPick.Interact.performed += OnInteract;
     }
 
     private void OnDisable()
     {
-        InitOriginalPosition();
+        StopAllCoroutines();
+
+        if (left) left.transform.position = originalPositionLeft;
+        if (lowerLeft) lowerLeft.transform.position = originalPositionLowerLeft;
+        if (middle) middle.transform.position = originalPositionMiddle;
+        if (lowerRight) lowerRight.transform.position = originalPositionLowerRight;
+        if (right) right.transform.position = originalPositionRight;
+
+        currentLockPickIndex = 4;
+        if (lockPick) lockPick.transform.localPosition = lockPickPositions[4];
+
+        currentSequenceStep = 0;
+        blockMoveAndInteract = true;
+
+        input.LockPick.MoveLeft.performed -= OnMoveLeft;
+        input.LockPick.MoveRight.performed -= OnMoveRight;
+        input.LockPick.Interact.performed -= OnInteract;
+
+        input.LockPick.Disable();
     }
 
     void InitOriginalPosition()
@@ -121,20 +154,28 @@ public class LockPickGameMode : MonoBehaviour
         objectToMove.transform.localPosition = endPos;
     }
 
-    private void Update()
+    private void OnMoveLeft(InputAction.CallbackContext ctx)
     {
         if (blockMoveAndInteract) return;
+        if (currentSequenceStep >= correctSequenceOrder.Length) return;
 
-        if (currentSequenceStep < correctSequenceOrder.Length)
-        {
-            if (Input.GetKeyDown(KeyCode.A)) { MoveLockPickLeft(); }
-            if (Input.GetKeyDown(KeyCode.D)) { MoveLockPickRight(); }
+        MoveLockPickLeft();
+    }
 
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                TryActivateLockPart();
-            }
-        }
+    private void OnMoveRight(InputAction.CallbackContext ctx)
+    {
+        if (blockMoveAndInteract) return;
+        if (currentSequenceStep >= correctSequenceOrder.Length) return;
+
+        MoveLockPickRight();
+    }
+
+    private void OnInteract(InputAction.CallbackContext ctx)
+    {
+        if (blockMoveAndInteract) return;
+        if (currentSequenceStep >= correctSequenceOrder.Length) return;
+
+        TryActivateLockPart();
     }
 
     private void InitLockPick()
@@ -190,7 +231,7 @@ public class LockPickGameMode : MonoBehaviour
     }
 
     private void TryActivateLockPart()
-    {      
+    {
         int expectedIndex = correctSequenceOrder[currentSequenceStep];
 
         if (currentLockPickIndex == expectedIndex)
@@ -199,7 +240,7 @@ public class LockPickGameMode : MonoBehaviour
             Debug.Log($"<color=green>Dobry ruch! Krok {currentSequenceStep + 1} zaliczony.</color>");
 
             Services.Audio.PlaySFX("LockPickCorrect");
-            
+
             if (isLeft) MoveLeftUp();
             if (isLowerLeft) MoveLowerLeftUp();
             if (isMiddle) MoveMiddleUp();
@@ -235,7 +276,7 @@ public class LockPickGameMode : MonoBehaviour
     {
         float elapsedTime = 0f;
         Quaternion targetRotation = Quaternion.Euler(0, 0, -30);
-     
+
         while (elapsedTime < lockPickRotationDuration)
         {
             if (lockPickRectTransform.localScale != Vector3.zero)
@@ -248,8 +289,8 @@ public class LockPickGameMode : MonoBehaviour
             }
             else
             {
-                Debug.LogWarning("Skala obiektu jest zerowa! Nie mo¿na interpolowaæ rotacji.");               
-                yield break; 
+                Debug.LogWarning("Skala obiektu jest zerowa! Nie mo¿na interpolowaæ rotacji.");
+                yield break;
             }
 
             elapsedTime += Time.deltaTime;
@@ -281,7 +322,7 @@ public class LockPickGameMode : MonoBehaviour
         }
 
         rotationCoroutine = StartCoroutine(RotateObjectFaul());
-      
+
         yield return rotationCoroutine;
 
         ResetGame();
@@ -352,7 +393,7 @@ public class LockPickGameMode : MonoBehaviour
 
     private void ResetGame()
     {
-        Debug.Log("Resetowanie gry...");
+        Debug.LogError("Resetowanie gry...");
 
         MoveLeftDown();
         MoveLowerLeftDown();

@@ -7,7 +7,6 @@ public class LockPickPanel : MonoBehaviour
     [SerializeField] private TextMeshProUGUI lockPickText;
     [SerializeField] private LocalizedString localizeString;
 
-
     public void ShowLockPickPanel()
     {
         StartLockPickMode();

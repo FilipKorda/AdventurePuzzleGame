@@ -80,7 +80,7 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 322717163474944
     m_Localized: "Find the correct sequence\nPress [A-D] to move the lockpick \nPress
-      [E] to confirm your selection"
+      [E] to confirm your selection\nPress [RMB] to leave "
     m_Metadata:
       m_Items: []
   - m_Id: 5751635437703168

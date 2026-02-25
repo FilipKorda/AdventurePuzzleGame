@@ -54,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 9be901e879cc35942b511f8179228d6d, type: 2}
     - target: {fileID: 919132149155446097, guid: 2155eacbc07fc2346859c2f4ff50e91a, type: 3}
       propertyPath: m_Name
-      value: Switch_Lever
+      value: Switch_Lever DropItem 1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2155eacbc07fc2346859c2f4ff50e91a, type: 3}
       propertyPath: m_Layer
@@ -73,7 +73,7 @@ PrefabInstance:
       addedObject: {fileID: 2168237054753980948}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2155eacbc07fc2346859c2f4ff50e91a, type: 3}
       insertIndex: -1
-      addedObject: {fileID: -723947046946758446}
+      addedObject: {fileID: 639600885756231873}
   m_SourcePrefab: {fileID: 100100000, guid: 2155eacbc07fc2346859c2f4ff50e91a, type: 3}
 --- !u!1 &4801983424206131036 stripped
 GameObject:
@@ -104,7 +104,7 @@ MonoBehaviour:
     m_WaitForCompletion: 0
     m_LocalVariables: []
   itemSprite: {fileID: 21300000, guid: 3c6db1701b1ec284780c365dab4d063f, type: 3}
-  itemId: 5
+  itemId: 13
   requiredItemIds: 
   animator: {fileID: 0}
   readableTextData: {fileID: 0}
@@ -115,7 +115,7 @@ MonoBehaviour:
   objectToPlace: {fileID: 0}
   boxCollider: {fileID: 0}
   canOpenWithNoSelectedItem: 0
-  itemPrefab: {fileID: 4801983424206131036, guid: d7d4b2682c3d3364486a14c5b068e7b5, type: 3}
+  itemPrefab: {fileID: 4801983424206131036, guid: 0a79da8c64bfeae4bb653493239d18a2, type: 3}
   isActualReading: 0
   isAlchemyRecipe: 0
   requiredUses: 3
@@ -163,7 +163,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.06332196, y: 0.09648667, z: 0.6944685}
   m_Center: {x: -0.00000015646222, y: 0.00000014901161, z: 0.3472345}
---- !u!54 &-723947046946758446
+--- !u!54 &639600885756231873
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
