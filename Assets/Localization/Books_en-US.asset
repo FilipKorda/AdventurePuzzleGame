@@ -90,6 +90,10 @@ MonoBehaviour:
       can find them and move them to one place for quick access.
     m_Metadata:
       m_Items: []
+  - m_Id: 8767349635436544
+    m_Localized: Book
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -91,6 +91,10 @@ MonoBehaviour:
     m_Localized: First Open Lock
     m_Metadata:
       m_Items: []
+  - m_Id: 8346026002108416
+    m_Localized: Find Book
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

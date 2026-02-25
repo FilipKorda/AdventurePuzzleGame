@@ -92,6 +92,10 @@ MonoBehaviour:
       do nich szybki dostep."
     m_Metadata:
       m_Items: []
+  - m_Id: 8767349635436544
+    m_Localized: "Ksi\u0105\u017Cka"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

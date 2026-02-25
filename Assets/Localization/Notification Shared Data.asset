@@ -87,6 +87,10 @@ MonoBehaviour:
     m_Key: FirstOpenLock
     m_Metadata:
       m_Items: []
+  - m_Id: 8346026002108416
+    m_Key: Find Book
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

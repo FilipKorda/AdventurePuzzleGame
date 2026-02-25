@@ -104,6 +104,10 @@ MonoBehaviour:
     m_Key: ReadableTextData_RecipesMainText
     m_Metadata:
       m_Items: []
+  - m_Id: 8767349635436544
+    m_Key: Book
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
