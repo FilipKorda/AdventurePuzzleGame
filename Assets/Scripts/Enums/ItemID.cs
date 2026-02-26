@@ -43,4 +43,5 @@ public enum ItemID
     BadMoodBucket = 40,
     AngryTimeBucket = 41,
     MissionBook = 42,
+    lamp = 43,
 }

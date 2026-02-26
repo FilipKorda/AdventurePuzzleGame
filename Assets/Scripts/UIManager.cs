@@ -24,7 +24,7 @@ public class UIManager : MonoBehaviour
 
     [Header("Input Settings")]
     [SerializeField] private InputActionReference[] selectItemActions;
-   
+
 
     [SerializeField] private InputActionReference navigateNextAction;
     [SerializeField] private InputActionReference navigatePreviousAction;
@@ -37,6 +37,25 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI itemNameText;
     private System.Action<InputAction.CallbackContext>[] selectItemPerformedCallbacks;
+
+    [Header("Toggle Lamp")]
+    [SerializeField] private TextMeshProUGUI pressFToToggleLamp;
+
+
+    public IEnumerator ActiveLampNotification()
+    {
+        if (pressFToToggleLamp != null)
+        {
+            pressFToToggleLamp.gameObject.SetActive(true);
+        }
+
+        yield return new WaitForSeconds(7);
+
+        if (pressFToToggleLamp != null)
+        {
+            pressFToToggleLamp.gameObject.SetActive(false);
+        }
+    }
 
     private void OnEnable()
     {

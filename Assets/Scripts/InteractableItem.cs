@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Localization;
 
-public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpenable, IReadable, IPressable, IPlaceable, ILockPick, IFillable, IPickupARenewableItem, IAlchemyStation, IReadableAndInteractable, IRecipePlaceable
+public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpenable, IReadable, IPressable, IPlaceable, ILockPick, IFillable, IPickupARenewableItem, IAlchemyStation, IReadableAndInteractable, IRecipePlaceable, IGetObject
 {
     public enum InteractableType
     {
@@ -20,6 +20,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         AlchemyStation,
         ReadableAndInteractableItem,
         PlaceRecipe,
+        GetObject,
     }
 
     public InteractableType interactableType;
@@ -86,6 +87,22 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     [SerializeField] private LOcalizeString localizationString;
     [SerializeField] private LOcalizeString localizationTwoString;
 
+
+    public void GetObject()
+    {
+        if (interactableType == InteractableType.GetObject)
+        {
+            ItemID requireId = ItemID.lamp;
+
+            if (requireId == ItemID.lamp)
+            {
+                UIManager.Instance.StartCoroutine(UIManager.Instance.ActiveLampNotification());
+            }
+
+            Services.Audio.PlaySFX("PickUpItem");
+            DisableThisGameObject();
+        }
+    }
 
     public GameObject GetItemPrefab()
     {
@@ -232,6 +249,10 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     public int GetItemId() => itemId;
 
     public void DestroyInteractable() => Destroy(gameObject);
+    public void DisableThisGameObject()
+    {
+        gameObject.SetActive(false);
+    }
 
     public string GetItemName()
     {
@@ -413,7 +434,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
 
                 continue;
             }
-              
+
 
             if (requiredId == 26)
             {
@@ -464,7 +485,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
             {
                 scroll_SmallWinePotion.SetActive(true);
                 readableAndInteractableTextData.UnlockPageForRecipeId(requiredId);
-            }    
+            }
 
             Inventory.Instance.RemoveFromInventoryAlchemyRecipe(requiredId);
             recipesCounter.UpdateRecipeCount();

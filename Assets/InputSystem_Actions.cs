@@ -145,6 +145,15 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Toggle Lamp"",
+                    ""type"": ""Button"",
+                    ""id"": ""cad4547f-b14f-4ad3-ab11-44fc3c8aabdc"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -442,6 +451,28 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": "";Gamepad"",
                     ""action"": ""DrinkEat"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ac7cb17a-842c-4e00-8c8a-a7f199fb1f23"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Toggle Lamp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3f64a4eb-ba6c-41ac-a568-7b356acdc417"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Toggle Lamp"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1369,6 +1400,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_DropItem = m_Player.FindAction("DropItem", throwIfNotFound: true);
         m_Player_DrinkEat = m_Player.FindAction("DrinkEat", throwIfNotFound: true);
+        m_Player_ToggleLamp = m_Player.FindAction("Toggle Lamp", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1484,6 +1516,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_DropItem;
     private readonly InputAction m_Player_DrinkEat;
+    private readonly InputAction m_Player_ToggleLamp;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -1519,6 +1552,10 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/DrinkEat".
         /// </summary>
         public InputAction @DrinkEat => m_Wrapper.m_Player_DrinkEat;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/ToggleLamp".
+        /// </summary>
+        public InputAction @ToggleLamp => m_Wrapper.m_Player_ToggleLamp;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1563,6 +1600,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @DrinkEat.started += instance.OnDrinkEat;
             @DrinkEat.performed += instance.OnDrinkEat;
             @DrinkEat.canceled += instance.OnDrinkEat;
+            @ToggleLamp.started += instance.OnToggleLamp;
+            @ToggleLamp.performed += instance.OnToggleLamp;
+            @ToggleLamp.canceled += instance.OnToggleLamp;
         }
 
         /// <summary>
@@ -1592,6 +1632,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @DrinkEat.started -= instance.OnDrinkEat;
             @DrinkEat.performed -= instance.OnDrinkEat;
             @DrinkEat.canceled -= instance.OnDrinkEat;
+            @ToggleLamp.started -= instance.OnToggleLamp;
+            @ToggleLamp.performed -= instance.OnToggleLamp;
+            @ToggleLamp.canceled -= instance.OnToggleLamp;
         }
 
         /// <summary>
@@ -2162,6 +2205,13 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnDrinkEat(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Toggle Lamp" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnToggleLamp(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.

@@ -59,6 +59,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Toggle Lamp",
+                    "type": "Button",
+                    "id": "cad4547f-b14f-4ad3-ab11-44fc3c8aabdc",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -356,6 +365,28 @@
                     "processors": "",
                     "groups": ";Gamepad",
                     "action": "DrinkEat",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ac7cb17a-842c-4e00-8c8a-a7f199fb1f23",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Toggle Lamp",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3f64a4eb-ba6c-41ac-a568-7b356acdc417",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "Toggle Lamp",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -91,6 +91,10 @@ MonoBehaviour:
     m_Key: Find Book
     m_Metadata:
       m_Items: []
+  - m_Id: 8652465157459968
+    m_Key: Lamp Notification
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

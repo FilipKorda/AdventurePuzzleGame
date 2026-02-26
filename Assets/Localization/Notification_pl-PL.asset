@@ -99,6 +99,10 @@ MonoBehaviour:
     m_Localized: "Znajd\u017C ksi\u0105\u017Ck\u0119"
     m_Metadata:
       m_Items: []
+  - m_Id: 8652465157459968
+    m_Localized: "Nacisnij [F] \u017Ceby prze\u0142\u0105czy\u0107 lampe "
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

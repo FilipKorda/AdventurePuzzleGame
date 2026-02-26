@@ -188,6 +188,10 @@ public class InteractableItemEditor : Editor
                 EditorGUILayout.PropertyField(recipesCounter, new GUIContent("Recipes Counter"));
                 EditorGUILayout.PropertyField(localizationString, new GUIContent("Localization String"));
                 break;
+            case InteractableItem.InteractableType.GetObject:
+                EditorGUILayout.PropertyField(itemIdProp, new GUIContent("Required Items ID"));
+               
+                break;
         }
 
         serializedObject.ApplyModifiedProperties();

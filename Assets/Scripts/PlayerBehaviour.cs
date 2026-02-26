@@ -45,6 +45,7 @@ public class PlayerBehaviour : MonoBehaviour
     private IFillable lastIFillable;
     private IPickupARenewableItem lastIPickupARenewableItem;
     private IAlchemyStation lastIAlchemyStation;
+    private IGetObject lastIGetObject;
 
     private CharacterController characterController;
     private Vector2 inputMovement;
@@ -140,7 +141,9 @@ public class PlayerBehaviour : MonoBehaviour
 
     public bool disablePlayer = false;
 
-
+    [Header("Light Lamp")]
+    [SerializeField] private Light lampLight;
+    [SerializeField] private GameObject lampLightGo;
 
     private void Awake()
     {
@@ -178,6 +181,19 @@ public class PlayerBehaviour : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
+
+
+    public void ToggleLamp(InputAction.CallbackContext context)
+    {
+        if (lampLightGo.activeInHierarchy) return;
+
+        if (lampLight != null)
+        {
+            lampLight.enabled = !lampLight.enabled;
+        }
+    }
+
+
 
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -223,6 +239,7 @@ public class PlayerBehaviour : MonoBehaviour
 
             lastIFillable?.OnFill();
             lastIPickupARenewableItem?.OnPickupARenewableItem();
+            lastIGetObject?.GetObject();
 
             if (lastIOpenable != null && lastIOpenable.IsOpen())
             {
@@ -375,6 +392,7 @@ public class PlayerBehaviour : MonoBehaviour
         lastIPickupARenewableItem = null;
         lastIAlchemyStation = null;
         lastIReadableAndInteractable = null;
+        lastIGetObject = null;
 
         if (Physics.Raycast(ray, out RaycastHit hit, raycastRange, interactableLayer))
         {
@@ -428,6 +446,10 @@ public class PlayerBehaviour : MonoBehaviour
 
                     case InteractableItem.InteractableType.PlaceRecipe:
                         lastIRecipePlaceable = interactableObject;
+                        break;
+
+                    case InteractableItem.InteractableType.GetObject:
+                        lastIGetObject = interactableObject;
                         break;
                 }
             }
