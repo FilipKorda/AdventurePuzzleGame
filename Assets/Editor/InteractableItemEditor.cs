@@ -38,6 +38,13 @@ public class InteractableItemEditor : Editor
     private SerializedProperty localizeItemName;
     private SerializedProperty localizationString;
     private SerializedProperty localizationTwoString;
+    private SerializedProperty itemIdbyItemId;
+
+    private SerializedProperty metalCrabs;
+    private SerializedProperty springs;
+    private SerializedProperty metalscaffolds;
+    private SerializedProperty collectibleGears;
+    private SerializedProperty cables;
 
     private void OnEnable()
     {
@@ -75,6 +82,13 @@ public class InteractableItemEditor : Editor
         localizeItemName = serializedObject.FindProperty("localizeItemName");
         localizationString = serializedObject.FindProperty("localizationString");
         localizationTwoString = serializedObject.FindProperty("localizationTwoString");
+        itemIdbyItemId = serializedObject.FindProperty("itemIdbyItemId");
+
+        metalCrabs = serializedObject.FindProperty("metalCrabs");
+        springs = serializedObject.FindProperty("springs");
+        metalscaffolds = serializedObject.FindProperty("metalscaffolds");
+        collectibleGears = serializedObject.FindProperty("collectibleGears");
+        cables = serializedObject.FindProperty("cables");
     }
 
     public override void OnInspectorGUI()
@@ -189,8 +203,20 @@ public class InteractableItemEditor : Editor
                 EditorGUILayout.PropertyField(localizationString, new GUIContent("Localization String"));
                 break;
             case InteractableItem.InteractableType.GetObject:
-                EditorGUILayout.PropertyField(itemIdProp, new GUIContent("Required Items ID"));
-               
+                EditorGUILayout.PropertyField(itemIdbyItemId, new GUIContent("Required Items ID by Item Id"));
+                break;
+            case InteractableItem.InteractableType.Crafting:
+                EditorGUILayout.PropertyField(metalCrabs, new GUIContent("Metal Crabs Game Object"));
+                EditorGUILayout.PropertyField(springs, new GUIContent("Springs Game Object"));
+                EditorGUILayout.PropertyField(metalscaffolds, new GUIContent("Metalscaffolds Game Object"));
+                EditorGUILayout.PropertyField(collectibleGears, new GUIContent("Collectible Gears Game Object"));
+                EditorGUILayout.PropertyField(cables, new GUIContent("Cables Game Object"));
+                EditorGUILayout.PropertyField(boxColliderProp, new GUIContent("Box Collider"));
+
+
+
+
+
                 break;
         }
 

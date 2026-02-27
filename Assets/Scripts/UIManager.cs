@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -41,6 +42,53 @@ public class UIManager : MonoBehaviour
     [Header("Toggle Lamp")]
     [SerializeField] private TextMeshProUGUI pressFToToggleLamp;
 
+    [Header("Crafting Objects")]
+    [SerializeField] private ItemstoCraftHolderUI itemstoCraftHolderUI;
+    [SerializeField] private Image imageMetalCrabs;
+    [SerializeField] private Image imageSprings;
+    [SerializeField] private Image imageMetalscaffolds;
+    [SerializeField] private Image imageCollectible_Gears;
+    [SerializeField] private Image imageCables;
+
+    public void ShowMetalCrabImage()
+    {
+        itemstoCraftHolderUI.OnItemCollected(imageMetalCrabs);
+    }
+
+    public void ShowSpringImage()
+    {
+        itemstoCraftHolderUI.OnItemCollected(imageSprings);
+    }
+
+    public void ShowMetalscaffoldsImage()
+    {
+        itemstoCraftHolderUI.OnItemCollected(imageMetalscaffolds);
+    }
+
+    public void ShowCollectibleGearsImage()
+    {
+        itemstoCraftHolderUI.OnItemCollected(imageCollectible_Gears);
+    }
+
+    public void ShowCablesImage()
+    {
+        itemstoCraftHolderUI.OnItemCollected(imageCables);
+    }
+
+
+    public void RemoveItemFromUI(ItemID itemID)
+    {
+        if (itemID == ItemID.MetalCrabs)
+            imageMetalCrabs.gameObject.SetActive(false);
+        else if (itemID == ItemID.Springs)
+            imageSprings.gameObject.SetActive(false);
+        else if (itemID == ItemID.Metalscaffolds)
+            imageMetalscaffolds.gameObject.SetActive(false);
+        else if (itemID == ItemID.Collectible_Gears)
+            imageCollectible_Gears.gameObject.SetActive(false);
+        else if (itemID == ItemID.Cables)
+            imageCables.gameObject.SetActive(false);
+    }
 
     public IEnumerator ActiveLampNotification()
     {

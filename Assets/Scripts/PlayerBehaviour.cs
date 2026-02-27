@@ -46,6 +46,7 @@ public class PlayerBehaviour : MonoBehaviour
     private IPickupARenewableItem lastIPickupARenewableItem;
     private IAlchemyStation lastIAlchemyStation;
     private IGetObject lastIGetObject;
+    private ICrafting lastICrafting;
 
     private CharacterController characterController;
     private Vector2 inputMovement;
@@ -240,6 +241,7 @@ public class PlayerBehaviour : MonoBehaviour
             lastIFillable?.OnFill();
             lastIPickupARenewableItem?.OnPickupARenewableItem();
             lastIGetObject?.GetObject();
+            lastICrafting?.PlaceObjectToCraft();
 
             if (lastIOpenable != null && lastIOpenable.IsOpen())
             {
@@ -393,6 +395,7 @@ public class PlayerBehaviour : MonoBehaviour
         lastIAlchemyStation = null;
         lastIReadableAndInteractable = null;
         lastIGetObject = null;
+        lastICrafting = null;
 
         if (Physics.Raycast(ray, out RaycastHit hit, raycastRange, interactableLayer))
         {
@@ -450,6 +453,10 @@ public class PlayerBehaviour : MonoBehaviour
 
                     case InteractableItem.InteractableType.GetObject:
                         lastIGetObject = interactableObject;
+                        break;
+
+                    case InteractableItem.InteractableType.Crafting:
+                        lastICrafting = interactableObject;
                         break;
                 }
             }

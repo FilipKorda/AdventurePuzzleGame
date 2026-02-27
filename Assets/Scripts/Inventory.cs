@@ -13,6 +13,9 @@ public class Inventory : MonoBehaviour
     [Header("Recpie Counter")]
     [SerializeField] private RecipesCounter recipesCounter;
 
+
+    public HashSet<ItemID> CollectedItems = new HashSet<ItemID>();
+
     private void Awake()
     {
         if (Instance == null)

@@ -1,10 +1,13 @@
+using Newtonsoft.Json;
 using System.Collections;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Localization;
 
-public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpenable, IReadable, IPressable, IPlaceable, ILockPick, IFillable, IPickupARenewableItem, IAlchemyStation, IReadableAndInteractable, IRecipePlaceable, IGetObject
+public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpenable, IReadable, IPressable,
+    IPlaceable, ILockPick, IFillable, IPickupARenewableItem, IAlchemyStation, IReadableAndInteractable, IRecipePlaceable,
+    IGetObject, ICrafting
 {
     public enum InteractableType
     {
@@ -21,6 +24,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         ReadableAndInteractableItem,
         PlaceRecipe,
         GetObject,
+        Crafting,
     }
 
     public InteractableType interactableType;
@@ -31,6 +35,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     [Header("ID (if Pickupable)")]
     [Tooltip("ID tego przedmiotu, jeœli mo¿na go podnieœæ i umieœciæ w ekwipunku.")]
     [SerializeField] private int itemId;
+    [SerializeField] private ItemID itemIdbyItemId;
 
     [Header("Requirements (if Openable, Placeable, etc.)")]
     [Tooltip("Lista ID przedmiotów z ekwipunku, które s¹ wymagane do tej interakcji.")]
@@ -87,21 +92,100 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     [SerializeField] private LOcalizeString localizationString;
     [SerializeField] private LOcalizeString localizationTwoString;
 
+    [SerializeField] private GameObject metalCrabs;
+    [SerializeField] private GameObject springs;
+    [SerializeField] private GameObject metalscaffolds;
+    [SerializeField] private GameObject collectibleGears;
+    [SerializeField] private GameObject cables;
+    private bool metalCrabsUsed;
+    private bool springsUsed;
+    private bool metalscaffoldsUsed;
+    private bool gearsUsed;
+    private bool cablesUsed;
+
+
+    public void PlaceObjectToCraft()
+    {
+        bool craftedSomething = false;
+
+        if (!metalCrabsUsed && Inventory.Instance.CollectedItems.Contains(ItemID.MetalCrabs))
+        {
+            metalCrabs.SetActive(true);
+            Inventory.Instance.CollectedItems.Remove(ItemID.MetalCrabs);
+            UIManager.Instance.RemoveItemFromUI(ItemID.MetalCrabs);
+            metalCrabsUsed = true;
+            craftedSomething = true;
+        }
+
+        if (!springsUsed && Inventory.Instance.CollectedItems.Contains(ItemID.Springs))
+        {
+            springs.SetActive(true);
+            Inventory.Instance.CollectedItems.Remove(ItemID.Springs);
+            UIManager.Instance.RemoveItemFromUI(ItemID.Springs);
+            springsUsed = true;
+            craftedSomething = true;
+        }
+
+        if (!metalscaffoldsUsed && Inventory.Instance.CollectedItems.Contains(ItemID.Metalscaffolds))
+        {
+            metalscaffolds.SetActive(true);
+            Inventory.Instance.CollectedItems.Remove(ItemID.Metalscaffolds);
+            UIManager.Instance.RemoveItemFromUI(ItemID.Metalscaffolds);
+            metalscaffoldsUsed = true;
+            craftedSomething = true;
+        }
+
+        if (!gearsUsed && Inventory.Instance.CollectedItems.Contains(ItemID.Collectible_Gears))
+        {
+            collectibleGears.SetActive(true);
+            Inventory.Instance.CollectedItems.Remove(ItemID.Collectible_Gears);
+            UIManager.Instance.RemoveItemFromUI(ItemID.Collectible_Gears);
+            gearsUsed = true;
+            craftedSomething = true;
+        }
+
+        if (!cablesUsed && Inventory.Instance.CollectedItems.Contains(ItemID.Cables))
+        {
+            cables.SetActive(true);
+            Inventory.Instance.CollectedItems.Remove(ItemID.Cables);
+            UIManager.Instance.RemoveItemFromUI(ItemID.Cables);
+            cablesUsed = true;
+            craftedSomething = true;
+        }
+
+        if (metalCrabsUsed && springsUsed && metalscaffoldsUsed && gearsUsed && cablesUsed)
+        {
+            boxCollider.enabled = false;
+        }
+
+        if (craftedSomething)
+            Debug.Log("umieszczono obiekt do kraftowania");
+        else
+            Debug.Log("nie sie nie dzieje");
+    }
 
     public void GetObject()
     {
-        if (interactableType == InteractableType.GetObject)
-        {
-            ItemID requireId = ItemID.lamp;
+        if (interactableType != InteractableType.GetObject)
+            return;
 
-            if (requireId == ItemID.lamp)
-            {
-                UIManager.Instance.StartCoroutine(UIManager.Instance.ActiveLampNotification());
-            }
+        Inventory.Instance.CollectedItems.Add(itemIdbyItemId);
 
-            Services.Audio.PlaySFX("PickUpItem");
-            DisableThisGameObject();
-        }
+        if (itemIdbyItemId == ItemID.lamp)
+            UIManager.Instance.StartCoroutine(UIManager.Instance.ActiveLampNotification());
+        else if (itemIdbyItemId == ItemID.MetalCrabs)
+            UIManager.Instance.ShowMetalCrabImage();
+        else if (itemIdbyItemId == ItemID.Springs)
+            UIManager.Instance.ShowSpringImage();
+        else if (itemIdbyItemId == ItemID.Metalscaffolds)
+            UIManager.Instance.ShowMetalscaffoldsImage();
+        else if (itemIdbyItemId == ItemID.Collectible_Gears)
+            UIManager.Instance.ShowCollectibleGearsImage();
+        else if (itemIdbyItemId == ItemID.Cables)
+            UIManager.Instance.ShowCablesImage();
+
+        Services.Audio.PlaySFX("PickUpItem");
+        DisableThisGameObject();
     }
 
     public GameObject GetItemPrefab()

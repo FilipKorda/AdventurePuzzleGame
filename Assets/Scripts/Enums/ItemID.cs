@@ -44,4 +44,9 @@ public enum ItemID
     AngryTimeBucket = 41,
     MissionBook = 42,
     lamp = 43,
+    MetalCrabs = 44,
+    Springs = 45,
+    Metalscaffolds = 46,
+    Collectible_Gears = 47,
+    Cables = 48,
 }
