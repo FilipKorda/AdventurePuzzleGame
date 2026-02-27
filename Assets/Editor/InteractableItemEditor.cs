@@ -45,6 +45,7 @@ public class InteractableItemEditor : Editor
     private SerializedProperty metalscaffolds;
     private SerializedProperty collectibleGears;
     private SerializedProperty cables;
+    private SerializedProperty workbench;
 
     private void OnEnable()
     {
@@ -89,6 +90,7 @@ public class InteractableItemEditor : Editor
         metalscaffolds = serializedObject.FindProperty("metalscaffolds");
         collectibleGears = serializedObject.FindProperty("collectibleGears");
         cables = serializedObject.FindProperty("cables");
+        workbench = serializedObject.FindProperty("workbench");
     }
 
     public override void OnInspectorGUI()
@@ -212,6 +214,7 @@ public class InteractableItemEditor : Editor
                 EditorGUILayout.PropertyField(collectibleGears, new GUIContent("Collectible Gears Game Object"));
                 EditorGUILayout.PropertyField(cables, new GUIContent("Cables Game Object"));
                 EditorGUILayout.PropertyField(boxColliderProp, new GUIContent("Box Collider"));
+                EditorGUILayout.PropertyField(workbench, new GUIContent("workbench"));
 
 
 

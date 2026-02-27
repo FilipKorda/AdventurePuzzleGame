@@ -96,6 +96,14 @@ MonoBehaviour:
     m_Localized: "Ksi\u0105\u017Cka"
     m_Metadata:
       m_Items: []
+  - m_Id: 9507493485236224
+    m_Localized: " tutaj cos bedzie wyt\u0142umaczenie dark mazu"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9508601150590976
+    m_Localized: tutaj bedzie pon pad wyjasnienie
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

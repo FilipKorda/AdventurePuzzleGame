@@ -97,6 +97,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     [SerializeField] private GameObject metalscaffolds;
     [SerializeField] private GameObject collectibleGears;
     [SerializeField] private GameObject cables;
+    [SerializeField] private Workbench workbench;
     private bool metalCrabsUsed;
     private bool springsUsed;
     private bool metalscaffoldsUsed;
@@ -156,12 +157,21 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         if (metalCrabsUsed && springsUsed && metalscaffoldsUsed && gearsUsed && cablesUsed)
         {
             boxCollider.enabled = false;
+
+            UIManager.Instance.HideBackgroud();
+
+            ActiveCrafting();
         }
 
         if (craftedSomething)
             Debug.Log("umieszczono obiekt do kraftowania");
         else
             Debug.Log("nie sie nie dzieje");
+    }
+
+    private void ActiveCrafting()
+    {
+        workbench.PlayCraftingAnimation();
     }
 
     public void GetObject()

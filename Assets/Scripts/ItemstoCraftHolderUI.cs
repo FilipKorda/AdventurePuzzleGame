@@ -34,6 +34,18 @@ public class ItemstoCraftHolderUI : MonoBehaviour
         yield return FadeImageFromZeroToOne(image);
     }
 
+
+    public void HideBackgroud()
+    {
+        StartCoroutine(HideBackgroudCorutine());
+    }
+
+    private IEnumerator HideBackgroudCorutine()
+    {
+        yield return new WaitForSeconds(1);
+        backgroundAnimator.SetTrigger("Hide");
+    }
+
     private IEnumerator FadeImageFromZeroToOne(Image image)
     {
         float t = 0f;

@@ -75,6 +75,10 @@ public class UIManager : MonoBehaviour
         itemstoCraftHolderUI.OnItemCollected(imageCables);
     }
 
+    public void HideBackgroud()
+    {
+        itemstoCraftHolderUI.HideBackgroud();
+    }
 
     public void RemoveItemFromUI(ItemID itemID)
     {

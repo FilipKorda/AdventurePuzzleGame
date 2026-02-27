@@ -162,6 +162,10 @@ MonoBehaviour:
     m_Localized: "Z\u0142y czas"
     m_Metadata:
       m_Items: []
+  - m_Id: 9498795211771904
+    m_Localized: Terminal
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

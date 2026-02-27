@@ -49,4 +49,5 @@ public enum ItemID
     Metalscaffolds = 46,
     Collectible_Gears = 47,
     Cables = 48,
+    Keypad = 49,
 }
