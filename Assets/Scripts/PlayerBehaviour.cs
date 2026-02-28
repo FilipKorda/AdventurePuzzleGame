@@ -47,7 +47,9 @@ public class PlayerBehaviour : MonoBehaviour
     private IAlchemyStation lastIAlchemyStation;
     private IGetObject lastIGetObject;
     private ICrafting lastICrafting;
+
     private IPinNumber lastIPinNumber;
+    private IPinNumber highlightedPin;
 
     private CharacterController characterController;
     private Vector2 inputMovement;
@@ -381,10 +383,10 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void HandleRaycast()
     {
-        if (disablePlayer) { return; }
+        if (disablePlayer) return;
+
         Ray ray = new(cameraTransform.position, cameraTransform.forward);
 
-        // Resetowanie referencji
         lastIpickupable = null;
         lastIBookThrowable = null;
         lastIOpenable = null;
@@ -405,6 +407,13 @@ public class PlayerBehaviour : MonoBehaviour
         {
             if (hit.collider.TryGetComponent<InteractableItem>(out var interactableObject))
             {
+                if (highlightedPin != null &&
+                    interactableObject.interactableType != InteractableItem.InteractableType.PinNumber)
+                {
+                    highlightedPin.ResetHighlightButton();
+                    highlightedPin = null;
+                }
+
                 switch (interactableObject.interactableType)
                 {
                     case InteractableItem.InteractableType.Pickupable:
@@ -462,11 +471,20 @@ public class PlayerBehaviour : MonoBehaviour
                     case InteractableItem.InteractableType.Crafting:
                         lastICrafting = interactableObject;
                         break;
+
                     case InteractableItem.InteractableType.PinNumber:
+                        if (hit.collider.TryGetComponent<IPinNumber>(out var pin))
+                        {
+                            if (highlightedPin != pin)
+                            {
+                                highlightedPin?.ResetHighlightButton();
+                                highlightedPin = pin;
+                                highlightedPin.HighlightButton();
+                            }
+                        }
+
                         lastIPinNumber = interactableObject;
                         break;
-
-
                 }
             }
 
@@ -475,6 +493,9 @@ public class PlayerBehaviour : MonoBehaviour
         }
         else
         {
+            highlightedPin?.ResetHighlightButton();
+            highlightedPin = null;
+
             UpdateDotVisibility(true);
             centerOfScreenTargetSize = new Vector2(10f, 10f);
         }

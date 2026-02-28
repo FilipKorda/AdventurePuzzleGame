@@ -106,85 +106,110 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     private bool gearsUsed;
     private bool cablesUsed;
 
+    [Header("Pin Pad Highlight")]
+    [SerializeField] private Renderer rend;
+    [SerializeField] private Color highlightColor;
+    private Color baseColor;
+
+    private void Awake()
+    {
+        if (rend != null)
+        {
+            baseColor = rend.material.color;
+        }
+    }
+
     public void EnterPinNumber()
     {
         if (pinNumber == PinNumber.None)
         {
             WallKeypad.Instance.SetPinNumber(PinNumber.None);
             WallKeypad.Instance.EnterPinNumber();
-            Debug.Log("0");
+
         }
         else if (pinNumber == PinNumber.One)
         {
             WallKeypad.Instance.SetPinNumber(PinNumber.One);
             WallKeypad.Instance.EnterPinNumber();
-            Debug.Log("1");
+
         }
         else if (pinNumber == PinNumber.Two)
         {
             WallKeypad.Instance.SetPinNumber(PinNumber.Two);
             WallKeypad.Instance.EnterPinNumber();
-            Debug.Log("2");
+
         }
         else if (pinNumber == PinNumber.Three)
         {
             WallKeypad.Instance.SetPinNumber(PinNumber.Three);
             WallKeypad.Instance.EnterPinNumber();
-            Debug.Log("3");
+
         }
         else if (pinNumber == PinNumber.Four)
         {
             WallKeypad.Instance.SetPinNumber(PinNumber.Four);
             WallKeypad.Instance.EnterPinNumber();
-            Debug.Log("4");
+
         }
         else if (pinNumber == PinNumber.Five)
         {
             WallKeypad.Instance.SetPinNumber(PinNumber.Five);
             WallKeypad.Instance.EnterPinNumber();
-            Debug.Log("5");
+
         }
         else if (pinNumber == PinNumber.Six)
         {
             WallKeypad.Instance.SetPinNumber(PinNumber.Six);
             WallKeypad.Instance.EnterPinNumber();
-            Debug.Log("6");
+
         }
         else if (pinNumber == PinNumber.Seven)
         {
             WallKeypad.Instance.SetPinNumber(PinNumber.Seven);
             WallKeypad.Instance.EnterPinNumber();
-            Debug.Log("7");
+
         }
         else if (pinNumber == PinNumber.Eight)
         {
             WallKeypad.Instance.SetPinNumber(PinNumber.Eight);
             WallKeypad.Instance.EnterPinNumber();
-            Debug.Log("8");
+
         }
         else if (pinNumber == PinNumber.Nine)
         {
             WallKeypad.Instance.SetPinNumber(PinNumber.Nine);
             WallKeypad.Instance.EnterPinNumber();
-            Debug.Log("9");
+
         }
         else if (pinNumber == PinNumber.Clear)
         {
             WallKeypad.Instance.SetPinNumber(PinNumber.Clear);
             WallKeypad.Instance.EnterPinNumber();
-            Debug.Log("Clear");
+
         }
         else if (pinNumber == PinNumber.Accept)
         {
             WallKeypad.Instance.SetPinNumber(PinNumber.Accept);
             WallKeypad.Instance.EnterPinNumber();
-            Debug.Log("Accept");
+
         }
-
-
     }
 
+    public void HighlightButton()
+    {
+        if (rend != null)
+        {
+            rend.material.color = highlightColor;
+        }
+    }
 
+    public void ResetHighlightButton()
+    {
+        if (rend != null)
+        {
+            rend.material.color = baseColor;
+        }
+    }
 
     public void PlaceObjectToCraft()
     {

@@ -10,15 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 1f7ddea51bca29c4085d5f704123dbc9, type: 3}
       propertyPath: m_LocalScale.x
-      value: 6.666667
+      value: 13.69933
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1f7ddea51bca29c4085d5f704123dbc9, type: 3}
       propertyPath: m_LocalScale.y
-      value: 6.6666656
+      value: 13.69933
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1f7ddea51bca29c4085d5f704123dbc9, type: 3}
       propertyPath: m_LocalScale.z
-      value: 6.6666656
+      value: 13.69933
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1f7ddea51bca29c4085d5f704123dbc9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -117,6 +117,7 @@ MonoBehaviour:
   itemSprite: {fileID: 0}
   itemId: 49
   itemIdbyItemId: 0
+  pinNumber: 0
   requiredItemIds: 
   animator: {fileID: 0}
   readableTextData: {fileID: 0}
@@ -157,6 +158,8 @@ MonoBehaviour:
   collectibleGears: {fileID: 0}
   cables: {fileID: 0}
   workbench: {fileID: 0}
+  rend: {fileID: 0}
+  highlightColor: {r: 0, g: 0, b: 0, a: 0}
   references:
     version: 2
     RefIds: []

@@ -476,8 +476,8 @@ MonoBehaviour:
   playerTransform: {fileID: 3870059820769821162}
   gamepadSensitivity: 100
   mouseSensitivity: 10
-  moveSpeed: 5
-  climbSpeed: 3
+  moveSpeed: 3.5
+  climbSpeed: 2
   cameraTransform: {fileID: 2603889717382775948}
   minLookAngle: -60
   maxLookAngle: 60
@@ -525,6 +525,7 @@ MonoBehaviour:
   boxColliderHiddenDoor: {fileID: 0}
   disablePlayer: 0
   lampLight: {fileID: 4737187716862764318}
+  lampLightGo: {fileID: 0}
 --- !u!114 &4922775154563705814
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -48,6 +48,8 @@ public class InteractableItemEditor : Editor
     private SerializedProperty workbench;
 
     private SerializedProperty pinNumber;
+    private SerializedProperty rend;
+    private SerializedProperty highlightColor;
 
     private void OnEnable()
     {
@@ -95,6 +97,8 @@ public class InteractableItemEditor : Editor
         workbench = serializedObject.FindProperty("workbench");
 
         pinNumber = serializedObject.FindProperty("pinNumber");
+        rend = serializedObject.FindProperty("rend");
+        highlightColor = serializedObject.FindProperty("highlightColor");
     }
 
     public override void OnInspectorGUI()
@@ -222,6 +226,8 @@ public class InteractableItemEditor : Editor
                 break;
             case InteractableItem.InteractableType.PinNumber:
                 EditorGUILayout.PropertyField(pinNumber, new GUIContent("Pin Number"));
+                EditorGUILayout.PropertyField(rend, new GUIContent("Render"));
+                EditorGUILayout.PropertyField(highlightColor, new GUIContent("HighlightColor"));
                 break;
         }
 
