@@ -47,6 +47,8 @@ public class InteractableItemEditor : Editor
     private SerializedProperty cables;
     private SerializedProperty workbench;
 
+    private SerializedProperty pinNumber;
+
     private void OnEnable()
     {
         interactableTypeProp = serializedObject.FindProperty("interactableType");
@@ -91,6 +93,8 @@ public class InteractableItemEditor : Editor
         collectibleGears = serializedObject.FindProperty("collectibleGears");
         cables = serializedObject.FindProperty("cables");
         workbench = serializedObject.FindProperty("workbench");
+
+        pinNumber = serializedObject.FindProperty("pinNumber");
     }
 
     public override void OnInspectorGUI()
@@ -215,11 +219,9 @@ public class InteractableItemEditor : Editor
                 EditorGUILayout.PropertyField(cables, new GUIContent("Cables Game Object"));
                 EditorGUILayout.PropertyField(boxColliderProp, new GUIContent("Box Collider"));
                 EditorGUILayout.PropertyField(workbench, new GUIContent("workbench"));
-
-
-
-
-
+                break;
+            case InteractableItem.InteractableType.PinNumber:
+                EditorGUILayout.PropertyField(pinNumber, new GUIContent("Pin Number"));
                 break;
         }
 

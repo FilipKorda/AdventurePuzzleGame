@@ -7,7 +7,7 @@ using UnityEngine.Localization;
 
 public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpenable, IReadable, IPressable,
     IPlaceable, ILockPick, IFillable, IPickupARenewableItem, IAlchemyStation, IReadableAndInteractable, IRecipePlaceable,
-    IGetObject, ICrafting
+    IGetObject, ICrafting, IPinNumber
 {
     public enum InteractableType
     {
@@ -25,6 +25,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         PlaceRecipe,
         GetObject,
         Crafting,
+        PinNumber
     }
 
     public InteractableType interactableType;
@@ -36,6 +37,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     [Tooltip("ID tego przedmiotu, jeœli mo¿na go podnieœæ i umieœciæ w ekwipunku.")]
     [SerializeField] private int itemId;
     [SerializeField] private ItemID itemIdbyItemId;
+    [SerializeField] private PinNumber pinNumber;
 
     [Header("Requirements (if Openable, Placeable, etc.)")]
     [Tooltip("Lista ID przedmiotów z ekwipunku, które s¹ wymagane do tej interakcji.")]
@@ -103,6 +105,85 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     private bool metalscaffoldsUsed;
     private bool gearsUsed;
     private bool cablesUsed;
+
+    public void EnterPinNumber()
+    {
+        if (pinNumber == PinNumber.None)
+        {
+            WallKeypad.Instance.SetPinNumber(PinNumber.None);
+            WallKeypad.Instance.EnterPinNumber();
+            Debug.Log("0");
+        }
+        else if (pinNumber == PinNumber.One)
+        {
+            WallKeypad.Instance.SetPinNumber(PinNumber.One);
+            WallKeypad.Instance.EnterPinNumber();
+            Debug.Log("1");
+        }
+        else if (pinNumber == PinNumber.Two)
+        {
+            WallKeypad.Instance.SetPinNumber(PinNumber.Two);
+            WallKeypad.Instance.EnterPinNumber();
+            Debug.Log("2");
+        }
+        else if (pinNumber == PinNumber.Three)
+        {
+            WallKeypad.Instance.SetPinNumber(PinNumber.Three);
+            WallKeypad.Instance.EnterPinNumber();
+            Debug.Log("3");
+        }
+        else if (pinNumber == PinNumber.Four)
+        {
+            WallKeypad.Instance.SetPinNumber(PinNumber.Four);
+            WallKeypad.Instance.EnterPinNumber();
+            Debug.Log("4");
+        }
+        else if (pinNumber == PinNumber.Five)
+        {
+            WallKeypad.Instance.SetPinNumber(PinNumber.Five);
+            WallKeypad.Instance.EnterPinNumber();
+            Debug.Log("5");
+        }
+        else if (pinNumber == PinNumber.Six)
+        {
+            WallKeypad.Instance.SetPinNumber(PinNumber.Six);
+            WallKeypad.Instance.EnterPinNumber();
+            Debug.Log("6");
+        }
+        else if (pinNumber == PinNumber.Seven)
+        {
+            WallKeypad.Instance.SetPinNumber(PinNumber.Seven);
+            WallKeypad.Instance.EnterPinNumber();
+            Debug.Log("7");
+        }
+        else if (pinNumber == PinNumber.Eight)
+        {
+            WallKeypad.Instance.SetPinNumber(PinNumber.Eight);
+            WallKeypad.Instance.EnterPinNumber();
+            Debug.Log("8");
+        }
+        else if (pinNumber == PinNumber.Nine)
+        {
+            WallKeypad.Instance.SetPinNumber(PinNumber.Nine);
+            WallKeypad.Instance.EnterPinNumber();
+            Debug.Log("9");
+        }
+        else if (pinNumber == PinNumber.Clear)
+        {
+            WallKeypad.Instance.SetPinNumber(PinNumber.Clear);
+            WallKeypad.Instance.EnterPinNumber();
+            Debug.Log("Clear");
+        }
+        else if (pinNumber == PinNumber.Accept)
+        {
+            WallKeypad.Instance.SetPinNumber(PinNumber.Accept);
+            WallKeypad.Instance.EnterPinNumber();
+            Debug.Log("Accept");
+        }
+
+
+    }
+
 
 
     public void PlaceObjectToCraft()

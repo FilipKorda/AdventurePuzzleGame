@@ -99,6 +99,10 @@ MonoBehaviour:
     m_Localized: Press [F] to toggle lamp
     m_Metadata:
       m_Items: []
+  - m_Id: 9166761536802816
+    m_Localized: U need have Key pad
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

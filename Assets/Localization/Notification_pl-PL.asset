@@ -103,6 +103,10 @@ MonoBehaviour:
     m_Localized: "Nacisnij [F] \u017Ceby prze\u0142\u0105czy\u0107 lampe "
     m_Metadata:
       m_Items: []
+  - m_Id: 9166761536802816
+    m_Localized: Potrzebujesz tetminal
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

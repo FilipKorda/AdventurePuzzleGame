@@ -97,11 +97,14 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 9507493485236224
-    m_Localized: " tutaj cos bedzie wyt\u0142umaczenie dark mazu"
+    m_Localized: "UWAGA! Przed tob\u0105 labirynt musisz w nim znale\u017A\u0107
+      5 przedmiot\xF3w, dzi\u0119ki kt\xF3rym b\u0119dziesz m\xF3g\u0142 wytworzy\u0107
+      pewn\u0105 rzecz kt\xF3ra pomo\u017Ce ci sie st\u0105d wydostac."
     m_Metadata:
       m_Items: []
   - m_Id: 9508601150590976
-    m_Localized: tutaj bedzie pon pad wyjasnienie
+    m_Localized: "Na \u015Bcianie mo\u017Cesz zamontowa\u0107 Terminal, po wpisaniu
+      kodu do niego i zatwierdzeniu go brama powinna sie otworzy\u0107."
     m_Metadata:
       m_Items: []
   references:

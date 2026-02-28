@@ -95,11 +95,13 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 9507493485236224
-    m_Localized: " tutaj cos bedzie wyt\u0142umaczenie dark mazu"
+    m_Localized: ATTENTION! There's a maze in front of you. You need to find 5 items
+      that will allow you to craft a certain item that will help you get out of here.
     m_Metadata:
       m_Items: []
   - m_Id: 9508601150590976
-    m_Localized: tutaj bedzie pon pad wyjasnienie
+    m_Localized: You can mount the Terminal on the wall, after entering the code
+      and confirming it, the gate should open.
     m_Metadata:
       m_Items: []
   references:
