@@ -103,7 +103,7 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
-  itemSprite: {fileID: 0}
+  itemSprite: {fileID: 21300000, guid: 8dcccab06759fad4eab40aad03f18139, type: 3}
   itemId: 50
   itemIdbyItemId: 0
   pinNumber: 0
