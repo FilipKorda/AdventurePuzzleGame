@@ -50,4 +50,7 @@ public enum ItemID
     Collectible_Gears = 47,
     Cables = 48,
     Keypad = 49,
+    Skull = 50,
+    Shield = 51,
+    Sword = 52,
 }

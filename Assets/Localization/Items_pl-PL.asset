@@ -166,6 +166,18 @@ MonoBehaviour:
     m_Localized: Terminal
     m_Metadata:
       m_Items: []
+  - m_Id: 10098859395272704
+    m_Localized: Czaszka
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10103154714890240
+    m_Localized: Tarcza
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10103155285315584
+    m_Localized: Miecz
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -163,6 +163,18 @@ MonoBehaviour:
     m_Key: Keypad
     m_Metadata:
       m_Items: []
+  - m_Id: 10098859395272704
+    m_Key: Skull
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10103154714890240
+    m_Key: Shield
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10103155285315584
+    m_Key: Sword
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

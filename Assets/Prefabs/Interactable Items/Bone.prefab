@@ -56,6 +56,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b08e173721554e44285d4e3ab0acda13, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1d0c5f8266cc07d4ead67cb45595dc61, type: 2}
     m_RemovedComponents:
     - {fileID: -6860895033569716450, guid: b08e173721554e44285d4e3ab0acda13, type: 3}
     m_RemovedGameObjects: []
@@ -122,6 +126,8 @@ MonoBehaviour:
     m_LocalVariables: []
   itemSprite: {fileID: 21300000, guid: f35acba215cd7b24dbc613b8c2bd5f5c, type: 3}
   itemId: 1
+  itemIdbyItemId: 0
+  pinNumber: 0
   requiredItemIds: 
   animator: {fileID: 0}
   readableTextData: {fileID: 0}
@@ -156,6 +162,14 @@ MonoBehaviour:
   isEndPanel: 0
   localizationString: {fileID: 11400000, guid: f0de87e12044b394f8f5ec5e537bee58, type: 2}
   localizationTwoString: {fileID: 0}
+  metalCrabs: {fileID: 0}
+  springs: {fileID: 0}
+  metalscaffolds: {fileID: 0}
+  collectibleGears: {fileID: 0}
+  cables: {fileID: 0}
+  workbench: {fileID: 0}
+  rend: {fileID: 0}
+  highlightColor: {r: 0, g: 0, b: 0, a: 0}
   references:
     version: 2
     RefIds: []

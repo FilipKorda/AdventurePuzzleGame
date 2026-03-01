@@ -7,7 +7,7 @@ public class WallKeypad : MonoBehaviour, IPinNumber
 {
     public static WallKeypad Instance { get; private set; }
 
-    [SerializeField] private string correctCode = "3207";
+    [SerializeField] private string correctCode = "3547";
 
     [SerializeField] private Animator animator;
     [SerializeField] private BoxCollider[] boxColliders;

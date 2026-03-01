@@ -166,6 +166,18 @@ MonoBehaviour:
     m_Localized: Keypad
     m_Metadata:
       m_Items: []
+  - m_Id: 10098859395272704
+    m_Localized: Skull
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10103154714890240
+    m_Localized: Shield
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10103155285315584
+    m_Localized: Sword
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
