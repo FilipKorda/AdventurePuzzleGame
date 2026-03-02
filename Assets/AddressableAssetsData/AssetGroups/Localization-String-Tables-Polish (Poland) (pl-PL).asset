@@ -21,6 +21,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-pl-PL
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0e94f622ab601ea499e380d8c0e3add1
+    m_Address: Statue Puzzle_pl-PL
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-pl-PL
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 14c3fba5e2694fa439918befb749264e
     m_Address: Notification_pl-PL
     m_ReadOnly: 1

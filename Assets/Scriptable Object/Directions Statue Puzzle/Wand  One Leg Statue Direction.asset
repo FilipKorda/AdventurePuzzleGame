@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a32a63f9917375b4f98a3328a8553c80, type: 3}
+  m_Name: Wand  One Leg Statue Direction
+  m_EditorClassIdentifier: Assembly-CSharp::DirectionTextSet
+  north: {fileID: 11400000, guid: f3654797bd4ca144cb43f04a0d8b0401, type: 2}
+  east: {fileID: 11400000, guid: 2f284856595baa34aa8f346643ff7b81, type: 2}
+  south: {fileID: 11400000, guid: 881fd5cd634bef2478d8fe8348ea49f6, type: 2}
+  west: {fileID: 11400000, guid: 322ae595dba68f040bc3eb5c24df4d18, type: 2}

@@ -40,6 +40,11 @@ MonoBehaviour:
     m_ReadOnly: 1
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c474cd29664110448991911d3aef0856
+    m_Address: Assets/Statue Puzzle Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d126a2aaffb817f4f9fefa17fce8e709
     m_Address: Assets/Items Shared Data.asset
     m_ReadOnly: 1

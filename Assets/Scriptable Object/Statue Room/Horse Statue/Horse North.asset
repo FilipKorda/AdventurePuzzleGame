@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddef7cfa2c2972b49b175cbb357ebc81, type: 3}
+  m_Name: Horse North
+  m_EditorClassIdentifier: 
+  headerText: 
+  mainText: 
+  signatureText: 
+  localizeHeader:
+    m_TableReference:
+      m_TableCollectionName: GUID:c474cd29664110448991911d3aef0856
+    m_TableEntryReference:
+      m_KeyId: 313665015808
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  localizeMainText:
+    m_TableReference:
+      m_TableCollectionName: GUID:c474cd29664110448991911d3aef0856
+    m_TableEntryReference:
+      m_KeyId: 239106250788864
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  localizeSignature:
+    m_TableReference:
+      m_TableCollectionName: GUID:c474cd29664110448991911d3aef0856
+    m_TableEntryReference:
+      m_KeyId: 313665015808
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  references:
+    version: 2
+    RefIds: []

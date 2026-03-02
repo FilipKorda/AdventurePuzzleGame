@@ -51,6 +51,11 @@ public class InteractableItemEditor : Editor
     private SerializedProperty rend;
     private SerializedProperty highlightColor;
 
+    private SerializedProperty rotationDuration;
+    private SerializedProperty statueCompasPuzzle;
+    private SerializedProperty linkedReadable;
+    private SerializedProperty directionTextSet;
+
     private void OnEnable()
     {
         interactableTypeProp = serializedObject.FindProperty("interactableType");
@@ -99,6 +104,11 @@ public class InteractableItemEditor : Editor
         pinNumber = serializedObject.FindProperty("pinNumber");
         rend = serializedObject.FindProperty("rend");
         highlightColor = serializedObject.FindProperty("highlightColor");
+
+        rotationDuration = serializedObject.FindProperty("rotationDuration");
+        statueCompasPuzzle = serializedObject.FindProperty("statueCompasPuzzle");
+        linkedReadable = serializedObject.FindProperty("linkedReadable");
+        directionTextSet = serializedObject.FindProperty("directionTextSet");
     }
 
     public override void OnInspectorGUI()
@@ -228,6 +238,12 @@ public class InteractableItemEditor : Editor
                 EditorGUILayout.PropertyField(pinNumber, new GUIContent("Pin Number"));
                 EditorGUILayout.PropertyField(rend, new GUIContent("Render"));
                 EditorGUILayout.PropertyField(highlightColor, new GUIContent("HighlightColor"));
+                break;
+            case InteractableItem.InteractableType.RotateStatue:
+                EditorGUILayout.PropertyField(rotationDuration, new GUIContent("Rotation Duration"));              
+                EditorGUILayout.PropertyField(statueCompasPuzzle, new GUIContent("Statue Compas Puzzle"));
+                EditorGUILayout.PropertyField(linkedReadable, new GUIContent("Linked Readable"));
+                EditorGUILayout.PropertyField(directionTextSet, new GUIContent("Direction Text Set"));
                 break;
         }
 

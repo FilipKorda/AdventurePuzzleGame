@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using System;
 using System.Collections;
 using System.Linq;
 using UnityEngine;
@@ -7,7 +8,7 @@ using UnityEngine.Localization;
 
 public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpenable, IReadable, IPressable,
     IPlaceable, ILockPick, IFillable, IPickupARenewableItem, IAlchemyStation, IReadableAndInteractable, IRecipePlaceable,
-    IGetObject, ICrafting, IPinNumber
+    IGetObject, ICrafting, IPinNumber, IRotate
 {
     public enum InteractableType
     {
@@ -25,7 +26,8 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         PlaceRecipe,
         GetObject,
         Crafting,
-        PinNumber
+        PinNumber,
+        RotateStatue
     }
 
     public InteractableType interactableType;
@@ -45,7 +47,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
 
     [Header("Components & Events")]
     [SerializeField] private Animator animator;
-    [SerializeField] private ReadableTextData readableTextData;
+    [SerializeField] public ReadableTextData readableTextData;
     [SerializeField] public ReadableAndInteractableTextData readableAndInteractableTextData;
     [SerializeField] private UnityEvent onAllWallButtonPressed;
     [SerializeField] private GameObject objectToPlace;
@@ -111,12 +113,78 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     [SerializeField] private Color highlightColor;
     private Color baseColor;
 
+    [Header("Statue Rotation Option")]
+    [SerializeField] private StatueCompasPuzzle statueCompasPuzzle;
+    [SerializeField] private float rotationDuration = 0.5f;
+    bool isRotating = false;
+    public WorldDirection CurrentDirection
+    {
+        get
+        {
+            float y = Mathf.Round(transform.eulerAngles.y) % 360f;
+
+            if (y == 0f) return WorldDirection.North;
+            if (y == 90f) return WorldDirection.West;
+            if (y == 180f) return WorldDirection.South;
+            return WorldDirection.East;
+        }
+    }
+    public event Action<InteractableItem> OnRotationFinished;
+    [SerializeField] private InteractableItem linkedReadable;
+    public InteractableItem LinkedReadable => linkedReadable;
+    [SerializeField] private DirectionTextSet directionTextSet;
+
     private void Awake()
     {
         if (rend != null)
         {
             baseColor = rend.material.color;
         }
+    }
+
+  
+
+    public void RotateStatue()
+    {
+        if (isRotating)
+            return;
+
+        StartCoroutine(RotateSmoothly());
+    }
+
+    IEnumerator RotateSmoothly()
+    {
+        isRotating = true;
+
+        Quaternion startRotation = transform.rotation;
+        Quaternion targetRotation = startRotation * Quaternion.Euler(0f, 90f, 0f);
+
+        float time = 0f;
+
+        while (time < rotationDuration)
+        {
+            time += Time.deltaTime;
+            transform.rotation = Quaternion.Slerp(startRotation, targetRotation, time / rotationDuration);
+            yield return null;
+        }
+
+        transform.rotation = targetRotation;
+        isRotating = false;
+       
+        OnRotationFinished?.Invoke(this);
+
+        ApplyText();
+
+        statueCompasPuzzle.CheckPuzzle();
+    }
+
+    public void ApplyText()
+    {
+        if (linkedReadable == null || directionTextSet == null)
+            return;
+
+        linkedReadable.readableTextData =
+            directionTextSet.Get(CurrentDirection);
     }
 
     public void EnterPinNumber()

@@ -51,6 +51,8 @@ public class PlayerBehaviour : MonoBehaviour
     private IPinNumber lastIPinNumber;
     private IPinNumber highlightedPin;
 
+    private IRotate lastIRotate;
+
     private CharacterController characterController;
     private Vector2 inputMovement;
     private Vector2 inputLook;
@@ -248,6 +250,8 @@ public class PlayerBehaviour : MonoBehaviour
 
             lastIPinNumber?.EnterPinNumber();
 
+            lastIRotate?.RotateStatue();
+
             if (lastIOpenable != null && lastIOpenable.IsOpen())
             {
                 lastIOpenable?.CloseObject();
@@ -402,6 +406,7 @@ public class PlayerBehaviour : MonoBehaviour
         lastIGetObject = null;
         lastICrafting = null;
         lastIPinNumber = null;
+        lastIRotate = null;
 
         if (Physics.Raycast(ray, out RaycastHit hit, raycastRange, interactableLayer))
         {
@@ -484,6 +489,10 @@ public class PlayerBehaviour : MonoBehaviour
                         }
 
                         lastIPinNumber = interactableObject;
+                        break;
+
+                    case InteractableItem.InteractableType.RotateStatue:
+                        lastIRotate = interactableObject;
                         break;
                 }
             }

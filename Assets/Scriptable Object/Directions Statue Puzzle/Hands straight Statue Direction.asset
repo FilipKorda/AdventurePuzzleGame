@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a32a63f9917375b4f98a3328a8553c80, type: 3}
+  m_Name: Hands straight Statue Direction
+  m_EditorClassIdentifier: Assembly-CSharp::DirectionTextSet
+  north: {fileID: 11400000, guid: 461404ef592cb314eb98a04d25ca620a, type: 2}
+  east: {fileID: 11400000, guid: 2449c5c3d5bd2a743b76ad53ae75841f, type: 2}
+  south: {fileID: 11400000, guid: e92125c7edfa90244bcc4821f35bfefe, type: 2}
+  west: {fileID: 11400000, guid: 3e04fee17436d694b913f68bbf8e8dd9, type: 2}

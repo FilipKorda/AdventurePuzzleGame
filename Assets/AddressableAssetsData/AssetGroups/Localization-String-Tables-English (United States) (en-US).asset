@@ -39,6 +39,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-en-US
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 859b5b4eb132de742afb38bd3750bb57
+    m_Address: Statue Puzzle_en-US
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en-US
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8b001fc4f3d383f44b1c1c9c28d512df
     m_Address: Language_en-US
     m_ReadOnly: 1
