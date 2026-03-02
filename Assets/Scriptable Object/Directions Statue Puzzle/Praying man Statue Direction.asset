@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a32a63f9917375b4f98a3328a8553c80, type: 3}
-  m_Name: Wand  One Leg Statue Direction
+  m_Name: Praying man Statue Direction
   m_EditorClassIdentifier: Assembly-CSharp::DirectionTextSet
-  north: {fileID: 11400000, guid: f3654797bd4ca144cb43f04a0d8b0401, type: 2}
-  east: {fileID: 11400000, guid: 2f284856595baa34aa8f346643ff7b81, type: 2}
-  south: {fileID: 11400000, guid: 881fd5cd634bef2478d8fe8348ea49f6, type: 2}
-  west: {fileID: 11400000, guid: 322ae595dba68f040bc3eb5c24df4d18, type: 2}
+  north: {fileID: 11400000, guid: 63ab86e39ab2adc4eb61df1c2c38f86a, type: 2}
+  east: {fileID: 11400000, guid: 6acea2b257812354fac2302ba3cb7110, type: 2}
+  south: {fileID: 11400000, guid: 934eb562ab028f942aa8528ebfbcea05, type: 2}
+  west: {fileID: 11400000, guid: 752e6880c845b56419a0a417478e5e51, type: 2}

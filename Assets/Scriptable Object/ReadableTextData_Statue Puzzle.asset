@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ddef7cfa2c2972b49b175cbb357ebc81, type: 3}
-  m_Name: Kneeling Statue South
+  m_Name: ReadableTextData_Statue Puzzle
   m_EditorClassIdentifier: 
-  headerText: 
-  mainText: 
-  signatureText: 
+  headerText: ' Title 2'
+  mainText: 'jakas magia i koks i cos '
+  signatureText: Signature 2
   localizeHeader:
     m_TableReference:
       m_TableCollectionName: GUID:c474cd29664110448991911d3aef0856
@@ -28,7 +28,7 @@ MonoBehaviour:
     m_TableReference:
       m_TableCollectionName: GUID:c474cd29664110448991911d3aef0856
     m_TableEntryReference:
-      m_KeyId: 254733413797888
+      m_KeyId: 298667238248448
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0

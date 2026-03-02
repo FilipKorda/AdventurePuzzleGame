@@ -52,19 +52,19 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 252773512007680
-    m_Key: Wand  One Leg East
+    m_Key: King Crown Statue East
     m_Metadata:
       m_Items: []
   - m_Id: 252775068094464
-    m_Key: Wand  One Leg North
+    m_Key: King Crown Statue North
     m_Metadata:
       m_Items: []
   - m_Id: 252776448020480
-    m_Key: Wand  One Leg South
+    m_Key: King Crown Statue South
     m_Metadata:
       m_Items: []
   - m_Id: 252778008301568
-    m_Key: Wand  One Leg West
+    m_Key: King Crown Statue West
     m_Metadata:
       m_Items: []
   - m_Id: 253961024327680
@@ -84,19 +84,19 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 254731207593984
-    m_Key: Kneeling Statue East
+    m_Key: Praying man Statue East
     m_Metadata:
       m_Items: []
   - m_Id: 254732293918720
-    m_Key: Kneeling Statue North
+    m_Key: Praying man Statue North
     m_Metadata:
       m_Items: []
   - m_Id: 254733413797888
-    m_Key: Kneeling Statue South
+    m_Key: Praying man Statue South
     m_Metadata:
       m_Items: []
   - m_Id: 254734596591616
-    m_Key: Kneeling Statue West
+    m_Key: Praying man Statue West
     m_Metadata:
       m_Items: []
   - m_Id: 255658849226752
@@ -129,6 +129,10 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 256504718708736
     m_Key: Arms spread out Statue West
+    m_Metadata:
+      m_Items: []
+  - m_Id: 298667238248448
+    m_Key: Statue puzzle Hint
     m_Metadata:
       m_Items: []
   m_Metadata:

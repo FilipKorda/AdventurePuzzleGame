@@ -23,115 +23,129 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 239082557165568
-    m_Localized: The statue with the wand looks to the East.
+    m_Localized: The women with open arms looks north
     m_Metadata:
       m_Items: []
   - m_Id: 239106250788864
-    m_Localized: The statue with the wand looks to the North.
+    m_Localized: 
     m_Metadata:
       m_Items: []
   - m_Id: 239140870574080
-    m_Localized: The statue with the wand looks to the South.
+    m_Localized: 
     m_Metadata:
       m_Items: []
   - m_Id: 239162001477632
-    m_Localized: The statue with the wand looks to the West.
+    m_Localized: 
     m_Metadata:
       m_Items: []
   - m_Id: 250875681722368
-    m_Localized: The horse statue looks west.
+    m_Localized: The horse statue looks East.
     m_Metadata:
       m_Items: []
   - m_Id: 250850499121152
-    m_Localized: The horse statue looks south.
+    m_Localized: The horse statue looks East.
     m_Metadata:
       m_Items: []
   - m_Id: 250786032668672
-    m_Localized: The horse statue looks to the North.
+    m_Localized: The horse statue looks East.
     m_Metadata:
       m_Items: []
   - m_Id: 250757171662848
-    m_Localized: The horse statue looks east.
+    m_Localized: The horse statue looks East.
     m_Metadata:
       m_Items: []
   - m_Id: 252773512007680
-    m_Localized: The statue with outstretched arms looks to the East.
+    m_Localized: 
     m_Metadata:
       m_Items: []
   - m_Id: 252775068094464
-    m_Localized: The statue with outstretched arms looks to the North.
+    m_Localized: 
     m_Metadata:
       m_Items: []
   - m_Id: 252776448020480
-    m_Localized: The statue with outstretched arms looks to the South.
+    m_Localized: 'The woman with her arms straight is looking east. '
     m_Metadata:
       m_Items: []
   - m_Id: 252778008301568
-    m_Localized: The statue with outstretched arms looks to the West.
+    m_Localized: 
     m_Metadata:
       m_Items: []
   - m_Id: 253961024327680
-    m_Localized: The sitting statue and the kneeling statue look different.
+    m_Localized: 
     m_Metadata:
       m_Items: []
   - m_Id: 253962286813184
-    m_Localized: The sitting statue and the kneeling statue look the same.
+    m_Localized: 
     m_Metadata:
       m_Items: []
   - m_Id: 253963540910080
-    m_Localized: The Straight Arms Statue and the Horse Statue look the same.
+    m_Localized: The seated man looks towards the North.
     m_Metadata:
       m_Items: []
   - m_Id: 253964920836096
-    m_Localized: The Statue with Straight Arms and the Horse Statue look different.
+    m_Localized: 
     m_Metadata:
       m_Items: []
   - m_Id: 254734596591616
-    m_Localized: The statue with straight arms looks to the West.
+    m_Localized: The man with the crown looks south.
     m_Metadata:
       m_Items: []
   - m_Id: 254733413797888
-    m_Localized: The statue with straight arms looks to the South.
+    m_Localized: 
     m_Metadata:
       m_Items: []
   - m_Id: 254732293918720
-    m_Localized: The statue with straight arms looks to the North.
+    m_Localized: 
     m_Metadata:
       m_Items: []
   - m_Id: 254731207593984
-    m_Localized: The statue with straight arms looks to the East.
+    m_Localized: 
     m_Metadata:
       m_Items: []
   - m_Id: 255658849226752
-    m_Localized: The statue, with its arm bent at the elbow, looks to the East.
+    m_Localized: A woman with her arm bent at the elbow looks South.
     m_Metadata:
       m_Items: []
   - m_Id: 255659906191360
-    m_Localized: The statue with its arm bent at the elbow looks towards the North.
+    m_Localized: 
     m_Metadata:
       m_Items: []
   - m_Id: 255661042847744
-    m_Localized: The statue, with its arm bent at the elbow, looks to the South.
+    m_Localized: 
     m_Metadata:
       m_Items: []
   - m_Id: 255662561185792
-    m_Localized: The statue, with its arm bent at the elbow, looks to the West.
+    m_Localized: 
     m_Metadata:
       m_Items: []
   - m_Id: 256501371654144
-    m_Localized: The seated statue faces east.
+    m_Localized: 
     m_Metadata:
       m_Items: []
   - m_Id: 256502269235200
-    m_Localized: The seated statue looks towards the North.
+    m_Localized: A praying man looks west.
     m_Metadata:
       m_Items: []
   - m_Id: 256503485583360
-    m_Localized: The seated statue looks south.
+    m_Localized: 
     m_Metadata:
       m_Items: []
   - m_Id: 256504718708736
-    m_Localized: The seated statue looks to the West.
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 298667238248448
+    m_Localized: 'I figured out the mechanism that opens the door, but I completely
+      forgot the positioning of the statues.
+
+      Statues are magical; read the
+      books that accompany them carefully.
+
+      The only thing I remember is that
+      a seated statue always tells the TRUTH.
+
+      The rest can lie, confuse, or
+      conceal, depending on the direction.'
     m_Metadata:
       m_Items: []
   references:

@@ -1,12 +1,10 @@
-using Unity.Burst.Intrinsics;
-using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEngine.Rendering.GPUSort;
 
 public class StatueCompasPuzzle : MonoBehaviour
 {
     [SerializeField] private InteractableItem[] statues;
     [SerializeField] private WorldDirection[] requiredDirections;
+    [SerializeField] private BoxCollider[] statuesBoxColliders;
 
     bool puzzleSolved;
 
@@ -56,6 +54,11 @@ public class StatueCompasPuzzle : MonoBehaviour
         for (int i = 0; i < statues.Length; i++)
         {
             statues[i].enabled = false;
+        }
+
+        foreach (var boxCollider in statuesBoxColliders)
+        {
+            boxCollider.enabled = false;
         }
 
         Debug.Log("Puzzle solved");
