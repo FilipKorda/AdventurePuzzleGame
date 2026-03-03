@@ -154,6 +154,7 @@ public class InteractableItemEditor : Editor
 
             case InteractableItem.InteractableType.Readable:
                 EditorGUILayout.PropertyField(readableTextDataProp, new GUIContent("Readable Text Data"));
+                EditorGUILayout.PropertyField(boxColliderProp, new GUIContent("Book Collider"));
                 break;
 
             case InteractableItem.InteractableType.Pressable:
@@ -244,6 +245,7 @@ public class InteractableItemEditor : Editor
                 EditorGUILayout.PropertyField(statueCompasPuzzle, new GUIContent("Statue Compas Puzzle"));
                 EditorGUILayout.PropertyField(linkedReadable, new GUIContent("Linked Readable"));
                 EditorGUILayout.PropertyField(directionTextSet, new GUIContent("Direction Text Set"));
+                EditorGUILayout.PropertyField(boxColliderProp, new GUIContent("Book Collider"));
                 break;
         }
 

@@ -23,19 +23,19 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 239082557165568
-    m_Localized: The women with open arms looks north
+    m_Localized: The women with open arms looks North
     m_Metadata:
       m_Items: []
   - m_Id: 239106250788864
-    m_Localized: 
+    m_Localized: A woman looks to the West with open arms.
     m_Metadata:
       m_Items: []
   - m_Id: 239140870574080
-    m_Localized: 
+    m_Localized: A woman with straight arms looks towards the South.
     m_Metadata:
       m_Items: []
   - m_Id: 239162001477632
-    m_Localized: 
+    m_Localized: The seated man looks to the East.
     m_Metadata:
       m_Items: []
   - m_Id: 250875681722368
@@ -55,11 +55,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 252773512007680
-    m_Localized: 
+    m_Localized: The horse statue looks south.
     m_Metadata:
       m_Items: []
   - m_Id: 252775068094464
-    m_Localized: 
+    m_Localized: A woman with open arms looks to the East.
     m_Metadata:
       m_Items: []
   - m_Id: 252776448020480
@@ -67,15 +67,15 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 252778008301568
-    m_Localized: 
+    m_Localized: A woman with her arm bent at the elbow looks at the West.
     m_Metadata:
       m_Items: []
   - m_Id: 253961024327680
-    m_Localized: 
+    m_Localized: The man with the crown looks to the East.
     m_Metadata:
       m_Items: []
   - m_Id: 253962286813184
-    m_Localized: 
+    m_Localized: A woman looks to the West with open arms.
     m_Metadata:
       m_Items: []
   - m_Id: 253963540910080
@@ -83,7 +83,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 253964920836096
-    m_Localized: 
+    m_Localized: A praying man looks to the East.
     m_Metadata:
       m_Items: []
   - m_Id: 254734596591616
@@ -91,15 +91,15 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 254733413797888
-    m_Localized: 
+    m_Localized: The woman with her hands looks straight towards the North.
     m_Metadata:
       m_Items: []
   - m_Id: 254732293918720
-    m_Localized: 
+    m_Localized: The seated man looks to the East.
     m_Metadata:
       m_Items: []
   - m_Id: 254731207593984
-    m_Localized: 
+    m_Localized: A woman with her arm bent at the elbow looks at the West.
     m_Metadata:
       m_Items: []
   - m_Id: 255658849226752
@@ -107,19 +107,19 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 255659906191360
-    m_Localized: 
+    m_Localized: A woman with her arm bent at the elbow looks towards the South.
     m_Metadata:
       m_Items: []
   - m_Id: 255661042847744
-    m_Localized: 
+    m_Localized: The man with the crown looks to the West.
     m_Metadata:
       m_Items: []
   - m_Id: 255662561185792
-    m_Localized: 
+    m_Localized: The horse statue looks to the North.
     m_Metadata:
       m_Items: []
   - m_Id: 256501371654144
-    m_Localized: 
+    m_Localized: The horse statue looks West.
     m_Metadata:
       m_Items: []
   - m_Id: 256502269235200
@@ -127,25 +127,15 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 256503485583360
-    m_Localized: 
+    m_Localized: The horse statue looks to the North.
     m_Metadata:
       m_Items: []
   - m_Id: 256504718708736
-    m_Localized: 
+    m_Localized: The man with the crown looks to the North.
     m_Metadata:
       m_Items: []
   - m_Id: 298667238248448
-    m_Localized: 'I figured out the mechanism that opens the door, but I completely
-      forgot the positioning of the statues.
-
-      Statues are magical; read the
-      books that accompany them carefully.
-
-      The only thing I remember is that
-      a seated statue always tells the TRUTH.
-
-      The rest can lie, confuse, or
-      conceal, depending on the direction.'
+    m_Localized: 
     m_Metadata:
       m_Items: []
   references:

@@ -126,7 +126,7 @@ PrefabInstance:
     - target: {fileID: 5566115749103915745, guid: dab68434619011449ab26b909ca5a0c6, type: 3}
       propertyPath: readableTextData
       value: 
-      objectReference: {fileID: 11400000, guid: a4f613463f82be24aab7a59179d4a46e, type: 2}
+      objectReference: {fileID: 11400000, guid: 2063aac7af225274ea85a62eee9d2d08, type: 2}
     - target: {fileID: 6833714537200361954, guid: dab68434619011449ab26b909ca5a0c6, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.6666664
@@ -296,19 +296,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 20991df7b4e7a89409385bf4b50b14f4, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 20991df7b4e7a89409385bf4b50b14f4, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 20991df7b4e7a89409385bf4b50b14f4, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 20991df7b4e7a89409385bf4b50b14f4, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 20991df7b4e7a89409385bf4b50b14f4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -316,7 +316,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 20991df7b4e7a89409385bf4b50b14f4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 20991df7b4e7a89409385bf4b50b14f4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -437,7 +437,7 @@ MonoBehaviour:
   rend: {fileID: 0}
   highlightColor: {r: 0, g: 0, b: 0, a: 0}
   statueCompasPuzzle: {fileID: 0}
-  rotationDuration: 0.5
+  rotationDuration: 4.2
   linkedReadable: {fileID: 4433196347198501494}
   directionTextSet: {fileID: 11400000, guid: 01423b3a5963401458182a90695418bb, type: 2}
   references:

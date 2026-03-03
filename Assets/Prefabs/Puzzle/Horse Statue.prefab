@@ -241,7 +241,7 @@ Transform:
   m_GameObject: {fileID: 4436915519964383274}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.047, y: 2.501, z: 5.344}
+  m_LocalPosition: {x: 0.031, y: 2.5009987, z: 5.464}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -318,7 +318,7 @@ MonoBehaviour:
   rend: {fileID: 0}
   highlightColor: {r: 0, g: 0, b: 0, a: 0}
   statueCompasPuzzle: {fileID: 0}
-  rotationDuration: 0.5
+  rotationDuration: 4.2
   linkedReadable: {fileID: 3200828227698022497}
   directionTextSet: {fileID: 11400000, guid: b6569878f39eb6f449f6b3973cd61a8c, type: 2}
   references:

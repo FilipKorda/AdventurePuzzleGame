@@ -161,7 +161,7 @@ PrefabInstance:
     - target: {fileID: 5566115749103915745, guid: dab68434619011449ab26b909ca5a0c6, type: 3}
       propertyPath: readableTextData
       value: 
-      objectReference: {fileID: 11400000, guid: 150accd89f0db0841aae5abe09938c19, type: 2}
+      objectReference: {fileID: 11400000, guid: 430d1d588c88f1e40ad5b300bed67560, type: 2}
     - target: {fileID: 6833714537200361954, guid: dab68434619011449ab26b909ca5a0c6, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.6666664
@@ -319,7 +319,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: ccbd5855c8ddd44488e602aab82349e1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.08
+      value: -0.021
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ccbd5855c8ddd44488e602aab82349e1, type: 3}
       propertyPath: m_LocalPosition.y
@@ -327,23 +327,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ccbd5855c8ddd44488e602aab82349e1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.023
+      value: 0.005
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ccbd5855c8ddd44488e602aab82349e1, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071079
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ccbd5855c8ddd44488e602aab82349e1, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ccbd5855c8ddd44488e602aab82349e1, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.70710576
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ccbd5855c8ddd44488e602aab82349e1, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ccbd5855c8ddd44488e602aab82349e1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -351,7 +351,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ccbd5855c8ddd44488e602aab82349e1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ccbd5855c8ddd44488e602aab82349e1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -480,7 +480,7 @@ MonoBehaviour:
   rend: {fileID: 0}
   highlightColor: {r: 0, g: 0, b: 0, a: 0}
   statueCompasPuzzle: {fileID: 0}
-  rotationDuration: 0.5
+  rotationDuration: 4.2
   linkedReadable: {fileID: 7497864353998870714}
   directionTextSet: {fileID: 11400000, guid: d866827f025a8604dbc8785d7388e8a3, type: 2}
   references:

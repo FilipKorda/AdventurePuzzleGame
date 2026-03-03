@@ -133,6 +133,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     [SerializeField] private InteractableItem linkedReadable;
     public InteractableItem LinkedReadable => linkedReadable;
     [SerializeField] private DirectionTextSet directionTextSet;
+    private float bookRotationDuration = 0.15f;
 
     private void Awake()
     {
@@ -142,19 +143,24 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         }
     }
 
-  
-
     public void RotateStatue()
     {
         if (isRotating)
             return;
 
+        Services.Audio.PlaySFX("RotateStatue_StoneMove");
+        Services.Audio.PlaySFX("GrabRecipe"); //przewraca strone w ksi¹¿ce
+
         StartCoroutine(RotateSmoothly());
+        StartCoroutine(BookRotate());
     }
 
     IEnumerator RotateSmoothly()
     {
         isRotating = true;
+
+        linkedReadable.boxCollider.enabled = false;
+        boxCollider.enabled = false;
 
         Quaternion startRotation = transform.rotation;
         Quaternion targetRotation = startRotation * Quaternion.Euler(0f, 90f, 0f);
@@ -170,12 +176,37 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
 
         transform.rotation = targetRotation;
         isRotating = false;
-       
+
         OnRotationFinished?.Invoke(this);
 
         ApplyText();
 
+        linkedReadable.boxCollider.enabled = true;
+        boxCollider.enabled = true;
+
         statueCompasPuzzle.CheckPuzzle();
+    }
+
+    private IEnumerator BookRotate()
+    {
+        Quaternion start = Quaternion.Euler(0f, 0f, 0f);
+        Quaternion target = Quaternion.Euler(0f, 2.5f, 0f);
+
+        float t = 0f;
+        while (t < 1f)
+        {
+            t += Time.deltaTime / bookRotationDuration;
+            linkedReadable.transform.localRotation = Quaternion.Lerp(start, target, t);
+            yield return null;
+        }
+
+        t = 0f;
+        while (t < 1f)
+        {
+            t += Time.deltaTime / bookRotationDuration;
+            linkedReadable.transform.localRotation = Quaternion.Lerp(target, start, t);
+            yield return null;
+        }
     }
 
     public void ApplyText()

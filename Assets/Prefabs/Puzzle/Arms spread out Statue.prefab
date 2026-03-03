@@ -56,19 +56,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8f218cae56f6e8743b8c9840424fb191, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8f218cae56f6e8743b8c9840424fb191, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8f218cae56f6e8743b8c9840424fb191, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8f218cae56f6e8743b8c9840424fb191, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8f218cae56f6e8743b8c9840424fb191, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -76,7 +76,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8f218cae56f6e8743b8c9840424fb191, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8f218cae56f6e8743b8c9840424fb191, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -202,7 +202,7 @@ MonoBehaviour:
   rend: {fileID: 0}
   highlightColor: {r: 0, g: 0, b: 0, a: 0}
   statueCompasPuzzle: {fileID: 0}
-  rotationDuration: 0.5
+  rotationDuration: 4.2
   linkedReadable: {fileID: 626717977806145992}
   directionTextSet: {fileID: 11400000, guid: 55f1757deeb50c245812dbbf127cd99e, type: 2}
   references:
@@ -223,7 +223,7 @@ PrefabInstance:
     - target: {fileID: 5566115749103915745, guid: dab68434619011449ab26b909ca5a0c6, type: 3}
       propertyPath: readableTextData
       value: 
-      objectReference: {fileID: 11400000, guid: 4708f0b6f55ec8b4f978cef58562bdd9, type: 2}
+      objectReference: {fileID: 11400000, guid: 0f6a2d9825ec0a948a509c267765520a, type: 2}
     - target: {fileID: 6833714537200361954, guid: dab68434619011449ab26b909ca5a0c6, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.6666664

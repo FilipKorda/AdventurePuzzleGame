@@ -23,19 +23,19 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 239082557165568
-    m_Localized: "Kobieta z otwartymi ramionami patrzy na p\xF3\u0142noc"
+    m_Localized: "Kobieta z otwartymi ramionami patrzy na P\xF3\u0142noc."
     m_Metadata:
       m_Items: []
   - m_Id: 239106250788864
-    m_Localized: 
+    m_Localized: "Kobieta z otwartymi ramionami patrzy na Zach\xF3d."
     m_Metadata:
       m_Items: []
   - m_Id: 239140870574080
-    m_Localized: 
+    m_Localized: "Kobieta z prostymi ramionami patrzy na Po\u0142udnie."
     m_Metadata:
       m_Items: []
   - m_Id: 239162001477632
-    m_Localized: 
+    m_Localized: "Siedz\u0105cy m\u0119\u017Cczyzna patrzy na Wsch\xF3d."
     m_Metadata:
       m_Items: []
   - m_Id: 250875681722368
@@ -55,27 +55,28 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 252775068094464
-    m_Localized: 
+    m_Localized: "Kobieta z otwartymi ramionami patrzy na Wsch\xF3d."
     m_Metadata:
       m_Items: []
   - m_Id: 252776448020480
-    m_Localized: "Kobieta z r\u0119kami prosto patrzy na wsch\xF3d."
+    m_Localized: "Kobieta z r\u0119kami prosto patrzy na Wsch\xF3d."
     m_Metadata:
       m_Items: []
   - m_Id: 252773512007680
-    m_Localized: 
+    m_Localized: "Statua konia patrzy na Po\u0142udnie."
     m_Metadata:
       m_Items: []
   - m_Id: 252778008301568
-    m_Localized: 
+    m_Localized: "Kobieta z zgi\u0119t\u0105 r\u0119k\u0105 w \u0142okciu patrzy
+      na Zach\xF3d."
     m_Metadata:
       m_Items: []
   - m_Id: 253962286813184
-    m_Localized: 
+    m_Localized: "Kobieta z otwartymi ramionami patrzy na Zach\xF3d."
     m_Metadata:
       m_Items: []
   - m_Id: 253961024327680
-    m_Localized: 
+    m_Localized: "Cz\u0142owiek z koron\u0105 patrzy na Wsch\xF3d."
     m_Metadata:
       m_Items: []
   - m_Id: 253963540910080
@@ -83,27 +84,29 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 253964920836096
-    m_Localized: 
+    m_Localized: "Modl\u0105cy m\u0119\u017Cczyzna patrzy na Wsch\xF3d."
     m_Metadata:
       m_Items: []
   - m_Id: 254732293918720
-    m_Localized: 
+    m_Localized: "Siedz\u0105cy m\u0119\u017Cczyzna patrzy na Wsch\xF3d."
     m_Metadata:
       m_Items: []
   - m_Id: 254731207593984
-    m_Localized: 
+    m_Localized: "Kobieta z zgi\u0119t\u0105 r\u0119k\u0105 w \u0142okciu patrzy
+      na Zach\xF3d."
     m_Metadata:
       m_Items: []
   - m_Id: 254733413797888
-    m_Localized: 
+    m_Localized: "Kobieta z r\u0119kami prosto patrzy na P\xF3\u0142noc."
     m_Metadata:
       m_Items: []
   - m_Id: 254734596591616
-    m_Localized: "Cz\u0142owiek z koron\u0105 patrzy na po\u0142udnie."
+    m_Localized: "Cz\u0142owiek z koron\u0105 patrzy na Po\u0142udnie."
     m_Metadata:
       m_Items: []
   - m_Id: 255659906191360
-    m_Localized: 
+    m_Localized: "Kobieta z zgi\u0119t\u0105 r\u0119k\u0105 w \u0142okciu patrzy
+      na Po\u0142udnie."
     m_Metadata:
       m_Items: []
   - m_Id: 255658849226752
@@ -112,11 +115,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 255661042847744
-    m_Localized: 
+    m_Localized: "Cz\u0142owiek z koron\u0105 patrzy na Zach\xF3d."
     m_Metadata:
       m_Items: []
   - m_Id: 255662561185792
-    m_Localized: 
+    m_Localized: "Statua konia patrzy na P\xF3\u0142noc."
     m_Metadata:
       m_Items: []
   - m_Id: 256502269235200
@@ -124,24 +127,19 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 256501371654144
-    m_Localized: 
+    m_Localized: "Statua konia patrzy na Zach\xF3d."
     m_Metadata:
       m_Items: []
   - m_Id: 256503485583360
-    m_Localized: 
+    m_Localized: "Statua konia patrzy na P\xF3\u0142noc."
     m_Metadata:
       m_Items: []
   - m_Id: 256504718708736
-    m_Localized: 
+    m_Localized: "Cz\u0142owiek z koron\u0105 patrzy na P\xF3\u0142noc."
     m_Metadata:
       m_Items: []
   - m_Id: 298667238248448
-    m_Localized: "Wymysli\u0142em ten mechanizm kt\xF3ry otwiera drzwi, ale kompletnie
-      zapomnia\u0142em u\u0142o\u017Cenie pos\u0105g\xF3w.\nPos\u0105gi s\u0105 magiczne
-      uwa\u017Cnie czytaj ksi\u0105\u017Cki kt\xF3re s\u0105 przy pos\u0105gach.\nJedyne
-      co zapami\u0119ta\u0142em to \u017Ce siedz\u0105cy pos\u0105g zawsze m\xF3wi
-      PRAWDE.\nReszta moze k\u0142ama\u0107, miesza\u0107, zataja\u0107 w zale\u017Cno\u015Bci
-      od kierunku."
+    m_Localized: 
     m_Metadata:
       m_Items: []
   references:
