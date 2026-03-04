@@ -175,6 +175,10 @@ MonoBehaviour:
     m_Key: Sword
     m_Metadata:
       m_Items: []
+  - m_Id: 11247272941867008
+    m_Key: MorseAndGlifsBook
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

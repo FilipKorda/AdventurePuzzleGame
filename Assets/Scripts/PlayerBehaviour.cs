@@ -53,6 +53,8 @@ public class PlayerBehaviour : MonoBehaviour
 
     private IRotate lastIRotate;
 
+    private ICryptex lastICryptex;
+
     private CharacterController characterController;
     private Vector2 inputMovement;
     private Vector2 inputLook;
@@ -252,6 +254,8 @@ public class PlayerBehaviour : MonoBehaviour
 
             lastIRotate?.RotateStatue();
 
+            lastICryptex?.RotateCryptex();
+
             if (lastIOpenable != null && lastIOpenable.IsOpen())
             {
                 lastIOpenable?.CloseObject();
@@ -407,6 +411,7 @@ public class PlayerBehaviour : MonoBehaviour
         lastICrafting = null;
         lastIPinNumber = null;
         lastIRotate = null;
+        lastICryptex = null;
 
         if (Physics.Raycast(ray, out RaycastHit hit, raycastRange, interactableLayer))
         {
@@ -494,6 +499,13 @@ public class PlayerBehaviour : MonoBehaviour
                     case InteractableItem.InteractableType.RotateStatue:
                         lastIRotate = interactableObject;
                         break;
+
+                    case InteractableItem.InteractableType.Cryptex:
+                        lastICryptex = interactableObject;
+                        break;
+
+
+
                 }
             }
 

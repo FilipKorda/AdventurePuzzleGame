@@ -56,6 +56,8 @@ public class InteractableItemEditor : Editor
     private SerializedProperty linkedReadable;
     private SerializedProperty directionTextSet;
 
+    private SerializedProperty cryptexRotateDuration;
+
     private void OnEnable()
     {
         interactableTypeProp = serializedObject.FindProperty("interactableType");
@@ -109,6 +111,8 @@ public class InteractableItemEditor : Editor
         statueCompasPuzzle = serializedObject.FindProperty("statueCompasPuzzle");
         linkedReadable = serializedObject.FindProperty("linkedReadable");
         directionTextSet = serializedObject.FindProperty("directionTextSet");
+
+        cryptexRotateDuration = serializedObject.FindProperty("cryptexRotateDuration");
     }
 
     public override void OnInspectorGUI()
@@ -245,6 +249,10 @@ public class InteractableItemEditor : Editor
                 EditorGUILayout.PropertyField(statueCompasPuzzle, new GUIContent("Statue Compas Puzzle"));
                 EditorGUILayout.PropertyField(linkedReadable, new GUIContent("Linked Readable"));
                 EditorGUILayout.PropertyField(directionTextSet, new GUIContent("Direction Text Set"));
+                EditorGUILayout.PropertyField(boxColliderProp, new GUIContent("Book Collider"));
+                break;
+            case InteractableItem.InteractableType.Cryptex:
+                EditorGUILayout.PropertyField(cryptexRotateDuration, new GUIContent("Cryptex Rotate Duration"));
                 EditorGUILayout.PropertyField(boxColliderProp, new GUIContent("Book Collider"));
                 break;
         }

@@ -53,4 +53,5 @@ public enum ItemID
     Skull = 50,
     Shield = 51,
     Sword = 52,
+    MorseAndGlifsBook = 53,
 }

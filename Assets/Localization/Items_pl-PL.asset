@@ -178,6 +178,10 @@ MonoBehaviour:
     m_Localized: Miecz
     m_Metadata:
       m_Items: []
+  - m_Id: 11247272941867008
+    m_Localized: "Ksi\u0105\u017Cka Kod Morsa i Glify "
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

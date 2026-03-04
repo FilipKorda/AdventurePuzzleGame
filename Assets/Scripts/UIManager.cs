@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -26,7 +27,6 @@ public class UIManager : MonoBehaviour
     [Header("Input Settings")]
     [SerializeField] private InputActionReference[] selectItemActions;
 
-
     [SerializeField] private InputActionReference navigateNextAction;
     [SerializeField] private InputActionReference navigatePreviousAction;
 
@@ -49,6 +49,21 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image imageMetalscaffolds;
     [SerializeField] private Image imageCollectible_Gears;
     [SerializeField] private Image imageCables;
+
+    [Header("Morse And Glifs Book")]
+    [SerializeField] private InputActionReference readBookAction;
+    [SerializeField] private InputActionReference nextCodeMordeAndGlifsPageAction;
+    [SerializeField] private InputActionReference previousCodeMordeAndGlifsPageAction;
+    [SerializeField] private GameObject morseAndGlifsBook;
+    [SerializeField] private GameObject bookPage1;
+    [SerializeField] private GameObject bookPage2;
+    [SerializeField] private GameObject bookPage3;
+    [SerializeField] private GameObject bookPage4;
+    [SerializeField] private GameObject bookPage5;
+    [SerializeField] private GameObject bookPage6;
+    private int currentPage = 0;
+    private GameObject[] pages;
+
 
     public void ShowMetalCrabImage()
     {
@@ -134,11 +149,23 @@ public class UIManager : MonoBehaviour
             drinkOrEatAction.action.performed += OnDrinkOrEatPerformed;
         }
 
+        if (readBookAction != null)
+        {
+            readBookAction.action.Enable();
+            readBookAction.action.performed += OnReadBookPerformed;
+        }
+
         if (nextPageAction != null)
             nextPageAction.action.performed += OnNextPage;
 
         if (previousPageAction != null)
             previousPageAction.action.performed += OnPreviousPage;
+
+        if (nextCodeMordeAndGlifsPageAction != null)
+            nextCodeMordeAndGlifsPageAction.action.performed += OnNextCodeMordeAndGlifsPage;
+
+        if (previousCodeMordeAndGlifsPageAction != null)
+            previousCodeMordeAndGlifsPageAction.action.performed += OnPreviousCodeMordeAndGlifsPage;
     }
 
     private void OnDisable()
@@ -166,11 +193,23 @@ public class UIManager : MonoBehaviour
             drinkOrEatAction.action.Disable();
         }
 
+        if (readBookAction != null)
+        {
+            readBookAction.action.performed -= OnReadBookPerformed;
+            readBookAction.action.Disable();
+        }
+
         if (nextPageAction != null)
             nextPageAction.action.performed -= OnNextPage;
 
         if (previousPageAction != null)
             previousPageAction.action.performed -= OnPreviousPage;
+
+        if (nextCodeMordeAndGlifsPageAction != null)
+            nextCodeMordeAndGlifsPageAction.action.performed -= OnNextCodeMordeAndGlifsPage;
+
+        if (previousCodeMordeAndGlifsPageAction != null)
+            previousCodeMordeAndGlifsPageAction.action.performed -= OnPreviousCodeMordeAndGlifsPage;
     }
 
     private void Awake()
@@ -183,6 +222,83 @@ public class UIManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        pages = new[]
+    {
+        bookPage1,
+        bookPage2,
+        bookPage3,
+        bookPage4,
+        bookPage5,
+        bookPage6
+    };
+    }
+
+
+    private void Start()
+    {
+        morseAndGlifsBook.SetActive(false);
+    }
+
+    private void OnReadBookPerformed(InputAction.CallbackContext context)
+    {     
+        int currentSelectedId = GetSelectedItemId();
+        if (currentSelectedId == 0)
+        {
+            Debug.Log("Nie wybrano ¿adnego przedmiotu do u¿ycia.");
+            return;
+        }
+
+        switch ((ItemID)currentSelectedId)
+        {
+            case ItemID.MorseAndGlifsBook:
+                ReadBookCodeMordeAndGlifs();
+                break;
+        }
+
+        Services.Audio.PlaySFX("ReadBook");
+    }
+
+
+    private void ReadBookCodeMordeAndGlifs()
+    {
+        bool isOpen = morseAndGlifsBook.activeSelf;
+
+        morseAndGlifsBook.SetActive(!isOpen);
+
+        if (!isOpen)
+        {
+            nextCodeMordeAndGlifsPageAction.action.Enable();
+            previousCodeMordeAndGlifsPageAction.action.Enable();
+        }
+        else
+        {
+            nextCodeMordeAndGlifsPageAction.action.Disable();
+            previousCodeMordeAndGlifsPageAction.action.Disable();
+        }
+    }
+
+
+    private void OnNextCodeMordeAndGlifsPage(InputAction.CallbackContext context)
+    {
+        if (!morseAndGlifsBook.activeSelf) return;
+
+        Services.Audio.PlaySFX("ReadBook");
+
+        pages[currentPage].SetActive(false);
+        currentPage = Mathf.Min(currentPage + 1, pages.Length - 1);
+        pages[currentPage].SetActive(true);
+    }
+
+    private void OnPreviousCodeMordeAndGlifsPage(InputAction.CallbackContext context)
+    {
+        if (!morseAndGlifsBook.activeSelf) return;
+
+        Services.Audio.PlaySFX("ReadBook");
+
+        pages[currentPage].SetActive(false);
+        currentPage = Mathf.Max(currentPage - 1, 0);
+        pages[currentPage].SetActive(true);
     }
 
     private void OnNextPage(InputAction.CallbackContext context)
@@ -341,7 +457,7 @@ public class UIManager : MonoBehaviour
 
     private void OnDropItemPerformed(InputAction.CallbackContext context)
     {
-        if (readableAndInteractablePanel != null && readableAndInteractablePanel.gameObject.activeInHierarchy || gameModeLockPickPanel.activeInHierarchy)
+        if (readableAndInteractablePanel != null && readableAndInteractablePanel.gameObject.activeInHierarchy || gameModeLockPickPanel.activeInHierarchy || morseAndGlifsBook.activeInHierarchy)
         {
             Debug.Log("Nie mo¿na wyrzuciæ przedmiotu podczas przegl¹dania czytanej strony.");
             return;

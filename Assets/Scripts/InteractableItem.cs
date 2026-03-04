@@ -8,7 +8,7 @@ using UnityEngine.Localization;
 
 public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpenable, IReadable, IPressable,
     IPlaceable, ILockPick, IFillable, IPickupARenewableItem, IAlchemyStation, IReadableAndInteractable, IRecipePlaceable,
-    IGetObject, ICrafting, IPinNumber, IRotate
+    IGetObject, ICrafting, IPinNumber, IRotate, ICryptex
 {
     public enum InteractableType
     {
@@ -27,7 +27,8 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         GetObject,
         Crafting,
         PinNumber,
-        RotateStatue
+        RotateStatue,
+        Cryptex
     }
 
     public InteractableType interactableType;
@@ -135,6 +136,10 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     [SerializeField] private DirectionTextSet directionTextSet;
     private float bookRotationDuration = 0.15f;
 
+    [Header("Cryptex Rotation Option")]
+    [SerializeField] private float cryptexRotateDuration = 0.25f;
+    bool cryptexIsRotating = false;
+
     private void Awake()
     {
         if (rend != null)
@@ -142,6 +147,41 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
             baseColor = rend.material.color;
         }
     }
+
+    public void RotateCryptex()
+    {
+        if (cryptexIsRotating)
+            return;
+
+        //Services.Audio.PlaySFX("RotateCryptex");
+
+        StartCoroutine(RotateCryptexSmoothly());
+       
+    }
+
+    IEnumerator RotateCryptexSmoothly()
+    {
+        cryptexIsRotating = true;
+        boxCollider.enabled = false;
+
+        Quaternion startRotation = transform.rotation;
+        Quaternion targetRotation = startRotation * Quaternion.Euler(0f, 0f, 45f);
+
+        float time = 0f;
+
+        while (time < cryptexRotateDuration)
+        {
+            time += Time.deltaTime;
+            transform.rotation = Quaternion.Lerp(startRotation, targetRotation, time / cryptexRotateDuration);
+            yield return null;
+        }
+
+        transform.rotation = targetRotation;
+
+        boxCollider.enabled = true;
+        cryptexIsRotating = false;
+    }
+
 
     public void RotateStatue()
     {
