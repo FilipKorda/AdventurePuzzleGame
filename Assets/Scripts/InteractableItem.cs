@@ -139,6 +139,8 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     [Header("Cryptex Rotation Option")]
     [SerializeField] private float cryptexRotateDuration = 0.25f;
     bool cryptexIsRotating = false;
+    private int currentIndex = 0;
+    public int CurrentIndex => currentIndex;
 
     private void Awake()
     {
@@ -153,10 +155,12 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         if (cryptexIsRotating)
             return;
 
-        //Services.Audio.PlaySFX("RotateCryptex");
+        Services.Audio.PlaySFX("MovingStoneKryptex");
+
+        currentIndex = (currentIndex + 1) % 8;
 
         StartCoroutine(RotateCryptexSmoothly());
-       
+
     }
 
     IEnumerator RotateCryptexSmoothly()
@@ -164,19 +168,19 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         cryptexIsRotating = true;
         boxCollider.enabled = false;
 
-        Quaternion startRotation = transform.rotation;
-        Quaternion targetRotation = startRotation * Quaternion.Euler(0f, 0f, 45f);
+        Quaternion startRotation = transform.localRotation;
+        Quaternion targetRotation = startRotation * Quaternion.Euler(45f, 0f, 0f);
 
         float time = 0f;
 
         while (time < cryptexRotateDuration)
         {
             time += Time.deltaTime;
-            transform.rotation = Quaternion.Lerp(startRotation, targetRotation, time / cryptexRotateDuration);
+            transform.localRotation = Quaternion.Lerp(startRotation, targetRotation, time / cryptexRotateDuration);
             yield return null;
         }
 
-        transform.rotation = targetRotation;
+        transform.localRotation = targetRotation;
 
         boxCollider.enabled = true;
         cryptexIsRotating = false;

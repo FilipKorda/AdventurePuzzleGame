@@ -113,6 +113,7 @@ public class InteractableItemEditor : Editor
         directionTextSet = serializedObject.FindProperty("directionTextSet");
 
         cryptexRotateDuration = serializedObject.FindProperty("cryptexRotateDuration");
+       
     }
 
     public override void OnInspectorGUI()

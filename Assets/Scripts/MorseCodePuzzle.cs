@@ -33,9 +33,110 @@ public class MorseCodePuzzle : MonoBehaviour
         {'>', ".-.-."}, {'<', "-.-.-"}, {'!', ".--.--"}, {'@', "--..--"},
         {'#', ".-..-."}, {'$', "--.-."}, {'%', ".-.--"}, {'&', "--..-"},
         {'*', "...-."}, {'(', "-...-"}, {')', ".-..."}, {'_', "-.---"},
-        {'+', "-.-.."}, {'=', "-..--"}, 
+        {'+', "-.-.."}, {'=', "-..--"},
 
     };
+
+    [SerializeField] private GameObject firstSegment;
+    [SerializeField] private GameObject secondSegment;
+    [SerializeField] private GameObject thirdSegment;
+    [SerializeField] private GameObject fourthSegment;
+    [SerializeField] private GameObject fifthSegment;
+    [SerializeField] private GameObject sixthSegment;
+    [SerializeField] private GameObject seventhSegment;
+
+    [SerializeField] private GameObject button;
+
+    [SerializeField] private Animator animator;
+
+    private void Update()
+    {
+#if UNITY_EDITOR
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            DisableSegments();
+            RotateOneByOneAllSegments();
+        }
+#endif
+    }
+
+    public void MorseCodeSolved()
+    {
+        if (
+            firstSegment.GetComponent<InteractableItem>().CurrentIndex == 1 &&
+            secondSegment.GetComponent<InteractableItem>().CurrentIndex == 5 &&
+            thirdSegment.GetComponent<InteractableItem>().CurrentIndex == 4 &&
+            fourthSegment.GetComponent<InteractableItem>().CurrentIndex == 5 &&
+            fifthSegment.GetComponent<InteractableItem>().CurrentIndex == 2 &&
+            sixthSegment.GetComponent<InteractableItem>().CurrentIndex == 1 &&
+            seventhSegment.GetComponent<InteractableItem>().CurrentIndex == 3
+           )
+        {
+            DisableSegments();
+            RotateOneByOneAllSegments();
+        }
+    }
+
+
+    private void DisableSegments()
+    {
+        firstSegment.GetComponent<BoxCollider>().enabled = false;
+        secondSegment.GetComponent<BoxCollider>().enabled = false;
+        thirdSegment.GetComponent<BoxCollider>().enabled = false;
+        fourthSegment.GetComponent<BoxCollider>().enabled = false;
+        fifthSegment.GetComponent<BoxCollider>().enabled = false;
+        sixthSegment.GetComponent<BoxCollider>().enabled = false;
+        seventhSegment.GetComponent<BoxCollider>().enabled = false;
+        button.GetComponent<BoxCollider>().enabled = false;
+    }
+
+    private void RotateOneByOneAllSegments()
+    {
+        StartCoroutine(RotateSegmentsCoroutine());
+        Debug.Log("Solved");
+    }
+
+    private IEnumerator RotateSegmentsCoroutine()
+    {
+        GameObject[] segments = {
+        firstSegment,
+        secondSegment,
+        thirdSegment,
+        fourthSegment,
+        fifthSegment,
+        sixthSegment,
+        seventhSegment
+    };
+
+        float rotateDuration = 3.8f;
+        float waitBetween = 0.75f;
+
+        foreach (var segment in segments)
+        {
+            StartCoroutine(RotateSegment(segment, rotateDuration));
+            Services.Audio.PlaySFX("MovingStoneKryptex");
+            yield return new WaitForSeconds(waitBetween);
+        }
+
+        yield return new WaitForSeconds(2);
+
+        animator.SetTrigger("Interact");
+    }
+
+    private IEnumerator RotateSegment(GameObject segment, float duration)
+    {
+        Quaternion startRotation = segment.transform.localRotation;
+        Quaternion targetRotation = startRotation * Quaternion.Euler(315f, 0f, 0f);
+
+        float time = 0f;
+        while (time < duration)
+        {
+            time += Time.deltaTime;
+            segment.transform.localRotation = Quaternion.Slerp(startRotation, targetRotation, time / duration);
+            yield return null;
+        }
+        segment.transform.localRotation = targetRotation;
+    }
 
     public void ActivateMorseCodePuzzle()
     {
@@ -76,9 +177,51 @@ public class MorseCodePuzzle : MonoBehaviour
         wall.localPosition = targetPos;
     }
 
-    public void ZMorseCode()
+    public void OMorseCode()////git
     {
-        string message = ":";
+        string message = "O";
+
+        PlayMessage(message);
+    }
+
+    public void ExclamationMarkMorseCode()  ////git
+    {
+        string message = "!";
+
+        PlayMessage(message);
+    }
+
+    public void QMorseCode() ////git
+    {
+        string message = "Q";
+
+        PlayMessage(message);
+    }
+
+    public void YMorseCode() ////git
+    {
+        string message = "Y";
+
+        PlayMessage(message);
+    }
+
+    public void OpeningBracketMorseCode() ////git
+    {
+        string message = "(";
+
+        PlayMessage(message);
+    }
+
+    public void TMorseCode() ////git
+    {
+        string message = "T";
+
+        PlayMessage(message);
+    }
+
+    public void EqualsMorseCode() ////git
+    {
+        string message = "=";
 
         PlayMessage(message);
     }

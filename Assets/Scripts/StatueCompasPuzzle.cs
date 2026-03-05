@@ -29,10 +29,12 @@ public class StatueCompasPuzzle : MonoBehaviour
 
     private void Update()
     {
+#if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.L))
         {
             PuzzleSolved();
         }
+#endif
     }
 
     void OnStatueRotated(InteractableItem statue)
@@ -59,7 +61,7 @@ public class StatueCompasPuzzle : MonoBehaviour
     }
 
 
-    
+
     void PuzzleSolved()
     {
         puzzleSolved = true;
@@ -82,7 +84,7 @@ public class StatueCompasPuzzle : MonoBehaviour
 
 
     private void RotateAllStatuesToPoint()
-    {     
+    {
         StartCoroutine(ActiveSFXDelay());
 
         foreach (var statue in statues)
@@ -104,7 +106,7 @@ public class StatueCompasPuzzle : MonoBehaviour
             t += Time.deltaTime / 4.2f;
             target.rotation = Quaternion.Slerp(startRotation, targetRotation, t);
             yield return null;
-        }  
+        }
     }
 
     private void MoveButton()
@@ -131,7 +133,7 @@ public class StatueCompasPuzzle : MonoBehaviour
     {
         Services.Audio.PlaySFX("RotateStatue_StoneMove");
         yield return new WaitForSeconds(0.1f);
-        Services.Audio.PlaySFX("RotateStatue_StoneMove");     
+        Services.Audio.PlaySFX("RotateStatue_StoneMove");
         yield return new WaitForSeconds(0.13f);
         Services.Audio.PlaySFX("RotateStatue_StoneMove");
         yield return new WaitForSeconds(0.16f);

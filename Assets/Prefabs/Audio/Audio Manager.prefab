@@ -127,4 +127,6 @@ MonoBehaviour:
     Clip: {fileID: 8300000, guid: 0354a7201b8a6a74fa67c33ed221221a, type: 3}
   - Id: LongBeep
     Clip: {fileID: 8300000, guid: 32e8e33d9c9298148b0ca7b605c77d13, type: 3}
+  - Id: MovingStoneKryptex
+    Clip: {fileID: 8300000, guid: ef92f71edf6368e4d90db49b2c81e795, type: 3}
   sfxSourcePrefab: {fileID: 6808787666201464470, guid: 561a59515f73e424ba170ae966f504e9, type: 3}
