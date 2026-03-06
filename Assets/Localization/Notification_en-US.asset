@@ -103,6 +103,12 @@ MonoBehaviour:
     m_Localized: U need have Key pad
     m_Metadata:
       m_Items: []
+  - m_Id: 11473856986632192
+    m_Localized: 'Mouse to move
+
+      RMB to exit'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

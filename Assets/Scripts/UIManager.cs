@@ -64,6 +64,19 @@ public class UIManager : MonoBehaviour
     private int currentPage = 0;
     private GameObject[] pages;
 
+    [Header("Mirror UI")]
+    [SerializeField] private GameObject mirrorInputPanel;
+
+
+    public void EnableMirrorInputPanel()
+    {
+        mirrorInputPanel.SetActive(true);
+    }
+
+    public void DisableMirrorInputPanel()
+    {
+        mirrorInputPanel.SetActive(false);
+    }
 
     public void ShowMetalCrabImage()
     {

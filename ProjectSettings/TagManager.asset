@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - Ladder
+  - IgnoreColliderMirror
   layers:
   - Default
   - TransparentFX
@@ -12,9 +13,9 @@ TagManager:
   - Interactable
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Mirror
+  - LaserInteractable
+  - BlockHit
   - 
   - 
   - 

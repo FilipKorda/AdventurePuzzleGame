@@ -5,10 +5,11 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Localization;
+using UnityEngine.Localization.Pseudo;
 
 public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpenable, IReadable, IPressable,
     IPlaceable, ILockPick, IFillable, IPickupARenewableItem, IAlchemyStation, IReadableAndInteractable, IRecipePlaceable,
-    IGetObject, ICrafting, IPinNumber, IRotate, ICryptex
+    IGetObject, ICrafting, IPinNumber, IRotate, ICryptex, IMirror
 {
     public enum InteractableType
     {
@@ -28,7 +29,8 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         Crafting,
         PinNumber,
         RotateStatue,
-        Cryptex
+        Cryptex,
+        MirrorMode
     }
 
     public InteractableType interactableType;
@@ -142,12 +144,22 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     private int currentIndex = 0;
     public int CurrentIndex => currentIndex;
 
+    [Header("Mirror")]
+    [SerializeField] private Mirror mirror;
+
     private void Awake()
     {
         if (rend != null)
         {
             baseColor = rend.material.color;
         }
+    }
+
+    public void EnterTheMirrorMode()
+    {
+        mirror.EnableControl();
+
+        Debug.Log("Wszed³eœ w tryb lustra!");
     }
 
     public void RotateCryptex()

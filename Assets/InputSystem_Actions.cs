@@ -1327,6 +1327,87 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Mirror"",
+            ""id"": ""518e3ab0-d6ff-4bc1-b2db-e8a4a9a30312"",
+            ""actions"": [
+                {
+                    ""name"": ""Mirror Look"",
+                    ""type"": ""Value"",
+                    ""id"": ""4c7c838e-a3f8-4b0e-a804-da751de55cc5"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""ConfirmAndExit"",
+                    ""type"": ""Button"",
+                    ""id"": ""7e3818f6-1a8e-4cc5-8b63-05c486e6328e"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""06e18b3f-5895-42e7-890b-0314187999ae"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Mirror Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5d0b7d81-d804-4043-b3ff-b88ce2fdef1e"",
+                    ""path"": ""<Pointer>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse;Touch"",
+                    ""action"": ""Mirror Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ffb98851-53c1-4a04-a819-c093700a0931"",
+                    ""path"": ""<Joystick>/{Hatswitch}"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Joystick"",
+                    ""action"": ""Mirror Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""515b3597-cb46-46f7-8113-b2aa92e5a2e2"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""ConfirmAndExit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5c0d9f93-d1f2-49c7-816c-ea989c4b242e"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""ConfirmAndExit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -1428,6 +1509,10 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_LockPick_MoveLeft = m_LockPick.FindAction("MoveLeft", throwIfNotFound: true);
         m_LockPick_Interact = m_LockPick.FindAction("Interact", throwIfNotFound: true);
         m_LockPick_MoveRight = m_LockPick.FindAction("MoveRight", throwIfNotFound: true);
+        // Mirror
+        m_Mirror = asset.FindActionMap("Mirror", throwIfNotFound: true);
+        m_Mirror_MirrorLook = m_Mirror.FindAction("Mirror Look", throwIfNotFound: true);
+        m_Mirror_ConfirmAndExit = m_Mirror.FindAction("ConfirmAndExit", throwIfNotFound: true);
     }
 
     ~@InputSystem_Actions()
@@ -1435,6 +1520,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         UnityEngine.Debug.Assert(!m_Player.enabled, "This will cause a leak and performance issues, InputSystem_Actions.Player.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_UI.enabled, "This will cause a leak and performance issues, InputSystem_Actions.UI.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_LockPick.enabled, "This will cause a leak and performance issues, InputSystem_Actions.LockPick.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Mirror.enabled, "This will cause a leak and performance issues, InputSystem_Actions.Mirror.Disable() has not been called.");
     }
 
     /// <summary>
@@ -2091,6 +2177,113 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     /// Provides a new <see cref="LockPickActions" /> instance referencing this action map.
     /// </summary>
     public LockPickActions @LockPick => new LockPickActions(this);
+
+    // Mirror
+    private readonly InputActionMap m_Mirror;
+    private List<IMirrorActions> m_MirrorActionsCallbackInterfaces = new List<IMirrorActions>();
+    private readonly InputAction m_Mirror_MirrorLook;
+    private readonly InputAction m_Mirror_ConfirmAndExit;
+    /// <summary>
+    /// Provides access to input actions defined in input action map "Mirror".
+    /// </summary>
+    public struct MirrorActions
+    {
+        private @InputSystem_Actions m_Wrapper;
+
+        /// <summary>
+        /// Construct a new instance of the input action map wrapper class.
+        /// </summary>
+        public MirrorActions(@InputSystem_Actions wrapper) { m_Wrapper = wrapper; }
+        /// <summary>
+        /// Provides access to the underlying input action "Mirror/MirrorLook".
+        /// </summary>
+        public InputAction @MirrorLook => m_Wrapper.m_Mirror_MirrorLook;
+        /// <summary>
+        /// Provides access to the underlying input action "Mirror/ConfirmAndExit".
+        /// </summary>
+        public InputAction @ConfirmAndExit => m_Wrapper.m_Mirror_ConfirmAndExit;
+        /// <summary>
+        /// Provides access to the underlying input action map instance.
+        /// </summary>
+        public InputActionMap Get() { return m_Wrapper.m_Mirror; }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+        public void Enable() { Get().Enable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+        public void Disable() { Get().Disable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+        public bool enabled => Get().enabled;
+        /// <summary>
+        /// Implicitly converts an <see ref="MirrorActions" /> to an <see ref="InputActionMap" /> instance.
+        /// </summary>
+        public static implicit operator InputActionMap(MirrorActions set) { return set.Get(); }
+        /// <summary>
+        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <param name="instance">Callback instance.</param>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+        /// </remarks>
+        /// <seealso cref="MirrorActions" />
+        public void AddCallbacks(IMirrorActions instance)
+        {
+            if (instance == null || m_Wrapper.m_MirrorActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_MirrorActionsCallbackInterfaces.Add(instance);
+            @MirrorLook.started += instance.OnMirrorLook;
+            @MirrorLook.performed += instance.OnMirrorLook;
+            @MirrorLook.canceled += instance.OnMirrorLook;
+            @ConfirmAndExit.started += instance.OnConfirmAndExit;
+            @ConfirmAndExit.performed += instance.OnConfirmAndExit;
+            @ConfirmAndExit.canceled += instance.OnConfirmAndExit;
+        }
+
+        /// <summary>
+        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <remarks>
+        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+        /// </remarks>
+        /// <seealso cref="MirrorActions" />
+        private void UnregisterCallbacks(IMirrorActions instance)
+        {
+            @MirrorLook.started -= instance.OnMirrorLook;
+            @MirrorLook.performed -= instance.OnMirrorLook;
+            @MirrorLook.canceled -= instance.OnMirrorLook;
+            @ConfirmAndExit.started -= instance.OnConfirmAndExit;
+            @ConfirmAndExit.performed -= instance.OnConfirmAndExit;
+            @ConfirmAndExit.canceled -= instance.OnConfirmAndExit;
+        }
+
+        /// <summary>
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="MirrorActions.UnregisterCallbacks(IMirrorActions)" />.
+        /// </summary>
+        /// <seealso cref="MirrorActions.UnregisterCallbacks(IMirrorActions)" />
+        public void RemoveCallbacks(IMirrorActions instance)
+        {
+            if (m_Wrapper.m_MirrorActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        /// <summary>
+        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+        /// </summary>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+        /// </remarks>
+        /// <seealso cref="MirrorActions.AddCallbacks(IMirrorActions)" />
+        /// <seealso cref="MirrorActions.RemoveCallbacks(IMirrorActions)" />
+        /// <seealso cref="MirrorActions.UnregisterCallbacks(IMirrorActions)" />
+        public void SetCallbacks(IMirrorActions instance)
+        {
+            foreach (var item in m_Wrapper.m_MirrorActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_MirrorActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    /// <summary>
+    /// Provides a new <see cref="MirrorActions" /> instance referencing this action map.
+    /// </summary>
+    public MirrorActions @Mirror => new MirrorActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     /// <summary>
     /// Provides access to the input control scheme.
@@ -2389,5 +2582,27 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnMoveRight(InputAction.CallbackContext context);
+    }
+    /// <summary>
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Mirror" which allows adding and removing callbacks.
+    /// </summary>
+    /// <seealso cref="MirrorActions.AddCallbacks(IMirrorActions)" />
+    /// <seealso cref="MirrorActions.RemoveCallbacks(IMirrorActions)" />
+    public interface IMirrorActions
+    {
+        /// <summary>
+        /// Method invoked when associated input action "Mirror Look" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnMirrorLook(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "ConfirmAndExit" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnConfirmAndExit(InputAction.CallbackContext context);
     }
 }

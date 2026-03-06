@@ -99,6 +99,10 @@ MonoBehaviour:
     m_Key: U need have Key pad
     m_Metadata:
       m_Items: []
+  - m_Id: 11473856986632192
+    m_Key: Mirror Input
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

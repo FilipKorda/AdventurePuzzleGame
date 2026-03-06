@@ -129,4 +129,16 @@ MonoBehaviour:
     Clip: {fileID: 8300000, guid: 32e8e33d9c9298148b0ca7b605c77d13, type: 3}
   - Id: MovingStoneKryptex
     Clip: {fileID: 8300000, guid: ef92f71edf6368e4d90db49b2c81e795, type: 3}
+  - Id: CristalEnter
+    Clip: {fileID: 8300000, guid: a42a072533807804e8c93e2b1f5c4cb8, type: 3}
+  - Id: Cristal2Enter
+    Clip: {fileID: 8300000, guid: 4ea694615ad912543bd89b235954acf7, type: 3}
+  - Id: Cristal3Enter
+    Clip: {fileID: 8300000, guid: 1e745d0f651009246bf94b9d99c88097, type: 3}
+  - Id: CrystalRelease
+    Clip: {fileID: 8300000, guid: 1fa6b66e22c537645a618ed3e5d67f3c, type: 3}
+  - Id: Crystal2Release
+    Clip: {fileID: 8300000, guid: f9d827cf24e2db54aaef739e490aa5b9, type: 3}
+  - Id: Crystal3Release
+    Clip: {fileID: 8300000, guid: 959b32347da1ab546b106084c24dd8e6, type: 3}
   sfxSourcePrefab: {fileID: 6808787666201464470, guid: 561a59515f73e424ba170ae966f504e9, type: 3}

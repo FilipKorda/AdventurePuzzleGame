@@ -107,6 +107,10 @@ MonoBehaviour:
     m_Localized: Potrzebujesz tetminal
     m_Metadata:
       m_Items: []
+  - m_Id: 11473856986632192
+    m_Localized: "Mysz \u017Ceby ruszy\u0107 \nPPM \u017Ceby wyj\u015B\u0107"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

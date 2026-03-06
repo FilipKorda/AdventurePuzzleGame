@@ -1,5 +1,7 @@
 using UnityEditor;
+using UnityEditor.PackageManager;
 using UnityEngine;
+using UnityEngine.Localization.Pseudo;
 
 [CustomEditor(typeof(InteractableItem))]
 public class InteractableItemEditor : Editor
@@ -58,6 +60,8 @@ public class InteractableItemEditor : Editor
 
     private SerializedProperty cryptexRotateDuration;
 
+    private SerializedProperty mirror;
+
     private void OnEnable()
     {
         interactableTypeProp = serializedObject.FindProperty("interactableType");
@@ -113,6 +117,8 @@ public class InteractableItemEditor : Editor
         directionTextSet = serializedObject.FindProperty("directionTextSet");
 
         cryptexRotateDuration = serializedObject.FindProperty("cryptexRotateDuration");
+
+        mirror = serializedObject.FindProperty("mirror");
        
     }
 
@@ -256,6 +262,10 @@ public class InteractableItemEditor : Editor
                 EditorGUILayout.PropertyField(cryptexRotateDuration, new GUIContent("Cryptex Rotate Duration"));
                 EditorGUILayout.PropertyField(boxColliderProp, new GUIContent("Book Collider"));
                 break;
+            case InteractableItem.InteractableType.MirrorMode:
+                EditorGUILayout.PropertyField(mirror, new GUIContent("Rirror"));
+                break;
+                
         }
 
         serializedObject.ApplyModifiedProperties();

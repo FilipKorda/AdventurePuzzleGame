@@ -485,6 +485,9 @@ MonoBehaviour:
   interactableLayer:
     serializedVersion: 2
     m_Bits: 8
+  blockRaycastLayer:
+    serializedVersion: 2
+    m_Bits: 256
   centerOfScreen: {fileID: 0}
   dot: {fileID: 0}
   drunkSwayAmount: 8

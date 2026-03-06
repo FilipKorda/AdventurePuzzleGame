@@ -26,6 +26,7 @@ public class PlayerBehaviour : MonoBehaviour
     [Header("Raycast Detector")]
     [SerializeField] private float raycastRange = 5f;
     [SerializeField] private LayerMask interactableLayer;
+    [SerializeField] private LayerMask blockRaycastLayer;
 
     [Header("Center Of Screen Dot")]
     [SerializeField] private GameObject centerOfScreen;
@@ -54,6 +55,8 @@ public class PlayerBehaviour : MonoBehaviour
     private IRotate lastIRotate;
 
     private ICryptex lastICryptex;
+
+    private IMirror lastIMirror;
 
     private CharacterController characterController;
     private Vector2 inputMovement;
@@ -85,7 +88,7 @@ public class PlayerBehaviour : MonoBehaviour
     [Tooltip("Jak bardzo opóŸnione/ociê¿a³e jest rozgl¹danie siê. Ni¿sze wartoœci = wiêksze opóŸnienie.")]
     [SerializeField] private float drunkLookSmoothing = 3f;
     [Header("Drunk Visual Effects")]
-    [SerializeField] private Camera _playerCamera;
+    public Camera _playerCamera;
     [Tooltip("Normalne pole widzenia kamery.")]
     [SerializeField] private float normalFOV = 60f;
     [Tooltip("Pole widzenia kamery podczas efektu upojenia.")]
@@ -256,6 +259,8 @@ public class PlayerBehaviour : MonoBehaviour
 
             lastICryptex?.RotateCryptex();
 
+            lastIMirror?.EnterTheMirrorMode();
+
             if (lastIOpenable != null && lastIOpenable.IsOpen())
             {
                 lastIOpenable?.CloseObject();
@@ -412,8 +417,12 @@ public class PlayerBehaviour : MonoBehaviour
         lastIPinNumber = null;
         lastIRotate = null;
         lastICryptex = null;
+        lastIMirror = null;
 
-        if (Physics.Raycast(ray, out RaycastHit hit, raycastRange, interactableLayer))
+        bool hitBlock = Physics.Raycast(ray, out RaycastHit blockHit, raycastRange, blockRaycastLayer);
+        bool hitInteractable = Physics.Raycast(ray, out RaycastHit hit, raycastRange, interactableLayer);
+
+        if (hitInteractable && (!hitBlock || blockHit.distance > hit.distance))
         {
             if (hit.collider.TryGetComponent<InteractableItem>(out var interactableObject))
             {
@@ -504,6 +513,9 @@ public class PlayerBehaviour : MonoBehaviour
                         lastICryptex = interactableObject;
                         break;
 
+                    case InteractableItem.InteractableType.MirrorMode:
+                        lastIMirror = interactableObject;
+                        break;
 
 
                 }
