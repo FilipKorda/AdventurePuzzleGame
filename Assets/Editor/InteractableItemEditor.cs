@@ -1,7 +1,5 @@
 using UnityEditor;
-using UnityEditor.PackageManager;
 using UnityEngine;
-using UnityEngine.Localization.Pseudo;
 
 [CustomEditor(typeof(InteractableItem))]
 public class InteractableItemEditor : Editor
@@ -61,6 +59,8 @@ public class InteractableItemEditor : Editor
     private SerializedProperty cryptexRotateDuration;
 
     private SerializedProperty mirror;
+    private SerializedProperty gearLockMode;
+    private SerializedProperty gearRotateDuration;
 
     private void OnEnable()
     {
@@ -119,6 +119,8 @@ public class InteractableItemEditor : Editor
         cryptexRotateDuration = serializedObject.FindProperty("cryptexRotateDuration");
 
         mirror = serializedObject.FindProperty("mirror");
+        gearLockMode = serializedObject.FindProperty("gearLockMode");
+        gearRotateDuration = serializedObject.FindProperty("gearRotateDuration");
        
     }
 
@@ -265,7 +267,17 @@ public class InteractableItemEditor : Editor
             case InteractableItem.InteractableType.MirrorMode:
                 EditorGUILayout.PropertyField(mirror, new GUIContent("Rirror"));
                 break;
-                
+            case InteractableItem.InteractableType.GearLockMode:
+                EditorGUILayout.PropertyField(gearLockMode, new GUIContent("Gear Lock Mode"));
+                EditorGUILayout.PropertyField(boxColliderProp, new GUIContent("Box Collider"));
+                break;
+            case InteractableItem.InteractableType.RotateGear:
+                EditorGUILayout.PropertyField(boxColliderProp, new GUIContent("Box Collider"));
+                EditorGUILayout.PropertyField(gearRotateDuration, new GUIContent("Gear Rotate Duration"));
+                break;
+
+
+
         }
 
         serializedObject.ApplyModifiedProperties();

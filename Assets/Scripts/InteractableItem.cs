@@ -9,7 +9,7 @@ using UnityEngine.Localization.Pseudo;
 
 public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpenable, IReadable, IPressable,
     IPlaceable, ILockPick, IFillable, IPickupARenewableItem, IAlchemyStation, IReadableAndInteractable, IRecipePlaceable,
-    IGetObject, ICrafting, IPinNumber, IRotate, ICryptex, IMirror
+    IGetObject, ICrafting, IPinNumber, IRotate, ICryptex, IMirror, IGearLock, IGearRotate
 {
     public enum InteractableType
     {
@@ -30,7 +30,9 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         PinNumber,
         RotateStatue,
         Cryptex,
-        MirrorMode
+        MirrorMode,
+        GearLockMode,
+        RotateGear
     }
 
     public InteractableType interactableType;
@@ -147,12 +149,55 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     [Header("Mirror")]
     [SerializeField] private Mirror mirror;
 
+    [Header("Gear Lock Mode")]
+    [SerializeField] private GearLockMode gearLockMode;
+    [SerializeField] private float gearRotateDuration = 0.25f;
+    bool gearIsRotating = false;
+
     private void Awake()
     {
         if (rend != null)
         {
             baseColor = rend.material.color;
         }
+    }
+
+    public void RotateGear()
+    {
+        if (gearIsRotating)
+            return;
+
+        //Services.Audio.PlaySFX("");
+        StartCoroutine(RotateGearSmoothly());
+    }
+
+    IEnumerator RotateGearSmoothly()
+    {
+        gearIsRotating = true;
+        boxCollider.enabled = false;
+
+        Quaternion startRotation = transform.localRotation;
+        Quaternion targetRotation = startRotation * Quaternion.Euler(0f, 30f, 0f);
+
+        float time = 0f;
+
+        while (time < gearRotateDuration)
+        {
+            time += Time.deltaTime;
+            transform.localRotation = Quaternion.Lerp(startRotation, targetRotation, time / gearRotateDuration);
+            yield return null;
+        }
+
+        transform.localRotation = targetRotation;
+
+        boxCollider.enabled = true;
+        gearIsRotating = false;
+    }
+
+    public void EnterGearLock()
+    {
+        gearLockMode.EnterGearLockMode();
+        Debug.Log("Wszed³eœ w tryb Gear Mode!");
     }
 
     public void EnterTheMirrorMode()

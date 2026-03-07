@@ -1322,6 +1322,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "GearRiddle",
+            "id": "696331e0-7d40-49de-b54e-3dc1002deb5b",
+            "actions": [
+                {
+                    "name": "Leave Riddle",
+                    "type": "Button",
+                    "id": "bd593d0f-dffc-4131-87f3-d2b9666746f7",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "dc3a6fc6-3536-4199-ac12-bbcf059b33b4",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Leave Riddle",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

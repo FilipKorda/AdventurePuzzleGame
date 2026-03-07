@@ -1408,6 +1408,34 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""GearRiddle"",
+            ""id"": ""696331e0-7d40-49de-b54e-3dc1002deb5b"",
+            ""actions"": [
+                {
+                    ""name"": ""Leave Riddle"",
+                    ""type"": ""Button"",
+                    ""id"": ""bd593d0f-dffc-4131-87f3-d2b9666746f7"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""dc3a6fc6-3536-4199-ac12-bbcf059b33b4"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Leave Riddle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -1513,6 +1541,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_Mirror = asset.FindActionMap("Mirror", throwIfNotFound: true);
         m_Mirror_MirrorLook = m_Mirror.FindAction("Mirror Look", throwIfNotFound: true);
         m_Mirror_ConfirmAndExit = m_Mirror.FindAction("ConfirmAndExit", throwIfNotFound: true);
+        // GearRiddle
+        m_GearRiddle = asset.FindActionMap("GearRiddle", throwIfNotFound: true);
+        m_GearRiddle_LeaveRiddle = m_GearRiddle.FindAction("Leave Riddle", throwIfNotFound: true);
     }
 
     ~@InputSystem_Actions()
@@ -1521,6 +1552,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         UnityEngine.Debug.Assert(!m_UI.enabled, "This will cause a leak and performance issues, InputSystem_Actions.UI.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_LockPick.enabled, "This will cause a leak and performance issues, InputSystem_Actions.LockPick.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_Mirror.enabled, "This will cause a leak and performance issues, InputSystem_Actions.Mirror.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_GearRiddle.enabled, "This will cause a leak and performance issues, InputSystem_Actions.GearRiddle.Disable() has not been called.");
     }
 
     /// <summary>
@@ -2284,6 +2316,102 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     /// Provides a new <see cref="MirrorActions" /> instance referencing this action map.
     /// </summary>
     public MirrorActions @Mirror => new MirrorActions(this);
+
+    // GearRiddle
+    private readonly InputActionMap m_GearRiddle;
+    private List<IGearRiddleActions> m_GearRiddleActionsCallbackInterfaces = new List<IGearRiddleActions>();
+    private readonly InputAction m_GearRiddle_LeaveRiddle;
+    /// <summary>
+    /// Provides access to input actions defined in input action map "GearRiddle".
+    /// </summary>
+    public struct GearRiddleActions
+    {
+        private @InputSystem_Actions m_Wrapper;
+
+        /// <summary>
+        /// Construct a new instance of the input action map wrapper class.
+        /// </summary>
+        public GearRiddleActions(@InputSystem_Actions wrapper) { m_Wrapper = wrapper; }
+        /// <summary>
+        /// Provides access to the underlying input action "GearRiddle/LeaveRiddle".
+        /// </summary>
+        public InputAction @LeaveRiddle => m_Wrapper.m_GearRiddle_LeaveRiddle;
+        /// <summary>
+        /// Provides access to the underlying input action map instance.
+        /// </summary>
+        public InputActionMap Get() { return m_Wrapper.m_GearRiddle; }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+        public void Enable() { Get().Enable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+        public void Disable() { Get().Disable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+        public bool enabled => Get().enabled;
+        /// <summary>
+        /// Implicitly converts an <see ref="GearRiddleActions" /> to an <see ref="InputActionMap" /> instance.
+        /// </summary>
+        public static implicit operator InputActionMap(GearRiddleActions set) { return set.Get(); }
+        /// <summary>
+        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <param name="instance">Callback instance.</param>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+        /// </remarks>
+        /// <seealso cref="GearRiddleActions" />
+        public void AddCallbacks(IGearRiddleActions instance)
+        {
+            if (instance == null || m_Wrapper.m_GearRiddleActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_GearRiddleActionsCallbackInterfaces.Add(instance);
+            @LeaveRiddle.started += instance.OnLeaveRiddle;
+            @LeaveRiddle.performed += instance.OnLeaveRiddle;
+            @LeaveRiddle.canceled += instance.OnLeaveRiddle;
+        }
+
+        /// <summary>
+        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <remarks>
+        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+        /// </remarks>
+        /// <seealso cref="GearRiddleActions" />
+        private void UnregisterCallbacks(IGearRiddleActions instance)
+        {
+            @LeaveRiddle.started -= instance.OnLeaveRiddle;
+            @LeaveRiddle.performed -= instance.OnLeaveRiddle;
+            @LeaveRiddle.canceled -= instance.OnLeaveRiddle;
+        }
+
+        /// <summary>
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="GearRiddleActions.UnregisterCallbacks(IGearRiddleActions)" />.
+        /// </summary>
+        /// <seealso cref="GearRiddleActions.UnregisterCallbacks(IGearRiddleActions)" />
+        public void RemoveCallbacks(IGearRiddleActions instance)
+        {
+            if (m_Wrapper.m_GearRiddleActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        /// <summary>
+        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+        /// </summary>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+        /// </remarks>
+        /// <seealso cref="GearRiddleActions.AddCallbacks(IGearRiddleActions)" />
+        /// <seealso cref="GearRiddleActions.RemoveCallbacks(IGearRiddleActions)" />
+        /// <seealso cref="GearRiddleActions.UnregisterCallbacks(IGearRiddleActions)" />
+        public void SetCallbacks(IGearRiddleActions instance)
+        {
+            foreach (var item in m_Wrapper.m_GearRiddleActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_GearRiddleActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    /// <summary>
+    /// Provides a new <see cref="GearRiddleActions" /> instance referencing this action map.
+    /// </summary>
+    public GearRiddleActions @GearRiddle => new GearRiddleActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     /// <summary>
     /// Provides access to the input control scheme.
@@ -2604,5 +2732,20 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnConfirmAndExit(InputAction.CallbackContext context);
+    }
+    /// <summary>
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "GearRiddle" which allows adding and removing callbacks.
+    /// </summary>
+    /// <seealso cref="GearRiddleActions.AddCallbacks(IGearRiddleActions)" />
+    /// <seealso cref="GearRiddleActions.RemoveCallbacks(IGearRiddleActions)" />
+    public interface IGearRiddleActions
+    {
+        /// <summary>
+        /// Method invoked when associated input action "Leave Riddle" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnLeaveRiddle(InputAction.CallbackContext context);
     }
 }

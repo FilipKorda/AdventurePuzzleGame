@@ -109,6 +109,16 @@ MonoBehaviour:
       RMB to exit'
     m_Metadata:
       m_Items: []
+  - m_Id: 11885436626817024
+    m_Localized: Press RMB to Drink or Eat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12015488773410816
+    m_Localized: 'Press RMB to Rotate Gear
+
+      Press E to leave'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

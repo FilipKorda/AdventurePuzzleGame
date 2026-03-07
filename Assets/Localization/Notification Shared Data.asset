@@ -103,6 +103,14 @@ MonoBehaviour:
     m_Key: Mirror Input
     m_Metadata:
       m_Items: []
+  - m_Id: 11885436626817024
+    m_Key: DrinkEat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12015488773410816
+    m_Key: GearNotification
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -19,6 +19,15 @@ public class Mirror : MonoBehaviour
     [SerializeField] private InputActionReference confirmAndExit;
 
 
+    [SerializeField] private float horizontalLeft = -20;
+    [SerializeField] private float horizontalRight = 20;
+
+    [SerializeField] private float verticalDown = -20;
+    [SerializeField] private float verticalUp = 20;
+
+
+
+
 
     private void Start()
     {
@@ -92,11 +101,11 @@ public class Mirror : MonoBehaviour
         float mouseY = rotationAction.action.ReadValue<Vector2>().y * sensitivity * Time.deltaTime;
 
         horizontalRotation += mouseX;
-        horizontalRotation = Mathf.Clamp(horizontalRotation, -20f, 20f);
+        horizontalRotation = Mathf.Clamp(horizontalRotation, horizontalLeft, horizontalRight);
         mirrorRoot.localRotation = Quaternion.Euler(0, horizontalRotation, 0);
 
         verticalRotation += mouseY;
-        verticalRotation = Mathf.Clamp(verticalRotation, -20f, 20f);
+        verticalRotation = Mathf.Clamp(verticalRotation, verticalDown, verticalUp);
         mirrorPivot.localRotation = Quaternion.Euler(0, 0, verticalRotation);
     }
 }

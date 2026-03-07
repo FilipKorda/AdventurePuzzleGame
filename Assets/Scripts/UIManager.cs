@@ -67,6 +67,32 @@ public class UIManager : MonoBehaviour
     [Header("Mirror UI")]
     [SerializeField] private GameObject mirrorInputPanel;
 
+    [Header("Drink Or Eat UI")]
+    [SerializeField] private GameObject drinkOrEatPanel;
+
+    [Header("Gear Mode Panel")]
+    [SerializeField] private GameObject gearModePanel;
+
+
+    public void EnableGearModePanel()
+    {
+        gearModePanel.SetActive(true);
+    }
+
+    public void DisableGearModePanel()
+    {
+        gearModePanel.SetActive(false);
+    }
+
+    public void EnableDrinkOrEatPanel()
+    {
+        drinkOrEatPanel.SetActive(true);
+    }
+
+    public void DisableDrinkOrEatPanel()
+    {
+        drinkOrEatPanel.SetActive(false);
+    }
 
     public void EnableMirrorInputPanel()
     {
@@ -251,6 +277,7 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         morseAndGlifsBook.SetActive(false);
+        drinkOrEatPanel.SetActive(false);
     }
 
     private void OnReadBookPerformed(InputAction.CallbackContext context)
@@ -455,14 +482,15 @@ public class UIManager : MonoBehaviour
                 break;
 
             default:
+               
                 Debug.Log("Tego przedmiotu nie mo¿na zjeœæ ani wypiæ.");
                 break;
         }
     }
 
-
     private void UseConsumableItem(int itemId)
     {
+        DisableDrinkOrEatPanel();
         Services.Audio.PlaySFX("Drink");
         Inventory.Instance.RemoveItemFromInventoryByID(itemId);
         RemoveItemFromUIByID(itemId);
@@ -470,11 +498,14 @@ public class UIManager : MonoBehaviour
 
     private void OnDropItemPerformed(InputAction.CallbackContext context)
     {
-        if (readableAndInteractablePanel != null && readableAndInteractablePanel.gameObject.activeInHierarchy || gameModeLockPickPanel.activeInHierarchy || morseAndGlifsBook.activeInHierarchy)
+        if (readableAndInteractablePanel != null && readableAndInteractablePanel.gameObject.activeInHierarchy
+            || gameModeLockPickPanel.activeInHierarchy || morseAndGlifsBook.activeInHierarchy || gearModePanel.activeInHierarchy)
         {
             Debug.Log("Nie mo¿na wyrzuciæ przedmiotu podczas przegl¹dania czytanej strony.");
             return;
         }
+
+        DisableDrinkOrEatPanel();
 
         int currentSelectedId = GetSelectedItemId();
         if (currentSelectedId != 0)
@@ -524,6 +555,8 @@ public class UIManager : MonoBehaviour
             {
                 if (i == selectedItemId)
                 {
+                    DisableDrinkOrEatPanel();
+
                     itemSlots[i].SetHighlighted(false);
                     Destroy(itemSlots[i].gameObject);
                     itemSlots.RemoveAt(i);
@@ -642,11 +675,13 @@ public class UIManager : MonoBehaviour
             {
                 itemSlots[selectedItemId].SetHighlighted(false);
             }
+
             selectedItemId = -1;
+
             if (itemNameText != null)
-            {
                 itemNameText.text = string.Empty;
-            }
+
+            DisableDrinkOrEatPanel();
             return;
         }
 
@@ -658,11 +693,17 @@ public class UIManager : MonoBehaviour
         selectedItemId = index;
 
         itemSlots[selectedItemId].SetHighlighted(true);
-        // ustawiamy nazwê zaznaczonego przedmiotu w UI
+
         if (itemNameText != null)
-        {
             itemNameText.text = itemSlots[selectedItemId].GetItemName();
-        }
+
+        ItemID id = (ItemID)itemSlots[selectedItemId].GetItemId();
+
+        if (IsConsumable(id))
+            EnableDrinkOrEatPanel();
+        else
+            DisableDrinkOrEatPanel();
+
         Debug.Log($"Zaznaczono element: {itemSlots[selectedItemId].GetItemName()} (ItemID: {itemSlots[selectedItemId].GetItemId()})");
     }
 
@@ -673,5 +714,28 @@ public class UIManager : MonoBehaviour
             return itemSlots[selectedItemId].GetItemId();
         }
         return 0;
+    }
+
+    private bool IsConsumable(ItemID id)
+    {
+        switch (id)
+        {
+            case ItemID.WaterBucket:
+            case ItemID.AcidBucket:
+            case ItemID.BloodBucket:
+            case ItemID.WineBucket:
+            case ItemID.RawMeat:
+            case ItemID.NiceWater:
+            case ItemID.MudWater:
+            case ItemID.LeafGoodBucket:
+            case ItemID.AngryTimeBucket:
+            case ItemID.BadMoodBucket:
+            case ItemID.GoodSoupBucket:
+            case ItemID.HolyCowBucket:
+                return true;
+
+            default:
+                return false;
+        }
     }
 }

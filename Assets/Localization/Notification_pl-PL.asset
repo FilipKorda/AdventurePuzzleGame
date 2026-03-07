@@ -111,6 +111,15 @@ MonoBehaviour:
     m_Localized: "Mysz \u017Ceby ruszy\u0107 \nPPM \u017Ceby wyj\u015B\u0107"
     m_Metadata:
       m_Items: []
+  - m_Id: 11885436626817024
+    m_Localized: "Naci\u015Bnij PPM \u017Ceby si\u0119 napi\u0107 lub zje\u015B\u0107"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12015488773410816
+    m_Localized: "Naci\u015Bnij PPM \u017Ceby obraca\u0107 z\u0119batki\nNaci\u015Bnij
+      E \u017Ceby wyj\u015B\u0107"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

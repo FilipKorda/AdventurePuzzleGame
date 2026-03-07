@@ -58,6 +58,9 @@ public class PlayerBehaviour : MonoBehaviour
 
     private IMirror lastIMirror;
 
+    private IGearLock lastIGearLock;
+    private IGearRotate lastIGearRotate;
+
     private CharacterController characterController;
     private Vector2 inputMovement;
     private Vector2 inputLook;
@@ -151,6 +154,7 @@ public class PlayerBehaviour : MonoBehaviour
     private LensDistortion lensDistortion;
 
     public bool disablePlayer = false;
+    public bool disableOnlyMovement = false;
 
     [Header("Light Lamp")]
     [SerializeField] private Light lampLight;
@@ -193,7 +197,6 @@ public class PlayerBehaviour : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-
     public void ToggleLamp(InputAction.CallbackContext context)
     {
         if (lampLightGo.activeInHierarchy) return;
@@ -204,11 +207,10 @@ public class PlayerBehaviour : MonoBehaviour
         }
     }
 
-
-
     public void OnMove(InputAction.CallbackContext context)
     {
         if (disablePlayer) { return; }
+        if (disableOnlyMovement) { return; }
         if (lastILockPick != null && lastILockPick.IsLockPicking()) return;
         if (lastIReadable != null && lastIReadable.IsReading()) return;
         if (lastIReadableAndInteractable != null && lastIReadableAndInteractable.IsReadingInteractable()) return;
@@ -260,6 +262,9 @@ public class PlayerBehaviour : MonoBehaviour
             lastICryptex?.RotateCryptex();
 
             lastIMirror?.EnterTheMirrorMode();
+
+            lastIGearLock?.EnterGearLock();
+            lastIGearRotate?.RotateGear();
 
             if (lastIOpenable != null && lastIOpenable.IsOpen())
             {
@@ -418,6 +423,8 @@ public class PlayerBehaviour : MonoBehaviour
         lastIRotate = null;
         lastICryptex = null;
         lastIMirror = null;
+        lastIGearLock = null;
+        lastIGearRotate = null;
 
         bool hitBlock = Physics.Raycast(ray, out RaycastHit blockHit, raycastRange, blockRaycastLayer);
         bool hitInteractable = Physics.Raycast(ray, out RaycastHit hit, raycastRange, interactableLayer);
@@ -517,7 +524,14 @@ public class PlayerBehaviour : MonoBehaviour
                         lastIMirror = interactableObject;
                         break;
 
+                    case InteractableItem.InteractableType.GearLockMode:
+                        lastIGearLock = interactableObject;
+                        break;
+                    case InteractableItem.InteractableType.RotateGear:
+                        lastIGearRotate = interactableObject;
+                        break;
 
+                        
                 }
             }
 
