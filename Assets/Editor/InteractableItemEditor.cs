@@ -274,6 +274,7 @@ public class InteractableItemEditor : Editor
             case InteractableItem.InteractableType.RotateGear:
                 EditorGUILayout.PropertyField(boxColliderProp, new GUIContent("Box Collider"));
                 EditorGUILayout.PropertyField(gearRotateDuration, new GUIContent("Gear Rotate Duration"));
+                EditorGUILayout.PropertyField(gearLockMode, new GUIContent("Gear Lock Mode"));
                 break;
 
 

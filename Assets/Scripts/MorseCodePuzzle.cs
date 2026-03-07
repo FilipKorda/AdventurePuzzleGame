@@ -63,13 +63,13 @@ public class MorseCodePuzzle : MonoBehaviour
     public void MorseCodeSolved()
     {
         if (
-            firstSegment.GetComponent<InteractableItem>().CurrentIndex == 1 &&
-            secondSegment.GetComponent<InteractableItem>().CurrentIndex == 5 &&
-            thirdSegment.GetComponent<InteractableItem>().CurrentIndex == 4 &&
-            fourthSegment.GetComponent<InteractableItem>().CurrentIndex == 5 &&
-            fifthSegment.GetComponent<InteractableItem>().CurrentIndex == 2 &&
-            sixthSegment.GetComponent<InteractableItem>().CurrentIndex == 1 &&
-            seventhSegment.GetComponent<InteractableItem>().CurrentIndex == 3
+            firstSegment.GetComponent<InteractableItem>().CurrentCryptexIndex == 1 &&
+            secondSegment.GetComponent<InteractableItem>().CurrentCryptexIndex == 5 &&
+            thirdSegment.GetComponent<InteractableItem>().CurrentCryptexIndex == 4 &&
+            fourthSegment.GetComponent<InteractableItem>().CurrentCryptexIndex == 5 &&
+            fifthSegment.GetComponent<InteractableItem>().CurrentCryptexIndex == 2 &&
+            sixthSegment.GetComponent<InteractableItem>().CurrentCryptexIndex == 1 &&
+            seventhSegment.GetComponent<InteractableItem>().CurrentCryptexIndex == 3
            )
         {
             DisableSegments();

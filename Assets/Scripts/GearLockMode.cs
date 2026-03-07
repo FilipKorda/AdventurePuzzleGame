@@ -6,9 +6,12 @@ public class GearLockMode : MonoBehaviour
     [SerializeField] private InputActionReference gearModeInput;
     [SerializeField] private BoxCollider doorBoxCollider;
     [SerializeField] private PlayerBehaviour playerBehaviour;
-    [SerializeField] private BlurController blurController;
+    [SerializeField] private Canvas blurCanvas;
     [SerializeField] private GameObject[] gears;
-
+    [SerializeField] private float distanceFromCamera = 1f;
+    [SerializeField] private float verticalOffset = 0f;
+    [SerializeField] private int[] correctGearIndexes;
+    [SerializeField] private Animator animator;
     private bool riddleIsSolved = false;
 
     private void OnEnable()
@@ -20,7 +23,6 @@ public class GearLockMode : MonoBehaviour
         }
     }
 
-
     private void OnDisable()
     {
         if (gearModeInput != null)
@@ -30,6 +32,22 @@ public class GearLockMode : MonoBehaviour
         }
     }
 
+    private void SpawnThisObjectInFronOfPlayer()
+    {
+        var player = PlayerLocator.PlayerTransform;
+        if (player == null) return;
+
+        var cam = playerBehaviour._playerCamera.transform;
+
+        var position = cam.position
+                     + cam.forward * distanceFromCamera
+                     + cam.up * verticalOffset;
+
+        var rotation = Quaternion.LookRotation(cam.forward) * Quaternion.Euler(-90f, 0f, 0f);
+
+        transform.SetPositionAndRotation(position, rotation);
+    }
+
     private void OnGearModePerformed(InputAction.CallbackContext context)
     {
         ExitGearLockMode();
@@ -37,7 +55,8 @@ public class GearLockMode : MonoBehaviour
 
     public void EnterGearLockMode()
     {
-        blurController.ToggleBlurEffect();
+        SpawnThisObjectInFronOfPlayer();
+        blurCanvas.gameObject.SetActive(true);
         gameObject.SetActive(true);
         doorBoxCollider.enabled = false;
         playerBehaviour.disableOnlyMovement = true;
@@ -48,15 +67,34 @@ public class GearLockMode : MonoBehaviour
     {
         if (!riddleIsSolved)
         {
-            doorBoxCollider.enabled = true;      
-        }
+            doorBoxCollider.enabled = true;
 
-        blurController.ToggleBlurEffect();
-        ResetGears();
-        gameObject.SetActive(false);
-        playerBehaviour.disableOnlyMovement = false;
-        UIManager.Instance.DisableGearModePanel();
-        Debug.Log("Wyszedłeś z trybu blokady zębatek!");
+            blurCanvas.gameObject.SetActive(false);
+
+            foreach (GameObject gear in gears)
+            {
+                var item = gear.GetComponent<InteractableItem>();
+                if (item != null)
+                {
+                    item.ResetCurrentGearIndex();
+                }
+            }
+
+            ResetGears();
+            gameObject.SetActive(false);
+            playerBehaviour.disableOnlyMovement = false;
+            UIManager.Instance.DisableGearModePanel();
+        }
+        else
+        {
+            animator.SetTrigger("Open");
+
+            blurCanvas.gameObject.SetActive(false);
+            ResetGears();
+            gameObject.SetActive(false);
+            playerBehaviour.disableOnlyMovement = false;
+            UIManager.Instance.DisableGearModePanel();
+        }
     }
 
     private void ResetGears()
@@ -68,10 +106,25 @@ public class GearLockMode : MonoBehaviour
 
     }
 
-    public void PuzzleSolved()
+    public void CheckIfPuzzleSolved()
     {
-        riddleIsSolved = true;
+        for (int i = 0; i < gears.Length; i++)
+        {
+            int current = gears[i].GetComponent<InteractableItem>().CurrentGearIndex;
+            int correct = correctGearIndexes[i];
 
+            Debug.Log("Gear " + i + " current: " + current + " correct: " + correct);
+
+            if (current != correct)
+            {
+                Debug.Log("Puzzle not solved - wrong gear at index " + i);
+                return;
+            }
+        }
+
+        Debug.Log("Puzzle solved!");
+
+        riddleIsSolved = true;
         ExitGearLockMode();
     }
 

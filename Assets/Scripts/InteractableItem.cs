@@ -143,8 +143,8 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     [Header("Cryptex Rotation Option")]
     [SerializeField] private float cryptexRotateDuration = 0.25f;
     bool cryptexIsRotating = false;
-    private int currentIndex = 0;
-    public int CurrentIndex => currentIndex;
+    private int currentCryptexIndex = 0;
+    public int CurrentCryptexIndex => currentCryptexIndex;
 
     [Header("Mirror")]
     [SerializeField] private Mirror mirror;
@@ -153,6 +153,8 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     [SerializeField] private GearLockMode gearLockMode;
     [SerializeField] private float gearRotateDuration = 0.25f;
     bool gearIsRotating = false;
+    private int currentGearIndex = 0;
+    public int CurrentGearIndex => currentGearIndex;
 
     private void Awake()
     {
@@ -162,13 +164,23 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         }
     }
 
+    public void ResetCurrentGearIndex()
+    {
+        currentGearIndex = 0;
+    }
+
     public void RotateGear()
     {
         if (gearIsRotating)
             return;
 
         //Services.Audio.PlaySFX("");
+        currentGearIndex = (currentGearIndex + 1) % 12;
+
+        Debug.Log("Current Gear Index: " + currentGearIndex);
+
         StartCoroutine(RotateGearSmoothly());
+      
     }
 
     IEnumerator RotateGearSmoothly()
@@ -192,6 +204,8 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
 
         boxCollider.enabled = true;
         gearIsRotating = false;
+
+        gearLockMode.CheckIfPuzzleSolved();
     }
 
     public void EnterGearLock()
@@ -214,7 +228,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
 
         Services.Audio.PlaySFX("MovingStoneKryptex");
 
-        currentIndex = (currentIndex + 1) % 8;
+        currentCryptexIndex = (currentCryptexIndex + 1) % 8;
 
         StartCoroutine(RotateCryptexSmoothly());
 
