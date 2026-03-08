@@ -63,7 +63,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     private CharacterController characterController;
     private Vector2 inputMovement;
-    private Vector2 inputLook;
+    public Vector2 inputLook;
     private Vector3 velocity;
 
     private float cameraVerticalRotation = 0f;
@@ -195,6 +195,18 @@ public class PlayerBehaviour : MonoBehaviour
 
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    public void ResetCameraRotation()
+    {
+        inputLook = Vector2.zero;
+        cameraVerticalRotation = 0f;
+        cameraTransform.localRotation = Quaternion.Euler(0f, 0f, 0f);
+
+        var cam = _playerCamera.transform;
+        var rot = cam.localEulerAngles;
+        rot.x = 0f;
+        cam.localEulerAngles = rot;
     }
 
     public void ToggleLamp(InputAction.CallbackContext context)

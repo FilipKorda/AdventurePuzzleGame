@@ -1,11 +1,9 @@
-using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Localization;
-using UnityEngine.Localization.Pseudo;
 
 public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpenable, IReadable, IPressable,
     IPlaceable, ILockPick, IFillable, IPickupARenewableItem, IAlchemyStation, IReadableAndInteractable, IRecipePlaceable,
@@ -174,7 +172,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         if (gearIsRotating)
             return;
 
-        //Services.Audio.PlaySFX("");
+        Services.Audio.PlaySFX("GearTick");
         currentGearIndex = (currentGearIndex + 1) % 12;
 
         Debug.Log("Current Gear Index: " + currentGearIndex);

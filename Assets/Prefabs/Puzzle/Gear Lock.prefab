@@ -2303,9 +2303,11 @@ MonoBehaviour:
   - {fileID: 9147928990278349128}
   - {fileID: 7184296389201864628}
   - {fileID: 8209731101987236296}
-  distanceFromCamera: 0.3
-  verticalOffset: -0.1
+  distanceFromCamera: 0.7
+  verticalOffset: 0.5
   correctGearIndexes: 0700000001000000070000000a0000000900000001000000
+  animator: {fileID: 0}
+  point: {fileID: 0}
 --- !u!1 &7534819667749817887
 GameObject:
   m_ObjectHideFlags: 0
@@ -3168,7 +3170,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.35, y: 0.40082866, z: 1.38}
+  m_Size: {x: 1.6, y: 0.40082866, z: 1.6}
   m_Center: {x: 0.000061035156, y: -0.00041429707, z: 0}
 --- !u!1001 &5896672097615422311
 PrefabInstance:
@@ -3370,7 +3372,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.33, y: 0.40082866, z: 1.49}
+  m_Size: {x: 1.6, y: 0.40082866, z: 1.6}
   m_Center: {x: 0, y: -0.00041429707, z: 0}
 --- !u!1001 &6802614972349144447
 PrefabInstance:
@@ -3570,7 +3572,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.41, y: 0.40082866, z: 1.43}
+  m_Size: {x: 1.72, y: 0.40082866, z: 1.72}
   m_Center: {x: 0, y: -0.00041429707, z: -0.000061035156}
 --- !u!4 &6479843392936393364 stripped
 Transform:
@@ -3769,7 +3771,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.25, y: 0.40082866, z: 1.18}
+  m_Size: {x: 1.6, y: 0.40082866, z: 1.18}
   m_Center: {x: -0.000061035156, y: -0.00041429707, z: 0}
 --- !u!4 &7563917812793605390 stripped
 Transform:
@@ -3985,7 +3987,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.28, y: 0.40082866, z: 1.53}
+  m_Size: {x: 1.6, y: 0.40082866, z: 1.6}
   m_Center: {x: 0, y: -0.00041429707, z: 0}
 --- !u!1001 &9020634330520736921
 PrefabInstance:
@@ -4179,7 +4181,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.22, y: 0.40082866, z: 1.4}
+  m_Size: {x: 1.6, y: 0.40082866, z: 1.6}
   m_Center: {x: -0.000061035156, y: -0.00041429707, z: 0}
 --- !u!4 &8837472438647042930 stripped
 Transform:

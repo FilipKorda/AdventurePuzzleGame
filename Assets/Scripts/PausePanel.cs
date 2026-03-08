@@ -8,6 +8,7 @@ public class PausePanel : MonoBehaviour
     [SerializeField] private GameObject settingsPanel;
     [SerializeField] private string mainMenuSceneName = "MainMenu";
     [SerializeField] private InputActionReference pauseAction;
+    [SerializeField] private GameObject[] buttonObjects;
 
     private bool isPaused;
     private bool allowPause = true;
@@ -29,10 +30,27 @@ public class PausePanel : MonoBehaviour
         if (!allowPause)
             return;
 
-        if (isPaused)
-            ResumeGame();
-        else
+        if (!isPaused)
+        {
             PauseGame();
+            return;
+        }
+
+        if (settingsPanel.activeSelf)
+        {
+            CloseSettings();
+            return;
+        }
+
+        ResumeGame();
+    }
+
+    private void SetButtons(bool toggle)
+    {
+        foreach (var button in buttonObjects)
+        {
+            button.SetActive(toggle);
+        }
     }
 
     public void PauseGame()
@@ -59,12 +77,15 @@ public class PausePanel : MonoBehaviour
 
     public void OpenSettings()
     {
+        SetButtons(false);
         settingsPanel.SetActive(true);
     }
 
     public void CloseSettings()
     {
+        SetButtons(true);
         settingsPanel.SetActive(false);
+        pausePanel.SetActive(true);
     }
 
     public void GoToMainMenu()

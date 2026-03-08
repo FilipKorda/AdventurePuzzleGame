@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,7 +13,7 @@ public class GearLockMode : MonoBehaviour
     [SerializeField] private float verticalOffset = 0f;
     [SerializeField] private int[] correctGearIndexes;
     [SerializeField] private Animator animator;
-    private bool riddleIsSolved = false;
+    [SerializeField] private Transform point;
 
     private void OnEnable()
     {
@@ -21,6 +22,8 @@ public class GearLockMode : MonoBehaviour
             gearModeInput.action.Enable();
             gearModeInput.action.performed += OnGearModePerformed;
         }
+
+        StartCoroutine(DisablePlayerLook());
     }
 
     private void OnDisable()
@@ -32,20 +35,43 @@ public class GearLockMode : MonoBehaviour
         }
     }
 
+    private void MovePlayerToPosition()
+    {
+        var player = PlayerLocator.PlayerTransform;
+        if (player == null) return;
+
+        if (playerBehaviour.TryGetComponent<CharacterController>(out var controller))
+            controller.enabled = false;
+
+        player.SetPositionAndRotation(point.position, point.rotation);
+
+        if (controller != null)
+            controller.enabled = true;
+    }
+
+    private IEnumerator DisablePlayerLook()
+    {
+        yield return null;
+
+        playerBehaviour.disablePlayer = true;
+
+        playerBehaviour.ResetCameraRotation();
+
+        yield return new WaitForSeconds(0.1f);
+
+        playerBehaviour.disablePlayer = false;
+    }
+
     private void SpawnThisObjectInFronOfPlayer()
     {
         var player = PlayerLocator.PlayerTransform;
         if (player == null) return;
 
-        var cam = playerBehaviour._playerCamera.transform;
+        var position = player.position
+                     + player.forward * distanceFromCamera
+                     + player.up * verticalOffset;
 
-        var position = cam.position
-                     + cam.forward * distanceFromCamera
-                     + cam.up * verticalOffset;
-
-        var rotation = Quaternion.LookRotation(cam.forward) * Quaternion.Euler(-90f, 0f, 0f);
-
-        transform.SetPositionAndRotation(position, rotation);
+        transform.SetPositionAndRotation(position, Quaternion.Euler(-90f, 0f, 0f));
     }
 
     private void OnGearModePerformed(InputAction.CallbackContext context)
@@ -55,6 +81,7 @@ public class GearLockMode : MonoBehaviour
 
     public void EnterGearLockMode()
     {
+        MovePlayerToPosition();
         SpawnThisObjectInFronOfPlayer();
         blurCanvas.gameObject.SetActive(true);
         gameObject.SetActive(true);
@@ -65,36 +92,22 @@ public class GearLockMode : MonoBehaviour
 
     public void ExitGearLockMode()
     {
-        if (!riddleIsSolved)
+        doorBoxCollider.enabled = true;
+
+        blurCanvas.gameObject.SetActive(false);
+
+        foreach (GameObject gear in gears)
         {
-            doorBoxCollider.enabled = true;
-
-            blurCanvas.gameObject.SetActive(false);
-
-            foreach (GameObject gear in gears)
+            if (gear.TryGetComponent<InteractableItem>(out var item))
             {
-                var item = gear.GetComponent<InteractableItem>();
-                if (item != null)
-                {
-                    item.ResetCurrentGearIndex();
-                }
+                item.ResetCurrentGearIndex();
             }
-
-            ResetGears();
-            gameObject.SetActive(false);
-            playerBehaviour.disableOnlyMovement = false;
-            UIManager.Instance.DisableGearModePanel();
         }
-        else
-        {
-            animator.SetTrigger("Open");
 
-            blurCanvas.gameObject.SetActive(false);
-            ResetGears();
-            gameObject.SetActive(false);
-            playerBehaviour.disableOnlyMovement = false;
-            UIManager.Instance.DisableGearModePanel();
-        }
+        ResetGears();
+        gameObject.SetActive(false);
+        playerBehaviour.disableOnlyMovement = false;
+        UIManager.Instance.DisableGearModePanel();
     }
 
     private void ResetGears()
@@ -122,10 +135,48 @@ public class GearLockMode : MonoBehaviour
             }
         }
 
+        SolvePuzzle();
+    }
+
+    private void SolvePuzzle()
+    {
+        StartCoroutine(CourutineSolvePuzzle());
+    }
+
+    private IEnumerator CourutineSolvePuzzle()
+    {
         Debug.Log("Puzzle solved!");
 
-        riddleIsSolved = true;
-        ExitGearLockMode();
+        yield return StartCoroutine(RotateGearMechanism());
+
+        Services.Audio.PlaySFX("AfterGearPuzzleSolved");
+
+        yield return new WaitForSeconds(0.5f);
+
+        animator.SetTrigger("Open");
+        blurCanvas.gameObject.SetActive(false);
+        gameObject.SetActive(false);
+        playerBehaviour.disableOnlyMovement = false;
+        UIManager.Instance.DisableGearModePanel();
+    }
+
+
+    private IEnumerator RotateGearMechanism()
+    {
+        int steps = gears.Length;
+
+        for (int step = 0; step < steps; step++)
+        {
+            for (int i = 0; i <= step; i++)
+            {
+                if (gears[i].TryGetComponent<InteractableItem>(out var item))
+                {
+                    item.RotateGear();
+                }
+            }
+
+            yield return new WaitForSeconds(0.1f);
+        }
     }
 
 }

@@ -141,4 +141,8 @@ MonoBehaviour:
     Clip: {fileID: 8300000, guid: f9d827cf24e2db54aaef739e490aa5b9, type: 3}
   - Id: Crystal3Release
     Clip: {fileID: 8300000, guid: 959b32347da1ab546b106084c24dd8e6, type: 3}
+  - Id: GearTick
+    Clip: {fileID: 8300000, guid: 0c918d258149a7c419db5053df51040f, type: 3}
+  - Id: AfterGearPuzzleSolved
+    Clip: {fileID: 8300000, guid: fe2ff479eab29ec4b937698c0276d9d7, type: 3}
   sfxSourcePrefab: {fileID: 6808787666201464470, guid: 561a59515f73e424ba170ae966f504e9, type: 3}
