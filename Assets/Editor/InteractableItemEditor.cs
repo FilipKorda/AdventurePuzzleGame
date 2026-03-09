@@ -61,6 +61,9 @@ public class InteractableItemEditor : Editor
     private SerializedProperty mirror;
     private SerializedProperty gearLockMode;
     private SerializedProperty gearRotateDuration;
+    private SerializedProperty gear90RotateDuration;
+    private SerializedProperty pipeGearPuzzle;
+    private SerializedProperty currentGear90Index;
 
     private void OnEnable()
     {
@@ -121,6 +124,9 @@ public class InteractableItemEditor : Editor
         mirror = serializedObject.FindProperty("mirror");
         gearLockMode = serializedObject.FindProperty("gearLockMode");
         gearRotateDuration = serializedObject.FindProperty("gearRotateDuration");
+        gear90RotateDuration = serializedObject.FindProperty("gear90RotateDuration");
+        pipeGearPuzzle = serializedObject.FindProperty("pipeGearPuzzle");
+        currentGear90Index = serializedObject.FindProperty("currentGear90Index");
        
     }
 
@@ -276,9 +282,16 @@ public class InteractableItemEditor : Editor
                 EditorGUILayout.PropertyField(gearRotateDuration, new GUIContent("Gear Rotate Duration"));
                 EditorGUILayout.PropertyField(gearLockMode, new GUIContent("Gear Lock Mode"));
                 break;
-
-
-
+            case InteractableItem.InteractableType.RotateGear90:
+                EditorGUILayout.PropertyField(boxColliderProp, new GUIContent("Box Collider"));
+                EditorGUILayout.PropertyField(gear90RotateDuration, new GUIContent("Gear90 Rotate Duration"));              
+                EditorGUILayout.PropertyField(pipeGearPuzzle, new GUIContent("Pipe Gear Puzzle"));
+                EditorGUILayout.PropertyField(currentGear90Index, new GUIContent("currentGear90Index"));
+                break;
+            case InteractableItem.InteractableType.PipeGearPuzzle:
+                EditorGUILayout.PropertyField(pipeGearPuzzle, new GUIContent("Pipe Gear Puzzle"));
+                break;
+              
         }
 
         serializedObject.ApplyModifiedProperties();

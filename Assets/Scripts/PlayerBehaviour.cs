@@ -60,6 +60,8 @@ public class PlayerBehaviour : MonoBehaviour
 
     private IGearLock lastIGearLock;
     private IGearRotate lastIGearRotate;
+    private IGear90 lastIGear90;
+    private IPipeGearPuzzle lastIPipeGearPuzzle;
 
     private CharacterController characterController;
     private Vector2 inputMovement;
@@ -278,6 +280,9 @@ public class PlayerBehaviour : MonoBehaviour
             lastIGearLock?.EnterGearLock();
             lastIGearRotate?.RotateGear();
 
+            lastIPipeGearPuzzle?.EnterPipeGearPuzzleMode();
+            lastIGear90?.RotateGear90();
+
             if (lastIOpenable != null && lastIOpenable.IsOpen())
             {
                 lastIOpenable?.CloseObject();
@@ -437,6 +442,8 @@ public class PlayerBehaviour : MonoBehaviour
         lastIMirror = null;
         lastIGearLock = null;
         lastIGearRotate = null;
+        lastIGear90 = null;
+        lastIPipeGearPuzzle = null;
 
         bool hitBlock = Physics.Raycast(ray, out RaycastHit blockHit, raycastRange, blockRaycastLayer);
         bool hitInteractable = Physics.Raycast(ray, out RaycastHit hit, raycastRange, interactableLayer);
@@ -539,11 +546,20 @@ public class PlayerBehaviour : MonoBehaviour
                     case InteractableItem.InteractableType.GearLockMode:
                         lastIGearLock = interactableObject;
                         break;
+
                     case InteractableItem.InteractableType.RotateGear:
                         lastIGearRotate = interactableObject;
                         break;
 
+                    case InteractableItem.InteractableType.RotateGear90:
+                        lastIGear90 = interactableObject;
+                        break;
+
+                    case InteractableItem.InteractableType.PipeGearPuzzle:
+                        lastIPipeGearPuzzle = interactableObject;
+                        break;
                         
+
                 }
             }
 

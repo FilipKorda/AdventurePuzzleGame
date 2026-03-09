@@ -7,7 +7,7 @@ using UnityEngine.Localization;
 
 public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpenable, IReadable, IPressable,
     IPlaceable, ILockPick, IFillable, IPickupARenewableItem, IAlchemyStation, IReadableAndInteractable, IRecipePlaceable,
-    IGetObject, ICrafting, IPinNumber, IRotate, ICryptex, IMirror, IGearLock, IGearRotate
+    IGetObject, ICrafting, IPinNumber, IRotate, ICryptex, IMirror, IGearLock, IGearRotate, IGear90, IPipeGearPuzzle
 {
     public enum InteractableType
     {
@@ -30,7 +30,9 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         Cryptex,
         MirrorMode,
         GearLockMode,
-        RotateGear
+        RotateGear,
+        RotateGear90,
+        PipeGearPuzzle
     }
 
     public InteractableType interactableType;
@@ -154,6 +156,13 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     private int currentGearIndex = 0;
     public int CurrentGearIndex => currentGearIndex;
 
+    [Header("Puzzle Pipes Gears")]
+    [SerializeField] private PipeGearPuzzle pipeGearPuzzle;
+    [SerializeField] private float gear90RotateDuration = 0.25f;
+    bool gear90IsRotating = false;
+    public int currentGear90Index = 0;
+    public int CurrentGear90Index => currentGear90Index;
+
     private void Awake()
     {
         if (rend != null)
@@ -162,9 +171,59 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         }
     }
 
+    public void EnterPipeGearPuzzleMode()
+    {
+        pipeGearPuzzle.EnterGearLockMode();
+        Debug.Log("Wszed³eœ w tryb Pipe Gear Mode!");
+    }
+
+    public void RotateGear90()
+    {
+        if (gear90IsRotating)
+            return;
+
+        Services.Audio.PlaySFX("GearTick");
+        currentGear90Index = (currentGear90Index + 1) % 4;
+
+        Debug.Log(gameObject.name + "Current Gear Index: " + currentGear90Index);
+
+        StartCoroutine(RotateGear90Smoothly());
+    }
+
+    IEnumerator RotateGear90Smoothly()
+    {
+        gear90IsRotating = true;
+        boxCollider.enabled = false;
+
+        Quaternion startRotation = transform.localRotation;
+        Quaternion targetRotation = startRotation * Quaternion.Euler(0f, 90f, 0f);
+
+        float time = 0f;
+
+        while (time < gear90RotateDuration)
+        {
+            time += Time.deltaTime;
+            transform.localRotation = Quaternion.Lerp(startRotation, targetRotation, time / gear90RotateDuration);
+            yield return null;
+        }
+
+        transform.localRotation = targetRotation;
+
+        boxCollider.enabled = true;
+        gear90IsRotating = false;
+
+        pipeGearPuzzle.CheckIfPuzzleSolved();
+
+    }
+
     public void ResetCurrentGearIndex()
     {
         currentGearIndex = 0;
+    }
+
+    public void ResetCurrentGear90Index()
+    {
+        currentGear90Index = 0;
     }
 
     public void RotateGear()
@@ -174,8 +233,6 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
 
         Services.Audio.PlaySFX("GearTick");
         currentGearIndex = (currentGearIndex + 1) % 12;
-
-        Debug.Log("Current Gear Index: " + currentGearIndex);
 
         StartCoroutine(RotateGearSmoothly());
       
