@@ -7,7 +7,8 @@ using UnityEngine.Localization;
 
 public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpenable, IReadable, IPressable,
     IPlaceable, ILockPick, IFillable, IPickupARenewableItem, IAlchemyStation, IReadableAndInteractable, IRecipePlaceable,
-    IGetObject, ICrafting, IPinNumber, IRotate, ICryptex, IMirror, IGearLock, IGearRotate, IGear90, IPipeGearPuzzle
+    IGetObject, ICrafting, IPinNumber, IRotate, ICryptex, IMirror, IGearLock, IGearRotate, IGear90, IPipeGearPuzzle,
+    IFurniture
 {
     public enum InteractableType
     {
@@ -32,7 +33,8 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         GearLockMode,
         RotateGear,
         RotateGear90,
-        PipeGearPuzzle
+        PipeGearPuzzle,
+        Furniture
     }
 
     public InteractableType interactableType;
@@ -170,6 +172,12 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
             baseColor = rend.material.color;
         }
     }
+
+    public void PushFurniture()
+    {
+        Debug.Log("pchnij mebel");
+    }
+
 
     public void EnterPipeGearPuzzleMode()
     {

@@ -148,15 +148,11 @@ public class PipeGearPuzzle : MonoBehaviour
 
     private void SolvePuzzle()
     {
-
-        StartCoroutine(CourutineSolvePuzzle());
-
-    
+        StartCoroutine(CourutineSolvePuzzle());    
     }
 
     private IEnumerator CourutineSolvePuzzle()
     {
-
         Services.Audio.PlaySFX("AfterGearPuzzleSolved");
 
         yield return new WaitForSeconds(0.5f);
@@ -164,9 +160,7 @@ public class PipeGearPuzzle : MonoBehaviour
         blurCanvas.gameObject.SetActive(false);
         gameObject.SetActive(false);
         playerBehaviour.disableOnlyMovement = false;
-        UIManager.Instance.DisableGearModePanel();
-     
-
+        UIManager.Instance.DisableGearModePanel();   
     }
 
 }
