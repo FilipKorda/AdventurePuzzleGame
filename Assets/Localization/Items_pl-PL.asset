@@ -182,6 +182,14 @@ MonoBehaviour:
     m_Localized: "Ksi\u0105\u017Cka Kod Morsa i Glify "
     m_Metadata:
       m_Items: []
+  - m_Id: 13903089738469376
+    m_Localized: Papirus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13915058189127680
+    m_Localized: Diamentowy Klucz
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

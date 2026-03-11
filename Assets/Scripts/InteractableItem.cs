@@ -1,14 +1,16 @@
 using System;
 using System.Collections;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Localization;
+using static Unity.Collections.AllocatorManager;
 
 public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpenable, IReadable, IPressable,
     IPlaceable, ILockPick, IFillable, IPickupARenewableItem, IAlchemyStation, IReadableAndInteractable, IRecipePlaceable,
     IGetObject, ICrafting, IPinNumber, IRotate, ICryptex, IMirror, IGearLock, IGearRotate, IGear90, IPipeGearPuzzle,
-    IFurniture, IWoodenBlockPuzzle
+    IFurniture, IWoodenBlockPuzzle, IWoodenBlock
 {
     public enum InteractableType
     {
@@ -36,6 +38,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         PipeGearPuzzle,
         Furniture,
         WoodenBlockPuzzle,
+        WoodenBlock
     }
 
     public InteractableType interactableType;
@@ -171,9 +174,13 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
 
     [Header("Wooden Puzzle")]
     [SerializeField] private WoodenBlockPuzzle woodenBlockPuzzle;
-    
-
-
+    [SerializeField] float zOffset = 0.1f;
+    [SerializeField] float duration = 0.5f;
+    Vector3 startPosition;
+    bool moved;
+    bool isMovingWoodenBlock;
+    bool highlighted;
+    Coroutine currentRoutine;
 
     private void Awake()
     {
@@ -181,9 +188,69 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         {
             baseColor = rend.material.color;
         }
+
+        if(interactableType == InteractableType.WoodenBlock)
+        {
+            startPosition = transform.position;
+        }
+       
     }
 
+    public void OnClick()
+    {
+        if (isMovingWoodenBlock)
+            return;
 
+        highlighted = !highlighted;
+
+        if (currentRoutine != null)
+            StopCoroutine(currentRoutine);
+
+        Vector3 target = moved
+            ? startPosition
+            : startPosition + new Vector3(0f, 0f, zOffset);
+
+        currentRoutine = StartCoroutine(MoveTo(target));
+        moved = !moved;
+    }
+
+    IEnumerator MoveTo(Vector3 target)
+    {
+        isMovingWoodenBlock = true;
+
+        Vector3 fromPos = transform.position;
+        Color fromColor = rend.material.color;
+        Color targetColor = highlighted ? highlightColor : baseColor;
+
+        float t = 0f;
+
+        while (t < 1f)
+        {
+            t += Time.deltaTime / duration;
+
+            transform.position = Vector3.Lerp(fromPos, target, t);
+            rend.material.color = Color.Lerp(fromColor, targetColor, t);
+
+            yield return null;
+        }
+
+        transform.position = target;
+        rend.material.color = targetColor;
+
+        PuzzleBlockManager.Instance.BlockClicked(itemId);
+
+        isMovingWoodenBlock = false;
+    }
+
+    public void ResetblockInstant(Color baseColor)
+    {
+        transform.position = startPosition;
+        rend.material.color = baseColor;
+        moved = false;
+        highlighted = false;
+        isMovingWoodenBlock = false;
+
+    }
 
     public void EnterWoddenBlockPuzzle()
     {
@@ -197,7 +264,6 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
 
         Debug.Log("pchnij mebel");
     }
-
 
     public void EnterPipeGearPuzzleMode()
     {

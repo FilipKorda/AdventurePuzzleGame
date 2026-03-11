@@ -66,6 +66,7 @@ public class PlayerBehaviour : MonoBehaviour
     private IFurniture lastIFurniture;
 
     private IWoodenBlockPuzzle lastIWoodenBlockPuzzle;
+    private IWoodenBlock lastIWoodenBlock;
 
     private CharacterController characterController;
     private Vector2 inputMovement;
@@ -290,6 +291,7 @@ public class PlayerBehaviour : MonoBehaviour
             lastIFurniture?.PushFurniture();
 
             lastIWoodenBlockPuzzle?.EnterWoddenBlockPuzzle();
+            lastIWoodenBlock?.OnClick();
 
             if (lastIOpenable != null && lastIOpenable.IsOpen())
             {
@@ -454,6 +456,7 @@ public class PlayerBehaviour : MonoBehaviour
         lastIPipeGearPuzzle = null;
         lastIFurniture = null;
         lastIWoodenBlockPuzzle = null;
+        lastIWoodenBlock = null;
 
         bool hitBlock = Physics.Raycast(ray, out RaycastHit blockHit, raycastRange, blockRaycastLayer);
         bool hitInteractable = Physics.Raycast(ray, out RaycastHit hit, raycastRange, interactableLayer);
@@ -577,6 +580,9 @@ public class PlayerBehaviour : MonoBehaviour
                         lastIWoodenBlockPuzzle = interactableObject;
                         break;
 
+                    case InteractableItem.InteractableType.WoodenBlock:
+                        lastIWoodenBlock = interactableObject;
+                        break;
                         
                 }
             }

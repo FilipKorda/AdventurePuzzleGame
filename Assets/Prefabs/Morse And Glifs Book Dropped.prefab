@@ -101,7 +101,7 @@ MonoBehaviour:
     m_LocalVariables: []
   itemSprite: {fileID: 21300000, guid: c31bd8327547bd649aab38b79fc2b44b, type: 3}
   itemId: 53
-  itemIdbyItemId: 0
+  itemIdbyItemId: 53
   pinNumber: 0
   requiredItemIds: 
   animator: {fileID: 0}
@@ -150,6 +150,16 @@ MonoBehaviour:
   linkedReadable: {fileID: 0}
   directionTextSet: {fileID: 0}
   cryptexRotateDuration: 0.25
+  mirror: {fileID: 0}
+  gearLockMode: {fileID: 0}
+  gearRotateDuration: 0.25
+  pipeGearPuzzle: {fileID: 0}
+  gear90RotateDuration: 0.25
+  currentGear90Index: 0
+  movableBlock: {fileID: 0}
+  woodenBlockPuzzle: {fileID: 0}
+  zOffset: 0.1
+  duration: 0.5
   references:
     version: 2
     RefIds: []

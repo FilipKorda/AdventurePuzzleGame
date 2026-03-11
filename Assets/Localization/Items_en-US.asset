@@ -182,6 +182,14 @@ MonoBehaviour:
     m_Localized: Morse And Glifs Book
     m_Metadata:
       m_Items: []
+  - m_Id: 13903089738469376
+    m_Localized: Papyrus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13915058189127680
+    m_Localized: Diamond Key
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

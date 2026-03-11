@@ -179,6 +179,14 @@ MonoBehaviour:
     m_Key: MorseAndGlifsBook
     m_Metadata:
       m_Items: []
+  - m_Id: 13903089738469376
+    m_Key: Papirus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13915058189127680
+    m_Key: DiamondKey
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

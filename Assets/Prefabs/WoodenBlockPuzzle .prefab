@@ -64,6 +64,22 @@ MonoBehaviour:
   verticalOffset: 0.7
   point: {fileID: 0}
   woodenCreate: {fileID: 0}
+  woodenBlocks:
+  - {fileID: 1451810841498828406}
+  - {fileID: 3597868421140120466}
+  - {fileID: 8992038073971366301}
+  - {fileID: 5036615860901418957}
+  - {fileID: 1607960539421391345}
+  - {fileID: 3834897576312257682}
+  - {fileID: 1740560311696381349}
+  - {fileID: 5177258066645031181}
+  - {fileID: 2438192660036925868}
+  - {fileID: 7936884171777386914}
+  - {fileID: 4785686935824418641}
+  - {fileID: 6753864386426884812}
+  baseColor: {r: 0.5372549, g: 0.5372549, b: 0.5372549, a: 1}
+  animatorGateLeft: {fileID: 0}
+  animatorGateRight: {fileID: 0}
 --- !u!1001 &619306819086859526
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -86,15 +102,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.8000002
+      value: 1.7950007
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.6
+      value: -0.54799634
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.07100816
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -132,6 +148,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wooden Pillar (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -139,6 +159,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8900505117724840443}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7936884171777386914}
   m_SourcePrefab: {fileID: 100100000, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
 --- !u!1 &313371348039303255 stripped
 GameObject:
@@ -166,9 +189,101 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 999.99994, y: 199.06775, z: 199.06775}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7936884171777386914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 313371348039303255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 837845a591c957e44808bdf6bd871042, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractableItem
+  interactableType: 24
+  itemName: Przedmiot
+  localizeItemName:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  itemSprite: {fileID: 0}
+  itemId: 9
+  itemIdbyItemId: 0
+  pinNumber: 0
+  requiredItemIds: 
+  animator: {fileID: 0}
+  readableTextData: {fileID: 0}
+  readableAndInteractableTextData: {fileID: 0}
+  onAllWallButtonPressed:
+    m_PersistentCalls:
+      m_Calls: []
+  objectToPlace: {fileID: 0}
+  boxCollider: {fileID: 0}
+  canOpenWithNoSelectedItem: 0
+  itemPrefab: {fileID: 0}
+  isActualReading: 0
+  isAlchemyRecipe: 0
+  requiredUses: 3
+  providedLiquidType: 0
+  fillMapping:
+    requiredEmptyItem: {fileID: 0}
+    resultingFilledItem: {fileID: 0}
+  cauldron: {fileID: 0}
+  scroll_BigAcidPotion: {fileID: 0}
+  scroll_SmallAngryTimePotion: {fileID: 0}
+  scroll_ElderBadMoodPotion: {fileID: 0}
+  scroll_OpenBloodPotion: {fileID: 0}
+  scroll_BigGoodSoup: {fileID: 0}
+  scroll_SmallHolyCowPotion: {fileID: 0}
+  scroll_ElderLeafGoods: {fileID: 0}
+  scroll_OpenNiceWater: {fileID: 0}
+  scroll_BigWaterPotion: {fileID: 0}
+  scroll_SmallWinePotion: {fileID: 0}
+  recipesCounter: {fileID: 0}
+  endPanel: {fileID: 0}
+  isEndPanel: 0
+  localizationString: {fileID: 0}
+  localizationTwoString: {fileID: 0}
+  metalCrabs: {fileID: 0}
+  springs: {fileID: 0}
+  metalscaffolds: {fileID: 0}
+  collectibleGears: {fileID: 0}
+  cables: {fileID: 0}
+  workbench: {fileID: 0}
+  rend: {fileID: 2259027885484712322}
+  highlightColor: {r: 0.32156864, g: 0.32156864, b: 0.32156864, a: 1}
+  statueCompasPuzzle: {fileID: 0}
+  rotationDuration: 0.5
+  linkedReadable: {fileID: 0}
+  directionTextSet: {fileID: 0}
+  cryptexRotateDuration: 0.25
+  mirror: {fileID: 0}
+  gearLockMode: {fileID: 0}
+  gearRotateDuration: 0.25
+  pipeGearPuzzle: {fileID: 0}
+  gear90RotateDuration: 0.25
+  currentGear90Index: 0
+  movableBlock: {fileID: 0}
+  woodenBlockPuzzle: {fileID: 0}
+  zOffset: 0.018
+  duration: 0.5
+  references:
+    version: 2
+    RefIds: []
 --- !u!4 &1086072538474961645 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
+  m_PrefabInstance: {fileID: 619306819086859526}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &2259027885484712322 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
   m_PrefabInstance: {fileID: 619306819086859526}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1248268972609940864
@@ -193,15 +308,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.1999998
+      value: 1.1950003
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.1999998
+      value: -1.1479962
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.07100816
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -239,6 +354,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wooden Pillar (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -246,7 +365,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3419714231131422276}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4785686935824418641}
   m_SourcePrefab: {fileID: 100100000, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
+--- !u!23 &473770375791784196 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
+  m_PrefabInstance: {fileID: 1248268972609940864}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1646073880717281899 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
@@ -278,6 +405,93 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 999.99994, y: 199.06775, z: 199.06775}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4785686935824418641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2131284361667121361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 837845a591c957e44808bdf6bd871042, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractableItem
+  interactableType: 24
+  itemName: Przedmiot
+  localizeItemName:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  itemSprite: {fileID: 0}
+  itemId: 10
+  itemIdbyItemId: 0
+  pinNumber: 0
+  requiredItemIds: 
+  animator: {fileID: 0}
+  readableTextData: {fileID: 0}
+  readableAndInteractableTextData: {fileID: 0}
+  onAllWallButtonPressed:
+    m_PersistentCalls:
+      m_Calls: []
+  objectToPlace: {fileID: 0}
+  boxCollider: {fileID: 0}
+  canOpenWithNoSelectedItem: 0
+  itemPrefab: {fileID: 0}
+  isActualReading: 0
+  isAlchemyRecipe: 0
+  requiredUses: 3
+  providedLiquidType: 0
+  fillMapping:
+    requiredEmptyItem: {fileID: 0}
+    resultingFilledItem: {fileID: 0}
+  cauldron: {fileID: 0}
+  scroll_BigAcidPotion: {fileID: 0}
+  scroll_SmallAngryTimePotion: {fileID: 0}
+  scroll_ElderBadMoodPotion: {fileID: 0}
+  scroll_OpenBloodPotion: {fileID: 0}
+  scroll_BigGoodSoup: {fileID: 0}
+  scroll_SmallHolyCowPotion: {fileID: 0}
+  scroll_ElderLeafGoods: {fileID: 0}
+  scroll_OpenNiceWater: {fileID: 0}
+  scroll_BigWaterPotion: {fileID: 0}
+  scroll_SmallWinePotion: {fileID: 0}
+  recipesCounter: {fileID: 0}
+  endPanel: {fileID: 0}
+  isEndPanel: 0
+  localizationString: {fileID: 0}
+  localizationTwoString: {fileID: 0}
+  metalCrabs: {fileID: 0}
+  springs: {fileID: 0}
+  metalscaffolds: {fileID: 0}
+  collectibleGears: {fileID: 0}
+  cables: {fileID: 0}
+  workbench: {fileID: 0}
+  rend: {fileID: 473770375791784196}
+  highlightColor: {r: 0.32156864, g: 0.32156864, b: 0.32156864, a: 1}
+  statueCompasPuzzle: {fileID: 0}
+  rotationDuration: 0.5
+  linkedReadable: {fileID: 0}
+  directionTextSet: {fileID: 0}
+  cryptexRotateDuration: 0.25
+  mirror: {fileID: 0}
+  gearLockMode: {fileID: 0}
+  gearRotateDuration: 0.25
+  pipeGearPuzzle: {fileID: 0}
+  gear90RotateDuration: 0.25
+  currentGear90Index: 0
+  movableBlock: {fileID: 0}
+  woodenBlockPuzzle: {fileID: 0}
+  zOffset: 0.018
+  duration: 0.5
+  references:
+    version: 2
+    RefIds: []
 --- !u!1001 &1269430998402903548
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -300,15 +514,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.004999563
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.1999998
+      value: -1.1479962
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.07100816
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -346,6 +560,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wooden Pillar (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -353,7 +571,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8789344673930193131}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6753864386426884812}
   m_SourcePrefab: {fileID: 100100000, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
+--- !u!23 &458374739938652536 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
+  m_PrefabInstance: {fileID: 1269430998402903548}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1591835246625671703 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
@@ -385,6 +611,93 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 999.99994, y: 199.06775, z: 199.06775}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6753864386426884812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2115712252523942061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 837845a591c957e44808bdf6bd871042, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractableItem
+  interactableType: 24
+  itemName: Przedmiot
+  localizeItemName:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  itemSprite: {fileID: 0}
+  itemId: 11
+  itemIdbyItemId: 0
+  pinNumber: 0
+  requiredItemIds: 
+  animator: {fileID: 0}
+  readableTextData: {fileID: 0}
+  readableAndInteractableTextData: {fileID: 0}
+  onAllWallButtonPressed:
+    m_PersistentCalls:
+      m_Calls: []
+  objectToPlace: {fileID: 0}
+  boxCollider: {fileID: 0}
+  canOpenWithNoSelectedItem: 0
+  itemPrefab: {fileID: 0}
+  isActualReading: 0
+  isAlchemyRecipe: 0
+  requiredUses: 3
+  providedLiquidType: 0
+  fillMapping:
+    requiredEmptyItem: {fileID: 0}
+    resultingFilledItem: {fileID: 0}
+  cauldron: {fileID: 0}
+  scroll_BigAcidPotion: {fileID: 0}
+  scroll_SmallAngryTimePotion: {fileID: 0}
+  scroll_ElderBadMoodPotion: {fileID: 0}
+  scroll_OpenBloodPotion: {fileID: 0}
+  scroll_BigGoodSoup: {fileID: 0}
+  scroll_SmallHolyCowPotion: {fileID: 0}
+  scroll_ElderLeafGoods: {fileID: 0}
+  scroll_OpenNiceWater: {fileID: 0}
+  scroll_BigWaterPotion: {fileID: 0}
+  scroll_SmallWinePotion: {fileID: 0}
+  recipesCounter: {fileID: 0}
+  endPanel: {fileID: 0}
+  isEndPanel: 0
+  localizationString: {fileID: 0}
+  localizationTwoString: {fileID: 0}
+  metalCrabs: {fileID: 0}
+  springs: {fileID: 0}
+  metalscaffolds: {fileID: 0}
+  collectibleGears: {fileID: 0}
+  cables: {fileID: 0}
+  workbench: {fileID: 0}
+  rend: {fileID: 458374739938652536}
+  highlightColor: {r: 0.32156864, g: 0.32156864, b: 0.32156864, a: 1}
+  statueCompasPuzzle: {fileID: 0}
+  rotationDuration: 0.5
+  linkedReadable: {fileID: 0}
+  directionTextSet: {fileID: 0}
+  cryptexRotateDuration: 0.25
+  mirror: {fileID: 0}
+  gearLockMode: {fileID: 0}
+  gearRotateDuration: 0.25
+  pipeGearPuzzle: {fileID: 0}
+  gear90RotateDuration: 0.25
+  currentGear90Index: 0
+  movableBlock: {fileID: 0}
+  woodenBlockPuzzle: {fileID: 0}
+  zOffset: 0.018
+  duration: 0.5
+  references:
+    version: 2
+    RefIds: []
 --- !u!1001 &1519682665570315790
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -407,15 +720,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.2
+      value: 1.1950005
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.2
+      value: 1.2520037
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.07100816
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -453,6 +766,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wooden Pillar (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -460,7 +777,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4114083873421910544}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3834897576312257682}
   m_SourcePrefab: {fileID: 100100000, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
+--- !u!23 &204749908534735498 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
+  m_PrefabInstance: {fileID: 1519682665570315790}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1341023928039918053 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
@@ -492,6 +817,93 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 999.99994, y: 199.06775, z: 199.06775}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3834897576312257682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1862122467987690335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 837845a591c957e44808bdf6bd871042, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractableItem
+  interactableType: 24
+  itemName: Przedmiot
+  localizeItemName:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  itemSprite: {fileID: 0}
+  itemId: 5
+  itemIdbyItemId: 0
+  pinNumber: 0
+  requiredItemIds: 
+  animator: {fileID: 0}
+  readableTextData: {fileID: 0}
+  readableAndInteractableTextData: {fileID: 0}
+  onAllWallButtonPressed:
+    m_PersistentCalls:
+      m_Calls: []
+  objectToPlace: {fileID: 0}
+  boxCollider: {fileID: 0}
+  canOpenWithNoSelectedItem: 0
+  itemPrefab: {fileID: 0}
+  isActualReading: 0
+  isAlchemyRecipe: 0
+  requiredUses: 3
+  providedLiquidType: 0
+  fillMapping:
+    requiredEmptyItem: {fileID: 0}
+    resultingFilledItem: {fileID: 0}
+  cauldron: {fileID: 0}
+  scroll_BigAcidPotion: {fileID: 0}
+  scroll_SmallAngryTimePotion: {fileID: 0}
+  scroll_ElderBadMoodPotion: {fileID: 0}
+  scroll_OpenBloodPotion: {fileID: 0}
+  scroll_BigGoodSoup: {fileID: 0}
+  scroll_SmallHolyCowPotion: {fileID: 0}
+  scroll_ElderLeafGoods: {fileID: 0}
+  scroll_OpenNiceWater: {fileID: 0}
+  scroll_BigWaterPotion: {fileID: 0}
+  scroll_SmallWinePotion: {fileID: 0}
+  recipesCounter: {fileID: 0}
+  endPanel: {fileID: 0}
+  isEndPanel: 0
+  localizationString: {fileID: 0}
+  localizationTwoString: {fileID: 0}
+  metalCrabs: {fileID: 0}
+  springs: {fileID: 0}
+  metalscaffolds: {fileID: 0}
+  collectibleGears: {fileID: 0}
+  cables: {fileID: 0}
+  workbench: {fileID: 0}
+  rend: {fileID: 204749908534735498}
+  highlightColor: {r: 0.32156864, g: 0.32156864, b: 0.32156864, a: 1}
+  statueCompasPuzzle: {fileID: 0}
+  rotationDuration: 0.5
+  linkedReadable: {fileID: 0}
+  directionTextSet: {fileID: 0}
+  cryptexRotateDuration: 0.25
+  mirror: {fileID: 0}
+  gearLockMode: {fileID: 0}
+  gearRotateDuration: 0.25
+  pipeGearPuzzle: {fileID: 0}
+  gear90RotateDuration: 0.25
+  currentGear90Index: 0
+  movableBlock: {fileID: 0}
+  woodenBlockPuzzle: {fileID: 0}
+  zOffset: 0.018
+  duration: 0.5
+  references:
+    version: 2
+    RefIds: []
 --- !u!1001 &1980319961093835964
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -514,15 +926,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.6
+      value: -0.60499954
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.6
+      value: -0.54799634
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.07100816
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -560,6 +972,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wooden Pillar (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -567,7 +983,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6983830571382071337}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5177258066645031181}
   m_SourcePrefab: {fileID: 100100000, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
+--- !u!23 &917070913151668280 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
+  m_PrefabInstance: {fileID: 1980319961093835964}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1709937749358817773 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
@@ -594,6 +1018,93 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 999.99994, y: 199.06775, z: 199.06775}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5177258066645031181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709937749358817773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 837845a591c957e44808bdf6bd871042, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractableItem
+  interactableType: 24
+  itemName: Przedmiot
+  localizeItemName:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  itemSprite: {fileID: 0}
+  itemId: 7
+  itemIdbyItemId: 0
+  pinNumber: 0
+  requiredItemIds: 
+  animator: {fileID: 0}
+  readableTextData: {fileID: 0}
+  readableAndInteractableTextData: {fileID: 0}
+  onAllWallButtonPressed:
+    m_PersistentCalls:
+      m_Calls: []
+  objectToPlace: {fileID: 0}
+  boxCollider: {fileID: 0}
+  canOpenWithNoSelectedItem: 0
+  itemPrefab: {fileID: 0}
+  isActualReading: 0
+  isAlchemyRecipe: 0
+  requiredUses: 3
+  providedLiquidType: 0
+  fillMapping:
+    requiredEmptyItem: {fileID: 0}
+    resultingFilledItem: {fileID: 0}
+  cauldron: {fileID: 0}
+  scroll_BigAcidPotion: {fileID: 0}
+  scroll_SmallAngryTimePotion: {fileID: 0}
+  scroll_ElderBadMoodPotion: {fileID: 0}
+  scroll_OpenBloodPotion: {fileID: 0}
+  scroll_BigGoodSoup: {fileID: 0}
+  scroll_SmallHolyCowPotion: {fileID: 0}
+  scroll_ElderLeafGoods: {fileID: 0}
+  scroll_OpenNiceWater: {fileID: 0}
+  scroll_BigWaterPotion: {fileID: 0}
+  scroll_SmallWinePotion: {fileID: 0}
+  recipesCounter: {fileID: 0}
+  endPanel: {fileID: 0}
+  isEndPanel: 0
+  localizationString: {fileID: 0}
+  localizationTwoString: {fileID: 0}
+  metalCrabs: {fileID: 0}
+  springs: {fileID: 0}
+  metalscaffolds: {fileID: 0}
+  collectibleGears: {fileID: 0}
+  cables: {fileID: 0}
+  workbench: {fileID: 0}
+  rend: {fileID: 917070913151668280}
+  highlightColor: {r: 0.32156864, g: 0.32156864, b: 0.32156864, a: 1}
+  statueCompasPuzzle: {fileID: 0}
+  rotationDuration: 0.5
+  linkedReadable: {fileID: 0}
+  directionTextSet: {fileID: 0}
+  cryptexRotateDuration: 0.25
+  mirror: {fileID: 0}
+  gearLockMode: {fileID: 0}
+  gearRotateDuration: 0.25
+  pipeGearPuzzle: {fileID: 0}
+  gear90RotateDuration: 0.25
+  currentGear90Index: 0
+  movableBlock: {fileID: 0}
+  woodenBlockPuzzle: {fileID: 0}
+  zOffset: 0.018
+  duration: 0.5
+  references:
+    version: 2
+    RefIds: []
 --- !u!4 &2085514065901284183 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
@@ -609,27 +1120,27 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 94107bc1474e82141b3b66b9c30810d2, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.02
+      value: 0.021414
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 94107bc1474e82141b3b66b9c30810d2, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.02
+      value: 0.021414
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 94107bc1474e82141b3b66b9c30810d2, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.02
+      value: 0.021414
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 94107bc1474e82141b3b66b9c30810d2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.627
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 94107bc1474e82141b3b66b9c30810d2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.955
+      value: -2.0964
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 94107bc1474e82141b3b66b9c30810d2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.956
+      value: 1.9558
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 94107bc1474e82141b3b66b9c30810d2, type: 3}
       propertyPath: m_LocalRotation.w
@@ -732,15 +1243,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.8
+      value: 1.7950004
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.6
+      value: 0.6520037
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.07100816
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -778,6 +1289,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wooden Pillar (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -785,6 +1300,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5832771783003288690}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5036615860901418957}
   m_SourcePrefab: {fileID: 100100000, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
 --- !u!1 &2847416038372950631 stripped
 GameObject:
@@ -812,9 +1330,101 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 999.99994, y: 199.06775, z: 199.06775}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5036615860901418957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2847416038372950631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 837845a591c957e44808bdf6bd871042, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractableItem
+  interactableType: 24
+  itemName: Przedmiot
+  localizeItemName:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  itemSprite: {fileID: 0}
+  itemId: 3
+  itemIdbyItemId: 0
+  pinNumber: 0
+  requiredItemIds: 
+  animator: {fileID: 0}
+  readableTextData: {fileID: 0}
+  readableAndInteractableTextData: {fileID: 0}
+  onAllWallButtonPressed:
+    m_PersistentCalls:
+      m_Calls: []
+  objectToPlace: {fileID: 0}
+  boxCollider: {fileID: 0}
+  canOpenWithNoSelectedItem: 0
+  itemPrefab: {fileID: 0}
+  isActualReading: 0
+  isAlchemyRecipe: 0
+  requiredUses: 3
+  providedLiquidType: 0
+  fillMapping:
+    requiredEmptyItem: {fileID: 0}
+    resultingFilledItem: {fileID: 0}
+  cauldron: {fileID: 0}
+  scroll_BigAcidPotion: {fileID: 0}
+  scroll_SmallAngryTimePotion: {fileID: 0}
+  scroll_ElderBadMoodPotion: {fileID: 0}
+  scroll_OpenBloodPotion: {fileID: 0}
+  scroll_BigGoodSoup: {fileID: 0}
+  scroll_SmallHolyCowPotion: {fileID: 0}
+  scroll_ElderLeafGoods: {fileID: 0}
+  scroll_OpenNiceWater: {fileID: 0}
+  scroll_BigWaterPotion: {fileID: 0}
+  scroll_SmallWinePotion: {fileID: 0}
+  recipesCounter: {fileID: 0}
+  endPanel: {fileID: 0}
+  isEndPanel: 0
+  localizationString: {fileID: 0}
+  localizationTwoString: {fileID: 0}
+  metalCrabs: {fileID: 0}
+  springs: {fileID: 0}
+  metalscaffolds: {fileID: 0}
+  collectibleGears: {fileID: 0}
+  cables: {fileID: 0}
+  workbench: {fileID: 0}
+  rend: {fileID: 4360876132184613810}
+  highlightColor: {r: 0.32156864, g: 0.32156864, b: 0.32156864, a: 1}
+  statueCompasPuzzle: {fileID: 0}
+  rotationDuration: 0.5
+  linkedReadable: {fileID: 0}
+  directionTextSet: {fileID: 0}
+  cryptexRotateDuration: 0.25
+  mirror: {fileID: 0}
+  gearLockMode: {fileID: 0}
+  gearRotateDuration: 0.25
+  pipeGearPuzzle: {fileID: 0}
+  gear90RotateDuration: 0.25
+  currentGear90Index: 0
+  movableBlock: {fileID: 0}
+  woodenBlockPuzzle: {fileID: 0}
+  zOffset: 0.018
+  duration: 0.5
+  references:
+    version: 2
+    RefIds: []
 --- !u!4 &3229042864051198173 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
+  m_PrefabInstance: {fileID: 3118008393058844470}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &4360876132184613810 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
   m_PrefabInstance: {fileID: 3118008393058844470}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3527748810018329722
@@ -839,15 +1449,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.2
+      value: 1.1950005
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.052003667
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.07100816
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -885,6 +1495,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wooden Pillar (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -892,7 +1506,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7121750012873334608}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1607960539421391345}
   m_SourcePrefab: {fileID: 100100000, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
+--- !u!23 &2825025234893113598 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
+  m_PrefabInstance: {fileID: 3527748810018329722}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3999105928699736977 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
@@ -924,6 +1546,93 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 999.99994, y: 199.06775, z: 199.06775}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1607960539421391345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4338229831322708267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 837845a591c957e44808bdf6bd871042, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractableItem
+  interactableType: 24
+  itemName: Przedmiot
+  localizeItemName:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  itemSprite: {fileID: 0}
+  itemId: 4
+  itemIdbyItemId: 0
+  pinNumber: 0
+  requiredItemIds: 
+  animator: {fileID: 0}
+  readableTextData: {fileID: 0}
+  readableAndInteractableTextData: {fileID: 0}
+  onAllWallButtonPressed:
+    m_PersistentCalls:
+      m_Calls: []
+  objectToPlace: {fileID: 0}
+  boxCollider: {fileID: 0}
+  canOpenWithNoSelectedItem: 0
+  itemPrefab: {fileID: 0}
+  isActualReading: 0
+  isAlchemyRecipe: 0
+  requiredUses: 3
+  providedLiquidType: 0
+  fillMapping:
+    requiredEmptyItem: {fileID: 0}
+    resultingFilledItem: {fileID: 0}
+  cauldron: {fileID: 0}
+  scroll_BigAcidPotion: {fileID: 0}
+  scroll_SmallAngryTimePotion: {fileID: 0}
+  scroll_ElderBadMoodPotion: {fileID: 0}
+  scroll_OpenBloodPotion: {fileID: 0}
+  scroll_BigGoodSoup: {fileID: 0}
+  scroll_SmallHolyCowPotion: {fileID: 0}
+  scroll_ElderLeafGoods: {fileID: 0}
+  scroll_OpenNiceWater: {fileID: 0}
+  scroll_BigWaterPotion: {fileID: 0}
+  scroll_SmallWinePotion: {fileID: 0}
+  recipesCounter: {fileID: 0}
+  endPanel: {fileID: 0}
+  isEndPanel: 0
+  localizationString: {fileID: 0}
+  localizationTwoString: {fileID: 0}
+  metalCrabs: {fileID: 0}
+  springs: {fileID: 0}
+  metalscaffolds: {fileID: 0}
+  collectibleGears: {fileID: 0}
+  cables: {fileID: 0}
+  workbench: {fileID: 0}
+  rend: {fileID: 2825025234893113598}
+  highlightColor: {r: 0.32156864, g: 0.32156864, b: 0.32156864, a: 1}
+  statueCompasPuzzle: {fileID: 0}
+  rotationDuration: 0.5
+  linkedReadable: {fileID: 0}
+  directionTextSet: {fileID: 0}
+  cryptexRotateDuration: 0.25
+  mirror: {fileID: 0}
+  gearLockMode: {fileID: 0}
+  gearRotateDuration: 0.25
+  pipeGearPuzzle: {fileID: 0}
+  gear90RotateDuration: 0.25
+  currentGear90Index: 0
+  movableBlock: {fileID: 0}
+  woodenBlockPuzzle: {fileID: 0}
+  zOffset: 0.018
+  duration: 0.5
+  references:
+    version: 2
+    RefIds: []
 --- !u!1001 &3776475563640045239
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -946,15 +1655,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.004999563
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.2
+      value: 1.2520037
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.07100816
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -992,6 +1701,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wooden Pillar (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -999,7 +1712,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7789366684820729224}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1740560311696381349}
   m_SourcePrefab: {fileID: 100100000, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
+--- !u!23 &2569630305226302003 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
+  m_PrefabInstance: {fileID: 3776475563640045239}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3738557208867658076 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
@@ -1031,6 +1752,93 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 999.99994, y: 199.06775, z: 199.06775}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1740560311696381349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4083029101956826086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 837845a591c957e44808bdf6bd871042, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractableItem
+  interactableType: 24
+  itemName: Przedmiot
+  localizeItemName:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  itemSprite: {fileID: 0}
+  itemId: 6
+  itemIdbyItemId: 0
+  pinNumber: 0
+  requiredItemIds: 
+  animator: {fileID: 0}
+  readableTextData: {fileID: 0}
+  readableAndInteractableTextData: {fileID: 0}
+  onAllWallButtonPressed:
+    m_PersistentCalls:
+      m_Calls: []
+  objectToPlace: {fileID: 0}
+  boxCollider: {fileID: 0}
+  canOpenWithNoSelectedItem: 0
+  itemPrefab: {fileID: 0}
+  isActualReading: 0
+  isAlchemyRecipe: 0
+  requiredUses: 3
+  providedLiquidType: 0
+  fillMapping:
+    requiredEmptyItem: {fileID: 0}
+    resultingFilledItem: {fileID: 0}
+  cauldron: {fileID: 0}
+  scroll_BigAcidPotion: {fileID: 0}
+  scroll_SmallAngryTimePotion: {fileID: 0}
+  scroll_ElderBadMoodPotion: {fileID: 0}
+  scroll_OpenBloodPotion: {fileID: 0}
+  scroll_BigGoodSoup: {fileID: 0}
+  scroll_SmallHolyCowPotion: {fileID: 0}
+  scroll_ElderLeafGoods: {fileID: 0}
+  scroll_OpenNiceWater: {fileID: 0}
+  scroll_BigWaterPotion: {fileID: 0}
+  scroll_SmallWinePotion: {fileID: 0}
+  recipesCounter: {fileID: 0}
+  endPanel: {fileID: 0}
+  isEndPanel: 0
+  localizationString: {fileID: 0}
+  localizationTwoString: {fileID: 0}
+  metalCrabs: {fileID: 0}
+  springs: {fileID: 0}
+  metalscaffolds: {fileID: 0}
+  collectibleGears: {fileID: 0}
+  cables: {fileID: 0}
+  workbench: {fileID: 0}
+  rend: {fileID: 2569630305226302003}
+  highlightColor: {r: 0.32156864, g: 0.32156864, b: 0.32156864, a: 1}
+  statueCompasPuzzle: {fileID: 0}
+  rotationDuration: 0.5
+  linkedReadable: {fileID: 0}
+  directionTextSet: {fileID: 0}
+  cryptexRotateDuration: 0.25
+  mirror: {fileID: 0}
+  gearLockMode: {fileID: 0}
+  gearRotateDuration: 0.25
+  pipeGearPuzzle: {fileID: 0}
+  gear90RotateDuration: 0.25
+  currentGear90Index: 0
+  movableBlock: {fileID: 0}
+  woodenBlockPuzzle: {fileID: 0}
+  zOffset: 0.018
+  duration: 0.5
+  references:
+    version: 2
+    RefIds: []
 --- !u!1001 &5637807415531404699
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1053,15 +1861,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.6
+      value: 0.5950005
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.6
+      value: 0.6520037
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.07100816
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1099,6 +1907,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wooden Pillar (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1106,6 +1918,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8308175953818018135}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8992038073971366301}
   m_SourcePrefab: {fileID: 100100000, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
 --- !u!1 &4826990361354354890 stripped
 GameObject:
@@ -1133,9 +1948,101 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 999.99994, y: 199.06775, z: 199.06775}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8992038073971366301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4826990361354354890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 837845a591c957e44808bdf6bd871042, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractableItem
+  interactableType: 24
+  itemName: Przedmiot
+  localizeItemName:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  itemSprite: {fileID: 0}
+  itemId: 2
+  itemIdbyItemId: 0
+  pinNumber: 0
+  requiredItemIds: 
+  animator: {fileID: 0}
+  readableTextData: {fileID: 0}
+  readableAndInteractableTextData: {fileID: 0}
+  onAllWallButtonPressed:
+    m_PersistentCalls:
+      m_Calls: []
+  objectToPlace: {fileID: 0}
+  boxCollider: {fileID: 0}
+  canOpenWithNoSelectedItem: 0
+  itemPrefab: {fileID: 0}
+  isActualReading: 0
+  isAlchemyRecipe: 0
+  requiredUses: 3
+  providedLiquidType: 0
+  fillMapping:
+    requiredEmptyItem: {fileID: 0}
+    resultingFilledItem: {fileID: 0}
+  cauldron: {fileID: 0}
+  scroll_BigAcidPotion: {fileID: 0}
+  scroll_SmallAngryTimePotion: {fileID: 0}
+  scroll_ElderBadMoodPotion: {fileID: 0}
+  scroll_OpenBloodPotion: {fileID: 0}
+  scroll_BigGoodSoup: {fileID: 0}
+  scroll_SmallHolyCowPotion: {fileID: 0}
+  scroll_ElderLeafGoods: {fileID: 0}
+  scroll_OpenNiceWater: {fileID: 0}
+  scroll_BigWaterPotion: {fileID: 0}
+  scroll_SmallWinePotion: {fileID: 0}
+  recipesCounter: {fileID: 0}
+  endPanel: {fileID: 0}
+  isEndPanel: 0
+  localizationString: {fileID: 0}
+  localizationTwoString: {fileID: 0}
+  metalCrabs: {fileID: 0}
+  springs: {fileID: 0}
+  metalscaffolds: {fileID: 0}
+  collectibleGears: {fileID: 0}
+  cables: {fileID: 0}
+  workbench: {fileID: 0}
+  rend: {fileID: 6484082133008474399}
+  highlightColor: {r: 0.32156864, g: 0.32156864, b: 0.32156864, a: 1}
+  statueCompasPuzzle: {fileID: 0}
+  rotationDuration: 0.5
+  linkedReadable: {fileID: 0}
+  directionTextSet: {fileID: 0}
+  cryptexRotateDuration: 0.25
+  mirror: {fileID: 0}
+  gearLockMode: {fileID: 0}
+  gearRotateDuration: 0.25
+  pipeGearPuzzle: {fileID: 0}
+  gear90RotateDuration: 0.25
+  currentGear90Index: 0
+  movableBlock: {fileID: 0}
+  woodenBlockPuzzle: {fileID: 0}
+  zOffset: 0.018
+  duration: 0.5
+  references:
+    version: 2
+    RefIds: []
 --- !u!4 &5311778624728373872 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
+  m_PrefabInstance: {fileID: 5637807415531404699}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &6484082133008474399 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
   m_PrefabInstance: {fileID: 5637807415531404699}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5919868442452369828
@@ -1160,15 +2067,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.005
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.052
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.071
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1206,6 +2113,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wooden Pillar
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1213,7 +2124,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4147365258320354347}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1451810841498828406}
   m_SourcePrefab: {fileID: 100100000, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
+--- !u!23 &5036727913992011040 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
+  m_PrefabInstance: {fileID: 5919868442452369828}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6173627526621316687 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
@@ -1245,6 +2164,93 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 999.99994, y: 199.06775, z: 199.06775}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1451810841498828406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6838418247594155253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 837845a591c957e44808bdf6bd871042, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractableItem
+  interactableType: 24
+  itemName: Przedmiot
+  localizeItemName:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  itemSprite: {fileID: 0}
+  itemId: 0
+  itemIdbyItemId: 0
+  pinNumber: 0
+  requiredItemIds: 
+  animator: {fileID: 0}
+  readableTextData: {fileID: 0}
+  readableAndInteractableTextData: {fileID: 0}
+  onAllWallButtonPressed:
+    m_PersistentCalls:
+      m_Calls: []
+  objectToPlace: {fileID: 0}
+  boxCollider: {fileID: 0}
+  canOpenWithNoSelectedItem: 0
+  itemPrefab: {fileID: 0}
+  isActualReading: 0
+  isAlchemyRecipe: 0
+  requiredUses: 3
+  providedLiquidType: 0
+  fillMapping:
+    requiredEmptyItem: {fileID: 0}
+    resultingFilledItem: {fileID: 0}
+  cauldron: {fileID: 0}
+  scroll_BigAcidPotion: {fileID: 0}
+  scroll_SmallAngryTimePotion: {fileID: 0}
+  scroll_ElderBadMoodPotion: {fileID: 0}
+  scroll_OpenBloodPotion: {fileID: 0}
+  scroll_BigGoodSoup: {fileID: 0}
+  scroll_SmallHolyCowPotion: {fileID: 0}
+  scroll_ElderLeafGoods: {fileID: 0}
+  scroll_OpenNiceWater: {fileID: 0}
+  scroll_BigWaterPotion: {fileID: 0}
+  scroll_SmallWinePotion: {fileID: 0}
+  recipesCounter: {fileID: 0}
+  endPanel: {fileID: 0}
+  isEndPanel: 0
+  localizationString: {fileID: 0}
+  localizationTwoString: {fileID: 0}
+  metalCrabs: {fileID: 0}
+  springs: {fileID: 0}
+  metalscaffolds: {fileID: 0}
+  collectibleGears: {fileID: 0}
+  cables: {fileID: 0}
+  workbench: {fileID: 0}
+  rend: {fileID: 5036727913992011040}
+  highlightColor: {r: 0.32156864, g: 0.32156864, b: 0.32156864, a: 1}
+  statueCompasPuzzle: {fileID: 0}
+  rotationDuration: 0.5
+  linkedReadable: {fileID: 0}
+  directionTextSet: {fileID: 0}
+  cryptexRotateDuration: 0.25
+  mirror: {fileID: 0}
+  gearLockMode: {fileID: 0}
+  gearRotateDuration: 0.25
+  pipeGearPuzzle: {fileID: 0}
+  gear90RotateDuration: 0.25
+  currentGear90Index: 0
+  movableBlock: {fileID: 0}
+  woodenBlockPuzzle: {fileID: 0}
+  zOffset: 0.018
+  duration: 0.5
+  references:
+    version: 2
+    RefIds: []
 --- !u!1001 &6908549828606739642
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1267,15 +2273,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.6
+      value: 0.5950005
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.6
+      value: -0.54799634
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.07100816
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1313,6 +2319,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wooden Pillar (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1320,7 +2330,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7284739390859547009}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2438192660036925868}
   m_SourcePrefab: {fileID: 100100000, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
+--- !u!23 &5197590298356766782 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
+  m_PrefabInstance: {fileID: 6908549828606739642}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5990192840519317995 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
@@ -1347,6 +2365,93 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 999.99994, y: 199.06775, z: 199.06775}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2438192660036925868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5990192840519317995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 837845a591c957e44808bdf6bd871042, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractableItem
+  interactableType: 24
+  itemName: Przedmiot
+  localizeItemName:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  itemSprite: {fileID: 0}
+  itemId: 8
+  itemIdbyItemId: 0
+  pinNumber: 0
+  requiredItemIds: 
+  animator: {fileID: 0}
+  readableTextData: {fileID: 0}
+  readableAndInteractableTextData: {fileID: 0}
+  onAllWallButtonPressed:
+    m_PersistentCalls:
+      m_Calls: []
+  objectToPlace: {fileID: 0}
+  boxCollider: {fileID: 0}
+  canOpenWithNoSelectedItem: 0
+  itemPrefab: {fileID: 0}
+  isActualReading: 0
+  isAlchemyRecipe: 0
+  requiredUses: 3
+  providedLiquidType: 0
+  fillMapping:
+    requiredEmptyItem: {fileID: 0}
+    resultingFilledItem: {fileID: 0}
+  cauldron: {fileID: 0}
+  scroll_BigAcidPotion: {fileID: 0}
+  scroll_SmallAngryTimePotion: {fileID: 0}
+  scroll_ElderBadMoodPotion: {fileID: 0}
+  scroll_OpenBloodPotion: {fileID: 0}
+  scroll_BigGoodSoup: {fileID: 0}
+  scroll_SmallHolyCowPotion: {fileID: 0}
+  scroll_ElderLeafGoods: {fileID: 0}
+  scroll_OpenNiceWater: {fileID: 0}
+  scroll_BigWaterPotion: {fileID: 0}
+  scroll_SmallWinePotion: {fileID: 0}
+  recipesCounter: {fileID: 0}
+  endPanel: {fileID: 0}
+  isEndPanel: 0
+  localizationString: {fileID: 0}
+  localizationTwoString: {fileID: 0}
+  metalCrabs: {fileID: 0}
+  springs: {fileID: 0}
+  metalscaffolds: {fileID: 0}
+  collectibleGears: {fileID: 0}
+  cables: {fileID: 0}
+  workbench: {fileID: 0}
+  rend: {fileID: 5197590298356766782}
+  highlightColor: {r: 0.32156864, g: 0.32156864, b: 0.32156864, a: 1}
+  statueCompasPuzzle: {fileID: 0}
+  rotationDuration: 0.5
+  linkedReadable: {fileID: 0}
+  directionTextSet: {fileID: 0}
+  cryptexRotateDuration: 0.25
+  mirror: {fileID: 0}
+  gearLockMode: {fileID: 0}
+  gearRotateDuration: 0.25
+  pipeGearPuzzle: {fileID: 0}
+  gear90RotateDuration: 0.25
+  currentGear90Index: 0
+  movableBlock: {fileID: 0}
+  woodenBlockPuzzle: {fileID: 0}
+  zOffset: 0.018
+  duration: 0.5
+  references:
+    version: 2
+    RefIds: []
 --- !u!4 &6371080588510470993 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
@@ -1374,15 +2479,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.6
+      value: -0.60499954
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.6
+      value: 0.6520037
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.07100816
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1420,6 +2525,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wooden Pillar (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1427,6 +2536,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4067339293270081169}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3597868421140120466}
   m_SourcePrefab: {fileID: 100100000, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
 --- !u!4 &7221768616802140335 stripped
 Transform:
@@ -1459,3 +2571,95 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 999.99994, y: 199.06775, z: 199.06775}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3597868421140120466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8030816332519709205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 837845a591c957e44808bdf6bd871042, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractableItem
+  interactableType: 24
+  itemName: Przedmiot
+  localizeItemName:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  itemSprite: {fileID: 0}
+  itemId: 1
+  itemIdbyItemId: 0
+  pinNumber: 0
+  requiredItemIds: 
+  animator: {fileID: 0}
+  readableTextData: {fileID: 0}
+  readableAndInteractableTextData: {fileID: 0}
+  onAllWallButtonPressed:
+    m_PersistentCalls:
+      m_Calls: []
+  objectToPlace: {fileID: 0}
+  boxCollider: {fileID: 0}
+  canOpenWithNoSelectedItem: 0
+  itemPrefab: {fileID: 0}
+  isActualReading: 0
+  isAlchemyRecipe: 0
+  requiredUses: 3
+  providedLiquidType: 0
+  fillMapping:
+    requiredEmptyItem: {fileID: 0}
+    resultingFilledItem: {fileID: 0}
+  cauldron: {fileID: 0}
+  scroll_BigAcidPotion: {fileID: 0}
+  scroll_SmallAngryTimePotion: {fileID: 0}
+  scroll_ElderBadMoodPotion: {fileID: 0}
+  scroll_OpenBloodPotion: {fileID: 0}
+  scroll_BigGoodSoup: {fileID: 0}
+  scroll_SmallHolyCowPotion: {fileID: 0}
+  scroll_ElderLeafGoods: {fileID: 0}
+  scroll_OpenNiceWater: {fileID: 0}
+  scroll_BigWaterPotion: {fileID: 0}
+  scroll_SmallWinePotion: {fileID: 0}
+  recipesCounter: {fileID: 0}
+  endPanel: {fileID: 0}
+  isEndPanel: 0
+  localizationString: {fileID: 0}
+  localizationTwoString: {fileID: 0}
+  metalCrabs: {fileID: 0}
+  springs: {fileID: 0}
+  metalscaffolds: {fileID: 0}
+  collectibleGears: {fileID: 0}
+  cables: {fileID: 0}
+  workbench: {fileID: 0}
+  rend: {fileID: 8391275483703131072}
+  highlightColor: {r: 0.32156864, g: 0.32156864, b: 0.32156864, a: 1}
+  statueCompasPuzzle: {fileID: 0}
+  rotationDuration: 0.5
+  linkedReadable: {fileID: 0}
+  directionTextSet: {fileID: 0}
+  cryptexRotateDuration: 0.25
+  mirror: {fileID: 0}
+  gearLockMode: {fileID: 0}
+  gearRotateDuration: 0.25
+  pipeGearPuzzle: {fileID: 0}
+  gear90RotateDuration: 0.25
+  currentGear90Index: 0
+  movableBlock: {fileID: 0}
+  woodenBlockPuzzle: {fileID: 0}
+  zOffset: 0.018
+  duration: 0.5
+  references:
+    version: 2
+    RefIds: []
+--- !u!23 &8391275483703131072 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 9c0626123c1bf814b830d5575c8edb0f, type: 3}
+  m_PrefabInstance: {fileID: 7183902444612691780}
+  m_PrefabAsset: {fileID: 0}

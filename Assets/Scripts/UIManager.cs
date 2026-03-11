@@ -77,6 +77,20 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject furnitureVertivalModePanel;
     [SerializeField] private GameObject furnitureHorizontalModePanel;
 
+    [Header("Wooden Puzzle panel")]
+    [SerializeField] private GameObject woodenPuzzlePanel;
+    [SerializeField] private GameObject papytusPuzzleWoodenPuzzleSolve;
+
+
+    public void EnableWoodenPuzzlePanel()
+    {
+        woodenPuzzlePanel.SetActive(true);
+    }
+
+    public void DisableWoodenPuzzlePanel()
+    {
+        woodenPuzzlePanel.SetActive(false);
+    }
 
     public void EnableVerticalFurnitureModePanel()
     {
@@ -302,10 +316,11 @@ public class UIManager : MonoBehaviour
     {
         morseAndGlifsBook.SetActive(false);
         drinkOrEatPanel.SetActive(false);
+        papytusPuzzleWoodenPuzzleSolve.SetActive(false);
     }
 
     private void OnReadBookPerformed(InputAction.CallbackContext context)
-    {     
+    {
         int currentSelectedId = GetSelectedItemId();
         if (currentSelectedId == 0)
         {
@@ -318,11 +333,28 @@ public class UIManager : MonoBehaviour
             case ItemID.MorseAndGlifsBook:
                 ReadBookCodeMordeAndGlifs();
                 break;
+            case ItemID.Papyrus:
+                ReadBookPapyrus();
+                break;
         }
 
         Services.Audio.PlaySFX("ReadBook");
     }
 
+
+    private void ReadBookPapyrus()
+    {
+        bool isOpen = papytusPuzzleWoodenPuzzleSolve.activeSelf;
+        papytusPuzzleWoodenPuzzleSolve.SetActive(!isOpen);
+        if (!isOpen)
+        {
+            papytusPuzzleWoodenPuzzleSolve.SetActive(true);
+        }
+        else
+        {
+            papytusPuzzleWoodenPuzzleSolve.SetActive(false);
+        }
+    }
 
     private void ReadBookCodeMordeAndGlifs()
     {
@@ -506,7 +538,7 @@ public class UIManager : MonoBehaviour
                 break;
 
             default:
-               
+
                 Debug.Log("Tego przedmiotu nie mo¿na zjeœæ ani wypiæ.");
                 break;
         }
@@ -523,7 +555,7 @@ public class UIManager : MonoBehaviour
     private void OnDropItemPerformed(InputAction.CallbackContext context)
     {
         if (readableAndInteractablePanel != null && readableAndInteractablePanel.gameObject.activeInHierarchy
-            || gameModeLockPickPanel.activeInHierarchy || morseAndGlifsBook.activeInHierarchy || gearModePanel.activeInHierarchy)
+            || gameModeLockPickPanel.activeInHierarchy || morseAndGlifsBook.activeInHierarchy || gearModePanel.activeInHierarchy || papytusPuzzleWoodenPuzzleSolve.activeInHierarchy)
         {
             Debug.Log("Nie mo¿na wyrzuciæ przedmiotu podczas przegl¹dania czytanej strony.");
             return;

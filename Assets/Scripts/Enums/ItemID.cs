@@ -54,4 +54,6 @@ public enum ItemID
     Shield = 51,
     Sword = 52,
     MorseAndGlifsBook = 53,
+    Papyrus = 54,
+    DiamondKey = 55,
 }

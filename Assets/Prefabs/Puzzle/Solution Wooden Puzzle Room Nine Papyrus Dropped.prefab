@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &182654178730528074
+--- !u!1001 &7535153823691166602
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -8,100 +8,100 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 100000, guid: 32184c617bf8b624d8d54af843ec427c, type: 3}
+    - target: {fileID: 100000, guid: ac8910006b2a62947a9342d2b6ddfa2a, type: 3}
       propertyPath: m_Name
-      value: Morse And Glifs Book
+      value: Solution Wooden Puzzle Room Nine Papyrus Dropped
       objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 32184c617bf8b624d8d54af843ec427c, type: 3}
+    - target: {fileID: 100000, guid: ac8910006b2a62947a9342d2b6ddfa2a, type: 3}
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 32184c617bf8b624d8d54af843ec427c, type: 3}
+    - target: {fileID: 400000, guid: ac8910006b2a62947a9342d2b6ddfa2a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 70.542
+      value: 47.004154
       objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 32184c617bf8b624d8d54af843ec427c, type: 3}
+    - target: {fileID: 400000, guid: ac8910006b2a62947a9342d2b6ddfa2a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 15.534602
+      value: 15.538871
       objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 32184c617bf8b624d8d54af843ec427c, type: 3}
+    - target: {fileID: 400000, guid: ac8910006b2a62947a9342d2b6ddfa2a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -13.162
+      value: 18.50357
       objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 32184c617bf8b624d8d54af843ec427c, type: 3}
+    - target: {fileID: 400000, guid: ac8910006b2a62947a9342d2b6ddfa2a, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 32184c617bf8b624d8d54af843ec427c, type: 3}
+    - target: {fileID: 400000, guid: ac8910006b2a62947a9342d2b6ddfa2a, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0.000000021855694
       objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 32184c617bf8b624d8d54af843ec427c, type: 3}
+    - target: {fileID: 400000, guid: ac8910006b2a62947a9342d2b6ddfa2a, type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 32184c617bf8b624d8d54af843ec427c, type: 3}
+    - target: {fileID: 400000, guid: ac8910006b2a62947a9342d2b6ddfa2a, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 32184c617bf8b624d8d54af843ec427c, type: 3}
+    - target: {fileID: 400000, guid: ac8910006b2a62947a9342d2b6ddfa2a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 32184c617bf8b624d8d54af843ec427c, type: 3}
+    - target: {fileID: 400000, guid: ac8910006b2a62947a9342d2b6ddfa2a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 32184c617bf8b624d8d54af843ec427c, type: 3}
+    - target: {fileID: 400000, guid: ac8910006b2a62947a9342d2b6ddfa2a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: -6860895033569716450, guid: 32184c617bf8b624d8d54af843ec427c, type: 3}
+    - {fileID: -6860895033569716450, guid: ac8910006b2a62947a9342d2b6ddfa2a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 100000, guid: 32184c617bf8b624d8d54af843ec427c, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: ac8910006b2a62947a9342d2b6ddfa2a, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6108247289734474288}
-    - targetCorrespondingSourceObject: {fileID: 100000, guid: 32184c617bf8b624d8d54af843ec427c, type: 3}
+      addedObject: {fileID: 2895123980607241788}
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: ac8910006b2a62947a9342d2b6ddfa2a, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2586299346130194218}
-    - targetCorrespondingSourceObject: {fileID: 100000, guid: 32184c617bf8b624d8d54af843ec427c, type: 3}
+      addedObject: {fileID: 6711254329122396886}
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: ac8910006b2a62947a9342d2b6ddfa2a, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 9156296544173957350}
-  m_SourcePrefab: {fileID: 100100000, guid: 32184c617bf8b624d8d54af843ec427c, type: 3}
---- !u!1 &182654178730494954 stripped
+      addedObject: {fileID: -5721000900497989701}
+  m_SourcePrefab: {fileID: 100100000, guid: ac8910006b2a62947a9342d2b6ddfa2a, type: 3}
+--- !u!1 &7535153823691068714 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 100000, guid: 32184c617bf8b624d8d54af843ec427c, type: 3}
-  m_PrefabInstance: {fileID: 182654178730528074}
+  m_CorrespondingSourceObject: {fileID: 100000, guid: ac8910006b2a62947a9342d2b6ddfa2a, type: 3}
+  m_PrefabInstance: {fileID: 7535153823691166602}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6108247289734474288
+--- !u!114 &2895123980607241788
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 182654178730494954}
+  m_GameObject: {fileID: 7535153823691068714}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 837845a591c957e44808bdf6bd871042, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableItem
   interactableType: 0
-  itemName: Morse And Glifs Book
+  itemName: Scrool
   localizeItemName:
     m_TableReference:
       m_TableCollectionName: GUID:d126a2aaffb817f4f9fefa17fce8e709
     m_TableEntryReference:
-      m_KeyId: 11247272941867008
+      m_KeyId: 13903089738469376
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
-  itemSprite: {fileID: 21300000, guid: c31bd8327547bd649aab38b79fc2b44b, type: 3}
-  itemId: 53
-  itemIdbyItemId: 53
+  itemSprite: {fileID: 21300000, guid: c33f9df1112fd8548a63a7f14c6f0bed, type: 3}
+  itemId: 54
+  itemIdbyItemId: 54
   pinNumber: 0
   requiredItemIds: 
   animator: {fileID: 0}
@@ -113,7 +113,7 @@ MonoBehaviour:
   objectToPlace: {fileID: 0}
   boxCollider: {fileID: 0}
   canOpenWithNoSelectedItem: 0
-  itemPrefab: {fileID: 182654178730494954, guid: 1e054f8746499ad428f37733ded81224, type: 3}
+  itemPrefab: {fileID: 7535153823691068714, guid: 0d1d0647c0a4b414ba0d32350b6e63a7, type: 3}
   isActualReading: 0
   isAlchemyRecipe: 0
   requiredUses: 3
@@ -163,13 +163,13 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
---- !u!65 &2586299346130194218
+--- !u!65 &6711254329122396886
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 182654178730494954}
+  m_GameObject: {fileID: 7535153823691068714}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -182,15 +182,15 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.16443223, y: 0.44948533, z: 0.38805932}
-  m_Center: {x: 0.00000023841858, y: 0.224743, z: 0.020670079}
---- !u!54 &9156296544173957350
+  m_Size: {x: 0.40508497, y: 0.059673715, z: 0.5595875}
+  m_Center: {x: -0.0024640337, y: 0.02489294, z: 0.03948368}
+--- !u!54 &-5721000900497989701
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 182654178730494954}
+  m_GameObject: {fileID: 7535153823691068714}
   serializedVersion: 5
   m_Mass: 1
   m_LinearDamping: 0

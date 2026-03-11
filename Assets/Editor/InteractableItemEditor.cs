@@ -67,6 +67,8 @@ public class InteractableItemEditor : Editor
 
     private SerializedProperty movableBlock;
     private SerializedProperty woodenBlockPuzzle;
+    private SerializedProperty zOffset;
+    private SerializedProperty duration;
 
     private void OnEnable()
     {
@@ -133,6 +135,8 @@ public class InteractableItemEditor : Editor
 
         movableBlock = serializedObject.FindProperty("movableBlock");
         woodenBlockPuzzle = serializedObject.FindProperty("woodenBlockPuzzle");
+        zOffset = serializedObject.FindProperty("zOffset");
+        duration = serializedObject.FindProperty("duration");
        
     }
 
@@ -160,6 +164,7 @@ public class InteractableItemEditor : Editor
                 EditorGUILayout.PropertyField(isAlchemyRecipe, new GUIContent("Is Item Alchemy recipe?"));
                 EditorGUILayout.PropertyField(localizeItemName, new GUIContent("Localize Item Name"));
                 EditorGUILayout.PropertyField(localizationString, new GUIContent("Localization String"));
+                EditorGUILayout.PropertyField(itemIdbyItemId, new GUIContent("Item Id Enum"));
                 EditorGUILayout.HelpBox("To jest ID tego przedmiotu, gdy znajdzie siê w ekwipunku.", MessageType.Info);
                 break;
 
@@ -305,8 +310,15 @@ public class InteractableItemEditor : Editor
             case InteractableItem.InteractableType.WoodenBlockPuzzle:
                 EditorGUILayout.PropertyField(woodenBlockPuzzle, new GUIContent("Wooden Block Puzzle"));
                 break;
-                
 
+            case InteractableItem.InteractableType.WoodenBlock:
+                EditorGUILayout.PropertyField(zOffset, new GUIContent("Z Offset"));
+                EditorGUILayout.PropertyField(duration, new GUIContent("Duration"));
+                EditorGUILayout.PropertyField(highlightColor, new GUIContent("Highlight Color"));
+                EditorGUILayout.PropertyField(rend, new GUIContent("Renderer"));
+                EditorGUILayout.PropertyField(itemIdProp, new GUIContent("id"));
+                break;
+                
         }
 
         serializedObject.ApplyModifiedProperties();

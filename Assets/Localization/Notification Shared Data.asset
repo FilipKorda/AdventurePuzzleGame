@@ -119,6 +119,10 @@ MonoBehaviour:
     m_Key: Furniture Horizontal
     m_Metadata:
       m_Items: []
+  - m_Id: 13480168645742592
+    m_Key: Wooden Puzzle
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

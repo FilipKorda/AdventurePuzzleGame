@@ -131,6 +131,10 @@ MonoBehaviour:
       Press E to leave'
     m_Metadata:
       m_Items: []
+  - m_Id: 13480168645742592
+    m_Localized: "Press RMB to Click \nPress E to leave"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

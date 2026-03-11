@@ -12,6 +12,11 @@ public class WoodenBlockPuzzle : MonoBehaviour
     [SerializeField] private Transform point;
     [SerializeField] private BoxCollider woodenCreate;
 
+    [SerializeField] private InteractableItem[] woodenBlocks;
+    [SerializeField] private Color baseColor;
+    [SerializeField] private Animator animatorGateLeft;
+    [SerializeField] private Animator animatorGateRight;
+
     private void OnEnable()
     {
         if (woodenPuzzleLeaveInput != null)
@@ -44,16 +49,36 @@ public class WoodenBlockPuzzle : MonoBehaviour
         gameObject.SetActive(true);
         woodenCreate.enabled = false;
         playerBehaviour.disableOnlyMovement = true;
-        UIManager.Instance.EnableGearModePanel();
+        UIManager.Instance.EnableWoodenPuzzlePanel();
     }
 
     public void ExitWoodenPuzzleMode()
     {
+        foreach (var block in woodenBlocks)
+        {
+            block.ResetblockInstant(baseColor);
+        }
+
+        PuzzleBlockManager.Instance.ResetClickedBlock();
         blurCanvas.gameObject.SetActive(false);
         woodenCreate.enabled = true;
         gameObject.SetActive(false);
         playerBehaviour.disableOnlyMovement = false;
-        UIManager.Instance.DisableGearModePanel();
+        UIManager.Instance.DisableWoodenPuzzlePanel();
+    }
+
+    public void PuzzleWon()
+    {
+        foreach (var block in woodenBlocks)
+        {
+            block.GetComponent<BoxCollider>().enabled = false;
+        }
+        woodenCreate.enabled = false;
+
+        animatorGateLeft.SetTrigger("Open");    
+        animatorGateRight.SetTrigger("Open");    
+
+        ExitWoodenPuzzleMode();
     }
 
     private void SpawnThisObjectInFronOfPlayer()
