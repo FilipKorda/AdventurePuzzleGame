@@ -66,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: 8592a43dae2baf7469f1afec988692c9, type: 3}
+  - {fileID: 2100000, guid: 026f1de4a4b419e4bae14fcc96ef7c37, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -260,7 +260,10 @@ MonoBehaviour:
   mirror: {fileID: 0}
   gearLockMode: {fileID: 0}
   gearRotateDuration: 0.25
+  pipeGearPuzzle: {fileID: 0}
   gear90RotateDuration: 0.25
+  currentGear90Index: 0
+  movableBlock: {fileID: 0}
   references:
     version: 2
     RefIds: []

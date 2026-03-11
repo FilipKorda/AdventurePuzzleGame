@@ -73,6 +73,30 @@ public class UIManager : MonoBehaviour
     [Header("Gear Mode Panel")]
     [SerializeField] private GameObject gearModePanel;
 
+    [Header("Furniture  Mode Panel")]
+    [SerializeField] private GameObject furnitureVertivalModePanel;
+    [SerializeField] private GameObject furnitureHorizontalModePanel;
+
+
+    public void EnableVerticalFurnitureModePanel()
+    {
+        furnitureVertivalModePanel.SetActive(true);
+    }
+
+    public void DisableVerticalFurnitureModePanel()
+    {
+        furnitureVertivalModePanel.SetActive(false);
+    }
+
+    public void EnableHorizontalFurnitureModePanel()
+    {
+        furnitureHorizontalModePanel.SetActive(true);
+    }
+
+    public void DisableHorizontalFurnitureModePanel()
+    {
+        furnitureHorizontalModePanel.SetActive(false);
+    }
 
     public void EnableGearModePanel()
     {

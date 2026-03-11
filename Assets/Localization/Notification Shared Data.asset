@@ -111,6 +111,14 @@ MonoBehaviour:
     m_Key: GearNotification
     m_Metadata:
       m_Items: []
+  - m_Id: 13340150388248576
+    m_Key: Furniture Vertical
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13340387978792960
+    m_Key: Furniture Horizontal
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

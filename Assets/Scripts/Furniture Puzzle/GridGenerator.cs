@@ -5,7 +5,7 @@ public class GridGenerator : MonoBehaviour
     public GameObject blockPrefab;
     public int gridSizeX = 6;
     public int gridSizeZ = 6;
-    public float blockSize = 0.8f;
+    public float blockSize = 1f;
 
     void Start()
     {

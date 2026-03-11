@@ -796,6 +796,7 @@ GameObject:
   - component: {fileID: 3342554026432168900}
   - component: {fileID: 4553872128144838063}
   - component: {fileID: 138813470677241159}
+  - component: {fileID: 5827842356766910983}
   m_Layer: 0
   m_Name: Furn_Dresser_Drawer3.001 (1)
   m_TagString: Untagged
@@ -902,6 +903,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5827842356766910983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3713101141406308011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a977bb622090df24b9d318ca5bd9c09e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AnimationAudioEvent
 --- !u!1 &4859672335961638590
 GameObject:
   m_ObjectHideFlags: 0
@@ -1799,6 +1812,10 @@ MonoBehaviour:
   mirror: {fileID: 0}
   gearLockMode: {fileID: 0}
   gearRotateDuration: 0.25
+  pipeGearPuzzle: {fileID: 0}
+  gear90RotateDuration: 0.25
+  currentGear90Index: 0
+  movableBlock: {fileID: 0}
   references:
     version: 2
     RefIds: []
@@ -1908,6 +1925,7 @@ GameObject:
   - component: {fileID: 4256402264921773518}
   - component: {fileID: 1400287214177050218}
   - component: {fileID: 6131033527828237067}
+  - component: {fileID: 8701896354320492152}
   m_Layer: 0
   m_Name: Furn_Dresser_Drawer3.001 (2)
   m_TagString: Untagged
@@ -2014,6 +2032,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8701896354320492152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7524546554312980148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a977bb622090df24b9d318ca5bd9c09e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AnimationAudioEvent
 --- !u!1 &7616435766351194283
 GameObject:
   m_ObjectHideFlags: 0
@@ -2316,6 +2346,10 @@ MonoBehaviour:
   mirror: {fileID: 0}
   gearLockMode: {fileID: 0}
   gearRotateDuration: 0.25
+  pipeGearPuzzle: {fileID: 0}
+  gear90RotateDuration: 0.25
+  currentGear90Index: 0
+  movableBlock: {fileID: 0}
   references:
     version: 2
     RefIds: []
@@ -2331,6 +2365,7 @@ GameObject:
   - component: {fileID: 9132603224241642330}
   - component: {fileID: 3890798330017843438}
   - component: {fileID: 421789720462901640}
+  - component: {fileID: 4177488014670503854}
   m_Layer: 0
   m_Name: Furn_Dresser_Drawer3.001
   m_TagString: Untagged
@@ -2437,6 +2472,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4177488014670503854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8183938125052695711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a977bb622090df24b9d318ca5bd9c09e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AnimationAudioEvent
 --- !u!1 &8273277069705711065
 GameObject:
   m_ObjectHideFlags: 0
@@ -2851,6 +2898,10 @@ MonoBehaviour:
   mirror: {fileID: 0}
   gearLockMode: {fileID: 0}
   gearRotateDuration: 0.25
+  pipeGearPuzzle: {fileID: 0}
+  gear90RotateDuration: 0.25
+  currentGear90Index: 0
+  movableBlock: {fileID: 0}
   references:
     version: 2
     RefIds: []

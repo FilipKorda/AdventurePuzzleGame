@@ -145,4 +145,14 @@ MonoBehaviour:
     Clip: {fileID: 8300000, guid: 0c918d258149a7c419db5053df51040f, type: 3}
   - Id: AfterGearPuzzleSolved
     Clip: {fileID: 8300000, guid: fe2ff479eab29ec4b937698c0276d9d7, type: 3}
+  - Id: FurnitureMove
+    Clip: {fileID: 8300000, guid: 7c0cdc3aac679a74bbefa964fcadd4eb, type: 3}
+  - Id: DrowerOpen
+    Clip: {fileID: 8300000, guid: e5898cddd219df14cb8cce3797f99b69, type: 3}
+  - Id: DrowerClose
+    Clip: {fileID: 8300000, guid: 439c298d0b48c45439f6126466f6c429, type: 3}
+  - Id: WoodenCabinetClose
+    Clip: {fileID: 8300000, guid: f4a3e2e6cf887544e92a5fdff3f67853, type: 3}
+  - Id: WoodenCabinetOpen
+    Clip: {fileID: 8300000, guid: 05f38d5b57dc96c42b0679411ca87629, type: 3}
   sfxSourcePrefab: {fileID: 6808787666201464470, guid: 561a59515f73e424ba170ae966f504e9, type: 3}

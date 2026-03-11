@@ -416,6 +416,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8666020589022000990}
   - component: {fileID: 101484135232690014}
+  - component: {fileID: 1991915903413123103}
   m_Layer: 0
   m_Name: L Door Pivot
   m_TagString: Untagged
@@ -461,6 +462,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1991915903413123103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2441258871757281897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a977bb622090df24b9d318ca5bd9c09e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AnimationAudioEvent
 --- !u!1 &4076278545920839680
 GameObject:
   m_ObjectHideFlags: 0
@@ -583,6 +596,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1957220268688297652}
   - component: {fileID: 2006082273908405114}
+  - component: {fileID: 8791766899114442044}
   m_Layer: 0
   m_Name: R Door Pivot
   m_TagString: Untagged
@@ -628,6 +642,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8791766899114442044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4240672211137761116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a977bb622090df24b9d318ca5bd9c09e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AnimationAudioEvent
 --- !u!1 &6127317280020453948
 GameObject:
   m_ObjectHideFlags: 0
@@ -930,6 +956,10 @@ MonoBehaviour:
   mirror: {fileID: 0}
   gearLockMode: {fileID: 0}
   gearRotateDuration: 0.25
+  pipeGearPuzzle: {fileID: 0}
+  gear90RotateDuration: 0.25
+  currentGear90Index: 0
+  movableBlock: {fileID: 0}
   references:
     version: 2
     RefIds: []
@@ -1477,6 +1507,10 @@ MonoBehaviour:
   mirror: {fileID: 0}
   gearLockMode: {fileID: 0}
   gearRotateDuration: 0.25
+  pipeGearPuzzle: {fileID: 0}
+  gear90RotateDuration: 0.25
+  currentGear90Index: 0
+  movableBlock: {fileID: 0}
   references:
     version: 2
     RefIds: []

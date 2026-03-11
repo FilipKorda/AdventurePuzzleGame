@@ -119,6 +119,18 @@ MonoBehaviour:
       Press E to leave'
     m_Metadata:
       m_Items: []
+  - m_Id: 13340150388248576
+    m_Localized: 'Move [W] and [S]
+
+      Press E to leave'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13340387978792960
+    m_Localized: 'Move [A] and [D]
+
+      Press E to leave'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

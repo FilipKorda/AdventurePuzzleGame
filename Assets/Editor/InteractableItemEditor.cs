@@ -65,6 +65,9 @@ public class InteractableItemEditor : Editor
     private SerializedProperty pipeGearPuzzle;
     private SerializedProperty currentGear90Index;
 
+    private SerializedProperty movableBlock;
+    private SerializedProperty woodenBlockPuzzle;
+
     private void OnEnable()
     {
         interactableTypeProp = serializedObject.FindProperty("interactableType");
@@ -127,6 +130,9 @@ public class InteractableItemEditor : Editor
         gear90RotateDuration = serializedObject.FindProperty("gear90RotateDuration");
         pipeGearPuzzle = serializedObject.FindProperty("pipeGearPuzzle");
         currentGear90Index = serializedObject.FindProperty("currentGear90Index");
+
+        movableBlock = serializedObject.FindProperty("movableBlock");
+        woodenBlockPuzzle = serializedObject.FindProperty("woodenBlockPuzzle");
        
     }
 
@@ -291,7 +297,16 @@ public class InteractableItemEditor : Editor
             case InteractableItem.InteractableType.PipeGearPuzzle:
                 EditorGUILayout.PropertyField(pipeGearPuzzle, new GUIContent("Pipe Gear Puzzle"));
                 break;
-              
+
+            case InteractableItem.InteractableType.Furniture:
+                EditorGUILayout.PropertyField(movableBlock, new GUIContent("Movable Block"));
+                break;
+
+            case InteractableItem.InteractableType.WoodenBlockPuzzle:
+                EditorGUILayout.PropertyField(woodenBlockPuzzle, new GUIContent("Wooden Block Puzzle"));
+                break;
+                
+
         }
 
         serializedObject.ApplyModifiedProperties();

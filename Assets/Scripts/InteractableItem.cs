@@ -8,7 +8,7 @@ using UnityEngine.Localization;
 public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpenable, IReadable, IPressable,
     IPlaceable, ILockPick, IFillable, IPickupARenewableItem, IAlchemyStation, IReadableAndInteractable, IRecipePlaceable,
     IGetObject, ICrafting, IPinNumber, IRotate, ICryptex, IMirror, IGearLock, IGearRotate, IGear90, IPipeGearPuzzle,
-    IFurniture
+    IFurniture, IWoodenBlockPuzzle
 {
     public enum InteractableType
     {
@@ -34,7 +34,8 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         RotateGear,
         RotateGear90,
         PipeGearPuzzle,
-        Furniture
+        Furniture,
+        WoodenBlockPuzzle,
     }
 
     public InteractableType interactableType;
@@ -165,6 +166,15 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     public int currentGear90Index = 0;
     public int CurrentGear90Index => currentGear90Index;
 
+    [Header("Furniture Puzzle")]
+    [SerializeField] private MovableBlock movableBlock;
+
+    [Header("Wooden Puzzle")]
+    [SerializeField] private WoodenBlockPuzzle woodenBlockPuzzle;
+    
+
+
+
     private void Awake()
     {
         if (rend != null)
@@ -173,8 +183,18 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         }
     }
 
+
+
+    public void EnterWoddenBlockPuzzle()
+    {
+        woodenBlockPuzzle.EnterWoodenPuzzleMode();
+        Debug.Log("Wchodzis do wodden block puzzle!");
+    }
+
     public void PushFurniture()
     {
+        movableBlock.TakeControlOfTheThiBlock();
+
         Debug.Log("pchnij mebel");
     }
 
