@@ -56,4 +56,5 @@ public enum ItemID
     MorseAndGlifsBook = 53,
     Papyrus = 54,
     DiamondKey = 55,
+    PapyrusTrianglePuzzle = 56,
 }

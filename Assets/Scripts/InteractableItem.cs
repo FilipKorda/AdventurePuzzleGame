@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
@@ -10,7 +11,7 @@ using static Unity.Collections.AllocatorManager;
 public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpenable, IReadable, IPressable,
     IPlaceable, ILockPick, IFillable, IPickupARenewableItem, IAlchemyStation, IReadableAndInteractable, IRecipePlaceable,
     IGetObject, ICrafting, IPinNumber, IRotate, ICryptex, IMirror, IGearLock, IGearRotate, IGear90, IPipeGearPuzzle,
-    IFurniture, IWoodenBlockPuzzle, IWoodenBlock
+    IFurniture, IWoodenBlockPuzzle, IWoodenBlock, ITrianglePuzzle
 {
     public enum InteractableType
     {
@@ -38,7 +39,8 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         PipeGearPuzzle,
         Furniture,
         WoodenBlockPuzzle,
-        WoodenBlock
+        WoodenBlock,
+        TrianglePuzzle,
     }
 
     public InteractableType interactableType;
@@ -186,6 +188,10 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     [Header("Sword Puzzle")]
     [SerializeField] private SwordPuzzle swordPuzzle;
 
+    [Header("Triangle Puzzle")]
+    [SerializeField] private TriangleEnum triangleEnum;
+    [SerializeField] private TrianglePuzzleManager puzzleManager;
+
     private void Awake()
     {
         if (rend != null)
@@ -193,11 +199,17 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
             baseColor = rend.material.color;
         }
 
-        if(interactableType == InteractableType.WoodenBlock)
+        if (interactableType == InteractableType.WoodenBlock)
         {
             startPosition = transform.position;
         }
-       
+
+    }
+    public void ClickTriangleButton()
+    {
+        puzzleManager.PressedTriangle(triangleEnum);
+        animator.SetTrigger("Interact");
+        //Services.Audio.PlaySFX("WallButtonPress");
     }
 
     public void OnClick()
@@ -333,7 +345,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         currentGearIndex = (currentGearIndex + 1) % 12;
 
         StartCoroutine(RotateGearSmoothly());
-      
+
     }
 
     IEnumerator RotateGearSmoothly()
@@ -971,7 +983,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
                     Services.Audio.PlayOnLoopSFX("FirePlayOnLoop");
 
                 }
-                else if(selectedId == 52)
+                else if (selectedId == 52)
                 {
                     swordPuzzle.CheckSwordStatus();
                     Services.Audio.PlaySFX("PlaceObject");

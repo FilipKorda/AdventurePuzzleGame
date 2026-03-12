@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -81,6 +80,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject woodenPuzzlePanel;
     [SerializeField] private GameObject papytusPuzzleWoodenPuzzleSolve;
 
+    [Header("Triangle Puzzle")]
+    [SerializeField] private GameObject papyrusTrianglePuzzle;
 
     public void EnableWoodenPuzzlePanel()
     {
@@ -336,11 +337,28 @@ public class UIManager : MonoBehaviour
             case ItemID.Papyrus:
                 ReadBookPapyrus();
                 break;
+            case ItemID.PapyrusTrianglePuzzle:
+                ReadBookPapyrusTrianglePuzzle();
+                break;
         }
 
         Services.Audio.PlaySFX("ReadBook");
     }
 
+
+    private void ReadBookPapyrusTrianglePuzzle()
+    {
+        bool isOpen = papyrusTrianglePuzzle.activeSelf;
+        papyrusTrianglePuzzle.SetActive(!isOpen);
+        if (!isOpen)
+        {
+            papyrusTrianglePuzzle.SetActive(true);
+        }
+        else
+        {
+            papyrusTrianglePuzzle.SetActive(false);
+        }
+    }
 
     private void ReadBookPapyrus()
     {

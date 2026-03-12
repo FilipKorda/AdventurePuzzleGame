@@ -71,6 +71,8 @@ public class InteractableItemEditor : Editor
     private SerializedProperty duration;
 
     private SerializedProperty swordPuzzle;
+    private SerializedProperty triangleEnum;
+    private SerializedProperty puzzleManager;
 
     private void OnEnable()
     {
@@ -141,6 +143,8 @@ public class InteractableItemEditor : Editor
         duration = serializedObject.FindProperty("duration");
 
         swordPuzzle = serializedObject.FindProperty("swordPuzzle");
+        triangleEnum = serializedObject.FindProperty("triangleEnum");
+        puzzleManager = serializedObject.FindProperty("puzzleManager");
        
     }
 
@@ -323,6 +327,13 @@ public class InteractableItemEditor : Editor
                 EditorGUILayout.PropertyField(rend, new GUIContent("Renderer"));
                 EditorGUILayout.PropertyField(itemIdProp, new GUIContent("id"));
                 break;
+
+            case InteractableItem.InteractableType.TrianglePuzzle:
+                EditorGUILayout.PropertyField(triangleEnum, new GUIContent("Triangle Enum"));
+                EditorGUILayout.PropertyField(animatorProp, new GUIContent("Animator"));
+                EditorGUILayout.PropertyField(puzzleManager, new GUIContent("Puzzle Manager"));
+                break;
+
                 
         }
 

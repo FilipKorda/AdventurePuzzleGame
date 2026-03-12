@@ -1,0 +1,4 @@
+interface ITrianglePuzzle
+{
+    void ClickTriangleButton();
+}
