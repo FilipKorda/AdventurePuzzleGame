@@ -107,6 +107,10 @@ MonoBehaviour:
       kodu do niego i zatwierdzeniu go brama powinna sie otworzy\u0107."
     m_Metadata:
       m_Items: []
+  - m_Id: 14068277179600896
+    m_Localized: "cos tu bedzie ze wieksze liternki s\u0105 "
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

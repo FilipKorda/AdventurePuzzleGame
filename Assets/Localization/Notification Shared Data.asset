@@ -123,6 +123,14 @@ MonoBehaviour:
     m_Key: Wooden Puzzle
     m_Metadata:
       m_Items: []
+  - m_Id: 13655693615976448
+    m_Key: U need a sword to Place it here
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13691247233617920
+    m_Key: U need a Diamond Key
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

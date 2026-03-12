@@ -133,6 +133,14 @@ MonoBehaviour:
       \u017Ceby wyj\u015B\u0107"
     m_Metadata:
       m_Items: []
+  - m_Id: 13655693615976448
+    m_Localized: "Potrzebujesz miecz \u017Ceby go tu postawi\u0107"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13691247233617920
+    m_Localized: Potrzebujesz diamentowy klucz
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

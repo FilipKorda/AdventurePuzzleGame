@@ -70,6 +70,8 @@ public class InteractableItemEditor : Editor
     private SerializedProperty zOffset;
     private SerializedProperty duration;
 
+    private SerializedProperty swordPuzzle;
+
     private void OnEnable()
     {
         interactableTypeProp = serializedObject.FindProperty("interactableType");
@@ -137,6 +139,8 @@ public class InteractableItemEditor : Editor
         woodenBlockPuzzle = serializedObject.FindProperty("woodenBlockPuzzle");
         zOffset = serializedObject.FindProperty("zOffset");
         duration = serializedObject.FindProperty("duration");
+
+        swordPuzzle = serializedObject.FindProperty("swordPuzzle");
        
     }
 
@@ -197,6 +201,7 @@ public class InteractableItemEditor : Editor
                 EditorGUILayout.PropertyField(objectToPlaceProp, new GUIContent("Object To Place"));
                 EditorGUILayout.PropertyField(boxColliderProp, new GUIContent("Interaction Collider"));
                 EditorGUILayout.PropertyField(localizationString, new GUIContent("Localization String"));
+                EditorGUILayout.PropertyField(swordPuzzle, new GUIContent("Sword Puzzle"));
                 EditorGUILayout.HelpBox("Wymaga przedmiotu o podanym ID, aby umieœciæ obiekt w œwiecie.", MessageType.Info);
                 break;
             case InteractableItem.InteractableType.LockPick:

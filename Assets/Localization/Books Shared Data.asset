@@ -116,6 +116,12 @@ MonoBehaviour:
     m_Key: PinPad Explanation
     m_Metadata:
       m_Items: []
+  - m_Id: 14068277179600896
+    m_Key: 'Sword Puzzle Explanation
+
+'
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

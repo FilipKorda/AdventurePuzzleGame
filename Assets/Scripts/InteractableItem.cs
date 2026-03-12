@@ -182,6 +182,10 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     bool highlighted;
     Coroutine currentRoutine;
 
+
+    [Header("Sword Puzzle")]
+    [SerializeField] private SwordPuzzle swordPuzzle;
+
     private void Awake()
     {
         if (rend != null)
@@ -966,6 +970,11 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
                     Services.Audio.PlaySFX("StartFire");
                     Services.Audio.PlayOnLoopSFX("FirePlayOnLoop");
 
+                }
+                else if(selectedId == 52)
+                {
+                    swordPuzzle.CheckSwordStatus();
+                    Services.Audio.PlaySFX("PlaceObject");
                 }
                 else
                 {

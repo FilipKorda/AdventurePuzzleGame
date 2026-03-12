@@ -56,6 +56,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: ba63f90d8844c4f4995e182266e20c23, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 92a6c8d6d3d2a44488637fd074228ed4, type: 2}
     m_RemovedComponents:
     - {fileID: -6860895033569716450, guid: ba63f90d8844c4f4995e182266e20c23, type: 3}
     m_RemovedGameObjects: []
@@ -181,6 +185,7 @@ MonoBehaviour:
   woodenBlockPuzzle: {fileID: 0}
   zOffset: 0.1
   duration: 0.5
+  swordPuzzle: {fileID: 0}
   references:
     version: 2
     RefIds: []

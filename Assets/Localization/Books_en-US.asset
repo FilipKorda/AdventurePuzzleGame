@@ -104,6 +104,10 @@ MonoBehaviour:
       and confirming it, the gate should open.
     m_Metadata:
       m_Items: []
+  - m_Id: 14068277179600896
+    m_Localized: "cos tu bedzie ze wieksze liternki s\u0105 "
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
