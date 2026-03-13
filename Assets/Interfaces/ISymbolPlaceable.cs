@@ -1,0 +1,4 @@
+interface ISymbolPlaceable
+{
+  void PlaceSymbol();
+}

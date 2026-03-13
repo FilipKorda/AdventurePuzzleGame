@@ -143,6 +143,10 @@ MonoBehaviour:
     m_Localized: U need a Diamond Key
     m_Metadata:
       m_Items: []
+  - m_Id: 14131604341673984
+    m_Localized: Find Emerald Key
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

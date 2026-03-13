@@ -190,6 +190,30 @@ MonoBehaviour:
     m_Localized: Diamentowy Klucz
     m_Metadata:
       m_Items: []
+  - m_Id: 14454583911010304
+    m_Localized: "\u015Awi\u0105tynia"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14455403700310016
+    m_Localized: "S\u0142up"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14455483404668928
+    m_Localized: Nagrobek
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14455646781198336
+    m_Localized: "Zepsuty S\u0142up"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14455751093538816
+    m_Localized: Drewniany Miecz
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14543623284871168
+    m_Localized: Szmaragdowy Klucz
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

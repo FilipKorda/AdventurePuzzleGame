@@ -19,7 +19,7 @@ public class TrianglePuzzleManager : MonoBehaviour
     };
     [SerializeField] private BoxCollider[] buttonsBoxCollider;
     private int currentStep = 0;
-
+    [SerializeField] private Animator animator;
     public void PressedTriangle(TriangleEnum pressed)
     {
         if (pressed == correctSequence[currentStep])
@@ -40,6 +40,7 @@ public class TrianglePuzzleManager : MonoBehaviour
 
     private void TrianglePuzzleWon()
     {
+        animator.SetTrigger("Open");
         currentStep = 0;
         DisableBoxCollider();
         Debug.Log("Kod poprawny – zagadka rozwiązana!");

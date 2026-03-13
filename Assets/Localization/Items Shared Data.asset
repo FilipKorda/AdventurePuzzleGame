@@ -187,6 +187,30 @@ MonoBehaviour:
     m_Key: DiamondKey
     m_Metadata:
       m_Items: []
+  - m_Id: 14454583911010304
+    m_Key: Shrine
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14455403700310016
+    m_Key: Pillar Symbol
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14455483404668928
+    m_Key: Grave
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14455646781198336
+    m_Key: BrokenPillar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14455751093538816
+    m_Key: Symbol Sword
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14543623284871168
+    m_Key: Emeralnd Key
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

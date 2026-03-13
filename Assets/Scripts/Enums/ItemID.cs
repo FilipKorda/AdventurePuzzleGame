@@ -57,4 +57,10 @@ public enum ItemID
     Papyrus = 54,
     DiamondKey = 55,
     PapyrusTrianglePuzzle = 56,
+    Shrine = 57,
+    SymbolPillar = 58,
+    Grave = 59,
+    BrokenPillar = 60,
+    SymbolSword = 61,
+    EmeralndKey = 62
 }

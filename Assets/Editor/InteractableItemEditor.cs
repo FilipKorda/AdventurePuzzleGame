@@ -74,6 +74,14 @@ public class InteractableItemEditor : Editor
     private SerializedProperty triangleEnum;
     private SerializedProperty puzzleManager;
 
+    private SerializedProperty shrine;
+    private SerializedProperty pillar;
+    private SerializedProperty grave;
+    private SerializedProperty brokenPillar;
+    private SerializedProperty woodenSword;
+    private SerializedProperty isSymbolPlace;
+    private SerializedProperty clockSymbolsManager;
+
     private void OnEnable()
     {
         interactableTypeProp = serializedObject.FindProperty("interactableType");
@@ -145,6 +153,14 @@ public class InteractableItemEditor : Editor
         swordPuzzle = serializedObject.FindProperty("swordPuzzle");
         triangleEnum = serializedObject.FindProperty("triangleEnum");
         puzzleManager = serializedObject.FindProperty("puzzleManager");
+
+        shrine = serializedObject.FindProperty("shrine");
+        pillar = serializedObject.FindProperty("pillar");
+        grave = serializedObject.FindProperty("grave");
+        brokenPillar = serializedObject.FindProperty("brokenPillar");
+        woodenSword = serializedObject.FindProperty("woodenSword");
+        isSymbolPlace = serializedObject.FindProperty("isSymbolPlace");
+        clockSymbolsManager = serializedObject.FindProperty("clockSymbolsManager");
        
     }
 
@@ -173,6 +189,7 @@ public class InteractableItemEditor : Editor
                 EditorGUILayout.PropertyField(localizeItemName, new GUIContent("Localize Item Name"));
                 EditorGUILayout.PropertyField(localizationString, new GUIContent("Localization String"));
                 EditorGUILayout.PropertyField(itemIdbyItemId, new GUIContent("Item Id Enum"));
+                EditorGUILayout.PropertyField(isSymbolPlace, new GUIContent("Is Symbol Place"));
                 EditorGUILayout.HelpBox("To jest ID tego przedmiotu, gdy znajdzie siê w ekwipunku.", MessageType.Info);
                 break;
 
@@ -334,6 +351,15 @@ public class InteractableItemEditor : Editor
                 EditorGUILayout.PropertyField(puzzleManager, new GUIContent("Puzzle Manager"));
                 break;
 
+            case InteractableItem.InteractableType.SymbolPlaceable:
+                EditorGUILayout.PropertyField(shrine, new GUIContent("Shrine"));
+                EditorGUILayout.PropertyField(pillar, new GUIContent("Pillar"));
+                EditorGUILayout.PropertyField(grave, new GUIContent("Grave"));
+                EditorGUILayout.PropertyField(brokenPillar, new GUIContent("Broken Pillar"));
+                EditorGUILayout.PropertyField(woodenSword, new GUIContent("Wooden Sword"));
+                EditorGUILayout.PropertyField(clockSymbolsManager, new GUIContent("Clock Symbols Manager"));
+                
+                break;
                 
         }
 

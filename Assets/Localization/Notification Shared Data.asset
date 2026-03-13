@@ -131,6 +131,10 @@ MonoBehaviour:
     m_Key: U need a Diamond Key
     m_Metadata:
       m_Items: []
+  - m_Id: 14131604341673984
+    m_Key: Find Emerald Key
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

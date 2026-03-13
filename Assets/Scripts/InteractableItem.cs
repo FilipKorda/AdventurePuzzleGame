@@ -11,7 +11,7 @@ using static Unity.Collections.AllocatorManager;
 public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpenable, IReadable, IPressable,
     IPlaceable, ILockPick, IFillable, IPickupARenewableItem, IAlchemyStation, IReadableAndInteractable, IRecipePlaceable,
     IGetObject, ICrafting, IPinNumber, IRotate, ICryptex, IMirror, IGearLock, IGearRotate, IGear90, IPipeGearPuzzle,
-    IFurniture, IWoodenBlockPuzzle, IWoodenBlock, ITrianglePuzzle
+    IFurniture, IWoodenBlockPuzzle, IWoodenBlock, ITrianglePuzzle, ISymbolPlaceable
 {
     public enum InteractableType
     {
@@ -41,6 +41,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         WoodenBlockPuzzle,
         WoodenBlock,
         TrianglePuzzle,
+        SymbolPlaceable
     }
 
     public InteractableType interactableType;
@@ -192,6 +193,15 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     [SerializeField] private TriangleEnum triangleEnum;
     [SerializeField] private TrianglePuzzleManager puzzleManager;
 
+    [Header("Symbol Place Objects")]
+    [SerializeField] private GameObject shrine;
+    [SerializeField] private GameObject pillar;
+    [SerializeField] private GameObject grave;
+    [SerializeField] private GameObject brokenPillar;
+    [SerializeField] private GameObject woodenSword;
+    [SerializeField] private bool isSymbolPlace = false;
+    [SerializeField] private ClockSymbolsManager clockSymbolsManager;
+
     private void Awake()
     {
         if (rend != null)
@@ -205,11 +215,46 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         }
 
     }
+
+    public void PlaceSymbol()
+    {
+        int currentSelectedId = UIManager.Instance.GetSelectedItemId();
+        if (currentSelectedId == 0)
+        {
+            Debug.Log("Nie wybrano ¿adnego przedmiotu do u¿ycia.");
+            return;
+        }
+
+        switch ((ItemID)currentSelectedId)
+        {
+            case ItemID.Shrine:
+                shrine.SetActive(true);
+                break;
+            case ItemID.SymbolPillar:
+                pillar.SetActive(true);
+                break;
+            case ItemID.Grave:
+                grave.SetActive(true);
+                break;
+            case ItemID.BrokenPillar:
+                brokenPillar.SetActive(true);
+                break;
+            case ItemID.SymbolSword:
+                woodenSword.SetActive(true);
+                break;
+        }
+
+        Services.Audio.PlaySFX("PlaceObject");
+        clockSymbolsManager.CheckAllClockSymbols();
+        Inventory.Instance.RemoveItemFromInventoryByID(currentSelectedId);
+        UIManager.Instance.RemoveItemFromUIByID(currentSelectedId);
+    }
+
     public void ClickTriangleButton()
     {
         puzzleManager.PressedTriangle(triangleEnum);
         animator.SetTrigger("Interact");
-        //Services.Audio.PlaySFX("WallButtonPress");
+        Services.Audio.PlaySFX("WallButtonPress");
     }
 
     public void OnClick()
@@ -808,7 +853,16 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
             if (added)
             {
                 Services.Audio.PlaySFX("PickUpItem");
-                DestroyInteractable();
+
+                if(isSymbolPlace)
+                {
+                    DisableThisGameObject();
+                }
+                else
+                {
+                    DestroyInteractable();
+                }
+         
             }
             else
             {

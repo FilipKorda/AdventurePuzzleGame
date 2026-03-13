@@ -19,6 +19,7 @@ public class UIManager : MonoBehaviour
     public LockPickPanel lockPickPanel;
     private List<ItemSlot> itemSlots = new();
     private int selectedItemId = -1;
+    [SerializeField] private Canvas blurCanvas;
 
     [Header("Inventory Settings")]
     [SerializeField] private int maxVisibleSlots = 5;
@@ -62,6 +63,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject bookPage6;
     private int currentPage = 0;
     private GameObject[] pages;
+
+
+    [Header("Inspect Object")]
+    [SerializeField] private InputActionReference inspectObjectInput;
+    [SerializeField] private InspectSymbolObject inspectSymbolObject;
 
     [Header("Mirror UI")]
     [SerializeField] private GameObject mirrorInputPanel;
@@ -233,6 +239,12 @@ public class UIManager : MonoBehaviour
             readBookAction.action.performed += OnReadBookPerformed;
         }
 
+        if (inspectObjectInput != null)
+        {
+            inspectObjectInput.action.Enable();
+            inspectObjectInput.action.performed += InspectObejct;
+        }
+
         if (nextPageAction != null)
             nextPageAction.action.performed += OnNextPage;
 
@@ -277,6 +289,12 @@ public class UIManager : MonoBehaviour
             readBookAction.action.Disable();
         }
 
+        if (inspectObjectInput != null)
+        {
+            inspectObjectInput.action.performed -= InspectObejct;
+            inspectObjectInput.action.Disable();
+        }
+
         if (nextPageAction != null)
             nextPageAction.action.performed -= OnNextPage;
 
@@ -318,6 +336,76 @@ public class UIManager : MonoBehaviour
         morseAndGlifsBook.SetActive(false);
         drinkOrEatPanel.SetActive(false);
         papytusPuzzleWoodenPuzzleSolve.SetActive(false);
+    }
+
+    private void InspectObejct(InputAction.CallbackContext context)
+    {
+        int currentSelectedId = GetSelectedItemId();
+        if (currentSelectedId == 0)
+        {
+            Debug.Log("Nie wybrano ¿adnego przedmiotu do u¿ycia.");
+            return;
+        }
+
+        switch ((ItemID)currentSelectedId)
+        {
+            case ItemID.Shrine:
+                InspectShrine();
+                break;
+            case ItemID.SymbolPillar:
+                InspectSymbolPillar();
+                break;
+            case ItemID.Grave:
+                InspectGrave();
+                break;
+            case ItemID.BrokenPillar:
+                InspectBrokenPillar();
+                break;
+            case ItemID.SymbolSword:
+                InspectSymbolSword();
+                break;
+        }
+
+        ToggleBlurCanvasAndInspectedObject();
+      
+        // Services.Audio.PlaySFX("ReadBook");
+    }
+
+    private void InspectShrine()
+    {
+        inspectSymbolObject.ShowShrineObject();
+    }
+    private void InspectSymbolPillar()
+    {
+        inspectSymbolObject.ShowPillarObject();
+    }
+    private void InspectGrave()
+    {
+        inspectSymbolObject.ShowGraveObject();
+    }
+    private void InspectBrokenPillar()
+    {
+        inspectSymbolObject.ShowBrokenPillarObject();
+    }
+    private void InspectSymbolSword()
+    {
+        inspectSymbolObject.ShowWoodenSwordObject();
+    }
+
+    private void ToggleBlurCanvasAndInspectedObject()
+    {
+        bool isOpen = blurCanvas.gameObject.activeSelf;
+        blurCanvas.gameObject.SetActive(!isOpen);
+        if (!isOpen)
+        {
+            inspectSymbolObject.DisablePlayerLook();
+            blurCanvas.gameObject.SetActive(true);
+        }
+        else
+        {
+            inspectSymbolObject.HideCurrentObject();
+            blurCanvas.gameObject.SetActive(false);
+        }
     }
 
     private void OnReadBookPerformed(InputAction.CallbackContext context)
@@ -573,7 +661,8 @@ public class UIManager : MonoBehaviour
     private void OnDropItemPerformed(InputAction.CallbackContext context)
     {
         if (readableAndInteractablePanel != null && readableAndInteractablePanel.gameObject.activeInHierarchy
-            || gameModeLockPickPanel.activeInHierarchy || morseAndGlifsBook.activeInHierarchy || gearModePanel.activeInHierarchy || papytusPuzzleWoodenPuzzleSolve.activeInHierarchy)
+            || gameModeLockPickPanel.activeInHierarchy || morseAndGlifsBook.activeInHierarchy || gearModePanel.activeInHierarchy
+            || papytusPuzzleWoodenPuzzleSolve.activeInHierarchy || blurCanvas.gameObject.activeInHierarchy)
         {
             Debug.Log("Nie mo¿na wyrzuciæ przedmiotu podczas przegl¹dania czytanej strony.");
             return;

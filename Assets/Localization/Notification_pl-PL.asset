@@ -141,6 +141,10 @@ MonoBehaviour:
     m_Localized: Potrzebujesz diamentowy klucz
     m_Metadata:
       m_Items: []
+  - m_Id: 14131604341673984
+    m_Localized: "Znajd\u017A szmaragdowy klucz"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
