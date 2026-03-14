@@ -82,6 +82,18 @@ public class InteractableItemEditor : Editor
     private SerializedProperty isSymbolPlace;
     private SerializedProperty clockSymbolsManager;
 
+    private SerializedProperty objectA;
+    private SerializedProperty objectB;
+    private SerializedProperty moveDistanceMovingBlockPuzzle;
+    private SerializedProperty moveSpeedMovingBlockPuzzle;
+    private SerializedProperty obstacleMask;
+    private SerializedProperty rayLengthMovingBlockPuzzle;
+    private SerializedProperty movingBlockPuzzleManager;
+
+    private SerializedProperty blockPanel;
+    private SerializedProperty ninePadPanelManager;
+
+
     private void OnEnable()
     {
         interactableTypeProp = serializedObject.FindProperty("interactableType");
@@ -161,6 +173,17 @@ public class InteractableItemEditor : Editor
         woodenSword = serializedObject.FindProperty("woodenSword");
         isSymbolPlace = serializedObject.FindProperty("isSymbolPlace");
         clockSymbolsManager = serializedObject.FindProperty("clockSymbolsManager");
+
+        objectA = serializedObject.FindProperty("objectA");
+        objectB = serializedObject.FindProperty("objectB");
+        moveDistanceMovingBlockPuzzle = serializedObject.FindProperty("moveDistanceMovingBlockPuzzle");
+        moveSpeedMovingBlockPuzzle = serializedObject.FindProperty("moveSpeedMovingBlockPuzzle");
+        obstacleMask = serializedObject.FindProperty("obstacleMask");
+        rayLengthMovingBlockPuzzle = serializedObject.FindProperty("rayLengthMovingBlockPuzzle");
+        movingBlockPuzzleManager = serializedObject.FindProperty("movingBlockPuzzleManager");
+
+        blockPanel = serializedObject.FindProperty("blockPanel");
+        ninePadPanelManager = serializedObject.FindProperty("ninePadPanelManager");
        
     }
 
@@ -357,9 +380,58 @@ public class InteractableItemEditor : Editor
                 EditorGUILayout.PropertyField(grave, new GUIContent("Grave"));
                 EditorGUILayout.PropertyField(brokenPillar, new GUIContent("Broken Pillar"));
                 EditorGUILayout.PropertyField(woodenSword, new GUIContent("Wooden Sword"));
-                EditorGUILayout.PropertyField(clockSymbolsManager, new GUIContent("Clock Symbols Manager"));
-                
+                EditorGUILayout.PropertyField(clockSymbolsManager, new GUIContent("Clock Symbols Manager"));          
                 break;
+
+            case InteractableItem.InteractableType.ArrowUp:
+                EditorGUILayout.PropertyField(objectA, new GUIContent("Object A"));
+                EditorGUILayout.PropertyField(objectB, new GUIContent("Object B"));
+                EditorGUILayout.PropertyField(moveDistanceMovingBlockPuzzle, new GUIContent("moveDistanceMovingBlockPuzzle"));
+                EditorGUILayout.PropertyField(moveSpeedMovingBlockPuzzle, new GUIContent("moveSpeedMovingBlockPuzzle"));
+                EditorGUILayout.PropertyField(obstacleMask, new GUIContent("obstacleMask"));
+                EditorGUILayout.PropertyField(rayLengthMovingBlockPuzzle, new GUIContent("rayLengthMovingBlockPuzzle"));
+                EditorGUILayout.PropertyField(movingBlockPuzzleManager, new GUIContent("movingBlockPuzzleManager"));
+                break;
+            case InteractableItem.InteractableType.ArrowDown:
+                EditorGUILayout.PropertyField(objectA, new GUIContent("Object A"));
+                EditorGUILayout.PropertyField(objectB, new GUIContent("Object B"));
+                EditorGUILayout.PropertyField(moveDistanceMovingBlockPuzzle, new GUIContent("moveDistanceMovingBlockPuzzle"));
+                EditorGUILayout.PropertyField(moveSpeedMovingBlockPuzzle, new GUIContent("moveSpeedMovingBlockPuzzle"));
+                EditorGUILayout.PropertyField(obstacleMask, new GUIContent("obstacleMask"));
+                EditorGUILayout.PropertyField(rayLengthMovingBlockPuzzle, new GUIContent("rayLengthMovingBlockPuzzle"));
+                EditorGUILayout.PropertyField(movingBlockPuzzleManager, new GUIContent("movingBlockPuzzleManager"));
+                break;
+            case InteractableItem.InteractableType.ArrowLeft:
+                EditorGUILayout.PropertyField(objectA, new GUIContent("Object A"));
+                EditorGUILayout.PropertyField(objectB, new GUIContent("Object B"));
+                EditorGUILayout.PropertyField(moveDistanceMovingBlockPuzzle, new GUIContent("moveDistanceMovingBlockPuzzle"));
+                EditorGUILayout.PropertyField(moveSpeedMovingBlockPuzzle, new GUIContent("moveSpeedMovingBlockPuzzle"));
+                EditorGUILayout.PropertyField(obstacleMask, new GUIContent("obstacleMask"));
+                EditorGUILayout.PropertyField(rayLengthMovingBlockPuzzle, new GUIContent("rayLengthMovingBlockPuzzle"));
+                EditorGUILayout.PropertyField(movingBlockPuzzleManager, new GUIContent("movingBlockPuzzleManager"));
+                break;
+            case InteractableItem.InteractableType.ArrowRight:
+                EditorGUILayout.PropertyField(objectA, new GUIContent("Object A"));
+                EditorGUILayout.PropertyField(objectB, new GUIContent("Object B"));
+                EditorGUILayout.PropertyField(moveDistanceMovingBlockPuzzle, new GUIContent("moveDistanceMovingBlockPuzzle"));
+                EditorGUILayout.PropertyField(moveSpeedMovingBlockPuzzle, new GUIContent("moveSpeedMovingBlockPuzzle"));
+                EditorGUILayout.PropertyField(obstacleMask, new GUIContent("obstacleMask"));
+                EditorGUILayout.PropertyField(rayLengthMovingBlockPuzzle, new GUIContent("rayLengthMovingBlockPuzzle"));
+                EditorGUILayout.PropertyField(movingBlockPuzzleManager, new GUIContent("movingBlockPuzzleManager"));
+                break;
+            case InteractableItem.InteractableType.PuzzlePart:
+                EditorGUILayout.PropertyField(movingBlockPuzzleManager, new GUIContent("movingBlockPuzzleManager"));
+                break;
+            case InteractableItem.InteractableType.PressWoodenButton:
+                EditorGUILayout.PropertyField(blockPanel, new GUIContent("Block Panel"));         
+                EditorGUILayout.PropertyField(ninePadPanelManager, new GUIContent("NinePadPanelManager"));
+                EditorGUILayout.PropertyField(highlightColor, new GUIContent("Highlight Color"));
+                EditorGUILayout.PropertyField(rend, new GUIContent("Renderer"));
+                break;
+            case InteractableItem.InteractableType.NinePadPanelPuzzle:
+                EditorGUILayout.PropertyField(ninePadPanelManager, new GUIContent("Nine Pad Panel Manager"));
+                break;
+
                 
         }
 

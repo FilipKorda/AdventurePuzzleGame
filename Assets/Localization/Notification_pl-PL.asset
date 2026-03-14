@@ -145,6 +145,10 @@ MonoBehaviour:
     m_Localized: "Znajd\u017A szmaragdowy klucz"
     m_Metadata:
       m_Items: []
+  - m_Id: 14413188093464576
+    m_Localized: "Znajd\u017A rure"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

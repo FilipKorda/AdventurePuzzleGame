@@ -135,6 +135,10 @@ MonoBehaviour:
     m_Key: Find Emerald Key
     m_Metadata:
       m_Items: []
+  - m_Id: 14413188093464576
+    m_Key: Find Puzzle Pipe
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

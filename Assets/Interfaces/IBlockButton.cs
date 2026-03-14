@@ -1,0 +1,4 @@
+interface IBlockButton
+{
+   void PressButton();
+}

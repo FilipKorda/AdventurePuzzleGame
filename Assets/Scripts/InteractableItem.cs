@@ -1,17 +1,16 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Localization;
-using static Unity.Collections.AllocatorManager;
 
 public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpenable, IReadable, IPressable,
     IPlaceable, ILockPick, IFillable, IPickupARenewableItem, IAlchemyStation, IReadableAndInteractable, IRecipePlaceable,
     IGetObject, ICrafting, IPinNumber, IRotate, ICryptex, IMirror, IGearLock, IGearRotate, IGear90, IPipeGearPuzzle,
-    IFurniture, IWoodenBlockPuzzle, IWoodenBlock, ITrianglePuzzle, ISymbolPlaceable
+    IFurniture, IWoodenBlockPuzzle, IWoodenBlock, ITrianglePuzzle, ISymbolPlaceable, IArrowDirection, IPuzzlePipePart,
+    IBlockButton, INinePadPanel
 {
     public enum InteractableType
     {
@@ -41,7 +40,14 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         WoodenBlockPuzzle,
         WoodenBlock,
         TrianglePuzzle,
-        SymbolPlaceable
+        SymbolPlaceable,
+        ArrowUp,
+        ArrowDown,
+        ArrowLeft,
+        ArrowRight,
+        PuzzlePart,
+        PressWoodenButton,
+        NinePadPanelPuzzle
     }
 
     public InteractableType interactableType;
@@ -131,6 +137,17 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     [SerializeField] private StatueCompasPuzzle statueCompasPuzzle;
     [SerializeField] private float rotationDuration = 0.5f;
     bool isRotating = false;
+
+    [Header("Moving Block Puzzle Arrow Direction")]
+    [SerializeField] private GameObject objectA;
+    [SerializeField] private GameObject objectB;
+    [SerializeField] private float moveDistanceMovingBlockPuzzle = 1f;
+    [SerializeField] private float moveSpeedMovingBlockPuzzle = 5f;
+    [SerializeField] private float rayLengthMovingBlockPuzzle = 0.45f;
+    [SerializeField] private LayerMask obstacleMask;
+    [SerializeField] private MovingBlockPuzzleManager movingBlockPuzzleManager;
+    private bool movingBlockIsMoving = false;
+
     public WorldDirection CurrentDirection
     {
         get
@@ -185,7 +202,6 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     bool highlighted;
     Coroutine currentRoutine;
 
-
     [Header("Sword Puzzle")]
     [SerializeField] private SwordPuzzle swordPuzzle;
 
@@ -202,6 +218,12 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     [SerializeField] private bool isSymbolPlace = false;
     [SerializeField] private ClockSymbolsManager clockSymbolsManager;
 
+    [Header("Wooden Block Button")]
+    [SerializeField] private BlockPanel blockPanel;
+    [SerializeField] private NinePadPanelManager ninePadPanelManager;
+    private bool buttonWasPressed = false;
+    public bool buttonIsPressed = false;
+
     private void Awake()
     {
         if (rend != null)
@@ -209,11 +231,165 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
             baseColor = rend.material.color;
         }
 
-        if (interactableType == InteractableType.WoodenBlock)
+        if (interactableType == InteractableType.WoodenBlock || interactableType == InteractableType.PressWoodenButton)
         {
             startPosition = transform.position;
         }
 
+    }
+
+    public void EnterNinePadPuzzle()
+    {
+        ninePadPanelManager.EnterPuzzle();
+    }
+
+    public void PressButton()
+    {
+        if (buttonWasPressed) return;
+
+        if (buttonIsPressed)
+        {
+            buttonIsPressed = false;
+            highlighted = false;
+            StartCoroutine(MoveBlockCoroutine(gameObject, Vector3.left));
+        }
+        else
+        {
+            buttonIsPressed = true;
+            highlighted = true;
+            StartCoroutine(MoveBlockCoroutine(gameObject, Vector3.right));
+        }
+
+        ninePadPanelManager.CheckIfAllButtonsArePressed();
+        blockPanel.CheckIfAllButtonsArePreesed();
+    }
+
+    private IEnumerator MoveBlockCoroutine(GameObject block, Vector3 direction)
+    {
+        //Services.Audio.PlaySFX("WallButtonPress");
+        buttonWasPressed = true;
+       
+        Vector3 start = block.transform.position;
+        Vector3 target = start + direction * 0.015f;
+
+        if (currentRoutine != null)
+            StopCoroutine(currentRoutine);
+
+        currentRoutine = StartCoroutine(MoveToColorChange());
+
+        float t = 0f;
+        while (t < 1f)
+        {
+            t += Time.deltaTime * 10f;
+            block.transform.position = Vector3.Lerp(start, target, t);
+            yield return null;
+        }
+
+        block.transform.position = target;
+        buttonWasPressed = false;
+    }
+
+    public void ResetMoveBlockPosition()
+    {
+        StopAllCoroutines();
+        transform.position = startPosition;
+        buttonIsPressed = false;
+        buttonWasPressed = false;
+    }
+
+    public void EnterPuzzlePipePart()
+    {
+        movingBlockPuzzleManager.EnterMovingBlockPuzzle();
+
+    }
+
+    public void ArrowUp()
+    {
+        TryMove(Vector3.forward);
+    }
+
+    public void ArrowDown()
+    {
+        TryMove(Vector3.back);
+    }
+
+    public void ArrowLeft()
+    {
+        TryMove(Vector3.left);
+    }
+
+    public void ArrowRight()
+    {
+        TryMove(Vector3.right);
+    }
+
+    private void TryMove(Vector3 direction)
+    {
+        if (movingBlockIsMoving) return;
+
+        if (CanMove(objectA.transform.position, direction))
+            StartCoroutine(MoveSingle(objectA, direction));
+
+        if (CanMove(objectB.transform.position, direction))
+            StartCoroutine(MoveSingle(objectB, direction));
+    }
+
+    private bool CanMove(Vector3 origin, Vector3 direction)
+    {
+        if (direction == Vector3.left || direction == Vector3.right)
+        {
+            return !Physics.Raycast(origin, direction, rayLengthMovingBlockPuzzle, obstacleMask);
+        }
+
+        if (direction == Vector3.forward)
+        {
+            return !Physics.Raycast(origin, Vector3.up, rayLengthMovingBlockPuzzle, obstacleMask);
+        }
+
+        if (direction == Vector3.back)
+        {
+            return !Physics.Raycast(origin, Vector3.down, rayLengthMovingBlockPuzzle, obstacleMask);
+        }
+
+        return true;
+    }
+
+    private IEnumerator MoveSingle(GameObject obj, Vector3 direction)
+    {
+        movingBlockIsMoving = true;
+        Vector3 start = obj.transform.localPosition;
+        Vector3 target = start + direction * moveDistanceMovingBlockPuzzle;
+
+        float t = 0f;
+
+        while (t < 1f)
+        {
+            t += Time.deltaTime * moveSpeedMovingBlockPuzzle;
+            obj.transform.localPosition = Vector3.Lerp(start, target, t);
+            yield return null;
+        }
+        movingBlockPuzzleManager.CheckCorrectPositionOfAnObjects();
+        movingBlockIsMoving = false;
+    }
+
+    private void OnDrawGizmos()
+    {
+#if UNITY_EDITOR
+        if (objectA != null)
+            DrawRays(objectA.transform.position);
+
+        if (objectB != null)
+            DrawRays(objectB.transform.position);
+#endif
+    }
+
+    private void DrawRays(Vector3 origin)
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(origin, origin + Vector3.up * rayLengthMovingBlockPuzzle);
+        Gizmos.DrawLine(origin, origin + Vector3.down * rayLengthMovingBlockPuzzle);
+        Gizmos.DrawLine(origin, origin + Vector3.left * rayLengthMovingBlockPuzzle);
+        Gizmos.DrawLine(origin, origin + Vector3.right * rayLengthMovingBlockPuzzle);
     }
 
     public void PlaceSymbol()
@@ -303,6 +479,25 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         isMovingWoodenBlock = false;
     }
 
+    IEnumerator MoveToColorChange()
+    {
+        Color fromColor = rend.material.color;
+        Color targetColor = highlighted ? highlightColor : baseColor;
+
+        float t = 0f;
+
+        while (t < 1f)
+        {
+            t += Time.deltaTime / 0.2f;
+
+            rend.material.color = Color.Lerp(fromColor, targetColor, t);
+
+            yield return null;
+        }
+
+        rend.material.color = targetColor;
+    }
+
     public void ResetblockInstant(Color baseColor)
     {
         transform.position = startPosition;
@@ -310,7 +505,12 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         moved = false;
         highlighted = false;
         isMovingWoodenBlock = false;
+    }
 
+    public void ResetColorblockInstant(Color baseColor)
+    {
+        rend.material.color = baseColor;
+        highlighted = false;
     }
 
     public void EnterWoddenBlockPuzzle()
@@ -854,7 +1054,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
             {
                 Services.Audio.PlaySFX("PickUpItem");
 
-                if(isSymbolPlace)
+                if (isSymbolPlace)
                 {
                     DisableThisGameObject();
                 }
@@ -862,7 +1062,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
                 {
                     DestroyInteractable();
                 }
-         
+
             }
             else
             {

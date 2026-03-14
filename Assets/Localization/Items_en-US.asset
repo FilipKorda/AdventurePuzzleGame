@@ -214,6 +214,10 @@ MonoBehaviour:
     m_Localized: Emeralnd Key
     m_Metadata:
       m_Items: []
+  - m_Id: 14824217503879168
+    m_Localized: Pipe
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

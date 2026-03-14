@@ -1,0 +1,4 @@
+interface INinePadPanel 
+{
+    void EnterNinePadPuzzle();
+}

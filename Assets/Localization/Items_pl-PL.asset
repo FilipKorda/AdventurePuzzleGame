@@ -214,6 +214,10 @@ MonoBehaviour:
     m_Localized: Szmaragdowy Klucz
     m_Metadata:
       m_Items: []
+  - m_Id: 14824217503879168
+    m_Localized: Rura
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -71,6 +71,15 @@ public class PlayerBehaviour : MonoBehaviour
     private ITrianglePuzzle lastITrianglePuzzle;
     private ISymbolPlaceable lastISymbolPlaceable;
 
+    private IArrowDirection lastIArrowDirection;
+    private IArrowDirection lastIArrowDirectionDown;
+    private IArrowDirection lastIArrowDirectionLeft;
+    private IArrowDirection lastIArrowDirectionRight;
+    private IPuzzlePipePart lastIPuzzlePipePart;
+
+    private IBlockButton lastIBlockButton;
+    private INinePadPanel lastINinePadPanel;
+
     private CharacterController characterController;
     private Vector2 inputMovement;
     public Vector2 inputLook;
@@ -299,6 +308,15 @@ public class PlayerBehaviour : MonoBehaviour
             lastITrianglePuzzle?.ClickTriangleButton();
             lastISymbolPlaceable?.PlaceSymbol();
 
+            lastIArrowDirection?.ArrowUp();
+            lastIArrowDirectionDown?.ArrowDown();
+            lastIArrowDirectionLeft?.ArrowLeft();
+            lastIArrowDirectionRight?.ArrowRight();
+            lastIPuzzlePipePart?.EnterPuzzlePipePart();
+
+            lastIBlockButton?.PressButton();
+            lastINinePadPanel?.EnterNinePadPuzzle();
+
             if (lastIOpenable != null && lastIOpenable.IsOpen())
             {
                 lastIOpenable?.CloseObject();
@@ -465,6 +483,13 @@ public class PlayerBehaviour : MonoBehaviour
         lastIWoodenBlock = null;
         lastITrianglePuzzle = null;
         lastISymbolPlaceable = null;
+        lastIArrowDirection = null;
+        lastIArrowDirectionDown = null;
+        lastIArrowDirectionLeft = null;
+        lastIArrowDirectionRight = null;
+        lastIPuzzlePipePart = null;
+        lastIBlockButton = null;
+        lastINinePadPanel = null;
 
         bool hitBlock = Physics.Raycast(ray, out RaycastHit blockHit, raycastRange, blockRaycastLayer);
         bool hitInteractable = Physics.Raycast(ray, out RaycastHit hit, raycastRange, interactableLayer);
@@ -595,8 +620,32 @@ public class PlayerBehaviour : MonoBehaviour
                     case InteractableItem.InteractableType.TrianglePuzzle:
                         lastITrianglePuzzle = interactableObject;
                         break;
+
                     case InteractableItem.InteractableType.SymbolPlaceable:
                         lastISymbolPlaceable = interactableObject;
+                        break;
+
+                    case InteractableItem.InteractableType.ArrowUp:
+                        lastIArrowDirection = interactableObject;
+                        break;
+                    case InteractableItem.InteractableType.ArrowDown:
+                        lastIArrowDirectionDown = interactableObject;
+                        break;
+                    case InteractableItem.InteractableType.ArrowLeft:
+                        lastIArrowDirectionLeft = interactableObject;
+                        break;
+                    case InteractableItem.InteractableType.ArrowRight:
+                        lastIArrowDirectionRight = interactableObject;
+                        break;
+                    case InteractableItem.InteractableType.PuzzlePart:
+                        lastIPuzzlePipePart = interactableObject;
+                        break;
+                    case InteractableItem.InteractableType.PressWoodenButton:
+                        lastIBlockButton = interactableObject;
+                        break;
+
+                    case InteractableItem.InteractableType.NinePadPanelPuzzle:
+                        lastINinePadPanel = interactableObject;
                         break;
                         
                 }

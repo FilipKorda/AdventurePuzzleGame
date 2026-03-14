@@ -62,5 +62,6 @@ public enum ItemID
     Grave = 59,
     BrokenPillar = 60,
     SymbolSword = 61,
-    EmeralndKey = 62
+    EmeralndKey = 62,
+    PuzzleMovingBlockPart = 63,
 }

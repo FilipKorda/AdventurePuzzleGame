@@ -1,0 +1,4 @@
+interface IPuzzlePipePart
+{
+    void EnterPuzzlePipePart();
+}
