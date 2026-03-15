@@ -139,6 +139,10 @@ MonoBehaviour:
     m_Key: Find Puzzle Pipe
     m_Metadata:
       m_Items: []
+  - m_Id: 14728209172287488
+    m_Key: Action Blocked
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -80,6 +80,8 @@ public class PlayerBehaviour : MonoBehaviour
     private IBlockButton lastIBlockButton;
     private INinePadPanel lastINinePadPanel;
 
+    private ICircleAndSquarePuzzle lastICircleAndSquarePuzzle;
+
     private CharacterController characterController;
     private Vector2 inputMovement;
     public Vector2 inputLook;
@@ -317,6 +319,8 @@ public class PlayerBehaviour : MonoBehaviour
             lastIBlockButton?.PressButton();
             lastINinePadPanel?.EnterNinePadPuzzle();
 
+            lastICircleAndSquarePuzzle?.EnterCircleAndSquarePuzzle();
+
             if (lastIOpenable != null && lastIOpenable.IsOpen())
             {
                 lastIOpenable?.CloseObject();
@@ -490,6 +494,7 @@ public class PlayerBehaviour : MonoBehaviour
         lastIPuzzlePipePart = null;
         lastIBlockButton = null;
         lastINinePadPanel = null;
+        lastICircleAndSquarePuzzle = null;
 
         bool hitBlock = Physics.Raycast(ray, out RaycastHit blockHit, raycastRange, blockRaycastLayer);
         bool hitInteractable = Physics.Raycast(ray, out RaycastHit hit, raycastRange, interactableLayer);
@@ -643,11 +648,15 @@ public class PlayerBehaviour : MonoBehaviour
                     case InteractableItem.InteractableType.PressWoodenButton:
                         lastIBlockButton = interactableObject;
                         break;
-
                     case InteractableItem.InteractableType.NinePadPanelPuzzle:
                         lastINinePadPanel = interactableObject;
                         break;
+                    case InteractableItem.InteractableType.CircleAndSquarePuzzle:
+                        lastICircleAndSquarePuzzle = interactableObject;
+                        break;
+
                         
+
                 }
             }
 

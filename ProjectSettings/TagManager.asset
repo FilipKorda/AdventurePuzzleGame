@@ -18,8 +18,8 @@ TagManager:
   - BlockHit
   - RenderLayer
   - FurnitureBlock
-  - 
-  - 
+  - CircleAndSquareDetection
+  - PointLayer
   - 
   - 
   - 

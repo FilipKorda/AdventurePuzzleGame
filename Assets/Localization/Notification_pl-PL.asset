@@ -149,6 +149,10 @@ MonoBehaviour:
     m_Localized: "Znajd\u017A rure"
     m_Metadata:
       m_Items: []
+  - m_Id: 14728209172287488
+    m_Localized: Akcja zablokowana
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

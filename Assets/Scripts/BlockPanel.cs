@@ -11,12 +11,15 @@ public class BlockPanel : MonoBehaviour
         foreach (var interactableButton in interactableButton)
         {
             interactableButton.ResetColorblockInstant(baseColor);
+            interactableButton.ResetMoveBlockPosition();
         }
 
     }
 
     public void CheckIfAllButtonsArePreesed()
     {
+        bool allCorrect = true;
+
         for (int i = 0; i < interactableButton.Length; i++)
         {
             bool shouldBePressed = false;
@@ -32,11 +35,12 @@ public class BlockPanel : MonoBehaviour
 
             if (interactableButton[i].buttonIsPressed != shouldBePressed)
             {
-                return;
+                allCorrect = false;
+                break;
             }
         }
 
-        panelWin = true;
+        panelWin = allCorrect;
     }
 
 

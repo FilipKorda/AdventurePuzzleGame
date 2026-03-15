@@ -10,7 +10,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     IPlaceable, ILockPick, IFillable, IPickupARenewableItem, IAlchemyStation, IReadableAndInteractable, IRecipePlaceable,
     IGetObject, ICrafting, IPinNumber, IRotate, ICryptex, IMirror, IGearLock, IGearRotate, IGear90, IPipeGearPuzzle,
     IFurniture, IWoodenBlockPuzzle, IWoodenBlock, ITrianglePuzzle, ISymbolPlaceable, IArrowDirection, IPuzzlePipePart,
-    IBlockButton, INinePadPanel
+    IBlockButton, INinePadPanel, ICircleAndSquarePuzzle
 {
     public enum InteractableType
     {
@@ -47,7 +47,8 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         ArrowRight,
         PuzzlePart,
         PressWoodenButton,
-        NinePadPanelPuzzle
+        NinePadPanelPuzzle,
+        CircleAndSquarePuzzle,
     }
 
     public InteractableType interactableType;
@@ -224,6 +225,9 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     private bool buttonWasPressed = false;
     public bool buttonIsPressed = false;
 
+    [Header("Circle And Square Puzzle")]
+    [SerializeField] private CircleAndSquarePuzzle circleAndSquarePuzzle;
+
     private void Awake()
     {
         if (rend != null)
@@ -236,6 +240,12 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
             startPosition = transform.position;
         }
 
+    }
+
+
+    public void EnterCircleAndSquarePuzzle()
+    {
+        circleAndSquarePuzzle.EnterPuzzle();      
     }
 
     public void EnterNinePadPuzzle()
@@ -260,15 +270,16 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
             StartCoroutine(MoveBlockCoroutine(gameObject, Vector3.right));
         }
 
-        ninePadPanelManager.CheckIfAllButtonsArePressed();
-        blockPanel.CheckIfAllButtonsArePreesed();
+        
     }
 
     private IEnumerator MoveBlockCoroutine(GameObject block, Vector3 direction)
     {
-        //Services.Audio.PlaySFX("WallButtonPress");
+        Services.Audio.PlaySFX("WallButtonPress");
         buttonWasPressed = true;
-       
+
+        blockPanel.CheckIfAllButtonsArePreesed();
+
         Vector3 start = block.transform.position;
         Vector3 target = start + direction * 0.015f;
 
@@ -287,6 +298,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
 
         block.transform.position = target;
         buttonWasPressed = false;
+        ninePadPanelManager.CheckIfAllButtonsArePressed();
     }
 
     public void ResetMoveBlockPosition()

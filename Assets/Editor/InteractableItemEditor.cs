@@ -93,6 +93,8 @@ public class InteractableItemEditor : Editor
     private SerializedProperty blockPanel;
     private SerializedProperty ninePadPanelManager;
 
+    private SerializedProperty circleAndSquarePuzzle;
+
 
     private void OnEnable()
     {
@@ -184,6 +186,7 @@ public class InteractableItemEditor : Editor
 
         blockPanel = serializedObject.FindProperty("blockPanel");
         ninePadPanelManager = serializedObject.FindProperty("ninePadPanelManager");
+        circleAndSquarePuzzle = serializedObject.FindProperty("circleAndSquarePuzzle");
        
     }
 
@@ -431,6 +434,10 @@ public class InteractableItemEditor : Editor
             case InteractableItem.InteractableType.NinePadPanelPuzzle:
                 EditorGUILayout.PropertyField(ninePadPanelManager, new GUIContent("Nine Pad Panel Manager"));
                 break;
+            case InteractableItem.InteractableType.CircleAndSquarePuzzle:
+                EditorGUILayout.PropertyField(circleAndSquarePuzzle, new GUIContent("Circle And Square Puzzle"));
+                break;
+
 
                 
         }

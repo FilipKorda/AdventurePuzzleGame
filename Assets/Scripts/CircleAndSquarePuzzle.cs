@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class NinePadPanelManager : MonoBehaviour
+public class CircleAndSquarePuzzle : MonoBehaviour
 {
     [SerializeField] private InputActionReference thisModeInput;
     [SerializeField] private float distanceFromCamera = 1f;
@@ -11,15 +11,6 @@ public class NinePadPanelManager : MonoBehaviour
     [SerializeField] private PlayerBehaviour playerBehaviour;
     [SerializeField] private Transform point;
     [SerializeField] private BoxCollider boxCollider;
-
-    [SerializeField] private BlockPanel blockPanel;
-    [SerializeField] private BlockPanel blockPanel1;
-    [SerializeField] private BlockPanel blockPanel2;
-    [SerializeField] private BlockPanel blockPanel3;
-
-    [SerializeField] private Animator animator;
-    [SerializeField] private GameObject blockObject;
-
 
     private void OnEnable()
     {
@@ -52,11 +43,11 @@ public class NinePadPanelManager : MonoBehaviour
         playerBehaviour.disableOnlyMovement = true;
         UIManager.Instance.EnableGearModePanel();
 
-        Debug.Log("Wszedłeś w część Puzzle Pipe!");
+        Debug.Log("Wszedłeś w Puzzle!");
     }
 
     public void ExitMovingPuzzleMode()
-    {    
+    {
         boxCollider.enabled = true;
         blurCanvas.gameObject.SetActive(false);
         ResetPuzzle();
@@ -72,29 +63,7 @@ public class NinePadPanelManager : MonoBehaviour
 
     private void ResetPuzzle()
     {
-        blockPanel.ResetBlockPanel();
-        blockPanel1.ResetBlockPanel();
-        blockPanel2.ResetBlockPanel();
-        blockPanel3.ResetBlockPanel();
 
-        blockPanel.panelWin = false;
-        blockPanel1.panelWin = false;
-        blockPanel2.panelWin = false;
-        blockPanel3.panelWin = false;  
-    }
-
-    public void CheckIfAllButtonsArePressed()
-    {
-        if (blockPanel.panelWin && blockPanel1.panelWin && blockPanel2.panelWin && blockPanel3.panelWin)
-        {
-            blurCanvas.gameObject.SetActive(false);
-            ResetPuzzle();
-            gameObject.SetActive(false);
-            playerBehaviour.disableOnlyMovement = false;
-            UIManager.Instance.DisableGearModePanel();
-            animator.SetTrigger("Interact");
-            blockObject.SetActive(false);
-        }
     }
 
     private void MovePlayerToPosition()
@@ -121,7 +90,7 @@ public class NinePadPanelManager : MonoBehaviour
                      + player.up * verticalOffset
                      + player.right * -0.122f;
 
-        transform.SetPositionAndRotation(position, Quaternion.Euler(0f, 0f, 90f));
+        transform.SetPositionAndRotation(position, Quaternion.Euler(90f, 0f, 0f));
     }
 
     private IEnumerator DisablePlayerLook()
@@ -136,5 +105,4 @@ public class NinePadPanelManager : MonoBehaviour
 
         playerBehaviour.disablePlayer = false;
     }
-
 }
