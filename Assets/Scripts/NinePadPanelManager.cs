@@ -119,7 +119,7 @@ public class NinePadPanelManager : MonoBehaviour
         var position = player.position
                      + player.forward * distanceFromCamera
                      + player.up * verticalOffset
-                     + player.right * -0.122f;
+                     + player.right * 0.01f;
 
         transform.SetPositionAndRotation(position, Quaternion.Euler(0f, 0f, 90f));
     }

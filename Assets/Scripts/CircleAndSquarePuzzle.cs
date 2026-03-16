@@ -12,6 +12,11 @@ public class CircleAndSquarePuzzle : MonoBehaviour
     [SerializeField] private Transform point;
     [SerializeField] private BoxCollider boxCollider;
 
+    [SerializeField] private GameObject wheelObject;
+    [SerializeField] private PlayerPathMovement playerPathMovement;
+    [SerializeField] private PipePuzzleManager pipePuzzleManager;
+    public bool winPuzzle = false;
+
     private void OnEnable()
     {
         if (thisModeInput != null)
@@ -43,11 +48,11 @@ public class CircleAndSquarePuzzle : MonoBehaviour
         playerBehaviour.disableOnlyMovement = true;
         UIManager.Instance.EnableGearModePanel();
 
-        Debug.Log("Wszedłeś w Puzzle!");
     }
 
-    public void ExitMovingPuzzleMode()
+    public void ExitPuzzleMode()
     {
+        winPuzzle = false;
         boxCollider.enabled = true;
         blurCanvas.gameObject.SetActive(false);
         ResetPuzzle();
@@ -56,14 +61,26 @@ public class CircleAndSquarePuzzle : MonoBehaviour
         UIManager.Instance.DisableGearModePanel();
     }
 
+    public void ExitAfterWin()
+    {
+        winPuzzle = true;
+        blurCanvas.gameObject.SetActive(false);
+        gameObject.SetActive(false);
+        playerBehaviour.disableOnlyMovement = false;
+        UIManager.Instance.DisableGearModePanel();
+        pipePuzzleManager.CheckWInBothPipePuzzle();
+    }
+
     private void OnPuzzleModePerformed(InputAction.CallbackContext context)
     {
-        ExitMovingPuzzleMode();
+        ExitPuzzleMode();
     }
 
     private void ResetPuzzle()
     {
-
+        playerPathMovement.ResetToCurrentPoint();
+        winPuzzle = false;
+        wheelObject.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
     }
 
     private void MovePlayerToPosition()
@@ -90,7 +107,7 @@ public class CircleAndSquarePuzzle : MonoBehaviour
                      + player.up * verticalOffset
                      + player.right * -0.122f;
 
-        transform.SetPositionAndRotation(position, Quaternion.Euler(90f, 0f, 0f));
+        transform.SetPositionAndRotation(position, Quaternion.Euler(0f, 0f, 0f));
     }
 
     private IEnumerator DisablePlayerLook()

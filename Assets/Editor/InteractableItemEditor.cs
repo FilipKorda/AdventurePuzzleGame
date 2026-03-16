@@ -94,6 +94,7 @@ public class InteractableItemEditor : Editor
     private SerializedProperty ninePadPanelManager;
 
     private SerializedProperty circleAndSquarePuzzle;
+    private SerializedProperty playerPathMovement;
 
 
     private void OnEnable()
@@ -187,6 +188,7 @@ public class InteractableItemEditor : Editor
         blockPanel = serializedObject.FindProperty("blockPanel");
         ninePadPanelManager = serializedObject.FindProperty("ninePadPanelManager");
         circleAndSquarePuzzle = serializedObject.FindProperty("circleAndSquarePuzzle");
+        playerPathMovement = serializedObject.FindProperty("playerPathMovement");
        
     }
 
@@ -437,9 +439,12 @@ public class InteractableItemEditor : Editor
             case InteractableItem.InteractableType.CircleAndSquarePuzzle:
                 EditorGUILayout.PropertyField(circleAndSquarePuzzle, new GUIContent("Circle And Square Puzzle"));
                 break;
-
-
+            case InteractableItem.InteractableType.PlayerSphereMovement:
+                EditorGUILayout.PropertyField(playerPathMovement, new GUIContent("Player Path Movement"));
+                break;
                 
+
+
         }
 
         serializedObject.ApplyModifiedProperties();

@@ -219,6 +219,8 @@ MonoBehaviour:
   blockPanel: {fileID: 311131540812464897}
   ninePadPanelManager: {fileID: 4759664753598399404}
   buttonIsPressed: 0
+  circleAndSquarePuzzle: {fileID: 0}
+  playerPathMovement: {fileID: 0}
   references:
     version: 2
     RefIds: []
@@ -597,6 +599,8 @@ MonoBehaviour:
   blockPanel: {fileID: 311131540812464897}
   ninePadPanelManager: {fileID: 4759664753598399404}
   buttonIsPressed: 0
+  circleAndSquarePuzzle: {fileID: 0}
+  playerPathMovement: {fileID: 0}
   references:
     version: 2
     RefIds: []
@@ -819,6 +823,8 @@ MonoBehaviour:
   blockPanel: {fileID: 311131540812464897}
   ninePadPanelManager: {fileID: 4759664753598399404}
   buttonIsPressed: 0
+  circleAndSquarePuzzle: {fileID: 0}
+  playerPathMovement: {fileID: 0}
   references:
     version: 2
     RefIds: []
@@ -1020,6 +1026,8 @@ MonoBehaviour:
   blockPanel: {fileID: 815270145724492004}
   ninePadPanelManager: {fileID: 4759664753598399404}
   buttonIsPressed: 0
+  circleAndSquarePuzzle: {fileID: 0}
+  playerPathMovement: {fileID: 0}
   references:
     version: 2
     RefIds: []
@@ -1317,6 +1325,8 @@ MonoBehaviour:
   blockPanel: {fileID: 815270145724492004}
   ninePadPanelManager: {fileID: 4759664753598399404}
   buttonIsPressed: 0
+  circleAndSquarePuzzle: {fileID: 0}
+  playerPathMovement: {fileID: 0}
   references:
     version: 2
     RefIds: []
@@ -1539,6 +1549,8 @@ MonoBehaviour:
   blockPanel: {fileID: 815270145724492004}
   ninePadPanelManager: {fileID: 4759664753598399404}
   buttonIsPressed: 0
+  circleAndSquarePuzzle: {fileID: 0}
+  playerPathMovement: {fileID: 0}
   references:
     version: 2
     RefIds: []
@@ -1827,6 +1839,8 @@ MonoBehaviour:
   blockPanel: {fileID: 815270145724492004}
   ninePadPanelManager: {fileID: 4759664753598399404}
   buttonIsPressed: 0
+  circleAndSquarePuzzle: {fileID: 0}
+  playerPathMovement: {fileID: 0}
   references:
     version: 2
     RefIds: []
@@ -2070,6 +2084,8 @@ MonoBehaviour:
   blockPanel: {fileID: 311131540812464897}
   ninePadPanelManager: {fileID: 4759664753598399404}
   buttonIsPressed: 0
+  circleAndSquarePuzzle: {fileID: 0}
+  playerPathMovement: {fileID: 0}
   references:
     version: 2
     RefIds: []
@@ -2382,6 +2398,8 @@ MonoBehaviour:
   blockPanel: {fileID: 311131540812464897}
   ninePadPanelManager: {fileID: 4759664753598399404}
   buttonIsPressed: 0
+  circleAndSquarePuzzle: {fileID: 0}
+  playerPathMovement: {fileID: 0}
   references:
     version: 2
     RefIds: []
@@ -2808,6 +2826,8 @@ MonoBehaviour:
   blockPanel: {fileID: 1089837243819810377}
   ninePadPanelManager: {fileID: 4759664753598399404}
   buttonIsPressed: 0
+  circleAndSquarePuzzle: {fileID: 0}
+  playerPathMovement: {fileID: 0}
   references:
     version: 2
     RefIds: []
@@ -3030,6 +3050,8 @@ MonoBehaviour:
   blockPanel: {fileID: 1089837243819810377}
   ninePadPanelManager: {fileID: 4759664753598399404}
   buttonIsPressed: 0
+  circleAndSquarePuzzle: {fileID: 0}
+  playerPathMovement: {fileID: 0}
   references:
     version: 2
     RefIds: []
@@ -3252,6 +3274,8 @@ MonoBehaviour:
   blockPanel: {fileID: 1089837243819810377}
   ninePadPanelManager: {fileID: 4759664753598399404}
   buttonIsPressed: 0
+  circleAndSquarePuzzle: {fileID: 0}
+  playerPathMovement: {fileID: 0}
   references:
     version: 2
     RefIds: []
@@ -3645,6 +3669,8 @@ MonoBehaviour:
   blockPanel: {fileID: 311131540812464897}
   ninePadPanelManager: {fileID: 4759664753598399404}
   buttonIsPressed: 0
+  circleAndSquarePuzzle: {fileID: 0}
+  playerPathMovement: {fileID: 0}
   references:
     version: 2
     RefIds: []
@@ -3921,6 +3947,8 @@ MonoBehaviour:
   blockPanel: {fileID: 1089837243819810377}
   ninePadPanelManager: {fileID: 4759664753598399404}
   buttonIsPressed: 0
+  circleAndSquarePuzzle: {fileID: 0}
+  playerPathMovement: {fileID: 0}
   references:
     version: 2
     RefIds: []
@@ -4164,6 +4192,8 @@ MonoBehaviour:
   blockPanel: {fileID: 311131540812464897}
   ninePadPanelManager: {fileID: 4759664753598399404}
   buttonIsPressed: 0
+  circleAndSquarePuzzle: {fileID: 0}
+  playerPathMovement: {fileID: 0}
   references:
     version: 2
     RefIds: []
@@ -4431,6 +4461,8 @@ MonoBehaviour:
   blockPanel: {fileID: 815270145724492004}
   ninePadPanelManager: {fileID: 4759664753598399404}
   buttonIsPressed: 0
+  circleAndSquarePuzzle: {fileID: 0}
+  playerPathMovement: {fileID: 0}
   references:
     version: 2
     RefIds: []
@@ -4744,6 +4776,8 @@ MonoBehaviour:
   blockPanel: {fileID: 3250551426449421829}
   ninePadPanelManager: {fileID: 4759664753598399404}
   buttonIsPressed: 0
+  circleAndSquarePuzzle: {fileID: 0}
+  playerPathMovement: {fileID: 0}
   references:
     version: 2
     RefIds: []
@@ -4966,6 +5000,8 @@ MonoBehaviour:
   blockPanel: {fileID: 3250551426449421829}
   ninePadPanelManager: {fileID: 4759664753598399404}
   buttonIsPressed: 0
+  circleAndSquarePuzzle: {fileID: 0}
+  playerPathMovement: {fileID: 0}
   references:
     version: 2
     RefIds: []
@@ -5292,6 +5328,8 @@ MonoBehaviour:
   blockPanel: {fileID: 815270145724492004}
   ninePadPanelManager: {fileID: 4759664753598399404}
   buttonIsPressed: 0
+  circleAndSquarePuzzle: {fileID: 0}
+  playerPathMovement: {fileID: 0}
   references:
     version: 2
     RefIds: []
@@ -5605,6 +5643,8 @@ MonoBehaviour:
   blockPanel: {fileID: 1089837243819810377}
   ninePadPanelManager: {fileID: 4759664753598399404}
   buttonIsPressed: 0
+  circleAndSquarePuzzle: {fileID: 0}
+  playerPathMovement: {fileID: 0}
   references:
     version: 2
     RefIds: []
@@ -5893,6 +5933,8 @@ MonoBehaviour:
   blockPanel: {fileID: 1089837243819810377}
   ninePadPanelManager: {fileID: 4759664753598399404}
   buttonIsPressed: 0
+  circleAndSquarePuzzle: {fileID: 0}
+  playerPathMovement: {fileID: 0}
   references:
     version: 2
     RefIds: []
@@ -6150,6 +6192,8 @@ MonoBehaviour:
   blockPanel: {fileID: 1089837243819810377}
   ninePadPanelManager: {fileID: 4759664753598399404}
   buttonIsPressed: 0
+  circleAndSquarePuzzle: {fileID: 0}
+  playerPathMovement: {fileID: 0}
   references:
     version: 2
     RefIds: []
@@ -6304,8 +6348,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NinePadPanelManager
   thisModeInput: {fileID: 3475270370872013686, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  distanceFromCamera: 1
-  verticalOffset: 1
+  distanceFromCamera: 0.8
+  verticalOffset: 0.9
   blurCanvas: {fileID: 0}
   playerBehaviour: {fileID: 0}
   point: {fileID: 0}
@@ -6314,6 +6358,8 @@ MonoBehaviour:
   blockPanel1: {fileID: 1089837243819810377}
   blockPanel2: {fileID: 815270145724492004}
   blockPanel3: {fileID: 3250551426449421829}
+  animator: {fileID: 0}
+  blockObject: {fileID: 0}
 --- !u!1 &6389437971709663800
 GameObject:
   m_ObjectHideFlags: 0
@@ -6512,6 +6558,8 @@ MonoBehaviour:
   blockPanel: {fileID: 3250551426449421829}
   ninePadPanelManager: {fileID: 4759664753598399404}
   buttonIsPressed: 0
+  circleAndSquarePuzzle: {fileID: 0}
+  playerPathMovement: {fileID: 0}
   references:
     version: 2
     RefIds: []
@@ -6734,6 +6782,8 @@ MonoBehaviour:
   blockPanel: {fileID: 3250551426449421829}
   ninePadPanelManager: {fileID: 4759664753598399404}
   buttonIsPressed: 0
+  circleAndSquarePuzzle: {fileID: 0}
+  playerPathMovement: {fileID: 0}
   references:
     version: 2
     RefIds: []
@@ -7156,6 +7206,8 @@ MonoBehaviour:
   blockPanel: {fileID: 311131540812464897}
   ninePadPanelManager: {fileID: 4759664753598399404}
   buttonIsPressed: 0
+  circleAndSquarePuzzle: {fileID: 0}
+  playerPathMovement: {fileID: 0}
   references:
     version: 2
     RefIds: []
@@ -7357,6 +7409,8 @@ MonoBehaviour:
   blockPanel: {fileID: 1089837243819810377}
   ninePadPanelManager: {fileID: 4759664753598399404}
   buttonIsPressed: 0
+  circleAndSquarePuzzle: {fileID: 0}
+  playerPathMovement: {fileID: 0}
   references:
     version: 2
     RefIds: []
@@ -7690,6 +7744,8 @@ MonoBehaviour:
   blockPanel: {fileID: 311131540812464897}
   ninePadPanelManager: {fileID: 4759664753598399404}
   buttonIsPressed: 0
+  circleAndSquarePuzzle: {fileID: 0}
+  playerPathMovement: {fileID: 0}
   references:
     version: 2
     RefIds: []
@@ -8354,6 +8410,8 @@ MonoBehaviour:
   blockPanel: {fileID: 815270145724492004}
   ninePadPanelManager: {fileID: 4759664753598399404}
   buttonIsPressed: 0
+  circleAndSquarePuzzle: {fileID: 0}
+  playerPathMovement: {fileID: 0}
   references:
     version: 2
     RefIds: []
@@ -8742,6 +8800,8 @@ MonoBehaviour:
   blockPanel: {fileID: 1089837243819810377}
   ninePadPanelManager: {fileID: 4759664753598399404}
   buttonIsPressed: 0
+  circleAndSquarePuzzle: {fileID: 0}
+  playerPathMovement: {fileID: 0}
   references:
     version: 2
     RefIds: []
@@ -8964,6 +9024,8 @@ MonoBehaviour:
   blockPanel: {fileID: 3250551426449421829}
   ninePadPanelManager: {fileID: 4759664753598399404}
   buttonIsPressed: 0
+  circleAndSquarePuzzle: {fileID: 0}
+  playerPathMovement: {fileID: 0}
   references:
     version: 2
     RefIds: []
@@ -9186,6 +9248,8 @@ MonoBehaviour:
   blockPanel: {fileID: 815270145724492004}
   ninePadPanelManager: {fileID: 4759664753598399404}
   buttonIsPressed: 0
+  circleAndSquarePuzzle: {fileID: 0}
+  playerPathMovement: {fileID: 0}
   references:
     version: 2
     RefIds: []
@@ -9408,6 +9472,8 @@ MonoBehaviour:
   blockPanel: {fileID: 3250551426449421829}
   ninePadPanelManager: {fileID: 4759664753598399404}
   buttonIsPressed: 0
+  circleAndSquarePuzzle: {fileID: 0}
+  playerPathMovement: {fileID: 0}
   references:
     version: 2
     RefIds: []
@@ -9705,6 +9771,8 @@ MonoBehaviour:
   blockPanel: {fileID: 3250551426449421829}
   ninePadPanelManager: {fileID: 4759664753598399404}
   buttonIsPressed: 0
+  circleAndSquarePuzzle: {fileID: 0}
+  playerPathMovement: {fileID: 0}
   references:
     version: 2
     RefIds: []
@@ -9927,6 +9995,8 @@ MonoBehaviour:
   blockPanel: {fileID: 3250551426449421829}
   ninePadPanelManager: {fileID: 4759664753598399404}
   buttonIsPressed: 0
+  circleAndSquarePuzzle: {fileID: 0}
+  playerPathMovement: {fileID: 0}
   references:
     version: 2
     RefIds: []
@@ -10149,6 +10219,8 @@ MonoBehaviour:
   blockPanel: {fileID: 815270145724492004}
   ninePadPanelManager: {fileID: 4759664753598399404}
   buttonIsPressed: 0
+  circleAndSquarePuzzle: {fileID: 0}
+  playerPathMovement: {fileID: 0}
   references:
     version: 2
     RefIds: []
@@ -10371,6 +10443,8 @@ MonoBehaviour:
   blockPanel: {fileID: 3250551426449421829}
   ninePadPanelManager: {fileID: 4759664753598399404}
   buttonIsPressed: 0
+  circleAndSquarePuzzle: {fileID: 0}
+  playerPathMovement: {fileID: 0}
   references:
     version: 2
     RefIds: []

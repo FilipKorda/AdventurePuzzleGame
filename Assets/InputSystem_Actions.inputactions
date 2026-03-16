@@ -1455,6 +1455,56 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "CircleAndSquarePuzzle",
+            "id": "bb61085a-b1e2-4be3-94f3-75a3d0aadeeb",
+            "actions": [
+                {
+                    "name": "MoveSphere",
+                    "type": "Value",
+                    "id": "340328db-e187-4d94-b5de-8a1c5500ac85",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "0adc253a-30dd-411c-ada6-a026057222de",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "MoveSphere",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "60a9d17e-5c5c-4c3d-a04e-dae5546d2fbb",
+                    "path": "<Pointer>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse;Touch",
+                    "action": "MoveSphere",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a9349463-68cf-495d-b6b1-c42134920212",
+                    "path": "<Joystick>/{Hatswitch}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Joystick",
+                    "action": "MoveSphere",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

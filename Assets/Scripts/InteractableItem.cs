@@ -10,7 +10,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     IPlaceable, ILockPick, IFillable, IPickupARenewableItem, IAlchemyStation, IReadableAndInteractable, IRecipePlaceable,
     IGetObject, ICrafting, IPinNumber, IRotate, ICryptex, IMirror, IGearLock, IGearRotate, IGear90, IPipeGearPuzzle,
     IFurniture, IWoodenBlockPuzzle, IWoodenBlock, ITrianglePuzzle, ISymbolPlaceable, IArrowDirection, IPuzzlePipePart,
-    IBlockButton, INinePadPanel, ICircleAndSquarePuzzle
+    IBlockButton, INinePadPanel, ICircleAndSquarePuzzle, IRotateCircleAndSquarePuzzle, IPlayerSphereMovement
 {
     public enum InteractableType
     {
@@ -49,6 +49,8 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         PressWoodenButton,
         NinePadPanelPuzzle,
         CircleAndSquarePuzzle,
+        RotateCircleAndSquarePuzzle,
+        PlayerSphereMovement
     }
 
     public InteractableType interactableType;
@@ -225,8 +227,12 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     private bool buttonWasPressed = false;
     public bool buttonIsPressed = false;
 
-    [Header("Circle And Square Puzzle")]
+
     [SerializeField] private CircleAndSquarePuzzle circleAndSquarePuzzle;
+
+    [Header("Rotate Circle And Square Puzzle")]
+    private bool rotateCircleAndSquarePuzzle = false;
+    [SerializeField] private PlayerPathMovement playerPathMovement;
 
     private void Awake()
     {
@@ -242,10 +248,44 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
 
     }
 
+    public void ClickAndDrag()
+    {
+        playerPathMovement.SetClickAndDrag(true);
+    }
+
+    public void RotateCircleAndSquarePuzzle()
+    {
+        if (rotateCircleAndSquarePuzzle) return;
+        StartCoroutine(CourutineRotateCircleAndSquarePuzzle());
+        Debug.Log("Obrócono element Circle and Square Puzzle!");
+    }
+
+    public IEnumerator CourutineRotateCircleAndSquarePuzzle()
+    {
+        rotateCircleAndSquarePuzzle = true;
+        transform.GetPositionAndRotation(out Vector3 startPosition, out Quaternion startRotation);
+        Quaternion targetRotation = startRotation * Quaternion.Euler(-90f, 0f, 0f);
+
+        float time = 0f;
+        float duration = 0.3f;
+
+        while (time < duration)
+        {
+            time += Time.deltaTime;
+            transform.rotation = Quaternion.Slerp(startRotation, targetRotation, time / duration);
+            yield return null;
+        }
+
+        transform.rotation = targetRotation;
+        yield return null;
+
+        transform.position = startPosition;
+        rotateCircleAndSquarePuzzle = false;
+    }
 
     public void EnterCircleAndSquarePuzzle()
     {
-        circleAndSquarePuzzle.EnterPuzzle();      
+        circleAndSquarePuzzle.EnterPuzzle();
     }
 
     public void EnterNinePadPuzzle()
@@ -270,7 +310,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
             StartCoroutine(MoveBlockCoroutine(gameObject, Vector3.right));
         }
 
-        
+
     }
 
     private IEnumerator MoveBlockCoroutine(GameObject block, Vector3 direction)

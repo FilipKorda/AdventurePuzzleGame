@@ -20,7 +20,7 @@ public class MovingBlockPuzzleManager : MonoBehaviour
     [SerializeField] private PlayerBehaviour playerBehaviour;
     [SerializeField] private Transform point;
 
-    private bool puzzleWin = false;
+    public bool puzzleWin = false;
     [SerializeField] private Vector3 basePositionObject1;
     [SerializeField] private Vector3 basePositionObject2;
 
@@ -29,6 +29,8 @@ public class MovingBlockPuzzleManager : MonoBehaviour
     [SerializeField] private GameObject objectBAtrapa;
     [SerializeField] private Vector3 basePositionObject1Atrapa;
     [SerializeField] private Vector3 basePositionObject2Atrapa;
+    [SerializeField] private PipePuzzleManager pipePuzzleManager;
+
 
     private void OnEnable()
     {
@@ -75,6 +77,7 @@ public class MovingBlockPuzzleManager : MonoBehaviour
 
     private void ResetObjectPosition()
     {
+        puzzleWin = false;
         objectA.transform.localPosition = basePositionObject1;
         objectB.transform.localPosition = basePositionObject2;
     }
@@ -152,7 +155,7 @@ public class MovingBlockPuzzleManager : MonoBehaviour
             {
                 a.enabled = false;
             }
-
+            puzzleWin = true;
             SetObjectAtrapa();
             blurCanvas.gameObject.SetActive(false);
             ResetObjectPosition();
@@ -162,7 +165,9 @@ public class MovingBlockPuzzleManager : MonoBehaviour
 
             Debug.Log("Puzzle solved! You win!");
 
-            puzzleWin = true;
+           
+
+            pipePuzzleManager.CheckWInBothPipePuzzle();
         }
 
     }

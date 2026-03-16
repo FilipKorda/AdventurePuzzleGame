@@ -13,6 +13,8 @@ public class PipeGearPuzzle : MonoBehaviour
     [SerializeField] private PlayerBehaviour playerBehaviour;
     [SerializeField] private Transform point;
     [SerializeField] private BoxCollider pipeGearPuzzleCollider;
+    [SerializeField] private PipePuzzleManager pipePuzzleManager;
+    public bool puzzleWin = false;
 
     private void OnEnable()
     {
@@ -118,6 +120,8 @@ public class PipeGearPuzzle : MonoBehaviour
             gear.transform.localRotation = Quaternion.identity;
         }
 
+        puzzleWin = false;
+
     }
 
     public void CheckIfPuzzleSolved()
@@ -148,19 +152,20 @@ public class PipeGearPuzzle : MonoBehaviour
 
     private void SolvePuzzle()
     {
-        StartCoroutine(CourutineSolvePuzzle());    
+        StartCoroutine(CourutineSolvePuzzle());
     }
 
     private IEnumerator CourutineSolvePuzzle()
     {
         Services.Audio.PlaySFX("AfterGearPuzzleSolved");
 
+        puzzleWin = true;
         yield return new WaitForSeconds(0.5f);
-
+        pipePuzzleManager.CheckWInBothPipePuzzle();
         blurCanvas.gameObject.SetActive(false);
         gameObject.SetActive(false);
         playerBehaviour.disableOnlyMovement = false;
-        UIManager.Instance.DisableGearModePanel();   
+        UIManager.Instance.DisableGearModePanel();
     }
 
 }

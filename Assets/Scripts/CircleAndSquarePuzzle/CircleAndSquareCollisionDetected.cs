@@ -19,6 +19,15 @@ public class CircleAndSquareCollisionDetected : MonoBehaviour
         collisionDetected = true;
     }
 
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collisionDetected) return;
+        if ((targetLayer.value & (1 << collision.gameObject.layer)) == 0) return;
+
+        SetBool(true);
+        collisionDetected = true;
+    }
+
     private void OnCollisionExit(Collision collision)
     {
         if (!collisionDetected) return;

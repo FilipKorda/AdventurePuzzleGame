@@ -1,0 +1,5 @@
+
+interface IRotateCircleAndSquarePuzzle
+{
+    void RotateCircleAndSquarePuzzle();
+}

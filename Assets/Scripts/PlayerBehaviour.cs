@@ -81,6 +81,8 @@ public class PlayerBehaviour : MonoBehaviour
     private INinePadPanel lastINinePadPanel;
 
     private ICircleAndSquarePuzzle lastICircleAndSquarePuzzle;
+    private IRotateCircleAndSquarePuzzle lastIRotateCircleAndSquarePuzzle;
+    private IPlayerSphereMovement lastIPlayerSphereMovement;
 
     private CharacterController characterController;
     private Vector2 inputMovement;
@@ -320,6 +322,8 @@ public class PlayerBehaviour : MonoBehaviour
             lastINinePadPanel?.EnterNinePadPuzzle();
 
             lastICircleAndSquarePuzzle?.EnterCircleAndSquarePuzzle();
+            lastIRotateCircleAndSquarePuzzle?.RotateCircleAndSquarePuzzle();
+            lastIPlayerSphereMovement?.ClickAndDrag();
 
             if (lastIOpenable != null && lastIOpenable.IsOpen())
             {
@@ -495,6 +499,8 @@ public class PlayerBehaviour : MonoBehaviour
         lastIBlockButton = null;
         lastINinePadPanel = null;
         lastICircleAndSquarePuzzle = null;
+        lastIRotateCircleAndSquarePuzzle = null;
+        lastIPlayerSphereMovement = null;
 
         bool hitBlock = Physics.Raycast(ray, out RaycastHit blockHit, raycastRange, blockRaycastLayer);
         bool hitInteractable = Physics.Raycast(ray, out RaycastHit hit, raycastRange, interactableLayer);
@@ -654,8 +660,14 @@ public class PlayerBehaviour : MonoBehaviour
                     case InteractableItem.InteractableType.CircleAndSquarePuzzle:
                         lastICircleAndSquarePuzzle = interactableObject;
                         break;
+                    case InteractableItem.InteractableType.RotateCircleAndSquarePuzzle:
+                        lastIRotateCircleAndSquarePuzzle = interactableObject;
+                        break;
+                    case InteractableItem.InteractableType.PlayerSphereMovement:
+                        lastIPlayerSphereMovement = interactableObject;
+                        break;
 
-                        
+
 
                 }
             }

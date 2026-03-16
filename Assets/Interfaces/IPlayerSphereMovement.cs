@@ -1,0 +1,5 @@
+
+interface IPlayerSphereMovement 
+{
+    void ClickAndDrag();
+}

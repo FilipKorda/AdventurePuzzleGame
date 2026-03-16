@@ -1541,6 +1541,56 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""CircleAndSquarePuzzle"",
+            ""id"": ""bb61085a-b1e2-4be3-94f3-75a3d0aadeeb"",
+            ""actions"": [
+                {
+                    ""name"": ""MoveSphere"",
+                    ""type"": ""Value"",
+                    ""id"": ""340328db-e187-4d94-b5de-8a1c5500ac85"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""0adc253a-30dd-411c-ada6-a026057222de"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""MoveSphere"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""60a9d17e-5c5c-4c3d-a04e-dae5546d2fbb"",
+                    ""path"": ""<Pointer>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse;Touch"",
+                    ""action"": ""MoveSphere"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a9349463-68cf-495d-b6b1-c42134920212"",
+                    ""path"": ""<Joystick>/{Hatswitch}"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Joystick"",
+                    ""action"": ""MoveSphere"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -1652,6 +1702,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         // Furniture
         m_Furniture = asset.FindActionMap("Furniture", throwIfNotFound: true);
         m_Furniture_Move = m_Furniture.FindAction("Move", throwIfNotFound: true);
+        // CircleAndSquarePuzzle
+        m_CircleAndSquarePuzzle = asset.FindActionMap("CircleAndSquarePuzzle", throwIfNotFound: true);
+        m_CircleAndSquarePuzzle_MoveSphere = m_CircleAndSquarePuzzle.FindAction("MoveSphere", throwIfNotFound: true);
     }
 
     ~@InputSystem_Actions()
@@ -1662,6 +1715,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         UnityEngine.Debug.Assert(!m_Mirror.enabled, "This will cause a leak and performance issues, InputSystem_Actions.Mirror.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_GearRiddle.enabled, "This will cause a leak and performance issues, InputSystem_Actions.GearRiddle.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_Furniture.enabled, "This will cause a leak and performance issues, InputSystem_Actions.Furniture.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_CircleAndSquarePuzzle.enabled, "This will cause a leak and performance issues, InputSystem_Actions.CircleAndSquarePuzzle.Disable() has not been called.");
     }
 
     /// <summary>
@@ -2617,6 +2671,102 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     /// Provides a new <see cref="FurnitureActions" /> instance referencing this action map.
     /// </summary>
     public FurnitureActions @Furniture => new FurnitureActions(this);
+
+    // CircleAndSquarePuzzle
+    private readonly InputActionMap m_CircleAndSquarePuzzle;
+    private List<ICircleAndSquarePuzzleActions> m_CircleAndSquarePuzzleActionsCallbackInterfaces = new List<ICircleAndSquarePuzzleActions>();
+    private readonly InputAction m_CircleAndSquarePuzzle_MoveSphere;
+    /// <summary>
+    /// Provides access to input actions defined in input action map "CircleAndSquarePuzzle".
+    /// </summary>
+    public struct CircleAndSquarePuzzleActions
+    {
+        private @InputSystem_Actions m_Wrapper;
+
+        /// <summary>
+        /// Construct a new instance of the input action map wrapper class.
+        /// </summary>
+        public CircleAndSquarePuzzleActions(@InputSystem_Actions wrapper) { m_Wrapper = wrapper; }
+        /// <summary>
+        /// Provides access to the underlying input action "CircleAndSquarePuzzle/MoveSphere".
+        /// </summary>
+        public InputAction @MoveSphere => m_Wrapper.m_CircleAndSquarePuzzle_MoveSphere;
+        /// <summary>
+        /// Provides access to the underlying input action map instance.
+        /// </summary>
+        public InputActionMap Get() { return m_Wrapper.m_CircleAndSquarePuzzle; }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+        public void Enable() { Get().Enable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+        public void Disable() { Get().Disable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+        public bool enabled => Get().enabled;
+        /// <summary>
+        /// Implicitly converts an <see ref="CircleAndSquarePuzzleActions" /> to an <see ref="InputActionMap" /> instance.
+        /// </summary>
+        public static implicit operator InputActionMap(CircleAndSquarePuzzleActions set) { return set.Get(); }
+        /// <summary>
+        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <param name="instance">Callback instance.</param>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+        /// </remarks>
+        /// <seealso cref="CircleAndSquarePuzzleActions" />
+        public void AddCallbacks(ICircleAndSquarePuzzleActions instance)
+        {
+            if (instance == null || m_Wrapper.m_CircleAndSquarePuzzleActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_CircleAndSquarePuzzleActionsCallbackInterfaces.Add(instance);
+            @MoveSphere.started += instance.OnMoveSphere;
+            @MoveSphere.performed += instance.OnMoveSphere;
+            @MoveSphere.canceled += instance.OnMoveSphere;
+        }
+
+        /// <summary>
+        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <remarks>
+        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+        /// </remarks>
+        /// <seealso cref="CircleAndSquarePuzzleActions" />
+        private void UnregisterCallbacks(ICircleAndSquarePuzzleActions instance)
+        {
+            @MoveSphere.started -= instance.OnMoveSphere;
+            @MoveSphere.performed -= instance.OnMoveSphere;
+            @MoveSphere.canceled -= instance.OnMoveSphere;
+        }
+
+        /// <summary>
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="CircleAndSquarePuzzleActions.UnregisterCallbacks(ICircleAndSquarePuzzleActions)" />.
+        /// </summary>
+        /// <seealso cref="CircleAndSquarePuzzleActions.UnregisterCallbacks(ICircleAndSquarePuzzleActions)" />
+        public void RemoveCallbacks(ICircleAndSquarePuzzleActions instance)
+        {
+            if (m_Wrapper.m_CircleAndSquarePuzzleActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        /// <summary>
+        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+        /// </summary>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+        /// </remarks>
+        /// <seealso cref="CircleAndSquarePuzzleActions.AddCallbacks(ICircleAndSquarePuzzleActions)" />
+        /// <seealso cref="CircleAndSquarePuzzleActions.RemoveCallbacks(ICircleAndSquarePuzzleActions)" />
+        /// <seealso cref="CircleAndSquarePuzzleActions.UnregisterCallbacks(ICircleAndSquarePuzzleActions)" />
+        public void SetCallbacks(ICircleAndSquarePuzzleActions instance)
+        {
+            foreach (var item in m_Wrapper.m_CircleAndSquarePuzzleActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_CircleAndSquarePuzzleActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    /// <summary>
+    /// Provides a new <see cref="CircleAndSquarePuzzleActions" /> instance referencing this action map.
+    /// </summary>
+    public CircleAndSquarePuzzleActions @CircleAndSquarePuzzle => new CircleAndSquarePuzzleActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     /// <summary>
     /// Provides access to the input control scheme.
@@ -2967,5 +3117,20 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnMove(InputAction.CallbackContext context);
+    }
+    /// <summary>
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "CircleAndSquarePuzzle" which allows adding and removing callbacks.
+    /// </summary>
+    /// <seealso cref="CircleAndSquarePuzzleActions.AddCallbacks(ICircleAndSquarePuzzleActions)" />
+    /// <seealso cref="CircleAndSquarePuzzleActions.RemoveCallbacks(ICircleAndSquarePuzzleActions)" />
+    public interface ICircleAndSquarePuzzleActions
+    {
+        /// <summary>
+        /// Method invoked when associated input action "MoveSphere" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnMoveSphere(InputAction.CallbackContext context);
     }
 }
