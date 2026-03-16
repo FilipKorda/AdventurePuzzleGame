@@ -84,6 +84,10 @@ public class PlayerBehaviour : MonoBehaviour
     private IRotateCircleAndSquarePuzzle lastIRotateCircleAndSquarePuzzle;
     private IPlayerSphereMovement lastIPlayerSphereMovement;
 
+    private ILibraryButton lastILibraryButton;
+
+    private ISafe lastISafe;
+
     private CharacterController characterController;
     private Vector2 inputMovement;
     public Vector2 inputLook;
@@ -325,6 +329,9 @@ public class PlayerBehaviour : MonoBehaviour
             lastIRotateCircleAndSquarePuzzle?.RotateCircleAndSquarePuzzle();
             lastIPlayerSphereMovement?.ClickAndDrag();
 
+            lastILibraryButton?.PressLibraryButton();
+            lastISafe?.EnterSafe();
+
             if (lastIOpenable != null && lastIOpenable.IsOpen())
             {
                 lastIOpenable?.CloseObject();
@@ -501,6 +508,8 @@ public class PlayerBehaviour : MonoBehaviour
         lastICircleAndSquarePuzzle = null;
         lastIRotateCircleAndSquarePuzzle = null;
         lastIPlayerSphereMovement = null;
+        lastILibraryButton = null;
+        lastISafe = null;
 
         bool hitBlock = Physics.Raycast(ray, out RaycastHit blockHit, raycastRange, blockRaycastLayer);
         bool hitInteractable = Physics.Raycast(ray, out RaycastHit hit, raycastRange, interactableLayer);
@@ -666,9 +675,13 @@ public class PlayerBehaviour : MonoBehaviour
                     case InteractableItem.InteractableType.PlayerSphereMovement:
                         lastIPlayerSphereMovement = interactableObject;
                         break;
-
-
-
+                    case InteractableItem.InteractableType.LibraryButton:
+                        lastILibraryButton = interactableObject;
+                        break;
+                    case InteractableItem.InteractableType.Safe:
+                        lastISafe = interactableObject;
+                        break;
+                        
                 }
             }
 

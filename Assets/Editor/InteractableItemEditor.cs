@@ -96,6 +96,11 @@ public class InteractableItemEditor : Editor
     private SerializedProperty circleAndSquarePuzzle;
     private SerializedProperty playerPathMovement;
 
+    private SerializedProperty libraryButtonsManager;
+    private SerializedProperty libraryButtonInt;
+
+    private SerializedProperty safePuzzle;
+
 
     private void OnEnable()
     {
@@ -189,6 +194,11 @@ public class InteractableItemEditor : Editor
         ninePadPanelManager = serializedObject.FindProperty("ninePadPanelManager");
         circleAndSquarePuzzle = serializedObject.FindProperty("circleAndSquarePuzzle");
         playerPathMovement = serializedObject.FindProperty("playerPathMovement");
+
+        libraryButtonsManager = serializedObject.FindProperty("libraryButtonsManager");
+        libraryButtonInt = serializedObject.FindProperty("libraryButtonInt");
+
+        safePuzzle = serializedObject.FindProperty("safePuzzle");
        
     }
 
@@ -442,7 +452,17 @@ public class InteractableItemEditor : Editor
             case InteractableItem.InteractableType.PlayerSphereMovement:
                 EditorGUILayout.PropertyField(playerPathMovement, new GUIContent("Player Path Movement"));
                 break;
+            case InteractableItem.InteractableType.LibraryButton:
+                EditorGUILayout.PropertyField(animatorProp, new GUIContent("animator"));
+                EditorGUILayout.PropertyField(libraryButtonsManager, new GUIContent("Library Buttons Manager"));
+                EditorGUILayout.PropertyField(libraryButtonInt, new GUIContent("Library Button Int"));
+                break;
+            case InteractableItem.InteractableType.Safe:
+                EditorGUILayout.PropertyField(safePuzzle, new GUIContent("SafePuzzle"));
+                break;
+
                 
+
 
 
         }

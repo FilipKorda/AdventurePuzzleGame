@@ -89,6 +89,9 @@ public class UIManager : MonoBehaviour
     [Header("Triangle Puzzle")]
     [SerializeField] private GameObject papyrusTrianglePuzzle;
 
+    [Header("Safe Code Puzzle")]
+    [SerializeField] private GameObject safeCodePuzzle;
+
     public void EnableWoodenPuzzlePanel()
     {
         woodenPuzzlePanel.SetActive(true);
@@ -351,24 +354,33 @@ public class UIManager : MonoBehaviour
         {
             case ItemID.Shrine:
                 InspectShrine();
+                ToggleBlurCanvasAndInspectedObject();
+                Services.Audio.PlaySFX("ReadBook");
                 break;
             case ItemID.SymbolPillar:
                 InspectSymbolPillar();
+                ToggleBlurCanvasAndInspectedObject();
+                Services.Audio.PlaySFX("ReadBook");
                 break;
             case ItemID.Grave:
                 InspectGrave();
+                ToggleBlurCanvasAndInspectedObject();
+                Services.Audio.PlaySFX("ReadBook");
                 break;
             case ItemID.BrokenPillar:
                 InspectBrokenPillar();
+                ToggleBlurCanvasAndInspectedObject();
+                Services.Audio.PlaySFX("ReadBook");
                 break;
             case ItemID.SymbolSword:
                 InspectSymbolSword();
+                ToggleBlurCanvasAndInspectedObject();
+                Services.Audio.PlaySFX("ReadBook");
                 break;
         }
 
-        ToggleBlurCanvasAndInspectedObject();
       
-        // Services.Audio.PlaySFX("ReadBook");
+       
     }
 
     private void InspectShrine()
@@ -428,11 +440,28 @@ public class UIManager : MonoBehaviour
             case ItemID.PapyrusTrianglePuzzle:
                 ReadBookPapyrusTrianglePuzzle();
                 break;
+            case ItemID.SafeCode:
+                ReadBookSafeCodePuzzle();
+                break;
         }
 
         Services.Audio.PlaySFX("ReadBook");
     }
 
+
+    private void ReadBookSafeCodePuzzle()
+    {
+        bool isOpen = safeCodePuzzle.activeSelf;
+        safeCodePuzzle.SetActive(!isOpen);
+        if (!isOpen)
+        {
+            safeCodePuzzle.SetActive(true);
+        }
+        else
+        {
+            safeCodePuzzle.SetActive(false);
+        }
+    }
 
     private void ReadBookPapyrusTrianglePuzzle()
     {
@@ -662,7 +691,8 @@ public class UIManager : MonoBehaviour
     {
         if (readableAndInteractablePanel != null && readableAndInteractablePanel.gameObject.activeInHierarchy
             || gameModeLockPickPanel.activeInHierarchy || morseAndGlifsBook.activeInHierarchy || gearModePanel.activeInHierarchy
-            || papytusPuzzleWoodenPuzzleSolve.activeInHierarchy || blurCanvas.gameObject.activeInHierarchy)
+            || papytusPuzzleWoodenPuzzleSolve.activeInHierarchy || blurCanvas.gameObject.activeInHierarchy
+            || safeCodePuzzle.activeInHierarchy)
         {
             Debug.Log("Nie mo¿na wyrzuciæ przedmiotu podczas przegl¹dania czytanej strony.");
             return;

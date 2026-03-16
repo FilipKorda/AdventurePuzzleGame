@@ -10,7 +10,8 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     IPlaceable, ILockPick, IFillable, IPickupARenewableItem, IAlchemyStation, IReadableAndInteractable, IRecipePlaceable,
     IGetObject, ICrafting, IPinNumber, IRotate, ICryptex, IMirror, IGearLock, IGearRotate, IGear90, IPipeGearPuzzle,
     IFurniture, IWoodenBlockPuzzle, IWoodenBlock, ITrianglePuzzle, ISymbolPlaceable, IArrowDirection, IPuzzlePipePart,
-    IBlockButton, INinePadPanel, ICircleAndSquarePuzzle, IRotateCircleAndSquarePuzzle, IPlayerSphereMovement
+    IBlockButton, INinePadPanel, ICircleAndSquarePuzzle, IRotateCircleAndSquarePuzzle, IPlayerSphereMovement, ILibraryButton,
+    ISafe
 {
     public enum InteractableType
     {
@@ -50,7 +51,9 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         NinePadPanelPuzzle,
         CircleAndSquarePuzzle,
         RotateCircleAndSquarePuzzle,
-        PlayerSphereMovement
+        PlayerSphereMovement,
+        LibraryButton,
+        Safe
     }
 
     public InteractableType interactableType;
@@ -234,6 +237,13 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     private bool rotateCircleAndSquarePuzzle = false;
     [SerializeField] private PlayerPathMovement playerPathMovement;
 
+    [Header("Library puzzle")]
+    [SerializeField] private LibraryButtonsManager libraryButtonsManager;
+    [SerializeField] private int libraryButtonInt = 0;
+
+    [Header("Safe Puzzle")]
+    [SerializeField] private SafePuzzle safePuzzle;
+
     private void Awake()
     {
         if (rend != null)
@@ -245,6 +255,20 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         {
             startPosition = transform.position;
         }
+
+    }
+
+    public void EnterSafe()
+    {
+        safePuzzle.EnterPuzzleMode();
+        Debug.Log("enter safe");
+    }
+
+    public void PressLibraryButton()
+    {
+        Services.Audio.PlaySFX("WallButtonPress");
+        libraryButtonsManager.PressButton(libraryButtonInt);
+        animator.SetTrigger("Interact");
 
     }
 

@@ -64,4 +64,5 @@ public enum ItemID
     SymbolSword = 61,
     EmeralndKey = 62,
     PuzzleMovingBlockPart = 63,
+    SafeCode = 64,
 }

@@ -215,6 +215,10 @@ MonoBehaviour:
     m_Key: Pipe Puzzle
     m_Metadata:
       m_Items: []
+  - m_Id: 15698895244120064
+    m_Key: Safe Code
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
