@@ -112,13 +112,18 @@ MonoBehaviour:
 
       rust remembers every sin,
 
-      a cOnstant flash
-      interrupts the breath,
+      a cOnstant flash interrupts
+      the breath,
 
       when the monsteR falls into the cold shadow,
 
       fate
       decides the song of the blaDe.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16027712454152192
+    m_Localized: "These walls are terribly damaged. \nI wonder what happened to them
+      \nto make them crack like that?"
     m_Metadata:
       m_Items: []
   references:

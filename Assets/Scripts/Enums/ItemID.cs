@@ -65,4 +65,5 @@ public enum ItemID
     EmeralndKey = 62,
     PuzzleMovingBlockPart = 63,
     SafeCode = 64,
+    pickaxe = 65,
 }

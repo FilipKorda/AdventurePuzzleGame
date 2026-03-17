@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEditor.AdaptivePerformance.UI.Editor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,6 +13,10 @@ public class SafePuzzle : MonoBehaviour
     [SerializeField] private PlayerBehaviour playerBehaviour;
     [SerializeField] private Transform point;
     [SerializeField] private BoxCollider boxCollider;
+
+    [SerializeField] private SafeDial safeDial;
+    [SerializeField] private Animator animator;
+    [SerializeField] private Animator animatorOne;
 
     private void OnEnable()
     {
@@ -56,8 +61,6 @@ public class SafePuzzle : MonoBehaviour
         playerBehaviour.ResetCameraRotation();
 
         yield return new WaitForSeconds(0.1f);
-
-        playerBehaviour.disablePlayer = false;
     }
 
     private void SpawnThisObjectInFronOfPlayer()
@@ -80,6 +83,7 @@ public class SafePuzzle : MonoBehaviour
 
     public void EnterPuzzleMode()
     {
+        safeDial.canRotateDial = true;
         MovePlayerToPosition();
         SpawnThisObjectInFronOfPlayer();
         blurCanvas.gameObject.SetActive(true);
@@ -98,11 +102,35 @@ public class SafePuzzle : MonoBehaviour
         gameObject.SetActive(false);
         playerBehaviour.disableOnlyMovement = false;
         UIManager.Instance.DisableGearModePanel();
+
+        playerBehaviour.disablePlayer = false;
     }
 
     private void ResetPuzzle()
     {
+        safeDial.InstantResetDial();
+    }
 
+    public void WinPuzzle()
+    {
+        StartCoroutine(WinPuzzleCourutine());
+    }
 
+    private IEnumerator WinPuzzleCourutine()
+    {
+        safeDial.canRotateDial = false;
+
+        animator.SetTrigger("Open");
+
+        yield return new WaitForSeconds(1.4f);
+
+        blurCanvas.gameObject.SetActive(false);
+        gameObject.SetActive(false);
+        playerBehaviour.disableOnlyMovement = false;
+        UIManager.Instance.DisableGearModePanel();
+
+        playerBehaviour.disablePlayer = false;
+
+        animatorOne.SetTrigger("Open");
     }
 }

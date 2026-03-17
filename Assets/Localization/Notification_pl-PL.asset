@@ -153,6 +153,10 @@ MonoBehaviour:
     m_Localized: Akcja zablokowana
     m_Metadata:
       m_Items: []
+  - m_Id: 15602162887577600
+    m_Localized: "Zniszczona \u015Bciana\n"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

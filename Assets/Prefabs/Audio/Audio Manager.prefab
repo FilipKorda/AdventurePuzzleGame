@@ -155,4 +155,6 @@ MonoBehaviour:
     Clip: {fileID: 8300000, guid: f4a3e2e6cf887544e92a5fdff3f67853, type: 3}
   - Id: WoodenCabinetOpen
     Clip: {fileID: 8300000, guid: 05f38d5b57dc96c42b0679411ca87629, type: 3}
+  - Id: SafeDialClickSound
+    Clip: {fileID: 8300000, guid: 2d13a418f89690d4b9da7ca055a6da43, type: 3}
   sfxSourcePrefab: {fileID: 6808787666201464470, guid: 561a59515f73e424ba170ae966f504e9, type: 3}

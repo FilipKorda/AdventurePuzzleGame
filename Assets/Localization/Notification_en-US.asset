@@ -155,6 +155,10 @@ MonoBehaviour:
     m_Localized: Action Blocked
     m_Metadata:
       m_Items: []
+  - m_Id: 15602162887577600
+    m_Localized: Crack in the wall
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
