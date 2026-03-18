@@ -197,7 +197,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 89.073944
+  field of view: 60
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -726,6 +726,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 0c3b87a5-8dda-4ee0-8625-b87b5f4646b5
     m_ActionName: 'LockPick/MoveRight[/Keyboard/d,/XInputControllerWindows/dpad/right]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4c7c838e-a3f8-4b0e-a804-da751de55cc5
+    m_ActionName: 'Mirror/Mirror Look[/Mouse/delta]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7e3818f6-1a8e-4cc5-8b63-05c486e6328e
+    m_ActionName: 'Mirror/ConfirmAndExit[/Mouse/leftButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: bd593d0f-dffc-4131-87f3-d2b9666746f7
+    m_ActionName: 'GearRiddle/Leave Riddle[/Keyboard/e]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0f7e94df-a427-48a8-a978-640feef80fbf
+    m_ActionName: 'Furniture/Move[/Keyboard/w,/Keyboard/a,/Keyboard/s,/Keyboard/d]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -823,7 +839,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 89.073944
+  field of view: 60
   orthographic: 0
   orthographic size: 5
   m_Depth: -1

@@ -88,6 +88,8 @@ public class PlayerBehaviour : MonoBehaviour
 
     private ISafe lastISafe;
 
+    private IBraiser lastIBraiser;
+
     private CharacterController characterController;
     private Vector2 inputMovement;
     public Vector2 inputLook;
@@ -331,6 +333,7 @@ public class PlayerBehaviour : MonoBehaviour
 
             lastILibraryButton?.PressLibraryButton();
             lastISafe?.EnterSafe();
+            lastIBraiser?.EnterBraiserPuzzle();
 
             if (lastIOpenable != null && lastIOpenable.IsOpen())
             {
@@ -510,6 +513,7 @@ public class PlayerBehaviour : MonoBehaviour
         lastIPlayerSphereMovement = null;
         lastILibraryButton = null;
         lastISafe = null;
+        lastIBraiser = null;
 
         bool hitBlock = Physics.Raycast(ray, out RaycastHit blockHit, raycastRange, blockRaycastLayer);
         bool hitInteractable = Physics.Raycast(ray, out RaycastHit hit, raycastRange, interactableLayer);
@@ -681,7 +685,11 @@ public class PlayerBehaviour : MonoBehaviour
                     case InteractableItem.InteractableType.Safe:
                         lastISafe = interactableObject;
                         break;
+                    case InteractableItem.InteractableType.Braiser:
+                        lastIBraiser = interactableObject;
+                        break;
                         
+
                 }
             }
 

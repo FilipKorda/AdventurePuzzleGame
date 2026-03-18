@@ -1,0 +1,4 @@
+interface IBraiser 
+{
+    void EnterBraiserPuzzle();
+}

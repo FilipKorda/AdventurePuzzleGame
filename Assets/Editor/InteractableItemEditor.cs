@@ -7,8 +7,8 @@ public class InteractableItemEditor : Editor
     private SerializedProperty interactableTypeProp;
     private SerializedProperty itemNameProp;
     private SerializedProperty itemSpriteProp;
-    private SerializedProperty itemIdProp; 
-    private SerializedProperty requiredItemIdsProp; 
+    private SerializedProperty itemIdProp;
+    private SerializedProperty requiredItemIdsProp;
     private SerializedProperty animatorProp;
     private SerializedProperty readableTextDataProp;
     private SerializedProperty onAllWallButtonPressedProp;
@@ -100,6 +100,9 @@ public class InteractableItemEditor : Editor
     private SerializedProperty libraryButtonInt;
 
     private SerializedProperty safePuzzle;
+
+    private SerializedProperty braiserPuzzle;
+    private SerializedProperty braiserInt;
 
 
     private void OnEnable()
@@ -199,7 +202,10 @@ public class InteractableItemEditor : Editor
         libraryButtonInt = serializedObject.FindProperty("libraryButtonInt");
 
         safePuzzle = serializedObject.FindProperty("safePuzzle");
-       
+
+        braiserPuzzle = serializedObject.FindProperty("braiserPuzzle");
+        braiserInt = serializedObject.FindProperty("braiserInt");
+
     }
 
     public override void OnInspectorGUI()
@@ -335,7 +341,7 @@ public class InteractableItemEditor : Editor
                 EditorGUILayout.PropertyField(highlightColor, new GUIContent("HighlightColor"));
                 break;
             case InteractableItem.InteractableType.RotateStatue:
-                EditorGUILayout.PropertyField(rotationDuration, new GUIContent("Rotation Duration"));              
+                EditorGUILayout.PropertyField(rotationDuration, new GUIContent("Rotation Duration"));
                 EditorGUILayout.PropertyField(statueCompasPuzzle, new GUIContent("Statue Compas Puzzle"));
                 EditorGUILayout.PropertyField(linkedReadable, new GUIContent("Linked Readable"));
                 EditorGUILayout.PropertyField(directionTextSet, new GUIContent("Direction Text Set"));
@@ -359,7 +365,7 @@ public class InteractableItemEditor : Editor
                 break;
             case InteractableItem.InteractableType.RotateGear90:
                 EditorGUILayout.PropertyField(boxColliderProp, new GUIContent("Box Collider"));
-                EditorGUILayout.PropertyField(gear90RotateDuration, new GUIContent("Gear90 Rotate Duration"));              
+                EditorGUILayout.PropertyField(gear90RotateDuration, new GUIContent("Gear90 Rotate Duration"));
                 EditorGUILayout.PropertyField(pipeGearPuzzle, new GUIContent("Pipe Gear Puzzle"));
                 EditorGUILayout.PropertyField(currentGear90Index, new GUIContent("currentGear90Index"));
                 break;
@@ -395,7 +401,7 @@ public class InteractableItemEditor : Editor
                 EditorGUILayout.PropertyField(grave, new GUIContent("Grave"));
                 EditorGUILayout.PropertyField(brokenPillar, new GUIContent("Broken Pillar"));
                 EditorGUILayout.PropertyField(woodenSword, new GUIContent("Wooden Sword"));
-                EditorGUILayout.PropertyField(clockSymbolsManager, new GUIContent("Clock Symbols Manager"));          
+                EditorGUILayout.PropertyField(clockSymbolsManager, new GUIContent("Clock Symbols Manager"));
                 break;
 
             case InteractableItem.InteractableType.ArrowUp:
@@ -438,7 +444,7 @@ public class InteractableItemEditor : Editor
                 EditorGUILayout.PropertyField(movingBlockPuzzleManager, new GUIContent("movingBlockPuzzleManager"));
                 break;
             case InteractableItem.InteractableType.PressWoodenButton:
-                EditorGUILayout.PropertyField(blockPanel, new GUIContent("Block Panel"));         
+                EditorGUILayout.PropertyField(blockPanel, new GUIContent("Block Panel"));
                 EditorGUILayout.PropertyField(ninePadPanelManager, new GUIContent("NinePadPanelManager"));
                 EditorGUILayout.PropertyField(highlightColor, new GUIContent("Highlight Color"));
                 EditorGUILayout.PropertyField(rend, new GUIContent("Renderer"));
@@ -460,8 +466,10 @@ public class InteractableItemEditor : Editor
             case InteractableItem.InteractableType.Safe:
                 EditorGUILayout.PropertyField(safePuzzle, new GUIContent("SafePuzzle"));
                 break;
-
-                
+            case InteractableItem.InteractableType.Braiser:
+                EditorGUILayout.PropertyField(braiserPuzzle, new GUIContent("Braiser Puzzle"));
+                EditorGUILayout.PropertyField(braiserInt, new GUIContent("Braiser Int"));
+                break;
 
 
 

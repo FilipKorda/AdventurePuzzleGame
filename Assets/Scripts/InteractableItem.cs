@@ -11,7 +11,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     IGetObject, ICrafting, IPinNumber, IRotate, ICryptex, IMirror, IGearLock, IGearRotate, IGear90, IPipeGearPuzzle,
     IFurniture, IWoodenBlockPuzzle, IWoodenBlock, ITrianglePuzzle, ISymbolPlaceable, IArrowDirection, IPuzzlePipePart,
     IBlockButton, INinePadPanel, ICircleAndSquarePuzzle, IRotateCircleAndSquarePuzzle, IPlayerSphereMovement, ILibraryButton,
-    ISafe
+    ISafe, IBraiser
 {
     public enum InteractableType
     {
@@ -53,7 +53,8 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         RotateCircleAndSquarePuzzle,
         PlayerSphereMovement,
         LibraryButton,
-        Safe
+        Safe,
+        Braiser,
     }
 
     public InteractableType interactableType;
@@ -244,6 +245,10 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     [Header("Safe Puzzle")]
     [SerializeField] private SafePuzzle safePuzzle;
 
+    [Header("Braiser Puzzle")]
+    [SerializeField] private BraiserPuzzle braiserPuzzle;
+    [SerializeField] private int braiserInt = 0;
+
     private void Awake()
     {
         if (rend != null)
@@ -256,6 +261,27 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
             startPosition = transform.position;
         }
 
+    }
+
+
+    public void EnterBraiserPuzzle()
+    {
+        if (braiserInt == 0)
+        {
+            braiserPuzzle.EnterPuzzle0();
+        }
+        else if (braiserInt == 1)
+        {
+            braiserPuzzle.EnterPuzzle1();
+        }
+        else if (braiserInt == 2)
+        {
+            braiserPuzzle.EnterPuzzle2();
+        }
+        else
+        {
+            braiserPuzzle.EnterPuzzle3();
+        }
     }
 
     public void EnterSafe()
