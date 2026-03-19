@@ -189,6 +189,13 @@ public class PlayerBehaviour : MonoBehaviour
     [SerializeField] private Light lampLight;
     [SerializeField] private GameObject lampLightGo;
 
+    [Header("Glasses")]
+    [SerializeField] private GameObject animGlasses;
+    [SerializeField] private Animator glassesAnimator;
+    [SerializeField] GameObject glassesEffectQuad;
+    public bool isAnimating;
+    bool isGlassesEffectRunning;
+
     private void Awake()
     {
         characterController = GetComponent<CharacterController>();
@@ -246,6 +253,74 @@ public class PlayerBehaviour : MonoBehaviour
         {
             lampLight.enabled = !lampLight.enabled;
         }
+    }
+
+    public void ToggleGlasses(InputAction.CallbackContext context)
+    {
+        int currentSelectedId = UIManager.Instance.GetSelectedItemId();
+        if (currentSelectedId == 0)
+        {
+            Debug.Log("Nie wybrano ¿adnego przedmiotu do u¿ycia.");
+            return;
+        }
+
+        if (currentSelectedId == 66)
+        {
+            if (!context.performed) return;
+            if (isAnimating) return;
+
+            UIManager.Instance.glassesOn = !UIManager.Instance.glassesOn;
+            isAnimating = true;
+
+            if (UIManager.Instance.glassesOn)
+            {
+                glassesAnimator.SetTrigger("Active");
+                PlaySequence();
+            }
+            else
+            {
+                glassesAnimator.SetTrigger("Deactive");
+                UIManager.Instance.ChangeVissionGlasesToDeactive();
+                glassesEffectQuad.SetActive(false);
+            }
+        }
+    }
+
+    private void PlaySequence()
+    {
+        if (isGlassesEffectRunning) return;
+        UIManager.Instance.ChangeVissionGlasesToActive();
+        StartCoroutine(Sequence());
+    }
+
+    IEnumerator Sequence()
+    {
+        isGlassesEffectRunning = true;
+
+        yield return new WaitForSeconds(1.55f);
+        glassesEffectQuad.SetActive(true);
+
+        Shader.SetGlobalFloat("_SpiritVision", 1f);
+        yield return new WaitForSeconds(0.3f);
+
+        Shader.SetGlobalFloat("_SpiritVision", 0f);
+        yield return new WaitForSeconds(0.25f);
+
+        Shader.SetGlobalFloat("_SpiritVision", 1f);
+        yield return new WaitForSeconds(0.35f);
+
+        Shader.SetGlobalFloat("_SpiritVision", 0f);
+        yield return new WaitForSeconds(0.25f);
+
+        Shader.SetGlobalFloat("_SpiritVision", 1f);
+        yield return new WaitForSeconds(0.35f);
+
+        Shader.SetGlobalFloat("_SpiritVision", 0f);
+        yield return new WaitForSeconds(0.25f);
+
+        Shader.SetGlobalFloat("_SpiritVision", 1f);
+
+        isGlassesEffectRunning = false;
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -688,7 +763,7 @@ public class PlayerBehaviour : MonoBehaviour
                     case InteractableItem.InteractableType.Braiser:
                         lastIBraiser = interactableObject;
                         break;
-                        
+
 
                 }
             }

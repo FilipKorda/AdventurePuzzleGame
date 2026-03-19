@@ -226,6 +226,10 @@ MonoBehaviour:
     m_Localized: Pickaxe
     m_Metadata:
       m_Items: []
+  - m_Id: 16398335932125184
+    m_Localized: Glasses
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

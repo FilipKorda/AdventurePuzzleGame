@@ -68,6 +68,15 @@
                     "processors": "",
                     "interactions": "Press",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "ToggleGlasses",
+                    "type": "Button",
+                    "id": "6e2bf0d8-fecc-467a-a99e-7a27a2f5e99c",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -387,6 +396,28 @@
                     "processors": "",
                     "groups": ";Gamepad",
                     "action": "Toggle Lamp",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c2e4d8b2-4cfe-4adb-bb97-1820d3b7c43d",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "ToggleGlasses",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5e53666d-bc47-45d5-8204-b5bc2e307ca6",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "ToggleGlasses",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

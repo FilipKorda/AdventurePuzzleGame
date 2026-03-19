@@ -223,6 +223,10 @@ MonoBehaviour:
     m_Key: Pickaxe
     m_Metadata:
       m_Items: []
+  - m_Id: 16398335932125184
+    m_Key: Glasses
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

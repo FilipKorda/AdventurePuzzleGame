@@ -66,4 +66,5 @@ public enum ItemID
     PuzzleMovingBlockPart = 63,
     SafeCode = 64,
     pickaxe = 65,
+    glasses = 66,
 }

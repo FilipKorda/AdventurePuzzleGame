@@ -12,6 +12,16 @@ public class BraiserPuzzle : MonoBehaviour
     [SerializeField] private Transform cameraPoint2;
     [SerializeField] private Transform cameraPoint3;
 
+    [SerializeField] private Animator animator0;
+    [SerializeField] private Animator animator1;
+    [SerializeField] private Animator animator2;
+    [SerializeField] private Animator animator3;
+
+    private bool puzzle0 = false;
+    private bool puzzle1 = false;
+    private bool puzzle2 = false;
+    private bool puzzle3 = false;
+
     private void ActiveInput()
     {
         if (thisModeInput != null)
@@ -38,13 +48,14 @@ public class BraiserPuzzle : MonoBehaviour
 
     public void EnterPuzzle0()
     {
+        puzzle0 = true;
         ActiveInput();
         SetAndRotateCamera0ToTransform();
-        StartCameraMovement();  
+        StartCameraMovement();
+
+        animator0.SetTrigger("Open");
 
         playerBehaviour.disablePlayer = true;
-
-        Debug.Log("Enter Braiser Puzzle");
     }
 
     private void SetAndRotateCamera0ToTransform()
@@ -54,13 +65,15 @@ public class BraiserPuzzle : MonoBehaviour
 
     public void EnterPuzzle1()
     {
+        puzzle1 = true;
         ActiveInput();
         SetAndRotateCamera1ToTransform();
-        StartCameraMovement();    
+        StartCameraMovement();
+
+        animator1.SetTrigger("Open");
 
         playerBehaviour.disablePlayer = true;
 
-        Debug.Log("Enter Braiser Puzzle");
     }
 
     private void SetAndRotateCamera1ToTransform()
@@ -70,14 +83,15 @@ public class BraiserPuzzle : MonoBehaviour
 
     public void EnterPuzzle2()
     {
+        puzzle2 = true;
         ActiveInput();
         SetAndRotateCamera2ToTransform();
         StartCameraMovement();
-       
+
+        animator2.SetTrigger("Open");
 
         playerBehaviour.disablePlayer = true;
 
-        Debug.Log("Enter Braiser Puzzle");
     }
 
     private void SetAndRotateCamera2ToTransform()
@@ -87,14 +101,15 @@ public class BraiserPuzzle : MonoBehaviour
 
     public void EnterPuzzle3()
     {
+        puzzle3 = true;
         ActiveInput();
         SetAndRotateCamera3ToTransform();
         StartCameraMovement();
-      
+
+        animator3.SetTrigger("Open");
 
         playerBehaviour.disablePlayer = true;
 
-        Debug.Log("Enter Braiser Puzzle");
     }
 
     private void SetAndRotateCamera3ToTransform()
@@ -150,10 +165,32 @@ public class BraiserPuzzle : MonoBehaviour
     {
         DisableInput();
 
+        if (puzzle0)
+        {
+            animator0.SetTrigger("Close");
+            puzzle0 = false;
+        }
+        else if (puzzle1)
+        {
+            animator1.SetTrigger("Close");
+            puzzle1 = false;
+        }
+        else if (puzzle2)
+        {
+            animator2.SetTrigger("Close");
+            puzzle2 = false;
+        }
+        else
+        {
+            animator3.SetTrigger("Close");
+            puzzle3 = false;
+        }
+
+
+
         playerBehaviour.disablePlayer = false;
         playerBehaviour._playerCamera.enabled = true;
 
         puzzleCamera.enabled = false;
-        Debug.Log("Exit Braiser Puzzle");
     }
 }

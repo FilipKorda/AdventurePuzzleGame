@@ -154,6 +154,15 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Press"",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ToggleGlasses"",
+                    ""type"": ""Button"",
+                    ""id"": ""6e2bf0d8-fecc-467a-a99e-7a27a2f5e99c"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -473,6 +482,28 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": "";Gamepad"",
                     ""action"": ""Toggle Lamp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c2e4d8b2-4cfe-4adb-bb97-1820d3b7c43d"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""ToggleGlasses"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5e53666d-bc47-45d5-8204-b5bc2e307ca6"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""ToggleGlasses"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1665,6 +1696,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_Player_DropItem = m_Player.FindAction("DropItem", throwIfNotFound: true);
         m_Player_DrinkEat = m_Player.FindAction("DrinkEat", throwIfNotFound: true);
         m_Player_ToggleLamp = m_Player.FindAction("Toggle Lamp", throwIfNotFound: true);
+        m_Player_ToggleGlasses = m_Player.FindAction("ToggleGlasses", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1798,6 +1830,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_DropItem;
     private readonly InputAction m_Player_DrinkEat;
     private readonly InputAction m_Player_ToggleLamp;
+    private readonly InputAction m_Player_ToggleGlasses;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -1837,6 +1870,10 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/ToggleLamp".
         /// </summary>
         public InputAction @ToggleLamp => m_Wrapper.m_Player_ToggleLamp;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/ToggleGlasses".
+        /// </summary>
+        public InputAction @ToggleGlasses => m_Wrapper.m_Player_ToggleGlasses;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1884,6 +1921,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @ToggleLamp.started += instance.OnToggleLamp;
             @ToggleLamp.performed += instance.OnToggleLamp;
             @ToggleLamp.canceled += instance.OnToggleLamp;
+            @ToggleGlasses.started += instance.OnToggleGlasses;
+            @ToggleGlasses.performed += instance.OnToggleGlasses;
+            @ToggleGlasses.canceled += instance.OnToggleGlasses;
         }
 
         /// <summary>
@@ -1916,6 +1956,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @ToggleLamp.started -= instance.OnToggleLamp;
             @ToggleLamp.performed -= instance.OnToggleLamp;
             @ToggleLamp.canceled -= instance.OnToggleLamp;
+            @ToggleGlasses.started -= instance.OnToggleGlasses;
+            @ToggleGlasses.performed -= instance.OnToggleGlasses;
+            @ToggleGlasses.canceled -= instance.OnToggleGlasses;
         }
 
         /// <summary>
@@ -2888,6 +2931,13 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnToggleLamp(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "ToggleGlasses" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnToggleGlasses(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.

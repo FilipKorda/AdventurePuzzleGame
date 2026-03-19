@@ -226,6 +226,10 @@ MonoBehaviour:
     m_Localized: Kilof
     m_Metadata:
       m_Items: []
+  - m_Id: 16398335932125184
+    m_Localized: Okulary
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

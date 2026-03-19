@@ -92,6 +92,10 @@ public class UIManager : MonoBehaviour
     [Header("Safe Code Puzzle")]
     [SerializeField] private GameObject safeCodePuzzle;
 
+    [Header("Glasses")]
+    public bool glassesOn;
+    public Image glassesVisionImage;
+
     public void EnableWoodenPuzzlePanel()
     {
         woodenPuzzlePanel.SetActive(true);
@@ -180,6 +184,36 @@ public class UIManager : MonoBehaviour
     public void HideBackgroud()
     {
         itemstoCraftHolderUI.HideBackgroud();
+    }
+
+    private IEnumerator ChangeImageAlpha(float delayAtStart, Image img, float from, float to, float duration)
+    {
+        yield return new WaitForSeconds(delayAtStart);
+
+        var color = img.color;
+        float t = 0f;
+
+        while (t < duration)
+        {
+            t += Time.deltaTime;
+            color.a = Mathf.Lerp(from, to, t / duration);
+            img.color = color;
+            yield return null;
+        }
+
+        color.a = to;
+        img.color = color;
+    }
+
+
+    public void ChangeVissionGlasesToActive()
+    {
+        StartCoroutine(ChangeImageAlpha(1.2f, glassesVisionImage, 0f, 1f, 0.3f));
+    }
+
+    public void ChangeVissionGlasesToDeactive()
+    {
+        StartCoroutine(ChangeImageAlpha(0.05f, glassesVisionImage, 1f, 0f, 0.3f));
     }
 
     public void RemoveItemFromUI(ItemID itemID)
@@ -378,9 +412,6 @@ public class UIManager : MonoBehaviour
                 Services.Audio.PlaySFX("ReadBook");
                 break;
         }
-
-      
-       
     }
 
     private void InspectShrine()
@@ -692,7 +723,7 @@ public class UIManager : MonoBehaviour
         if (readableAndInteractablePanel != null && readableAndInteractablePanel.gameObject.activeInHierarchy
             || gameModeLockPickPanel.activeInHierarchy || morseAndGlifsBook.activeInHierarchy || gearModePanel.activeInHierarchy
             || papytusPuzzleWoodenPuzzleSolve.activeInHierarchy || blurCanvas.gameObject.activeInHierarchy
-            || safeCodePuzzle.activeInHierarchy)
+            || safeCodePuzzle.activeInHierarchy || glassesOn)
         {
             Debug.Log("Nie mo¿na wyrzuciæ przedmiotu podczas przegl¹dania czytanej strony.");
             return;
@@ -844,6 +875,7 @@ public class UIManager : MonoBehaviour
     {
         if (itemSlots.Count == 0) return;
 
+
         int prevIndex = selectedItemId - 1;
         if (prevIndex < 0)
         {
@@ -854,6 +886,7 @@ public class UIManager : MonoBehaviour
 
     private void OnSelectItemPerformed(int index)
     {
+        if (glassesOn) return;
         if (index >= 0 && index < itemSlots.Count)
         {
             SelectItem(index);
