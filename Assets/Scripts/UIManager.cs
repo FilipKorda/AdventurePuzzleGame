@@ -208,7 +208,7 @@ public class UIManager : MonoBehaviour
 
     public void ChangeVissionGlasesToActive()
     {
-        StartCoroutine(ChangeImageAlpha(1.2f, glassesVisionImage, 0f, 1f, 0.3f));
+        StartCoroutine(ChangeImageAlpha(1.08f, glassesVisionImage, 0f, 1f, 0.3f));
     }
 
     public void ChangeVissionGlasesToDeactive()

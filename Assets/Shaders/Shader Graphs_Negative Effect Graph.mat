@@ -38,9 +38,18 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _AlfaSpeed: 0.1
+    - _Alfa_Float: 0
+    - _Color: 1
+    - _HueSpeed: 0.03
     - _QueueControl: 0
     - _QueueOffset: 0
-    m_Colors: []
+    - _Saturation: 0.8
+    - _Speed: 0.05
+    - _Value: 1
+    m_Colors:
+    - _BaseColor: {r: 0.17915627, g: 0.35132596, b: 0.62264144, a: 1}
+    - _Color: {r: 0.5411765, g: 1, b: 0.6151322, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &1576787567758863680

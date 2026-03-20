@@ -1,0 +1,4 @@
+interface IMovingBraiserCircle 
+{
+    void InteractWithRing(); 
+}

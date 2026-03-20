@@ -280,6 +280,7 @@ public class PlayerBehaviour : MonoBehaviour
             else
             {
                 glassesAnimator.SetTrigger("Deactive");
+                Shader.SetGlobalFloat("_SpiritVision", 0f);
                 UIManager.Instance.ChangeVissionGlasesToDeactive();
                 glassesEffectQuad.SetActive(false);
             }
@@ -297,8 +298,11 @@ public class PlayerBehaviour : MonoBehaviour
     {
         isGlassesEffectRunning = true;
 
-        yield return new WaitForSeconds(1.55f);
+
+        yield return new WaitForSeconds(1.08f);
         glassesEffectQuad.SetActive(true);
+
+        yield return new WaitForSeconds(0.2f);
 
         Shader.SetGlobalFloat("_SpiritVision", 1f);
         yield return new WaitForSeconds(0.3f);
@@ -355,6 +359,7 @@ public class PlayerBehaviour : MonoBehaviour
     public void OnInteract(InputAction.CallbackContext context)
     {
         if (disablePlayer) { return; }
+        if (UIManager.Instance.glassesOn) { return; }
 
         if (context.performed)
         {
@@ -768,8 +773,12 @@ public class PlayerBehaviour : MonoBehaviour
                 }
             }
 
-            UpdateDotVisibility(false);
-            centerOfScreenTargetSize = new Vector2(20f, 20f);
+            if (!UIManager.Instance.glassesOn)
+            {
+                UpdateDotVisibility(false);
+                centerOfScreenTargetSize = new Vector2(20f, 20f);
+            }
+
         }
         else
         {

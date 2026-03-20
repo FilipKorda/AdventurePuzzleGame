@@ -17,6 +17,12 @@ public class BraiserPuzzle : MonoBehaviour
     [SerializeField] private Animator animator2;
     [SerializeField] private Animator animator3;
 
+    [SerializeField] private BoxCollider boxCollider0;
+    [SerializeField] private BoxCollider boxCollider1;
+    [SerializeField] private BoxCollider boxCollider2;
+    [SerializeField] private BoxCollider boxCollider3;
+
+
     private bool puzzle0 = false;
     private bool puzzle1 = false;
     private bool puzzle2 = false;
@@ -48,6 +54,8 @@ public class BraiserPuzzle : MonoBehaviour
 
     public void EnterPuzzle0()
     {
+        CursorController.Instance.EnableCursor(puzzleCamera);
+        boxCollider0.enabled = false;
         puzzle0 = true;
         ActiveInput();
         SetAndRotateCamera0ToTransform();
@@ -65,6 +73,8 @@ public class BraiserPuzzle : MonoBehaviour
 
     public void EnterPuzzle1()
     {
+        CursorController.Instance.EnableCursor(puzzleCamera);
+        boxCollider1.enabled = false;
         puzzle1 = true;
         ActiveInput();
         SetAndRotateCamera1ToTransform();
@@ -83,6 +93,8 @@ public class BraiserPuzzle : MonoBehaviour
 
     public void EnterPuzzle2()
     {
+        CursorController.Instance.EnableCursor(puzzleCamera);
+        boxCollider2.enabled = false;
         puzzle2 = true;
         ActiveInput();
         SetAndRotateCamera2ToTransform();
@@ -101,6 +113,8 @@ public class BraiserPuzzle : MonoBehaviour
 
     public void EnterPuzzle3()
     {
+        CursorController.Instance.EnableCursor(puzzleCamera);
+        boxCollider3.enabled = false;
         puzzle3 = true;
         ActiveInput();
         SetAndRotateCamera3ToTransform();
@@ -165,25 +179,31 @@ public class BraiserPuzzle : MonoBehaviour
     {
         DisableInput();
 
+        CursorController.Instance.DisableCursor(); 
+
         if (puzzle0)
         {
             animator0.SetTrigger("Close");
             puzzle0 = false;
+            boxCollider0.enabled = true;
         }
         else if (puzzle1)
         {
             animator1.SetTrigger("Close");
             puzzle1 = false;
+            boxCollider1.enabled = true;
         }
         else if (puzzle2)
         {
             animator2.SetTrigger("Close");
             puzzle2 = false;
+            boxCollider2.enabled = true;
         }
         else
         {
             animator3.SetTrigger("Close");
             puzzle3 = false;
+            boxCollider3.enabled = true;
         }
 
 
