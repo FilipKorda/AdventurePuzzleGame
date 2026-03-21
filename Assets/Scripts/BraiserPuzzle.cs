@@ -22,6 +22,13 @@ public class BraiserPuzzle : MonoBehaviour
     [SerializeField] private BoxCollider boxCollider2;
     [SerializeField] private BoxCollider boxCollider3;
 
+    [SerializeField] private UVScrollFromMovement uVScrollFromMovement0;
+    [SerializeField] private UVScrollFromMovement uVScrollFromMovement1;
+    [SerializeField] private UVScrollFromMovement uVScrollFromMovement2;
+    [SerializeField] private UVScrollFromMovement uVScrollFromMovement3;
+
+    [SerializeField] private Animator animator;
+
 
     private bool puzzle0 = false;
     private bool puzzle1 = false;
@@ -55,6 +62,9 @@ public class BraiserPuzzle : MonoBehaviour
     public void EnterPuzzle0()
     {
         CursorController.Instance.EnableCursor(puzzleCamera);
+        uVScrollFromMovement0.isActive = true;
+        uVScrollFromMovement0.PerformScrollUV();
+        uVScrollFromMovement0.ActivateRaycast();
         boxCollider0.enabled = false;
         puzzle0 = true;
         ActiveInput();
@@ -74,6 +84,9 @@ public class BraiserPuzzle : MonoBehaviour
     public void EnterPuzzle1()
     {
         CursorController.Instance.EnableCursor(puzzleCamera);
+        uVScrollFromMovement1.isActive = true;
+        uVScrollFromMovement1.PerformScrollUV();
+        uVScrollFromMovement1.ActivateRaycast();
         boxCollider1.enabled = false;
         puzzle1 = true;
         ActiveInput();
@@ -94,6 +107,9 @@ public class BraiserPuzzle : MonoBehaviour
     public void EnterPuzzle2()
     {
         CursorController.Instance.EnableCursor(puzzleCamera);
+        uVScrollFromMovement2.isActive = true;
+        uVScrollFromMovement2.PerformScrollUV();
+        uVScrollFromMovement2.ActivateRaycast();
         boxCollider2.enabled = false;
         puzzle2 = true;
         ActiveInput();
@@ -114,6 +130,9 @@ public class BraiserPuzzle : MonoBehaviour
     public void EnterPuzzle3()
     {
         CursorController.Instance.EnableCursor(puzzleCamera);
+        uVScrollFromMovement3.isActive = true;
+        uVScrollFromMovement3.PerformScrollUV();
+        uVScrollFromMovement3.ActivateRaycast();
         boxCollider3.enabled = false;
         puzzle3 = true;
         ActiveInput();
@@ -179,38 +198,94 @@ public class BraiserPuzzle : MonoBehaviour
     {
         DisableInput();
 
-        CursorController.Instance.DisableCursor(); 
+        CursorController.Instance.DisableCursor();
 
         if (puzzle0)
         {
             animator0.SetTrigger("Close");
+            uVScrollFromMovement0.isActive = false;
             puzzle0 = false;
             boxCollider0.enabled = true;
         }
         else if (puzzle1)
         {
             animator1.SetTrigger("Close");
+            uVScrollFromMovement1.isActive = false;
             puzzle1 = false;
             boxCollider1.enabled = true;
         }
         else if (puzzle2)
         {
             animator2.SetTrigger("Close");
+            uVScrollFromMovement2.isActive = false;
             puzzle2 = false;
             boxCollider2.enabled = true;
         }
         else
         {
             animator3.SetTrigger("Close");
+            uVScrollFromMovement3.isActive = false;
             puzzle3 = false;
             boxCollider3.enabled = true;
         }
-
-
 
         playerBehaviour.disablePlayer = false;
         playerBehaviour._playerCamera.enabled = true;
 
         puzzleCamera.enabled = false;
     }
+
+    public void PuzzleWin()
+    {
+        if (uVScrollFromMovement0.goodSymbolSelected && uVScrollFromMovement1.goodSymbolSelected &&
+        uVScrollFromMovement2.goodSymbolSelected && uVScrollFromMovement3.goodSymbolSelected)
+        {
+            DisableInput();
+
+            CursorController.Instance.DisableCursor();
+
+            if (puzzle0)
+            {
+                animator0.SetTrigger("Close");
+                uVScrollFromMovement0.isActive = false;
+                puzzle0 = false;
+            }
+            else if (puzzle1)
+            {
+                animator1.SetTrigger("Close");
+                uVScrollFromMovement1.isActive = false;
+                puzzle1 = false;
+            }
+            else if (puzzle2)
+            {
+                animator2.SetTrigger("Close");
+                uVScrollFromMovement2.isActive = false;
+                puzzle2 = false;
+            }
+            else
+            {
+                animator3.SetTrigger("Close");
+                uVScrollFromMovement3.isActive = false;
+                puzzle3 = false;
+            }
+
+            boxCollider0.enabled = false;
+            boxCollider1.enabled = false;
+            boxCollider2.enabled = false;
+            boxCollider3.enabled = false;
+
+            uVScrollFromMovement0.enabled = false;
+            uVScrollFromMovement1.enabled = false;
+            uVScrollFromMovement2.enabled = false;
+            uVScrollFromMovement3.enabled = false;
+
+            animator.SetTrigger("Open");
+
+            playerBehaviour.disablePlayer = false;
+            playerBehaviour._playerCamera.enabled = true;
+
+            puzzleCamera.enabled = false;
+        }
+    }
+
 }

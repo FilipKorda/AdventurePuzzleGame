@@ -67,4 +67,5 @@ public enum ItemID
     SafeCode = 64,
     pickaxe = 65,
     glasses = 66,
+    ShaphereKey = 67,
 }

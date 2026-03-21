@@ -11,7 +11,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     IGetObject, ICrafting, IPinNumber, IRotate, ICryptex, IMirror, IGearLock, IGearRotate, IGear90, IPipeGearPuzzle,
     IFurniture, IWoodenBlockPuzzle, IWoodenBlock, ITrianglePuzzle, ISymbolPlaceable, IArrowDirection, IPuzzlePipePart,
     IBlockButton, INinePadPanel, ICircleAndSquarePuzzle, IRotateCircleAndSquarePuzzle, IPlayerSphereMovement, ILibraryButton,
-    ISafe, IBraiser, IMovingBraiserCircle
+    ISafe, IBraiser
 {
     public enum InteractableType
     {
@@ -54,8 +54,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         PlayerSphereMovement,
         LibraryButton,
         Safe,
-        Braiser,
-        BraiserCircle
+        Braiser
     }
 
     public InteractableType interactableType;
@@ -262,10 +261,6 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
             startPosition = transform.position;
         }
 
-    }
-    public void InteractWithRing()
-    {
-        Debug.Log("Ring Hit");
     }
 
     public void EnterBraiserPuzzle()

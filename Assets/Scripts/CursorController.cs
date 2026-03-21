@@ -5,13 +5,20 @@ public class CursorController : MonoBehaviour
 {
     public static CursorController Instance { get; private set; }
 
+    [Header("Input")]
+    [SerializeField] private InputActionReference cursorInput;
+    private Vector2 mouseDelta;
+
     [Header("Center Of Screen Dot")]
     [SerializeField] private GameObject centerOfScreen;
     [SerializeField] private RectTransform centerOfScreenImage;
     [SerializeField] private RectTransform dot;
+
     [Header("Raycast")]
     [SerializeField] private float rayDistance = 100f;
     [SerializeField] private LayerMask interactableLayer;
+    private RaycastHit currentHit;
+    private bool hasHit;
 
     private Camera currentCamera;
 
@@ -20,7 +27,8 @@ public class CursorController : MonoBehaviour
 
     private bool cursorEnabled;
 
-    private IMovingBraiserCircle lastIMovingBraiserCircle;
+    private Transform selectedObject;
+    private Vector3 offset;
 
     void Awake()
     {
@@ -31,7 +39,6 @@ public class CursorController : MonoBehaviour
         }
 
         Instance = this;
-
     }
 
     private void Start()
@@ -39,28 +46,12 @@ public class CursorController : MonoBehaviour
         centerOfScreenImage.gameObject.SetActive(false);
     }
 
-    public void OnInteract(InputAction.CallbackContext context)
-    {
-        if (context.performed && cursorEnabled)
-        {
-            lastIMovingBraiserCircle?.InteractWithRing();
-        }
-    }
-
-    void Update()
-    {
-        if (!cursorEnabled || currentCamera == null) return;
-
-        HandleRaycast();
-        centerOfScreenImage.position = Input.mousePosition;
-        LerpCenterOfScreenSize();
-    }
-
     public void EnableCursor(Camera cam)
     {
         currentCamera = cam;
         cursorEnabled = true;
 
+        OnEnableInput();
         centerOfScreen.SetActive(false);
         centerOfScreenImage.gameObject.SetActive(true);
 
@@ -73,6 +64,7 @@ public class CursorController : MonoBehaviour
         cursorEnabled = false;
         currentCamera = null;
 
+        OnDisableInput();
         centerOfScreen.SetActive(true);
         centerOfScreenImage.gameObject.SetActive(false);
 
@@ -80,32 +72,95 @@ public class CursorController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    private void HandleRaycast()
+    #region Click And Drag Input Region
+
+    private void OnEnableInput()
     {
-        Ray ray = currentCamera.ScreenPointToRay(Input.mousePosition);
+        cursorInput.action.Enable();
+        cursorInput.action.started += OnInputStarted;
+        cursorInput.action.performed += OnInputPerformed;
+        cursorInput.action.canceled += OnInputCanceled;
+    }
 
-        lastIMovingBraiserCircle = null;
+    private void OnDisableInput()
+    {
+        cursorInput.action.started -= OnInputStarted;
+        cursorInput.action.performed -= OnInputPerformed;
+        cursorInput.action.canceled -= OnInputCanceled;
+        cursorInput.action.Disable();
+    }
 
-        if (Physics.Raycast(ray, out RaycastHit hit, rayDistance, interactableLayer))
+    private void OnInputStarted(InputAction.CallbackContext context)
+    {
+        if (!cursorEnabled) return;
+
+        if (context.action.activeControl.path.Contains("leftButton"))
         {
-            if (hit.collider.TryGetComponent<InteractableItem>(out var interactableObject))
+            if (hasHit)
             {
-                lastIMovingBraiserCircle = interactableObject;
+                selectedObject = currentHit.transform;
+                offset = selectedObject.position - currentHit.point;
             }
-
-
-
-            UpdateDotVisibility(false);
-            centerOfScreenTargetSize = new Vector2(20f, 20f);
-
-        }
-        else
-        {
-            UpdateDotVisibility(true);
-            centerOfScreenTargetSize = new Vector2(10f, 10f);
         }
     }
 
+    private void OnInputPerformed(InputAction.CallbackContext context)
+    {
+        if (!cursorEnabled) return;
+
+        if (context.action.activeControl.path.Contains("delta"))
+        {
+            mouseDelta = context.ReadValue<Vector2>();
+
+            if (selectedObject != null && Mouse.current.leftButton.isPressed)
+            {
+                Plane movePlane = new Plane(Vector3.up, new Vector3(0, selectedObject.position.y, 0));
+                Ray ray = currentCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
+
+                if (movePlane.Raycast(ray, out float distance))
+                {
+                    Vector3 hitPoint = ray.GetPoint(distance);
+                    selectedObject.position = new Vector3(hitPoint.x + offset.x, selectedObject.position.y, hitPoint.z + offset.z);
+                }
+            }
+        }
+
+        if (context.action.activeControl.path.Contains("leftButton") && !Mouse.current.leftButton.isPressed)
+        {
+            selectedObject = null;
+        }
+    }
+
+    private void OnInputCanceled(InputAction.CallbackContext context)
+    {
+        if (!cursorEnabled) return;
+
+        if (context.action.activeControl.path.Contains("leftButton"))
+        {
+            selectedObject = null;
+        }
+    }
+
+    #endregion
+
+    #region Raycast
+    void Update()
+    {
+        if (!cursorEnabled || currentCamera == null) return;
+
+        HandleRaycast();
+        centerOfScreenImage.position = Input.mousePosition;
+        LerpCenterOfScreenSize();
+    }
+
+    private void HandleRaycast()
+    {
+        Ray ray = currentCamera.ScreenPointToRay(Input.mousePosition);
+        hasHit = Physics.Raycast(ray, out currentHit, rayDistance, interactableLayer);
+
+        UpdateDotVisibility(!hasHit);
+        centerOfScreenTargetSize = hasHit ? new Vector2(20f, 20f) : new Vector2(10f, 10f);
+    }
 
     private void UpdateDotVisibility(bool isVisible)
     {
@@ -116,14 +171,5 @@ public class CursorController : MonoBehaviour
     {
         centerOfScreenImage.sizeDelta = Vector2.Lerp(centerOfScreenImage.sizeDelta, centerOfScreenTargetSize, centerOfScreenScaleSpeed * Time.deltaTime);
     }
-
-    void OnDrawGizmos()
-    {
-        if (currentCamera == null) return;
-
-        Ray ray = currentCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f));
-
-        Gizmos.color = Color.red;
-        Gizmos.DrawRay(ray.origin, ray.direction * rayDistance);
-    }
+    #endregion
 }
