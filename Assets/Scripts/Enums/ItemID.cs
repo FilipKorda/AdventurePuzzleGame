@@ -68,4 +68,6 @@ public enum ItemID
     pickaxe = 65,
     glasses = 66,
     ShaphereKey = 67,
+    KnightSwordPiece = 68,
+    KnightClubPiece = 69,
 }

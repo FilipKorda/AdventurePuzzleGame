@@ -1,9 +1,12 @@
+using System.Collections;
 using UnityEngine;
 
 public class ClockSymbolsManager : MonoBehaviour
 {
     [SerializeField] private GameObject[] clockSymbols;
     [SerializeField] private GameObject[] symbolsPlaceCollider;
+    [SerializeField] private Animator animator;
+    [SerializeField] private LaserBeam laserBeam;
 
     public void CheckAllClockSymbols()
     {
@@ -20,16 +23,23 @@ public class ClockSymbolsManager : MonoBehaviour
 
     private void WinPuzzle()
     {
-        foreach(var clockSymbol in clockSymbols)
+        foreach (var clockSymbol in clockSymbols)
         {
             clockSymbol.GetComponent<BoxCollider>().enabled = false;
         }
 
-        foreach(var col in symbolsPlaceCollider)
+        foreach (var col in symbolsPlaceCollider)
         {
             col.GetComponent<BoxCollider>().enabled = false;
         }
 
-        Debug.Log("You win the puzzle!");
+        animator.SetTrigger("Open");
+        StartCoroutine(StartLaser());
+    }
+
+    private IEnumerator StartLaser()
+    {
+        yield return new WaitForSeconds(1);
+        laserBeam.ToggleLaser(true);
     }
 }

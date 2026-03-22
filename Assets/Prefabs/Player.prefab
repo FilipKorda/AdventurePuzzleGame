@@ -1126,6 +1126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fef1981727e592a479f98930bf99087a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CursorController
+  cursorInput: {fileID: 8142836265431188856, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   centerOfScreen: {fileID: 0}
   centerOfScreenImage: {fileID: 0}
   dot: {fileID: 0}

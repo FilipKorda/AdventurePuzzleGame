@@ -411,6 +411,16 @@ public class UIManager : MonoBehaviour
                 ToggleBlurCanvasAndInspectedObject();
                 Services.Audio.PlaySFX("ReadBook");
                 break;
+            case ItemID.KnightSwordPiece:
+                InspectSymbolSwordPiece();
+                ToggleBlurCanvasAndInspectedObject();
+                Services.Audio.PlaySFX("ReadBook");
+                break;
+            case ItemID.KnightClubPiece:
+                InspectSymbolClubPiece();
+                ToggleBlurCanvasAndInspectedObject();
+                Services.Audio.PlaySFX("ReadBook");
+                break;
         }
     }
 
@@ -434,6 +444,17 @@ public class UIManager : MonoBehaviour
     {
         inspectSymbolObject.ShowWoodenSwordObject();
     }
+
+    private void InspectSymbolSwordPiece()
+    {
+        inspectSymbolObject.ShowSwordPieceObject();
+    }
+    private void InspectSymbolClubPiece()
+    {
+        inspectSymbolObject.ShowClubPieceObject();
+    }
+
+   
 
     private void ToggleBlurCanvasAndInspectedObject()
     {

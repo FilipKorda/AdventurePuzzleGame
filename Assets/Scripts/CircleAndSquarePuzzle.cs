@@ -63,6 +63,7 @@ public class CircleAndSquarePuzzle : MonoBehaviour
 
     public void ExitAfterWin()
     {
+        Services.Audio.PlaySFX("AfterGearPuzzleSolved");
         winPuzzle = true;
         blurCanvas.gameObject.SetActive(false);
         gameObject.SetActive(false);

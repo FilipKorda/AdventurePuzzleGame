@@ -1771,7 +1771,7 @@ MonoBehaviour:
       m_Calls: []
   objectToPlace: {fileID: 0}
   boxCollider: {fileID: 0}
-  canOpenWithNoSelectedItem: 0
+  canOpenWithNoSelectedItem: 1
   itemPrefab: {fileID: 0}
   isActualReading: 0
   isAlchemyRecipe: 0
@@ -1806,6 +1806,15 @@ MonoBehaviour:
   highlightColor: {r: 0, g: 0, b: 0, a: 0}
   statueCompasPuzzle: {fileID: 0}
   rotationDuration: 0.5
+  objectA: {fileID: 0}
+  objectB: {fileID: 0}
+  moveDistanceMovingBlockPuzzle: 1
+  moveSpeedMovingBlockPuzzle: 5
+  rayLengthMovingBlockPuzzle: 0.45
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 0
+  movingBlockPuzzleManager: {fileID: 0}
   linkedReadable: {fileID: 0}
   directionTextSet: {fileID: 0}
   cryptexRotateDuration: 0.25
@@ -1816,6 +1825,32 @@ MonoBehaviour:
   gear90RotateDuration: 0.25
   currentGear90Index: 0
   movableBlock: {fileID: 0}
+  woodenBlockPuzzle: {fileID: 0}
+  zOffset: 0.1
+  duration: 0.5
+  swordPuzzle: {fileID: 0}
+  triangleEnum: 0
+  puzzleManager: {fileID: 0}
+  shrine: {fileID: 0}
+  pillar: {fileID: 0}
+  grave: {fileID: 0}
+  brokenPillar: {fileID: 0}
+  woodenSword: {fileID: 0}
+  isSymbolPlace: 0
+  clockSymbolsManager: {fileID: 0}
+  blockPanel: {fileID: 0}
+  ninePadPanelManager: {fileID: 0}
+  buttonIsPressed: 0
+  circleAndSquarePuzzle: {fileID: 0}
+  playerPathMovement: {fileID: 0}
+  libraryButtonsManager: {fileID: 0}
+  libraryButtonInt: 0
+  safePuzzle: {fileID: 0}
+  braiserPuzzle: {fileID: 0}
+  braiserInt: 0
+  swordPuzzlePiece: {fileID: 0}
+  clubPuzzlePiece: {fileID: 0}
+  framePuzzlemanager: {fileID: 0}
   references:
     version: 2
     RefIds: []
@@ -2305,7 +2340,7 @@ MonoBehaviour:
       m_Calls: []
   objectToPlace: {fileID: 0}
   boxCollider: {fileID: 0}
-  canOpenWithNoSelectedItem: 0
+  canOpenWithNoSelectedItem: 1
   itemPrefab: {fileID: 0}
   isActualReading: 0
   isAlchemyRecipe: 0
@@ -2340,6 +2375,15 @@ MonoBehaviour:
   highlightColor: {r: 0, g: 0, b: 0, a: 0}
   statueCompasPuzzle: {fileID: 0}
   rotationDuration: 0.5
+  objectA: {fileID: 0}
+  objectB: {fileID: 0}
+  moveDistanceMovingBlockPuzzle: 1
+  moveSpeedMovingBlockPuzzle: 5
+  rayLengthMovingBlockPuzzle: 0.45
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 0
+  movingBlockPuzzleManager: {fileID: 0}
   linkedReadable: {fileID: 0}
   directionTextSet: {fileID: 0}
   cryptexRotateDuration: 0.25
@@ -2350,6 +2394,32 @@ MonoBehaviour:
   gear90RotateDuration: 0.25
   currentGear90Index: 0
   movableBlock: {fileID: 0}
+  woodenBlockPuzzle: {fileID: 0}
+  zOffset: 0.1
+  duration: 0.5
+  swordPuzzle: {fileID: 0}
+  triangleEnum: 0
+  puzzleManager: {fileID: 0}
+  shrine: {fileID: 0}
+  pillar: {fileID: 0}
+  grave: {fileID: 0}
+  brokenPillar: {fileID: 0}
+  woodenSword: {fileID: 0}
+  isSymbolPlace: 0
+  clockSymbolsManager: {fileID: 0}
+  blockPanel: {fileID: 0}
+  ninePadPanelManager: {fileID: 0}
+  buttonIsPressed: 0
+  circleAndSquarePuzzle: {fileID: 0}
+  playerPathMovement: {fileID: 0}
+  libraryButtonsManager: {fileID: 0}
+  libraryButtonInt: 0
+  safePuzzle: {fileID: 0}
+  braiserPuzzle: {fileID: 0}
+  braiserInt: 0
+  swordPuzzlePiece: {fileID: 0}
+  clubPuzzlePiece: {fileID: 0}
+  framePuzzlemanager: {fileID: 0}
   references:
     version: 2
     RefIds: []
@@ -2857,7 +2927,7 @@ MonoBehaviour:
       m_Calls: []
   objectToPlace: {fileID: 0}
   boxCollider: {fileID: 0}
-  canOpenWithNoSelectedItem: 0
+  canOpenWithNoSelectedItem: 1
   itemPrefab: {fileID: 0}
   isActualReading: 0
   isAlchemyRecipe: 0
@@ -2892,6 +2962,15 @@ MonoBehaviour:
   highlightColor: {r: 0, g: 0, b: 0, a: 0}
   statueCompasPuzzle: {fileID: 0}
   rotationDuration: 0.5
+  objectA: {fileID: 0}
+  objectB: {fileID: 0}
+  moveDistanceMovingBlockPuzzle: 1
+  moveSpeedMovingBlockPuzzle: 5
+  rayLengthMovingBlockPuzzle: 0.45
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 0
+  movingBlockPuzzleManager: {fileID: 0}
   linkedReadable: {fileID: 0}
   directionTextSet: {fileID: 0}
   cryptexRotateDuration: 0.25
@@ -2902,6 +2981,32 @@ MonoBehaviour:
   gear90RotateDuration: 0.25
   currentGear90Index: 0
   movableBlock: {fileID: 0}
+  woodenBlockPuzzle: {fileID: 0}
+  zOffset: 0.1
+  duration: 0.5
+  swordPuzzle: {fileID: 0}
+  triangleEnum: 0
+  puzzleManager: {fileID: 0}
+  shrine: {fileID: 0}
+  pillar: {fileID: 0}
+  grave: {fileID: 0}
+  brokenPillar: {fileID: 0}
+  woodenSword: {fileID: 0}
+  isSymbolPlace: 0
+  clockSymbolsManager: {fileID: 0}
+  blockPanel: {fileID: 0}
+  ninePadPanelManager: {fileID: 0}
+  buttonIsPressed: 0
+  circleAndSquarePuzzle: {fileID: 0}
+  playerPathMovement: {fileID: 0}
+  libraryButtonsManager: {fileID: 0}
+  libraryButtonInt: 0
+  safePuzzle: {fileID: 0}
+  braiserPuzzle: {fileID: 0}
+  braiserInt: 0
+  swordPuzzlePiece: {fileID: 0}
+  clubPuzzlePiece: {fileID: 0}
+  framePuzzlemanager: {fileID: 0}
   references:
     version: 2
     RefIds: []

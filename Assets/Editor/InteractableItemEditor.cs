@@ -104,6 +104,10 @@ public class InteractableItemEditor : Editor
     private SerializedProperty braiserPuzzle;
     private SerializedProperty braiserInt;
 
+    private SerializedProperty swordPuzzlePiece;
+    private SerializedProperty clubPuzzlePiece;
+    private SerializedProperty framePuzzlemanager;
+
 
     private void OnEnable()
     {
@@ -205,6 +209,10 @@ public class InteractableItemEditor : Editor
 
         braiserPuzzle = serializedObject.FindProperty("braiserPuzzle");
         braiserInt = serializedObject.FindProperty("braiserInt");
+
+        swordPuzzlePiece = serializedObject.FindProperty("swordPuzzlePiece");
+        clubPuzzlePiece = serializedObject.FindProperty("clubPuzzlePiece");
+        framePuzzlemanager = serializedObject.FindProperty("framePuzzlemanager");
 
     }
 
@@ -470,7 +478,11 @@ public class InteractableItemEditor : Editor
                 EditorGUILayout.PropertyField(braiserPuzzle, new GUIContent("Braiser Puzzle"));
                 EditorGUILayout.PropertyField(braiserInt, new GUIContent("Braiser Int"));
                 break;
-
+            case InteractableItem.InteractableType.PuzzleFrame:
+                EditorGUILayout.PropertyField(swordPuzzlePiece, new GUIContent("Sword Puzzle Piece"));
+                EditorGUILayout.PropertyField(clubPuzzlePiece, new GUIContent("Club Puzzle Piece"));
+                EditorGUILayout.PropertyField(framePuzzlemanager, new GUIContent("Frame Puzzle Manager"));
+                break;
 
 
         }

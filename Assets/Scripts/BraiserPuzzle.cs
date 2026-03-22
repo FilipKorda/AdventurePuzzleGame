@@ -28,6 +28,7 @@ public class BraiserPuzzle : MonoBehaviour
     [SerializeField] private UVScrollFromMovement uVScrollFromMovement3;
 
     [SerializeField] private Animator animator;
+    [SerializeField] private Animator hiddenDoorAnimator;
 
 
     private bool puzzle0 = false;
@@ -280,6 +281,7 @@ public class BraiserPuzzle : MonoBehaviour
             uVScrollFromMovement3.enabled = false;
 
             animator.SetTrigger("Open");
+            hiddenDoorAnimator.SetTrigger("Open");
 
             playerBehaviour.disablePlayer = false;
             playerBehaviour._playerCamera.enabled = true;

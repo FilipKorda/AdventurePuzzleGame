@@ -51,6 +51,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-en-US
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bc13acc43896b6b4c97aa68ded52dec8
+    m_Address: PiecePuzzle_en-US
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en-US
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ca0c6af0b9743704285610cec40ecc88
     m_Address: END_en-US
     m_ReadOnly: 1

@@ -33,6 +33,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-pl-PL
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 765ae6ff1f29f2049bd6d013002acbb7
+    m_Address: PiecePuzzle_pl-PL
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-pl-PL
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8a8952e936707cc4891538591f3f54ac
     m_Address: Items_pl-PL
     m_ReadOnly: 1

@@ -11,7 +11,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     IGetObject, ICrafting, IPinNumber, IRotate, ICryptex, IMirror, IGearLock, IGearRotate, IGear90, IPipeGearPuzzle,
     IFurniture, IWoodenBlockPuzzle, IWoodenBlock, ITrianglePuzzle, ISymbolPlaceable, IArrowDirection, IPuzzlePipePart,
     IBlockButton, INinePadPanel, ICircleAndSquarePuzzle, IRotateCircleAndSquarePuzzle, IPlayerSphereMovement, ILibraryButton,
-    ISafe, IBraiser
+    ISafe, IBraiser, IFramePuzzle
 {
     public enum InteractableType
     {
@@ -54,7 +54,8 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         PlayerSphereMovement,
         LibraryButton,
         Safe,
-        Braiser
+        Braiser,
+        PuzzleFrame
     }
 
     public InteractableType interactableType;
@@ -249,6 +250,11 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     [SerializeField] private BraiserPuzzle braiserPuzzle;
     [SerializeField] private int braiserInt = 0;
 
+    [Header("Puzzle Frame")]
+    [SerializeField] private GameObject swordPuzzlePiece;
+    [SerializeField] private GameObject clubPuzzlePiece;
+    [SerializeField] private FramePuzzlemanager framePuzzlemanager;
+
     private void Awake()
     {
         if (rend != null)
@@ -260,6 +266,33 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         {
             startPosition = transform.position;
         }
+
+    }
+
+
+    public void PlacePuzzleIntoFrame()
+    {
+        int currentSelectedId = UIManager.Instance.GetSelectedItemId();
+        if (currentSelectedId == 0)
+        {
+            Debug.Log("Nie wybrano ¿adnego przedmiotu do u¿ycia.");
+            return;
+        }
+
+        switch ((ItemID)currentSelectedId)
+        {
+            case ItemID.KnightSwordPiece:
+                swordPuzzlePiece.SetActive(true);
+                break;
+            case ItemID.KnightClubPiece:
+                clubPuzzlePiece.SetActive(true);
+                break;
+        }
+
+        framePuzzlemanager.CheckAllPuzzlesBlocks();
+        Services.Audio.PlaySFX("PlaceObject");
+        Inventory.Instance.RemoveItemFromInventoryByID(currentSelectedId);
+        UIManager.Instance.RemoveItemFromUIByID(currentSelectedId);
 
     }
 

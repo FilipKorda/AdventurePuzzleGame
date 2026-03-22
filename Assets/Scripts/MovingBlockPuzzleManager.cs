@@ -67,6 +67,7 @@ public class MovingBlockPuzzleManager : MonoBehaviour
 
     public void ExitMovingPuzzleMode()
     {
+        puzzleWin = false;
         puzzlepartCollider.enabled = true;
         blurCanvas.gameObject.SetActive(false);
         ResetObjectPosition();
@@ -77,7 +78,6 @@ public class MovingBlockPuzzleManager : MonoBehaviour
 
     private void ResetObjectPosition()
     {
-        puzzleWin = false;
         objectA.transform.localPosition = basePositionObject1;
         objectB.transform.localPosition = basePositionObject2;
     }
@@ -148,27 +148,23 @@ public class MovingBlockPuzzleManager : MonoBehaviour
     }
 
     private void WinPuzzle()
-    {
-        if (!puzzleWin)
+    {  
+        foreach (var a in arrows)
         {
-            foreach (var a in arrows)
-            {
-                a.enabled = false;
-            }
-            puzzleWin = true;
-            SetObjectAtrapa();
-            blurCanvas.gameObject.SetActive(false);
-            ResetObjectPosition();
-            gameObject.SetActive(false);
-            playerBehaviour.disableOnlyMovement = false;
-            UIManager.Instance.DisableGearModePanel();
-
-            Debug.Log("Puzzle solved! You win!");
-
-           
-
-            pipePuzzleManager.CheckWInBothPipePuzzle();
+            a.enabled = false;
         }
+        puzzleWin = true;
+        ResetObjectPosition();
+        SetObjectAtrapa();
+        blurCanvas.gameObject.SetActive(false);
+        ResetObjectPosition();
+        gameObject.SetActive(false);
+        playerBehaviour.disableOnlyMovement = false;
+        UIManager.Instance.DisableGearModePanel();
+
+      
+        Services.Audio.PlaySFX("AfterGearPuzzleSolved");
+        pipePuzzleManager.CheckWInBothPipePuzzle();
 
     }
 

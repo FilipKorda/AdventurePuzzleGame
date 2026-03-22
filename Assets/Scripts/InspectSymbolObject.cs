@@ -2,11 +2,15 @@ using UnityEngine;
 
 public class InspectSymbolObject : MonoBehaviour
 {
+    [Header("Statues")]
     [SerializeField] private GameObject shrineObject;
     [SerializeField] private GameObject pillarObject;
     [SerializeField] private GameObject graveObject;
     [SerializeField] private GameObject brokenPillarObject;
     [SerializeField] private GameObject woodenSwordObject;
+    [Header("Frame Puzzle")]
+    [SerializeField] private GameObject swordPieceObject;
+    [SerializeField] private GameObject clubPieceObject;
 
     [SerializeField] private PlayerBehaviour playerBehaviour;
 
@@ -43,6 +47,17 @@ public class InspectSymbolObject : MonoBehaviour
     public void ShowWoodenSwordObject()
     {
         Spawn(woodenSwordObject);
+    }
+
+
+    public void ShowSwordPieceObject()
+    {
+        Spawn(swordPieceObject);
+    }
+
+    public void ShowClubPieceObject()
+    {
+        Spawn(clubPieceObject);
     }
 
     private void Spawn(GameObject prefab)

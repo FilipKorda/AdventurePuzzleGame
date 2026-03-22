@@ -17,13 +17,15 @@ public class LaserBeam : MonoBehaviour
     [SerializeField] LayerMask passLayer;
     [SerializeField] LayerMask reactableLayer;
 
-    [SerializeField] float refreshRate = 0.05f; 
+    [SerializeField] float refreshRate = 0.05f;
 
     private void Start()
     {
         // Optionally, you can start the laser routine as a coroutine to control the refresh rate
         // StartCoroutine(LaserRoutine());
     }
+
+
 
     private IEnumerator LaserRoutine()
     {
@@ -32,6 +34,11 @@ public class LaserBeam : MonoBehaviour
             DrawLaser();
             yield return new WaitForSeconds(refreshRate);
         }
+    }
+
+    public void ToggleLaser(bool toogleLaser)
+    {
+        activeLaser = toogleLaser;
     }
 
     void Update()
@@ -46,7 +53,7 @@ public class LaserBeam : MonoBehaviour
 
     void DrawLaser()
     {
-        if(activeLaser)
+        if (activeLaser)
         {
             currentHits.Clear();
 
@@ -108,6 +115,6 @@ public class LaserBeam : MonoBehaviour
             foreach (var reactable in currentHits)
                 lastHits.Add(reactable);
         }
-        
+
     }
 }
