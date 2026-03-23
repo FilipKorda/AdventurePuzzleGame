@@ -107,6 +107,10 @@ public class InteractableItemEditor : Editor
     private SerializedProperty swordPuzzlePiece;
     private SerializedProperty clubPuzzlePiece;
     private SerializedProperty framePuzzlemanager;
+    private SerializedProperty skeletonSwordPiece;
+    private SerializedProperty skeletonWarAxePiece;
+    private SerializedProperty skeletonHelmetPiece;
+    private SerializedProperty skeletonFullHelmetPiece;
 
 
     private void OnEnable()
@@ -213,6 +217,11 @@ public class InteractableItemEditor : Editor
         swordPuzzlePiece = serializedObject.FindProperty("swordPuzzlePiece");
         clubPuzzlePiece = serializedObject.FindProperty("clubPuzzlePiece");
         framePuzzlemanager = serializedObject.FindProperty("framePuzzlemanager");
+
+        skeletonSwordPiece = serializedObject.FindProperty("skeletonSwordPiece");
+        skeletonWarAxePiece = serializedObject.FindProperty("skeletonWarAxePiece");
+        skeletonHelmetPiece = serializedObject.FindProperty("skeletonHelmetPiece");
+        skeletonFullHelmetPiece = serializedObject.FindProperty("skeletonFullHelmetPiece");
 
     }
 
@@ -482,6 +491,10 @@ public class InteractableItemEditor : Editor
                 EditorGUILayout.PropertyField(swordPuzzlePiece, new GUIContent("Sword Puzzle Piece"));
                 EditorGUILayout.PropertyField(clubPuzzlePiece, new GUIContent("Club Puzzle Piece"));
                 EditorGUILayout.PropertyField(framePuzzlemanager, new GUIContent("Frame Puzzle Manager"));
+                EditorGUILayout.PropertyField(skeletonSwordPiece, new GUIContent("Skeleton Sword Piece"));
+                EditorGUILayout.PropertyField(skeletonWarAxePiece, new GUIContent("Skeleton War Axe Piece"));
+                EditorGUILayout.PropertyField(skeletonHelmetPiece, new GUIContent("Skeleton Helmet Piece"));
+                EditorGUILayout.PropertyField(skeletonFullHelmetPiece, new GUIContent("Skeleton Full Helmet Piece"));
                 break;
 
 

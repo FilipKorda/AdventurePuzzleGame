@@ -247,7 +247,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -1580535799172915004, guid: cba8bd7efae31d74d94156840ad129c0, type: 3}
+  - {fileID: 2100000, guid: f71b4ceb32ad7514fb6a5da99854e1d3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -407,6 +407,11 @@ MonoBehaviour:
   braiserInt: 0
   swordPuzzlePiece: {fileID: 0}
   clubPuzzlePiece: {fileID: 0}
+  skeletonSwordPiece: {fileID: 0}
+  skeletonWarAxePiece: {fileID: 0}
+  skeletonHelmetPiece: {fileID: 0}
+  skeletonFullHelmetPiece: {fileID: 0}
+  framePuzzlemanager: {fileID: 0}
   references:
     version: 2
     RefIds: []
