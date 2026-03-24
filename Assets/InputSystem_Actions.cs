@@ -1622,6 +1622,67 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""CursorController"",
+            ""id"": ""1f674bae-1b3e-41a6-b531-61cc21241cd0"",
+            ""actions"": [
+                {
+                    ""name"": ""MouseClickAndDrag"",
+                    ""type"": ""Value"",
+                    ""id"": ""c02567e2-b6ef-4773-8b1e-8309c2bb7c25"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""7ea90585-b37c-4f6c-9ee9-fbd2e5e774c4"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""MouseClickAndDrag"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bfa144e5-6441-4ad4-8d01-fca7940eed99"",
+                    ""path"": ""<Pointer>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse;Touch"",
+                    ""action"": ""MouseClickAndDrag"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""33a2924e-e991-40af-b977-7fcfe33a57f1"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""MouseClickAndDrag"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""80628180-4dcc-4408-bb61-464d62ed544a"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""MouseClickAndDrag"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -1737,6 +1798,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         // CircleAndSquarePuzzle
         m_CircleAndSquarePuzzle = asset.FindActionMap("CircleAndSquarePuzzle", throwIfNotFound: true);
         m_CircleAndSquarePuzzle_MoveSphere = m_CircleAndSquarePuzzle.FindAction("MoveSphere", throwIfNotFound: true);
+        // CursorController
+        m_CursorController = asset.FindActionMap("CursorController", throwIfNotFound: true);
+        m_CursorController_MouseClickAndDrag = m_CursorController.FindAction("MouseClickAndDrag", throwIfNotFound: true);
     }
 
     ~@InputSystem_Actions()
@@ -1748,6 +1812,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         UnityEngine.Debug.Assert(!m_GearRiddle.enabled, "This will cause a leak and performance issues, InputSystem_Actions.GearRiddle.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_Furniture.enabled, "This will cause a leak and performance issues, InputSystem_Actions.Furniture.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_CircleAndSquarePuzzle.enabled, "This will cause a leak and performance issues, InputSystem_Actions.CircleAndSquarePuzzle.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_CursorController.enabled, "This will cause a leak and performance issues, InputSystem_Actions.CursorController.Disable() has not been called.");
     }
 
     /// <summary>
@@ -2810,6 +2875,102 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     /// Provides a new <see cref="CircleAndSquarePuzzleActions" /> instance referencing this action map.
     /// </summary>
     public CircleAndSquarePuzzleActions @CircleAndSquarePuzzle => new CircleAndSquarePuzzleActions(this);
+
+    // CursorController
+    private readonly InputActionMap m_CursorController;
+    private List<ICursorControllerActions> m_CursorControllerActionsCallbackInterfaces = new List<ICursorControllerActions>();
+    private readonly InputAction m_CursorController_MouseClickAndDrag;
+    /// <summary>
+    /// Provides access to input actions defined in input action map "CursorController".
+    /// </summary>
+    public struct CursorControllerActions
+    {
+        private @InputSystem_Actions m_Wrapper;
+
+        /// <summary>
+        /// Construct a new instance of the input action map wrapper class.
+        /// </summary>
+        public CursorControllerActions(@InputSystem_Actions wrapper) { m_Wrapper = wrapper; }
+        /// <summary>
+        /// Provides access to the underlying input action "CursorController/MouseClickAndDrag".
+        /// </summary>
+        public InputAction @MouseClickAndDrag => m_Wrapper.m_CursorController_MouseClickAndDrag;
+        /// <summary>
+        /// Provides access to the underlying input action map instance.
+        /// </summary>
+        public InputActionMap Get() { return m_Wrapper.m_CursorController; }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+        public void Enable() { Get().Enable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+        public void Disable() { Get().Disable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+        public bool enabled => Get().enabled;
+        /// <summary>
+        /// Implicitly converts an <see ref="CursorControllerActions" /> to an <see ref="InputActionMap" /> instance.
+        /// </summary>
+        public static implicit operator InputActionMap(CursorControllerActions set) { return set.Get(); }
+        /// <summary>
+        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <param name="instance">Callback instance.</param>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+        /// </remarks>
+        /// <seealso cref="CursorControllerActions" />
+        public void AddCallbacks(ICursorControllerActions instance)
+        {
+            if (instance == null || m_Wrapper.m_CursorControllerActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_CursorControllerActionsCallbackInterfaces.Add(instance);
+            @MouseClickAndDrag.started += instance.OnMouseClickAndDrag;
+            @MouseClickAndDrag.performed += instance.OnMouseClickAndDrag;
+            @MouseClickAndDrag.canceled += instance.OnMouseClickAndDrag;
+        }
+
+        /// <summary>
+        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <remarks>
+        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+        /// </remarks>
+        /// <seealso cref="CursorControllerActions" />
+        private void UnregisterCallbacks(ICursorControllerActions instance)
+        {
+            @MouseClickAndDrag.started -= instance.OnMouseClickAndDrag;
+            @MouseClickAndDrag.performed -= instance.OnMouseClickAndDrag;
+            @MouseClickAndDrag.canceled -= instance.OnMouseClickAndDrag;
+        }
+
+        /// <summary>
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="CursorControllerActions.UnregisterCallbacks(ICursorControllerActions)" />.
+        /// </summary>
+        /// <seealso cref="CursorControllerActions.UnregisterCallbacks(ICursorControllerActions)" />
+        public void RemoveCallbacks(ICursorControllerActions instance)
+        {
+            if (m_Wrapper.m_CursorControllerActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        /// <summary>
+        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+        /// </summary>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+        /// </remarks>
+        /// <seealso cref="CursorControllerActions.AddCallbacks(ICursorControllerActions)" />
+        /// <seealso cref="CursorControllerActions.RemoveCallbacks(ICursorControllerActions)" />
+        /// <seealso cref="CursorControllerActions.UnregisterCallbacks(ICursorControllerActions)" />
+        public void SetCallbacks(ICursorControllerActions instance)
+        {
+            foreach (var item in m_Wrapper.m_CursorControllerActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_CursorControllerActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    /// <summary>
+    /// Provides a new <see cref="CursorControllerActions" /> instance referencing this action map.
+    /// </summary>
+    public CursorControllerActions @CursorController => new CursorControllerActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     /// <summary>
     /// Provides access to the input control scheme.
@@ -3182,5 +3343,20 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnMoveSphere(InputAction.CallbackContext context);
+    }
+    /// <summary>
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "CursorController" which allows adding and removing callbacks.
+    /// </summary>
+    /// <seealso cref="CursorControllerActions.AddCallbacks(ICursorControllerActions)" />
+    /// <seealso cref="CursorControllerActions.RemoveCallbacks(ICursorControllerActions)" />
+    public interface ICursorControllerActions
+    {
+        /// <summary>
+        /// Method invoked when associated input action "MouseClickAndDrag" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnMouseClickAndDrag(InputAction.CallbackContext context);
     }
 }

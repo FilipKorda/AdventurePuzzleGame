@@ -21,7 +21,6 @@ public class InteractableItemEditor : Editor
     private SerializedProperty itemPrefab;
     private SerializedProperty readableAndInteractableTextData;
     private SerializedProperty isAlchemyRecipe;
-    private SerializedProperty requiredItemIds;
     private SerializedProperty scroll_BigAcidPotion;
     private SerializedProperty scroll_SmallAngryTimePotion;
     private SerializedProperty scroll_ElderBadMoodPotion;
@@ -115,6 +114,9 @@ public class InteractableItemEditor : Editor
 
     private void OnEnable()
     {
+        if (serializedObject == null || serializedObject.targetObject == null)
+            return;
+
         interactableTypeProp = serializedObject.FindProperty("interactableType");
         itemNameProp = serializedObject.FindProperty("itemName");
         itemSpriteProp = serializedObject.FindProperty("itemSprite");
@@ -132,7 +134,6 @@ public class InteractableItemEditor : Editor
         itemPrefab = serializedObject.FindProperty("itemPrefab");
         readableAndInteractableTextData = serializedObject.FindProperty("readableAndInteractableTextData");
         isAlchemyRecipe = serializedObject.FindProperty("isAlchemyRecipe");
-        requiredItemIds = serializedObject.FindProperty("requiredItemIds");
         scroll_BigAcidPotion = serializedObject.FindProperty("scroll_BigAcidPotion");
         scroll_SmallAngryTimePotion = serializedObject.FindProperty("scroll_SmallAngryTimePotion");
         scroll_ElderBadMoodPotion = serializedObject.FindProperty("scroll_ElderBadMoodPotion");
@@ -227,6 +228,9 @@ public class InteractableItemEditor : Editor
 
     public override void OnInspectorGUI()
     {
+        if (serializedObject == null || serializedObject.targetObject == null)
+            return;
+
         serializedObject.Update();
 
         EditorGUILayout.PropertyField(interactableTypeProp, new GUIContent("Interactable Type"));
@@ -324,7 +328,7 @@ public class InteractableItemEditor : Editor
                 EditorGUILayout.PropertyField(scroll_SmallWinePotion, new GUIContent(""));
                 break;
             case InteractableItem.InteractableType.PlaceRecipe:
-                EditorGUILayout.PropertyField(requiredItemIds, new GUIContent("Required Items ID"));
+                EditorGUILayout.PropertyField(requiredItemIdsProp, new GUIContent("Required Items ID"));
                 EditorGUILayout.PropertyField(readableAndInteractableTextData, new GUIContent("Readable And Interactable TextData"));
                 EditorGUILayout.PropertyField(scroll_BigAcidPotion, new GUIContent(""));
                 EditorGUILayout.PropertyField(scroll_SmallAngryTimePotion, new GUIContent(""));

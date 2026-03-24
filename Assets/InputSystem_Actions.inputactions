@@ -1536,6 +1536,67 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "CursorController",
+            "id": "1f674bae-1b3e-41a6-b531-61cc21241cd0",
+            "actions": [
+                {
+                    "name": "MouseClickAndDrag",
+                    "type": "Value",
+                    "id": "c02567e2-b6ef-4773-8b1e-8309c2bb7c25",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "7ea90585-b37c-4f6c-9ee9-fbd2e5e774c4",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "MouseClickAndDrag",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bfa144e5-6441-4ad4-8d01-fca7940eed99",
+                    "path": "<Pointer>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse;Touch",
+                    "action": "MouseClickAndDrag",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "33a2924e-e991-40af-b977-7fcfe33a57f1",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "MouseClickAndDrag",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "80628180-4dcc-4408-bb61-464d62ed544a",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "MouseClickAndDrag",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [
