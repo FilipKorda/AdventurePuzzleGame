@@ -157,6 +157,26 @@ MonoBehaviour:
     m_Localized: "Zniszczona \u015Bciana\n"
     m_Metadata:
       m_Items: []
+  - m_Id: 17762438814650368
+    m_Localized: "Dw\xF3ch rycerzy strze\u017Ce sarkofagu.\r\nJeden dzier\u017Cy
+      ostrze, kt\xF3re tnie bez lito\u015Bci.\r\nDrugi niesie bro\u0144, co mia\u017Cd\u017Cy,
+      lecz nie rozcina.\r\n\r\nTam, gdzie s\u0142o\u0144ce nigdy nie wschodzi,\r\nkamie\u0144
+      oczekuje si\u0142y uderzenia.\r\nTam, gdzie cie\u0144 jest najkr\xF3tszy,\r\nczeka
+      na precyzj\u0119 ostrza.\r\n\r\nBrama nie ust\u0105pi przed przypadkiem \u2014\r\ntylko
+      w\u0142a\u015Bciwa bro\u0144 odnajdzie swoje miejsce."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17764455888998400
+    m_Localized: "Dwa szkielety stoj\u0105 naprzeciw siebie,\ncho\u0107 ka\u017Cdy
+      patrzy w inn\u0105 stron\u0119 \u015Bwiata.\n\nTam, gdzie rodzi si\u0119 \u015Bwiat\u0142o
+      dnia,\nspoczywa ten, kt\xF3ry ufa\u0142 sprytowi, nie sile.\nRogi wznosi\u0142
+      ku niebu,\nlecz walczy\u0142 kr\xF3tkim ostrzem, z bliska i w ciszy.\n\nTam,
+      gdzie s\u0142o\u0144ce ko\u0144czy sw\xF3j bieg,\nstoi wojownik bez twarzy.\nJego
+      he\u0142m nie zdradza\u0142 emocji,\na ci\u0119\u017Ckie ostrze rozstrzyga\u0142o
+      los jednym zamachem.\n\nNie zamieniaj ich historii.\nKa\u017Cdy musi otrzyma\u0107
+      to,\nz czym odszed\u0142 na wieczny spoczynek."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

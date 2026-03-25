@@ -149,6 +149,14 @@ MonoBehaviour:
 '
     m_Metadata:
       m_Items: []
+  - m_Id: 17762438814650368
+    m_Key: Frame Knight
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17764455888998400
+    m_Key: Frame Skeleton
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

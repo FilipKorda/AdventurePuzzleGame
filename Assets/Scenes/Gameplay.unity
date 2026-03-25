@@ -51298,6 +51298,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 100000, guid: 4fe4fc7683c898747998c195978256cc, type: 3}
       insertIndex: -1
       addedObject: {fileID: 204003438}
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: 4fe4fc7683c898747998c195978256cc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 204003439}
   m_SourcePrefab: {fileID: 100100000, guid: 4fe4fc7683c898747998c195978256cc, type: 3}
 --- !u!4 &204003436 stripped
 Transform:
@@ -51331,6 +51334,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &204003439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204003437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a977bb622090df24b9d318ca5bd9c09e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AnimationAudioEvent
 --- !u!1001 &204389274
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -53971,8 +53986,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f9c967d2475af2409995abbf72e878b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BraiserPuzzleMoveArea
-  areaMin: {x: -0.16, y: -0.17}
-  areaMax: {x: 0.17, y: 0.15}
+  areaMin: {x: -0.13, y: -0.15}
+  areaMax: {x: 0.14, y: 0.122}
 --- !u!1001 &213553526
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -103109,8 +103124,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f9c967d2475af2409995abbf72e878b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BraiserPuzzleMoveArea
-  areaMin: {x: -0.17, y: -0.17}
-  areaMax: {x: 0.17, y: 0.17}
+  areaMin: {x: -0.13, y: -0.12}
+  areaMax: {x: 0.125, y: 0.125}
 --- !u!1001 &400345948
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -129172,7 +129187,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &490500411
 RectTransform:
   m_ObjectHideFlags: 0
@@ -153060,6 +153075,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 958cc0f31c08a224f83e3a8d953ee82f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2049201884}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 958cc0f31c08a224f83e3a8d953ee82f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2049201885}
   m_SourcePrefab: {fileID: 100100000, guid: 958cc0f31c08a224f83e3a8d953ee82f, type: 3}
 --- !u!4 &589861988 stripped
 Transform:
@@ -288438,6 +288456,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1166101200}
   - component: {fileID: 1166101201}
+  - component: {fileID: 1166101202}
   m_Layer: 0
   m_Name: Joint
   m_TagString: Untagged
@@ -288483,6 +288502,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1166101202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1166101199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a977bb622090df24b9d318ca5bd9c09e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AnimationAudioEvent
 --- !u!1 &1166584666
 GameObject:
   m_ObjectHideFlags: 0
@@ -302996,6 +303027,7 @@ GameObject:
   - component: {fileID: 1204124831}
   - component: {fileID: 1204124832}
   - component: {fileID: 1204124833}
+  - component: {fileID: 1204124834}
   m_Layer: 0
   m_Name: Braiser Puzzle
   m_TagString: Untagged
@@ -303111,6 +303143,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1204124834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1204124829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a977bb622090df24b9d318ca5bd9c09e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AnimationAudioEvent
 --- !u!1001 &1204922019
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -317630,6 +317674,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 958cc0f31c08a224f83e3a8d953ee82f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1261298536}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 958cc0f31c08a224f83e3a8d953ee82f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1261298537}
   m_SourcePrefab: {fileID: 100100000, guid: 958cc0f31c08a224f83e3a8d953ee82f, type: 3}
 --- !u!4 &1261298532 stripped
 Transform:
@@ -317658,6 +317705,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1261298537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 818248564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a977bb622090df24b9d318ca5bd9c09e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AnimationAudioEvent
 --- !u!1001 &1261981581
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -361180,6 +361239,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 100000, guid: 827885f9c6f8d734c894e9ee1ed7b6e7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1461399696}
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: 827885f9c6f8d734c894e9ee1ed7b6e7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1461399697}
   m_SourcePrefab: {fileID: 100100000, guid: 827885f9c6f8d734c894e9ee1ed7b6e7, type: 3}
 --- !u!4 &1461399694 stripped
 Transform:
@@ -361213,6 +361275,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1461399697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1461399695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a977bb622090df24b9d318ca5bd9c09e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AnimationAudioEvent
 --- !u!4 &1461897857 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5443122532103745433, guid: 864d80258000a6d4db0a13bcfbee1110, type: 3}
@@ -445944,6 +446018,7 @@ GameObject:
   - component: {fileID: 1823812429}
   - component: {fileID: 1823812428}
   - component: {fileID: 1823812427}
+  - component: {fileID: 1823812432}
   m_Layer: 3
   m_Name: Interactable Collider
   m_TagString: Untagged
@@ -446189,6 +446264,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1823812425}
   m_Mesh: {fileID: -2684548993427604469, guid: 976819518fe06734187f5b6071b7a4b5, type: 3}
+--- !u!114 &1823812432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1823812425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a977bb622090df24b9d318ca5bd9c09e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AnimationAudioEvent
 --- !u!1 &1824526020
 GameObject:
   m_ObjectHideFlags: 0
@@ -480925,8 +481012,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f9c967d2475af2409995abbf72e878b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BraiserPuzzleMoveArea
-  areaMin: {x: -0.13, y: -0.11}
-  areaMax: {x: 0.11, y: 0.11}
+  areaMin: {x: -0.11, y: -0.105}
+  areaMax: {x: 0.097, y: 0.1}
 --- !u!1 &1982334793
 GameObject:
   m_ObjectHideFlags: 0
@@ -481320,6 +481407,59 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1984261171}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1984448196
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1984448198}
+  - component: {fileID: 1984448197}
+  m_Layer: 0
+  m_Name: Cursor Controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1984448197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1984448196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fef1981727e592a479f98930bf99087a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CursorController
+  cursorInput: {fileID: 8142836265431188856, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  interactableLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  pausePanel: {fileID: 466430501}
+  centerOfScreen: {fileID: 1557918869}
+  centerOfScreenImage: {fileID: 490500411}
+  dot: {fileID: 89678872}
+  hasHit: 0
+--- !u!4 &1984448198
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1984448196}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1984751593
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -487645,8 +487785,8 @@ Transform:
   m_GameObject: {fileID: 2006898534}
   serializedVersion: 2
   m_LocalRotation: {x: -0.42748538, y: -0.5632525, z: -0.42748877, w: 0.5632551}
-  m_LocalPosition: {x: 2.0095673, y: 5.336814, z: -4.317236}
-  m_LocalScale: {x: 7.292879, y: 6.623393, z: 7.2928796}
+  m_LocalPosition: {x: 2.0117, y: 4.8058, z: -4.317}
+  m_LocalScale: {x: 7.292879, y: 5.9077353, z: 7.2928796}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 572014585}
@@ -496636,7 +496776,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f9c967d2475af2409995abbf72e878b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BraiserPuzzleMoveArea
-  areaMin: {x: -0.18, y: -0.17}
+  areaMin: {x: -0.175, y: -0.17}
   areaMax: {x: 0.19, y: 0.19}
 --- !u!1001 &2038997267
 PrefabInstance:
@@ -498437,6 +498577,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2049201885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2049201880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a977bb622090df24b9d318ca5bd9c09e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AnimationAudioEvent
 --- !u!1001 &2049379304
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -510735,12 +510887,27 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: aca832a2eb4b71a4dab2fe774fa59c12, type: 3}
       insertIndex: -1
       addedObject: {fileID: 65876169}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: aca832a2eb4b71a4dab2fe774fa59c12, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2100437408}
   m_SourcePrefab: {fileID: 100100000, guid: aca832a2eb4b71a4dab2fe774fa59c12, type: 3}
 --- !u!4 &2100437407 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: aca832a2eb4b71a4dab2fe774fa59c12, type: 3}
   m_PrefabInstance: {fileID: 2100437406}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2100437408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1682663055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a977bb622090df24b9d318ca5bd9c09e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AnimationAudioEvent
 --- !u!1001 &2100808368
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -542031,15 +542198,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3870059820769821162, guid: 13f4cb170fb0bd248ad9de5797fbd0e0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.54
+      value: 4.728
       objectReference: {fileID: 0}
     - target: {fileID: 3870059820769821162, guid: 13f4cb170fb0bd248ad9de5797fbd0e0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 22.04
+      value: 21.362
       objectReference: {fileID: 0}
     - target: {fileID: 3870059820769821162, guid: 13f4cb170fb0bd248ad9de5797fbd0e0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 43.06
+      value: 45.124
       objectReference: {fileID: 0}
     - target: {fileID: 3870059820769821162, guid: 13f4cb170fb0bd248ad9de5797fbd0e0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -553424,3 +553591,4 @@ SceneRoots:
   - {fileID: 66058928}
   - {fileID: 1716776109}
   - {fileID: 949983970}
+  - {fileID: 1984448198}

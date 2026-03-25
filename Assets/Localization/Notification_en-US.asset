@@ -159,6 +159,56 @@ MonoBehaviour:
     m_Localized: Crack in the wall
     m_Metadata:
       m_Items: []
+  - m_Id: 17762438814650368
+    m_Localized: "Two knights guard the sarcophagus.\r\nOne wields a blade that cuts
+      without mercy.\r\nThe other carries a weapon that crushes, but does not cut.\r\n\r\nWhere
+      the sun never rises,\r\nstone awaits the force of its impact.\r\n\r\nWhere
+      the shadow is shortest,\r\nit waits for the precision of the blade.\r\n\r\nThe
+      gate will not yield to chance\u2014\r\nonly the right weapon will find its
+      place."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17764455888998400
+    m_Localized: 'Two skeletons stand facing each other,
+
+      though each faces
+      a different direction.
+
+      
+
+      Where daylight is born,
+
+      rests
+      the one who trusted in cunning, not strength.
+
+      He raised his horns to
+      the sky,
+
+      but fought with a short blade, close and silent.
+
+      
+
+      Where
+      the sun ends its course,
+
+      stands a faceless warrior.
+
+      His helmet
+      betrayed no emotion,
+
+      and his heavy blade decided fate with a single
+      swing.
+
+      
+
+      Do not change their stories.
+
+      Each must receive
+      what
+
+      he took to his eternal rest.'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
