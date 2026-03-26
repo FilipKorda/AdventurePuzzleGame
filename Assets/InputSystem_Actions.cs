@@ -1628,16 +1628,36 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             ""id"": ""1f674bae-1b3e-41a6-b531-61cc21241cd0"",
             ""actions"": [
                 {
-                    ""name"": ""MouseClickAndDrag"",
+                    ""name"": ""Drag"",
                     ""type"": ""Value"",
                     ""id"": ""c02567e2-b6ef-4773-8b1e-8309c2bb7c25"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Click"",
+                    ""type"": ""Button"",
+                    ""id"": ""cb324315-af38-4004-9a01-6167a07e59a8"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""bfa144e5-6441-4ad4-8d01-fca7940eed99"",
+                    ""path"": ""<Pointer>/delta"",
+                    ""interactions"": ""Hold"",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Drag"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
                 {
                     ""name"": """",
                     ""id"": ""7ea90585-b37c-4f6c-9ee9-fbd2e5e774c4"",
@@ -1645,40 +1665,29 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Gamepad"",
-                    ""action"": ""MouseClickAndDrag"",
+                    ""action"": ""Drag"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""bfa144e5-6441-4ad4-8d01-fca7940eed99"",
-                    ""path"": ""<Pointer>/delta"",
+                    ""id"": ""044fa385-e98f-411b-a997-b1420f0d1ee1"",
+                    ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse;Touch"",
-                    ""action"": ""MouseClickAndDrag"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""33a2924e-e991-40af-b977-7fcfe33a57f1"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": ""Tap"",
-                    ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""MouseClickAndDrag"",
+                    ""action"": ""Click"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""80628180-4dcc-4408-bb61-464d62ed544a"",
+                    ""id"": ""853cd5e4-0cca-42af-b1f3-9e0ef88b5722"",
                     ""path"": ""<Gamepad>/buttonSouth"",
-                    ""interactions"": ""Tap"",
+                    ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Gamepad"",
-                    ""action"": ""MouseClickAndDrag"",
+                    ""action"": ""Click"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1800,7 +1809,8 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_CircleAndSquarePuzzle_MoveSphere = m_CircleAndSquarePuzzle.FindAction("MoveSphere", throwIfNotFound: true);
         // CursorController
         m_CursorController = asset.FindActionMap("CursorController", throwIfNotFound: true);
-        m_CursorController_MouseClickAndDrag = m_CursorController.FindAction("MouseClickAndDrag", throwIfNotFound: true);
+        m_CursorController_Drag = m_CursorController.FindAction("Drag", throwIfNotFound: true);
+        m_CursorController_Click = m_CursorController.FindAction("Click", throwIfNotFound: true);
     }
 
     ~@InputSystem_Actions()
@@ -2879,7 +2889,8 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     // CursorController
     private readonly InputActionMap m_CursorController;
     private List<ICursorControllerActions> m_CursorControllerActionsCallbackInterfaces = new List<ICursorControllerActions>();
-    private readonly InputAction m_CursorController_MouseClickAndDrag;
+    private readonly InputAction m_CursorController_Drag;
+    private readonly InputAction m_CursorController_Click;
     /// <summary>
     /// Provides access to input actions defined in input action map "CursorController".
     /// </summary>
@@ -2892,9 +2903,13 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// </summary>
         public CursorControllerActions(@InputSystem_Actions wrapper) { m_Wrapper = wrapper; }
         /// <summary>
-        /// Provides access to the underlying input action "CursorController/MouseClickAndDrag".
+        /// Provides access to the underlying input action "CursorController/Drag".
         /// </summary>
-        public InputAction @MouseClickAndDrag => m_Wrapper.m_CursorController_MouseClickAndDrag;
+        public InputAction @Drag => m_Wrapper.m_CursorController_Drag;
+        /// <summary>
+        /// Provides access to the underlying input action "CursorController/Click".
+        /// </summary>
+        public InputAction @Click => m_Wrapper.m_CursorController_Click;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -2921,9 +2936,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_CursorControllerActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_CursorControllerActionsCallbackInterfaces.Add(instance);
-            @MouseClickAndDrag.started += instance.OnMouseClickAndDrag;
-            @MouseClickAndDrag.performed += instance.OnMouseClickAndDrag;
-            @MouseClickAndDrag.canceled += instance.OnMouseClickAndDrag;
+            @Drag.started += instance.OnDrag;
+            @Drag.performed += instance.OnDrag;
+            @Drag.canceled += instance.OnDrag;
+            @Click.started += instance.OnClick;
+            @Click.performed += instance.OnClick;
+            @Click.canceled += instance.OnClick;
         }
 
         /// <summary>
@@ -2935,9 +2953,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="CursorControllerActions" />
         private void UnregisterCallbacks(ICursorControllerActions instance)
         {
-            @MouseClickAndDrag.started -= instance.OnMouseClickAndDrag;
-            @MouseClickAndDrag.performed -= instance.OnMouseClickAndDrag;
-            @MouseClickAndDrag.canceled -= instance.OnMouseClickAndDrag;
+            @Drag.started -= instance.OnDrag;
+            @Drag.performed -= instance.OnDrag;
+            @Drag.canceled -= instance.OnDrag;
+            @Click.started -= instance.OnClick;
+            @Click.performed -= instance.OnClick;
+            @Click.canceled -= instance.OnClick;
         }
 
         /// <summary>
@@ -3352,11 +3373,18 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     public interface ICursorControllerActions
     {
         /// <summary>
-        /// Method invoked when associated input action "MouseClickAndDrag" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "Drag" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnMouseClickAndDrag(InputAction.CallbackContext context);
+        void OnDrag(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Click" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnClick(InputAction.CallbackContext context);
     }
 }

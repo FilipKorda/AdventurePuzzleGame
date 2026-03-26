@@ -1,0 +1,4 @@
+interface IWallSwitchOnOff 
+{
+    void ClickWallSwitch();
+}

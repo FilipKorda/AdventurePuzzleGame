@@ -8,6 +8,8 @@ public interface IAudioService
     void SetMusicVolume(float value);
     void SetSFXVolume(float value);
 
+    void StopLoopSFX(string id);
+
     float GetMusicVolume();
     float GetSFXVolume();
 }

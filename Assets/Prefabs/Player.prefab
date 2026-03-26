@@ -650,7 +650,6 @@ GameObject:
   - component: {fileID: 4922775154563705814}
   - component: {fileID: 6777279263115178933}
   - component: {fileID: 3228317829877042417}
-  - component: {fileID: 8168886577614373376}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1114,26 +1113,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec4158b3262277040a0b5492c13035b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerRegister
---- !u!114 &8168886577614373376
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6371058212479402174}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fef1981727e592a479f98930bf99087a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CursorController
-  cursorInput: {fileID: 8142836265431188856, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  centerOfScreen: {fileID: 0}
-  centerOfScreenImage: {fileID: 0}
-  dot: {fileID: 0}
-  rayDistance: 1
-  interactableLayer:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!1 &8079683537718927738
 GameObject:
   m_ObjectHideFlags: 0

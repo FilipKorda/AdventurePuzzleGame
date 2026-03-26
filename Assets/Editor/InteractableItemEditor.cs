@@ -111,6 +111,9 @@ public class InteractableItemEditor : Editor
     private SerializedProperty skeletonHelmetPiece;
     private SerializedProperty skeletonFullHelmetPiece;
 
+    private SerializedProperty wallSwitchOnOffManager;
+    private SerializedProperty switchType;
+
 
     private void OnEnable()
     {
@@ -223,6 +226,9 @@ public class InteractableItemEditor : Editor
         skeletonWarAxePiece = serializedObject.FindProperty("skeletonWarAxePiece");
         skeletonHelmetPiece = serializedObject.FindProperty("skeletonHelmetPiece");
         skeletonFullHelmetPiece = serializedObject.FindProperty("skeletonFullHelmetPiece");
+
+        wallSwitchOnOffManager = serializedObject.FindProperty("wallSwitchOnOffManager");
+        switchType = serializedObject.FindProperty("switchType");
 
     }
 
@@ -500,7 +506,11 @@ public class InteractableItemEditor : Editor
                 EditorGUILayout.PropertyField(skeletonHelmetPiece, new GUIContent("Skeleton Helmet Piece"));
                 EditorGUILayout.PropertyField(skeletonFullHelmetPiece, new GUIContent("Skeleton Full Helmet Piece"));
                 break;
-
+            case InteractableItem.InteractableType.WallSwitchOnOff:
+                EditorGUILayout.PropertyField(wallSwitchOnOffManager, new GUIContent("Wall Switch On Off Manager"));
+                EditorGUILayout.PropertyField(switchType, new GUIContent("Switch Type"));
+                break;
+                
 
         }
 

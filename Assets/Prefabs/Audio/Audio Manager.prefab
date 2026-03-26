@@ -157,4 +157,20 @@ MonoBehaviour:
     Clip: {fileID: 8300000, guid: 05f38d5b57dc96c42b0679411ca87629, type: 3}
   - Id: SafeDialClickSound
     Clip: {fileID: 8300000, guid: 2d13a418f89690d4b9da7ca055a6da43, type: 3}
+  - Id: PlaceSymbol
+    Clip: {fileID: 8300000, guid: 8c0f704cb089d7d43beb381d2f24decb, type: 3}
+  - Id: SafeWinAkaPuzzleWin
+    Clip: {fileID: 8300000, guid: 8ad6e450b36053b40b91aa16dfe1f0d3, type: 3}
+  - Id: OpenBraiserTrapDoor
+    Clip: {fileID: 8300000, guid: 478e58f1b7fa68f48a03b419d9589724, type: 3}
+  - Id: PuzzlePiece
+    Clip: {fileID: 8300000, guid: 8bbb7a4ef263536428cfebade5436c06, type: 3}
+  - Id: MovingStoneBraiser
+    Clip: {fileID: 8300000, guid: b2fe77a1ba3b6ce4e83d79f1fcd520f6, type: 3}
+  - Id: DestroyWall
+    Clip: {fileID: 8300000, guid: 98fa9a75fba6bd648a8cac11cd3307a3, type: 3}
+  - Id: UnlockTrapDoor
+    Clip: {fileID: 8300000, guid: e8a5655bf8210224a82c850ad66e2a9d, type: 3}
+  - Id: TrapdoorWosh
+    Clip: {fileID: 8300000, guid: 1324c45597ce8534ea50d6eddf4d329e, type: 3}
   sfxSourcePrefab: {fileID: 6808787666201464470, guid: 561a59515f73e424ba170ae966f504e9, type: 3}

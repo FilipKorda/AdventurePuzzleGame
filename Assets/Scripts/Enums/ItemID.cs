@@ -70,4 +70,8 @@ public enum ItemID
     ShaphereKey = 67,
     KnightSwordPiece = 68,
     KnightClubPiece = 69,
+    SkeletonSwordPiece = 70,
+    SkeletonWarAxePiece = 71,
+    SkeletonHelmetPiece = 72,
+    SkeletonFullHelmetPiece = 73,
 }

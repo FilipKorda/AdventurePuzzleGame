@@ -146,6 +146,17 @@ public class AudioManager : MonoBehaviour, IAudioService
                 loop.AudioSource.volume = value;
     }
 
+
+    public void StopLoopSFX(string id)
+    {
+        if (!activeLoopSources.TryGetValue(id, out var prox)) return;
+        if (prox == null) return;
+
+        Destroy(prox.gameObject);
+        activeLoopSources.Remove(id);
+    }
+
+
     public float GetMusicVolume()
     {
         EnsureSources();

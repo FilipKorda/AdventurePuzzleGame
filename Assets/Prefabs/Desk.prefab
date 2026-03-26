@@ -138,6 +138,8 @@ MonoBehaviour:
     m_LocalVariables: []
   itemSprite: {fileID: 0}
   itemId: 0
+  itemIdbyItemId: 0
+  pinNumber: 0
   requiredItemIds: 1a0000001b0000001c0000001d0000001e0000001f00000020000000210000002200000023000000
   animator: {fileID: 0}
   readableTextData: {fileID: 0}
@@ -172,6 +174,65 @@ MonoBehaviour:
   isEndPanel: 0
   localizationString: {fileID: 11400000, guid: c5591fe899ce4f440b4f4f26d2c84188, type: 2}
   localizationTwoString: {fileID: 0}
+  metalCrabs: {fileID: 0}
+  springs: {fileID: 0}
+  metalscaffolds: {fileID: 0}
+  collectibleGears: {fileID: 0}
+  cables: {fileID: 0}
+  workbench: {fileID: 0}
+  rend: {fileID: 0}
+  highlightColor: {r: 0, g: 0, b: 0, a: 0}
+  statueCompasPuzzle: {fileID: 0}
+  rotationDuration: 0.5
+  objectA: {fileID: 0}
+  objectB: {fileID: 0}
+  moveDistanceMovingBlockPuzzle: 1
+  moveSpeedMovingBlockPuzzle: 5
+  rayLengthMovingBlockPuzzle: 0.45
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 0
+  movingBlockPuzzleManager: {fileID: 0}
+  linkedReadable: {fileID: 0}
+  directionTextSet: {fileID: 0}
+  cryptexRotateDuration: 0.25
+  mirror: {fileID: 0}
+  gearLockMode: {fileID: 0}
+  gearRotateDuration: 0.25
+  pipeGearPuzzle: {fileID: 0}
+  gear90RotateDuration: 0.25
+  currentGear90Index: 0
+  movableBlock: {fileID: 0}
+  woodenBlockPuzzle: {fileID: 0}
+  zOffset: 0.1
+  duration: 0.5
+  swordPuzzle: {fileID: 0}
+  triangleEnum: 0
+  puzzleManager: {fileID: 0}
+  shrine: {fileID: 0}
+  pillar: {fileID: 0}
+  grave: {fileID: 0}
+  brokenPillar: {fileID: 0}
+  woodenSword: {fileID: 0}
+  isSymbolPlace: 0
+  clockSymbolsManager: {fileID: 0}
+  blockPanel: {fileID: 0}
+  ninePadPanelManager: {fileID: 0}
+  buttonIsPressed: 0
+  circleAndSquarePuzzle: {fileID: 0}
+  playerPathMovement: {fileID: 0}
+  libraryButtonsManager: {fileID: 0}
+  libraryButtonInt: 0
+  safePuzzle: {fileID: 0}
+  braiserPuzzle: {fileID: 0}
+  braiserInt: 0
+  swordPuzzlePiece: {fileID: 0}
+  clubPuzzlePiece: {fileID: 0}
+  skeletonSwordPiece: {fileID: 0}
+  skeletonWarAxePiece: {fileID: 0}
+  skeletonHelmetPiece: {fileID: 0}
+  skeletonFullHelmetPiece: {fileID: 0}
+  framePuzzlemanager: {fileID: 0}
   references:
     version: 2
     RefIds: []
