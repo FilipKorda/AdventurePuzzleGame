@@ -17,10 +17,7 @@ public class BraiserPuzzle : MonoBehaviour
     [SerializeField] private Animator animator2;
     [SerializeField] private Animator animator3;
 
-    [SerializeField] private BoxCollider boxCollider0;
-    [SerializeField] private BoxCollider boxCollider1;
-    [SerializeField] private BoxCollider boxCollider2;
-    [SerializeField] private BoxCollider boxCollider3;
+    [SerializeField] private BoxCollider[] allBoxColliders;
 
     [SerializeField] private UVScrollFromMovement uVScrollFromMovement0;
     [SerializeField] private UVScrollFromMovement uVScrollFromMovement1;
@@ -64,9 +61,13 @@ public class BraiserPuzzle : MonoBehaviour
     {
         CursorController.Instance.EnableCursor(puzzleCamera);
         uVScrollFromMovement0.isActive = true;
+
+        var boxCollider = uVScrollFromMovement0.GetComponent<BoxCollider>();
+        boxCollider.enabled = true;
+
         uVScrollFromMovement0.PerformScrollUV();
         uVScrollFromMovement0.ActivateRaycast();
-        boxCollider0.enabled = false;
+        ToogleAllBoxColliders(false);
         puzzle0 = true;
         ActiveInput();
         SetAndRotateCamera0ToTransform();
@@ -86,9 +87,13 @@ public class BraiserPuzzle : MonoBehaviour
     {
         CursorController.Instance.EnableCursor(puzzleCamera);
         uVScrollFromMovement1.isActive = true;
+
+        var boxCollider1 = uVScrollFromMovement1.GetComponent<BoxCollider>();
+        boxCollider1.enabled = true;
+
         uVScrollFromMovement1.PerformScrollUV();
         uVScrollFromMovement1.ActivateRaycast();
-        boxCollider1.enabled = false;
+        ToogleAllBoxColliders(false);
         puzzle1 = true;
         ActiveInput();
         SetAndRotateCamera1ToTransform();
@@ -109,9 +114,13 @@ public class BraiserPuzzle : MonoBehaviour
     {
         CursorController.Instance.EnableCursor(puzzleCamera);
         uVScrollFromMovement2.isActive = true;
+
+        var boxCollider2 = uVScrollFromMovement2.GetComponent<BoxCollider>();
+        boxCollider2.enabled = true;
+
         uVScrollFromMovement2.PerformScrollUV();
         uVScrollFromMovement2.ActivateRaycast();
-        boxCollider2.enabled = false;
+        ToogleAllBoxColliders(false);
         puzzle2 = true;
         ActiveInput();
         SetAndRotateCamera2ToTransform();
@@ -132,9 +141,13 @@ public class BraiserPuzzle : MonoBehaviour
     {
         CursorController.Instance.EnableCursor(puzzleCamera);
         uVScrollFromMovement3.isActive = true;
+
+        var boxCollider3 = uVScrollFromMovement3.GetComponent<BoxCollider>();
+        boxCollider3.enabled = true;
+
         uVScrollFromMovement3.PerformScrollUV();
         uVScrollFromMovement3.ActivateRaycast();
-        boxCollider3.enabled = false;
+        ToogleAllBoxColliders(false);
         puzzle3 = true;
         ActiveInput();
         SetAndRotateCamera3ToTransform();
@@ -201,39 +214,49 @@ public class BraiserPuzzle : MonoBehaviour
 
         CursorController.Instance.DisableCursor();
 
+        ToogleAllBoxColliders(true);
+
         if (puzzle0)
         {
             animator0.SetTrigger("Close");
             uVScrollFromMovement0.isActive = false;
             puzzle0 = false;
-            boxCollider0.enabled = true;
+
         }
         else if (puzzle1)
         {
             animator1.SetTrigger("Close");
             uVScrollFromMovement1.isActive = false;
             puzzle1 = false;
-            boxCollider1.enabled = true;
+
         }
         else if (puzzle2)
         {
             animator2.SetTrigger("Close");
             uVScrollFromMovement2.isActive = false;
             puzzle2 = false;
-            boxCollider2.enabled = true;
+
         }
         else
         {
             animator3.SetTrigger("Close");
             uVScrollFromMovement3.isActive = false;
             puzzle3 = false;
-            boxCollider3.enabled = true;
+
         }
 
         playerBehaviour.disablePlayer = false;
         playerBehaviour._playerCamera.enabled = true;
 
         puzzleCamera.enabled = false;
+    }
+
+    private void ToogleAllBoxColliders(bool toogle)
+    {
+        foreach (var boxCollider in allBoxColliders)
+        {
+            boxCollider.enabled = toogle;
+        }
     }
 
     public void PuzzleWin()
@@ -270,15 +293,24 @@ public class BraiserPuzzle : MonoBehaviour
                 puzzle3 = false;
             }
 
-            boxCollider0.enabled = false;
-            boxCollider1.enabled = false;
-            boxCollider2.enabled = false;
-            boxCollider3.enabled = false;
+            ToogleAllBoxColliders(false);
 
             uVScrollFromMovement0.enabled = false;
             uVScrollFromMovement1.enabled = false;
             uVScrollFromMovement2.enabled = false;
             uVScrollFromMovement3.enabled = false;
+
+            var boxCollider0 = uVScrollFromMovement0.GetComponent<BoxCollider>();
+            boxCollider0.enabled = false;
+
+            var boxCollider1 = uVScrollFromMovement1.GetComponent<BoxCollider>();
+            boxCollider1.enabled = false;
+
+            var boxCollider2 = uVScrollFromMovement2.GetComponent<BoxCollider>();
+            boxCollider2.enabled = false;
+
+            var boxCollider3 = uVScrollFromMovement3.GetComponent<BoxCollider>();
+            boxCollider3.enabled = false;
 
             animator.SetTrigger("Open");
             hiddenDoorAnimator.SetTrigger("Open");

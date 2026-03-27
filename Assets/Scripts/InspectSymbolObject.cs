@@ -11,6 +11,10 @@ public class InspectSymbolObject : MonoBehaviour
     [Header("Frame Puzzle")]
     [SerializeField] private GameObject swordPieceObject;
     [SerializeField] private GameObject clubPieceObject;
+    [SerializeField] private GameObject skeletonSwordPieceObject;
+    [SerializeField] private GameObject skeletonWarAxePieceObject;
+    [SerializeField] private GameObject skeletonHelmetPieceObject;
+    [SerializeField] private GameObject skeletonFullHelmetPieceObject;
 
     [SerializeField] private PlayerBehaviour playerBehaviour;
 
@@ -60,6 +64,26 @@ public class InspectSymbolObject : MonoBehaviour
         Spawn(clubPieceObject);
     }
 
+    public void ShowSkeletonSwordPieceObject()
+    {
+        Spawn(skeletonSwordPieceObject);
+    }
+
+    public void ShowSkeletonWarAxePieceObject()
+    {
+        Spawn(skeletonWarAxePieceObject);
+    }
+
+    public void ShowSkeletonHelmetPieceObject()
+    {
+        Spawn(skeletonHelmetPieceObject);
+    }
+    public void ShowSkeletonFullHelmetPieceObject()
+    {
+        Spawn(skeletonFullHelmetPieceObject);
+    }
+
+    
     private void Spawn(GameObject prefab)
     {
         if (prefab == null) return;
