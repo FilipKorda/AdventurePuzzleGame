@@ -230,6 +230,30 @@ MonoBehaviour:
     m_Localized: Glasses
     m_Metadata:
       m_Items: []
+  - m_Id: 19861739359457280
+    m_Localized: Weight
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19861832821133312
+    m_Localized: Bottle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19861933299879936
+    m_Localized: Mug
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19861989549690880
+    m_Localized: Nail
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19862153802829824
+    m_Localized: Hatch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19932816274116608
+    m_Localized: Ruby Key
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

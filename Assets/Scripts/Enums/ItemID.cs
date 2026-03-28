@@ -74,4 +74,10 @@ public enum ItemID
     SkeletonWarAxePiece = 71,
     SkeletonHelmetPiece = 72,
     SkeletonFullHelmetPiece = 73,
+    Weight = 74,
+    MainBottle = 75,
+    MainMug = 76,
+    Nail = 77,
+    Hatch = 78,
+    RubyKey = 79,
 }

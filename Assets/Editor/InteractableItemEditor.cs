@@ -114,6 +114,14 @@ public class InteractableItemEditor : Editor
     private SerializedProperty wallSwitchOnOffManager;
     private SerializedProperty switchType;
 
+    private SerializedProperty weight;
+    private SerializedProperty mainBottle;
+    private SerializedProperty mainMug;
+    private SerializedProperty nail;
+    private SerializedProperty hatch;
+    private SerializedProperty isWeightObject;
+    private SerializedProperty scaleWeightSystem;
+
 
     private void OnEnable()
     {
@@ -230,6 +238,14 @@ public class InteractableItemEditor : Editor
         wallSwitchOnOffManager = serializedObject.FindProperty("wallSwitchOnOffManager");
         switchType = serializedObject.FindProperty("switchType");
 
+        weight = serializedObject.FindProperty("weight");
+        mainBottle = serializedObject.FindProperty("mainBottle");
+        mainMug = serializedObject.FindProperty("mainMug");
+        nail = serializedObject.FindProperty("nail");
+        hatch = serializedObject.FindProperty("hatch");
+        isWeightObject = serializedObject.FindProperty("isWeightObject");
+        scaleWeightSystem = serializedObject.FindProperty("scaleWeightSystem");
+
     }
 
     public override void OnInspectorGUI()
@@ -261,6 +277,8 @@ public class InteractableItemEditor : Editor
                 EditorGUILayout.PropertyField(localizationString, new GUIContent("Localization String"));
                 EditorGUILayout.PropertyField(itemIdbyItemId, new GUIContent("Item Id Enum"));
                 EditorGUILayout.PropertyField(isSymbolPlace, new GUIContent("Is Symbol Place"));
+                EditorGUILayout.PropertyField(isWeightObject, new GUIContent("Is Weight Object"));
+                EditorGUILayout.PropertyField(scaleWeightSystem, new GUIContent("Scale Weight System"));
                 EditorGUILayout.HelpBox("To jest ID tego przedmiotu, gdy znajdzie siê w ekwipunku.", MessageType.Info);
                 break;
 
@@ -510,7 +528,15 @@ public class InteractableItemEditor : Editor
                 EditorGUILayout.PropertyField(wallSwitchOnOffManager, new GUIContent("Wall Switch On Off Manager"));
                 EditorGUILayout.PropertyField(switchType, new GUIContent("Switch Type"));
                 break;
-                
+            case InteractableItem.InteractableType.PlaceOnScale:
+                EditorGUILayout.PropertyField(weight, new GUIContent("Weight"));
+                EditorGUILayout.PropertyField(mainBottle, new GUIContent("Main Bottle"));
+                EditorGUILayout.PropertyField(mainMug, new GUIContent("Main Mug"));
+                EditorGUILayout.PropertyField(nail, new GUIContent("Nail"));
+                EditorGUILayout.PropertyField(hatch, new GUIContent("Hatch"));
+                EditorGUILayout.PropertyField(scaleWeightSystem, new GUIContent("Scale Weight System"));
+                break;
+
 
         }
 

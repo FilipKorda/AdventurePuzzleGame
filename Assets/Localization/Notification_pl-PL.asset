@@ -177,6 +177,10 @@ MonoBehaviour:
       to,\nz czym odszed\u0142 na wieczny spoczynek."
     m_Metadata:
       m_Items: []
+  - m_Id: 19519784435863552
+    m_Localized: Zablokowane
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

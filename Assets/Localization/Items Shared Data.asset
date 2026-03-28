@@ -227,6 +227,30 @@ MonoBehaviour:
     m_Key: Glasses
     m_Metadata:
       m_Items: []
+  - m_Id: 19861739359457280
+    m_Key: Weight
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19861832821133312
+    m_Key: Bottle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19861933299879936
+    m_Key: Mug
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19861989549690880
+    m_Key: Nail
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19862153802829824
+    m_Key: Hatch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19932816274116608
+    m_Key: KeyRuby
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -157,6 +157,10 @@ MonoBehaviour:
     m_Key: Frame Skeleton
     m_Metadata:
       m_Items: []
+  - m_Id: 19519784435863552
+    m_Key: Lock
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

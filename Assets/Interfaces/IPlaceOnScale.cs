@@ -1,0 +1,5 @@
+interface IPlaceOnScale
+{
+    void PlaceOnScale();
+
+}
