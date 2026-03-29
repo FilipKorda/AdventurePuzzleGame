@@ -80,4 +80,5 @@ public enum ItemID
     Nail = 77,
     Hatch = 78,
     RubyKey = 79,
+    PapyrusVerticalPuzzle = 80,
 }
