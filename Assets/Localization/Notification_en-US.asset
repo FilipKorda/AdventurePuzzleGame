@@ -212,6 +212,15 @@ MonoBehaviour:
     m_Localized: Lock
     m_Metadata:
       m_Items: []
+  - m_Id: 20187890434985984
+    m_Localized: "Wall switches? \nEach of them must look up for the light to prevail.\r\nIf
+      even one hesitates, the whole is plunged into shadow.\nCryptex? \nHe remains
+      silent until the signs align in the one and only correct order.\r\nOnly then
+      will the mystery be considered solved.\nScale? \nWhen two sides bear the same
+      weight, every tilt and movement falls silent. \nThen you know that the justice
+      of numbers has stopped the needle in the middle.\nWhat do they have in common?"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

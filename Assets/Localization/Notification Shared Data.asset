@@ -161,6 +161,10 @@ MonoBehaviour:
     m_Key: Lock
     m_Metadata:
       m_Items: []
+  - m_Id: 20187890434985984
+    m_Key: MiniCryptex
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

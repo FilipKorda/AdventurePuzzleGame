@@ -181,6 +181,17 @@ MonoBehaviour:
     m_Localized: Zablokowane
     m_Metadata:
       m_Items: []
+  - m_Id: 20187890434985984
+    m_Localized: "Prze\u0142\u0105czniki na \u015Bcianie?\nKa\u017Cdy z nich musi
+      spojrze\u0107 w g\xF3r\u0119, by zapanowa\u0142o \u015Bwiat\u0142o. \nGdy cho\u0107
+      jeden si\u0119 waha, ca\u0142o\u015B\u0107 tonie w cieniu.\nKrypteks? \nMilczy,
+      dop\xF3ki znaki nie ustawi\u0105 si\u0119 w jedynej s\u0142usznej kolejno\u015Bci.\r\nDopiero
+      wtedy tajemnica uzna, \u017Ce zosta\u0142a odgadni\u0119ta.\nWaga? \nGdy dwie
+      strony d\u017Awigaj\u0105 ten sam ci\u0119\u017Car, milknie ka\u017Cdy przechy\u0142
+      i ruch.\nWtedy wiesz, \u017Ce sprawiedliwo\u015B\u0107 liczb zatrzyma\u0142a
+      wskaz\xF3wk\u0119 po\u015Brodku.\nCo one maj\u0105 ze sob\u0105 wsp\xF3lnego?\r\n"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

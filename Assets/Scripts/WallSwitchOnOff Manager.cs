@@ -11,6 +11,8 @@ public class WallSwitchOnOffManager : MonoBehaviour
 
     [SerializeField] private Animator animator;
 
+    [SerializeField] private BoxCollider[] boxColliders;
+
     public void OnSwitchPressed(WallSwitchType type)
     {
         switch (type)
@@ -49,6 +51,14 @@ public class WallSwitchOnOffManager : MonoBehaviour
         CheckWin();
     }
 
+    private void DisableAllSwitches()
+    {
+        foreach(var boxCollider in boxColliders)
+        {
+            boxCollider.enabled = false;
+        }
+    }
+
     private void CheckWin()
     {
         if (
@@ -66,6 +76,7 @@ public class WallSwitchOnOffManager : MonoBehaviour
 
     private void OpenChainCage()
     {
+        DisableAllSwitches();
         animator.SetTrigger("Open");
     }
 }

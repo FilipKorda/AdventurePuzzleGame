@@ -122,6 +122,8 @@ public class InteractableItemEditor : Editor
     private SerializedProperty isWeightObject;
     private SerializedProperty scaleWeightSystem;
 
+    private SerializedProperty isShorterCryptexSound;
+
 
     private void OnEnable()
     {
@@ -245,6 +247,8 @@ public class InteractableItemEditor : Editor
         hatch = serializedObject.FindProperty("hatch");
         isWeightObject = serializedObject.FindProperty("isWeightObject");
         scaleWeightSystem = serializedObject.FindProperty("scaleWeightSystem");
+
+        isShorterCryptexSound = serializedObject.FindProperty("isShorterCryptexSound");
 
     }
 
@@ -395,6 +399,7 @@ public class InteractableItemEditor : Editor
             case InteractableItem.InteractableType.Cryptex:
                 EditorGUILayout.PropertyField(cryptexRotateDuration, new GUIContent("Cryptex Rotate Duration"));
                 EditorGUILayout.PropertyField(boxColliderProp, new GUIContent("Book Collider"));
+                EditorGUILayout.PropertyField(isShorterCryptexSound, new GUIContent("Is Shorter Cryptex Sound"));
                 break;
             case InteractableItem.InteractableType.MirrorMode:
                 EditorGUILayout.PropertyField(mirror, new GUIContent("Rirror"));

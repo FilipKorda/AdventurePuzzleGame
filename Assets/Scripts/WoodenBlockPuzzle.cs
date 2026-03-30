@@ -69,14 +69,17 @@ public class WoodenBlockPuzzle : MonoBehaviour
 
     public void PuzzleWon()
     {
+
+        Services.Audio.PlaySFX("SafeWinAkaPuzzleWin");
+
         foreach (var block in woodenBlocks)
         {
             block.GetComponent<BoxCollider>().enabled = false;
         }
         woodenCreate.enabled = false;
 
-        animatorGateLeft.SetTrigger("Open");    
-        animatorGateRight.SetTrigger("Open");    
+        animatorGateLeft.SetTrigger("Open");
+        animatorGateRight.SetTrigger("Open");
 
         ExitWoodenPuzzleMode();
     }

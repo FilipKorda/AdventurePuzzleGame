@@ -35,7 +35,7 @@ public class SafeDial : MonoBehaviour
         currentValue = 0;
         float angle = currentValue * stepAngle + startModelPosition;
         transform.rotation = Quaternion.Euler(angle, fixedY, fixedZ);
-        Debug.Log($"Startowa pozycja tarczy: {currentValue}");
+       // Debug.Log($"Startowa pozycja tarczy: {currentValue}");
     }
 
     public void InstantResetDial()
@@ -45,7 +45,7 @@ public class SafeDial : MonoBehaviour
         currentValue = 0;
         float angle = currentValue * stepAngle + startModelPosition;
         transform.rotation = Quaternion.Euler(angle, fixedY, fixedZ);
-        Debug.Log($"Startowa pozycja tarczy: {currentValue}");
+       // Debug.Log($"Startowa pozycja tarczy: {currentValue}");
     }
 
     void Update()
@@ -65,13 +65,13 @@ public class SafeDial : MonoBehaviour
 
     void Rotate(int dir)
     {
-        //Services.Audio.PlaySFX("SafeDialClickSound");
+        Services.Audio.PlaySFX("SafeDialClickSound");
 
         currentValue = (currentValue + dir + 100) % 100;
         float angle = currentValue * stepAngle + startModelPosition;
         transform.rotation = Quaternion.Euler(angle, fixedY, fixedZ);
 
-        Debug.Log($"Numer na tarczy: {currentValue}");
+       // Debug.Log($"Numer na tarczy: {currentValue}");
 
         CheckCombination(dir);
     }
@@ -115,7 +115,7 @@ public class SafeDial : MonoBehaviour
         {
             if (sequenceIndex > 0)
             {
-                Debug.Log("Zły kierunek! Reset sekwencji.");
+               // Debug.Log("Zły kierunek! Reset sekwencji.");
                 sequenceIndex = 0;
             }
             return;
@@ -124,7 +124,7 @@ public class SafeDial : MonoBehaviour
         if (currentValue == currentStep.number)
         {
             sequenceIndex++;
-            Debug.Log($"Poprawny krok {sequenceIndex}/{combination.Length}");
+          //  Debug.Log($"Poprawny krok {sequenceIndex}/{combination.Length}");
 
             if (sequenceIndex >= combination.Length)
             {
@@ -137,6 +137,6 @@ public class SafeDial : MonoBehaviour
     {
         safePuzzle.WinPuzzle();
         canRotateDial = false;
-        Debug.Log("win");
+      //  Debug.Log("win");
     }
 }
