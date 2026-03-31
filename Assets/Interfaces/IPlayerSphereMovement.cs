@@ -1,4 +1,3 @@
-
 interface IPlayerSphereMovement 
 {
     void ClickAndDrag();

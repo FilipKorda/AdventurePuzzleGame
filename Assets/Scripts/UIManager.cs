@@ -78,7 +78,7 @@ public class UIManager : MonoBehaviour
     [Header("Gear Mode Panel")]
     [SerializeField] private GameObject gearModePanel;
 
-    [Header("Furniture  Mode Panel")]
+    [Header("Furniture Mode Panel")]
     [SerializeField] private GameObject furnitureVertivalModePanel;
     [SerializeField] private GameObject furnitureHorizontalModePanel;
 
@@ -95,6 +95,9 @@ public class UIManager : MonoBehaviour
     [Header("Glasses")]
     public bool glassesOn;
     public Image glassesVisionImage;
+
+    [Header("Papyrus Vertical Puzzle")]
+    [SerializeField] private GameObject papyrusVerticalPuzzle;
 
     public void EnableWoodenPuzzlePanel()
     {
@@ -421,6 +424,26 @@ public class UIManager : MonoBehaviour
                 ToggleBlurCanvasAndInspectedObject();
                 Services.Audio.PlaySFX("ReadBook");
                 break;
+            case ItemID.SkeletonSwordPiece:
+                InspectSkeletonSwordPiece();
+                ToggleBlurCanvasAndInspectedObject();
+                Services.Audio.PlaySFX("ReadBook");
+                break;
+            case ItemID.SkeletonWarAxePiece:
+                InspectSkeletonWarAxePiece();
+                ToggleBlurCanvasAndInspectedObject();
+                Services.Audio.PlaySFX("ReadBook");
+                break;
+            case ItemID.SkeletonHelmetPiece:
+                InspectSkeletonHelmetPiece();
+                ToggleBlurCanvasAndInspectedObject();
+                Services.Audio.PlaySFX("ReadBook");
+                break;
+            case ItemID.SkeletonFullHelmetPiece:
+                InspectSkeletonFullHelmetPiece();
+                ToggleBlurCanvasAndInspectedObject();
+                Services.Audio.PlaySFX("ReadBook");
+                break;
         }
     }
 
@@ -454,8 +477,24 @@ public class UIManager : MonoBehaviour
         inspectSymbolObject.ShowClubPieceObject();
     }
 
-   
+    private void InspectSkeletonSwordPiece()
+    {
+        inspectSymbolObject.ShowSkeletonSwordPieceObject();
+    }
 
+    private void InspectSkeletonWarAxePiece()
+    {
+        inspectSymbolObject.ShowSkeletonWarAxePieceObject();
+    }
+
+    private void InspectSkeletonHelmetPiece()
+    {
+        inspectSymbolObject.ShowSkeletonHelmetPieceObject();
+    }
+    private void InspectSkeletonFullHelmetPiece()
+    {
+        inspectSymbolObject.ShowSkeletonFullHelmetPieceObject();
+    }
     private void ToggleBlurCanvasAndInspectedObject()
     {
         bool isOpen = blurCanvas.gameObject.activeSelf;
@@ -495,9 +534,26 @@ public class UIManager : MonoBehaviour
             case ItemID.SafeCode:
                 ReadBookSafeCodePuzzle();
                 break;
+            case ItemID.PapyrusVerticalPuzzle:
+                ReadVerticalPuzzlePanel();
+                break;
         }
 
         Services.Audio.PlaySFX("ReadBook");
+    }
+
+    private void ReadVerticalPuzzlePanel()
+    {
+        bool isOpen = papyrusVerticalPuzzle.activeSelf;
+        papyrusVerticalPuzzle.SetActive(!isOpen);
+        if (!isOpen)
+        {
+            papyrusVerticalPuzzle.SetActive(true);
+        }
+        else
+        {
+            papyrusVerticalPuzzle.SetActive(false);
+        }
     }
 
 
@@ -744,7 +800,7 @@ public class UIManager : MonoBehaviour
         if (readableAndInteractablePanel != null && readableAndInteractablePanel.gameObject.activeInHierarchy
             || gameModeLockPickPanel.activeInHierarchy || morseAndGlifsBook.activeInHierarchy || gearModePanel.activeInHierarchy
             || papytusPuzzleWoodenPuzzleSolve.activeInHierarchy || blurCanvas.gameObject.activeInHierarchy
-            || safeCodePuzzle.activeInHierarchy || glassesOn)
+            || safeCodePuzzle.activeInHierarchy || glassesOn || papyrusVerticalPuzzle.activeInHierarchy)
         {
             Debug.Log("Nie mo¿na wyrzuciæ przedmiotu podczas przegl¹dania czytanej strony.");
             return;

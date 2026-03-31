@@ -1585,6 +1585,15 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Click Hold Button"",
+                    ""type"": ""Button"",
+                    ""id"": ""6e1e781f-7cd6-4b5e-984b-9a3cb605561f"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Hold"",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -1601,23 +1610,34 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""60a9d17e-5c5c-4c3d-a04e-dae5546d2fbb"",
-                    ""path"": ""<Pointer>/delta"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse;Touch"",
-                    ""action"": ""MoveSphere"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""a9349463-68cf-495d-b6b1-c42134920212"",
                     ""path"": ""<Joystick>/{Hatswitch}"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Joystick"",
                     ""action"": ""MoveSphere"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""498e2e92-cc8c-4d6b-af68-a9c22944a295"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""MoveSphere"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""757bcc20-bd7b-4c08-8cec-3ed6e7d30f46"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Click Hold Button"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1807,6 +1827,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         // CircleAndSquarePuzzle
         m_CircleAndSquarePuzzle = asset.FindActionMap("CircleAndSquarePuzzle", throwIfNotFound: true);
         m_CircleAndSquarePuzzle_MoveSphere = m_CircleAndSquarePuzzle.FindAction("MoveSphere", throwIfNotFound: true);
+        m_CircleAndSquarePuzzle_ClickHoldButton = m_CircleAndSquarePuzzle.FindAction("Click Hold Button", throwIfNotFound: true);
         // CursorController
         m_CursorController = asset.FindActionMap("CursorController", throwIfNotFound: true);
         m_CursorController_Drag = m_CursorController.FindAction("Drag", throwIfNotFound: true);
@@ -2794,6 +2815,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_CircleAndSquarePuzzle;
     private List<ICircleAndSquarePuzzleActions> m_CircleAndSquarePuzzleActionsCallbackInterfaces = new List<ICircleAndSquarePuzzleActions>();
     private readonly InputAction m_CircleAndSquarePuzzle_MoveSphere;
+    private readonly InputAction m_CircleAndSquarePuzzle_ClickHoldButton;
     /// <summary>
     /// Provides access to input actions defined in input action map "CircleAndSquarePuzzle".
     /// </summary>
@@ -2809,6 +2831,10 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "CircleAndSquarePuzzle/MoveSphere".
         /// </summary>
         public InputAction @MoveSphere => m_Wrapper.m_CircleAndSquarePuzzle_MoveSphere;
+        /// <summary>
+        /// Provides access to the underlying input action "CircleAndSquarePuzzle/ClickHoldButton".
+        /// </summary>
+        public InputAction @ClickHoldButton => m_Wrapper.m_CircleAndSquarePuzzle_ClickHoldButton;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -2838,6 +2864,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @MoveSphere.started += instance.OnMoveSphere;
             @MoveSphere.performed += instance.OnMoveSphere;
             @MoveSphere.canceled += instance.OnMoveSphere;
+            @ClickHoldButton.started += instance.OnClickHoldButton;
+            @ClickHoldButton.performed += instance.OnClickHoldButton;
+            @ClickHoldButton.canceled += instance.OnClickHoldButton;
         }
 
         /// <summary>
@@ -2852,6 +2881,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @MoveSphere.started -= instance.OnMoveSphere;
             @MoveSphere.performed -= instance.OnMoveSphere;
             @MoveSphere.canceled -= instance.OnMoveSphere;
+            @ClickHoldButton.started -= instance.OnClickHoldButton;
+            @ClickHoldButton.performed -= instance.OnClickHoldButton;
+            @ClickHoldButton.canceled -= instance.OnClickHoldButton;
         }
 
         /// <summary>
@@ -3364,6 +3396,13 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnMoveSphere(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Click Hold Button" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnClickHoldButton(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "CursorController" which allows adding and removing callbacks.

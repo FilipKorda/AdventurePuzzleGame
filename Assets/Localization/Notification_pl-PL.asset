@@ -192,6 +192,11 @@ MonoBehaviour:
       wskaz\xF3wk\u0119 po\u015Brodku.\nCo one maj\u0105 ze sob\u0105 wsp\xF3lnego?\r\n"
     m_Metadata:
       m_Items: []
+  - m_Id: 20549889320833024
+    m_Localized: "Dw\xF3ch braci z rycerskiej rodziny:\r\nAbda zawsze m\xF3wi prawd\u0119!\r\nAbdi
+      zawsze k\u0142amie!"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

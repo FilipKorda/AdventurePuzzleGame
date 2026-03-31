@@ -1,0 +1,4 @@
+interface IMovingBlockBriefcase 
+{
+    void ClickMovingBlockBriefcase();
+}

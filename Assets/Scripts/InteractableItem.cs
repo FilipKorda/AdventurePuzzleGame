@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Linq;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Localization;
@@ -11,7 +10,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     IGetObject, ICrafting, IPinNumber, IRotate, ICryptex, IMirror, IGearLock, IGearRotate, IGear90, IPipeGearPuzzle,
     IFurniture, IWoodenBlockPuzzle, IWoodenBlock, ITrianglePuzzle, ISymbolPlaceable, IArrowDirection, IPuzzlePipePart,
     IBlockButton, INinePadPanel, ICircleAndSquarePuzzle, IRotateCircleAndSquarePuzzle, IPlayerSphereMovement, ILibraryButton,
-    ISafe, IBraiser, IFramePuzzle
+    ISafe, IBraiser, IFramePuzzle, IWallSwitchOnOff, IPlaceOnScale, IBriefcase, IMovingBlockBriefcase
 {
     public enum InteractableType
     {
@@ -55,7 +54,11 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         LibraryButton,
         Safe,
         Braiser,
-        PuzzleFrame
+        PuzzleFrame,
+        WallSwitchOnOff,
+        PlaceOnScale,
+        Briefcase,
+        MovingBlockBriefcase
     }
 
     public InteractableType interactableType;
@@ -91,6 +94,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     private bool isActualPreesed;
     private bool isLockPicking;
     public bool isAlchemyRecipe = false;
+    public bool isWeightObject = false;
     [SerializeField] private int requiredUses = 3;
 
     [Header("Fillable Source Settings (if Fillable)")]
@@ -179,6 +183,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     bool cryptexIsRotating = false;
     private int currentCryptexIndex = 0;
     public int CurrentCryptexIndex => currentCryptexIndex;
+    [SerializeField] private bool isShorterCryptexSound = false;
 
     [Header("Mirror")]
     [SerializeField] private Mirror mirror;
@@ -253,7 +258,35 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     [Header("Puzzle Frame")]
     [SerializeField] private GameObject swordPuzzlePiece;
     [SerializeField] private GameObject clubPuzzlePiece;
+
+    [SerializeField] private GameObject skeletonSwordPiece;
+    [SerializeField] private GameObject skeletonWarAxePiece;
+    [SerializeField] private GameObject skeletonHelmetPiece;
+    [SerializeField] private GameObject skeletonFullHelmetPiece;
+
     [SerializeField] private FramePuzzlemanager framePuzzlemanager;
+
+
+    [Header("Wall Switch On Off Puzzle")]
+    [SerializeField] private WallSwitchOnOffManager wallSwitchOnOffManager;
+    [SerializeField] private WallSwitchType switchType;
+
+    public bool IsOn => isOn;
+    private bool isOn = false;
+    private bool isAnimating = false;
+
+    [Header("Scale Puzzle")]
+    [SerializeField] private ScaleWeightSystem scaleWeightSystem;
+    [SerializeField] private WeightItem weight;
+    [SerializeField] private WeightItem mainBottle;
+    [SerializeField] private WeightItem mainMug;
+    [SerializeField] private WeightItem nail;
+    [SerializeField] private WeightItem hatch;
+
+    [Header("Briefcase Manager")]
+    [SerializeField] private BriefcaseManager briefcaseManager;
+    [Header("Moving Block Briefcase")]
+    [SerializeField] private MovingBlockBriefcase movingBlockBriefcase;
 
     private void Awake()
     {
@@ -269,6 +302,90 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
 
     }
 
+    public void ClickMovingBlockBriefcase()
+    {
+        movingBlockBriefcase.SetClickAndDrag(true);
+    }
+
+    public void EnterBriefcasePuzzle()
+    {
+        briefcaseManager.EnterPuzzle();
+    }
+
+    public void PlaceOnScale()
+    {
+        int currentSelectedId = UIManager.Instance.GetSelectedItemId();
+        if (currentSelectedId == 0)
+        {
+            Debug.Log("Nie wybrano ¿adnego przedmiotu do u¿ycia.");
+            return;
+        }
+
+        switch ((ItemID)currentSelectedId)
+        {
+            case ItemID.Weight:
+                weight.gameObject.SetActive(true);
+                scaleWeightSystem.AddItem(weight);
+                break;
+            case ItemID.MainBottle:
+                mainBottle.gameObject.SetActive(true);
+                scaleWeightSystem.AddItem(mainBottle);
+                break;
+            case ItemID.MainMug:
+                mainMug.gameObject.SetActive(true);
+                scaleWeightSystem.AddItem(mainMug);
+                break;
+            case ItemID.Nail:
+                nail.gameObject.SetActive(true);
+                scaleWeightSystem.AddItem(nail);
+                break;
+            case ItemID.Hatch:
+                hatch.gameObject.SetActive(true);
+                scaleWeightSystem.AddItem(hatch);
+                break;
+        }
+
+        Services.Audio.PlaySFX("PuzzlePiece");
+        Inventory.Instance.RemoveItemFromInventoryByID(currentSelectedId);
+        UIManager.Instance.RemoveItemFromUIByID(currentSelectedId);
+    }
+
+    public void ClickWallSwitch()
+    {
+        if (isAnimating)
+            return;
+
+        Services.Audio.PlaySFX("WallButtonPress");
+        wallSwitchOnOffManager.OnSwitchPressed(switchType);
+    }
+
+    public void Toggle()
+    {
+        isOn = !isOn;
+        StartCoroutine(RotateSwitch(isOn ? 8f : -8f));
+    }
+
+    private IEnumerator RotateSwitch(float targetZ)
+    {
+        isAnimating = true;
+
+        Quaternion startRot = transform.localRotation;
+        Quaternion endRot = Quaternion.Euler(targetZ, 0f, 0f);
+
+        float time = 0f;
+        float duration = 0.1f;
+
+        while (time < duration)
+        {
+            time += Time.deltaTime;
+            float t = time / duration;
+            transform.localRotation = Quaternion.Slerp(startRot, endRot, t);
+            yield return null;
+        }
+
+        transform.localRotation = endRot;
+        isAnimating = false;
+    }
 
     public void PlacePuzzleIntoFrame()
     {
@@ -287,10 +404,22 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
             case ItemID.KnightClubPiece:
                 clubPuzzlePiece.SetActive(true);
                 break;
+            case ItemID.SkeletonSwordPiece:
+                skeletonSwordPiece.SetActive(true);
+                break;
+            case ItemID.SkeletonWarAxePiece:
+                skeletonWarAxePiece.SetActive(true);
+                break;
+            case ItemID.SkeletonHelmetPiece:
+                skeletonHelmetPiece.SetActive(true);
+                break;
+            case ItemID.SkeletonFullHelmetPiece:
+                skeletonFullHelmetPiece.SetActive(true);
+                break;
         }
 
         framePuzzlemanager.CheckAllPuzzlesBlocks();
-        Services.Audio.PlaySFX("PlaceObject");
+        Services.Audio.PlaySFX("PuzzlePiece");
         Inventory.Instance.RemoveItemFromInventoryByID(currentSelectedId);
         UIManager.Instance.RemoveItemFromUIByID(currentSelectedId);
 
@@ -298,6 +427,8 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
 
     public void EnterBraiserPuzzle()
     {
+        CursorController.Instance.SetGameMode(new ClickDragGameMode());
+
         if (braiserInt == 0)
         {
             braiserPuzzle.EnterPuzzle0();
@@ -572,6 +703,8 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         if (isMovingWoodenBlock)
             return;
 
+        Services.Audio.PlaySFX("WallButtonPress");
+
         highlighted = !highlighted;
 
         if (currentRoutine != null)
@@ -770,7 +903,15 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         if (cryptexIsRotating)
             return;
 
-        Services.Audio.PlaySFX("MovingStoneKryptex");
+        if (isShorterCryptexSound)
+        {
+            Services.Audio.PlaySFX("ShorterMovingStoneKryptex");
+        }
+        else
+        {
+            Services.Audio.PlaySFX("MovingStoneKryptex");
+        }
+
 
         currentCryptexIndex = (currentCryptexIndex + 1) % 8;
 
@@ -1176,7 +1317,6 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
             }
 
         }
-
     }
 
     public void OnPickUp()
@@ -1190,6 +1330,12 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
 
                 if (isSymbolPlace)
                 {
+                    if (isWeightObject)
+                    {
+                        var weightGameOject = gameObject.GetComponent<WeightItem>();
+                        scaleWeightSystem.RemoveItem(weightGameOject);
+                    }
+
                     DisableThisGameObject();
                 }
                 else
@@ -1310,7 +1456,8 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
 
                     int selectedId = UIManager.Instance.GetSelectedItemId();
 
-                    if (selectedId == 4 || selectedId == 7 || selectedId == 11)
+                    if (selectedId == 4 || selectedId == 7 || selectedId == 11 || selectedId == 79
+                        || selectedId == 62 || selectedId == 67)
                     {
                         Services.Audio.PlaySFX("UseKeyToOpenDoor");
                     }

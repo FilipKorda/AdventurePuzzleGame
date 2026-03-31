@@ -1,0 +1,4 @@
+interface IBriefcase 
+{
+   void EnterBriefcasePuzzle();
+}

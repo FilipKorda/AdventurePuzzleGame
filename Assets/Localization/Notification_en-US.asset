@@ -221,6 +221,15 @@ MonoBehaviour:
       of numbers has stopped the needle in the middle.\nWhat do they have in common?"
     m_Metadata:
       m_Items: []
+  - m_Id: 20549889320833024
+    m_Localized: 'Two brothers from a knightly family:
+
+      Abda always tells
+      the truth!
+
+      Abdi always lies!'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

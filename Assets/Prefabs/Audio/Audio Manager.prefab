@@ -175,4 +175,8 @@ MonoBehaviour:
     Clip: {fileID: 8300000, guid: 1324c45597ce8534ea50d6eddf4d329e, type: 3}
   - Id: ShorterMovingStoneKryptex
     Clip: {fileID: 8300000, guid: 54984860c98e96c41824d2ef685ab4bd, type: 3}
+  - Id: chain
+    Clip: {fileID: 8300000, guid: fe692fbbe0b0dd447b6b1827cdcc4004, type: 3}
+  - Id: chain2
+    Clip: {fileID: 8300000, guid: a0cd22bb0bc13f145a0c818b42d0f79a, type: 3}
   sfxSourcePrefab: {fileID: 6808787666201464470, guid: 561a59515f73e424ba170ae966f504e9, type: 3}

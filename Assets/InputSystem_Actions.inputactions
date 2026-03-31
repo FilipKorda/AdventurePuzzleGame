@@ -1499,6 +1499,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Click Hold Button",
+                    "type": "Button",
+                    "id": "6e1e781f-7cd6-4b5e-984b-9a3cb605561f",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Hold",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -1515,23 +1524,34 @@
                 },
                 {
                     "name": "",
-                    "id": "60a9d17e-5c5c-4c3d-a04e-dae5546d2fbb",
-                    "path": "<Pointer>/delta",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard&Mouse;Touch",
-                    "action": "MoveSphere",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "a9349463-68cf-495d-b6b1-c42134920212",
                     "path": "<Joystick>/{Hatswitch}",
                     "interactions": "",
                     "processors": "",
                     "groups": "Joystick",
                     "action": "MoveSphere",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "498e2e92-cc8c-4d6b-af68-a9c22944a295",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "MoveSphere",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "757bcc20-bd7b-4c08-8cec-3ed6e7d30f46",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Click Hold Button",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

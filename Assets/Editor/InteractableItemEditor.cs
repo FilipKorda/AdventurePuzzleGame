@@ -124,6 +124,9 @@ public class InteractableItemEditor : Editor
 
     private SerializedProperty isShorterCryptexSound;
 
+    private SerializedProperty briefcaseManager;
+    private SerializedProperty movingBlockBriefcase;
+
 
     private void OnEnable()
     {
@@ -249,6 +252,9 @@ public class InteractableItemEditor : Editor
         scaleWeightSystem = serializedObject.FindProperty("scaleWeightSystem");
 
         isShorterCryptexSound = serializedObject.FindProperty("isShorterCryptexSound");
+
+        briefcaseManager = serializedObject.FindProperty("briefcaseManager");
+        movingBlockBriefcase = serializedObject.FindProperty("movingBlockBriefcase");
 
     }
 
@@ -541,8 +547,13 @@ public class InteractableItemEditor : Editor
                 EditorGUILayout.PropertyField(hatch, new GUIContent("Hatch"));
                 EditorGUILayout.PropertyField(scaleWeightSystem, new GUIContent("Scale Weight System"));
                 break;
-
-
+            case InteractableItem.InteractableType.Briefcase:
+                EditorGUILayout.PropertyField(briefcaseManager, new GUIContent("Briefcase Manager"));
+                break;
+            case InteractableItem.InteractableType.MovingBlockBriefcase:
+                EditorGUILayout.PropertyField(movingBlockBriefcase, new GUIContent("Moving Block Briefcase"));
+                break;
+                
         }
 
         serializedObject.ApplyModifiedProperties();

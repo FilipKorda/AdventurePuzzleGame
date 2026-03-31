@@ -5,55 +5,99 @@ public class CursorController : MonoBehaviour
 {
     public static CursorController Instance { get; private set; }
 
-    [Header("Input")]
-    [SerializeField] private InputActionReference cursorInput;
-    private Vector2 mouseDelta;
+    [SerializeField] private InputActionReference cursorDragInput;
+    [SerializeField] private InputActionReference cursorClickButtonInput;
+    [SerializeField] private LayerMask interactableLayer;
+    [SerializeField] private PausePanel pausePanel;
 
-    [Header("Center Of Screen Dot")]
+    public LayerMask InteractableLayer => interactableLayer;
+    public Camera CurrentCamera { get; private set; }
+
+    private ICursorGameMode currentMode;
+    private bool cursorEnabled;
+
     [SerializeField] private GameObject centerOfScreen;
     [SerializeField] private RectTransform centerOfScreenImage;
     [SerializeField] private RectTransform dot;
 
-    [Header("Raycast")]
-    [SerializeField] private float rayDistance = 100f;
-    [SerializeField] private LayerMask interactableLayer;
-    private RaycastHit currentHit;
-    private bool hasHit;
-
-    private Camera currentCamera;
-
+    private float rayDistance = 2f;
     private Vector2 centerOfScreenTargetSize = new(10f, 10f);
     private float centerOfScreenScaleSpeed = 5f;
 
-    private bool cursorEnabled;
-
-    private Transform selectedObject;
-    private Vector3 offset;
+    public Ray CurrentRay { get; private set; }
+    public RaycastHit CurrentHit { get; private set; }
+    public bool HasHit { get; private set; }
 
     void Awake()
     {
-        if (Instance != null && Instance != this)
+        if (Instance != null)
         {
             Destroy(gameObject);
             return;
         }
-
         Instance = this;
     }
 
-    private void Start()
+    void Start()
     {
         centerOfScreenImage.gameObject.SetActive(false);
     }
 
+    void Update()
+    {
+        if (!cursorEnabled) return;
+
+        UpdateRay();
+        currentMode?.Tick();
+
+        centerOfScreenImage.position = Mouse.current.position.ReadValue();
+        LerpCenterOfScreenSize();
+    }
+
+    private void UpdateRay()
+    {
+        CurrentRay = CurrentCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
+        HasHit = Physics.Raycast(CurrentRay, out RaycastHit hit, rayDistance, interactableLayer);
+
+        CurrentHit = hit;
+
+        dot.gameObject.SetActive(!HasHit);
+        centerOfScreenTargetSize = HasHit ? new Vector2(20f, 20f) : new Vector2(10f, 10f);
+    }
+
+    private void LerpCenterOfScreenSize()
+    {
+        centerOfScreenImage.sizeDelta =
+            Vector2.Lerp(centerOfScreenImage.sizeDelta, centerOfScreenTargetSize, centerOfScreenScaleSpeed * Time.deltaTime);
+    }
+
+    public bool RaycastFromScreenPoint(Vector2 screenPos, out RaycastHit hit, float distance)
+    {
+        Ray ray = CurrentCamera.ScreenPointToRay(screenPos);
+        return Physics.Raycast(ray, out hit, distance, interactableLayer);
+    }
+
+    public Ray GetRayFromScreenPoint(Vector2 screenPos)
+    {
+        return CurrentCamera.ScreenPointToRay(screenPos);
+    }
+
     public void EnableCursor(Camera cam)
     {
-        currentCamera = cam;
+        CurrentCamera = cam;
+
         cursorEnabled = true;
 
-        OnEnableInput();
+        cursorClickButtonInput.action.Enable();
+        cursorClickButtonInput.action.performed += OnClickButtonInput;
+
+        cursorDragInput.action.Enable();
+        cursorDragInput.action.started += OnDragInputStarted;
+        cursorDragInput.action.canceled += OnDragInputCanceled;
+
         centerOfScreen.SetActive(false);
         centerOfScreenImage.gameObject.SetActive(true);
+        pausePanel.SetAllowPause(false);
 
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Confined;
@@ -62,114 +106,47 @@ public class CursorController : MonoBehaviour
     public void DisableCursor()
     {
         cursorEnabled = false;
-        currentCamera = null;
 
-        OnDisableInput();
+        currentMode?.Exit();
+        currentMode = null;
+
+        cursorClickButtonInput.action.performed -= OnClickButtonInput;
+        cursorClickButtonInput.action.Disable();
+
+        cursorDragInput.action.started -= OnDragInputStarted;
+        cursorDragInput.action.canceled -= OnDragInputCanceled;
+        cursorDragInput.action.Disable();
+
+        CurrentCamera = null;
+
         centerOfScreen.SetActive(true);
         centerOfScreenImage.gameObject.SetActive(false);
+        pausePanel.SetAllowPause(true);
 
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+
+        HasHit = false;
     }
 
-    #region Click And Drag Input Region
-
-    private void OnEnableInput()
+    public void SetGameMode(ICursorGameMode mode)
     {
-        cursorInput.action.Enable();
-        cursorInput.action.started += OnInputStarted;
-        cursorInput.action.performed += OnInputPerformed;
-        cursorInput.action.canceled += OnInputCanceled;
+        currentMode = mode;
+        currentMode?.Enter(this);
     }
 
-    private void OnDisableInput()
+    private void OnDragInputStarted(InputAction.CallbackContext context)
     {
-        cursorInput.action.started -= OnInputStarted;
-        cursorInput.action.performed -= OnInputPerformed;
-        cursorInput.action.canceled -= OnInputCanceled;
-        cursorInput.action.Disable();
+        currentMode?.OnDragInputStarted(context);
     }
 
-    private void OnInputStarted(InputAction.CallbackContext context)
+    private void OnDragInputCanceled(InputAction.CallbackContext context)
     {
-        if (!cursorEnabled) return;
-
-        if (context.action.activeControl.path.Contains("leftButton"))
-        {
-            if (hasHit)
-            {
-                selectedObject = currentHit.transform;
-                offset = selectedObject.position - currentHit.point;
-            }
-        }
+        currentMode?.OnDragInputCanceled(context);
     }
 
-    private void OnInputPerformed(InputAction.CallbackContext context)
+    private void OnClickButtonInput(InputAction.CallbackContext context)
     {
-        if (!cursorEnabled) return;
-
-        if (context.action.activeControl.path.Contains("delta"))
-        {
-            mouseDelta = context.ReadValue<Vector2>();
-
-            if (selectedObject != null && Mouse.current.leftButton.isPressed)
-            {
-                Plane movePlane = new Plane(Vector3.up, new Vector3(0, selectedObject.position.y, 0));
-                Ray ray = currentCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
-
-                if (movePlane.Raycast(ray, out float distance))
-                {
-                    Vector3 hitPoint = ray.GetPoint(distance);
-                    selectedObject.position = new Vector3(hitPoint.x + offset.x, selectedObject.position.y, hitPoint.z + offset.z);
-                }
-            }
-        }
-
-        if (context.action.activeControl.path.Contains("leftButton") && !Mouse.current.leftButton.isPressed)
-        {
-            selectedObject = null;
-        }
+        currentMode?.OnClickInput(context);
     }
-
-    private void OnInputCanceled(InputAction.CallbackContext context)
-    {
-        if (!cursorEnabled) return;
-
-        if (context.action.activeControl.path.Contains("leftButton"))
-        {
-            selectedObject = null;
-        }
-    }
-
-    #endregion
-
-    #region Raycast
-    void Update()
-    {
-        if (!cursorEnabled || currentCamera == null) return;
-
-        HandleRaycast();
-        centerOfScreenImage.position = Input.mousePosition;
-        LerpCenterOfScreenSize();
-    }
-
-    private void HandleRaycast()
-    {
-        Ray ray = currentCamera.ScreenPointToRay(Input.mousePosition);
-        hasHit = Physics.Raycast(ray, out currentHit, rayDistance, interactableLayer);
-
-        UpdateDotVisibility(!hasHit);
-        centerOfScreenTargetSize = hasHit ? new Vector2(20f, 20f) : new Vector2(10f, 10f);
-    }
-
-    private void UpdateDotVisibility(bool isVisible)
-    {
-        dot.gameObject.SetActive(isVisible);
-    }
-
-    private void LerpCenterOfScreenSize()
-    {
-        centerOfScreenImage.sizeDelta = Vector2.Lerp(centerOfScreenImage.sizeDelta, centerOfScreenTargetSize, centerOfScreenScaleSpeed * Time.deltaTime);
-    }
-    #endregion
 }
