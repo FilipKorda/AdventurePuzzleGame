@@ -35,7 +35,7 @@ MonoBehaviour:
   - m_Id: 55203614720
     m_Localized: "MIKSTURA Z\u0141EGO  CZASU\nDo Wytworzenia mikstury potrzebujesz:\nKorze\u0144
       <sprite name=\"Items_8\">\nSurowe Mi\u0119so <sprite name=\"Items_7\">\nWiadro
-      wina <sprite name=\"Bucketsof_3\">\nWiadro z wod\u0105 <sprite name=\"Bucketsof_1\">\nWiadro
+      wina <sprite name=\"Bucketsof_3\">\nLi\u015Bcie <sprite name=\"Items_5\">\nWiadro
       z wod\u0105 <sprite name=\"Bucketsof_1\">"
     m_Metadata:
       m_Items: []

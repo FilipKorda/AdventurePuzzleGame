@@ -119,6 +119,12 @@ MonoBehaviour:
       sie z nimi sta\u0142o \u017Ce tak pop\u0119ka\u0142y?\n"
     m_Metadata:
       m_Items: []
+  - m_Id: 21354538479144960
+    m_Localized: "A je\u017Celi jest taki eliksir ktory powoduje latanie? \nTo by
+      by\u0142o super bym m\xF3g\u0142 wtedy zobaczy\u0107 i dotrze\u0107 do miejsc
+      do kt\xF3rych normalnie bym nie m\xF3g\u0142.\nTylko gdzie s\u0105 takie miejsca?"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

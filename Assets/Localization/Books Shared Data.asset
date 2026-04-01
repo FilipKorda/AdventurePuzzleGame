@@ -126,6 +126,10 @@ MonoBehaviour:
     m_Key: Crack in walls
     m_Metadata:
       m_Items: []
+  - m_Id: 21354538479144960
+    m_Key: FlyingIdeaCouldronRecipe
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
