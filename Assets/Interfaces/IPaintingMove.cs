@@ -1,0 +1,5 @@
+
+interface IPaintingMove 
+{
+    void MovePainting();   
+}

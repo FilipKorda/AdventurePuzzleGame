@@ -126,6 +126,7 @@ public class InteractableItemEditor : Editor
 
     private SerializedProperty briefcaseManager;
     private SerializedProperty movingBlockBriefcase;
+    private SerializedProperty imageSlider;
 
 
     private void OnEnable()
@@ -255,6 +256,8 @@ public class InteractableItemEditor : Editor
 
         briefcaseManager = serializedObject.FindProperty("briefcaseManager");
         movingBlockBriefcase = serializedObject.FindProperty("movingBlockBriefcase");
+
+        imageSlider = serializedObject.FindProperty("imageSlider");
 
     }
 
@@ -553,6 +556,10 @@ public class InteractableItemEditor : Editor
             case InteractableItem.InteractableType.MovingBlockBriefcase:
                 EditorGUILayout.PropertyField(movingBlockBriefcase, new GUIContent("Moving Block Briefcase"));
                 break;
+            case InteractableItem.InteractableType.MovePainting:
+                EditorGUILayout.PropertyField(imageSlider, new GUIContent("Image Slider"));
+                break;
+
                 
         }
 
