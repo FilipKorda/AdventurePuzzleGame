@@ -125,6 +125,18 @@ MonoBehaviour:
       do kt\xF3rych normalnie bym nie m\xF3g\u0142.\nTylko gdzie s\u0105 takie miejsca?"
     m_Metadata:
       m_Items: []
+  - m_Id: 21722208047222784
+    m_Localized: "\u015Aciany lochu by\u0142y wilgotne, a pochodnie rzuca\u0142y
+      dr\u017C\u0105ce cienie. W mroku dungeon\xF3w bohater odzyskiwa\u0142 przytomno\u015B\u0107
+      w swojej celi. I mimo strachu w jego g\u0142owie rodzi\u0142 si\u0119 plan
+      ucieczki. Echo krok\xF3w stra\u017Cnika zdradzi\u0142o chwil\u0119 ciszy. Cicho
+      wyszed\u0142 na korytarz, mijaj\u0105c kraty i drzwi. Zakr\u0119ty skrywa\u0142y
+      pu\u0142apki, ale te\u017C drog\u0119 do wolno\u015Bci. Nadzieja ros\u0142a,
+      gdy wspina\u0142 si\u0119 po schodach. I ci\u0119\u017Ckie wrota ust\u0105pi\u0142y,
+      wpuszczaj\u0105c nocne powietrze. Kiedy uciek\u0142, lochy sta\u0142y si\u0119
+      tylko wspomnieniem."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

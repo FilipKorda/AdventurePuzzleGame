@@ -132,6 +132,16 @@ MonoBehaviour:
       these places?"
     m_Metadata:
       m_Items: []
+  - m_Id: 21722208047222784
+    m_Localized: Cold dungeon walls were damp, lit by weak torches. Awakening on
+      stone, the hero realized he was trapped. Nervous fear faded as an escape plan
+      formed. Dark corridors echoed with distant guard steps. Looking for a chance,
+      he slipped out unseen. Every shadow hid danger and possible paths. Silent steps
+      carried him past traps and gates. Twisting stairs led him upward at last. In
+      his chest, hope burned strong. Crashing through the exit, he felt the night
+      air. Knowing he was free, he left the dungeon behind.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

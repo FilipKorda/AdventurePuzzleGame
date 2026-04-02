@@ -69,6 +69,7 @@ public class Ailments : MonoBehaviour
 
     public void ApplyGoodSoupEffect()
     {
+        playerBehaviour.NoEffect();
         Debug.Log("Efekt z Ailments: Zjedzono dobr¹ zupê. Ciep³o rozchodzi siê po ciele.");
         // W przysz³oœci: np. player.RestoreHealth(15); player.RestoreHunger(25);
     }

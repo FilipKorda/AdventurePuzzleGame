@@ -130,6 +130,10 @@ MonoBehaviour:
     m_Key: FlyingIdeaCouldronRecipe
     m_Metadata:
       m_Items: []
+  - m_Id: 21722208047222784
+    m_Key: LightPuzzleSolution
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

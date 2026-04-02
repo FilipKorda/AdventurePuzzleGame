@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7de79416d7e0eb6439b0a8a09cdd5247, type: 3}
   m_Name: Angry Time Potion
   m_EditorClassIdentifier: 
-  ingredientItemIds: 1700000018000000150000001200000012000000
+  ingredientItemIds: 1700000018000000150000001600000012000000
   resultingPotion: {fileID: 3096892419514706705, guid: defcb8d9b4649204c856328874b1d34c, type: 3}
   recipeMat: {fileID: 2100000, guid: f752775dfffeb244ca52c2af9843d8ee, type: 2}
   brewingTime: 7

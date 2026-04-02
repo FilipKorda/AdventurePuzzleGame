@@ -1,9 +1,11 @@
+# if UNITY_EDITOR
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class SceneSelectorWindow : EditorWindow
 {
+
     [MenuItem("Dev Tools/Scene Selector")]
     static void Open()
     {
@@ -32,4 +34,6 @@ public class SceneSelectorWindow : EditorWindow
             EditorSceneManager.OpenScene($"Assets/Scenes/{sceneName}.unity");
         }
     }
+
 }
+#endif
