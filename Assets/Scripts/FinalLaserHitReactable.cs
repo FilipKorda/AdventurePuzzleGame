@@ -25,7 +25,7 @@ public class FinalLaserHitReactable : MonoBehaviour, ILaserReactable
     private IEnumerator DisableLaserAfterSecond()
     {
         yield return new WaitForSeconds(2f);
-        laserBeam.activeLaser = false;
+        laserBeam.ToggleLaser(false);
 
     }
 

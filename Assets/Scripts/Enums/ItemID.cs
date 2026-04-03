@@ -81,4 +81,8 @@ public enum ItemID
     Hatch = 78,
     RubyKey = 79,
     PapyrusVerticalPuzzle = 80,
+    PillarPuzzle0 = 81,
+    PillarPuzzle1 = 82,
+    PillarPuzzle2 = 83,
+    Crawbar = 84,
 }

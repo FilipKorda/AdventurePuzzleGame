@@ -1,0 +1,4 @@
+interface IPlacePillarSymbol 
+{
+    void PlacePillarSymbol();
+}

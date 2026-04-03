@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GraphicSettings : MonoBehaviour
 {
@@ -12,11 +13,15 @@ public class GraphicSettings : MonoBehaviour
 
     private bool currentFullscreen;
 
+    public Toggle fullscreenToggle;
+
     private void Start()
     {
         int width = PlayerPrefs.GetInt(PrefWidthKey, resolution3.x);
         int height = PlayerPrefs.GetInt(PrefHeightKey, resolution3.y);
         currentFullscreen = PlayerPrefs.GetInt(PrefFullscreenKey, 1) == 1;
+
+        fullscreenToggle.SetIsOnWithoutNotify(currentFullscreen);
 
         ApplyResolution(width, height, currentFullscreen);
     }
@@ -39,13 +44,16 @@ public class GraphicSettings : MonoBehaviour
     public void SetFullscreen(bool fullscreen)
     {
         currentFullscreen = fullscreen;
-        ApplyAndSave(Screen.width, Screen.height, currentFullscreen);
+        ApplyAndSave(Screen.width, Screen.height, fullscreen);
     }
 
     private void ApplyAndSave(int width, int height, bool fullscreen)
     {
-        ApplyResolution(width, height, fullscreen);
-        SaveResolution(width, height, fullscreen);
+        Screen.SetResolution(width, height, fullscreen);
+        PlayerPrefs.SetInt(PrefWidthKey, width);
+        PlayerPrefs.SetInt(PrefHeightKey, height);
+        PlayerPrefs.SetInt(PrefFullscreenKey, fullscreen ? 1 : 0);
+        PlayerPrefs.Save();
     }
 
     private void ApplyResolution(int width, int height, bool fullscreen)

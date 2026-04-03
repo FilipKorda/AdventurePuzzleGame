@@ -12,6 +12,7 @@ public class BriefcaseManager : MonoBehaviour
     [SerializeField] private PlayerBehaviour playerBehaviour;
     [SerializeField] private Transform point;
     [SerializeField] private BoxCollider boxCollider;
+    [SerializeField] private MovingBlockBriefcase movingBlockBriefcase;
 
     public bool winPuzzle = false;
 
@@ -67,7 +68,6 @@ public class BriefcaseManager : MonoBehaviour
         gameObject.SetActive(false);
         playerBehaviour.disableOnlyMovement = false;
         UIManager.Instance.DisableGearModePanel();
-        // pipePuzzleManager.CheckWInBothPipePuzzle();
     }
 
     private void OnPuzzleModePerformed(InputAction.CallbackContext context)
@@ -77,9 +77,8 @@ public class BriefcaseManager : MonoBehaviour
 
     private void ResetPuzzle()
     {
-        //playerPathMovement.ResetToCurrentPoint();
+        movingBlockBriefcase.ResetPuzzle();
         winPuzzle = false;
-        // wheelObject.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
     }
 
     private void MovePlayerToPosition()

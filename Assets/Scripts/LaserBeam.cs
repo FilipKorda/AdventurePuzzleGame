@@ -19,23 +19,6 @@ public class LaserBeam : MonoBehaviour
 
     [SerializeField] float refreshRate = 0.05f;
 
-    private void Start()
-    {
-        // Optionally, you can start the laser routine as a coroutine to control the refresh rate
-        // StartCoroutine(LaserRoutine());
-    }
-
-
-
-    private IEnumerator LaserRoutine()
-    {
-        while (true)
-        {
-            DrawLaser();
-            yield return new WaitForSeconds(refreshRate);
-        }
-    }
-
     public void ToggleLaser(bool toogleLaser)
     {
         activeLaser = toogleLaser;

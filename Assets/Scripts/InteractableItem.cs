@@ -10,7 +10,8 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     IGetObject, ICrafting, IPinNumber, IRotate, ICryptex, IMirror, IGearLock, IGearRotate, IGear90, IPipeGearPuzzle,
     IFurniture, IWoodenBlockPuzzle, IWoodenBlock, ITrianglePuzzle, ISymbolPlaceable, IArrowDirection, IPuzzlePipePart,
     IBlockButton, INinePadPanel, ICircleAndSquarePuzzle, IRotateCircleAndSquarePuzzle, IPlayerSphereMovement, ILibraryButton,
-    ISafe, IBraiser, IFramePuzzle, IWallSwitchOnOff, IPlaceOnScale, IBriefcase, IMovingBlockBriefcase
+    ISafe, IBraiser, IFramePuzzle, IWallSwitchOnOff, IPlaceOnScale, IBriefcase, IMovingBlockBriefcase, IPaintingMove,
+    IPlacePillarSymbol, IPillarMoveSphere
 {
     public enum InteractableType
     {
@@ -58,7 +59,10 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         WallSwitchOnOff,
         PlaceOnScale,
         Briefcase,
-        MovingBlockBriefcase
+        MovingBlockBriefcase,
+        MovePainting,
+        PlacePillarSymbol,
+        ClickMovePillarSphere
     }
 
     public InteractableType interactableType;
@@ -287,6 +291,14 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     [SerializeField] private BriefcaseManager briefcaseManager;
     [Header("Moving Block Briefcase")]
     [SerializeField] private MovingBlockBriefcase movingBlockBriefcase;
+    [Header("Move Painting")]
+    [SerializeField] private ImageSlider imageSlider;
+    [Header("Pillar Puzzle")]
+    [SerializeField] private GameObject symbol0;
+    [SerializeField] private GameObject symbol1;
+    [SerializeField] private GameObject symbol2;
+    [Header("Click Move Pillar Sphere")]
+    [SerializeField] private MovingPillarManager movingPillarManager;
 
     private void Awake()
     {
@@ -302,6 +314,43 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
 
     }
 
+    public void ClickMovePillarSphere()
+    {
+        movingPillarManager.SetClickAndDrag(true);
+    }
+
+    public void PlacePillarSymbol()
+    {
+        int currentSelectedId = UIManager.Instance.GetSelectedItemId();
+        if (currentSelectedId == 0)
+        {
+            Debug.Log("Nie wybrano ¿adnego przedmiotu do u¿ycia.");
+            return;
+        }
+
+        switch ((ItemID)currentSelectedId)
+        {
+            case ItemID.PillarPuzzle0:
+                symbol0.SetActive(true);
+                break;
+            case ItemID.PillarPuzzle1:
+                symbol1.SetActive(true);
+                break;
+            case ItemID.PillarPuzzle2:
+                symbol2.SetActive(true);
+                break;
+        }
+
+        Services.Audio.PlaySFX("PuzzlePiece");
+        Inventory.Instance.RemoveItemFromInventoryByID(currentSelectedId);
+        UIManager.Instance.RemoveItemFromUIByID(currentSelectedId);
+    }
+
+    public void MovePainting()
+    {
+        imageSlider.Next();
+
+    }
     public void ClickMovingBlockBriefcase()
     {
         movingBlockBriefcase.SetClickAndDrag(true);
@@ -1250,24 +1299,27 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
             }
             else if (selectedItemId != ItemID.EmptyBucket)
             {
-                cauldron.AddIngredient(selectedItemIdAsInt);
+                if (cauldron.fireObject.activeInHierarchy)
+                {
+                    cauldron.AddIngredient(selectedItemIdAsInt);
 
-                if (selectedItemId == ItemID.WineBucket || selectedItemId == ItemID.AcidBucket ||
-                      selectedItemId == ItemID.WaterBucket || selectedItemId == ItemID.BloodBucket)
-                {
-                    Services.Audio.PlaySFX("PourWater");
-                }
-                else if (selectedItemId == ItemID.PlantRoot)
-                {
-                    Services.Audio.PlaySFX("AddRoot");
-                }
-                else if (selectedItemId == ItemID.Leafs)
-                {
-                    Services.Audio.PlaySFX("AddLeafs");
-                }
-                else
-                {
-                    Services.Audio.PlaySFX("AddRawMeat");
+                    if (selectedItemId == ItemID.WineBucket || selectedItemId == ItemID.AcidBucket ||
+                    selectedItemId == ItemID.WaterBucket || selectedItemId == ItemID.BloodBucket)
+                    {
+                        Services.Audio.PlaySFX("PourWater");
+                    }
+                    else if (selectedItemId == ItemID.PlantRoot)
+                    {
+                        Services.Audio.PlaySFX("AddRoot");
+                    }
+                    else if (selectedItemId == ItemID.Leafs)
+                    {
+                        Services.Audio.PlaySFX("AddLeafs");
+                    }
+                    else
+                    {
+                        Services.Audio.PlaySFX("AddRawMeat");
+                    }
                 }
             }
             else
@@ -1313,6 +1365,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
             }
             else
             {
+                Services.Audio.PlaySFX("PickUpItem");
                 Inventory.Instance.AddItemToInventory(this);
             }
 
@@ -1411,6 +1464,8 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
                 Debug.LogError($"Brak przypisanego przedmiotu 'resultingFilledItem' na obiekcie {gameObject.name}");
                 return;
             }
+
+            Services.Audio.PlaySFX("PourWater");
 
             Inventory.Instance.RemoveItemFromInventoryByID(selectedId);
             UIManager.Instance.RemoveItemFromUIByID(selectedId);

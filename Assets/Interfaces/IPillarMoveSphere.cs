@@ -1,0 +1,4 @@
+interface IPillarMoveSphere
+{
+   void ClickMovePillarSphere();
+}

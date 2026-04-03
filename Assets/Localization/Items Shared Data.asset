@@ -251,6 +251,10 @@ MonoBehaviour:
     m_Key: KeyRuby
     m_Metadata:
       m_Items: []
+  - m_Id: 22106963083284480
+    m_Key: Crawbar
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

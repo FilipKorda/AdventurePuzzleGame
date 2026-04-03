@@ -128,6 +128,12 @@ public class InteractableItemEditor : Editor
     private SerializedProperty movingBlockBriefcase;
     private SerializedProperty imageSlider;
 
+    private SerializedProperty symbol0;
+    private SerializedProperty symbol1;
+    private SerializedProperty symbol2;
+
+    private SerializedProperty movingPillarManager;
+
 
     private void OnEnable()
     {
@@ -258,6 +264,12 @@ public class InteractableItemEditor : Editor
         movingBlockBriefcase = serializedObject.FindProperty("movingBlockBriefcase");
 
         imageSlider = serializedObject.FindProperty("imageSlider");
+
+        symbol0 = serializedObject.FindProperty("symbol0");
+        symbol1 = serializedObject.FindProperty("symbol1");
+        symbol2 = serializedObject.FindProperty("symbol2");
+
+        movingPillarManager = serializedObject.FindProperty("movingPillarManager");
 
     }
 
@@ -560,7 +572,15 @@ public class InteractableItemEditor : Editor
                 EditorGUILayout.PropertyField(imageSlider, new GUIContent("Image Slider"));
                 break;
 
-                
+            case InteractableItem.InteractableType.PlacePillarSymbol:
+                EditorGUILayout.PropertyField(symbol0, new GUIContent("symbol0"));
+                EditorGUILayout.PropertyField(symbol1, new GUIContent("symbol1"));
+                EditorGUILayout.PropertyField(symbol2, new GUIContent("symbol2"));
+                break;
+
+            case InteractableItem.InteractableType.ClickMovePillarSphere:
+                EditorGUILayout.PropertyField(movingPillarManager, new GUIContent("Moving Pillar Manager"));
+                break;
         }
 
         serializedObject.ApplyModifiedProperties();
