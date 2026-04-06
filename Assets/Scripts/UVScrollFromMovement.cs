@@ -30,7 +30,7 @@ public class UVScrollFromMovement : MonoBehaviour
     IEnumerator ScrollUV()
     {
         while (true)
-        {
+        {       
             Vector3 delta = transform.position - lastPos;
             lastPos = transform.position;
 
@@ -44,6 +44,7 @@ public class UVScrollFromMovement : MonoBehaviour
 
             yield return null;
         }
+        
     }
 
     public void ActivateRaycast()

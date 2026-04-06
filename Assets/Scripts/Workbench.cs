@@ -19,6 +19,7 @@ public class Workbench : MonoBehaviour
 
     public void DisableAllGameObjectsAndActveOne()
     {
+        Services.Audio.PlaySFX("SafeWinAkaPuzzleWin");
         metalCrabs.SetActive(false);
         springs.SetActive(false);
         metalscaffolds.SetActive(false);

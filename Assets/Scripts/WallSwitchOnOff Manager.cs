@@ -13,6 +13,28 @@ public class WallSwitchOnOffManager : MonoBehaviour
 
     [SerializeField] private BoxCollider[] boxColliders;
 
+    [SerializeField] private Color highlightColor;
+    private Color baseColor;
+
+    [SerializeField] private Renderer diodaRenderer;
+    [SerializeField] private Renderer diodaRenderer1;
+    [SerializeField] private Renderer diodaRenderer2;
+    [SerializeField] private Renderer diodaRenderer3;
+    [SerializeField] private Renderer diodaRenderer4;
+    [SerializeField] private Renderer diodaRenderer5;
+
+    private void Start()
+    {
+
+        baseColor = diodaRenderer.material.color;
+        baseColor = diodaRenderer1.material.color;
+        baseColor = diodaRenderer2.material.color;
+        baseColor = diodaRenderer3.material.color;
+        baseColor = diodaRenderer4.material.color;
+        baseColor = diodaRenderer5.material.color;
+
+    }
+
     public void OnSwitchPressed(WallSwitchType type)
     {
         switch (type)
@@ -53,7 +75,7 @@ public class WallSwitchOnOffManager : MonoBehaviour
 
     private void DisableAllSwitches()
     {
-        foreach(var boxCollider in boxColliders)
+        foreach (var boxCollider in boxColliders)
         {
             boxCollider.enabled = false;
         }
@@ -61,6 +83,55 @@ public class WallSwitchOnOffManager : MonoBehaviour
 
     private void CheckWin()
     {
+        if (switchA.IsOn)
+        {
+            diodaRenderer.material.color = highlightColor;
+        }
+        else
+        {
+            diodaRenderer.material.color = baseColor;
+        }
+        if (switchB.IsOn)
+        {
+            diodaRenderer1.material.color = highlightColor;
+        }
+        else
+        {
+            diodaRenderer1.material.color = baseColor;
+        }
+        if (switchC.IsOn)
+        {
+            diodaRenderer2.material.color = highlightColor;
+        }
+        else
+        {
+            diodaRenderer2.material.color = baseColor;
+        }
+        if (switchD.IsOn)
+        {
+            diodaRenderer3.material.color = highlightColor;
+        }
+        else
+        {
+            diodaRenderer3.material.color = baseColor;
+        }
+        if (switchE.IsOn)
+        {
+            diodaRenderer4.material.color = highlightColor;
+        }
+        else
+        {
+            diodaRenderer4.material.color = baseColor;
+        }
+        if (switchF.IsOn)
+        {
+            diodaRenderer5.material.color = highlightColor;
+        }
+        else
+        {
+            diodaRenderer5.material.color = baseColor;
+        }
+
         if (
             switchA.IsOn &&
             switchB.IsOn &&
@@ -78,5 +149,6 @@ public class WallSwitchOnOffManager : MonoBehaviour
     {
         DisableAllSwitches();
         animator.SetTrigger("Open");
+        Services.Audio.PlaySFX("chain");
     }
 }

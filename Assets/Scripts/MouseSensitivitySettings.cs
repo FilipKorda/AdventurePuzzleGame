@@ -20,6 +20,11 @@ public class MouseSensitivitySettings : MonoBehaviour
         sensitivitySlider.SetValueWithoutNotify(MouseSensitivity);
     }
 
+    public static void SetSensitivity(float value)
+    {
+        MouseSensitivity = value;
+    }
+
     public void OnSensitivityChanged(float value)
     {
         MouseSensitivity = value;

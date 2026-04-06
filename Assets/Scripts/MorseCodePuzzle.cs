@@ -48,6 +48,7 @@ public class MorseCodePuzzle : MonoBehaviour
     [SerializeField] private GameObject button;
 
     [SerializeField] private Animator animator;
+    [SerializeField] private LaserBeam laserBeam;
 
     private void Update()
     {
@@ -121,6 +122,10 @@ public class MorseCodePuzzle : MonoBehaviour
         yield return new WaitForSeconds(2);
 
         animator.SetTrigger("Interact");
+
+        yield return new WaitForSeconds(2);
+
+        laserBeam.ToggleLaser(true);
     }
 
     private IEnumerator RotateSegment(GameObject segment, float duration)

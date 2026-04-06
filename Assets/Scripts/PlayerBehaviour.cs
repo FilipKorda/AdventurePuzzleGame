@@ -92,6 +92,18 @@ public class PlayerBehaviour : MonoBehaviour
 
     private IFramePuzzle lastIFramePuzzle;
 
+    private IWallSwitchOnOff lastIWallSwitchOnOff;
+
+    private IPlaceOnScale lastIPlaceOnScale;
+
+    private IBriefcase lastIBriefcase;
+    private IMovingBlockBriefcase lastIMovingBlockBriefcase;
+
+    private IPaintingMove lastIPaintingMove;
+
+    private IPlacePillarSymbol lastIPlacePillarSymbol;
+    private IPillarMoveSphere lastIPillarMoveSphere;
+
     private CharacterController characterController;
     private Vector2 inputMovement;
     public Vector2 inputLook;
@@ -419,6 +431,19 @@ public class PlayerBehaviour : MonoBehaviour
 
             lastIFramePuzzle?.PlacePuzzleIntoFrame();
 
+            lastIWallSwitchOnOff?.ClickWallSwitch();
+
+            lastIPlaceOnScale?.PlaceOnScale();
+
+            lastIBriefcase?.EnterBriefcasePuzzle();
+
+            lastIMovingBlockBriefcase?.ClickMovingBlockBriefcase();
+
+            lastIPaintingMove?.MovePainting();
+
+            lastIPlacePillarSymbol?.PlacePillarSymbol();
+            lastIPillarMoveSphere?.ClickMovePillarSphere();
+
             if (lastIOpenable != null && lastIOpenable.IsOpen())
             {
                 lastIOpenable?.CloseObject();
@@ -599,6 +624,13 @@ public class PlayerBehaviour : MonoBehaviour
         lastISafe = null;
         lastIBraiser = null;
         lastIFramePuzzle = null;
+        lastIWallSwitchOnOff = null;
+        lastIPlaceOnScale = null;
+        lastIBriefcase = null;
+        lastIMovingBlockBriefcase = null;
+        lastIPaintingMove = null;
+        lastIPlacePillarSymbol = null;
+        lastIPillarMoveSphere = null;
 
         bool hitBlock = Physics.Raycast(ray, out RaycastHit blockHit, raycastRange, blockRaycastLayer);
         bool hitInteractable = Physics.Raycast(ray, out RaycastHit hit, raycastRange, interactableLayer);
@@ -777,6 +809,31 @@ public class PlayerBehaviour : MonoBehaviour
                         lastIFramePuzzle = interactableObject;
                         break;
 
+                    case InteractableItem.InteractableType.WallSwitchOnOff:
+                        lastIWallSwitchOnOff = interactableObject;
+                        break;
+                    case InteractableItem.InteractableType.PlaceOnScale:
+                        lastIPlaceOnScale = interactableObject;
+                        break;
+
+                    case InteractableItem.InteractableType.Briefcase:
+                        lastIBriefcase = interactableObject;
+                        break;
+
+                    case InteractableItem.InteractableType.MovingBlockBriefcase:
+                        lastIMovingBlockBriefcase = interactableObject;
+                        break;
+                    case InteractableItem.InteractableType.MovePainting:
+                        lastIPaintingMove = interactableObject;
+                        break;
+
+                    case InteractableItem.InteractableType.PlacePillarSymbol:
+                        lastIPlacePillarSymbol = interactableObject;
+                        break;
+                    case InteractableItem.InteractableType.ClickMovePillarSphere:
+                        lastIPillarMoveSphere = interactableObject;
+                        break;
+                        
                 }
             }
 

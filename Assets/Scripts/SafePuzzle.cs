@@ -1,5 +1,4 @@
 using System.Collections;
-using UnityEditor.AdaptivePerformance.UI.Editor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -118,6 +117,8 @@ public class SafePuzzle : MonoBehaviour
 
     private IEnumerator WinPuzzleCourutine()
     {
+        Services.Audio.PlaySFX("SafeWinAkaPuzzleWin");
+
         safeDial.canRotateDial = false;
 
         animator.SetTrigger("Open");

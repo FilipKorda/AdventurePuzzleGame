@@ -5,51 +5,45 @@ public class ScaleLogic : MonoBehaviour
 {
     [SerializeField] private GameObject jointHinge;
     [SerializeField] private GameObject[] helperHinges;
+    [SerializeField] private float maxAngle = 10f;
+    [SerializeField] private int maxDifference = 10;
 
-    private void Update()
+    private Coroutine rotateRoutine;
+    private float currentAngle;
+
+    public void SetBalance(int difference)
     {
-        if (Input.GetKeyDown(KeyCode.B))
-            StartCoroutine(RotateY(-5f));
+        difference = Mathf.Clamp(difference, -maxDifference, maxDifference);
+        float targetAngle = (difference / (float)maxDifference) * maxAngle;
 
-        if (Input.GetKeyDown(KeyCode.N))
-            StartCoroutine(RotateY(5f));
+        if (rotateRoutine != null)
+            StopCoroutine(rotateRoutine);
+
+        rotateRoutine = StartCoroutine(RotateTo(targetAngle));
     }
 
-    private IEnumerator RotateY(float delta)
+    private IEnumerator RotateTo(float targetAngle)
     {
-        float startMainY = jointHinge.transform.localEulerAngles.y;
-        float targetMainY = startMainY + delta;
-
-        float[] startHelpersY = new float[helperHinges.Length];
-        float[] targetHelpersY = new float[helperHinges.Length];
-
-        for (int i = 0; i < helperHinges.Length; i++)
-        {
-            startHelpersY[i] = helperHinges[i].transform.localEulerAngles.y;
-            targetHelpersY[i] = startHelpersY[i] - delta;
-        }
-
+        float startAngle = currentAngle;
         float t = 0f;
 
         while (t < 1f)
         {
             t += Time.deltaTime * 5f;
+            currentAngle = Mathf.Lerp(startAngle, targetAngle, t);
 
-            float mainY = Mathf.LerpAngle(startMainY, targetMainY, t);
-            jointHinge.transform.localRotation = Quaternion.Euler(0f, mainY, 0f);
+            jointHinge.transform.localRotation = Quaternion.Euler(0f, currentAngle, 0f);
 
             for (int i = 0; i < helperHinges.Length; i++)
-            {
-                float helperY = Mathf.LerpAngle(startHelpersY[i], targetHelpersY[i], t);
-                helperHinges[i].transform.localRotation = Quaternion.Euler(0f, helperY, 0f);
-            }
+                helperHinges[i].transform.localRotation = Quaternion.Euler(0f, -currentAngle, 0f);
 
             yield return null;
         }
 
-        jointHinge.transform.localRotation = Quaternion.Euler(0f, targetMainY, 0f);
+        currentAngle = targetAngle;
+        jointHinge.transform.localRotation = Quaternion.Euler(0f, currentAngle, 0f);
 
         for (int i = 0; i < helperHinges.Length; i++)
-            helperHinges[i].transform.localRotation = Quaternion.Euler(0f, targetHelpersY[i], 0f);
+            helperHinges[i].transform.localRotation = Quaternion.Euler(0f, -currentAngle, 0f);
     }
 }

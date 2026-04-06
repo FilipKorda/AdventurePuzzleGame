@@ -157,7 +157,7 @@ public class PipeGearPuzzle : MonoBehaviour
 
     private IEnumerator CourutineSolvePuzzle()
     {
-        Services.Audio.PlaySFX("AfterGearPuzzleSolved");
+        Services.Audio.PlaySFX("SafeWinAkaPuzzleWin");
 
         puzzleWin = true;
         yield return new WaitForSeconds(0.5f);

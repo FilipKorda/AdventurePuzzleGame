@@ -10,6 +10,8 @@ public class ScaleWeightSystem : MonoBehaviour
 
     private List<WeightItem> rightSideItems = new List<WeightItem>();
 
+    [SerializeField] private BoxCollider[] allItems;
+
     private void Start()
     {
         UpdateScale();
@@ -47,11 +49,19 @@ public class ScaleWeightSystem : MonoBehaviour
             WinPuzzle();
     }
 
+    private void DisaleAllItemsColliders()
+    {
+        foreach(var item in rightSideItems)
+        {
+            item.enabled = false;
+        }
+    }
 
     public void WinPuzzle()
     {
         boxCollider.enabled = false;
-        animator.SetTrigger("Open");
+        DisaleAllItemsColliders();
+        animator.SetTrigger("Interact");
         Debug.Log("Win");
     }
 }

@@ -17,10 +17,8 @@ public class VerticalFollowPath : MonoBehaviour
 
     public PathMover mover;
 
-    void Start()
-    {
-        StartCoroutine(Sequence());
-    }
+    Coroutine sequenceCoroutine;
+    bool sequenceRunning;
 
     IEnumerator MoveBothAndWait(int leftIndex, int rightIndex)
     {
@@ -142,15 +140,101 @@ public class VerticalFollowPath : MonoBehaviour
         yield return new WaitForSeconds(stopTime);
     }
 
+    IEnumerator MoveLeftToIndexAndRightThroughLine(int leftIndex, bool rightUp)
+    {
+        leftObjectPS.Stop();
+        rightObjectPS.Stop();
+
+        bool leftDone = false;
+
+        StartCoroutine(
+            mover.MoveToPoint(
+                leftObject,
+                leftPoints[leftIndex],
+                speed,
+                () => leftDone = true
+            )
+        );
+
+        int start = rightUp ? 0 : rightPoints.Length - 1;
+        int end = rightUp ? rightPoints.Length : -1;
+        int step = rightUp ? 1 : -1;
+
+        int i = start;
+
+        while ((rightUp && i < end) || (!rightUp && i > end))
+        {
+            bool rightDone = false;
+
+            StartCoroutine(
+                mover.MoveToPoint(
+                    rightObject,
+                    rightPoints[i],
+                    speed,
+                    () => rightDone = true
+                )
+            );
+
+            while (!rightDone)
+                yield return null;
+
+            if (leftDone)
+            {
+                if (!leftObjectPS.isPlaying)
+                    leftObjectPS.Play();
+
+                if (!rightObjectPS.isPlaying)
+                    rightObjectPS.Play();
+            }
+
+            i += step;
+        }
+
+        leftObjectPS.Stop();
+        rightObjectPS.Stop();
+
+        yield return new WaitForSeconds(stopTime);
+    }
+
+    public void PlaySequence()
+    {
+        if (sequenceRunning)
+            return;
+
+        sequenceRunning = true;
+        sequenceCoroutine = StartCoroutine(SequenceLoop());
+    }
+
+    public void StopSequence()
+    {
+        if (!sequenceRunning)
+            return;
+
+        sequenceRunning = false;
+
+        leftObjectPS.Stop();
+        rightObjectPS.Stop();
+
+        if (sequenceCoroutine != null)
+            StopCoroutine(sequenceCoroutine);
+    }
+
+    IEnumerator SequenceLoop()
+    {
+        while (sequenceRunning)
+        {
+            yield return Sequence();
+        }
+    }
+
     IEnumerator Sequence()
     {
+        yield return MoveBothAndWait(1, 1);
+
+        yield return MoveLeftToIndexAndRightThroughLine(2, false);
+
         yield return MoveBothAndWait(3, 2);
-        yield return MoveBothAndWait(1, 0);
-        yield return MoveBothAndWait(0, 3);
-        yield return MoveEntireLineAndWait(true, false);
-        yield return MoveEntireLineAndWait(false, true);
-        yield return MoveBothAndWait(2, 1);
-        yield return MoveEntireLineAndWait(false, true);
-        yield return MoveEntireLineAndWait(true, false);
+
+        yield return MoveEntireLineAndWait(false, false);
     }
 }

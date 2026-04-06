@@ -26,6 +26,12 @@ public class MovingBlockBriefcase : MonoBehaviour
     Vector3 velocity;
     Coroutine moveRoutine;
 
+    [SerializeField] private BriefcaseManager briefcaseManager;
+    [SerializeField] private BoxCollider[] boxCollidersToDisable;
+    [SerializeField] private Animator animator;
+    [SerializeField] private Animator animatorPrefabBriefcase;
+    [SerializeField] private Animator animatorBriefcase;
+
     private enum Direction
     {
         Left,
@@ -168,7 +174,7 @@ public class MovingBlockBriefcase : MonoBehaviour
         if (arrowPoints.Length == 0) return;
 
         arrowObject.position = arrowPoints[0].position;
-        currentArrowIndex = 1; 
+        currentArrowIndex = 1;
     }
 
     public void MoveArrowOneStep()
@@ -182,7 +188,7 @@ public class MovingBlockBriefcase : MonoBehaviour
 
         arrowRoutine = StartCoroutine(MoveArrowToPoint(target.position));
 
-        currentArrowIndex++; 
+        currentArrowIndex++;
     }
 
     IEnumerator MoveArrowToPoint(Vector3 target)
@@ -232,10 +238,11 @@ public class MovingBlockBriefcase : MonoBehaviour
         }
 
         Debug.Log("Wygrałeś!");
-        ResetPuzzle();
+
+        StartCoroutine(WinPuzzle());
     }
 
-    private void ResetPuzzle()
+    public void ResetPuzzle()
     {
         currentSequence.Clear();
 
@@ -253,5 +260,22 @@ public class MovingBlockBriefcase : MonoBehaviour
             StopCoroutine(moveRoutine);
             moveRoutine = null;
         }
+    }
+
+    private IEnumerator WinPuzzle()
+    {
+        foreach (var boxCollider in boxCollidersToDisable)
+        {
+            boxCollider.enabled = false;
+        }
+
+        animator.SetTrigger("Open");
+        animatorPrefabBriefcase.SetTrigger("Open");
+        animatorBriefcase.SetTrigger("Open");
+
+        yield return new WaitForSeconds(1f);
+
+        briefcaseManager.ExitAfterWin();
+      
     }
 }
