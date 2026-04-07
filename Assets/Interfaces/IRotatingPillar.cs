@@ -1,0 +1,5 @@
+
+interface IRotatingPillar 
+{
+    void EnterRotatingPillarPuzzle();  
+}

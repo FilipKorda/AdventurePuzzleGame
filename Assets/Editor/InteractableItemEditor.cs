@@ -133,6 +133,7 @@ public class InteractableItemEditor : Editor
     private SerializedProperty symbol2;
 
     private SerializedProperty movingPillarManager;
+    private SerializedProperty rotatingPillarMovingBlock;
 
 
     private void OnEnable()
@@ -270,6 +271,7 @@ public class InteractableItemEditor : Editor
         symbol2 = serializedObject.FindProperty("symbol2");
 
         movingPillarManager = serializedObject.FindProperty("movingPillarManager");
+        rotatingPillarMovingBlock = serializedObject.FindProperty("rotatingPillarMovingBlock");
 
     }
 
@@ -581,6 +583,11 @@ public class InteractableItemEditor : Editor
             case InteractableItem.InteractableType.ClickMovePillarSphere:
                 EditorGUILayout.PropertyField(movingPillarManager, new GUIContent("Moving Pillar Manager"));
                 break;
+
+            case InteractableItem.InteractableType.RotatingPillar:
+                EditorGUILayout.PropertyField(rotatingPillarMovingBlock, new GUIContent("Rotating Pillar Moving Block"));
+                break;
+                
         }
 
         serializedObject.ApplyModifiedProperties();
