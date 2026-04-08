@@ -11,6 +11,7 @@ public class MovingBlockClickDragGameMode : ICursorGameMode
     private Vector3 offset;
     private bool isDragging;
     private Vector2 lastMousePosition;
+    private float maxMovePerFrame = 0.01f;
 
     public void Enter(CursorController controller)
     {
@@ -42,6 +43,7 @@ public class MovingBlockClickDragGameMode : ICursorGameMode
         MovableBlockRotatingPillar pillar =
             controller.CurrentHit.transform.GetComponent<MovableBlockRotatingPillar>();
 
+
         if (pillar == null)
         {
             selectedObject = null;
@@ -53,6 +55,7 @@ public class MovingBlockClickDragGameMode : ICursorGameMode
         movable = pillar;
 
         offset = selectedObject.position - controller.CurrentHit.point;
+
     }
 
     public void OnDragInputStarted(InputAction.CallbackContext context)
@@ -92,20 +95,21 @@ public class MovingBlockClickDragGameMode : ICursorGameMode
     }
 
 
-
     private void HandleMovement()
     {
         Vector2 mousePos = Mouse.current.position.ReadValue();
         Vector2 delta = mousePos - lastMousePosition;
         lastMousePosition = mousePos;
 
+        Vector3 move;
+
         if (movable.axis == MoveAxis.X)
-        {
-            movable.TryMove(new Vector3(delta.x * 0.01f, 0f, 0f)); 
-        }
-        else // axis Z
-        {
-            movable.TryMove(new Vector3(0f, 0f, delta.y * 0.01f)); 
-        }
+            move = new Vector3(delta.x * 0.01f, 0f, 0f);
+        else
+            move = new Vector3(0f, delta.y * 0.01f, 0f);
+
+        move = Vector3.ClampMagnitude(move, maxMovePerFrame);
+
+        movable.TryMove(move);
     }
 }
