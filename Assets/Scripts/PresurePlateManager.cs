@@ -23,6 +23,10 @@ public class PresurePlateManager : MonoBehaviour
     [SerializeField] private float targetYPillar = 7.8f;
     [SerializeField] private float moveDurationPillar = 2f;
 
+    [SerializeField] private GameObject movingPillarOne;
+    [SerializeField] private float targetYPillarOne = 7.8f;
+    [SerializeField] private float moveDurationPillarOne = 2f;
+
     void Awake()
     {
         pressurePlate0.manager = this;
@@ -75,7 +79,7 @@ public class PresurePlateManager : MonoBehaviour
     {
         StartMoveUp();
         ResetSequenceAfterWin();
-        Debug.Log("WIN!");
+        Services.Audio.PlaySFX("SafeWinAkaPuzzleWin");
     }
 
     private void ResetSequenceAfterWin()
@@ -90,10 +94,21 @@ public class PresurePlateManager : MonoBehaviour
         pressurePlate2BoxCollider.enabled = false;
     }
 
+
+    private void Update()
+    {
+#if UNITY_EDITOR
+        if(Input.GetKeyDown(KeyCode.H)) {
+            StartMoveUp();
+        }
+#endif
+    }
+
     public void StartMoveUp()
     {
         StartCoroutine(MoveUpCoroutine());
         StartCoroutine(MovePillarRoutine());
+        StartCoroutine(MovePillarOneRoutine());
     }
 
     private IEnumerator MoveUpCoroutine()
@@ -132,5 +147,25 @@ public class PresurePlateManager : MonoBehaviour
         }
 
         movingPillar.transform.position = targetPosition;
+    }
+
+    private IEnumerator MovePillarOneRoutine()
+    {
+        float elapsedTime = 0f;
+        Vector3 startingPosition = movingPillarOne.transform.position;
+
+        Vector3 targetPosition = new Vector3(startingPosition.x, targetYPillarOne, startingPosition.z);
+
+        while (elapsedTime < moveDurationPillarOne)
+        {
+            float t = elapsedTime / moveDurationPillarOne;
+
+            movingPillarOne.transform.position = Vector3.Lerp(startingPosition, targetPosition, t);
+
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        movingPillarOne.transform.position = targetPosition;
     }
 }

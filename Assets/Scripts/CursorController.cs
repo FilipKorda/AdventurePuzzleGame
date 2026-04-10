@@ -13,7 +13,7 @@ public class CursorController : MonoBehaviour
     public LayerMask InteractableLayer => interactableLayer;
     public Camera CurrentCamera { get; private set; }
 
-    private ICursorGameMode currentMode;
+    public ICursorGameMode currentMode;
     private bool cursorEnabled;
 
     [SerializeField] private GameObject centerOfScreen;
@@ -26,7 +26,7 @@ public class CursorController : MonoBehaviour
 
     public Ray CurrentRay { get; private set; }
     public RaycastHit CurrentHit { get; private set; }
-    public bool HasHit { get; private set; }
+    public bool HasHit { get; set; }
 
     void Awake()
     {
@@ -71,12 +71,6 @@ public class CursorController : MonoBehaviour
             Vector2.Lerp(centerOfScreenImage.sizeDelta, centerOfScreenTargetSize, centerOfScreenScaleSpeed * Time.deltaTime);
     }
 
-    public bool RaycastFromScreenPoint(Vector2 screenPos, out RaycastHit hit, float distance)
-    {
-        Ray ray = CurrentCamera.ScreenPointToRay(screenPos);
-        return Physics.Raycast(ray, out hit, distance, interactableLayer);
-    }
-
     public Ray GetRayFromScreenPoint(Vector2 screenPos)
     {
         return CurrentCamera.ScreenPointToRay(screenPos);
@@ -89,7 +83,7 @@ public class CursorController : MonoBehaviour
         cursorEnabled = true;
 
         cursorClickButtonInput.action.Enable();
-        cursorClickButtonInput.action.performed += OnClickButtonInput;
+        cursorClickButtonInput.action.started += OnClickButtonInput;
 
         cursorDragInput.action.Enable();
         cursorDragInput.action.started += OnDragInputStarted;
@@ -110,7 +104,7 @@ public class CursorController : MonoBehaviour
         currentMode?.Exit();
         currentMode = null;
 
-        cursorClickButtonInput.action.performed -= OnClickButtonInput;
+        cursorClickButtonInput.action.started -= OnClickButtonInput;
         cursorClickButtonInput.action.Disable();
 
         cursorDragInput.action.started -= OnDragInputStarted;
@@ -148,5 +142,18 @@ public class CursorController : MonoBehaviour
     private void OnClickButtonInput(InputAction.CallbackContext context)
     {
         currentMode?.OnClickInput(context);
+    }
+
+    void OnDrawGizmos()
+    {
+        if (!cursorEnabled) return;
+        if (CurrentCamera == null) return;
+
+        Gizmos.color = HasHit ? Color.green : Color.red;
+
+        if (HasHit)
+        {
+            Gizmos.DrawSphere(CurrentHit.point, 0.05f);
+        }
     }
 }

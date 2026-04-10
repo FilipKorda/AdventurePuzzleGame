@@ -103,6 +103,9 @@ public class PlayerBehaviour : MonoBehaviour
 
     private IPlacePillarSymbol lastIPlacePillarSymbol;
     private IPillarMoveSphere lastIPillarMoveSphere;
+    private IRotatingPillar lastIRotatingPillar;
+    private IRotateOnePillar lastIRotateOnePillar;
+    private IMoveSphereOnePillarPuzzle lastIMoveSphereOnePillarPuzzle;
 
     private CharacterController characterController;
     private Vector2 inputMovement;
@@ -443,6 +446,9 @@ public class PlayerBehaviour : MonoBehaviour
 
             lastIPlacePillarSymbol?.PlacePillarSymbol();
             lastIPillarMoveSphere?.ClickMovePillarSphere();
+            lastIRotatingPillar?.EnterRotatingPillarPuzzle();
+            lastIRotateOnePillar?.RotatePillar();
+            lastIMoveSphereOnePillarPuzzle?.ClickMovingSphere();
 
             if (lastIOpenable != null && lastIOpenable.IsOpen())
             {
@@ -631,6 +637,9 @@ public class PlayerBehaviour : MonoBehaviour
         lastIPaintingMove = null;
         lastIPlacePillarSymbol = null;
         lastIPillarMoveSphere = null;
+        lastIRotatingPillar = null;
+        lastIRotateOnePillar = null;
+        lastIMoveSphereOnePillarPuzzle = null;
 
         bool hitBlock = Physics.Raycast(ray, out RaycastHit blockHit, raycastRange, blockRaycastLayer);
         bool hitInteractable = Physics.Raycast(ray, out RaycastHit hit, raycastRange, interactableLayer);
@@ -832,6 +841,15 @@ public class PlayerBehaviour : MonoBehaviour
                         break;
                     case InteractableItem.InteractableType.ClickMovePillarSphere:
                         lastIPillarMoveSphere = interactableObject;
+                        break;
+                    case InteractableItem.InteractableType.RotatingPillar:
+                        lastIRotatingPillar = interactableObject;
+                        break;
+                    case InteractableItem.InteractableType.RotateOnePillar:
+                        lastIRotateOnePillar = interactableObject;
+                        break;
+                    case InteractableItem.InteractableType.MoveSphereOnePillarPuzzle:
+                        lastIMoveSphereOnePillarPuzzle = interactableObject;
                         break;
                         
                 }

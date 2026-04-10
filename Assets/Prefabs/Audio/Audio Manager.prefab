@@ -181,4 +181,6 @@ MonoBehaviour:
     Clip: {fileID: 8300000, guid: a0cd22bb0bc13f145a0c818b42d0f79a, type: 3}
   - Id: HammerHitCrafting
     Clip: {fileID: 8300000, guid: 3d5079761b6969746b0aa036abe21ced, type: 3}
+  - Id: MoveGearRoomTen
+    Clip: {fileID: 8300000, guid: a16704f6e13b2d6468a3b940ddd45b72, type: 3}
   sfxSourcePrefab: {fileID: 6808787666201464470, guid: 561a59515f73e424ba170ae966f504e9, type: 3}

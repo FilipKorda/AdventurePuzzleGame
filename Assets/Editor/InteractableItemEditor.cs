@@ -135,6 +135,8 @@ public class InteractableItemEditor : Editor
     private SerializedProperty movingPillarManager;
     private SerializedProperty rotatingPillarMovingBlock;
 
+    private SerializedProperty moveSphereOnePillarPuzzle;
+
 
     private void OnEnable()
     {
@@ -272,6 +274,7 @@ public class InteractableItemEditor : Editor
 
         movingPillarManager = serializedObject.FindProperty("movingPillarManager");
         rotatingPillarMovingBlock = serializedObject.FindProperty("rotatingPillarMovingBlock");
+        moveSphereOnePillarPuzzle = serializedObject.FindProperty("moveSphereOnePillarPuzzle");
 
     }
 
@@ -585,9 +588,15 @@ public class InteractableItemEditor : Editor
                 break;
 
             case InteractableItem.InteractableType.RotatingPillar:
-                EditorGUILayout.PropertyField(rotatingPillarMovingBlock, new GUIContent("Rotating Pillar Moving Block"));
+                EditorGUILayout.PropertyField(rotatingPillarMovingBlock, new GUIContent("Rotating Pillar Moving Block"));          
                 break;
-                
+
+            case InteractableItem.InteractableType.MoveSphereOnePillarPuzzle:
+                EditorGUILayout.PropertyField(moveSphereOnePillarPuzzle, new GUIContent("Move Sphere One Pillar Puzzle"));
+                break;
+            case InteractableItem.InteractableType.RotateOnePillar:
+                 EditorGUILayout.PropertyField(moveSphereOnePillarPuzzle, new GUIContent("Move Sphere One Pillar Puzzle"));
+                break;
         }
 
         serializedObject.ApplyModifiedProperties();

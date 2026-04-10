@@ -1,0 +1,5 @@
+
+interface IRotateOnePillar 
+{
+    void RotatePillar();    
+}

@@ -1,0 +1,5 @@
+
+interface IMoveSphereOnePillarPuzzle 
+{
+    void ClickMovingSphere();
+}

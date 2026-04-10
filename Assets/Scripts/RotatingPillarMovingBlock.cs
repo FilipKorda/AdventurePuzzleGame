@@ -10,6 +10,7 @@ public class RotatingPillarMovingBlock : MonoBehaviour
     [SerializeField] private Transform cameraPoint;
     [SerializeField] private BoxCollider movingBlockPuzzle;
 
+    [SerializeField] private OnePillarPuzzleManager onePillarPuzzleManager;
 
     private void ActiveInput()
     {
@@ -50,11 +51,27 @@ public class RotatingPillarMovingBlock : MonoBehaviour
 
     public void ExitPuzzle()
     {
+        onePillarPuzzleManager.ResetPuzzle();
+
         DisableInput();
 
         CursorController.Instance.DisableCursor();
 
         movingBlockPuzzle.enabled = true;
+
+        playerBehaviour.disablePlayer = false;
+        playerBehaviour._playerCamera.enabled = true;
+
+        puzzleCamera.enabled = false;
+    }
+
+    public void ExitAfterWin()
+    {
+        DisableInput();
+
+        CursorController.Instance.DisableCursor();
+
+        movingBlockPuzzle.enabled = false;
 
         playerBehaviour.disablePlayer = false;
         playerBehaviour._playerCamera.enabled = true;

@@ -11,7 +11,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     IFurniture, IWoodenBlockPuzzle, IWoodenBlock, ITrianglePuzzle, ISymbolPlaceable, IArrowDirection, IPuzzlePipePart,
     IBlockButton, INinePadPanel, ICircleAndSquarePuzzle, IRotateCircleAndSquarePuzzle, IPlayerSphereMovement, ILibraryButton,
     ISafe, IBraiser, IFramePuzzle, IWallSwitchOnOff, IPlaceOnScale, IBriefcase, IMovingBlockBriefcase, IPaintingMove,
-    IPlacePillarSymbol, IPillarMoveSphere
+    IPlacePillarSymbol, IPillarMoveSphere, IRotatingPillar, IRotateOnePillar, IMoveSphereOnePillarPuzzle
 {
     public enum InteractableType
     {
@@ -62,7 +62,10 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         MovingBlockBriefcase,
         MovePainting,
         PlacePillarSymbol,
-        ClickMovePillarSphere
+        ClickMovePillarSphere,
+        RotatingPillar,
+        RotateOnePillar,
+        MoveSphereOnePillarPuzzle
     }
 
     public InteractableType interactableType;
@@ -299,6 +302,11 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     [SerializeField] private GameObject symbol2;
     [Header("Click Move Pillar Sphere")]
     [SerializeField] private MovingPillarManager movingPillarManager;
+    [Header("Rotating Pillar Moving Block")]
+    [SerializeField] private RotatingPillarMovingBlock rotatingPillarMovingBlock;
+    [Header("Move Sphere One Pillar Puzzle")]
+    [SerializeField] private MoveSphereOnePillarPuzzle moveSphereOnePillarPuzzle;
+    private bool canRotateMoveSphereOnePillarPuzzle = true;
 
     private void Awake()
     {
@@ -312,6 +320,51 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
             startPosition = transform.position;
         }
 
+    }
+
+    public void ClickMovingSphere()
+    {
+        moveSphereOnePillarPuzzle.SetClickAndDrag(true);
+    }
+
+    public void RotatePillar()
+    {
+        if (canRotateMoveSphereOnePillarPuzzle)
+        {
+            StartCoroutine(RotatePillarCoroutine(90f, 0.5f));
+        }
+    }
+
+    private IEnumerator RotatePillarCoroutine(float angle, float duration)
+    {
+        canRotateMoveSphereOnePillarPuzzle = false;
+
+        Quaternion startRotation = transform.rotation;
+        Quaternion endRotation = startRotation * Quaternion.Euler(0f, 0f, angle);
+
+        float elapsed = 0f;
+        while (elapsed < duration)
+        {
+            transform.rotation = Quaternion.Slerp(startRotation, endRotation, elapsed / duration);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+        transform.rotation = endRotation;
+
+        UpdateRotationBools();
+
+        canRotateMoveSphereOnePillarPuzzle = true;
+    }
+
+    private void UpdateRotationBools()
+    {
+       // moveSphereOnePillarPuzzle.useXZPlane = !moveSphereOnePillarPuzzle.useXZPlane;
+    }
+
+    public void EnterRotatingPillarPuzzle()
+    {
+        CursorController.Instance.SetGameMode(new MovingBlockClickDragGameMode());
+        rotatingPillarMovingBlock.EnterPuzzle();
     }
 
     public void ClickMovePillarSphere()
