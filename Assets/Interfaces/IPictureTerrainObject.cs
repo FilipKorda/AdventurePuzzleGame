@@ -1,0 +1,4 @@
+interface IPictureTerrainObject 
+{
+    void ClickPicturetarrainMovingSphere();
+}

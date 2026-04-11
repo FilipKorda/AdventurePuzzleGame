@@ -258,6 +258,10 @@ MonoBehaviour:
     m_Localized: Crowbar
     m_Metadata:
       m_Items: []
+  - m_Id: 24942199924084736
+    m_Localized: Stick
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -224,10 +224,34 @@ MonoBehaviour:
   - m_Id: 20549889320833024
     m_Localized: 'Two brothers from a knightly family:
 
-      Abda always tells
-      the truth!
+      Abda always tells the
+      truth!
 
       Abdi always lies!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24525789162917888
+    m_Localized: Or maybe hit  that bell with something?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24596976526184448
+    m_Localized: Garden
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24596963809054720
+    m_Localized: Castle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24597086307897344
+    m_Localized: Mountains
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24597138883497984
+    m_Localized: Dungeons
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24597200829173760
+    m_Localized: Cemetery
     m_Metadata:
       m_Items: []
   references:

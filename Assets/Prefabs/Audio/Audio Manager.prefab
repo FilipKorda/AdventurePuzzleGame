@@ -183,4 +183,12 @@ MonoBehaviour:
     Clip: {fileID: 8300000, guid: 3d5079761b6969746b0aa036abe21ced, type: 3}
   - Id: MoveGearRoomTen
     Clip: {fileID: 8300000, guid: a16704f6e13b2d6468a3b940ddd45b72, type: 3}
+  - Id: FirstBellSFX
+    Clip: {fileID: 8300000, guid: 3afa6718a85511c4692fb5a605d9fcb7, type: 3}
+  - Id: SecondBellSFX
+    Clip: {fileID: 8300000, guid: 0ba2663ec3e3b4d45ad1f2b4e2ff6e8c, type: 3}
+  - Id: ThirdBellSFX
+    Clip: {fileID: 8300000, guid: 33854dda563080d44b94ab56963f3118, type: 3}
+  - Id: FourthBellSFX
+    Clip: {fileID: 8300000, guid: 820c215580616d948848edd03dc7f84b, type: 3}
   sfxSourcePrefab: {fileID: 6808787666201464470, guid: 561a59515f73e424ba170ae966f504e9, type: 3}

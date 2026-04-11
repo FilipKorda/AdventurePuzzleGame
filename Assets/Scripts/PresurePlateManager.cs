@@ -27,6 +27,10 @@ public class PresurePlateManager : MonoBehaviour
     [SerializeField] private float targetYPillarOne = 7.8f;
     [SerializeField] private float moveDurationPillarOne = 2f;
 
+    [SerializeField] private GameObject movingPillarTwo;
+    [SerializeField] private float targetYPillarTwo = 7.8f;
+    [SerializeField] private float moveDurationPillarTwo = 2f;
+
     void Awake()
     {
         pressurePlate0.manager = this;
@@ -109,6 +113,7 @@ public class PresurePlateManager : MonoBehaviour
         StartCoroutine(MoveUpCoroutine());
         StartCoroutine(MovePillarRoutine());
         StartCoroutine(MovePillarOneRoutine());
+        StartCoroutine(MovePillarTwoRoutine());
     }
 
     private IEnumerator MoveUpCoroutine()
@@ -167,5 +172,25 @@ public class PresurePlateManager : MonoBehaviour
         }
 
         movingPillarOne.transform.position = targetPosition;
+    }
+
+    private IEnumerator MovePillarTwoRoutine()
+    {
+        float elapsedTime = 0f;
+        Vector3 startingPosition = movingPillarTwo.transform.position;
+
+        Vector3 targetPosition = new Vector3(startingPosition.x, targetYPillarTwo, startingPosition.z);
+
+        while (elapsedTime < moveDurationPillarOne)
+        {
+            float t = elapsedTime / moveDurationPillarTwo;
+
+            movingPillarTwo.transform.position = Vector3.Lerp(startingPosition, targetPosition, t);
+
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        movingPillarTwo.transform.position = targetPosition;
     }
 }

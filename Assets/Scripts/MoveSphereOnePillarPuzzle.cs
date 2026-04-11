@@ -10,9 +10,17 @@ public class MoveSphereOnePillarPuzzle : MonoBehaviour
     [SerializeField] private InputActionReference dragHoldInput;
     [SerializeField] private float dragSpeed = 0.01f;
     [SerializeField] private float snapSmooth = 0.06f;
+    [SerializeField] private SphereCollider sphereCollider;
 
     bool holdingPPM;
     Coroutine moveRoutine;
+
+    public bool ActivePuzzle = false;
+
+    [SerializeField] private InteractableItem[] rotatingPillars;
+    [SerializeField] private BoxCollider[] rotatingPillarBoxColliders;
+    [SerializeField] private ChestManager chestManager;
+
 
     void OnEnable()
     {
@@ -48,37 +56,78 @@ public class MoveSphereOnePillarPuzzle : MonoBehaviour
 
     void OnDragDelta(InputAction.CallbackContext context)
     {
-        if (!holdingPPM) return;
-
-        Vector2 delta = context.ReadValue<Vector2>();
-        if (moveRoutine != null) return;
-
-        Transform target = GetNextPoint(delta);
-        if (target != null)
+        if (ActivePuzzle)
         {
-            if (moveRoutine != null)
-                StopCoroutine(moveRoutine);
+            if (!holdingPPM) return;
 
-            moveRoutine = StartCoroutine(SnapToPosition(target));
+            Vector2 delta = context.ReadValue<Vector2>();
+            if (moveRoutine != null) return;
+
+            Transform target = GetNextPoint(delta);
+            if (target != null)
+            {
+                if (moveRoutine != null)
+                    StopCoroutine(moveRoutine);
+
+                moveRoutine = StartCoroutine(SnapToPosition(target));
+            }
         }
     }
 
     public void SetClickAndDrag(bool state)
     {
-        holdingPPM = state;
+        if (ActivePuzzle)
+        {
+            holdingPPM = state;
 
-        if (!state)
-        {
-            return;
-        }
-        else
-        {
-            if (moveRoutine != null)
+            if (!state)
             {
-                StopCoroutine(moveRoutine);
-                moveRoutine = null;
+                return;
+            }
+            else
+            {
+                if (moveRoutine != null)
+                {
+                    StopCoroutine(moveRoutine);
+                    moveRoutine = null;
+                }
             }
         }
+    }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("WinTriggerTenRoomPuzzle"))
+        {
+            WinPuzzle();
+        }
+    }
+
+
+    private void WinPuzzle()
+    {
+        ActivePuzzle = false;
+        sphereCollider.enabled = false;
+
+        foreach (var rotatingPillar in rotatingPillars)
+        {
+            rotatingPillar.canRotateMoveSphereOnePillarPuzzle = false;
+        }
+        foreach (var rotatingPillarBoxCollider in rotatingPillarBoxColliders)
+        {
+            rotatingPillarBoxCollider.enabled = false;
+        }
+
+        Services.Audio.PlaySFX("SafeWinAkaPuzzleWin");
+
+        OpenChest();
+
+    }
+
+    private void OpenChest()
+    {
+        chestManager.OpenChest();
     }
 
     Transform GetNextPoint(Vector2 delta)
@@ -91,9 +140,9 @@ public class MoveSphereOnePillarPuzzle : MonoBehaviour
         Vector3 mouseDir = (camRight * delta.x + camUp * delta.y).normalized;
 
         MazePoint closest = null;
-        float maxDot = 0.2f; 
+        float maxDot = 0.2f;
 
-        foreach (var neighbor in currentPoint.neighbors)
+        foreach (var neighbor in currentPoint.AllNeighbors)
         {
             if (neighbor == null) continue;
 

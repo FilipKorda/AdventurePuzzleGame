@@ -255,6 +255,10 @@ MonoBehaviour:
     m_Key: Crawbar
     m_Metadata:
       m_Items: []
+  - m_Id: 24942199924084736
+    m_Key: BellStick
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

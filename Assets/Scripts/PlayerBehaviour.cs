@@ -106,6 +106,7 @@ public class PlayerBehaviour : MonoBehaviour
     private IRotatingPillar lastIRotatingPillar;
     private IRotateOnePillar lastIRotateOnePillar;
     private IMoveSphereOnePillarPuzzle lastIMoveSphereOnePillarPuzzle;
+    private IPictureTerrainObject lastIPictureTerrainObject;
 
     private CharacterController characterController;
     private Vector2 inputMovement;
@@ -449,6 +450,7 @@ public class PlayerBehaviour : MonoBehaviour
             lastIRotatingPillar?.EnterRotatingPillarPuzzle();
             lastIRotateOnePillar?.RotatePillar();
             lastIMoveSphereOnePillarPuzzle?.ClickMovingSphere();
+            lastIPictureTerrainObject?.ClickPicturetarrainMovingSphere();
 
             if (lastIOpenable != null && lastIOpenable.IsOpen())
             {
@@ -640,6 +642,7 @@ public class PlayerBehaviour : MonoBehaviour
         lastIRotatingPillar = null;
         lastIRotateOnePillar = null;
         lastIMoveSphereOnePillarPuzzle = null;
+        lastIPictureTerrainObject = null;
 
         bool hitBlock = Physics.Raycast(ray, out RaycastHit blockHit, raycastRange, blockRaycastLayer);
         bool hitInteractable = Physics.Raycast(ray, out RaycastHit hit, raycastRange, interactableLayer);
@@ -850,6 +853,10 @@ public class PlayerBehaviour : MonoBehaviour
                         break;
                     case InteractableItem.InteractableType.MoveSphereOnePillarPuzzle:
                         lastIMoveSphereOnePillarPuzzle = interactableObject;
+                        break;
+
+                    case InteractableItem.InteractableType.PictureTerrainObject:
+                        lastIPictureTerrainObject = interactableObject;
                         break;
                         
                 }

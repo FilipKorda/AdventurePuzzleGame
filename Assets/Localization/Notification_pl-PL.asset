@@ -197,6 +197,30 @@ MonoBehaviour:
       zawsze k\u0142amie!"
     m_Metadata:
       m_Items: []
+  - m_Id: 24525789162917888
+    m_Localized: "A mo\u017Ce uderzy\u0107 czym\u015B w ten dzwon?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24596963809054720
+    m_Localized: Zamek
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24596976526184448
+    m_Localized: "Ogr\xF3d"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24597086307897344
+    m_Localized: "G\xF3ry"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24597138883497984
+    m_Localized: Lochy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24597200829173760
+    m_Localized: Cmentarz
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

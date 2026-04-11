@@ -71,7 +71,11 @@ public class OnePillarPuzzleManager : MonoBehaviour
     private Vector3 horizontal2StartPos;
 
     [SerializeField] private GameObject gear;
+    [SerializeField] private MoveSphereOnePillarPuzzle moveSphereOnePillarPuzzle;
 
+    [SerializeField] private BoxCollider boxCollider;
+
+    [SerializeField] private InteractableItem[] rotatingPillars;
     private void Start()
     {
         winPuzzle = false;
@@ -214,6 +218,7 @@ public class OnePillarPuzzleManager : MonoBehaviour
             winPuzzle = true;
             StartCoroutine(RotateGearY());
             StartCoroutine(MovePillarOneToFinalPosition());
+            boxCollider.enabled = false;
             Services.Audio.PlaySFX("SafeWinAkaPuzzleWin");
         }
     }
@@ -252,6 +257,13 @@ public class OnePillarPuzzleManager : MonoBehaviour
         }
 
         movingPillar.transform.position = endPos;
+
+        foreach (var rotatingPillar in rotatingPillars)
+        {
+            rotatingPillar.canRotateMoveSphereOnePillarPuzzle = true;
+        }
+
+        moveSphereOnePillarPuzzle.ActivePuzzle = true;
     }
 
     private IEnumerator MoveToLocalPosition(GameObject obj, Vector3 target)
