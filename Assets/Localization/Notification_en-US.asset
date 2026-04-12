@@ -254,6 +254,34 @@ MonoBehaviour:
     m_Localized: Cemetery
     m_Metadata:
       m_Items: []
+  - m_Id: 24942754939555840
+    m_Localized: Four signs wander the land where one area always remains empty.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24942820869820416
+    m_Localized: "The first lies exactly between the stark heights and the dark depths
+      \u2013 not closer to either, but right in the middle."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24942822035836928
+    m_Localized: The second rests in the very heart of the greenery, where everything
+      grows most evenly and nothing casts shadow further than necessary.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24942823285739520
+    m_Localized: The third has found its place against the stone walls, but sticks
+      to the side where the sun disappears first.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24942907754827776
+    m_Localized: "The last one no longer seeks movement or life \u2013 he has remained
+      where silence has a name and memory."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24943074428080128
+    m_Localized: "Fifth place awaits\u2026 but not for either of them."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

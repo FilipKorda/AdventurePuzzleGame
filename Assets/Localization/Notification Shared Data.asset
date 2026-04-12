@@ -193,6 +193,34 @@ MonoBehaviour:
     m_Key: Cemetery
     m_Metadata:
       m_Items: []
+  - m_Id: 24942754939555840
+    m_Key: 'Card Symbols Norification
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24942820869820416
+    m_Key: Card Symbols Norification 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24942822035836928
+    m_Key: Card Symbols Norification 2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24942823285739520
+    m_Key: Card Symbols Norification 3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24942907754827776
+    m_Key: Card Symbols Norification 4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24943074428080128
+    m_Key: 'Card Symbols Norification 5
+
+'
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

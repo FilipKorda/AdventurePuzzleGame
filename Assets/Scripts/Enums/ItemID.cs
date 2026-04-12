@@ -86,4 +86,6 @@ public enum ItemID
     PillarPuzzle2 = 83,
     Crawbar = 84,
     BellStick = 85,
+    CardSymbolsPapirus = 86,
+    ArrowDirectionPuzzles = 87,
 }

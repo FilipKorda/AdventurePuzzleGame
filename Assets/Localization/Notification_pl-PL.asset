@@ -221,6 +221,36 @@ MonoBehaviour:
     m_Localized: Cmentarz
     m_Metadata:
       m_Items: []
+  - m_Id: 24942754939555840
+    m_Localized: "Cztery znaki w\u0119druj\u0105 po krainie, w kt\xF3rej jeden obszar
+      zawsze pozostaje pusty."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24942820869820416
+    m_Localized: "Pierwszy z nich le\u017Cy dok\u0142adnie pomi\u0119dzy surow\u0105
+      wysoko\u015Bci\u0105 a mroczn\u0105 g\u0142\u0119bi\u0105 \u2013 nie bli\u017Cej
+      \u017Cadnej z nich, lecz dok\u0142adnie po\u015Brodku drogi."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24942822035836928
+    m_Localized: "Drugi spoczywa w samym sercu zieleni, tam gdzie wszystko ro\u015Bnie
+      najr\xF3wniej i nic nie rzuca cienia dalej ni\u017C trzeba."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24942823285739520
+    m_Localized: "Trzeci znalaz\u0142 swoje miejsce przy kamiennych murach, lecz
+      trzyma si\u0119 strony, gdzie s\u0142o\u0144ce znika jako pierwsze."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24942907754827776
+    m_Localized: "Ostatni nie szuka ju\u017C ruchu ani \u017Cycia \u2013 pozosta\u0142
+      tam, gdzie cisza ma imi\u0119 i pami\u0119\u0107."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24943074428080128
+    m_Localized: "Pi\u0105te miejsce czeka\u2026 ale nie dla \u017Cadnego z nich."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

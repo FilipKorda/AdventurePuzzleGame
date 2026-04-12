@@ -142,6 +142,10 @@ MonoBehaviour:
       air. Knowing he was free, he left the dungeon behind.
     m_Metadata:
       m_Items: []
+  - m_Id: 25423997120565248
+    m_Localized: Sometimes red is Finish and green is Start.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
