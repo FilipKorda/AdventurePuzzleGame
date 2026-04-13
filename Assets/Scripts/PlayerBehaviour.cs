@@ -107,6 +107,8 @@ public class PlayerBehaviour : MonoBehaviour
     private IRotateOnePillar lastIRotateOnePillar;
     private IMoveSphereOnePillarPuzzle lastIMoveSphereOnePillarPuzzle;
     private IPictureTerrainObject lastIPictureTerrainObject;
+    private ICoverAllSquarePuzzle lastICoverAllSquarePuzzle;
+    private ICorrectSixteenSymbols lastICorrectSixteenSymbols;
 
     private CharacterController characterController;
     private Vector2 inputMovement;
@@ -451,6 +453,8 @@ public class PlayerBehaviour : MonoBehaviour
             lastIRotateOnePillar?.RotatePillar();
             lastIMoveSphereOnePillarPuzzle?.ClickMovingSphere();
             lastIPictureTerrainObject?.ClickPicturetarrainMovingSphere();
+            lastICoverAllSquarePuzzle?.EnterCoverAllSquarePuzzle();
+            lastICorrectSixteenSymbols?.EnterCorrectSixteenSymbolsPuzzle();
 
             if (lastIOpenable != null && lastIOpenable.IsOpen())
             {
@@ -643,6 +647,8 @@ public class PlayerBehaviour : MonoBehaviour
         lastIRotateOnePillar = null;
         lastIMoveSphereOnePillarPuzzle = null;
         lastIPictureTerrainObject = null;
+        lastICoverAllSquarePuzzle = null;
+        lastICorrectSixteenSymbols = null;
 
         bool hitBlock = Physics.Raycast(ray, out RaycastHit blockHit, raycastRange, blockRaycastLayer);
         bool hitInteractable = Physics.Raycast(ray, out RaycastHit hit, raycastRange, interactableLayer);
@@ -857,6 +863,12 @@ public class PlayerBehaviour : MonoBehaviour
 
                     case InteractableItem.InteractableType.PictureTerrainObject:
                         lastIPictureTerrainObject = interactableObject;
+                        break;
+                    case InteractableItem.InteractableType.CoverAllSquarePuzzle:
+                        lastICoverAllSquarePuzzle = interactableObject;
+                        break;
+                    case InteractableItem.InteractableType.CorrectSixteenSymbols:
+                        lastICorrectSixteenSymbols = interactableObject;
                         break;
                         
                 }

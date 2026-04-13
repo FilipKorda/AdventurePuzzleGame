@@ -30,6 +30,7 @@ public class BellManager : MonoBehaviour
     {
         Debug.Log("WinPuzzle");
         StartCoroutine(MoveChestCoroutine());
+        Services.Audio.PlaySFX("SafeWinAkaPuzzleWin");
 
         foreach (var bell in bellColliders)
         {
@@ -48,7 +49,7 @@ public class BellManager : MonoBehaviour
         float duration = 4f;
         float time = 0f;
         Vector3 startPosition = chestObject.transform.position;
-        Vector3 targetPosition = startPosition + new Vector3(0f, 0.27f, 0f);
+        Vector3 targetPosition = startPosition + new Vector3(0f, 0.29f, 0f);
 
         while (time < duration)
         {

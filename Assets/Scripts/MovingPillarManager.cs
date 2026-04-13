@@ -44,6 +44,9 @@ public class MovingPillarManager : MonoBehaviour
     [SerializeField] private GameObject leftRotatingObject;
 
 
+    [SerializeField] private ThreeSymbolsPillarManager threeSymbolsPillarManager;
+
+
 
     void OnEnable()
     {
@@ -75,6 +78,23 @@ public class MovingPillarManager : MonoBehaviour
             dragHoldInput.action.canceled -= ctx => SetClickAndDrag(false);
             dragHoldInput.action.Disable();
         }
+    }
+
+    public void DisableInput()
+    {
+        if (dragDeltaInput != null)
+        {
+            dragDeltaInput.action.performed -= OnDragDelta;
+            dragDeltaInput.action.Disable();
+        }
+
+        if (dragHoldInput != null)
+        {
+            dragHoldInput.action.performed -= ctx => SetClickAndDrag(true);
+            dragHoldInput.action.canceled -= ctx => SetClickAndDrag(false);
+            dragHoldInput.action.Disable();
+        }
+
     }
 
     public void SetClickAndDrag(bool state)
@@ -119,8 +139,6 @@ public class MovingPillarManager : MonoBehaviour
 
     Transform GetClosestPointPhysical()
     {
-
-
         float dLeft = Vector3.Distance(transform.position, leftPoint.position);
         float dCenter = Vector3.Distance(transform.position, centerPoint.position);
         float dRight = Vector3.Distance(transform.position, rightPoint.position);
@@ -199,6 +217,8 @@ public class MovingPillarManager : MonoBehaviour
 
         rotatingObject.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
         targetImage.sprite = targetSprite;
+
+        threeSymbolsPillarManager.CheckWinPuzzle();
     }
 
     IEnumerator MoveSmooth(Vector3 target, float smooth)

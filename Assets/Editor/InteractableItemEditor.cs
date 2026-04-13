@@ -137,6 +137,8 @@ public class InteractableItemEditor : Editor
 
     private SerializedProperty moveSphereOnePillarPuzzle;
     private SerializedProperty pictureTerrainMovingObject;
+    private SerializedProperty coverAllSquarePuzzlePillar;
+    private SerializedProperty correctSixteenSymbolsPillar;
 
 
     private void OnEnable()
@@ -277,6 +279,8 @@ public class InteractableItemEditor : Editor
         rotatingPillarMovingBlock = serializedObject.FindProperty("rotatingPillarMovingBlock");
         moveSphereOnePillarPuzzle = serializedObject.FindProperty("moveSphereOnePillarPuzzle");
         pictureTerrainMovingObject = serializedObject.FindProperty("pictureTerrainMovingObject");
+        coverAllSquarePuzzlePillar = serializedObject.FindProperty("coverAllSquarePuzzlePillar");
+        correctSixteenSymbolsPillar = serializedObject.FindProperty("correctSixteenSymbolsPillar");
 
     }
 
@@ -604,6 +608,12 @@ public class InteractableItemEditor : Editor
                 EditorGUILayout.PropertyField(pictureTerrainMovingObject, new GUIContent("Picture Terrain Moving Object"));
                 break;
 
+            case InteractableItem.InteractableType.CoverAllSquarePuzzle:
+                EditorGUILayout.PropertyField(coverAllSquarePuzzlePillar, new GUIContent("Cover All Square Puzzle Pillar"));
+                break;
+            case InteractableItem.InteractableType.CorrectSixteenSymbols:
+                EditorGUILayout.PropertyField(correctSixteenSymbolsPillar, new GUIContent("Correct Sixteen Symbols Pillar"));
+                break;
                 
         }
 

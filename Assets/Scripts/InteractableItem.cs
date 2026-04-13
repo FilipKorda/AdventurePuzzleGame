@@ -11,7 +11,8 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     IFurniture, IWoodenBlockPuzzle, IWoodenBlock, ITrianglePuzzle, ISymbolPlaceable, IArrowDirection, IPuzzlePipePart,
     IBlockButton, INinePadPanel, ICircleAndSquarePuzzle, IRotateCircleAndSquarePuzzle, IPlayerSphereMovement, ILibraryButton,
     ISafe, IBraiser, IFramePuzzle, IWallSwitchOnOff, IPlaceOnScale, IBriefcase, IMovingBlockBriefcase, IPaintingMove,
-    IPlacePillarSymbol, IPillarMoveSphere, IRotatingPillar, IRotateOnePillar, IMoveSphereOnePillarPuzzle
+    IPlacePillarSymbol, IPillarMoveSphere, IRotatingPillar, IRotateOnePillar, IMoveSphereOnePillarPuzzle, IPictureTerrainObject,
+    ICoverAllSquarePuzzle, ICorrectSixteenSymbols
 {
     public enum InteractableType
     {
@@ -65,7 +66,10 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         ClickMovePillarSphere,
         RotatingPillar,
         RotateOnePillar,
-        MoveSphereOnePillarPuzzle
+        MoveSphereOnePillarPuzzle,
+        PictureTerrainObject,
+        CoverAllSquarePuzzle,
+        CorrectSixteenSymbols
     }
 
     public InteractableType interactableType;
@@ -306,7 +310,13 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     [SerializeField] private RotatingPillarMovingBlock rotatingPillarMovingBlock;
     [Header("Move Sphere One Pillar Puzzle")]
     [SerializeField] private MoveSphereOnePillarPuzzle moveSphereOnePillarPuzzle;
-    private bool canRotateMoveSphereOnePillarPuzzle = true;
+    public bool canRotateMoveSphereOnePillarPuzzle = true;
+    [Header("Picture Tarrain Moving Object")]
+    [SerializeField] private PictureTerrainMovingObject pictureTerrainMovingObject;
+    [Header("Cover All Square Puzzle")]
+    [SerializeField] private CoverAllSquarePuzzlePillar coverAllSquarePuzzlePillar;
+    [Header("Correct Sixteen Symbols")]
+    [SerializeField] private CorrectSixteenSymbolsPillar correctSixteenSymbolsPillar;
 
     private void Awake()
     {
@@ -320,6 +330,24 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
             startPosition = transform.position;
         }
 
+    }
+
+
+    public void EnterCorrectSixteenSymbolsPuzzle()
+    {
+        CursorController.Instance.SetGameMode(new CorrectSixteenSymbolsGameMode());
+        correctSixteenSymbolsPillar.EnterPuzzle();
+    }
+
+    public void EnterCoverAllSquarePuzzle()
+    {
+        CursorController.Instance.SetGameMode(new AllSquareClickGameMode());
+        coverAllSquarePuzzlePillar.EnterPuzzle();    
+    }
+
+    public void ClickPicturetarrainMovingSphere()
+    {
+        pictureTerrainMovingObject.SetClickAndDrag(true);
     }
 
     public void ClickMovingSphere()
@@ -351,14 +379,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         }
         transform.rotation = endRotation;
 
-        UpdateRotationBools();
-
         canRotateMoveSphereOnePillarPuzzle = true;
-    }
-
-    private void UpdateRotationBools()
-    {
-       // moveSphereOnePillarPuzzle.useXZPlane = !moveSphereOnePillarPuzzle.useXZPlane;
     }
 
     public void EnterRotatingPillarPuzzle()

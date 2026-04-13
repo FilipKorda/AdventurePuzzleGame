@@ -98,6 +98,15 @@ public class UIManager : MonoBehaviour
 
     [Header("Papyrus Vertical Puzzle")]
     [SerializeField] private GameObject papyrusVerticalPuzzle;
+    [Header("Card  Symbols Papirus")]
+    [SerializeField] private GameObject cardSymbolsPapirus;
+    [Header("ArrowDirection Puzzle")]
+    [SerializeField] private GameObject arrowDIrectionPapirus;
+    [Header("Left Paper")]
+    [SerializeField] private GameObject leftPaper;
+    [Header("Right Paper")]
+    [SerializeField] private GameObject rightPaper;
+
 
     public void EnableWoodenPuzzlePanel()
     {
@@ -376,6 +385,10 @@ public class UIManager : MonoBehaviour
         morseAndGlifsBook.SetActive(false);
         drinkOrEatPanel.SetActive(false);
         papytusPuzzleWoodenPuzzleSolve.SetActive(false);
+        cardSymbolsPapirus.SetActive(false);
+        arrowDIrectionPapirus.SetActive(false);
+        leftPaper.SetActive(false);
+        rightPaper.SetActive(false);
     }
 
     private void InspectObejct(InputAction.CallbackContext context)
@@ -537,9 +550,79 @@ public class UIManager : MonoBehaviour
             case ItemID.PapyrusVerticalPuzzle:
                 ReadVerticalPuzzlePanel();
                 break;
+            case ItemID.CardSymbolsPapirus:
+                ReadCardSymbolsPanel();
+                break;
+            case ItemID.ArrowDirectionPuzzles:
+                ReadArrowDirectionPanel();
+                break;
+
+            case ItemID.PaperLeft:
+                ReadLeftPaperPanel();
+                break;
+
+            case ItemID.PaperRight:
+                ReadRightPaperPanel();
+                break;
         }
 
         Services.Audio.PlaySFX("ReadBook");
+    }
+
+    private void ReadLeftPaperPanel()
+    {
+        bool isOpen = leftPaper.activeSelf;
+        leftPaper.SetActive(!isOpen);
+        if (!isOpen)
+        {
+            leftPaper.SetActive(true);
+        }
+        else
+        {
+            leftPaper.SetActive(false);
+        }
+    }
+
+    private void ReadRightPaperPanel()
+    {
+        bool isOpen = rightPaper.activeSelf;
+        rightPaper.SetActive(!isOpen);
+        if (!isOpen)
+        {
+            rightPaper.SetActive(true);
+        }
+        else
+        {
+            rightPaper.SetActive(false);
+        }
+    }
+
+    private void ReadArrowDirectionPanel()
+    {
+        bool isOpen = arrowDIrectionPapirus.activeSelf;
+        arrowDIrectionPapirus.SetActive(!isOpen);
+        if (!isOpen)
+        {
+            arrowDIrectionPapirus.SetActive(true);
+        }
+        else
+        {
+            arrowDIrectionPapirus.SetActive(false);
+        }
+    }
+
+    private void ReadCardSymbolsPanel()
+    {
+        bool isOpen = cardSymbolsPapirus.activeSelf;
+        cardSymbolsPapirus.SetActive(!isOpen);
+        if (!isOpen)
+        {
+            cardSymbolsPapirus.SetActive(true);
+        }
+        else
+        {
+            cardSymbolsPapirus.SetActive(false);
+        }
     }
 
     private void ReadVerticalPuzzlePanel()
@@ -800,7 +883,9 @@ public class UIManager : MonoBehaviour
         if (readableAndInteractablePanel != null && readableAndInteractablePanel.gameObject.activeInHierarchy
             || gameModeLockPickPanel.activeInHierarchy || morseAndGlifsBook.activeInHierarchy || gearModePanel.activeInHierarchy
             || papytusPuzzleWoodenPuzzleSolve.activeInHierarchy || blurCanvas.gameObject.activeInHierarchy
-            || safeCodePuzzle.activeInHierarchy || glassesOn || papyrusVerticalPuzzle.activeInHierarchy)
+            || safeCodePuzzle.activeInHierarchy || glassesOn || papyrusVerticalPuzzle.activeInHierarchy ||
+            cardSymbolsPapirus.activeInHierarchy || arrowDIrectionPapirus.activeInHierarchy || leftPaper.activeInHierarchy
+            || rightPaper.activeInHierarchy)
         {
             Debug.Log("Nie mo¿na wyrzuciæ przedmiotu podczas przegl¹dania czytanej strony.");
             return;

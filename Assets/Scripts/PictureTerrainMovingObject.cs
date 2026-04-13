@@ -11,7 +11,8 @@ public class PictureTerrainMovingObject : MonoBehaviour
     [SerializeField] private InputActionReference dragHoldInput;
     [SerializeField] private float dragSpeed = 0.01f;
     [SerializeField] private float snapSmooth = 0.06f;
-    [SerializeField] private SphereCollider sphereCollider;
+    public SphereCollider sphereCollider;
+    [SerializeField] private PictureTerrainPuzzleManager pictureTerrainPuzzleManager;
 
     bool holdingPPM;
     Coroutine moveRoutine;
@@ -20,6 +21,7 @@ public class PictureTerrainMovingObject : MonoBehaviour
 
     bool isSelected;
 
+    public bool IsInPlace = false;
 
     void OnEnable()
     {
@@ -166,21 +168,68 @@ public class PictureTerrainMovingObject : MonoBehaviour
         moveRoutine = null;
     }
 
+    [SerializeField] private bool isSpades;
+    [SerializeField] private bool isDiamont;
+    [SerializeField] private bool isHeart;
+    [SerializeField] private bool isClubs;
+
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("WinTriggerTenRoomPuzzle"))
+        if (isSpades && other.CompareTag("WinTriggerTenRoomPuzzle"))
         {
-            WinPuzzle();
+            IsInPlace = true;
+            pictureTerrainPuzzleManager.CheckWinPuzzle();
+            Debug.Log("Spades on correct posistion");
+        }
+
+        if (isDiamont && other.CompareTag("WinDiamontTriggerTenRoomPuzzle"))
+        {
+            IsInPlace = true;
+            pictureTerrainPuzzleManager.CheckWinPuzzle();
+            Debug.Log("Diamont on correct posistion");
+        }
+
+        if (isHeart && other.CompareTag("WinTriggerHeartTenRoomPuzzle"))
+        {
+            IsInPlace = true;
+            pictureTerrainPuzzleManager.CheckWinPuzzle();
+            Debug.Log("Heart on correct posistion");
+        }
+
+        if (isClubs && other.CompareTag("WinTriggerClubsTenRoomPuzzle"))
+        {
+            IsInPlace = true;
+            pictureTerrainPuzzleManager.CheckWinPuzzle();
+            Debug.Log("Clubs on correct posistion");
         }
     }
 
-
-    private void WinPuzzle()
+    private void OnTriggerExit(Collider other)
     {
-        ActivePuzzle = false;
+        if (isSpades && other.CompareTag("WinTriggerTenRoomPuzzle"))
+        {
+            IsInPlace = false;
+            Debug.Log("Spades on wrong posistion");
+        }
 
-        Services.Audio.PlaySFX("SafeWinAkaPuzzleWin");
+        if (isDiamont && other.CompareTag("WinDiamontTriggerTenRoomPuzzle"))
+        {
+            IsInPlace = false;
+            Debug.Log("Diamont on wrong posistion");
+        }
 
+        if (isHeart && other.CompareTag("WinTriggerHeartTenRoomPuzzle"))
+        {
+            IsInPlace = false;
+            Debug.Log("Heart on wrong posistion");
+        }
+
+        if (isClubs && other.CompareTag("WinTriggerClubsTenRoomPuzzle"))
+        {
+            IsInPlace = false;
+            Debug.Log("Clubs on wrong posistion");
+        }
     }
- 
+
 }

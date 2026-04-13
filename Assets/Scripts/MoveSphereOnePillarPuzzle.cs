@@ -20,6 +20,7 @@ public class MoveSphereOnePillarPuzzle : MonoBehaviour
     [SerializeField] private InteractableItem[] rotatingPillars;
     [SerializeField] private BoxCollider[] rotatingPillarBoxColliders;
     [SerializeField] private ChestManager chestManager;
+    [SerializeField] private WallTrapdoorsManager wallTrapdoorsManager;
 
 
     void OnEnable()
@@ -122,6 +123,7 @@ public class MoveSphereOnePillarPuzzle : MonoBehaviour
         Services.Audio.PlaySFX("SafeWinAkaPuzzleWin");
 
         OpenChest();
+        wallTrapdoorsManager.OpenTrapDoor();
 
     }
 

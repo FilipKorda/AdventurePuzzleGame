@@ -31,6 +31,9 @@ public class PresurePlateManager : MonoBehaviour
     [SerializeField] private float targetYPillarTwo = 7.8f;
     [SerializeField] private float moveDurationPillarTwo = 2f;
 
+
+    public bool puzzleIsActivated = false;
+
     void Awake()
     {
         pressurePlate0.manager = this;
@@ -44,6 +47,8 @@ public class PresurePlateManager : MonoBehaviour
 
     public void PlatePressed(PressurePlate plate)
     {
+        if(!puzzleIsActivated) return;
+
         if (!pressedSequence.Contains(plate))
             pressedSequence.Add(plate);
 
@@ -96,16 +101,6 @@ public class PresurePlateManager : MonoBehaviour
         pressurePlateBoxCollider.enabled = false;
         pressurePlate1BoxCollider.enabled = false;
         pressurePlate2BoxCollider.enabled = false;
-    }
-
-
-    private void Update()
-    {
-#if UNITY_EDITOR
-        if(Input.GetKeyDown(KeyCode.H)) {
-            StartMoveUp();
-        }
-#endif
     }
 
     public void StartMoveUp()

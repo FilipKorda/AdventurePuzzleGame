@@ -7,7 +7,6 @@ public class ThreeSymbolsPillarManager : MonoBehaviour
     [SerializeField] private Image image1;
     [SerializeField] private Image image2;
 
-    [SerializeField] private WallTrapdoorsManager wallTrapdoorsManager;
     [SerializeField] private BoxCollider[] boxColliders;
     [SerializeField] private SphereCollider sphereCollider;
     [SerializeField] private MovingPillarManager movingPillarManager;
@@ -18,7 +17,7 @@ public class ThreeSymbolsPillarManager : MonoBehaviour
             && image2.sprite.name == "Symbol For Pillar Puzzle")
         {
             Services.Audio.PlaySFX("SafeWinAkaPuzzleWin");
-            wallTrapdoorsManager.OpenTrapDoor();
+           
             DisalePuzzle();
         }
     }

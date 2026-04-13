@@ -88,4 +88,6 @@ public enum ItemID
     BellStick = 85,
     CardSymbolsPapirus = 86,
     ArrowDirectionPuzzles = 87,
+    PaperLeft = 88, 
+    PaperRight = 89,
 }
