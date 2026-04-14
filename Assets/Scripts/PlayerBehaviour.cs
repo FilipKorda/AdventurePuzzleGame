@@ -109,6 +109,8 @@ public class PlayerBehaviour : MonoBehaviour
     private IPictureTerrainObject lastIPictureTerrainObject;
     private ICoverAllSquarePuzzle lastICoverAllSquarePuzzle;
     private ICorrectSixteenSymbols lastICorrectSixteenSymbols;
+    private ITwoCrystalsPuzzle lastITwoCrystalsPuzzle;
+    private IRotatingCirclePuzzle lastIRotatingCirclePuzzle;
 
     private CharacterController characterController;
     private Vector2 inputMovement;
@@ -455,6 +457,8 @@ public class PlayerBehaviour : MonoBehaviour
             lastIPictureTerrainObject?.ClickPicturetarrainMovingSphere();
             lastICoverAllSquarePuzzle?.EnterCoverAllSquarePuzzle();
             lastICorrectSixteenSymbols?.EnterCorrectSixteenSymbolsPuzzle();
+            lastITwoCrystalsPuzzle?.EnterTwoCrystalsPuzzle();
+            lastIRotatingCirclePuzzle?.EnterRotatingCirclePuzzle();
 
             if (lastIOpenable != null && lastIOpenable.IsOpen())
             {
@@ -649,6 +653,8 @@ public class PlayerBehaviour : MonoBehaviour
         lastIPictureTerrainObject = null;
         lastICoverAllSquarePuzzle = null;
         lastICorrectSixteenSymbols = null;
+        lastITwoCrystalsPuzzle = null;
+        lastIRotatingCirclePuzzle = null;
 
         bool hitBlock = Physics.Raycast(ray, out RaycastHit blockHit, raycastRange, blockRaycastLayer);
         bool hitInteractable = Physics.Raycast(ray, out RaycastHit hit, raycastRange, interactableLayer);
@@ -869,6 +875,12 @@ public class PlayerBehaviour : MonoBehaviour
                         break;
                     case InteractableItem.InteractableType.CorrectSixteenSymbols:
                         lastICorrectSixteenSymbols = interactableObject;
+                        break;
+                    case InteractableItem.InteractableType.TwoCrystalsPuzzle:
+                        lastITwoCrystalsPuzzle = interactableObject;
+                        break;
+                    case InteractableItem.InteractableType.RotatingCirclePuzzle:
+                        lastIRotatingCirclePuzzle = interactableObject;
                         break;
                         
                 }

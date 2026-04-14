@@ -12,7 +12,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     IBlockButton, INinePadPanel, ICircleAndSquarePuzzle, IRotateCircleAndSquarePuzzle, IPlayerSphereMovement, ILibraryButton,
     ISafe, IBraiser, IFramePuzzle, IWallSwitchOnOff, IPlaceOnScale, IBriefcase, IMovingBlockBriefcase, IPaintingMove,
     IPlacePillarSymbol, IPillarMoveSphere, IRotatingPillar, IRotateOnePillar, IMoveSphereOnePillarPuzzle, IPictureTerrainObject,
-    ICoverAllSquarePuzzle, ICorrectSixteenSymbols
+    ICoverAllSquarePuzzle, ICorrectSixteenSymbols, ITwoCrystalsPuzzle, IRotatingCirclePuzzle
 {
     public enum InteractableType
     {
@@ -69,7 +69,9 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         MoveSphereOnePillarPuzzle,
         PictureTerrainObject,
         CoverAllSquarePuzzle,
-        CorrectSixteenSymbols
+        CorrectSixteenSymbols,
+        TwoCrystalsPuzzle,
+        RotatingCirclePuzzle
     }
 
     public InteractableType interactableType;
@@ -317,7 +319,10 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     [SerializeField] private CoverAllSquarePuzzlePillar coverAllSquarePuzzlePillar;
     [Header("Correct Sixteen Symbols")]
     [SerializeField] private CorrectSixteenSymbolsPillar correctSixteenSymbolsPillar;
-
+    [Header("Two Crystals Puzzle")]
+    [SerializeField] private TwoCrystalsPuzzle twoCrystalsPuzzle;
+    [Header("Two Crystals Puzzle]")]
+    [SerializeField] private RotatingCirclePuzzle rotatingCirclePuzzle;
     private void Awake()
     {
         if (rend != null)
@@ -332,6 +337,17 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
 
     }
 
+    public void EnterRotatingCirclePuzzle()
+    {
+        CursorController.Instance.SetGameMode(new RotatingCirclePuzzleGameMode());
+        rotatingCirclePuzzle.EnterPuzzle();
+    }
+
+    public void EnterTwoCrystalsPuzzle()
+    {
+        CursorController.Instance.SetGameMode(new TwoCrystalsPuzzleGameMode());
+        twoCrystalsPuzzle.EnterPuzzle();
+    }
 
     public void EnterCorrectSixteenSymbolsPuzzle()
     {
@@ -342,7 +358,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     public void EnterCoverAllSquarePuzzle()
     {
         CursorController.Instance.SetGameMode(new AllSquareClickGameMode());
-        coverAllSquarePuzzlePillar.EnterPuzzle();    
+        coverAllSquarePuzzlePillar.EnterPuzzle();
     }
 
     public void ClickPicturetarrainMovingSphere()

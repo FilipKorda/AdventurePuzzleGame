@@ -139,6 +139,8 @@ public class InteractableItemEditor : Editor
     private SerializedProperty pictureTerrainMovingObject;
     private SerializedProperty coverAllSquarePuzzlePillar;
     private SerializedProperty correctSixteenSymbolsPillar;
+    private SerializedProperty twoCrystalsPuzzle;
+    private SerializedProperty rotatingCirclePuzzle;
 
 
     private void OnEnable()
@@ -281,6 +283,8 @@ public class InteractableItemEditor : Editor
         pictureTerrainMovingObject = serializedObject.FindProperty("pictureTerrainMovingObject");
         coverAllSquarePuzzlePillar = serializedObject.FindProperty("coverAllSquarePuzzlePillar");
         correctSixteenSymbolsPillar = serializedObject.FindProperty("correctSixteenSymbolsPillar");
+        twoCrystalsPuzzle = serializedObject.FindProperty("twoCrystalsPuzzle");
+        rotatingCirclePuzzle = serializedObject.FindProperty("rotatingCirclePuzzle");
 
     }
 
@@ -613,6 +617,12 @@ public class InteractableItemEditor : Editor
                 break;
             case InteractableItem.InteractableType.CorrectSixteenSymbols:
                 EditorGUILayout.PropertyField(correctSixteenSymbolsPillar, new GUIContent("Correct Sixteen Symbols Pillar"));
+                break;
+            case InteractableItem.InteractableType.TwoCrystalsPuzzle:
+                EditorGUILayout.PropertyField(twoCrystalsPuzzle, new GUIContent("Two Crystals Puzzle"));
+                break;
+            case InteractableItem.InteractableType.RotatingCirclePuzzle:
+                EditorGUILayout.PropertyField(rotatingCirclePuzzle, new GUIContent("Rotating Circle Puzzle"));
                 break;
                 
         }

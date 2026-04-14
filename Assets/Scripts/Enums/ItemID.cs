@@ -90,4 +90,6 @@ public enum ItemID
     ArrowDirectionPuzzles = 87,
     PaperLeft = 88, 
     PaperRight = 89,
+    FirstCrystal = 90,
+    SecondCrystal = 91,
 }
