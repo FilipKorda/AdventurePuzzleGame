@@ -21,6 +21,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-en-US
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2e4cf0fb4c983f3478c6f1a7ff797e70
+    m_Address: Main Painting Room Ten_en-US
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en-US
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 33f13551f18eb884490f4c17fe7800ee
     m_Address: Items_en-US
     m_ReadOnly: 1

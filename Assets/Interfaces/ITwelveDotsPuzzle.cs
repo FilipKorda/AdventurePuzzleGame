@@ -1,0 +1,4 @@
+interface ITwelveDotsPuzzle 
+{
+    void EnterTwelveDotsPuzzle();
+}

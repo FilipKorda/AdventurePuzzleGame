@@ -266,6 +266,22 @@ MonoBehaviour:
     m_Localized: Card Symbols
     m_Metadata:
       m_Items: []
+  - m_Id: 25747950569541632
+    m_Localized: Paper
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26061876385566720
+    m_Localized: Something is missing?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26064041237827584
+    m_Localized: Crystal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26404351839064064
+    m_Localized: "Circle\t\t"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

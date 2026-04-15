@@ -1,0 +1,5 @@
+
+interface ITwoCrystalsPuzzle 
+{
+     void EnterTwoCrystalsPuzzle();
+}

@@ -138,6 +138,10 @@ MonoBehaviour:
     m_Key: RoomTenNotification
     m_Metadata:
       m_Items: []
+  - m_Id: 25791170112409600
+    m_Key: 3SymbolPuzzle
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -92,4 +92,5 @@ public enum ItemID
     PaperRight = 89,
     FirstCrystal = 90,
     SecondCrystal = 91,
+    PuzzleCircleSymbol = 92,
 }

@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Main Painting Room Ten_pl-PL
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.StringTable
+  m_LocaleId:
+    m_Code: pl-PL
+  m_SharedData: {fileID: 11400000, guid: 9bd675faaca422f4e9a0e96efabab61e, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 27189858304
+    m_Localized: "Gdzie magia szepcze przez kamie\u0144, a ka\u017Cdy krok mo\u017Ce
+      by\u0107 ostatnim, s\u0105 4 znaki.\r\n\r\nJeden p\u0142onie jak kropla krwi
+      w ciemno\u015Bci, prosty znak odwagi.\r\n\r\nDrugi jak burza zamkni\u0119ta
+      w amulecie, z aura i bia\u0142y symbol przecinaj\u0105cy cisz\u0119.\r\n\r\nTrzeci
+      obiecuje ochron\u0119 i zbawienie, ch\u0142odne barwy, \nnad kt\xF3rym si\u0119
+      modlimy.\r\n\r\nLecz klucz do wolno\u015Bci,\r\nnie krzyczy kolorem ani symbolem.
+      W cieniu, czeka jedyny talizman \nprowadz\u0105cy na zewn\u0105trz."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9315719335936
+    m_Localized: "W g\u0142\u0119bi \u017Cyj\u0105 cztery istoty,\r\nka\u017Cda zna
+      mrok, lecz nie ka\u017Cda zna drog\u0119.\r\n\r\nKr\u0105\u017Cy po k\u0105tach,
+      zbiera okruchy, szybka\nlecz zawsze b\u0142\u0105dzi przy \u015Bcianach.\r\n\r\nPe\u0142znie
+      bez celu, \u015Blepa na wyj\u015Bcie, znaj\u0105ca tylko\nwilgo\u0107 i rozk\u0142ad.\r\n\r\nPracuje
+      bez wytchnienia w t\u0142umie, silna w liczbie, \nlecz sama bezradna.\r\n\r\nTylko
+      jedna zna sekrety ucieczki. Czuje je pod \u0142apami. Prowadzi przez ziemi\u0119
+      ku wolno\u015Bci."
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

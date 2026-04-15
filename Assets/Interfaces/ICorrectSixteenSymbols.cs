@@ -1,0 +1,4 @@
+interface ICorrectSixteenSymbols 
+{
+    void EnterCorrectSixteenSymbolsPuzzle();
+}

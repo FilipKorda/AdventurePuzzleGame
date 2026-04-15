@@ -282,6 +282,34 @@ MonoBehaviour:
     m_Localized: "Fifth place awaits\u2026 but not for either of them."
     m_Metadata:
       m_Items: []
+  - m_Id: 25352447465902080
+    m_Localized: "The first pressu\n                   card "
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25352482207322112
+    m_Localized: "The second press\n              the entra"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25352501811499008
+    m_Localized: "The third press\n isolated and"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25352603045220352
+    m_Localized: "re plate is at the diamond \n symbol."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25352629968457728
+    m_Localized: 'ure plate is closest to
+
+      nce to this room.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25352637618868224
+    m_Localized: 'ure plate is very
+
+      lonely.'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

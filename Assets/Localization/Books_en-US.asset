@@ -146,6 +146,22 @@ MonoBehaviour:
     m_Localized: Sometimes red is Finish and green is Start.
     m_Metadata:
       m_Items: []
+  - m_Id: 25791170112409600
+    m_Localized: 'A Great Square composed of 4 trapezoids and 2 rectangles?
+
+      Like
+      a torch with a burning flame?
+
+      Like a circle with a handle, or more
+      like a lollipop?
+
+      But what is the order of these symbols?
+
+
+      Or
+      maybe only 2 symbols are needed to solve the puzzle? Or 3?'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Main Painting Room Ten_en-US
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.StringTable
+  m_LocaleId:
+    m_Code: en-US
+  m_SharedData: {fileID: 11400000, guid: 9bd675faaca422f4e9a0e96efabab61e, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 27189858304
+    m_Localized: "In the dungeons, where magic whispers through the stone, and every
+      step could be the last, there are four signs.\r\n\r\nOne burns like a drop
+      of blood in the darkness,\r\na simple sign of courage.\r\n\r\nThe second, like
+      a storm enclosed in an amulet,\r\nwith an aura and a white symbol piercing
+      the silence.\r\n\r\nThe third promises protection and salvation,\r\ncool colors
+      over which we pray.\r\n\r\nBut the key to freedom,\r\nscreams neither in color
+      nor symbol.\r\n\r\nIn the shadows, a single talisman waits, \nleading out."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9315719335936
+    m_Localized: "Deep within, four creatures live, each familiar with the darkness,
+      but not all know the way.\n\nIt prowls the corners, gathering crumbs, fast
+      but\nalways wandering along the walls.\n\nIt crawls aimlessly, blind to the
+      exit, knowing only \ndampness and decay.\n\nIt works tirelessly in the crowd,
+      strong in numbers\nyet alone helpless.\n\nOnly one knows the secrets of escape.
+      It feels them beneath its paws.\nIt leads through the earth to freedom."
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

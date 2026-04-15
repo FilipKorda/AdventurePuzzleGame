@@ -251,6 +251,32 @@ MonoBehaviour:
     m_Localized: "Pi\u0105te miejsce czeka\u2026 ale nie dla \u017Cadnego z nich."
     m_Metadata:
       m_Items: []
+  - m_Id: 25352447465902080
+    m_Localized: "Pierwsza p\u0142ytka \n              przy kar"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25352482207322112
+    m_Localized: "Druga p\u0142ytka nac   \n            wej\u015Bcia do "
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25352501811499008
+    m_Localized: "Trzecia p\u0142ytka bardzo odoso"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25352603045220352
+    m_Localized: 'naciskowa jest
+
+      cianym symbolu diamentu.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25352629968457728
+    m_Localized: "iskowa jest najbli\u017Cej     tego pomieszczenia."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25352637618868224
+    m_Localized: naciskowa jest bniona i samotna.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

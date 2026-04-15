@@ -50,6 +50,11 @@ MonoBehaviour:
     m_ReadOnly: 1
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9bd675faaca422f4e9a0e96efabab61e
+    m_Address: Assets/Main Painting Room Ten Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c474cd29664110448991911d3aef0856
     m_Address: Assets/Statue Puzzle Shared Data.asset
     m_ReadOnly: 1
