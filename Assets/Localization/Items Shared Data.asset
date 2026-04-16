@@ -279,6 +279,10 @@ MonoBehaviour:
     m_Key: Puzzle Circle
     m_Metadata:
       m_Items: []
+  - m_Id: 26790394203492352
+    m_Key: PaitingClueRoomTen
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

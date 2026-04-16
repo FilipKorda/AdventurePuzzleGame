@@ -12,7 +12,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     IBlockButton, INinePadPanel, ICircleAndSquarePuzzle, IRotateCircleAndSquarePuzzle, IPlayerSphereMovement, ILibraryButton,
     ISafe, IBraiser, IFramePuzzle, IWallSwitchOnOff, IPlaceOnScale, IBriefcase, IMovingBlockBriefcase, IPaintingMove,
     IPlacePillarSymbol, IPillarMoveSphere, IRotatingPillar, IRotateOnePillar, IMoveSphereOnePillarPuzzle, IPictureTerrainObject,
-    ICoverAllSquarePuzzle, ICorrectSixteenSymbols, ITwoCrystalsPuzzle, IRotatingCirclePuzzle
+    ICoverAllSquarePuzzle, ICorrectSixteenSymbols, ITwoCrystalsPuzzle, IRotatingCirclePuzzle, ITwelveDotsPuzzle
 {
     public enum InteractableType
     {
@@ -71,7 +71,8 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         CoverAllSquarePuzzle,
         CorrectSixteenSymbols,
         TwoCrystalsPuzzle,
-        RotatingCirclePuzzle
+        RotatingCirclePuzzle,
+        TwelveDotsPuzzle
     }
 
     public InteractableType interactableType;
@@ -323,6 +324,9 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     [SerializeField] private TwoCrystalsPuzzle twoCrystalsPuzzle;
     [Header("Two Crystals Puzzle]")]
     [SerializeField] private RotatingCirclePuzzle rotatingCirclePuzzle;
+    [Header("Twelve Dots Puzzle]")]
+    [SerializeField] private TwelveDotPuzzle twelveDotPuzzle;
+
     private void Awake()
     {
         if (rend != null)
@@ -335,6 +339,13 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
             startPosition = transform.position;
         }
 
+    }
+
+    public void EnterTwelveDotsPuzzle()
+    {
+        CursorController.Instance.SetGameMode(new TwelveDotsPuzzleGameMode());
+        twelveDotPuzzle.EnterPuzzle();
+       
     }
 
     public void EnterRotatingCirclePuzzle()

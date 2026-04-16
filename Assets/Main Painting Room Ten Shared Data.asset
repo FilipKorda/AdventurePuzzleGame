@@ -23,6 +23,10 @@ MonoBehaviour:
     m_Key: Animal Notification
     m_Metadata:
       m_Items: []
+  - m_Id: 371540829163520
+    m_Key: Face Notification
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -282,6 +282,10 @@ MonoBehaviour:
     m_Localized: "Okr\u0105g"
     m_Metadata:
       m_Items: []
+  - m_Id: 26790394203492352
+    m_Localized: "Tajemnicza ksi\u0105\u017Cka"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
