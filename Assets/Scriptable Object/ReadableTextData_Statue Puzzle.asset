@@ -17,9 +17,9 @@ MonoBehaviour:
   signatureText: Signature 2
   localizeHeader:
     m_TableReference:
-      m_TableCollectionName: GUID:c474cd29664110448991911d3aef0856
+      m_TableCollectionName: GUID:ca21dbbd68887ef4ea061204dc3f0edf
     m_TableEntryReference:
-      m_KeyId: 313665015808
+      m_KeyId: 5757791916032
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -35,9 +35,9 @@ MonoBehaviour:
     m_LocalVariables: []
   localizeSignature:
     m_TableReference:
-      m_TableCollectionName: GUID:c474cd29664110448991911d3aef0856
+      m_TableCollectionName: GUID:35546b6b8ebaa304486aa3efa25ad9aa
     m_TableEntryReference:
-      m_KeyId: 313665015808
+      m_KeyId: 26685760868732928
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
