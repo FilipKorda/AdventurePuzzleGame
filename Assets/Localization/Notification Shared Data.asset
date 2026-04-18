@@ -245,6 +245,38 @@ MonoBehaviour:
     m_Key: Right Paper 3
     m_Metadata:
       m_Items: []
+  - m_Id: 26683938598834176
+    m_Key: Random Person
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26684097202245632
+    m_Key: NIeznajomy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26684734858088448
+    m_Key: Komnata goscinna
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26685760868732928
+    m_Key: Empty
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26686804474482688
+    m_Key: PinPad
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26688481336250368
+    m_Key: Mysterious book
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26689852353564672
+    m_Key: FatherBook
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26690447227506688
+    m_Key: ForbiddenBooks
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

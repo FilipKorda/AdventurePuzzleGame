@@ -64,6 +64,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-pl-PL
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ba9d4ae663112d04db734a77e9b45d9a
+    m_Address: Room Name_pl-PL
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-pl-PL
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d2ec1bc51e6119e4a9f703487f904210
     m_Address: ABDA-ABDI_pl-PL
     m_ReadOnly: 1

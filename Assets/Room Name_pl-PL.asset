@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Room Name_pl-PL
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.StringTable
+  m_LocaleId:
+    m_Code: pl-PL
+  m_SharedData: {fileID: 11400000, guid: ca21dbbd68887ef4ea061204dc3f0edf, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 5845045248
+    m_Localized: Wielka Sala
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33552617472
+    m_Localized: "Komnata Go\u015Bcinna"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44713660416
+    m_Localized: "Sala Wielkich Schod\xF3w"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3023273480192
+    m_Localized: Opuszczona Piwnica
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3110041047040
+    m_Localized: "Sala Wi\u0119zienna"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4663472836608
+    m_Localized: Krypta Starego Zielarza
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4878078595072
+    m_Localized: Ostatni Korytarz
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5372951941120
+    m_Localized: Wielki labirynt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5757791916032
+    m_Localized: Komnata Dam Dworu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6041314283520
+    m_Localized: Galeria Lustrzana
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6405086269440
+    m_Localized: "Wielka Sala Tronowa Dw\xF3ch Braci"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6879696932864
+    m_Localized: Archiwum Zakazane
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

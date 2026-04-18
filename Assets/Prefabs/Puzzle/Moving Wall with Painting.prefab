@@ -411,6 +411,19 @@ MonoBehaviour:
   briefcaseManager: {fileID: 0}
   movingBlockBriefcase: {fileID: 0}
   imageSlider: {fileID: 2587497682103181155}
+  symbol0: {fileID: 0}
+  symbol1: {fileID: 0}
+  symbol2: {fileID: 0}
+  movingPillarManager: {fileID: 0}
+  rotatingPillarMovingBlock: {fileID: 0}
+  moveSphereOnePillarPuzzle: {fileID: 0}
+  canRotateMoveSphereOnePillarPuzzle: 1
+  pictureTerrainMovingObject: {fileID: 0}
+  coverAllSquarePuzzlePillar: {fileID: 0}
+  correctSixteenSymbolsPillar: {fileID: 0}
+  twoCrystalsPuzzle: {fileID: 0}
+  rotatingCirclePuzzle: {fileID: 0}
+  twelveDotPuzzle: {fileID: 0}
   references:
     version: 2
     RefIds: []
@@ -660,6 +673,19 @@ MonoBehaviour:
   briefcaseManager: {fileID: 0}
   movingBlockBriefcase: {fileID: 0}
   imageSlider: {fileID: 1971491591939242780}
+  symbol0: {fileID: 0}
+  symbol1: {fileID: 0}
+  symbol2: {fileID: 0}
+  movingPillarManager: {fileID: 0}
+  rotatingPillarMovingBlock: {fileID: 0}
+  moveSphereOnePillarPuzzle: {fileID: 0}
+  canRotateMoveSphereOnePillarPuzzle: 1
+  pictureTerrainMovingObject: {fileID: 0}
+  coverAllSquarePuzzlePillar: {fileID: 0}
+  correctSixteenSymbolsPillar: {fileID: 0}
+  twoCrystalsPuzzle: {fileID: 0}
+  rotatingCirclePuzzle: {fileID: 0}
+  twelveDotPuzzle: {fileID: 0}
   references:
     version: 2
     RefIds: []
@@ -3381,6 +3407,19 @@ MonoBehaviour:
   briefcaseManager: {fileID: 0}
   movingBlockBriefcase: {fileID: 0}
   imageSlider: {fileID: 3697459426587413884}
+  symbol0: {fileID: 0}
+  symbol1: {fileID: 0}
+  symbol2: {fileID: 0}
+  movingPillarManager: {fileID: 0}
+  rotatingPillarMovingBlock: {fileID: 0}
+  moveSphereOnePillarPuzzle: {fileID: 0}
+  canRotateMoveSphereOnePillarPuzzle: 1
+  pictureTerrainMovingObject: {fileID: 0}
+  coverAllSquarePuzzlePillar: {fileID: 0}
+  correctSixteenSymbolsPillar: {fileID: 0}
+  twoCrystalsPuzzle: {fileID: 0}
+  rotatingCirclePuzzle: {fileID: 0}
+  twelveDotPuzzle: {fileID: 0}
   references:
     version: 2
     RefIds: []
@@ -4068,10 +4107,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ImageSlider
   images:
-  - {fileID: 5259197916170662766}
-  - {fileID: 656689808528977045}
-  - {fileID: 8240559986028143459}
   - {fileID: 6702719293462460515}
+  - {fileID: 5259197916170662766}
+  - {fileID: 8240559986028143459}
+  - {fileID: 656689808528977045}
   spacing: 18.04103
   animationTime: 0.25
   yPos: -63.69484
@@ -4882,6 +4921,19 @@ MonoBehaviour:
   briefcaseManager: {fileID: 0}
   movingBlockBriefcase: {fileID: 0}
   imageSlider: {fileID: 3472370205906552890}
+  symbol0: {fileID: 0}
+  symbol1: {fileID: 0}
+  symbol2: {fileID: 0}
+  movingPillarManager: {fileID: 0}
+  rotatingPillarMovingBlock: {fileID: 0}
+  moveSphereOnePillarPuzzle: {fileID: 0}
+  canRotateMoveSphereOnePillarPuzzle: 1
+  pictureTerrainMovingObject: {fileID: 0}
+  coverAllSquarePuzzlePillar: {fileID: 0}
+  correctSixteenSymbolsPillar: {fileID: 0}
+  twoCrystalsPuzzle: {fileID: 0}
+  rotatingCirclePuzzle: {fileID: 0}
+  twelveDotPuzzle: {fileID: 0}
   references:
     version: 2
     RefIds: []
@@ -5502,6 +5554,19 @@ MonoBehaviour:
   briefcaseManager: {fileID: 0}
   movingBlockBriefcase: {fileID: 0}
   imageSlider: {fileID: 8522333691919014086}
+  symbol0: {fileID: 0}
+  symbol1: {fileID: 0}
+  symbol2: {fileID: 0}
+  movingPillarManager: {fileID: 0}
+  rotatingPillarMovingBlock: {fileID: 0}
+  moveSphereOnePillarPuzzle: {fileID: 0}
+  canRotateMoveSphereOnePillarPuzzle: 1
+  pictureTerrainMovingObject: {fileID: 0}
+  coverAllSquarePuzzlePillar: {fileID: 0}
+  correctSixteenSymbolsPillar: {fileID: 0}
+  twoCrystalsPuzzle: {fileID: 0}
+  rotatingCirclePuzzle: {fileID: 0}
+  twelveDotPuzzle: {fileID: 0}
   references:
     version: 2
     RefIds: []

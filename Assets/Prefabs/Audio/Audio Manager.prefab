@@ -47,148 +47,248 @@ MonoBehaviour:
   sounds:
   - Id: LockPickCorrect
     Clip: {fileID: 8300000, guid: 333ce2991dcfd154cb9bda07d7d74d76, type: 3}
+    Category: 3
   - Id: UseKeyToOpenDoor
     Clip: {fileID: 8300000, guid: bc2b314fdf2fd18449f5ee20424baa23, type: 3}
+    Category: 3
   - Id: OpenDoor
     Clip: {fileID: 8300000, guid: 0314e7dd63e4c3e44a704df58db252e2, type: 3}
+    Category: 3
   - Id: ReadBook
     Clip: {fileID: 8300000, guid: 6e35386bda694e54caf8de474dccded3, type: 3}
+    Category: 3
   - Id: ThrowBook
     Clip: {fileID: 8300000, guid: 80b59ae0f9c966d45baad9bcc8efa682, type: 3}
+    Category: 3
   - Id: GrabRecipe
     Clip: {fileID: 8300000, guid: 39e7392e43a015341af7d5321ff351dc, type: 3}
+    Category: 3
   - Id: PlaceObject
     Clip: {fileID: 8300000, guid: dc7dcb948a1e84049a98afdd75f82ab3, type: 3}
+    Category: 3
   - Id: PickUpItem
     Clip: {fileID: 8300000, guid: fb80384e97e9d5942bb5262d443c23f6, type: 3}
+    Category: 3
   - Id: DropItem
     Clip: {fileID: 8300000, guid: 990a8fce0c1492a45ba854863c3aeb8b, type: 3}
+    Category: 3
   - Id: PullLever
     Clip: {fileID: 8300000, guid: 43cc7bd58ec5c9b4bb0b441b34fd7129, type: 3}
+    Category: 3
   - Id: KnifeCut
     Clip: {fileID: 8300000, guid: cdcfb258574c1ee4cad9b66d46b9afe0, type: 3}
+    Category: 3
   - Id: WallButtonPress
     Clip: {fileID: 8300000, guid: c43a59a9140dd0e49bf944979f1ce491, type: 3}
+    Category: 3
   - Id: MovingPlate
     Clip: {fileID: 8300000, guid: 1dac2aa78931fe24bac726605410c143, type: 3}
+    Category: 3
   - Id: Dig
     Clip: {fileID: 8300000, guid: 8d76ba9bb844a9249bdf35f0306ef2be, type: 3}
+    Category: 3
   - Id: HammerSlam
     Clip: {fileID: 8300000, guid: 0fb9537a1f481424497ed55d06974dd3, type: 3}
+    Category: 3
   - Id: OpenChest
     Clip: {fileID: 8300000, guid: 5e0ee94546d2d4441a49f822248586fd, type: 3}
+    Category: 3
   - Id: Close Chest
     Clip: {fileID: 8300000, guid: 4dd6d06cd6a3df04d8933183f037d26e, type: 3}
+    Category: 3
   - Id: Open Jail Door
     Clip: {fileID: 8300000, guid: 0a01cf6948919564296042da32c622a7, type: 3}
+    Category: 3
   - Id: EnterLockPicking
     Clip: {fileID: 8300000, guid: f3ee8e75d26f8eb42b9cb0c4d7fd447f, type: 3}
+    Category: 3
   - Id: StopLockPicking
     Clip: {fileID: 8300000, guid: edafa8ad956634d48a33f24c1ded1128, type: 3}
+    Category: 3
   - Id: LockPickFail
     Clip: {fileID: 8300000, guid: 1584adc3e90242b4ea3c82ae86a5181c, type: 3}
+    Category: 3
   - Id: Drink
     Clip: {fileID: 8300000, guid: 8f8cae9ef75d0c44fa69425f0546e27b, type: 3}
+    Category: 3
   - Id: StartFire
     Clip: {fileID: 8300000, guid: ffbcbf324f9205a4f8f6f08e25670de9, type: 3}
+    Category: 3
   - Id: PourWater
     Clip: {fileID: 8300000, guid: 0f2e6c0bf14428042834e4f9be7abccc, type: 3}
+    Category: 3
   - Id: AddRoot
     Clip: {fileID: 8300000, guid: c66f59405aeb0414aa30a89f68ef5d19, type: 3}
+    Category: 3
   - Id: AddRawMeat
     Clip: {fileID: 8300000, guid: 623bbf5270e5f1f489fa422eeb16c596, type: 3}
+    Category: 3
   - Id: AddLeafs
     Clip: {fileID: 8300000, guid: 02e6bf7106e60054488eaf5cba9cefe7, type: 3}
+    Category: 3
   - Id: FillBucketWithPotion
     Clip: {fileID: 8300000, guid: 90b7bc2afb6eec342a901402fdd2a233, type: 3}
+    Category: 3
   - Id: BoilingWater
     Clip: {fileID: 8300000, guid: 1892c3bdf2ada804c9b3dd98444368ee, type: 3}
+    Category: 3
   - Id: NiceWaterBoling
     Clip: {fileID: 8300000, guid: 0ddfe3516c15a174f8220e5a8817c124, type: 3}
+    Category: 3
   - Id: WineBoiling
     Clip: {fileID: 8300000, guid: 1ac3f7eeb08d507449c505cb2929eedf, type: 3}
+    Category: 3
   - Id: BloodBoiling
     Clip: {fileID: 8300000, guid: 4e263f809e8131949981cdc455af38d6, type: 3}
+    Category: 3
   - Id: FirePlayOnLoop
     Clip: {fileID: 8300000, guid: 4520f6b4929175248859750c4e3cd220, type: 3}
+    Category: 3
   - Id: CloseOpenGate
     Clip: {fileID: 8300000, guid: 8efb9bb39bf58e04d902c28b94629f32, type: 3}
+    Category: 3
   - Id: MagicAfterDrink
     Clip: {fileID: 8300000, guid: a70efb4df5c8fab42a889d70049e2f10, type: 3}
+    Category: 3
   - Id: OpenHiddenDoor
     Clip: {fileID: 8300000, guid: 3f928d2faaa6a084399a878fec8acdb9, type: 3}
+    Category: 3
   - Id: OpenHiddenDoor
     Clip: {fileID: 8300000, guid: 3f928d2faaa6a084399a878fec8acdb9, type: 3}
+    Category: 3
   - Id: Music_1
     Clip: {fileID: 8300000, guid: 0e56259553c03e94eb7a3b6c57d0c1bd, type: 3}
+    Category: 2
   - Id: RotateStatue_StoneMove
     Clip: {fileID: 8300000, guid: 270283c03d0e0ed47b489cd809450d84, type: 3}
+    Category: 3
   - Id: ShortBeep
-    Clip: {fileID: 8300000, guid: 0354a7201b8a6a74fa67c33ed221221a, type: 3}
+    Clip: {fileID: 8300000, guid: 6851e45b0dd6b1840a6f2fc51c0c4453, type: 3}
+    Category: 3
   - Id: LongBeep
-    Clip: {fileID: 8300000, guid: 32e8e33d9c9298148b0ca7b605c77d13, type: 3}
+    Clip: {fileID: 8300000, guid: 49ad524d766c6ba4591e818d5792191c, type: 3}
+    Category: 3
   - Id: MovingStoneKryptex
     Clip: {fileID: 8300000, guid: ef92f71edf6368e4d90db49b2c81e795, type: 3}
+    Category: 3
   - Id: CristalEnter
     Clip: {fileID: 8300000, guid: a42a072533807804e8c93e2b1f5c4cb8, type: 3}
+    Category: 3
   - Id: Cristal2Enter
     Clip: {fileID: 8300000, guid: 4ea694615ad912543bd89b235954acf7, type: 3}
+    Category: 3
   - Id: Cristal3Enter
     Clip: {fileID: 8300000, guid: 1e745d0f651009246bf94b9d99c88097, type: 3}
+    Category: 3
   - Id: CrystalRelease
     Clip: {fileID: 8300000, guid: 1fa6b66e22c537645a618ed3e5d67f3c, type: 3}
+    Category: 3
   - Id: Crystal2Release
     Clip: {fileID: 8300000, guid: f9d827cf24e2db54aaef739e490aa5b9, type: 3}
+    Category: 3
   - Id: Crystal3Release
     Clip: {fileID: 8300000, guid: 959b32347da1ab546b106084c24dd8e6, type: 3}
+    Category: 3
   - Id: GearTick
     Clip: {fileID: 8300000, guid: 0c918d258149a7c419db5053df51040f, type: 3}
+    Category: 3
   - Id: AfterGearPuzzleSolved
     Clip: {fileID: 8300000, guid: fe2ff479eab29ec4b937698c0276d9d7, type: 3}
+    Category: 3
   - Id: FurnitureMove
     Clip: {fileID: 8300000, guid: 7c0cdc3aac679a74bbefa964fcadd4eb, type: 3}
+    Category: 3
   - Id: DrowerOpen
     Clip: {fileID: 8300000, guid: e5898cddd219df14cb8cce3797f99b69, type: 3}
+    Category: 3
   - Id: DrowerClose
     Clip: {fileID: 8300000, guid: 439c298d0b48c45439f6126466f6c429, type: 3}
+    Category: 3
   - Id: WoodenCabinetClose
     Clip: {fileID: 8300000, guid: f4a3e2e6cf887544e92a5fdff3f67853, type: 3}
+    Category: 3
   - Id: WoodenCabinetOpen
     Clip: {fileID: 8300000, guid: 05f38d5b57dc96c42b0679411ca87629, type: 3}
+    Category: 3
   - Id: SafeDialClickSound
     Clip: {fileID: 8300000, guid: 2d13a418f89690d4b9da7ca055a6da43, type: 3}
+    Category: 3
   - Id: PlaceSymbol
     Clip: {fileID: 8300000, guid: 8c0f704cb089d7d43beb381d2f24decb, type: 3}
+    Category: 3
   - Id: SafeWinAkaPuzzleWin
     Clip: {fileID: 8300000, guid: 8ad6e450b36053b40b91aa16dfe1f0d3, type: 3}
+    Category: 3
   - Id: OpenBraiserTrapDoor
     Clip: {fileID: 8300000, guid: 478e58f1b7fa68f48a03b419d9589724, type: 3}
+    Category: 3
   - Id: PuzzlePiece
     Clip: {fileID: 8300000, guid: 8bbb7a4ef263536428cfebade5436c06, type: 3}
+    Category: 3
   - Id: MovingStoneBraiser
     Clip: {fileID: 8300000, guid: b2fe77a1ba3b6ce4e83d79f1fcd520f6, type: 3}
+    Category: 3
   - Id: DestroyWall
     Clip: {fileID: 8300000, guid: 98fa9a75fba6bd648a8cac11cd3307a3, type: 3}
+    Category: 3
   - Id: UnlockTrapDoor
     Clip: {fileID: 8300000, guid: e8a5655bf8210224a82c850ad66e2a9d, type: 3}
+    Category: 3
   - Id: TrapdoorWosh
     Clip: {fileID: 8300000, guid: 1324c45597ce8534ea50d6eddf4d329e, type: 3}
+    Category: 3
   - Id: ShorterMovingStoneKryptex
     Clip: {fileID: 8300000, guid: 54984860c98e96c41824d2ef685ab4bd, type: 3}
+    Category: 3
   - Id: chain
     Clip: {fileID: 8300000, guid: fe692fbbe0b0dd447b6b1827cdcc4004, type: 3}
+    Category: 3
   - Id: chain2
     Clip: {fileID: 8300000, guid: a0cd22bb0bc13f145a0c818b42d0f79a, type: 3}
+    Category: 3
   - Id: HammerHitCrafting
     Clip: {fileID: 8300000, guid: 3d5079761b6969746b0aa036abe21ced, type: 3}
+    Category: 3
   - Id: MoveGearRoomTen
     Clip: {fileID: 8300000, guid: a16704f6e13b2d6468a3b940ddd45b72, type: 3}
+    Category: 3
   - Id: FirstBellSFX
     Clip: {fileID: 8300000, guid: 3afa6718a85511c4692fb5a605d9fcb7, type: 3}
-  - Id: SecondBellSFX
-    Clip: {fileID: 8300000, guid: 0ba2663ec3e3b4d45ad1f2b4e2ff6e8c, type: 3}
-  - Id: ThirdBellSFX
-    Clip: {fileID: 8300000, guid: 33854dda563080d44b94ab56963f3118, type: 3}
-  - Id: FourthBellSFX
-    Clip: {fileID: 8300000, guid: 820c215580616d948848edd03dc7f84b, type: 3}
+    Category: 3
+  - Id: FootStep0
+    Clip: {fileID: 8300000, guid: e002585a55fa4bd46ace1db784b80311, type: 3}
+    Category: 0
+  - Id: FootStep1
+    Clip: {fileID: 8300000, guid: 04da9adaea8c1ef409ea12e22a050a59, type: 3}
+    Category: 0
+  - Id: FootStep2
+    Clip: {fileID: 8300000, guid: 7b4b2a15557bc62468380f1f5eb8a0f0, type: 3}
+    Category: 0
+  - Id: FootStep3
+    Clip: {fileID: 8300000, guid: c14126e0a06f29945a3a315c3202f666, type: 3}
+    Category: 0
+  - Id: FootStep4
+    Clip: {fileID: 8300000, guid: 8015dfd9c01cb3045847cf4b1673c82b, type: 3}
+    Category: 0
+  - Id: FootStep5
+    Clip: {fileID: 8300000, guid: 2dd8e024d21828f4a9a91cb9bf4ae7f3, type: 3}
+    Category: 0
+  - Id: FootStep6
+    Clip: {fileID: 8300000, guid: 429f5461514df5c418c340eb7d0f1ff5, type: 3}
+    Category: 0
+  - Id: FootStep7
+    Clip: {fileID: 8300000, guid: adccb6245eb51ea4dbb7ee60bb03bfb6, type: 3}
+    Category: 0
+  - Id: ToogleLampOff
+    Clip: {fileID: 8300000, guid: b4ce89066ea9f3b44a9adb8980265f0a, type: 3}
+    Category: 3
+  - Id: ToogleLampOn
+    Clip: {fileID: 8300000, guid: 39f41896aceca774ca3231f979fa34f7, type: 3}
+    Category: 3
+  - Id: ClickPinNumber
+    Clip: {fileID: 8300000, guid: 2e8f5671664e6ba4b8c8ce179a7b07db, type: 3}
+    Category: 3
+  - Id: Eat
+    Clip: {fileID: 8300000, guid: eb12d78c1e47a6a4ab88488693be6b45, type: 3}
+    Category: 3
   sfxSourcePrefab: {fileID: 6808787666201464470, guid: 561a59515f73e424ba170ae966f504e9, type: 3}

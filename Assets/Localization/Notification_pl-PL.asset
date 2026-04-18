@@ -154,7 +154,12 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 15602162887577600
-    m_Localized: "Zniszczona \u015Bciana\n"
+    m_Localized: "Nie ka\u017Cda \u015Bciana jest tak twarda, jak chce niezale\u017Cne.
+      Tam, gdzie wiedza spoczywa na p\xF3\u0142kach, a rury zimne dostarczaj\u0105
+      pusty szum, ukrywaj\u0105 si\u0119 s\u0142abo. Obok miejsca, gdzie widzisz
+      cudze p\u0142aszcze, mur oddychaj\u0105cy ciszej. Nie klucz, nie s\u0142owo,
+      lecz si\u0142a d\u0142oni obudzi si\u0119 do przej\u015Bcia. Uderz g\xF3rnik\xF3w,
+      a kamie\u0144 ust\u0105pi, ods\u0142aniaj\u0105c si\u0119, co ukryte."
     m_Metadata:
       m_Items: []
   - m_Id: 17762438814650368
@@ -275,6 +280,45 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 25352637618868224
     m_Localized: naciskowa jest bniona i samotna.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26683938598834176
+    m_Localized: "Nieznajomy wpis do ksi\u0119gi"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26684097202245632
+    m_Localized: Nieznajomy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26684734858088448
+    m_Localized: "Komnata go\u015Bcinna by\u0142a przestronna i ciep\u0142a, wype\u0142niona
+      mi\u0119kkim \u015Bwiat\u0142em wpadaj\u0105cym przez wysokie okno. Na \u015Brodku
+      sta\u0142o solidne \u0142\xF3\u017Cko przykryte jasn\u0105 narzut\u0105, a
+      obok niego niewielki stolik z dzbanem \u015Bwie\u017Cej wody. \u015Aciany zdobi\u0142y
+      proste arrasy, kt\xF3re t\u0142umi\u0142y d\u017Awi\u0119ki i nadawa\u0142y
+      wn\u0119trzu przytulno\u015Bci. W powietrzu unosi\u0142 si\u0119 delikatny
+      zapach drewna i zi\xF3\u0142. Ca\u0142o\u015B\u0107 sprawia\u0142a wra\u017Cenie
+      miejsca stworzonego do odpoczynku i spokojnego snu."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26686804474482688
+    m_Localized: Pin Pad
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26688481336250368
+    m_Localized: "Ksi\u0119ga Dw\xF3ch Braci"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26689852353564672
+    m_Localized: "Ksi\u0119ga Ojca Dw\xF3ch Braci"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26690447227506688
+    m_Localized: "Archiwum Ksi\u0119gi Zakazanej"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26685760868732928
+    m_Localized: '-'
     m_Metadata:
       m_Items: []
   references:

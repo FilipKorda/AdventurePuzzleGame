@@ -19,7 +19,7 @@ MonoBehaviour:
     m_Items: []
   m_TableData:
   - m_Id: 21837926400
-    m_Localized: main Text
+    m_Localized: Do you think there's something up there? I wonder how to get there?
     m_Metadata:
       m_Items: []
   - m_Id: 331545333760
@@ -149,19 +149,9 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 25791170112409600
-    m_Localized: 'A Great Square composed of 4 trapezoids and 2 rectangles?
-
-      Like
-      a torch with a burning flame?
-
-      Like a circle with a handle, or more like
-      a lollipop?
-
-      But what is the order of these symbols?
-
-
-      Or maybe
-      only 2 symbols are needed to solve the puzzle? Or 3?'
+    m_Localized: The first symbol has many angles and appears at the beginning and
+      end. Between them is a symbol without an edge, the only one of the three. The
+      symbol, like fire, never touches the door that leads to freedom.
     m_Metadata:
       m_Items: []
   references:

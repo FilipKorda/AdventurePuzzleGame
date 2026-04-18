@@ -139,7 +139,12 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 298667238248448
-    m_Localized: "Status puzzle Hint co\u015B tu bedzie ale jeszcez nie wiem co"
+    m_Localized: "Nie mam ust, a przemawiam, gdy dotkniesz kamiennej ciszy.Stoj\u0119
+      nieruchomo, lecz pos\u0142uszna d\u0142oni potrafi\u0119 zmieni\u0107 kierunek
+      spojrzenia.\u015Aciany wok\xF3\u0142 mnie nie s\u0105 tak pe\u0142ne, jak si\u0119
+      wydaje \u2014 kryj\u0105 drogi dla uwa\u017Cnych. Nie oczy prowadz\u0105 do
+      prawdy, lecz echo krok\xF3w i szept, kt\xF3ry wraca. Pos\u0142uchaj, porusz
+      to, co nieo\u017Cywione, a kamie\u0144 wska\u017Ce ukryte przej\u015Bcia."
     m_Metadata:
       m_Items: []
   references:

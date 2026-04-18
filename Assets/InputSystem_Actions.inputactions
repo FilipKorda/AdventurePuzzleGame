@@ -1626,6 +1626,76 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "PaintingPuzzle",
+            "id": "b767ba46-301a-40af-8db1-4dd3054f9868",
+            "actions": [
+                {
+                    "name": "MoveCardSymbol",
+                    "type": "Value",
+                    "id": "2ab4b401-a5ee-414a-a3b2-67cde1626301",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "ClickHoldButton",
+                    "type": "Button",
+                    "id": "e282899c-28e7-4652-87b4-64ef276ea54b",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Hold",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "c76567d5-2306-4970-b1f4-82e4d180748f",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "MoveCardSymbol",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "626ed0ad-cf73-4abe-ac15-9a19c340df7b",
+                    "path": "<Joystick>/{Hatswitch}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Joystick",
+                    "action": "MoveCardSymbol",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e48dca84-601e-47f2-987a-f0fdac0ff5cb",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "MoveCardSymbol",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c701cc29-a359-45f3-b499-03b4e46b01c0",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "ClickHoldButton",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

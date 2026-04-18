@@ -19,7 +19,8 @@ MonoBehaviour:
     m_Items: []
   m_TableData:
   - m_Id: 21837926400
-    m_Localized: "main text abrakadabra nic tu nie ma aale zawsze moze by\u0107 xd"
+    m_Localized: "A tam na g\xF3rze myslisz \u017Ce co\u015B jest? Ciekawa sprawa
+      jak sie tam dosta\u0107?"
     m_Metadata:
       m_Items: []
   - m_Id: 331545333760
@@ -144,10 +145,10 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 25791170112409600
-    m_Localized: "Wielki Kwadrat z\u0142o\u017Cony z 4 trapez\xF3w oraz 2 prostok\u0105t\xF3w?\nNiczym
-      pochodznia z pal\u0105cym si\u0119 ogniem?\nJak ko\u0142o z r\u0105czk\u0105
-      albo bardziej lizak?\nTylko jaka jest kolejn\u015B\u0107 tych symboli?\n\nA
-      mo\u017Ce tylko 2 symbole s\u0105 potrzebne do rozwi\u0105zania zagadki? Czy3?"
+    m_Localized: "Pierwszy znak ma w sobie bardzo du\u017Co k\u0105t\xF3w i pojawia
+      si\u0119 na pocz\u0105tku oraz na ko\u0144cu. Pomi\u0119dzy nimi znajduje si\u0119
+      symbol bez kraw\u0119dzi, jedyny taki spo\u015Br\xF3d trzech. Symbol niczym
+      ogie\u0144 nigdy nie dotyka drzwi kt\xF3r\u0119 wiod\u0105 do wolno\u015Bci."
     m_Metadata:
       m_Items: []
   references:

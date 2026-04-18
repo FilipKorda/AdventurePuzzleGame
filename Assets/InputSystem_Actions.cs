@@ -1712,6 +1712,76 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""PaintingPuzzle"",
+            ""id"": ""b767ba46-301a-40af-8db1-4dd3054f9868"",
+            ""actions"": [
+                {
+                    ""name"": ""MoveCardSymbol"",
+                    ""type"": ""Value"",
+                    ""id"": ""2ab4b401-a5ee-414a-a3b2-67cde1626301"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""ClickHoldButton"",
+                    ""type"": ""Button"",
+                    ""id"": ""e282899c-28e7-4652-87b4-64ef276ea54b"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Hold"",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""c76567d5-2306-4970-b1f4-82e4d180748f"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""MoveCardSymbol"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""626ed0ad-cf73-4abe-ac15-9a19c340df7b"",
+                    ""path"": ""<Joystick>/{Hatswitch}"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Joystick"",
+                    ""action"": ""MoveCardSymbol"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e48dca84-601e-47f2-987a-f0fdac0ff5cb"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""MoveCardSymbol"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c701cc29-a359-45f3-b499-03b4e46b01c0"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""ClickHoldButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -1832,6 +1902,10 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_CursorController = asset.FindActionMap("CursorController", throwIfNotFound: true);
         m_CursorController_Drag = m_CursorController.FindAction("Drag", throwIfNotFound: true);
         m_CursorController_Click = m_CursorController.FindAction("Click", throwIfNotFound: true);
+        // PaintingPuzzle
+        m_PaintingPuzzle = asset.FindActionMap("PaintingPuzzle", throwIfNotFound: true);
+        m_PaintingPuzzle_MoveCardSymbol = m_PaintingPuzzle.FindAction("MoveCardSymbol", throwIfNotFound: true);
+        m_PaintingPuzzle_ClickHoldButton = m_PaintingPuzzle.FindAction("ClickHoldButton", throwIfNotFound: true);
     }
 
     ~@InputSystem_Actions()
@@ -1844,6 +1918,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         UnityEngine.Debug.Assert(!m_Furniture.enabled, "This will cause a leak and performance issues, InputSystem_Actions.Furniture.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_CircleAndSquarePuzzle.enabled, "This will cause a leak and performance issues, InputSystem_Actions.CircleAndSquarePuzzle.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_CursorController.enabled, "This will cause a leak and performance issues, InputSystem_Actions.CursorController.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_PaintingPuzzle.enabled, "This will cause a leak and performance issues, InputSystem_Actions.PaintingPuzzle.Disable() has not been called.");
     }
 
     /// <summary>
@@ -3024,6 +3099,113 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     /// Provides a new <see cref="CursorControllerActions" /> instance referencing this action map.
     /// </summary>
     public CursorControllerActions @CursorController => new CursorControllerActions(this);
+
+    // PaintingPuzzle
+    private readonly InputActionMap m_PaintingPuzzle;
+    private List<IPaintingPuzzleActions> m_PaintingPuzzleActionsCallbackInterfaces = new List<IPaintingPuzzleActions>();
+    private readonly InputAction m_PaintingPuzzle_MoveCardSymbol;
+    private readonly InputAction m_PaintingPuzzle_ClickHoldButton;
+    /// <summary>
+    /// Provides access to input actions defined in input action map "PaintingPuzzle".
+    /// </summary>
+    public struct PaintingPuzzleActions
+    {
+        private @InputSystem_Actions m_Wrapper;
+
+        /// <summary>
+        /// Construct a new instance of the input action map wrapper class.
+        /// </summary>
+        public PaintingPuzzleActions(@InputSystem_Actions wrapper) { m_Wrapper = wrapper; }
+        /// <summary>
+        /// Provides access to the underlying input action "PaintingPuzzle/MoveCardSymbol".
+        /// </summary>
+        public InputAction @MoveCardSymbol => m_Wrapper.m_PaintingPuzzle_MoveCardSymbol;
+        /// <summary>
+        /// Provides access to the underlying input action "PaintingPuzzle/ClickHoldButton".
+        /// </summary>
+        public InputAction @ClickHoldButton => m_Wrapper.m_PaintingPuzzle_ClickHoldButton;
+        /// <summary>
+        /// Provides access to the underlying input action map instance.
+        /// </summary>
+        public InputActionMap Get() { return m_Wrapper.m_PaintingPuzzle; }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+        public void Enable() { Get().Enable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+        public void Disable() { Get().Disable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+        public bool enabled => Get().enabled;
+        /// <summary>
+        /// Implicitly converts an <see ref="PaintingPuzzleActions" /> to an <see ref="InputActionMap" /> instance.
+        /// </summary>
+        public static implicit operator InputActionMap(PaintingPuzzleActions set) { return set.Get(); }
+        /// <summary>
+        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <param name="instance">Callback instance.</param>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+        /// </remarks>
+        /// <seealso cref="PaintingPuzzleActions" />
+        public void AddCallbacks(IPaintingPuzzleActions instance)
+        {
+            if (instance == null || m_Wrapper.m_PaintingPuzzleActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_PaintingPuzzleActionsCallbackInterfaces.Add(instance);
+            @MoveCardSymbol.started += instance.OnMoveCardSymbol;
+            @MoveCardSymbol.performed += instance.OnMoveCardSymbol;
+            @MoveCardSymbol.canceled += instance.OnMoveCardSymbol;
+            @ClickHoldButton.started += instance.OnClickHoldButton;
+            @ClickHoldButton.performed += instance.OnClickHoldButton;
+            @ClickHoldButton.canceled += instance.OnClickHoldButton;
+        }
+
+        /// <summary>
+        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <remarks>
+        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+        /// </remarks>
+        /// <seealso cref="PaintingPuzzleActions" />
+        private void UnregisterCallbacks(IPaintingPuzzleActions instance)
+        {
+            @MoveCardSymbol.started -= instance.OnMoveCardSymbol;
+            @MoveCardSymbol.performed -= instance.OnMoveCardSymbol;
+            @MoveCardSymbol.canceled -= instance.OnMoveCardSymbol;
+            @ClickHoldButton.started -= instance.OnClickHoldButton;
+            @ClickHoldButton.performed -= instance.OnClickHoldButton;
+            @ClickHoldButton.canceled -= instance.OnClickHoldButton;
+        }
+
+        /// <summary>
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="PaintingPuzzleActions.UnregisterCallbacks(IPaintingPuzzleActions)" />.
+        /// </summary>
+        /// <seealso cref="PaintingPuzzleActions.UnregisterCallbacks(IPaintingPuzzleActions)" />
+        public void RemoveCallbacks(IPaintingPuzzleActions instance)
+        {
+            if (m_Wrapper.m_PaintingPuzzleActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        /// <summary>
+        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+        /// </summary>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+        /// </remarks>
+        /// <seealso cref="PaintingPuzzleActions.AddCallbacks(IPaintingPuzzleActions)" />
+        /// <seealso cref="PaintingPuzzleActions.RemoveCallbacks(IPaintingPuzzleActions)" />
+        /// <seealso cref="PaintingPuzzleActions.UnregisterCallbacks(IPaintingPuzzleActions)" />
+        public void SetCallbacks(IPaintingPuzzleActions instance)
+        {
+            foreach (var item in m_Wrapper.m_PaintingPuzzleActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_PaintingPuzzleActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    /// <summary>
+    /// Provides a new <see cref="PaintingPuzzleActions" /> instance referencing this action map.
+    /// </summary>
+    public PaintingPuzzleActions @PaintingPuzzle => new PaintingPuzzleActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     /// <summary>
     /// Provides access to the input control scheme.
@@ -3425,5 +3607,27 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnClick(InputAction.CallbackContext context);
+    }
+    /// <summary>
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "PaintingPuzzle" which allows adding and removing callbacks.
+    /// </summary>
+    /// <seealso cref="PaintingPuzzleActions.AddCallbacks(IPaintingPuzzleActions)" />
+    /// <seealso cref="PaintingPuzzleActions.RemoveCallbacks(IPaintingPuzzleActions)" />
+    public interface IPaintingPuzzleActions
+    {
+        /// <summary>
+        /// Method invoked when associated input action "MoveCardSymbol" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnMoveCardSymbol(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "ClickHoldButton" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnClickHoldButton(InputAction.CallbackContext context);
     }
 }

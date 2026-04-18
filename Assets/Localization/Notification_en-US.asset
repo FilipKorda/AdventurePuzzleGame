@@ -156,7 +156,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 15602162887577600
-    m_Localized: Crack in the wall
+    m_Localized: Not every wall is as solid as the independent wills. Where knowledge
+      rests on shelves and cold pipes deliver an empty hum, they hide poorly. Next
+      to the place where you see other people's coats, the wall breathes more quietly.
+      Not a key, not a word, but the strength of a hand will awaken the passage.
+      Strike the miners, and the stone will give way, revealing what is hidden.
     m_Metadata:
       m_Items: []
   - m_Id: 17762438814650368
@@ -308,6 +312,44 @@ MonoBehaviour:
     m_Localized: 'ure plate is very
 
       lonely.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26683938598834176
+    m_Localized: An unknown entry in the book
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26684097202245632
+    m_Localized: Stranger
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26684734858088448
+    m_Localized: The guest chamber was spacious and warm, filled with soft light
+      streaming in through the tall window. In the center stood a sturdy bed covered
+      with a light throw, and next to it stood a small table with a jug of fresh
+      water. The walls were adorned with simple tapestries that muffled sound and
+      gave the space a cozy feel. The air was filled with the delicate scent of wood
+      and herbs. The whole thing felt like a place designed for rest and a peaceful
+      sleep.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26686804474482688
+    m_Localized: Konsola numeryczna
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26688481336250368
+    m_Localized: The Book of Two Brothers
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26689852353564672
+    m_Localized: The Book of the Father of Two Brothers
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26690447227506688
+    m_Localized: Forbidden Book Archive
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26685760868732928
+    m_Localized: '-'
     m_Metadata:
       m_Items: []
   references:

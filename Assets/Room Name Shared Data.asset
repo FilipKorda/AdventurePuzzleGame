@@ -1,0 +1,90 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Room Name Shared Data
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.SharedTableData
+  m_TableCollectionName: Room Name
+  m_TableCollectionNameGuidString: ca21dbbd68887ef4ea061204dc3f0edf
+  m_Entries:
+  - m_Id: 5845045248
+    m_Key: Room 0-> 0
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33552617472
+    m_Key: Room 0-> 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44713660416
+    m_Key: Room 1-> 2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3023273480192
+    m_Key: Room 2 - > 3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3110041047040
+    m_Key: Room 3- > 4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4663472836608
+    m_Key: Room 4- > 5
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4878078595072
+    m_Key: Room 5- > 6
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5372951941120
+    m_Key: 'Room 6- > 7
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5757791916032
+    m_Key: 'Room 7- > 8
+
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6041314283520
+    m_Key: 'Room 8- > 9
+
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6405086269440
+    m_Key: 'Room 9- > 10
+
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6879696932864
+    m_Key: 'Room 10 - > 11
+
+
+'
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 4011535568652992599
+  references:
+    version: 2
+    RefIds:
+    - rid: 4011535568652992599
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1776365824472

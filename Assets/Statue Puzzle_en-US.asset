@@ -135,7 +135,12 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 298667238248448
-    m_Localized: "Status puzzle Hint co\u015B tu bedzie ale jeszcez nie wiem co"
+    m_Localized: "I have no mouth, yet I speak when you touch the stone silence.
+      I stand still, but obedient to your hand, I can change the direction of my
+      gaze. The walls around me are not as solid as they seem\u2014they conceal paths
+      for the observant. It is not the eyes that lead to truth, but the echo of footsteps
+      and the whisper that returns. Listen, stir the inanimate, and the stone will
+      reveal hidden passages."
     m_Metadata:
       m_Items: []
   references:
