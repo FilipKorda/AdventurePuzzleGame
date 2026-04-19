@@ -85,6 +85,7 @@ public class WallKeypad : MonoBehaviour, IPinNumber
                 SetSlotsColor(correctColor);
                 OpenGate();
                 DisableColliders();
+                Services.Audio.PlaySFX("SafeWinAkaPuzzleWin");
             }
             else
             {

@@ -11,6 +11,8 @@ public class PictureTerrainPuzzleManager : MonoBehaviour
     [SerializeField] private GameObject chestObject;
     [SerializeField] private ChestManager chestManager;
 
+    [SerializeField] private LastPuzzleToSolveManager lastPuzzleToSolveManager;
+
     private void DisableMovingObjects()
     {
         interactableItemsClubs.sphereCollider.enabled = false;
@@ -30,8 +32,9 @@ public class PictureTerrainPuzzleManager : MonoBehaviour
         {
             DisableMovingObjects();
             StartCoroutine(MoveChestCoroutine());
+            lastPuzzleToSolveManager.RotateHandles();
             Services.Audio.PlaySFX("SafeWinAkaPuzzleWin");
-            Debug.Log("Puzzle Win");
+           
         }
     }
 

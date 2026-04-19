@@ -12,4 +12,6 @@ public interface IAudioService
 
     float GetMusicVolume();
     float GetSFXVolume();
+
+    void PlayFootstep();
 }

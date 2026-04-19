@@ -10,15 +10,20 @@ public class ThreeSymbolsPillarManager : MonoBehaviour
     [SerializeField] private BoxCollider[] boxColliders;
     [SerializeField] private SphereCollider sphereCollider;
     [SerializeField] private MovingPillarManager movingPillarManager;
+    [SerializeField] private Animator animator;
+
     public void CheckWinPuzzle()
     {
         if (image.sprite.name == "Symbol For Pillar Puzzle"
             && image1.sprite.name == "Symbol For Pillar Puzzle1"
             && image2.sprite.name == "Symbol For Pillar Puzzle")
         {
-            Services.Audio.PlaySFX("SafeWinAkaPuzzleWin");
-           
+
+            animator.SetTrigger("Interact");
             DisalePuzzle();
+            Services.Audio.PlaySFX("SafeWinAkaPuzzleWin");
+
+
         }
     }
 

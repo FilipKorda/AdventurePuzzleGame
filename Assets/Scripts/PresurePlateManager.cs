@@ -88,6 +88,9 @@ public class PresurePlateManager : MonoBehaviour
     {
         StartMoveUp();
         ResetSequenceAfterWin();
+        pressurePlate0.isPresureDissabled = true;
+        pressurePlate1.isPresureDissabled = true;
+        pressurePlate2.isPresureDissabled = true;
         Services.Audio.PlaySFX("SafeWinAkaPuzzleWin");
     }
 

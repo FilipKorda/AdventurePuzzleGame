@@ -12,6 +12,7 @@ public class MorseCodePuzzle : MonoBehaviour
     [Header("Moving Wall")]
     [SerializeField] private GameObject wallUp;
     [SerializeField] private GameObject wallDown;
+    [SerializeField] private GameObject wallToDisapera;
     [SerializeField] private float moveTime = 1f;
 
     [Header("Morse Code")]
@@ -162,6 +163,8 @@ public class MorseCodePuzzle : MonoBehaviour
 
     public void MoveWalls()
     {
+        wallToDisapera.SetActive(false);
+        Services.Audio.PlaySFX("ShorterMovingStoneKryptex");
         StartCoroutine(MoveWall(wallUp.transform, 1.5f));
         StartCoroutine(MoveWall(wallDown.transform, -0.5f));
     }
@@ -210,21 +213,21 @@ public class MorseCodePuzzle : MonoBehaviour
         PlayMessage(message);
     }
 
-    public void OpeningBracketMorseCode() ////git
+    public void OpeningBracketMorseCode()  ////git
     {
         string message = "(";
 
         PlayMessage(message);
     }
 
-    public void TMorseCode() ////git
+    public void TMorseCode()  ////git
     {
         string message = "T";
 
         PlayMessage(message);
     }
 
-    public void EqualsMorseCode() ////git
+    public void EqualsMorseCode()  ////git
     {
         string message = "=";
 

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -42,6 +43,18 @@ public class RotatingCircleInPuzzle : MonoBehaviour
     private Transform[] slotPoints;
     private bool isRotating;
 
+    [SerializeField] private CirclePuzzleWinManager winManager;
+
+    public event Action<RotatingCircleInPuzzle, bool> OnActiveStateChanged;
+    [SerializeField] private bool isActive;
+    public bool IsActive => isActive;
+
+    private void OnEnable()
+    {
+        SetActiveState(true);
+    }
+
+
     private void Awake()
     {
         slotPoints = new Transform[4];
@@ -51,6 +64,14 @@ public class RotatingCircleInPuzzle : MonoBehaviour
         slotPoints[(int)Slot.Left] = leftSlot != null ? leftSlot.transform : null;
 
         SnapSymbolsToSlots();
+    }
+
+    public void SetActiveState(bool value)
+    {
+        if (isActive == value) return;
+
+        isActive = value;
+        OnActiveStateChanged?.Invoke(this, isActive);
     }
 
     public void TryRotate()
@@ -99,8 +120,11 @@ public class RotatingCircleInPuzzle : MonoBehaviour
         ApplyNewSymbolLayout(moves);
         SnapSymbolsToSlots();
 
+        winManager.CheckWinPuzzle();
+
         isRotating = false;
         anyCircleIsRotating = false;
+      
     }
 
     private List<SymbolMoveData> BuildClockwiseMoves()

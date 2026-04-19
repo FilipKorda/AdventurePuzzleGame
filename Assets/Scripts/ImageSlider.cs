@@ -12,6 +12,9 @@ public class ImageSlider : MonoBehaviour
     private int currentIndex;
     private Coroutine coroutineAnimation;
 
+    public int CurrentIndex => currentIndex;
+    [SerializeField] private MovingWallwithPaintingManager movingWallwithPaintingManager;
+
     void Start()
     {
         SetInstant();
@@ -24,6 +27,7 @@ public class ImageSlider : MonoBehaviour
 
         currentIndex = (currentIndex + 1) % images.Length;
         coroutineAnimation = StartCoroutine(Animate());
+
     }
 
     private IEnumerator Animate()
@@ -55,6 +59,7 @@ public class ImageSlider : MonoBehaviour
         for (int i = 0; i < images.Length; i++)
             images[i].anchoredPosition = target[i];
 
+        movingWallwithPaintingManager.CheckWinPuzzle();
         isAnimating = false;
     }
 

@@ -12,11 +12,26 @@ public class PlayerBehaviour : MonoBehaviour
     [Header("Sensitivity Settings")]
     [SerializeField] private float gamepadSensitivity = 100f;
     [SerializeField] private float mouseSensitivity = 10f;
+    private Vector2 currentLookVelocity;
+    private Vector2 lookVelocityRef;
 
     [Header("Movement Settings")]
     [SerializeField] private float moveSpeed = 5f;
     private float gravity = -9.81f;
     [SerializeField] private float climbSpeed = 3f;
+    private Vector3 currentVelocity;
+
+    [SerializeField] private Transform leftLeg;
+    [SerializeField] private Transform rightLeg;
+
+    [SerializeField] private float stepUpY = 0f;
+    [SerializeField] private float stepDownY = -1f;
+
+    private float legMoveSpeed = 1.9f;
+    [SerializeField] private float minSpeedForStep = 0.1f;
+    private Coroutine walkRoutine;
+    private bool isMoving;
+
 
     [Header("Camera Settings")]
     [SerializeField] private Transform cameraTransform;
@@ -111,6 +126,8 @@ public class PlayerBehaviour : MonoBehaviour
     private ICorrectSixteenSymbols lastICorrectSixteenSymbols;
     private ITwoCrystalsPuzzle lastITwoCrystalsPuzzle;
     private IRotatingCirclePuzzle lastIRotatingCirclePuzzle;
+    private ITwelveDotsPuzzle lastITwelveDotsPuzzle;
+    private ILastPuzzle lastILastPuzzle;
 
     private CharacterController characterController;
     private Vector2 inputMovement;
@@ -120,9 +137,6 @@ public class PlayerBehaviour : MonoBehaviour
     private float cameraVerticalRotation = 0f;
     private Inventory playerInventory;
     private bool isClimbing = false;
-
-    private bool isApplyNiceWaterActive = false;
-    private bool isAngryTimeActive = false;
 
     [Header("Drunk Effect Settings")]
     [Tooltip("Jak bardzo kamera chwieje siê na boki. Powinna byæ to ma³a wartoœæ.")]
@@ -271,10 +285,14 @@ public class PlayerBehaviour : MonoBehaviour
     {
         if (lampLightGo.activeInHierarchy) return;
 
-        if (lampLight != null)
-        {
-            lampLight.enabled = !lampLight.enabled;
-        }
+        if (lampLight == null) return;
+
+        lampLight.enabled = !lampLight.enabled;
+
+        if (lampLight.enabled)
+            Services.Audio.PlaySFX("ToggleLampOn");
+        else
+            Services.Audio.PlaySFX("ToggleLampOff");
     }
 
     public void ToggleGlasses(InputAction.CallbackContext context)
@@ -459,6 +477,8 @@ public class PlayerBehaviour : MonoBehaviour
             lastICorrectSixteenSymbols?.EnterCorrectSixteenSymbolsPuzzle();
             lastITwoCrystalsPuzzle?.EnterTwoCrystalsPuzzle();
             lastIRotatingCirclePuzzle?.EnterRotatingCirclePuzzle();
+            lastITwelveDotsPuzzle?.EnterTwelveDotsPuzzle();
+            lastILastPuzzle?.EnterLastPuzzle();
 
             if (lastIOpenable != null && lastIOpenable.IsOpen())
             {
@@ -521,23 +541,38 @@ public class PlayerBehaviour : MonoBehaviour
         _playerCamera.fieldOfView = Mathf.Lerp(_playerCamera.fieldOfView, targetFOV, fovChangeSpeed * Time.deltaTime);
     }
 
+
+
     private void HandleMovement()
     {
-        if (disablePlayer) { return; }
-        if (isClimbing) { return; }
+        if (disablePlayer || isClimbing) return;
 
         Vector2 finalMoveInput = inputMovement;
         float finalMoveSpeed = moveSpeed;
 
+        //footstep sound logic
+        isMoving = inputMovement.sqrMagnitude > 0.01f;
+
         if (isDrunk)
         {
-            _smoothedDrunkMoveInput = Vector2.Lerp(_smoothedDrunkMoveInput, inputMovement, drunkMovementSmoothing * Time.deltaTime);
-            finalMoveInput = _smoothedDrunkMoveInput;
+            _smoothedDrunkMoveInput = Vector2.Lerp(
+                _smoothedDrunkMoveInput,
+                inputMovement,
+                drunkMovementSmoothing * Time.deltaTime
+            );
 
+            finalMoveInput = _smoothedDrunkMoveInput;
             finalMoveSpeed *= drunkMoveSpeedMultiplier;
+            legMoveSpeed *= drunkMoveSpeedMultiplier;
+        }
+        else
+        {
+            legMoveSpeed = 1.9f;
         }
 
-        Vector3 moveDirection = transform.right * finalMoveInput.x + transform.forward * finalMoveInput.y;
+        Vector3 moveDirection =
+            transform.right * finalMoveInput.x +
+            transform.forward * finalMoveInput.y;
 
         if (isDrunk)
         {
@@ -546,7 +581,79 @@ public class PlayerBehaviour : MonoBehaviour
             moveDirection += new Vector3(staggerX, 0, staggerZ);
         }
 
-        characterController.Move(finalMoveSpeed * Time.deltaTime * moveDirection);
+        Vector3 targetVelocity = moveDirection * finalMoveSpeed;
+
+        currentVelocity = Vector3.Lerp(
+            currentVelocity,
+            targetVelocity,
+            10f * Time.deltaTime
+        );
+
+        characterController.Move(currentVelocity * Time.deltaTime);
+        UpdateWalkCycle();
+    }
+
+    public void UpdateWalkCycle()
+    {
+        if (isMoving)
+        {
+            if (walkRoutine == null)
+                walkRoutine = StartCoroutine(WalkCycle());
+        }
+        else
+        {
+            if (walkRoutine != null)
+            {
+                StopCoroutine(walkRoutine);
+                walkRoutine = null;
+                ResetLegs();
+            }
+        }
+    }
+
+    private IEnumerator WalkCycle()
+    {
+        while (true)
+        {
+            yield return MoveLeg(leftLeg);
+            yield return MoveLeg(rightLeg);
+        }
+    }
+
+    private IEnumerator MoveLeg(Transform leg)
+    {
+        float y = stepUpY;
+
+        while (y > stepDownY)
+        {
+            float speedScale = Mathf.Max(currentVelocity.magnitude, minSpeedForStep);
+
+            y -= Time.deltaTime * legMoveSpeed * speedScale;
+            leg.localPosition = new Vector3(leg.localPosition.x, y, leg.localPosition.z);
+
+            yield return null;
+        }
+
+        leg.localPosition = new Vector3(leg.localPosition.x, stepDownY, leg.localPosition.z);
+        Services.Audio.PlayFootstep();
+
+        while (y < stepUpY)
+        {
+            float speedScale = Mathf.Max(currentVelocity.magnitude, minSpeedForStep);
+
+            y += Time.deltaTime * legMoveSpeed * speedScale;
+            leg.localPosition = new Vector3(leg.localPosition.x, y, leg.localPosition.z);
+
+            yield return null;
+        }
+
+        leg.localPosition = new Vector3(leg.localPosition.x, stepUpY, leg.localPosition.z);
+    }
+
+    private void ResetLegs()
+    {
+        leftLeg.localPosition = new Vector3(leftLeg.localPosition.x, stepUpY, leftLeg.localPosition.z);
+        rightLeg.localPosition = new Vector3(rightLeg.localPosition.x, stepUpY, rightLeg.localPosition.z);
     }
 
     private void HandleLook()
@@ -556,7 +663,12 @@ public class PlayerBehaviour : MonoBehaviour
 
         if (isDrunk)
         {
-            _smoothedDrunkLookInput = Vector2.Lerp(_smoothedDrunkLookInput, inputLook, drunkLookSmoothing * Time.deltaTime);
+            _smoothedDrunkLookInput = Vector2.Lerp(
+            _smoothedDrunkLookInput,
+            inputLook,
+            drunkLookSmoothing * Time.deltaTime
+        );
+
             finalLookInput = _smoothedDrunkLookInput;
 
             float swayX = Mathf.Sin(Time.time * drunkSwaySpeed) * drunkSwayAmount;
@@ -565,10 +677,18 @@ public class PlayerBehaviour : MonoBehaviour
             finalLookInput += new Vector2(swayX, swayY) * Time.deltaTime;
         }
 
-        float mouseX = finalLookInput.x;
+        currentLookVelocity = Vector2.SmoothDamp(
+        currentLookVelocity,
+        finalLookInput,
+        ref lookVelocityRef,
+        0.08f
+    );
+
+        float mouseX = currentLookVelocity.x;
+        float mouseY = currentLookVelocity.y;
+
         transform.Rotate(Vector3.up * mouseX);
 
-        float mouseY = finalLookInput.y;
         cameraVerticalRotation -= mouseY;
         cameraVerticalRotation = Mathf.Clamp(cameraVerticalRotation, minLookAngle, maxLookAngle);
 
@@ -655,6 +775,8 @@ public class PlayerBehaviour : MonoBehaviour
         lastICorrectSixteenSymbols = null;
         lastITwoCrystalsPuzzle = null;
         lastIRotatingCirclePuzzle = null;
+        lastITwelveDotsPuzzle = null;
+        lastILastPuzzle = null;
 
         bool hitBlock = Physics.Raycast(ray, out RaycastHit blockHit, raycastRange, blockRaycastLayer);
         bool hitInteractable = Physics.Raycast(ray, out RaycastHit hit, raycastRange, interactableLayer);
@@ -882,7 +1004,13 @@ public class PlayerBehaviour : MonoBehaviour
                     case InteractableItem.InteractableType.RotatingCirclePuzzle:
                         lastIRotatingCirclePuzzle = interactableObject;
                         break;
-                        
+                    case InteractableItem.InteractableType.TwelveDotsPuzzle:
+                        lastITwelveDotsPuzzle = interactableObject;
+                        break;
+                    case InteractableItem.InteractableType.LastPuzzle:
+                        lastILastPuzzle = interactableObject;
+                        break;
+
                 }
             }
 
@@ -1011,6 +1139,7 @@ public class PlayerBehaviour : MonoBehaviour
         gamepadSensitivity /= 2f;
         mouseSensitivity /= 2f;
         moveSpeed /= 2f;
+        legMoveSpeed /= 2f;
 
         float transitionDuration = acidEffectChangeSpeed;
         float elapsedTime = 0f;
@@ -1037,6 +1166,7 @@ public class PlayerBehaviour : MonoBehaviour
         gamepadSensitivity = originalGamepadSensitivity;
         mouseSensitivity = originalMouseSensitivity;
         moveSpeed = originalMoveSpeed;
+        legMoveSpeed = 1.9f;
 
         elapsedTime = 0f;
         startSaturation = _colorAdjustmentsEffect.saturation.value;
@@ -1084,6 +1214,7 @@ public class PlayerBehaviour : MonoBehaviour
 
         climbSpeed *= 2f;
         moveSpeed *= 2f;
+        legMoveSpeed *= 2f;
 
         float transitionTime = 1f;
         float timer = 0f;
@@ -1121,6 +1252,7 @@ public class PlayerBehaviour : MonoBehaviour
 
         climbSpeed = originalClimbSpeed;
         moveSpeed = originalMoveSpeed;
+        legMoveSpeed = 1.9f;
 
         activeNiceWaterCoroutine = null;
 
@@ -1256,6 +1388,7 @@ public class PlayerBehaviour : MonoBehaviour
         Services.Audio.PlaySFX("MagicAfterDrink");
         isFlying = true;
         velocity.y = 0;
+        legMoveSpeed = 0f;
 
         float timer = 0f;
 
@@ -1270,6 +1403,7 @@ public class PlayerBehaviour : MonoBehaviour
 
         isFlying = false;
         activeAngryTimeCoroutine = null;
+        legMoveSpeed = 1.9f;
     }
     #endregion
 

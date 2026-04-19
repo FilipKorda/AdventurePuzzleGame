@@ -76,6 +76,7 @@ public class TwoCrystalsGridManager : MonoBehaviour
     [SerializeField] private TwoCrystalsPuzzle twoCrystalsPuzzle;
     [SerializeField] private BoxCollider enterPuzzleBoxCollider;
     [SerializeField] private TrapDoorVerticalManager trapDoorVerticalManager;
+    [SerializeField] private OpenTrapDoorsManager openTrapDoorsManager;
 
     [Header("Pillar")]
     [SerializeField] private GameObject pillar;
@@ -148,10 +149,10 @@ public class TwoCrystalsGridManager : MonoBehaviour
 
     private void Update()
     {
-       /* if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.P))
         {
             WinPuzzle();
-        }*/
+        }
     }
 
     private void WinPuzzle()
@@ -159,6 +160,7 @@ public class TwoCrystalsGridManager : MonoBehaviour
         DisableAllColliders();
         Services.Audio.PlaySFX("SafeWinAkaPuzzleWin");
         twoCrystalsPuzzle.ExitAfterWin();
+        openTrapDoorsManager.OpenAnimation();
         StartCoroutine(MovePillarDown());
     }
 

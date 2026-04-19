@@ -106,7 +106,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject leftPaper;
     [Header("Right Paper")]
     [SerializeField] private GameObject rightPaper;
-
+    [Header("Painting Book Panel")]
+    [SerializeField] private GameObject paintingBookPanel;
 
     public void EnableWoodenPuzzlePanel()
     {
@@ -389,6 +390,7 @@ public class UIManager : MonoBehaviour
         arrowDIrectionPapirus.SetActive(false);
         leftPaper.SetActive(false);
         rightPaper.SetActive(false);
+        paintingBookPanel.SetActive(false);
     }
 
     private void InspectObejct(InputAction.CallbackContext context)
@@ -564,10 +566,30 @@ public class UIManager : MonoBehaviour
             case ItemID.PaperRight:
                 ReadRightPaperPanel();
                 break;
+
+            case ItemID.PaintingBook:
+                ReadPaintingBookPanelPanel();
+                break;
         }
 
         Services.Audio.PlaySFX("ReadBook");
     }
+
+
+    private void ReadPaintingBookPanelPanel()
+    {
+        bool isOpen = paintingBookPanel.activeSelf;
+        paintingBookPanel.SetActive(!isOpen);
+        if (!isOpen)
+        {
+            paintingBookPanel.SetActive(true);
+        }
+        else
+        {
+            paintingBookPanel.SetActive(false);
+        }
+    }
+
 
     private void ReadLeftPaperPanel()
     {
@@ -873,7 +895,15 @@ public class UIManager : MonoBehaviour
     private void UseConsumableItem(int itemId)
     {
         DisableDrinkOrEatPanel();
-        Services.Audio.PlaySFX("Drink");
+
+        if (itemId == 24 || itemId == 37)
+        {
+            Services.Audio.PlaySFX("Eat");
+        }
+        else
+        {
+            Services.Audio.PlaySFX("Drink");
+        }
         Inventory.Instance.RemoveItemFromInventoryByID(itemId);
         RemoveItemFromUIByID(itemId);
     }
@@ -885,7 +915,7 @@ public class UIManager : MonoBehaviour
             || papytusPuzzleWoodenPuzzleSolve.activeInHierarchy || blurCanvas.gameObject.activeInHierarchy
             || safeCodePuzzle.activeInHierarchy || glassesOn || papyrusVerticalPuzzle.activeInHierarchy ||
             cardSymbolsPapirus.activeInHierarchy || arrowDIrectionPapirus.activeInHierarchy || leftPaper.activeInHierarchy
-            || rightPaper.activeInHierarchy)
+            || rightPaper.activeInHierarchy || paintingBookPanel.activeInHierarchy)
         {
             Debug.Log("Nie mo¿na wyrzuciæ przedmiotu podczas przegl¹dania czytanej strony.");
             return;

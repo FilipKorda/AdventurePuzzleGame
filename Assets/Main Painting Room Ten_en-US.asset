@@ -60,6 +60,36 @@ MonoBehaviour:
       weight of defeat, eyes like closed doors, a heart dragging downward.'
     m_Metadata:
       m_Items: []
+  - m_Id: 1565306839650304
+    m_Localized: 'A warrior can find various ways to resolve a fight.
+
+      
+
+      One
+      tool operates quietly and close, where precision and concealment are key. Another
+      tool requires neither concealment, finesse, nor reach. Another is light and
+      guided by the blade, allowing for control of the encounter through movement
+      and technique. Still others reach far before the enemy can approach, relying
+      on distance and patience.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1567845387620352
+    m_Localized: 'There are four signs, each one saying something different about...
+
+      
+
+      One
+      attracts attention with its warm and bright color, as if carrying the light
+      of dawn and peaceful hope. The second is dark and heavy to the eye, evoking
+      mystery and something that doesn''t always have a happy meaning. The third
+      is simple and common, encountered frequently, without any particular distinction,
+      familiar to everyone. The fourth has no color, only a simple form of life,
+      as if lacking something that usually catches the eye.
+
+      Only one of them
+      combines brightness and delicacy in a way that sets it apart from the rest.'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

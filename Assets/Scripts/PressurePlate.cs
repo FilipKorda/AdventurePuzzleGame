@@ -13,6 +13,11 @@ public class PressurePlate : MonoBehaviour
     public bool wasPressed { get; private set; } = false;
     public PresurePlateManager manager;
 
+    public bool isPresureDissabled = false;
+
+    private bool stayPressed = false;
+
+
     void Awake()
     {
         startPos = transform.localPosition;
@@ -21,21 +26,28 @@ public class PressurePlate : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        if (isPresureDissabled) return;
         if (!other.CompareTag("Untagged")) return;
+        if (wasPressed) return;
 
         wasPressed = true;
+        stayPressed = true;
         targetPos = startPos + Vector3.down * pressDepth;
         StartMove();
         manager.PlatePressed(this);
     }
 
+
     void OnTriggerExit(Collider other)
     {
+        if (isPresureDissabled) return;
         if (!other.CompareTag("Untagged")) return;
+        if (stayPressed) return;
 
         targetPos = startPos;
         StartMove();
     }
+
 
     void StartMove()
     {
@@ -64,9 +76,11 @@ public class PressurePlate : MonoBehaviour
     {
         StartCoroutine(DisableCollider());
         wasPressed = false;
+        stayPressed = false;
         targetPos = startPos;
         StartMove();
     }
+
 
     private IEnumerator DisableCollider()
     {

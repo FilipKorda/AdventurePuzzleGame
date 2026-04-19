@@ -1,0 +1,4 @@
+interface ILastPuzzle 
+{
+    void EnterLastPuzzle();
+}

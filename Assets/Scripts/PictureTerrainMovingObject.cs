@@ -46,17 +46,19 @@ public class PictureTerrainMovingObject : MonoBehaviour
 
     void OnDragHoldStarted(InputAction.CallbackContext ctx)
     {
+        if (!isSelected) return;
         SetClickAndDrag(true);
     }
 
     void OnDragHoldCanceled(InputAction.CallbackContext ctx)
     {
+        if (!isSelected) return;
         SetClickAndDrag(false);
     }
 
     void OnDragDelta(InputAction.CallbackContext context)
     {
-        if (!ActivePuzzle)
+        if (!ActivePuzzle || !isSelected)
             return;
 
         if (!holdingPPM || !isSelected)

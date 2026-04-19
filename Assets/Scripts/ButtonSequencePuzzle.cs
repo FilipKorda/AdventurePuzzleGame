@@ -15,6 +15,15 @@ public class ButtonSequencePuzzle : MonoBehaviour
     [SerializeField] private WallTrapdoorsManager wallTrapdoorsManager;
     [SerializeField] private WallTrapdoorsManager wallTrapdoorsManager1;
 
+
+    private void Update()
+    {
+       /* if (Input.GetKeyDown(KeyCode.L))
+        {
+            WinPuzzle();
+        }*/
+    }
+
     public void PressButton(int buttonId)
     {
         if (sequence[index] == buttonId)
@@ -34,9 +43,8 @@ public class ButtonSequencePuzzle : MonoBehaviour
 
     private void WinPuzzle()
     {
-        Debug.Log("WinPuzzle");
-        Services.Audio.PlaySFX("SafeWinAkaPuzzleWin");
         MovePilalrDown();
+        Services.Audio.PlaySFX("SafeWinAkaPuzzleWin");
     }
 
     private void ResetPuzzle()

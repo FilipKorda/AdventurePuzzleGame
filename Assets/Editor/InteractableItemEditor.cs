@@ -142,6 +142,7 @@ public class InteractableItemEditor : Editor
     private SerializedProperty twoCrystalsPuzzle;
     private SerializedProperty rotatingCirclePuzzle;
     private SerializedProperty twelveDotPuzzle;
+    private SerializedProperty lastPuzzle;
 
 
     private void OnEnable()
@@ -287,6 +288,7 @@ public class InteractableItemEditor : Editor
         twoCrystalsPuzzle = serializedObject.FindProperty("twoCrystalsPuzzle");
         rotatingCirclePuzzle = serializedObject.FindProperty("rotatingCirclePuzzle");
         twelveDotPuzzle = serializedObject.FindProperty("twelveDotPuzzle");
+        lastPuzzle = serializedObject.FindProperty("lastPuzzle");
 
     }
 
@@ -629,7 +631,9 @@ public class InteractableItemEditor : Editor
             case InteractableItem.InteractableType.TwelveDotsPuzzle:
                 EditorGUILayout.PropertyField(twelveDotPuzzle, new GUIContent("Twelve Dot Puzzle"));
                 break;
-
+            case InteractableItem.InteractableType.LastPuzzle:
+                EditorGUILayout.PropertyField(lastPuzzle, new GUIContent("Last Puzzle"));
+                break;
                 
         }
 

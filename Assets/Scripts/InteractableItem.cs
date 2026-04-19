@@ -12,7 +12,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     IBlockButton, INinePadPanel, ICircleAndSquarePuzzle, IRotateCircleAndSquarePuzzle, IPlayerSphereMovement, ILibraryButton,
     ISafe, IBraiser, IFramePuzzle, IWallSwitchOnOff, IPlaceOnScale, IBriefcase, IMovingBlockBriefcase, IPaintingMove,
     IPlacePillarSymbol, IPillarMoveSphere, IRotatingPillar, IRotateOnePillar, IMoveSphereOnePillarPuzzle, IPictureTerrainObject,
-    ICoverAllSquarePuzzle, ICorrectSixteenSymbols, ITwoCrystalsPuzzle, IRotatingCirclePuzzle, ITwelveDotsPuzzle
+    ICoverAllSquarePuzzle, ICorrectSixteenSymbols, ITwoCrystalsPuzzle, IRotatingCirclePuzzle, ITwelveDotsPuzzle, ILastPuzzle
 {
     public enum InteractableType
     {
@@ -72,7 +72,8 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         CorrectSixteenSymbols,
         TwoCrystalsPuzzle,
         RotatingCirclePuzzle,
-        TwelveDotsPuzzle
+        TwelveDotsPuzzle,
+        LastPuzzle
     }
 
     public InteractableType interactableType;
@@ -326,6 +327,8 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     [SerializeField] private RotatingCirclePuzzle rotatingCirclePuzzle;
     [Header("Twelve Dots Puzzle]")]
     [SerializeField] private TwelveDotPuzzle twelveDotPuzzle;
+    [Header("Last Puzzle]")]
+    [SerializeField] private LastPuzzle lastPuzzle;
 
     private void Awake()
     {
@@ -341,11 +344,17 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
 
     }
 
+    public void EnterLastPuzzle()
+    {
+        CursorController.Instance.SetGameMode(new LastPuzzleGameMode());
+        lastPuzzle.EnterPuzzle();
+    }
+
     public void EnterTwelveDotsPuzzle()
     {
         CursorController.Instance.SetGameMode(new TwelveDotsPuzzleGameMode());
         twelveDotPuzzle.EnterPuzzle();
-       
+
     }
 
     public void EnterRotatingCirclePuzzle()
@@ -600,7 +609,6 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     public void EnterSafe()
     {
         safePuzzle.EnterPuzzleMode();
-        Debug.Log("enter safe");
     }
 
     public void PressLibraryButton()
@@ -620,7 +628,6 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     {
         if (rotateCircleAndSquarePuzzle) return;
         StartCoroutine(CourutineRotateCircleAndSquarePuzzle());
-        Debug.Log("Obrócono element Circle and Square Puzzle!");
     }
 
     public IEnumerator CourutineRotateCircleAndSquarePuzzle()
@@ -933,20 +940,17 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     public void EnterWoddenBlockPuzzle()
     {
         woodenBlockPuzzle.EnterWoodenPuzzleMode();
-        Debug.Log("Wchodzis do wodden block puzzle!");
     }
 
     public void PushFurniture()
     {
         movableBlock.TakeControlOfTheThiBlock();
 
-        Debug.Log("pchnij mebel");
     }
 
     public void EnterPipeGearPuzzleMode()
     {
         pipeGearPuzzle.EnterGearLockMode();
-        Debug.Log("Wszed³eœ w tryb Pipe Gear Mode!");
     }
 
     public void RotateGear90()
@@ -957,7 +961,6 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         Services.Audio.PlaySFX("GearTick");
         currentGear90Index = (currentGear90Index + 1) % 4;
 
-        Debug.Log(gameObject.name + "Current Gear Index: " + currentGear90Index);
 
         StartCoroutine(RotateGear90Smoothly());
     }
@@ -1038,14 +1041,12 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     public void EnterGearLock()
     {
         gearLockMode.EnterGearLockMode();
-        Debug.Log("Wszed³eœ w tryb Gear Mode!");
     }
 
     public void EnterTheMirrorMode()
     {
         mirror.EnableControl();
 
-        Debug.Log("Wszed³eœ w tryb lustra!");
     }
 
     public void RotateCryptex()
@@ -1242,6 +1243,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
             WallKeypad.Instance.EnterPinNumber();
 
         }
+        Services.Audio.PlaySFX("ClickPinNumber");
     }
 
     public void HighlightButton()
@@ -1317,6 +1319,9 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
 
             ActiveCrafting();
         }
+
+
+        Services.Audio.PlaySFX("PlaceObject");
 
         if (craftedSomething)
             Debug.Log("umieszczono obiekt do kraftowania");

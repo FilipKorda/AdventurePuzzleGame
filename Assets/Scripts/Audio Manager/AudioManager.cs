@@ -14,6 +14,8 @@ public class AudioManager : MonoBehaviour, IAudioService
     Dictionary<string, AudioClip> soundMap;
     Dictionary<string, ProximityAudio> activeLoopSources = new();
 
+    List<AudioClip> footstepClips;
+
     const string MusicVolumeKey = "MusicVolume";
     const string SFXVolumeKey = "SFXVolume";
 
@@ -65,8 +67,14 @@ public class AudioManager : MonoBehaviour, IAudioService
         if (soundMap != null) return;
 
         soundMap = new Dictionary<string, AudioClip>();
+        footstepClips = new List<AudioClip>();
         foreach (var s in sounds)
+        {
             soundMap[s.Id] = s.Clip;
+
+            if (s.Category == SoundCategory.Footstep)
+                footstepClips.Add(s.Clip);
+        }
     }
 
     public void PlayMusic(string id)
@@ -167,5 +175,16 @@ public class AudioManager : MonoBehaviour, IAudioService
     {
         EnsureSources();
         return sfxSource.volume;
+    }
+
+    public void PlayFootstep()
+    {
+        if (footstepClips == null || footstepClips.Count == 0) return;
+
+        AudioClip clip = footstepClips[Random.Range(0, footstepClips.Count)];
+
+        sfxSource.pitch = Random.Range(0.97f, 1.02f);
+        sfxSource.volume = GetSFXVolume();
+        sfxSource.PlayOneShot(clip);
     }
 }
