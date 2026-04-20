@@ -64,7 +64,7 @@ public class WoodenBlockPuzzle : MonoBehaviour
         woodenCreate.enabled = true;
         gameObject.SetActive(false);
         playerBehaviour.disableOnlyMovement = false;
-        UIManager.Instance.DisableWoodenPuzzlePanel();
+        UIManager.Instance.DisableSharedPanelText();
     }
 
     public void PuzzleWon()

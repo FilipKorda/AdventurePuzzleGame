@@ -104,7 +104,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 9166761536802816
-    m_Localized: Potrzebujesz tetminal
+    m_Localized: Potrzebujesz Terminalu
     m_Metadata:
       m_Items: []
   - m_Id: 11473856986632192
@@ -319,6 +319,45 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 26685760868732928
     m_Localized: '-'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27788200116506624
+    m_Localized: "Kliknij przycisk jak jeste\u015B pewny \u017Ce dobrze wpisa\u0142e\u015B
+      kod\r\n\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27841239883993088
+    m_Localized: "[PPM] Otw\xF3rz/Zamknij t\u0105 ksi\u0105\u017Ck\u0119\n[Q E] Nast\u0119pna
+      strona"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27844950584741888
+    m_Localized: "[PPM] Otw\xF3rz/Zamknij ten papirus"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27853001677099008
+    m_Localized: "[PPM] Otw\xF3rz/Zamknij ksi\u0105\u017Cke"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27857162942566400
+    m_Localized: "[LPM] \u017Beby zaznaczy\u0107"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27857690263048192
+    m_Localized: "[LPM]  \u017Beby obraca\u0107"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27858078009675776
+    m_Localized: "Trzymaj [LPM] \u017Ceby przesun\u0105\u0107 obiekt"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27861166191824896
+    m_Localized: "[A] Obr\xF3\u0107 w lewo\n[D] Obr\xF3\u0107 w prawo"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27862152557907968
+    m_Localized: "Trzymaj [LPM] \u017Ceby ruszy\u0107\nNaci\u015Bnij [LPM] \u017Ceby
+      obr\xF3ci\u0107"
     m_Metadata:
       m_Items: []
   references:

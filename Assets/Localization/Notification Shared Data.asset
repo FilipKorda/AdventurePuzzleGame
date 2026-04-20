@@ -277,6 +277,42 @@ MonoBehaviour:
     m_Key: ForbiddenBooks
     m_Metadata:
       m_Items: []
+  - m_Id: 27788200116506624
+    m_Key: Huge Cryptex Hint
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27841239883993088
+    m_Key: OpenMorseAndGlifsBook
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27844950584741888
+    m_Key: OpenPapyrus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27853001677099008
+    m_Key: OpenBook
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27857162942566400
+    m_Key: LPMToSelect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27857690263048192
+    m_Key: LPMToRotateObject
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27858078009675776
+    m_Key: HoldLPMMouseToMoveObject
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27861166191824896
+    m_Key: SafeRotateCode
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27862152557907968
+    m_Key: CircleAndSquarePuzzleHint
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

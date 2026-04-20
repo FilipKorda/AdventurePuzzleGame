@@ -352,6 +352,48 @@ MonoBehaviour:
     m_Localized: '-'
     m_Metadata:
       m_Items: []
+  - m_Id: 27788200116506624
+    m_Localized: Click the button if you are sure you entered the code correctly
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27841239883993088
+    m_Localized: '[PPM] Open/Close this book
+
+      [Q E] Next page'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27844950584741888
+    m_Localized: '[PPM] Open/Close this papyrus'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27853001677099008
+    m_Localized: '[PPM] Open/Close Book'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27857162942566400
+    m_Localized: '[LPM] To Select'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27857690263048192
+    m_Localized: '[LPM] To Rotate'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27858078009675776
+    m_Localized: Hold [LPM] to move object
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27861166191824896
+    m_Localized: '[A] Rotate Left
+
+      [D] Rotate Right'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27862152557907968
+    m_Localized: 'Hold [LPM] to move
+
+      Press [LPM] to Rotate'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

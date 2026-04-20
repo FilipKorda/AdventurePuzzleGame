@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Localization;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
@@ -69,21 +70,27 @@ public class UIManager : MonoBehaviour
     [SerializeField] private InputActionReference inspectObjectInput;
     [SerializeField] private InspectSymbolObject inspectSymbolObject;
 
-    [Header("Mirror UI")]
-    [SerializeField] private GameObject mirrorInputPanel;
+    [Header("Shared Hint Panel")]
+    [SerializeField] private GameObject infoPanel;
+    [SerializeField] private TextMeshProUGUI infoText;
+    private LocalizedString currentLocalizedString;
+    [Header("Shared Texts")]
+    [SerializeField] private LocalizedString mirrorPanelText;
+    [SerializeField] private LocalizedString drinkOrEatText;
+    [SerializeField] private LocalizedString gearModePanelText;
+    [SerializeField] private LocalizedString furnitureVerticalText;
+    [SerializeField] private LocalizedString furnitureHorizontalText;
+    [SerializeField] private LocalizedString woodenPuzzleText;
+    [SerializeField] private LocalizedString openSelectedObject;
+    [SerializeField] private LocalizedString openSelectedPapyrusObject;
+    [SerializeField] private LocalizedString morseCodeText;
+    [SerializeField] private LocalizedString lPMToClickText;
+    [SerializeField] private LocalizedString lPMToRotateText;
+    [SerializeField] private LocalizedString holdLPMMouseToMoveObject;
+    [SerializeField] private LocalizedString safeRotateCodeText;
+    [SerializeField] private LocalizedString circleAndSquarePuzzleHintText;
 
-    [Header("Drink Or Eat UI")]
-    [SerializeField] private GameObject drinkOrEatPanel;
-
-    [Header("Gear Mode Panel")]
-    [SerializeField] private GameObject gearModePanel;
-
-    [Header("Furniture Mode Panel")]
-    [SerializeField] private GameObject furnitureVertivalModePanel;
-    [SerializeField] private GameObject furnitureHorizontalModePanel;
-
-    [Header("Wooden Puzzle panel")]
-    [SerializeField] private GameObject woodenPuzzlePanel;
+    [Header("Papytus Puzzle Wooden Puzzle Solve")]
     [SerializeField] private GameObject papytusPuzzleWoodenPuzzleSolve;
 
     [Header("Triangle Puzzle")]
@@ -109,64 +116,115 @@ public class UIManager : MonoBehaviour
     [Header("Painting Book Panel")]
     [SerializeField] private GameObject paintingBookPanel;
 
-    public void EnableWoodenPuzzlePanel()
+    public void ShowPanel(LocalizedString localizedString)
     {
-        woodenPuzzlePanel.SetActive(true);
+        if (localizedString == null) return;
+
+        UnregisterCurrentLocalizedString();
+
+        currentLocalizedString = localizedString;
+        currentLocalizedString.StringChanged += UpdateLocalizedText;
+
+        infoPanel.SetActive(true);
+        currentLocalizedString.RefreshString();
     }
 
-    public void DisableWoodenPuzzlePanel()
+    private void HidePanel()
     {
-        woodenPuzzlePanel.SetActive(false);
+        UnregisterCurrentLocalizedString();
+
+        infoPanel.SetActive(false);
+        infoText.text = string.Empty;
+    }
+
+    private void UpdateLocalizedText(string value)
+    {
+        infoText.text = value;
+    }
+
+    private void UnregisterCurrentLocalizedString()
+    {
+        if (currentLocalizedString != null)
+        {
+            currentLocalizedString.StringChanged -= UpdateLocalizedText;
+            currentLocalizedString = null;
+        }
+    }
+
+    public void DisableSharedPanelText()
+    {
+        HidePanel();
+    }
+
+
+    public void EnableCircleAndSquarePuzzleHintPanel()
+    {
+        ShowPanel(circleAndSquarePuzzleHintText);
+    }
+
+    public void EnableSafeRotateCodeTextPanel()
+    {
+        ShowPanel(safeRotateCodeText);
+    }
+
+    public void EnableHoldLPMMPanel()
+    {
+        ShowPanel(holdLPMMouseToMoveObject);
+    }
+
+    public void EnablePapyrusPanel()
+    {
+        ShowPanel(openSelectedPapyrusObject);
+    }
+
+    public void EnableLpmToClickPanel()
+    {
+        ShowPanel(lPMToClickText);
+    }
+
+    public void EnableLpmToRotatePanel()
+    {
+        ShowPanel(lPMToRotateText);
+    }
+
+    public void EnableMorseAndGlifsBookPanel()
+    {
+        ShowPanel(morseCodeText);
+    }
+
+    public void EnableBookPanel()
+    {
+        ShowPanel(openSelectedObject);
+    }
+
+    public void EnableWoodenPuzzlePanel()
+    {
+        ShowPanel(woodenPuzzleText);
     }
 
     public void EnableVerticalFurnitureModePanel()
     {
-        furnitureVertivalModePanel.SetActive(true);
-    }
-
-    public void DisableVerticalFurnitureModePanel()
-    {
-        furnitureVertivalModePanel.SetActive(false);
+        ShowPanel(furnitureVerticalText);
     }
 
     public void EnableHorizontalFurnitureModePanel()
     {
-        furnitureHorizontalModePanel.SetActive(true);
-    }
-
-    public void DisableHorizontalFurnitureModePanel()
-    {
-        furnitureHorizontalModePanel.SetActive(false);
+        ShowPanel(furnitureHorizontalText);
     }
 
     public void EnableGearModePanel()
     {
-        gearModePanel.SetActive(true);
-    }
-
-    public void DisableGearModePanel()
-    {
-        gearModePanel.SetActive(false);
+        ShowPanel(gearModePanelText);
     }
 
     public void EnableDrinkOrEatPanel()
     {
-        drinkOrEatPanel.SetActive(true);
-    }
-
-    public void DisableDrinkOrEatPanel()
-    {
-        drinkOrEatPanel.SetActive(false);
+        ShowPanel(drinkOrEatText);
     }
 
     public void EnableMirrorInputPanel()
     {
-        mirrorInputPanel.SetActive(true);
-    }
-
-    public void DisableMirrorInputPanel()
-    {
-        mirrorInputPanel.SetActive(false);
+        ShowPanel(mirrorPanelText);
     }
 
     public void ShowMetalCrabImage()
@@ -384,13 +442,14 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         morseAndGlifsBook.SetActive(false);
-        drinkOrEatPanel.SetActive(false);
         papytusPuzzleWoodenPuzzleSolve.SetActive(false);
         cardSymbolsPapirus.SetActive(false);
         arrowDIrectionPapirus.SetActive(false);
         leftPaper.SetActive(false);
         rightPaper.SetActive(false);
         paintingBookPanel.SetActive(false);
+
+        DisableSharedPanelText();
     }
 
     private void InspectObejct(InputAction.CallbackContext context)
@@ -558,15 +617,12 @@ public class UIManager : MonoBehaviour
             case ItemID.ArrowDirectionPuzzles:
                 ReadArrowDirectionPanel();
                 break;
-
             case ItemID.PaperLeft:
                 ReadLeftPaperPanel();
                 break;
-
             case ItemID.PaperRight:
                 ReadRightPaperPanel();
                 break;
-
             case ItemID.PaintingBook:
                 ReadPaintingBookPanelPanel();
                 break;
@@ -894,7 +950,7 @@ public class UIManager : MonoBehaviour
 
     private void UseConsumableItem(int itemId)
     {
-        DisableDrinkOrEatPanel();
+        DisableSharedPanelText();
 
         if (itemId == 24 || itemId == 37)
         {
@@ -911,7 +967,7 @@ public class UIManager : MonoBehaviour
     private void OnDropItemPerformed(InputAction.CallbackContext context)
     {
         if (readableAndInteractablePanel != null && readableAndInteractablePanel.gameObject.activeInHierarchy
-            || gameModeLockPickPanel.activeInHierarchy || morseAndGlifsBook.activeInHierarchy || gearModePanel.activeInHierarchy
+            || gameModeLockPickPanel.activeInHierarchy || morseAndGlifsBook.activeInHierarchy
             || papytusPuzzleWoodenPuzzleSolve.activeInHierarchy || blurCanvas.gameObject.activeInHierarchy
             || safeCodePuzzle.activeInHierarchy || glassesOn || papyrusVerticalPuzzle.activeInHierarchy ||
             cardSymbolsPapirus.activeInHierarchy || arrowDIrectionPapirus.activeInHierarchy || leftPaper.activeInHierarchy
@@ -921,7 +977,7 @@ public class UIManager : MonoBehaviour
             return;
         }
 
-        DisableDrinkOrEatPanel();
+        DisableSharedPanelText();
 
         int currentSelectedId = GetSelectedItemId();
         if (currentSelectedId != 0)
@@ -971,7 +1027,7 @@ public class UIManager : MonoBehaviour
             {
                 if (i == selectedItemId)
                 {
-                    DisableDrinkOrEatPanel();
+                    DisableSharedPanelText();
 
                     itemSlots[i].SetHighlighted(false);
                     Destroy(itemSlots[i].gameObject);
@@ -1099,7 +1155,7 @@ public class UIManager : MonoBehaviour
             if (itemNameText != null)
                 itemNameText.text = string.Empty;
 
-            DisableDrinkOrEatPanel();
+            DisableSharedPanelText();
             return;
         }
 
@@ -1118,9 +1174,28 @@ public class UIManager : MonoBehaviour
         ItemID id = (ItemID)itemSlots[selectedItemId].GetItemId();
 
         if (IsConsumable(id))
+        {
             EnableDrinkOrEatPanel();
+        }
+        else if (id == ItemID.MorseAndGlifsBook)
+        {
+            EnableMorseAndGlifsBookPanel();
+        }
+        else if (id == ItemID.PaintingBook)
+        {
+            EnableBookPanel();
+        }
+        else if (id == ItemID.Papyrus || id == ItemID.PapyrusTrianglePuzzle || id == ItemID.SafeCode ||
+            id == ItemID.PapyrusVerticalPuzzle || id == ItemID.CardSymbolsPapirus || id == ItemID.ArrowDirectionPuzzles ||
+            id == ItemID.PaperLeft || id == ItemID.PaperRight)
+        {
+            EnablePapyrusPanel();
+        }
         else
-            DisableDrinkOrEatPanel();
+        {
+            DisableSharedPanelText();
+        }
+
 
         Debug.Log($"Zaznaczono element: {itemSlots[selectedItemId].GetItemName()} (ItemID: {itemSlots[selectedItemId].GetItemId()})");
     }

@@ -85,11 +85,11 @@ public class MovableBlock : MonoBehaviour
 
         if (direction == BlockDirection.Vertical)
         {
-            UIManager.Instance.DisableVerticalFurnitureModePanel();
+            UIManager.Instance.DisableSharedPanelText();
         }
         else
         {
-            UIManager.Instance.DisableHorizontalFurnitureModePanel();
+            UIManager.Instance.DisableSharedPanelText();
         }
         Debug.Log("Player leave control of the block.");
     }

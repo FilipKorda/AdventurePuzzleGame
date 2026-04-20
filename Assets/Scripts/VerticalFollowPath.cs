@@ -196,6 +196,14 @@ public class VerticalFollowPath : MonoBehaviour
         yield return new WaitForSeconds(stopTime);
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            PlaySequence();
+        }
+    }
+
     public void PlaySequence()
     {
         if (sequenceRunning)
@@ -235,6 +243,6 @@ public class VerticalFollowPath : MonoBehaviour
 
         yield return MoveBothAndWait(3, 2);
 
-        yield return MoveEntireLineAndWait(false, false);
+        yield return MoveEntireLineAndWait(true, true);
     }
 }

@@ -31,8 +31,6 @@ public class ClickDragGameMode : ICursorGameMode
 
     public void OnClickInput(InputAction.CallbackContext context)
     {
-        if (!context.performed) return;
-
         if (controller.HasHit)
         {
             selectedObject = controller.CurrentHit.transform;
@@ -52,6 +50,12 @@ public class ClickDragGameMode : ICursorGameMode
 
     public void OnDragInputStarted(InputAction.CallbackContext context)
     {
+        if (!controller.HasHit)
+        {
+            selectedObject = null;
+            StopAudio();
+        }
+
         if (selectedObject != null)
         {
             isDragging = true;
@@ -126,10 +130,10 @@ public class ClickDragGameMode : ICursorGameMode
         if (selectedObject.position != target)
         {
             selectedObject.position = target;
-            return true; 
+            return true;
         }
 
-        return false; 
+        return false;
     }
 
     private void StopAudio()

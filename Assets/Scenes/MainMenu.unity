@@ -925,7 +925,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 826c15312690d7148a67295d494e37d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GraphicSettings
-  fullscreenToggle: {fileID: 306314161}
 --- !u!114 &264741743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1600,7 +1599,7 @@ MonoBehaviour:
       - m_Target: {fileID: 264741742}
         m_TargetAssemblyTypeName: GraphicSettings, Assembly-CSharp
         m_MethodName: SetFullscreen
-        m_Mode: 6
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1609,7 +1608,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_IsOn: 1
+  m_IsOn: 0
 --- !u!1 &420700248
 GameObject:
   m_ObjectHideFlags: 0
