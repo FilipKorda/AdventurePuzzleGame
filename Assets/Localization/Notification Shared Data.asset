@@ -313,6 +313,10 @@ MonoBehaviour:
     m_Key: CircleAndSquarePuzzleHint
     m_Metadata:
       m_Items: []
+  - m_Id: 28288381748531200
+    m_Key: RewardAfterTwoBrothers
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

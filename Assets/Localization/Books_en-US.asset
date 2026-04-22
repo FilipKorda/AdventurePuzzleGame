@@ -145,7 +145,8 @@ MonoBehaviour:
   - m_Id: 25423997120565248
     m_Localized: "Sometimes red is the finish line and green is the start. \nSometimes
       all the squares must be connected. \nSometimes you need to clear a path to
-      the right place."
+      the right place.\nBut your main goal is that you have to find the alchemical
+      recipe in this room that will lead you to freedom."
     m_Metadata:
       m_Items: []
   - m_Id: 25791170112409600
