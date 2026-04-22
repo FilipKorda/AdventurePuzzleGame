@@ -19,32 +19,26 @@ MonoBehaviour:
     m_Items: []
   m_TableData:
   - m_Id: 6834900992
-    m_Localized: "Gdy ojciec oddawa\u0142 miecz rodowy, Abda ukl\u0119kn\u0105\u0142
-      i przysi\u0105g\u0142 strzec prawdy rodu a\u017C po \u015Bmier\u0107.\nAbdi
-      tylko si\u0119 u\u015Bmiechn\u0105\u0142 i rzek\u0142, \u017Ce honor jest ci\u0119\u017Carem
-      dla g\u0142upc\xF3w."
+    m_Localized: "W skrzyni znajduj\u0119 si\u0119 czaszka."
     m_Metadata:
       m_Items: []
   - m_Id: 1265163849728
-    m_Localized: "W bitwie pod Czarnym W\u0105wozem jeden z braci uciek\u0142 z pola
-      walki.\nAbdi oskar\u017Cy\u0142 Abd\u0119 o tch\xF3rzostwo, a Abda milcza\u0142."
+    m_Localized: "W skrzyni jest r\xF3g do picia."
     m_Metadata:
       m_Items: []
   - m_Id: 1722049384448
-    m_Localized: "Podczas uczty jeden z kielich\xF3w by\u0142 zatruty.\nAbdi zapewnia\u0142,
-      \u017Ce to Abda przygotowa\u0142 nap\xF3j, przysi\u0119gaj\u0105c na miecz
-      ojca."
+    m_Localized: "Na p\xF3\u0142ce z ksi\u0105\u017Ckami znajduj\u0105 sie tylko
+      ksi\u0105zki i 1 \u015Bwiecznik."
     m_Metadata:
       m_Items: []
   - m_Id: 2313643380736
-    m_Localized: "Starszyzna rodu zebra\u0142a si\u0119, by os\u0105dzi\u0107 sp\xF3r
-      braci.\nAbda przem\xF3wi\u0142 kr\xF3tko, lecz ka\u017Cde jego s\u0142owo by\u0142o
-      sp\xF3jne z wcze\u015Bniejszymi czynami."
+    m_Localized: "W celi wi\u0119ziennej znajduje sie skrzynia z tajemniczym kluczem
+      otwieraj\u0105cym drzwi."
     m_Metadata:
       m_Items: []
   - m_Id: 2677583138816
-    m_Localized: "Tej samej nocy jeden z braci opu\u015Bci\u0142 zamek.\nAbdi twierdzi\u0142,
-      \u017Ce to Abda uciek\u0142, zabieraj\u0105c rodowy sygnet."
+    m_Localized: "W ukrytym pomieszczeniu za rega\u0142em z ksi\u0105\u017Ckami znajduje
+      si\u0119 z\u0142oty kielich jedyny w swoim rodzaju."
     m_Metadata:
       m_Items: []
   references:

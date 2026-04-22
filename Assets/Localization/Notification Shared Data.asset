@@ -317,6 +317,22 @@ MonoBehaviour:
     m_Key: RewardAfterTwoBrothers
     m_Metadata:
       m_Items: []
+  - m_Id: 28658914730201088
+    m_Key: Find Shaphere Key
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28670327108423680
+    m_Key: PressFToInspect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28671640995123200
+    m_Key: PressFToWearGlasses
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28671770200657920
+    m_Key: PressFToUnwearGlasses
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

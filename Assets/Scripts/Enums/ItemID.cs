@@ -94,4 +94,5 @@ public enum ItemID
     SecondCrystal = 91,
     PuzzleCircleSymbol = 92,
     PaintingBook = 93,
+    PapytusCageOpen = 94
 }

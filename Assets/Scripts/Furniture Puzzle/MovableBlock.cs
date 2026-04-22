@@ -61,9 +61,6 @@ public class MovableBlock : MonoBehaviour
         {
             UIManager.Instance.EnableHorizontalFurnitureModePanel();
         }
-
-
-        Debug.Log("Player has taken control of the block.");
     }
 
     public void LeaveControlOfThisBlock()
@@ -91,7 +88,6 @@ public class MovableBlock : MonoBehaviour
         {
             UIManager.Instance.DisableSharedPanelText();
         }
-        Debug.Log("Player leave control of the block.");
     }
 
     private void OnMovableBlockPerformed(InputAction.CallbackContext context)
@@ -101,26 +97,31 @@ public class MovableBlock : MonoBehaviour
 
     private void MoveInput(InputAction.CallbackContext context)
     {
-        if (canMove && !isMoving)
+        if (!canMove || isMoving)
+            return;
+
+        Vector2 input = context.ReadValue<Vector2>();
+        Vector3 move = Vector3.zero;
+
+        if (direction == BlockDirection.Vertical)
         {
-            Vector3 move = Vector3.zero;
+            if (input.y > 0.5f)
+                move = Vector3.forward;
+            else if (input.y < -0.5f)
+                move = Vector3.back;
+        }
+        else if (direction == BlockDirection.Horizontal)
+        {
+            if (input.x > 0.5f)
+                move = Vector3.right;
+            else if (input.x < -0.5f)
+                move = Vector3.left;
+        }
 
-            if (direction == BlockDirection.Vertical)
-            {
-                if (Input.GetKey(KeyCode.W)) move = Vector3.forward;
-                else if (Input.GetKey(KeyCode.S)) move = Vector3.back;
-            }
-            else if (direction == BlockDirection.Horizontal)
-            {
-                if (Input.GetKey(KeyCode.D)) move = Vector3.right;
-                else if (Input.GetKey(KeyCode.A)) move = Vector3.left;
-            }
-
-            if (move != Vector3.zero && !IsObstacleInDirection(move))
-            {
-                Services.Audio.PlaySFX("FurnitureMove");
-                StartCoroutine(MoveBlockCoroutine(move * gridSize, 2.9f));
-            }
+        if (move != Vector3.zero && !IsObstacleInDirection(move))
+        {
+            Services.Audio.PlaySFX("FurnitureMove");
+            StartCoroutine(MoveBlockCoroutine(move * gridSize, 2.9f));
         }
     }
 

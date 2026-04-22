@@ -399,6 +399,24 @@ MonoBehaviour:
       the cage just went up and provided you with a mirror.
     m_Metadata:
       m_Items: []
+  - m_Id: 28658914730201088
+    m_Localized: Find Shaphere Key
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28670327108423680
+    m_Localized: 'Press [F] to Inspect Object
+
+      Move Mosue to rotate'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28671640995123200
+    m_Localized: Press [F] To Wear Glasses
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28671770200657920
+    m_Localized: Press [F] To Unwear Glasses
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

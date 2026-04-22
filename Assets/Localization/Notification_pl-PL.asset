@@ -365,6 +365,23 @@ MonoBehaviour:
       w\u0142a\u015Bnie posz\u0142a w g\xF3r\u0119 i udost\u0119pni\u0142a ci lustro."
     m_Metadata:
       m_Items: []
+  - m_Id: 28658914730201088
+    m_Localized: "Znajd\u017A szafirowy klucz"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28670327108423680
+    m_Localized: "Naci\u015Bnij [F] \u017Ceby zobaczy\u0107 przedmiot\nPrzesu\u0144
+      mysz \u017Ceby obr\xF3ci\u0107"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28671640995123200
+    m_Localized: "Naci\u015Bnij [F] \u017Ceby za\u0142o\u017Cy\u0107 okulary"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28671770200657920
+    m_Localized: "Naci\u015Bnij [F], aby zdj\u0105\u0107 okulary"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

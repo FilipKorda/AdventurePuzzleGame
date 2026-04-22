@@ -19,36 +19,25 @@ MonoBehaviour:
     m_Items: []
   m_TableData:
   - m_Id: 6834900992
-    m_Localized: 'When his father handed over the family sword, Abda knelt and swore
-      to uphold the family''s truth until death.
-
-      Abdi only smiled and said
-      that honor was a burden for fools.'
+    m_Localized: There is a skull in the chest.
     m_Metadata:
       m_Items: []
   - m_Id: 1265163849728
-    m_Localized: 'During the Battle of the Black Gorge, one of the brothers fled
-      the battlefield.
-
-      Abdi accused Abda of cowardice, but Abda remained
-      silent.'
+    m_Localized: There is a drinking horn in the chest.
     m_Metadata:
       m_Items: []
   - m_Id: 1722049384448
-    m_Localized: During the feast, one of the cups was poisoned. Abdi assured that
-      Abda had prepared the drink, swearing on his father's sword.
+    m_Localized: There are only books and 1 candlestick on the bookshelf.
     m_Metadata:
       m_Items: []
   - m_Id: 2313643380736
-    m_Localized: 'The elders of the family gathered to judge the brothers'' dispute.
-
-      Abda
-      spoke briefly, but every word was consistent with his previous actions.'
+    m_Localized: In the prison cell there is a chest with a mysterious key that opens
+      the door.
     m_Metadata:
       m_Items: []
   - m_Id: 2677583138816
-    m_Localized: That same night, one of the brothers left the castle. Abdi claimed
-      that it was Abda who had escaped, taking the family signet ring.
+    m_Localized: In a hidden room behind a bookshelf lies a one-of-a-kind golden
+      chalice.
     m_Metadata:
       m_Items: []
   references:
