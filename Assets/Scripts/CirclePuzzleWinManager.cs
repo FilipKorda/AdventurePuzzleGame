@@ -19,6 +19,7 @@ public class CirclePuzzleWinManager : MonoBehaviour
 
     [SerializeField] private RotatingCircleInPuzzle circleObject;
     [SerializeField] private OpenTrapDoorsManager openTrapDoorsManager;
+    [SerializeField] private RotateAllGearsRoomTen rotateAllGearsRoomTen;
 
 
     private void Start()
@@ -56,14 +57,6 @@ public class CirclePuzzleWinManager : MonoBehaviour
         if (circleObject.IsActive)
         {
             ActiveateColliders();
-        }
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            WinPuzzle();
         }
     }
 
@@ -109,8 +102,8 @@ public class CirclePuzzleWinManager : MonoBehaviour
         }
         StartChestAnimation();
         openTrapDoorsManager.CloseAnimation();
+        rotateAllGearsRoomTen.RotateTenGears();
         Services.Audio.PlaySFX("SafeWinAkaPuzzleWin");
-        Debug.Log("WIN PUZZLE");
     }
 
     private void StartChestAnimation()
@@ -121,7 +114,7 @@ public class CirclePuzzleWinManager : MonoBehaviour
     private IEnumerator ChestAnimation()
     {
         yield return new WaitForSeconds(1f);
-
+        Services.Audio.PlaySFX("ChestMovingStone");
         Vector3 startPosition = chestManager.transform.position;
         Vector3 targetPosition = startPosition + Vector3.left * chestMoveDistanceX;
 

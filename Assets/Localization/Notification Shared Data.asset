@@ -333,6 +333,10 @@ MonoBehaviour:
     m_Key: PressFToUnwearGlasses
     m_Metadata:
       m_Items: []
+  - m_Id: 28876436574326784
+    m_Key: CrackInTheWallPickaxe
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

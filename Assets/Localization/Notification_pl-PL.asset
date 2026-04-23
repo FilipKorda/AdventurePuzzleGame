@@ -154,12 +154,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 15602162887577600
-    m_Localized: "Nie ka\u017Cda \u015Bciana jest tak twarda, jak chce niezale\u017Cne.
-      Tam, gdzie wiedza spoczywa na p\xF3\u0142kach, a rury zimne dostarczaj\u0105
-      pusty szum, ukrywaj\u0105 si\u0119 s\u0142abo. Obok miejsca, gdzie widzisz
-      cudze p\u0142aszcze, mur oddychaj\u0105cy ciszej. Nie klucz, nie s\u0142owo,
-      lecz si\u0142a d\u0142oni obudzi si\u0119 do przej\u015Bcia. Uderz g\xF3rnik\xF3w,
-      a kamie\u0144 ust\u0105pi, ods\u0142aniaj\u0105c si\u0119, co ukryte."
+    m_Localized: "Nie ka\u017Cda \u015Bciana jest tak twarda. Tam, gdzie wiedza spoczywa
+      na p\xF3\u0142kach, a rury zimne dostarczaj\u0105 pusty szum. Obok miejsca,
+      gdzie widzisz cudze p\u0142aszcze. Nie klucz, nie s\u0142owo, lecz si\u0142a
+      d\u0142oni obudzi si\u0119 do przej\u015Bcia. Kamie\u0144 ust\u0105pi, ods\u0142aniaj\u0105c
+      si\u0119, co ukryte."
     m_Metadata:
       m_Items: []
   - m_Id: 17762438814650368
@@ -380,6 +379,11 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 28671770200657920
     m_Localized: "Naci\u015Bnij [F], aby zdj\u0105\u0107 okulary"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28876436574326784
+    m_Localized: "A moze by\u0107 czym\u015B uderzy\u0142 w t\u0105 \u015Bciane?
+      Xd"
     m_Metadata:
       m_Items: []
   references:

@@ -108,6 +108,7 @@ public class PlayerPathMovement : MonoBehaviour
 
     IEnumerator MoveToTarget()
     {
+        Services.Audio.PlaySFX("FastMove");
         Vector3 startPos = transform.position;
         Vector3 endPos = targetPoint.transform.position;
         float t = 0f;

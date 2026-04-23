@@ -155,6 +155,12 @@ MonoBehaviour:
       symbol, like fire, never touches the door that leads to freedom.
     m_Metadata:
       m_Items: []
+  - m_Id: 29279335204802560
+    m_Localized: In front of you is the last papyrus with a potion called "Potion
+      of the Holy Cow." I wonder how to make it? Actually, the gate has opened for
+      you, you know? XD
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

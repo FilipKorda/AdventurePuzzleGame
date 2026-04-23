@@ -144,6 +144,8 @@ public class InteractableItemEditor : Editor
     private SerializedProperty twelveDotPuzzle;
     private SerializedProperty lastPuzzle;
 
+    private SerializedProperty tapBarrelManager;
+
 
     private void OnEnable()
     {
@@ -290,6 +292,8 @@ public class InteractableItemEditor : Editor
         twelveDotPuzzle = serializedObject.FindProperty("twelveDotPuzzle");
         lastPuzzle = serializedObject.FindProperty("lastPuzzle");
 
+        tapBarrelManager = serializedObject.FindProperty("tapBarrelManager");
+
     }
 
     public override void OnInspectorGUI()
@@ -367,6 +371,7 @@ public class InteractableItemEditor : Editor
                 EditorGUILayout.PropertyField(providedLiquidTypeProp, new GUIContent("Liquid Type"));
                 EditorGUILayout.PropertyField(fillMappingProp, new GUIContent("Fill Mapping"), true);
                 EditorGUILayout.PropertyField(localizationString, new GUIContent("Localization String"));
+                EditorGUILayout.PropertyField(tapBarrelManager, new GUIContent("Tap Barrel Manager"));
                 EditorGUILayout.HelpBox("Okreœl typ p³ynu i zmapuj pusty pojemnik na jego nape³nion¹ wersjê.", MessageType.Info);
                 break;
             case InteractableItem.InteractableType.PickupARenewableItem:

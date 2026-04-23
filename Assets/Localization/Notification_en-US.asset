@@ -156,11 +156,10 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 15602162887577600
-    m_Localized: Not every wall is as solid as the independent wills. Where knowledge
-      rests on shelves and cold pipes deliver an empty hum, they hide poorly. Next
-      to the place where you see other people's coats, the wall breathes more quietly.
-      Not a key, not a word, but the strength of a hand will awaken the passage.
-      Strike the miners, and the stone will give way, revealing what is hidden.
+    m_Localized: Not every wall is so solid. Where knowledge rests on shelves and
+      cold pipes deliver an empty hum. Beside the place where you see other people's
+      coats. Not a key, not a word, but the strength of a hand will awaken the passage.
+      The stone will give way, revealing what is hidden.
     m_Metadata:
       m_Items: []
   - m_Id: 17762438814650368
@@ -415,6 +414,10 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 28671770200657920
     m_Localized: Press [F] To Unwear Glasses
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28876436574326784
+    m_Localized: 'XDDD Maybe hit this wall with something? '
     m_Metadata:
       m_Items: []
   references:

@@ -61,6 +61,7 @@ public class UVScrollFromMovement : MonoBehaviour
             if (Physics.Raycast(rayOrigin, Vector3.down, out RaycastHit hit, rayDistance, detectableLayer))
             {
                 goodSymbolSelected = true;
+               
                 braiserPuzzle.PuzzleWin();
             }
             else

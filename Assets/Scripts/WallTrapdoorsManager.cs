@@ -13,6 +13,8 @@ public class WallTrapdoorsManager : MonoBehaviour
 
     private IEnumerator OpenTrapDoorCoroutine()
     {
+        Services.Audio.PlaySFX("OpenTrapdoorRoomTen");
+        
         float time = 0f;
         float duration = 3f;
 

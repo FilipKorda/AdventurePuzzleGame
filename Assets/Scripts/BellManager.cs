@@ -9,6 +9,8 @@ public class BellManager : MonoBehaviour
     [SerializeField] private ChestManager chestManager;
     [SerializeField] private BoxCollider[] bellColliders;
 
+    [SerializeField] private RotateAllGearsRoomTen rotateAllGearsRoomTen;
+
     public void RegisterBell(int bellIndex)
     {
         if (bellIndex == currentStep)
@@ -28,25 +30,25 @@ public class BellManager : MonoBehaviour
 
     private void WinPuzzle()
     {
-        Debug.Log("WinPuzzle");
         StartCoroutine(MoveChestCoroutine());
-        Services.Audio.PlaySFX("SafeWinAkaPuzzleWin");
-
+       
         foreach (var bell in bellColliders)
         {
            bell.enabled = false;
         }
+        Services.Audio.PlaySFX("SafeWinAkaPuzzleWin");
     }
 
     private void ResetSequence()
     {
         currentStep = 0;
-        Debug.Log("Reset Sequence");
     }
 
     private IEnumerator MoveChestCoroutine()
     {
-        float duration = 4f;
+        rotateAllGearsRoomTen.RotateTenGears();
+        Services.Audio.PlaySFX("ChestMovingStone");
+        float duration = 3f;
         float time = 0f;
         Vector3 startPosition = chestObject.transform.position;
         Vector3 targetPosition = startPosition + new Vector3(0f, 0.29f, 0f);

@@ -142,6 +142,10 @@ MonoBehaviour:
     m_Key: 3SymbolPuzzle
     m_Metadata:
       m_Items: []
+  - m_Id: 29279335204802560
+    m_Key: LastSentance
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

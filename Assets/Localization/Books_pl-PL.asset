@@ -153,6 +153,12 @@ MonoBehaviour:
       ogie\u0144 nigdy nie dotyka drzwi kt\xF3r\u0119 wiod\u0105 do wolno\u015Bci."
     m_Metadata:
       m_Items: []
+  - m_Id: 29279335204802560
+    m_Localized: "Przed tob\u0105 jest ostatni papirus z mikstur\u0105 kt\xF3ra si\u0119
+      nazywa \"Mikstura \u015Awi\u0119tej Krowy\", ciekawe jak j\u0105 zrobi\u0107?
+      W sumie te\u017C brama ci sie otworzy\u0142a, nie wiem czy weisz? xd"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

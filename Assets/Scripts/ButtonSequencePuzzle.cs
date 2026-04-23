@@ -15,14 +15,7 @@ public class ButtonSequencePuzzle : MonoBehaviour
     [SerializeField] private WallTrapdoorsManager wallTrapdoorsManager;
     [SerializeField] private WallTrapdoorsManager wallTrapdoorsManager1;
 
-
-    private void Update()
-    {
-       /* if (Input.GetKeyDown(KeyCode.L))
-        {
-            WinPuzzle();
-        }*/
-    }
+    [SerializeField] private RotateAllGearsRoomTen rotateAllGearsRoomTen;
 
     public void PressButton(int buttonId)
     {
@@ -59,6 +52,8 @@ public class ButtonSequencePuzzle : MonoBehaviour
 
     private IEnumerator MovePillarDownRoutine()
     {
+        rotateAllGearsRoomTen.RotateAllGears();
+
         Vector3 startPos = pillar.transform.position;
         Vector3 targetPos = startPos + Vector3.down * 1.19f;
 

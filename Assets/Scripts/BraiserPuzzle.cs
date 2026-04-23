@@ -33,6 +33,8 @@ public class BraiserPuzzle : MonoBehaviour
     private bool puzzle2 = false;
     private bool puzzle3 = false;
 
+    public bool braiserPuzleWin = false;
+
     private void ActiveInput()
     {
         if (thisModeInput != null)
@@ -59,9 +61,9 @@ public class BraiserPuzzle : MonoBehaviour
 
     public void EnterPuzzle0()
     {
-        CursorController.Instance.EnableCursor(puzzleCamera);
+        CursorController.Instance.EnableBraiserCursor(puzzleCamera);
         uVScrollFromMovement0.isActive = true;
-
+        UIManager.Instance.EnableHoldLPMMPanel();
         var boxCollider = uVScrollFromMovement0.GetComponent<BoxCollider>();
         boxCollider.enabled = true;
 
@@ -85,9 +87,9 @@ public class BraiserPuzzle : MonoBehaviour
 
     public void EnterPuzzle1()
     {
-        CursorController.Instance.EnableCursor(puzzleCamera);
+        CursorController.Instance.EnableBraiserCursor(puzzleCamera);
         uVScrollFromMovement1.isActive = true;
-
+        UIManager.Instance.EnableHoldLPMMPanel();
         var boxCollider1 = uVScrollFromMovement1.GetComponent<BoxCollider>();
         boxCollider1.enabled = true;
 
@@ -112,9 +114,9 @@ public class BraiserPuzzle : MonoBehaviour
 
     public void EnterPuzzle2()
     {
-        CursorController.Instance.EnableCursor(puzzleCamera);
+        CursorController.Instance.EnableBraiserCursor(puzzleCamera);
         uVScrollFromMovement2.isActive = true;
-
+        UIManager.Instance.EnableHoldLPMMPanel();
         var boxCollider2 = uVScrollFromMovement2.GetComponent<BoxCollider>();
         boxCollider2.enabled = true;
 
@@ -139,9 +141,9 @@ public class BraiserPuzzle : MonoBehaviour
 
     public void EnterPuzzle3()
     {
-        CursorController.Instance.EnableCursor(puzzleCamera);
+        CursorController.Instance.EnableBraiserCursor(puzzleCamera);
         uVScrollFromMovement3.isActive = true;
-
+        UIManager.Instance.EnableHoldLPMMPanel();
         var boxCollider3 = uVScrollFromMovement3.GetComponent<BoxCollider>();
         boxCollider3.enabled = true;
 
@@ -212,7 +214,9 @@ public class BraiserPuzzle : MonoBehaviour
     {
         DisableInput();
 
-        CursorController.Instance.DisableCursor();
+        CursorController.Instance.DisableBraiserCursor();
+
+        UIManager.Instance.DisableSharedPanelText();
 
         ToogleAllBoxColliders(true);
 
@@ -261,12 +265,15 @@ public class BraiserPuzzle : MonoBehaviour
 
     public void PuzzleWin()
     {
+        if (braiserPuzleWin)
+            return;
+
         if (uVScrollFromMovement0.goodSymbolSelected && uVScrollFromMovement1.goodSymbolSelected &&
         uVScrollFromMovement2.goodSymbolSelected && uVScrollFromMovement3.goodSymbolSelected)
         {
             DisableInput();
 
-            CursorController.Instance.DisableCursor();
+            CursorController.Instance.DisableBraiserCursor();
 
             if (puzzle0)
             {
@@ -318,8 +325,13 @@ public class BraiserPuzzle : MonoBehaviour
             playerBehaviour.disablePlayer = false;
             playerBehaviour._playerCamera.enabled = true;
 
+            UIManager.Instance.DisableSharedPanelText();
+
+            Services.Audio.PlaySFX("SafeWinAkaPuzzleWin");
+
             puzzleCamera.enabled = false;
+
+            braiserPuzleWin = true;
         }
     }
-
 }

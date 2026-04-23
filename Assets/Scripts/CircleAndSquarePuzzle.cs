@@ -46,7 +46,7 @@ public class CircleAndSquarePuzzle : MonoBehaviour
         gameObject.SetActive(true);
 
         playerBehaviour.disableOnlyMovement = true;
-        UIManager.Instance.EnableGearModePanel();
+        UIManager.Instance.EnableCircleAndSquarePuzzleHintPanel();
 
     }
 
@@ -58,18 +58,18 @@ public class CircleAndSquarePuzzle : MonoBehaviour
         ResetPuzzle();
         gameObject.SetActive(false);
         playerBehaviour.disableOnlyMovement = false;
-        UIManager.Instance.DisableGearModePanel();
+        UIManager.Instance.DisableSharedPanelText();
     }
 
     public void ExitAfterWin()
-    {
-        Services.Audio.PlaySFX("SafeWinAkaPuzzleWin");
+    { 
         winPuzzle = true;
         blurCanvas.gameObject.SetActive(false);
         gameObject.SetActive(false);
         playerBehaviour.disableOnlyMovement = false;
-        UIManager.Instance.DisableGearModePanel();
+        UIManager.Instance.DisableSharedPanelText();
         pipePuzzleManager.CheckWInBothPipePuzzle();
+        Services.Audio.PlaySFX("SafeWinAkaPuzzleWin");
     }
 
     private void OnPuzzleModePerformed(InputAction.CallbackContext context)

@@ -13,6 +13,8 @@ public class ChestManager : MonoBehaviour
 
     private IEnumerator OpenLidCoroutine()
     {
+
+        Services.Audio.PlaySFX("ChestOpenRoom");
         float duration = 2f;
         float time = 0f;
 
@@ -36,6 +38,7 @@ public class ChestManager : MonoBehaviour
 
     private IEnumerator CloseLidCoroutine()
     {
+        Services.Audio.PlaySFX("ChestOpenRoom");
         float duration = 2f;
         float time = 0f;
 

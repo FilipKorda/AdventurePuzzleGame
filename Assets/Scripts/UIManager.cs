@@ -89,6 +89,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private LocalizedString holdLPMMouseToMoveObject;
     [SerializeField] private LocalizedString safeRotateCodeText;
     [SerializeField] private LocalizedString circleAndSquarePuzzleHintText;
+    [SerializeField] private LocalizedString inspectObjectText;
+    [SerializeField] private LocalizedString pressFToWearGlasses;
+    [SerializeField] private LocalizedString pressFToUnwearGlasses;
 
     [Header("Papytus Puzzle Wooden Puzzle Solve")]
     [SerializeField] private GameObject papytusPuzzleWoodenPuzzleSolve;
@@ -115,6 +118,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject rightPaper;
     [Header("Painting Book Panel")]
     [SerializeField] private GameObject paintingBookPanel;
+    [Header("Papirus Cage Open")]
+    [SerializeField] private GameObject papyrusCageOpen;
+
 
     public void ShowPanel(LocalizedString localizedString)
     {
@@ -156,7 +162,20 @@ public class UIManager : MonoBehaviour
         HidePanel();
     }
 
+    public void EnableWearGlassesPanel()
+    {
+        ShowPanel(pressFToWearGlasses);
+    }
 
+    public void EnableUnwearGlassesPanel()
+    {
+        ShowPanel(pressFToUnwearGlasses);
+    }
+
+    public void EnableInspectObjectPanel()
+    {
+        ShowPanel(inspectObjectText);
+    }
     public void EnableCircleAndSquarePuzzleHintPanel()
     {
         ShowPanel(circleAndSquarePuzzleHintText);
@@ -308,7 +327,7 @@ public class UIManager : MonoBehaviour
             pressFToToggleLamp.gameObject.SetActive(true);
         }
 
-        yield return new WaitForSeconds(7);
+        yield return new WaitForSeconds(10);
 
         if (pressFToToggleLamp != null)
         {
@@ -447,6 +466,7 @@ public class UIManager : MonoBehaviour
         arrowDIrectionPapirus.SetActive(false);
         leftPaper.SetActive(false);
         rightPaper.SetActive(false);
+        papyrusCageOpen.SetActive(false);
         paintingBookPanel.SetActive(false);
 
         DisableSharedPanelText();
@@ -626,6 +646,10 @@ public class UIManager : MonoBehaviour
             case ItemID.PaintingBook:
                 ReadPaintingBookPanelPanel();
                 break;
+            case ItemID.PapytusCageOpen:
+                ReadPaputusCageOpenPanel();
+                break;
+
         }
 
         Services.Audio.PlaySFX("ReadBook");
@@ -658,6 +682,21 @@ public class UIManager : MonoBehaviour
         else
         {
             leftPaper.SetActive(false);
+        }
+    }
+
+
+    private void ReadPaputusCageOpenPanel()
+    {
+        bool isOpen = papyrusCageOpen.activeSelf;
+        papyrusCageOpen.SetActive(!isOpen);
+        if (!isOpen)
+        {
+            papyrusCageOpen.SetActive(true);
+        }
+        else
+        {
+            papyrusCageOpen.SetActive(false);
         }
     }
 
@@ -971,7 +1010,7 @@ public class UIManager : MonoBehaviour
             || papytusPuzzleWoodenPuzzleSolve.activeInHierarchy || blurCanvas.gameObject.activeInHierarchy
             || safeCodePuzzle.activeInHierarchy || glassesOn || papyrusVerticalPuzzle.activeInHierarchy ||
             cardSymbolsPapirus.activeInHierarchy || arrowDIrectionPapirus.activeInHierarchy || leftPaper.activeInHierarchy
-            || rightPaper.activeInHierarchy || paintingBookPanel.activeInHierarchy)
+            || rightPaper.activeInHierarchy || paintingBookPanel.activeInHierarchy || papyrusCageOpen.activeInHierarchy)
         {
             Debug.Log("Nie mo¿na wyrzuciæ przedmiotu podczas przegl¹dania czytanej strony.");
             return;
@@ -1191,13 +1230,28 @@ public class UIManager : MonoBehaviour
         {
             EnablePapyrusPanel();
         }
+        else if (id == ItemID.Shrine || id == ItemID.SymbolPillar || id == ItemID.Grave || id == ItemID.BrokenPillar || id == ItemID.SymbolSword
+            || id == ItemID.KnightSwordPiece || id == ItemID.KnightClubPiece || id == ItemID.SkeletonSwordPiece || id == ItemID.SkeletonWarAxePiece ||
+            id == ItemID.SkeletonHelmetPiece || id == ItemID.SkeletonFullHelmetPiece)
+        {
+            EnableInspectObjectPanel();
+        }
+        else if (id == ItemID.glasses)
+        {
+            if (glassesOn)
+            {
+                EnableUnwearGlassesPanel();
+            }
+            else
+            {
+                EnableWearGlassesPanel();
+            }
+        }
         else
         {
             DisableSharedPanelText();
         }
 
-
-        Debug.Log($"Zaznaczono element: {itemSlots[selectedItemId].GetItemName()} (ItemID: {itemSlots[selectedItemId].GetItemId()})");
     }
 
     public int GetSelectedItemId()

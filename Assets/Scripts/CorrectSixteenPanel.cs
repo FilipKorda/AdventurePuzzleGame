@@ -53,7 +53,7 @@ public class CorrectSixteenPanel : MonoBehaviour
     private IEnumerator SwapRightCoroutine()
     {
         isAnimating = true;
-
+        Services.Audio.PlaySFX("CardSwap");
         int nextIndex = currentVisibleImageIndex - 1;
         if (nextIndex < 0)
         {

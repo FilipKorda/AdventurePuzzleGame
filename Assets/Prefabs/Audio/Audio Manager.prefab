@@ -291,4 +291,40 @@ MonoBehaviour:
   - Id: Eat
     Clip: {fileID: 8300000, guid: eb12d78c1e47a6a4ab88488693be6b45, type: 3}
     Category: 3
+  - Id: FastMove
+    Clip: {fileID: 8300000, guid: bd9d22900b30bcf46baae5196b61ec55, type: 3}
+    Category: 3
+  - Id: RotateWheelv2
+    Clip: {fileID: 8300000, guid: 54cf695830596314aba7be5aa252cf03, type: 3}
+    Category: 3
+  - Id: BriefcaseTick
+    Clip: {fileID: 8300000, guid: e115514483631b04f8234f0d3014775c, type: 3}
+    Category: 3
+  - Id: RotateWheelv2
+    Clip: {fileID: 8300000, guid: 54cf695830596314aba7be5aa252cf03, type: 3}
+    Category: 3
+  - Id: BookshelfCreakMove
+    Clip: {fileID: 8300000, guid: 89dfcb502236b464fa7a9daceec43bb5, type: 3}
+    Category: 3
+  - Id: ChestOpenRoom
+    Clip: {fileID: 8300000, guid: 6fdb6427bfcb1724ca76ab0a2cbf69b3, type: 3}
+    Category: 3
+  - Id: OpenTrapdoorRoomTen
+    Clip: {fileID: 8300000, guid: 9054180aed499014cad065be359c36a8, type: 3}
+    Category: 3
+  - Id: PressurePlate
+    Clip: {fileID: 8300000, guid: 387628dea46228d46b683819f5eb562a, type: 3}
+    Category: 3
+  - Id: SquareSelect
+    Clip: {fileID: 8300000, guid: a12da4d708cf9c6479bb769cb2c0ae1a, type: 3}
+    Category: 3
+  - Id: CardSwap
+    Clip: {fileID: 8300000, guid: a0f8c856e0543564ba89f3d86b687460, type: 3}
+    Category: 3
+  - Id: SnapToPosition
+    Clip: {fileID: 8300000, guid: 10d8e7b67747a344a9e798d8459015c7, type: 3}
+    Category: 3
+  - Id: ChestMovingStone
+    Clip: {fileID: 8300000, guid: 12b0c94d8fdf33848a3f5fd741239a24, type: 3}
+    Category: 3
   sfxSourcePrefab: {fileID: 6808787666201464470, guid: 561a59515f73e424ba170ae966f504e9, type: 3}

@@ -97,6 +97,27 @@ public class CursorController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Confined;
     }
 
+    public void EnableBraiserCursor(Camera cam)
+    {
+        CurrentCamera = cam;
+
+        cursorEnabled = true;
+
+        cursorClickButtonInput.action.Enable();
+        cursorClickButtonInput.action.started += OnClickButtonInput;
+
+        cursorDragInput.action.Enable();
+        cursorDragInput.action.performed += OnDragInputStarted;
+        cursorDragInput.action.canceled += OnDragInputCanceled;
+
+        centerOfScreen.SetActive(false);
+        centerOfScreenImage.gameObject.SetActive(true);
+        pausePanel.SetAllowPause(false);
+
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Confined;
+    }
+
     public void DisableCursor()
     {
         cursorEnabled = false;
@@ -108,6 +129,32 @@ public class CursorController : MonoBehaviour
         cursorClickButtonInput.action.Disable();
 
         cursorDragInput.action.started -= OnDragInputStarted;
+        cursorDragInput.action.canceled -= OnDragInputCanceled;
+        cursorDragInput.action.Disable();
+
+        CurrentCamera = null;
+
+        centerOfScreen.SetActive(true);
+        centerOfScreenImage.gameObject.SetActive(false);
+        pausePanel.SetAllowPause(true);
+
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+
+        HasHit = false;
+    }
+
+    public void DisableBraiserCursor()
+    {
+        cursorEnabled = false;
+
+        currentMode?.Exit();
+        currentMode = null;
+
+        cursorClickButtonInput.action.started -= OnClickButtonInput;
+        cursorClickButtonInput.action.Disable();
+
+        cursorDragInput.action.performed -= OnDragInputStarted;
         cursorDragInput.action.canceled -= OnDragInputCanceled;
         cursorDragInput.action.Disable();
 
@@ -146,6 +193,7 @@ public class CursorController : MonoBehaviour
 
     void OnDrawGizmos()
     {
+#if UNITY_EDITOR
         if (!cursorEnabled) return;
         if (CurrentCamera == null) return;
 
@@ -155,5 +203,6 @@ public class CursorController : MonoBehaviour
         {
             Gizmos.DrawSphere(CurrentHit.point, 0.05f);
         }
+#endif
     }
 }

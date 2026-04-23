@@ -57,7 +57,7 @@ public class BriefcaseManager : MonoBehaviour
         ResetPuzzle();
         gameObject.SetActive(false);
         playerBehaviour.disableOnlyMovement = false;
-        UIManager.Instance.DisableGearModePanel();
+        UIManager.Instance.DisableSharedPanelText();
     }
 
     public void ExitAfterWin()
@@ -67,7 +67,7 @@ public class BriefcaseManager : MonoBehaviour
         blurCanvas.gameObject.SetActive(false);
         gameObject.SetActive(false);
         playerBehaviour.disableOnlyMovement = false;
-        UIManager.Instance.DisableGearModePanel();
+        UIManager.Instance.DisableSharedPanelText();
     }
 
     private void OnPuzzleModePerformed(InputAction.CallbackContext context)

@@ -27,6 +27,7 @@ public class CorrectSixteenPanelsManager : MonoBehaviour
 
     [SerializeField] private GameObject pillar;
     [SerializeField] private float pillarMoveDownDistance = 1f;
+    [SerializeField] private RotateAllGearsRoomTen rotateAllGearsRoomTen;
 
     public void CheckPuzzle()
     {
@@ -71,7 +72,6 @@ public class CorrectSixteenPanelsManager : MonoBehaviour
         DisablePanels();
         correctSixteenSymbolsPillar.ExitAfterWin();
         puzzleBoardHandle.StopAnimation();
-        Debug.Log("WIN PUZZLE");
         rewardChestManager.OpenChest();
         CloseAndHideChest();
         Services.Audio.PlaySFX("SafeWinAkaPuzzleWin");
@@ -153,6 +153,8 @@ public class CorrectSixteenPanelsManager : MonoBehaviour
 
     private IEnumerator CourtineMovePillarDown()
     {
+
+        rotateAllGearsRoomTen.RotateAllGears();
         yield return new WaitForSeconds(1f);
 
         Vector3 startPosition = pillar.transform.position;

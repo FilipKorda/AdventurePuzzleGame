@@ -61,7 +61,7 @@ public class MovingBlockPuzzleManager : MonoBehaviour
         gameObject.SetActive(true);
         puzzlepartCollider.enabled = false;
         playerBehaviour.disableOnlyMovement = true;
-        UIManager.Instance.EnableGearModePanel();
+        UIManager.Instance.EnableLpmToClickPanel();
 
     }
 
@@ -73,7 +73,7 @@ public class MovingBlockPuzzleManager : MonoBehaviour
         ResetObjectPosition();
         gameObject.SetActive(false);
         playerBehaviour.disableOnlyMovement = false;
-        UIManager.Instance.DisableGearModePanel();
+        UIManager.Instance.DisableSharedPanelText();
     }
 
     private void ResetObjectPosition()
@@ -148,7 +148,7 @@ public class MovingBlockPuzzleManager : MonoBehaviour
     }
 
     private void WinPuzzle()
-    {  
+    {
         foreach (var a in arrows)
         {
             a.enabled = false;
@@ -160,9 +160,9 @@ public class MovingBlockPuzzleManager : MonoBehaviour
         ResetObjectPosition();
         gameObject.SetActive(false);
         playerBehaviour.disableOnlyMovement = false;
-        UIManager.Instance.DisableGearModePanel();
+        UIManager.Instance.DisableSharedPanelText();
 
-      
+
         Services.Audio.PlaySFX("AfterGearPuzzleSolved");
         pipePuzzleManager.CheckWInBothPipePuzzle();
 

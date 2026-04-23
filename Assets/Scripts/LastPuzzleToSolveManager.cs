@@ -14,6 +14,8 @@ public class LastPuzzleToSolveManager : MonoBehaviour
     [SerializeField] private GameObject leftHandle;
     [SerializeField] private GameObject rightHandle;
 
+    [SerializeField] private RotateAllGearsRoomTen rotateAllGearsRoomTen;
+
     private void Start()
     {
         buttons = new LastPuzzleButton[size.x, size.y];
@@ -72,6 +74,9 @@ public class LastPuzzleToSolveManager : MonoBehaviour
     {
         StartCoroutine(MoveChestCoroutine(chestObject1));
         StartCoroutine(MoveChestCoroutine(chestObject2));
+
+        rotateAllGearsRoomTen.RotateTenGears();
+        Services.Audio.PlaySFX("ChestMovingStone");
     }
 
     private IEnumerator MoveChestCoroutine(ChestManager chest)
