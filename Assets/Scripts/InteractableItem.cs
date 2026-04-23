@@ -118,6 +118,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
 
     [Tooltip("Lista mapowañ, które definiuj¹, jaki pusty pojemnik zamienia siê w jaki nape³niony.")]
     [SerializeField] private FillMapping fillMapping;
+    [SerializeField] private TapBarrelManager tapBarrelManager;
 
     [Header("Alchemy Settings (if AlchemyStation)")]
     [Tooltip("Referencja do komponentu Cauldron na tym obiekcie.")]
@@ -632,6 +633,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
 
     public IEnumerator CourutineRotateCircleAndSquarePuzzle()
     {
+        Services.Audio.PlaySFX("RotateWheelv2");
         rotateCircleAndSquarePuzzle = true;
         transform.GetPositionAndRotation(out Vector3 startPosition, out Quaternion startRotation);
         Quaternion targetRotation = startRotation * Quaternion.Euler(-90f, 0f, 0f);
@@ -792,6 +794,8 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         }
         movingBlockPuzzleManager.CheckCorrectPositionOfAnObjects();
         movingBlockIsMoving = false;
+
+        Services.Audio.PlaySFX("FastMove");
     }
 
     private void OnDrawGizmos()
@@ -1571,14 +1575,20 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
                 return;
             }
 
-            Services.Audio.PlaySFX("PourWater");
+            tapBarrelManager.FillBucketActivator();
 
             Inventory.Instance.RemoveItemFromInventoryByID(selectedId);
             UIManager.Instance.RemoveItemFromUIByID(selectedId);
-            Inventory.Instance.AddItemToInventory(fillMapping.resultingFilledItem);
+            StartCoroutine(CouritineFill());
 
-            Debug.Log($"Nape³niono '{fillMapping.requiredEmptyItem.GetItemName()}' p³ynem typu '{providedLiquidType}'. Otrzymano: {fillMapping.resultingFilledItem.GetItemName()}");
         }
+    }
+
+    private IEnumerator CouritineFill()
+    {
+        
+        yield return new WaitForSeconds(1.5f);
+        Inventory.Instance.AddItemToInventory(fillMapping.resultingFilledItem);
     }
 
     public void OpenObject()

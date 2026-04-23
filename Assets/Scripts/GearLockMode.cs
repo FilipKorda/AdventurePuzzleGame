@@ -107,7 +107,7 @@ public class GearLockMode : MonoBehaviour
         ResetGears();
         gameObject.SetActive(false);
         playerBehaviour.disableOnlyMovement = false;
-        UIManager.Instance.DisableGearModePanel();
+        UIManager.Instance.DisableSharedPanelText();
     }
 
     private void ResetGears()
@@ -157,7 +157,7 @@ public class GearLockMode : MonoBehaviour
         blurCanvas.gameObject.SetActive(false);
         gameObject.SetActive(false);
         playerBehaviour.disableOnlyMovement = false;
-        UIManager.Instance.DisableGearModePanel();
+        UIManager.Instance.DisableSharedPanelText();
     }
 
 

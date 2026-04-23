@@ -34,6 +34,8 @@ public class CorrectSixteenSymbolsPillar : MonoBehaviour
     {
         boxCollider.enabled = false;
 
+        //LPM to click
+        UIManager.Instance.EnableLpmToClickPanel();
 
         CursorController.Instance.EnableCursor(puzzleCamera);
 
@@ -54,7 +56,7 @@ public class CorrectSixteenSymbolsPillar : MonoBehaviour
     {
 
         DisableInput();
-
+        UIManager.Instance.DisableSharedPanelText();
         CursorController.Instance.DisableCursor();
 
         SquareSelectionManager.Instance.canSelect = false;
@@ -70,7 +72,7 @@ public class CorrectSixteenSymbolsPillar : MonoBehaviour
     public void ExitAfterWin()
     {
         DisableInput();
-
+        UIManager.Instance.DisableSharedPanelText();
         CursorController.Instance.DisableCursor();
 
         boxCollider.enabled = false;

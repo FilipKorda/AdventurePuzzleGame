@@ -9,63 +9,49 @@ public class GraphicSettings : MonoBehaviour
 
     private const string PrefWidthKey = "Graphics_Width";
     private const string PrefHeightKey = "Graphics_Height";
-    private const string PrefFullscreenKey = "Graphics_Fullscreen";
-
-    private bool currentFullscreen;
-
-    public Toggle fullscreenToggle;
+    private const string PrefFullscreenKey = "Graphics_Fullscreen"; 
 
     private void Start()
     {
+       
         int width = PlayerPrefs.GetInt(PrefWidthKey, resolution3.x);
         int height = PlayerPrefs.GetInt(PrefHeightKey, resolution3.y);
-        currentFullscreen = PlayerPrefs.GetInt(PrefFullscreenKey, 1) == 1;
+        bool isFullscreen = PlayerPrefs.GetInt(PrefFullscreenKey, 1) == 1;
 
-        fullscreenToggle.SetIsOnWithoutNotify(currentFullscreen);
+        Screen.SetResolution(width, height, isFullscreen);
+    }
 
-        ApplyResolution(width, height, currentFullscreen);
+    public void SetFullscreen(bool isFullscreen)
+    {
+        Screen.fullScreen = isFullscreen;
+
+        PlayerPrefs.SetInt(PrefFullscreenKey, isFullscreen ? 1 : 0);
+        PlayerPrefs.Save();
     }
 
     public void SetResolution1()
     {
-        ApplyAndSave(resolution1.x, resolution1.y, currentFullscreen);
+        ApplyAndSaveResolution(resolution1.x, resolution1.y);
     }
 
     public void SetResolution2()
     {
-        ApplyAndSave(resolution2.x, resolution2.y, currentFullscreen);
+        ApplyAndSaveResolution(resolution2.x, resolution2.y);
     }
 
     public void SetResolution3()
     {
-        ApplyAndSave(resolution3.x, resolution3.y, currentFullscreen);
+        ApplyAndSaveResolution(resolution3.x, resolution3.y);
     }
 
-    public void SetFullscreen(bool fullscreen)
+    private void ApplyAndSaveResolution(int width, int height)
     {
-        currentFullscreen = fullscreen;
-        ApplyAndSave(Screen.width, Screen.height, fullscreen);
-    }
+        bool currentFullscreen = Screen.fullScreen;
 
-    private void ApplyAndSave(int width, int height, bool fullscreen)
-    {
-        Screen.SetResolution(width, height, fullscreen);
+        Screen.SetResolution(width, height, currentFullscreen);
+
         PlayerPrefs.SetInt(PrefWidthKey, width);
         PlayerPrefs.SetInt(PrefHeightKey, height);
-        PlayerPrefs.SetInt(PrefFullscreenKey, fullscreen ? 1 : 0);
-        PlayerPrefs.Save();
-    }
-
-    private void ApplyResolution(int width, int height, bool fullscreen)
-    {
-        Screen.SetResolution(width, height, fullscreen);
-    }
-
-    private void SaveResolution(int width, int height, bool fullscreen)
-    {
-        PlayerPrefs.SetInt(PrefWidthKey, width);
-        PlayerPrefs.SetInt(PrefHeightKey, height);
-        PlayerPrefs.SetInt(PrefFullscreenKey, fullscreen ? 1 : 0);
         PlayerPrefs.Save();
     }
 }

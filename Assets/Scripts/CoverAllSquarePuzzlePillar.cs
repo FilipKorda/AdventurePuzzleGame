@@ -34,7 +34,9 @@ public class CoverAllSquarePuzzlePillar : MonoBehaviour
     {
         boxCollider.enabled = false;
 
-      
+        UIManager.Instance.EnableLpmToClickPanel();
+
+
         CursorController.Instance.EnableCursor(puzzleCamera);
 
         ActiveInput();
@@ -55,6 +57,8 @@ public class CoverAllSquarePuzzlePillar : MonoBehaviour
 
         DisableInput();
 
+        UIManager.Instance.DisableSharedPanelText();
+
         CursorController.Instance.DisableCursor();
 
         SquareSelectionManager.Instance.canSelect = false;
@@ -70,7 +74,7 @@ public class CoverAllSquarePuzzlePillar : MonoBehaviour
     public void ExitAfterWin()
     {
         DisableInput();
-
+        UIManager.Instance.DisableSharedPanelText();
         CursorController.Instance.DisableCursor();
 
         boxCollider.enabled = false;
