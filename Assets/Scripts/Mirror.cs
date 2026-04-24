@@ -74,7 +74,7 @@ public class Mirror : MonoBehaviour
         TogglePlayer(true);
 
 
-        UIManager.Instance.DisableMirrorInputPanel();
+        UIManager.Instance.DisableSharedPanelText();
 
         if (rotationAction != null)
         {

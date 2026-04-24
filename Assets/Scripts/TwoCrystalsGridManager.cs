@@ -82,6 +82,9 @@ public class TwoCrystalsGridManager : MonoBehaviour
     [SerializeField] private GameObject pillar;
     [SerializeField] private float pillarOffset;
 
+
+    [SerializeField] private RotateAllGearsRoomTen rotateAllGearsRoomTen;
+
     private void Awake()
     {
         BuildGrid();
@@ -158,14 +161,16 @@ public class TwoCrystalsGridManager : MonoBehaviour
     private void WinPuzzle()
     {
         DisableAllColliders();
-        Services.Audio.PlaySFX("SafeWinAkaPuzzleWin");
         twoCrystalsPuzzle.ExitAfterWin();
         openTrapDoorsManager.OpenAnimation();
         StartCoroutine(MovePillarDown());
+        Services.Audio.PlaySFX("SafeWinAkaPuzzleWin");
     }
 
     private IEnumerator MovePillarDown()
     {
+        rotateAllGearsRoomTen.RotateAllGears();
+
         yield return new WaitForSeconds(1f);
 
         Vector3 startPosition = pillar.transform.position;
@@ -329,7 +334,6 @@ public class TwoCrystalsGridManager : MonoBehaviour
             WallGridData data = walls[i];
             if (!CanPlaceWall(data))
             {
-                Debug.LogWarning($"Nie mozna ustawic sciany na pozycji Y:{data.startY} X:{data.startX}");
                 continue;
             }
 
@@ -348,7 +352,6 @@ public class TwoCrystalsGridManager : MonoBehaviour
 
             if (!CanPlaceCrystal(data))
             {
-                Debug.LogWarning($"Nie mozna ustawic crystal: {data.crystal.name} na pozycji Y:{data.startY} X:{data.startX}");
                 continue;
             }
 
@@ -489,6 +492,7 @@ public class TwoCrystalsGridManager : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+#if UNITY_EDITOR
         if (!drawGridGizmos) return;
 
         Vector3 originPosition = gridOrigin != null ? gridOrigin.position : transform.position;
@@ -496,6 +500,7 @@ public class TwoCrystalsGridManager : MonoBehaviour
         DrawOrigin(originPosition);
         DrawGrid(originPosition);
         DrawOccupiedCells(originPosition);
+#endif
     }
 
     private void DrawOrigin(Vector3 originPosition)

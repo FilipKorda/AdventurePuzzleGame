@@ -33,7 +33,7 @@ public class ImageSlider : MonoBehaviour
     private IEnumerator Animate()
     {
         isAnimating = true;
-
+        Services.Audio.PlaySFX("CardSwap");
         float elapsed = 0f;
 
         Vector2[] start = new Vector2[images.Length];

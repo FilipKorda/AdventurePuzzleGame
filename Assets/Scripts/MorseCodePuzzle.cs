@@ -51,16 +51,6 @@ public class MorseCodePuzzle : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private LaserBeam laserBeam;
 
-    private void Update()
-    {
-#if UNITY_EDITOR
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            DisableSegments();
-            RotateOneByOneAllSegments();
-        }
-#endif
-    }
 
     public void MorseCodeSolved()
     {
@@ -164,7 +154,7 @@ public class MorseCodePuzzle : MonoBehaviour
     public void MoveWalls()
     {
         wallToDisapera.SetActive(false);
-        Services.Audio.PlaySFX("ShorterMovingStoneKryptex");
+        Services.Audio.PlaySFX("MovingStoneKryptex");
         StartCoroutine(MoveWall(wallUp.transform, 1.5f));
         StartCoroutine(MoveWall(wallDown.transform, -0.5f));
     }

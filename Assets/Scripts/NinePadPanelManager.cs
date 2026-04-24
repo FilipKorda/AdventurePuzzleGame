@@ -7,6 +7,7 @@ public class NinePadPanelManager : MonoBehaviour
     [SerializeField] private InputActionReference thisModeInput;
     [SerializeField] private float distanceFromCamera = 1f;
     [SerializeField] private float verticalOffset = 0f;
+    [SerializeField] private float horizontalOffset = 0f;
     [SerializeField] private Canvas blurCanvas;
     [SerializeField] private PlayerBehaviour playerBehaviour;
     [SerializeField] private Transform point;
@@ -50,7 +51,7 @@ public class NinePadPanelManager : MonoBehaviour
         gameObject.SetActive(true);
 
         playerBehaviour.disableOnlyMovement = true;
-        UIManager.Instance.EnableGearModePanel();
+        UIManager.Instance.EnableLpmToClickPanel();
 
         Debug.Log("Wszedłeś w część Puzzle Pipe!");
     }
@@ -62,7 +63,7 @@ public class NinePadPanelManager : MonoBehaviour
         ResetPuzzle();
         gameObject.SetActive(false);
         playerBehaviour.disableOnlyMovement = false;
-        UIManager.Instance.DisableGearModePanel();
+        UIManager.Instance.DisableSharedPanelText();
     }
 
     private void OnPuzzleModePerformed(InputAction.CallbackContext context)
@@ -91,7 +92,7 @@ public class NinePadPanelManager : MonoBehaviour
             ResetPuzzle();
             gameObject.SetActive(false);
             playerBehaviour.disableOnlyMovement = false;
-            UIManager.Instance.DisableGearModePanel();
+            UIManager.Instance.DisableSharedPanelText();
             animator.SetTrigger("Interact");
             blockObject.SetActive(false);
         }
@@ -119,7 +120,7 @@ public class NinePadPanelManager : MonoBehaviour
         var position = player.position
                      + player.forward * distanceFromCamera
                      + player.up * verticalOffset
-                     + player.right * 0.01f;
+                     + player.right * horizontalOffset;
 
         transform.SetPositionAndRotation(position, Quaternion.Euler(0f, 0f, 90f));
     }

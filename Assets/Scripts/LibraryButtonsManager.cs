@@ -13,7 +13,6 @@ public class LibraryButtonsManager : MonoBehaviour
     {
         if (buttonIndex != currentButtonIndex)
         {
-            Debug.LogWarning("ZŁY PRZYCISK");
             ResetSequence();
             return;
         }
@@ -22,7 +21,6 @@ public class LibraryButtonsManager : MonoBehaviour
 
         if (currentPressCount > requiredPresses[currentButtonIndex])
         {
-            Debug.LogWarning("ZŁA ILOŚĆ KLIKNIĘĆ NA TYM PRZYCISKU");
             ResetSequence();
             return;
         }
@@ -53,6 +51,6 @@ public class LibraryButtonsManager : MonoBehaviour
             button.enabled = false;
         }
         animator.SetTrigger("Open");
-        Debug.Log("Win");
+        Services.Audio.PlaySFX("SafeWinAkaPuzzleWin");
     }
 }

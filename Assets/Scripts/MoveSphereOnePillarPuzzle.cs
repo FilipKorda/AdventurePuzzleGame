@@ -168,8 +168,8 @@ public class MoveSphereOnePillarPuzzle : MonoBehaviour
 
     IEnumerator SnapToPosition(Transform snapTarget)
     {
-        if (snapTarget == null) yield break;
-
+        if (snapTarget == null) yield break;    
+        Services.Audio.PlaySFX("SnapToPosition");
         Vector3 targetPos = snapTarget.position;
         Vector3 velocity = Vector3.zero;
 
