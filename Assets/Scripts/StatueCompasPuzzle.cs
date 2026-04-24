@@ -17,6 +17,8 @@ public class StatueCompasPuzzle : MonoBehaviour
         {
             statues[i].OnRotationFinished += OnStatueRotated;
         }
+
+        button.localPosition = new Vector3(-8.2f, button.localPosition.y, button.localPosition.z);
     }
 
     void OnDestroy()
@@ -25,16 +27,6 @@ public class StatueCompasPuzzle : MonoBehaviour
         {
             statues[i].OnRotationFinished -= OnStatueRotated;
         }
-    }
-
-    private void Update()
-    {
-#if UNITY_EDITOR
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            PuzzleSolved();
-        }
-#endif
     }
 
     void OnStatueRotated(InteractableItem statue)

@@ -58,6 +58,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-pl-PL
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a5da3b67f4578f746a71e10e986a61a9
+    m_Address: Intro_pl-PL
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-pl-PL
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b46799cb99fe3d9408885f8fd8ba0f13
     m_Address: Language_pl-PL
     m_ReadOnly: 1

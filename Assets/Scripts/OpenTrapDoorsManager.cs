@@ -7,17 +7,6 @@ public class OpenTrapDoorsManager : MonoBehaviour
     [SerializeField] private GameObject leftHandle;
     [SerializeField] private float rotateDuration = 1f;
 
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.O))
-        {
-            OpenAnimation();
-        }
-        else if (Input.GetKeyDown(KeyCode.C))
-        {
-            CloseAnimation();
-        }
-    }
 
     public void OpenAnimation()
     {
@@ -31,6 +20,8 @@ public class OpenTrapDoorsManager : MonoBehaviour
 
     private IEnumerator OpenTrapDoorCoroutine()
     {
+        Services.Audio.PlaySFX("OpenTrapdoorRoomTen");
+
         yield return new WaitForSeconds(0.5f);
 
         Quaternion rightStartRotation = rightHandle.transform.localRotation;
@@ -67,6 +58,8 @@ public class OpenTrapDoorsManager : MonoBehaviour
 
     private IEnumerator CloseTrapDoorCoroutine()
     {
+        Services.Audio.PlaySFX("OpenTrapdoorRoomTen");
+
         yield return new WaitForSeconds(0.5f);
 
         Quaternion rightStartRotation = rightHandle.transform.localRotation;

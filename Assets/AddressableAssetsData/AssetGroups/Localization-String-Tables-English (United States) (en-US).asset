@@ -40,6 +40,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-en-US
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4b068cba19a9c5b4486a6c98ae84cb4b
+    m_Address: Intro_en-US
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en-US
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 579911ff3975e5041a32de0c0c391962
     m_Address: BookRecpies_en-US
     m_ReadOnly: 1

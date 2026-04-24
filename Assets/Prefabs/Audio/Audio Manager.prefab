@@ -327,4 +327,10 @@ MonoBehaviour:
   - Id: ChestMovingStone
     Clip: {fileID: 8300000, guid: 12b0c94d8fdf33848a3f5fd741239a24, type: 3}
     Category: 3
+  - Id: softkyboardtyping
+    Clip: {fileID: 8300000, guid: e6aca8d9746af144cb83a40bb360dbd8, type: 3}
+    Category: 3
+  - Id: StartGameSound
+    Clip: {fileID: 8300000, guid: 0bb6eb3d09e4389469825a11c1d6b121, type: 3}
+    Category: 3
   sfxSourcePrefab: {fileID: 6808787666201464470, guid: 561a59515f73e424ba170ae966f504e9, type: 3}

@@ -46,8 +46,6 @@ public class MovingPillarManager : MonoBehaviour
 
     [SerializeField] private ThreeSymbolsPillarManager threeSymbolsPillarManager;
 
-
-
     void OnEnable()
     {
         if (dragDeltaInput != null)
@@ -59,8 +57,8 @@ public class MovingPillarManager : MonoBehaviour
         if (dragHoldInput != null)
         {
             dragHoldInput.action.Enable();
-            dragHoldInput.action.performed += ctx => SetClickAndDrag(true);
-            dragHoldInput.action.canceled += ctx => SetClickAndDrag(false);
+            dragHoldInput.action.performed += OnDragHoldPerformed;
+            dragHoldInput.action.canceled += OnDragHoldCanceled;
         }
     }
 
@@ -74,8 +72,8 @@ public class MovingPillarManager : MonoBehaviour
 
         if (dragHoldInput != null)
         {
-            dragHoldInput.action.performed -= ctx => SetClickAndDrag(true);
-            dragHoldInput.action.canceled -= ctx => SetClickAndDrag(false);
+            dragHoldInput.action.performed -= OnDragHoldPerformed;
+            dragHoldInput.action.canceled -= OnDragHoldCanceled;
             dragHoldInput.action.Disable();
         }
     }
@@ -90,11 +88,20 @@ public class MovingPillarManager : MonoBehaviour
 
         if (dragHoldInput != null)
         {
-            dragHoldInput.action.performed -= ctx => SetClickAndDrag(true);
-            dragHoldInput.action.canceled -= ctx => SetClickAndDrag(false);
+            dragHoldInput.action.performed -= OnDragHoldPerformed;
+            dragHoldInput.action.canceled -= OnDragHoldCanceled;
             dragHoldInput.action.Disable();
         }
+    }
 
+    private void OnDragHoldPerformed(InputAction.CallbackContext ctx)
+    {
+        SetClickAndDrag(true);
+    }
+
+    private void OnDragHoldCanceled(InputAction.CallbackContext ctx)
+    {
+        SetClickAndDrag(false);
     }
 
     public void SetClickAndDrag(bool state)
@@ -139,6 +146,9 @@ public class MovingPillarManager : MonoBehaviour
 
     Transform GetClosestPointPhysical()
     {
+        if (leftPoint == null || centerPoint == null || rightPoint == null)
+            return null;
+
         float dLeft = Vector3.Distance(transform.position, leftPoint.position);
         float dCenter = Vector3.Distance(transform.position, centerPoint.position);
         float dRight = Vector3.Distance(transform.position, rightPoint.position);
@@ -150,6 +160,9 @@ public class MovingPillarManager : MonoBehaviour
 
     IEnumerator SnapAndAssignSequence(Transform snapTarget, bool shouldSwap)
     {
+        if (snapTarget == null)
+            yield break;
+
         if (AnyArrayLostActive())
         {
             ResetAll();
@@ -238,6 +251,7 @@ public class MovingPillarManager : MonoBehaviour
         }
 
         transform.position = target;
+        Services.Audio.PlaySFX("BriefcaseTick");
     }
 
     bool AnyArrayLostActive()

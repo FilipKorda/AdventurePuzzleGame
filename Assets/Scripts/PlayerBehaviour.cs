@@ -281,8 +281,25 @@ public class PlayerBehaviour : MonoBehaviour
         cam.localEulerAngles = rot;
     }
 
+    public void DisableLampOnTrigger()
+    {
+        lampLight.enabled = false;
+        Services.Audio.PlaySFX("ToogleLampOff");
+    }
+
     public void ToggleLamp(InputAction.CallbackContext context)
     {
+        int currentSelectedId = UIManager.Instance.GetSelectedItemId();
+        if (currentSelectedId == 66)
+        {
+            if (lampLight.enabled)
+            {
+                DisableLampOnTrigger();
+            }
+
+            return;
+        }
+
         if (lampLightGo.activeInHierarchy) return;
 
         if (lampLight == null) return;
@@ -290,9 +307,9 @@ public class PlayerBehaviour : MonoBehaviour
         lampLight.enabled = !lampLight.enabled;
 
         if (lampLight.enabled)
-            Services.Audio.PlaySFX("ToggleLampOn");
+            Services.Audio.PlaySFX("ToogleLampOn");
         else
-            Services.Audio.PlaySFX("ToggleLampOff");
+            Services.Audio.PlaySFX("ToogleLampOff");
     }
 
     public void ToggleGlasses(InputAction.CallbackContext context)
@@ -306,6 +323,15 @@ public class PlayerBehaviour : MonoBehaviour
 
         if (currentSelectedId == 66)
         {
+            if (UIManager.Instance.glassesOn)
+            {
+                UIManager.Instance.EnableUnwearGlassesPanel();
+            }
+            else
+            {
+                UIManager.Instance.EnableWearGlassesPanel();
+            }
+
             if (!context.performed) return;
             if (isAnimating) return;
 
