@@ -23,11 +23,11 @@ public class LockPickGameMode : MonoBehaviour
     private Vector3[] lockPickPositions;
     private int currentLockPickIndex = 4;
     private Coroutine moveCoroutineLockPick;
-    private Vector3 lockPickLeftPos = new Vector3(-32.6f, -70, 0);
-    private Vector3 lockPickLowerLeftPos = new Vector3(37.7f, -70, 0);
-    private Vector3 lockPickMiddlePos = new Vector3(107, -70, 0);
-    private Vector3 lockPickLowerRightPos = new Vector3(174, -70, 0);
-    private Vector3 lockPickRightPos = new Vector3(244, -70, 0);
+    private Vector3 lockPickLeftPos = new Vector3(23.2f, -75, 0);
+    private Vector3 lockPickLowerLeftPos = new Vector3(78.5f, -75, 0);
+    private Vector3 lockPickMiddlePos = new Vector3(144.5f, -75, 0);
+    private Vector3 lockPickLowerRightPos = new Vector3(193.5f, -75, 0);
+    private Vector3 lockPickRightPos = new Vector3(240, -75, 0);
     private bool isLeft = false;
     private bool isLowerLeft = false;
     private bool isMiddle = false;

@@ -93,7 +93,12 @@ public class MovingBlockBriefcase : MonoBehaviour
 
         Vector2 delta = context.ReadValue<Vector2>();
         Vector3 offset = new(-delta.x * dragSpeed, 0f, 0f);
-        transform.position += offset;
+
+        Vector3 newPosition = transform.position + offset;
+        float minX = Mathf.Min(leftPoint.position.x, rightPoint.position.x);
+        float maxX = Mathf.Max(leftPoint.position.x, rightPoint.position.x);
+        newPosition.x = Mathf.Clamp(newPosition.x, minX, maxX);
+        transform.position = newPosition;
     }
 
     public void SetClickAndDrag(bool state)
@@ -166,6 +171,7 @@ public class MovingBlockBriefcase : MonoBehaviour
         }
 
         transform.position = target;
+        Services.Audio.PlaySFX("BriefcaseTick");
     }
 
     #region Arrow Movement
@@ -207,6 +213,8 @@ public class MovingBlockBriefcase : MonoBehaviour
 
             yield return null;
         }
+
+        Services.Audio.PlaySFX("BriefcaseTickv2Arrow");
 
         arrowObject.position = target;
     }
@@ -276,6 +284,6 @@ public class MovingBlockBriefcase : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         briefcaseManager.ExitAfterWin();
-      
+
     }
 }
