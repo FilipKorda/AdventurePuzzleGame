@@ -15,6 +15,8 @@ public class TrapDoorVerticalManager : MonoBehaviour
 
     private IEnumerator MakeObjectMoveUpAndDown()
     {
+        Services.Audio.PlaySFX("OpenTrapdoorRoomTen");
+        Services.Audio.PlaySFX("ShorterMovingStoneKryptex");
         Vector3 upStartPosition = upPanel.transform.position;
         Vector3 downStartPosition = downPanel.transform.position;
 

@@ -13,11 +13,17 @@ public class LaserBeam : MonoBehaviour
     HashSet<ILaserReactable> currentHits = new();
     HashSet<ILaserReactable> lastHits = new();
 
+    HashSet<Collider> currentMirrorHits = new();
+    HashSet<Collider> lastMirrorHits = new();
+
     [SerializeField] LayerMask mirrorLayer;
     [SerializeField] LayerMask passLayer;
     [SerializeField] LayerMask reactableLayer;
 
     [SerializeField] float refreshRate = 0.05f;
+
+    private bool reflectedLastFrame;
+
 
     public void ToggleLaser(bool toogleLaser)
     {
@@ -36,68 +42,98 @@ public class LaserBeam : MonoBehaviour
 
     void DrawLaser()
     {
-        if (activeLaser)
+        if (!activeLaser)
         {
-            currentHits.Clear();
+            reflectedLastFrame = false;
+            lastMirrorHits.Clear();
+            return;
+        }
 
-            Ray ray = new(transform.position, transform.forward);
-            line.positionCount = 1;
-            line.SetPosition(0, ray.origin);
+        currentHits.Clear();
+        currentMirrorHits.Clear();
 
-            int reflections = 0;
+        bool reflectedThisFrame = false;
 
-            while (reflections < maxReflections)
+        Ray ray = new(transform.position, transform.forward);
+        line.positionCount = 1;
+        line.SetPosition(0, ray.origin);
+
+        int reflections = 0;
+
+        while (reflections < maxReflections)
+        {
+            if (Physics.Raycast(ray, out RaycastHit hit, maxDistance))
             {
-                if (Physics.Raycast(ray, out RaycastHit hit, maxDistance))
+                line.positionCount++;
+                line.SetPosition(line.positionCount - 1, hit.point);
+
+                if (IsInLayerMask(hit.collider.gameObject, reactableLayer))
                 {
-                    line.positionCount++;
-                    line.SetPosition(line.positionCount - 1, hit.point);
+                    if (hit.collider.TryGetComponent<ILaserReactable>(out var reactable))
+                    {
+                        currentHits.Add(reactable);
 
-                    if (IsInLayerMask(hit.collider.gameObject, reactableLayer))
-                    {
-                        if (hit.collider.TryGetComponent<ILaserReactable>(out var reactable))
-                        {
-                            currentHits.Add(reactable);
+                        if (!lastHits.Contains(reactable))
+                            reactable.OnLaserEnter();
+                    }
+                }
 
-                            if (!lastHits.Contains(reactable))
-                                reactable.OnLaserEnter();
-                        }
+                if (IsInLayerMask(hit.collider.gameObject, mirrorLayer))
+                {
+                    currentMirrorHits.Add(hit.collider);
+
+                    if (!lastMirrorHits.Contains(hit.collider))
+                    {
+                        Services.Audio.PlaySFX("MirrorReflection");
                     }
 
-                    if (IsInLayerMask(hit.collider.gameObject, mirrorLayer))
-                    {
-                        Vector3 reflectDir = Vector3.Reflect(ray.direction, hit.normal);
-                        ray = new Ray(hit.point + reflectDir * 0.001f, reflectDir);
-                        reflections++;
-                    }
-                    else if (IsInLayerMask(hit.collider.gameObject, passLayer))
-                    {
-                        ray = new Ray(hit.point + ray.direction * 0.001f, ray.direction);
-                    }
-                    else
-                    {
-                        break;
-                    }
+                    Vector3 reflectDir = Vector3.Reflect(ray.direction, hit.normal);
+                    ray = new Ray(hit.point + reflectDir * 0.001f, reflectDir);
+                    reflections++;
+                }
+
+                else if (IsInLayerMask(hit.collider.gameObject, passLayer))
+                {
+                    ray = new Ray(hit.point + ray.direction * 0.001f, ray.direction);
                 }
                 else
                 {
-                    line.positionCount++;
-                    line.SetPosition(line.positionCount - 1, ray.origin + ray.direction * maxDistance);
                     break;
                 }
             }
-
-            foreach (var reactable in lastHits)
+            else
             {
-                if (!currentHits.Contains(reactable))
-                    reactable.OnLaserExit();
+                line.positionCount++;
+                line.SetPosition(line.positionCount - 1, ray.origin + ray.direction * maxDistance);
+                break;
             }
+        }
 
-            lastHits.Clear();
+        if (reflectedThisFrame && !reflectedLastFrame)
+        {
+            Services.Audio.PlaySFX("MirrorReflection");
+        }
 
-            foreach (var reactable in currentHits)
-                lastHits.Add(reactable);
+        reflectedLastFrame = reflectedThisFrame;
+
+        foreach (var reactable in lastHits)
+        {
+            if (!currentHits.Contains(reactable))
+                reactable.OnLaserExit();
+        }
+
+        lastHits.Clear();
+
+        foreach (var reactable in currentHits)
+            lastHits.Add(reactable);
+
+        lastMirrorHits.Clear();
+
+        foreach (var mirror in currentMirrorHits)
+        {
+            lastMirrorHits.Add(mirror);
         }
 
     }
+
 }

@@ -190,19 +190,4 @@ public class CursorController : MonoBehaviour
     {
         currentMode?.OnClickInput(context);
     }
-
-    void OnDrawGizmos()
-    {
-#if UNITY_EDITOR
-        if (!cursorEnabled) return;
-        if (CurrentCamera == null) return;
-
-        Gizmos.color = HasHit ? Color.green : Color.red;
-
-        if (HasHit)
-        {
-            Gizmos.DrawSphere(CurrentHit.point, 0.05f);
-        }
-#endif
-    }
 }

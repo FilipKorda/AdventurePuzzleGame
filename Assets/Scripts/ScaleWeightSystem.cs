@@ -62,6 +62,6 @@ public class ScaleWeightSystem : MonoBehaviour
         boxCollider.enabled = false;
         DisaleAllItemsColliders();
         animator.SetTrigger("Interact");
-        Debug.Log("Win");
+        Services.Audio.PlaySFX("SafeWinAkaPuzzleWin");
     }
 }

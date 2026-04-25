@@ -44426,7 +44426,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_IsOn: 0
+  m_IsOn: 1
 --- !u!1 &307563804
 GameObject:
   m_ObjectHideFlags: 0
@@ -97200,6 +97200,7 @@ GameObject:
   - component: {fileID: 702964518}
   - component: {fileID: 702964517}
   - component: {fileID: 702964516}
+  - component: {fileID: 702964521}
   m_Layer: 3
   m_Name: Interactable Collider
   m_TagString: Untagged
@@ -97473,6 +97474,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 702964514}
   m_Mesh: {fileID: -2684548993427604469, guid: 976819518fe06734187f5b6071b7a4b5, type: 3}
+--- !u!114 &702964521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 702964514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a977bb622090df24b9d318ca5bd9c09e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AnimationAudioEvent
 --- !u!1 &703167483
 GameObject:
   m_ObjectHideFlags: 0
@@ -102290,6 +102303,7 @@ GameObject:
   - component: {fileID: 732663277}
   - component: {fileID: 732663276}
   - component: {fileID: 732663275}
+  - component: {fileID: 732663280}
   m_Layer: 3
   m_Name: Interactable Collider
   m_TagString: Untagged
@@ -102563,6 +102577,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 732663273}
   m_Mesh: {fileID: -2684548993427604469, guid: 976819518fe06734187f5b6071b7a4b5, type: 3}
+--- !u!114 &732663280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 732663273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a977bb622090df24b9d318ca5bd9c09e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AnimationAudioEvent
 --- !u!1001 &732680160
 PrefabInstance:
   m_ObjectHideFlags: 0

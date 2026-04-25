@@ -65,15 +65,15 @@ public class SafeDial : MonoBehaviour
 
     void Rotate(int dir)
     {
-        Services.Audio.PlaySFX("SafeDialClickSound");
+       
 
         currentValue = (currentValue + dir + 100) % 100;
         float angle = currentValue * stepAngle + startModelPosition;
         transform.rotation = Quaternion.Euler(angle, fixedY, fixedZ);
 
-       // Debug.Log($"Numer na tarczy: {currentValue}");
-
         CheckCombination(dir);
+
+        Services.Audio.PlaySFX("SafeDialClickSound");
     }
 
     private void AnimationResetDial()

@@ -27,7 +27,7 @@ public class SquareSelectionManager : MonoBehaviour
     [SerializeField] private float chestMoveDuration = 1f;
 
     [SerializeField] private CoverAllSquarePuzzlePillar coverAllSquarePuzzlePillar;
-    [SerializeField] private PresurePlateManager presurePlateManager;
+    //[SerializeField] private PresurePlateManager presurePlateManager;
     [SerializeField] private PuzzleBoardHandle puzzleBoardHandle;
 
     public bool puzzleIsCompleted = false;
@@ -50,6 +50,8 @@ public class SquareSelectionManager : MonoBehaviour
         if (square == null) return false;
         if (square.IsBlocker) return false;
         if (square.squareIsSelected) return false;
+
+        Services.Audio.PlaySFX("SquareSelect");
 
         if (firstSelectedSquare == null)
         {
@@ -108,6 +110,7 @@ public class SquareSelectionManager : MonoBehaviour
             currentEndSquare = square;
 
             yield return new WaitForSeconds(delayBetweenSquares);
+            Services.Audio.PlaySFX("SquareSelect");
         }
 
         ShowDirectionsForCurrentEndSquare();
@@ -227,7 +230,7 @@ public class SquareSelectionManager : MonoBehaviour
         puzzleIsCompleted = true;
         canSelect = false;
         coverAllSquarePuzzlePillar.ExitAfterWin();
-        presurePlateManager.puzzleIsActivated = true;
+
         
         puzzleBoardHandle.PlayAnimation();
         StartCoroutine(PlayWinSequence());
@@ -250,12 +253,22 @@ public class SquareSelectionManager : MonoBehaviour
     }
 
 
+/*    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            StartCoroutine(AnimateChests());
+        }
+    }*/
+
     private IEnumerator AnimateChests()
     {
         if (leftChest == null || rightChest == null)
         {
             yield break;
         }
+        Services.Audio.PlaySFX("ChestMovingStone");
+   
 
         Vector3 leftStartPosition = leftChest.transform.position;
         Vector3 rightStartPosition = rightChest.transform.position;

@@ -12,7 +12,9 @@ public class ClickDragGameMode : ICursorGameMode
 
     private BraiserPuzzleMoveArea moveArea;
 
-
+    private float lastMoveTime;
+    private float movementStopDelay = 0.1f;
+    private float movementThreshold = 0.000001f;
     public void Enter(CursorController controller)
     {
         this.controller = controller;
@@ -78,6 +80,7 @@ public class ClickDragGameMode : ICursorGameMode
     public void OnDragInputCanceled(InputAction.CallbackContext context)
     {
         isDragging = false;
+
     }
 
     public void Tick()
@@ -88,6 +91,8 @@ public class ClickDragGameMode : ICursorGameMode
 
         if (isCurrentlyMoving)
         {
+            lastMoveTime = Time.time;
+
             if (!isMovingLoopPlaying)
             {
                 Services.Audio.PlayOnLoopSFX("MovingStoneBraiser");
@@ -96,7 +101,7 @@ public class ClickDragGameMode : ICursorGameMode
         }
         else
         {
-            if (isMovingLoopPlaying)
+            if (isMovingLoopPlaying && Time.time - lastMoveTime > movementStopDelay)
             {
                 StopAudio();
             }
@@ -127,7 +132,7 @@ public class ClickDragGameMode : ICursorGameMode
             target.z = Mathf.Clamp(target.z, min.y, max.y);
         }
 
-        if (selectedObject.position != target)
+        if ((selectedObject.position - target).sqrMagnitude > movementThreshold)
         {
             selectedObject.position = target;
             return true;

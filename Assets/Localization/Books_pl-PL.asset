@@ -159,6 +159,12 @@ MonoBehaviour:
       W sumie te\u017C brama ci sie otworzy\u0142a, nie wiem czy weisz? xd"
     m_Metadata:
       m_Items: []
+  - m_Id: 30027585318834176
+    m_Localized: "Masz ju\u017C \u0142opate? To mo\u017Ce we\u017A co\u015B wykop?
+      To chyba oczywiste xd, spr\xF3buj znale\u017A\u0107 miejsce miedzy jasnymi
+      a ciemnymi worakmi z piaskiem, bardzo blisko stosu drewna."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

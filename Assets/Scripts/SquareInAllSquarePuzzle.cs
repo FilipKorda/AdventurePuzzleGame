@@ -1,6 +1,5 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Renderer))]
 public class SquareInAllSquarePuzzle : MonoBehaviour
 {
     [SerializeField] private GameObject leftArrow;
@@ -20,9 +19,12 @@ public class SquareInAllSquarePuzzle : MonoBehaviour
     private Renderer squareRenderer;
     private Color baseColor;
 
+    [SerializeField] private Color selectAsFirst;
+    [SerializeField] private Color selectAsDirection;
+
     private void Awake()
     {
-        squareRenderer = GetComponent<Renderer>();
+        squareRenderer = GetComponentInChildren<Renderer>();
         baseColor = squareRenderer.material.color;
 
         HideAllArrows();
@@ -50,7 +52,7 @@ public class SquareInAllSquarePuzzle : MonoBehaviour
         if (isBlocker) return;
 
         squareIsSelected = true;
-        squareRenderer.material.color = Color.green;
+        squareRenderer.material.color = selectAsFirst;
         squareBoxCollider.enabled = false;
     }
 
@@ -59,7 +61,7 @@ public class SquareInAllSquarePuzzle : MonoBehaviour
         if (isBlocker) return;
 
         squareIsSelected = true;
-        squareRenderer.material.color = Color.blue;
+        squareRenderer.material.color = selectAsDirection;
         squareBoxCollider.enabled = false;
     }
 

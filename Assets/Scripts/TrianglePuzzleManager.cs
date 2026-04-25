@@ -43,13 +43,12 @@ public class TrianglePuzzleManager : MonoBehaviour
         animator.SetTrigger("Open");
         currentStep = 0;
         DisableBoxCollider();
-        Debug.Log("Kod poprawny – zagadka rozwiązana!");
+        Services.Audio.PlaySFX("SafeWinAkaPuzzleWin");
     }
 
     private void TriangleLost()
     {
         currentStep = 0;
-        Debug.Log("Błędna sekwencja");
     }
 
     private void DisableBoxCollider()

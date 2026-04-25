@@ -333,4 +333,22 @@ MonoBehaviour:
   - Id: StartGameSound
     Clip: {fileID: 8300000, guid: 0bb6eb3d09e4389469825a11c1d6b121, type: 3}
     Category: 3
+  - Id: MirrorReflection
+    Clip: {fileID: 8300000, guid: 7735a99469ff03947907ea558847c0d5, type: 3}
+    Category: 3
+  - Id: UsingCrowbar
+    Clip: {fileID: 8300000, guid: a9afc959fb2e7be4caeb4ec86dc70f7e, type: 3}
+    Category: 3
+  - Id: Breakingthewoodencabinet
+    Clip: {fileID: 8300000, guid: 6e6647cf5c62dfe47ac4799fac1ef402, type: 3}
+    Category: 3
+  - Id: ClickSoundTwelveDots
+    Clip: {fileID: 8300000, guid: 559c8d610e9464742b5a667ce05d3647, type: 3}
+    Category: 3
+  - Id: Delicatemovingbeam
+    Clip: {fileID: 8300000, guid: ab85a54e49f5bf649b6cc671608b03ec, type: 3}
+    Category: 3
+  - Id: SpinningWooden
+    Clip: {fileID: 8300000, guid: 957ed0d2d545fef4096c8317f68a1c21, type: 3}
+    Category: 3
   sfxSourcePrefab: {fileID: 6808787666201464470, guid: 561a59515f73e424ba170ae966f504e9, type: 3}

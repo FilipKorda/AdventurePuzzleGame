@@ -26,6 +26,8 @@ public class ClockSymbolsManager : MonoBehaviour
         foreach (var clockSymbol in clockSymbols)
         {
             clockSymbol.GetComponent<BoxCollider>().enabled = false;
+            clockSymbol.GetComponent<Rigidbody>().useGravity = false;
+            clockSymbol.GetComponent<Rigidbody>().isKinematic = true;
         }
 
         foreach (var col in symbolsPlaceCollider)

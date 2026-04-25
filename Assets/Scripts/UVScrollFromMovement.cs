@@ -73,25 +73,4 @@ public class UVScrollFromMovement : MonoBehaviour
         }
     }
 
-
-    void OnDrawGizmos()
-    {
-#if UNITY_EDITOR
-        if (isActive)
-        {
-            Vector3 rayOrigin = transform.position + rayOffset;
-
-            Gizmos.color = Color.red;
-            Gizmos.DrawLine(rayOrigin, rayOrigin + Vector3.down * rayDistance);
-
-            if (Physics.Raycast(rayOrigin, Vector3.down, out RaycastHit hit, rayDistance, detectableLayer))
-            {
-                Gizmos.color = Color.green;
-                Gizmos.DrawSphere(hit.point, 0.1f);
-            }
-
-        }
-
-#endif
-    }
 }

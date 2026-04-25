@@ -403,7 +403,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 28670327108423680
-    m_Localized: 'Press [F] to Inspect Object
+    m_Localized: 'Press [PPM] to Inspect Object
 
       Move Mosue to rotate'
     m_Metadata:

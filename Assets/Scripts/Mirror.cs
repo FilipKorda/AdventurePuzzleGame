@@ -26,9 +26,6 @@ public class Mirror : MonoBehaviour
     [SerializeField] private float verticalUp = 20;
 
 
-
-
-
     private void Start()
     {
         DisableControl();

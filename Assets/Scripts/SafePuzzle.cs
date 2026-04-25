@@ -89,7 +89,7 @@ public class SafePuzzle : MonoBehaviour
         gameObject.SetActive(true);
         boxCollider.enabled = false;
         playerBehaviour.disableOnlyMovement = true;
-        UIManager.Instance.EnableGearModePanel();
+        UIManager.Instance.EnableSafeRotateCodeTextPanel();
     }
 
     public void ExitPuzzleMode()
@@ -100,7 +100,7 @@ public class SafePuzzle : MonoBehaviour
         ResetPuzzle();
         gameObject.SetActive(false);
         playerBehaviour.disableOnlyMovement = false;
-        UIManager.Instance.DisableGearModePanel();
+        UIManager.Instance.DisableSharedPanelText();
 
         playerBehaviour.disablePlayer = false;
     }
@@ -128,7 +128,7 @@ public class SafePuzzle : MonoBehaviour
         blurCanvas.gameObject.SetActive(false);
         gameObject.SetActive(false);
         playerBehaviour.disableOnlyMovement = false;
-        UIManager.Instance.DisableGearModePanel();
+        UIManager.Instance.DisableSharedPanelText();
 
         playerBehaviour.disablePlayer = false;
 

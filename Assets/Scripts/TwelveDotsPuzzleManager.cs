@@ -32,6 +32,7 @@ public class TwelveDotsPuzzleManager : MonoBehaviour
     [SerializeField] private ChestManager chestManager;
     [SerializeField] private TrapDoorVerticalManager trapDoorVerticalManager;
     [SerializeField] private GameObject pillar;
+    [SerializeField] private RotateAllGearsRoomTen rotateAllGearsRoomTen;
 
 
 
@@ -200,6 +201,8 @@ public class TwelveDotsPuzzleManager : MonoBehaviour
         float time = 0f;
         int lastIndex = linePoints.Count - 1;
 
+        Services.Audio.PlaySFX("Delicatemovingbeam");
+        
         while (time < lineDrawDuration)
         {
             time += Time.deltaTime;
@@ -244,7 +247,6 @@ public class TwelveDotsPuzzleManager : MonoBehaviour
         InitializeConnectionUsage();
         ResetLineRenderer();
 
-        Debug.Log("Dots puzzle reset.");
     }
 
     private bool ConnectionAlreadyExists(DotFromDotsPuzzle dotA, DotFromDotsPuzzle dotB)
@@ -303,7 +305,6 @@ public class TwelveDotsPuzzleManager : MonoBehaviour
         HashSet<string> possibleConnections = GetAllPossibleConnections();
         HashSet<string> usedConnections = GetUsedConnections();
 
-        Debug.Log("Possible: " + possibleConnections.Count + " Used: " + usedConnections.Count + " LinePoints: " + lineRenderer.positionCount);
 
         if (possibleConnections.Count == 0) return;
 
@@ -311,7 +312,6 @@ public class TwelveDotsPuzzleManager : MonoBehaviour
         {
             if (!usedConnections.Contains(connection))
             {
-                Debug.Log("Missing connection: " + connection);
                 return;
             }
         }
@@ -326,6 +326,7 @@ public class TwelveDotsPuzzleManager : MonoBehaviour
         DisableAllDots();
         StopCurrentDotPulse();
         boxColliderPressurePlate.enabled = true;
+      
         StartEndSequence();
         chestManager.OpenChest();
         Services.Audio.PlaySFX("SafeWinAkaPuzzleWin");
@@ -339,11 +340,11 @@ public class TwelveDotsPuzzleManager : MonoBehaviour
     private IEnumerator CloseTrapDoorsAndMovePillarDownCoroutine()
     {
         trapDoorVerticalManager.ActiveAnimation();
-
+        rotateAllGearsRoomTen.RotateAllGears();
         yield return new WaitForSeconds(3.1f);
         ResetPuzzle();
         Vector3 startPos = pillar.transform.position;
-        Vector3 targetPos = startPos + Vector3.down * 2f;
+        Vector3 targetPos = startPos + Vector3.down * 2.2f;
         float time = 0f;
         float duration = 3f;
         while (time < duration)
