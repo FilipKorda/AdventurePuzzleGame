@@ -18,13 +18,6 @@ public class TapBarrelManager : MonoBehaviour
         bucket.SetActive(false);
     }
 
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.G)) {
-            FillBucketActivator();
-        }
-    }
-
     public void FillBucketActivator()
     {
         StartCoroutine(CorutinaFillBucket());

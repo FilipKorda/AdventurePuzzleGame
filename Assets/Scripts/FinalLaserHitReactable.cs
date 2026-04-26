@@ -77,6 +77,8 @@ public class FinalLaserHitReactable : MonoBehaviour, ILaserReactable
                 Services.Audio.PlaySFX("Cristal3Enter");
                 break;
         }
+
+        Services.Audio.PlaySFX("SafeWinAkaPuzzleWin");
     }
 
     private void PlayReleaseSound()

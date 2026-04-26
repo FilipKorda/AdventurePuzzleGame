@@ -32,5 +32,6 @@ public class FramePuzzlemanager : MonoBehaviour
         }
 
         animator.SetTrigger("Open");
+        Services.Audio.PlaySFX("SafeWinAkaPuzzleWin");
     }
 }

@@ -351,4 +351,10 @@ MonoBehaviour:
   - Id: SpinningWooden
     Clip: {fileID: 8300000, guid: 957ed0d2d545fef4096c8317f68a1c21, type: 3}
     Category: 3
+  - Id: MoveStoneInTheFloor
+    Clip: {fileID: 8300000, guid: b5153c505b924774992cd7879843ad90, type: 3}
+    Category: 3
+  - Id: KeyboardMechanical
+    Clip: {fileID: 8300000, guid: dadd90966f6b92c439e21423a38896ac, type: 3}
+    Category: 3
   sfxSourcePrefab: {fileID: 6808787666201464470, guid: 561a59515f73e424ba170ae966f504e9, type: 3}

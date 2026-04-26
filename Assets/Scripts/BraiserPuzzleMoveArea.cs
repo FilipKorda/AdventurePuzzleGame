@@ -11,7 +11,7 @@ public class BraiserPuzzleMoveArea : MonoBehaviour
     public Vector2 WorldMax =>
         new Vector2(transform.position.x + areaMax.x, transform.position.z + areaMax.y);
 
-    private void OnDrawGizmosSelected()
+   /* private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;
 
@@ -28,5 +28,5 @@ public class BraiserPuzzleMoveArea : MonoBehaviour
         );
 
         Gizmos.DrawWireCube(center, size);
-    }
+    }*/
 }

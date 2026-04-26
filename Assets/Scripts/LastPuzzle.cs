@@ -57,6 +57,8 @@ public class LastPuzzle : MonoBehaviour
     {
         lastPuzzleManager.DisableButtons();
 
+        lastPuzzleManager.ResetPuzzle();
+
         DisableInput();
         UIManager.Instance.DisableSharedPanelText();
         CursorController.Instance.DisableCursor();

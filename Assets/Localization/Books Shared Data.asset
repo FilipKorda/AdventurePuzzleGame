@@ -150,6 +150,10 @@ MonoBehaviour:
     m_Key: ShovelPuzleExpalation
     m_Metadata:
       m_Items: []
+  - m_Id: 30445287388762112
+    m_Key: MazeBook
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

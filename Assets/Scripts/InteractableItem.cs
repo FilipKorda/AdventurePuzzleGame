@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Linq;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Localization;
@@ -397,6 +398,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         if (canRotateMoveSphereOnePillarPuzzle)
         {
             StartCoroutine(RotatePillarCoroutine(90f, 0.5f));
+            Services.Audio.PlaySFX("MoveStoneInTheFloor");
         }
     }
 
@@ -781,6 +783,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     private IEnumerator MoveSingle(GameObject obj, Vector3 direction)
     {
         movingBlockIsMoving = true;
+        Services.Audio.PlaySFX("FastMove");
         Vector3 start = obj.transform.localPosition;
         Vector3 target = start + direction * moveDistanceMovingBlockPuzzle;
 
@@ -795,7 +798,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         movingBlockPuzzleManager.CheckCorrectPositionOfAnObjects();
         movingBlockIsMoving = false;
 
-        Services.Audio.PlaySFX("FastMove");
+
     }
 
     private void OnDrawGizmos()
@@ -1575,18 +1578,33 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
                 return;
             }
 
-            tapBarrelManager.FillBucketActivator();
+            if (tapBarrelManager != null)
+            {
+                tapBarrelManager.FillBucketActivator();
+            }
+            else
+            {
+                Inventory.Instance.AddItemToInventory(fillMapping.resultingFilledItem);
+            }
+
+
 
             Inventory.Instance.RemoveItemFromInventoryByID(selectedId);
             UIManager.Instance.RemoveItemFromUIByID(selectedId);
-            StartCoroutine(CouritineFill());
+
+            if (tapBarrelManager != null)
+            {
+                StartCoroutine(CouritineFill());
+            }
+
+
 
         }
     }
 
     private IEnumerator CouritineFill()
     {
-        
+
         yield return new WaitForSeconds(1.5f);
         Inventory.Instance.AddItemToInventory(fillMapping.resultingFilledItem);
     }
@@ -1628,7 +1646,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
                     int selectedId = UIManager.Instance.GetSelectedItemId();
 
                     if (selectedId == 4 || selectedId == 7 || selectedId == 11 || selectedId == 79
-                        || selectedId == 62 || selectedId == 67)
+                        || selectedId == 62 || selectedId == 67 || selectedId == 55)
                     {
                         Services.Audio.PlaySFX("UseKeyToOpenDoor");
                     }

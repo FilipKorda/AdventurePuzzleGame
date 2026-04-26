@@ -17,18 +17,23 @@ public class PressurePlate : MonoBehaviour
 
     private bool stayPressed = false;
 
+    private bool waitForPlayerExitAfterReset = false;
+
 
     void Awake()
     {
+        isPresureDissabled = false;
         startPos = transform.localPosition;
         targetPos = startPos;
     }
 
     void OnTriggerEnter(Collider other)
     {
+        if (!manager.puzzleIsActivated) return;
         if (isPresureDissabled) return;
-        if (!other.CompareTag("Untagged")) return;
+        if (!other.CompareTag("Player")) return;
         if (wasPressed) return;
+        if (waitForPlayerExitAfterReset) return;
 
         wasPressed = true;
         stayPressed = true;
@@ -38,10 +43,19 @@ public class PressurePlate : MonoBehaviour
     }
 
 
+
     void OnTriggerExit(Collider other)
     {
+        if (!manager.puzzleIsActivated) return;
+
+        if (!other.CompareTag("Player")) return;
+
+        if (waitForPlayerExitAfterReset)
+        {
+            waitForPlayerExitAfterReset = false;
+        }
+
         if (isPresureDissabled) return;
-        if (!other.CompareTag("Untagged")) return;
         if (stayPressed) return;
 
         targetPos = startPos;
@@ -49,10 +63,14 @@ public class PressurePlate : MonoBehaviour
     }
 
 
+
     void StartMove()
     {
         if (moveRoutine == null)
             moveRoutine = StartCoroutine(MoveCoroutine());
+
+        Services.Audio.PlaySFX("PressurePlate");
+
     }
 
 
@@ -72,20 +90,23 @@ public class PressurePlate : MonoBehaviour
         moveRoutine = null;
     }
 
-    public void ResetPlate()
+    public void StandOnResetPlate()
     {
-        StartCoroutine(DisableCollider());
         wasPressed = false;
         stayPressed = false;
+        waitForPlayerExitAfterReset = true;
+
         targetPos = startPos;
         StartMove();
     }
 
-
-    private IEnumerator DisableCollider()
+    public void OtherResetPlate()
     {
-        boxCollider.enabled = false;
-        yield return new WaitForSeconds(0.75f);
-        boxCollider.enabled = true;
+        wasPressed = false;
+        stayPressed = false;
+        waitForPlayerExitAfterReset = false;
+
+        targetPos = startPos;
+        StartMove();
     }
 }

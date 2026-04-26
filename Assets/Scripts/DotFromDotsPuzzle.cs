@@ -50,13 +50,15 @@ public class DotFromDotsPuzzle : MonoBehaviour
     {
         isConnected = true;
         SetSelectedColor();
-        Debug.Log("Dot selected: " + gameObject.name);
+        Services.Audio.PlaySFX("ClickSoundTwelveDots");
+        
     }
 
     public void SelectNextDot()
     {
         isConnected = true;
         SetSelectedColor();
+        Services.Audio.PlaySFX("ClickSoundTwelveDots");
     }
 
     public void DeselectDot()

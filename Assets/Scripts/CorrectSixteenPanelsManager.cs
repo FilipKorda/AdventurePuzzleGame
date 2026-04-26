@@ -28,6 +28,9 @@ public class CorrectSixteenPanelsManager : MonoBehaviour
     [SerializeField] private GameObject pillar;
     [SerializeField] private float pillarMoveDownDistance = 1f;
     [SerializeField] private RotateAllGearsRoomTen rotateAllGearsRoomTen;
+    [SerializeField] private PresurePlateManager presurePlateManager;
+
+
 
     public void CheckPuzzle()
     {
@@ -68,7 +71,7 @@ public class CorrectSixteenPanelsManager : MonoBehaviour
     }
 
     private void WinPuzzle()
-    {
+    {    
         DisablePanels();
         correctSixteenSymbolsPillar.ExitAfterWin();
         puzzleBoardHandle.StopAnimation();
@@ -113,6 +116,7 @@ public class CorrectSixteenPanelsManager : MonoBehaviour
 
     private IEnumerator CourutineCloseAndHideChest()
     {
+       
         leftChestManager.CloseChest();
         rightChestManager.CloseChest();
 
@@ -173,6 +177,7 @@ public class CorrectSixteenPanelsManager : MonoBehaviour
         }
 
         pillar.transform.position = targetPosition;
+        presurePlateManager.puzzleIsActivated = true;
     }
 
 

@@ -20,12 +20,12 @@ MonoBehaviour:
   m_TableData:
   - m_Id: 27189858304
     m_Localized: "In the dungeons, where magic whispers through the stone, and every
-      step could be the last, there are four signs.\r\n\r\nOne burns like a drop
-      of blood in the darkness,\r\na simple sign of courage.\r\n\r\nThe second, like
-      a storm enclosed in an amulet,\r\nwith an aura and a white symbol piercing
-      the silence.\r\n\r\nThe third promises protection and salvation,\r\ncool colors
-      over which we pray.\r\n\r\nBut the key to freedom,\r\nscreams neither in color
-      nor symbol.\r\n\r\nIn the shadows, a single talisman waits, \nleading out."
+      step could be the last, there are four signs.\r\nOne burns like a drop of blood
+      in the darkness,\r\na simple sign of courage.\r\nThe second, like a storm enclosed
+      in an amulet,\r\nwith an aura and a white symbol piercing the silence.\r\nThe
+      third promises protection and salvation,\r\ncool colors over which we pray.\r\nBut
+      the key to freedom,\r\nscreams neither in color nor symbol.\r\nIn the shadows,
+      a single talisman waits, \nleading out."
     m_Metadata:
       m_Items: []
   - m_Id: 9315719335936
@@ -41,29 +41,21 @@ MonoBehaviour:
     m_Localized: 'In a chamber deep underground, magic imprisons four faces. Each
       speaks the truth, but only one opens the passage.
 
+      It gazes without emotion,
+      cold as the stone of a dungeon, reveals nothing, promises nothing. It illuminates
+      the darkness without spell or steel, breaks the curse not with force but with
+      brilliance. Where it appears, the dungeon loses its power, and the path becomes
+      free.
 
-      It gazes without
-      emotion, cold as the stone of a dungeon, reveals nothing, promises nothing.
-
-
-      It
-      illuminates the darkness without spell or steel, breaks the curse not with
-      force but with brilliance. Where it appears, the dungeon loses its power, and
-      the path becomes free.
-
-
-      It burns like a spell cast in the dark, sharp
-      features and tension ready for battle.
-
-
-      It drowns in shadow and the
-      weight of defeat, eyes like closed doors, a heart dragging downward.'
+      It burns like a spell cast in the dark, sharp features and tension
+      ready for battle. It drowns in shadow and the weight of defeat, eyes like closed
+      doors, a heart dragging downward.'
     m_Metadata:
       m_Items: []
   - m_Id: 1565306839650304
     m_Localized: 'A warrior can find various ways to resolve a fight.
 
-      
+
 
       One
       tool operates quietly and close, where precision and concealment are key. Another
@@ -76,18 +68,14 @@ MonoBehaviour:
   - m_Id: 1567845387620352
     m_Localized: 'There are four signs, each one saying something different about...
 
-      
-
       One
       attracts attention with its warm and bright color, as if carrying the light
       of dawn and peaceful hope. The second is dark and heavy to the eye, evoking
       mystery and something that doesn''t always have a happy meaning. The third
       is simple and common, encountered frequently, without any particular distinction,
       familiar to everyone. The fourth has no color, only a simple form of life,
-      as if lacking something that usually catches the eye.
-
-      Only one of them
-      combines brightness and delicacy in a way that sets it apart from the rest.'
+      as if lacking something that usually catches the eye. Only one of them combines
+      brightness and delicacy in a way that sets it apart from the rest.'
     m_Metadata:
       m_Items: []
   references:

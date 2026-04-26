@@ -31,8 +31,16 @@ public class LastPuzzleButton : MonoBehaviour
         UpdateColor();
     }
 
+    public void SetState(bool state)
+    {
+        isButtonActive = state;
+        UpdateColor();
+    }
+
     public void ChangeNeiboursStatusButtons()
     {
+        Services.Audio.PlaySFX("KeyboardMechanical");
+
         manager.ToggleAt(index);
         manager.ToggleAt(index + Vector2Int.left);
         manager.ToggleAt(index + Vector2Int.right);
