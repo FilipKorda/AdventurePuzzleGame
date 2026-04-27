@@ -6,6 +6,7 @@ public class TwoCrystalsPuzzleGameMode : ICursorGameMode
     private CursorController controller;
     private MovingCrystal selectedCrystal;
     private bool isDragging;
+    private Vector2 lastCursorPosition;
 
     public void Enter(CursorController controller)
     {
@@ -22,59 +23,64 @@ public class TwoCrystalsPuzzleGameMode : ICursorGameMode
 
     public void OnClickInput(InputAction.CallbackContext context)
     {
+        if (!context.started) return;
         if (!controller.HasHit) return;
 
         Transform hitTransform = controller.CurrentHit.transform;
 
         if (hitTransform.TryGetComponent(out MovingCrystal movingCrystal))
         {
+            if (selectedCrystal != null && selectedCrystal != movingCrystal)
+            {
+                selectedCrystal.ReleaseControl();
+            }
+
             selectedCrystal = movingCrystal;
             selectedCrystal.TakeControlOfThisCrystal();
 
             isDragging = true;
+            lastCursorPosition = controller.GetCursorScreenPosition();
         }
     }
 
     public void OnDragInputStarted(InputAction.CallbackContext context)
     {
+        if (selectedCrystal == null) return;
+
+        isDragging = true;
+        lastCursorPosition = controller.GetCursorScreenPosition();
     }
 
     public void OnDragInputCanceled(InputAction.CallbackContext context)
     {
+        isDragging = false;
+        ReleaseSelectedCrystal();
     }
 
     public void Tick()
     {
         if (selectedCrystal == null) return;
-
-        if (!Mouse.current.leftButton.isPressed)
-        {
-            isDragging = false;
-            ReleaseSelectedCrystal();
-            return;
-        }
-
         if (!isDragging) return;
 
-        Vector2 mouseDelta = Mouse.current.delta.ReadValue();
+        Vector2 currentCursorPosition = controller.GetCursorScreenPosition();
+        Vector2 cursorDelta = currentCursorPosition - lastCursorPosition;
+        lastCursorPosition = currentCursorPosition;
 
-        if (mouseDelta.sqrMagnitude < 0.001f)
+        if (cursorDelta.sqrMagnitude < 0.001f)
         {
             selectedCrystal.UnlockNextMove();
             return;
         }
 
-        if (Mathf.Abs(mouseDelta.x) > Mathf.Abs(mouseDelta.y))
+        if (Mathf.Abs(cursorDelta.x) > Mathf.Abs(cursorDelta.y))
         {
-            selectedCrystal.MoveHorizontal(mouseDelta.x);
+            selectedCrystal.MoveHorizontal(cursorDelta.x);
         }
         else
         {
-            selectedCrystal.MoveVertical(mouseDelta.y);
+            selectedCrystal.MoveVertical(cursorDelta.y);
         }
     }
-
-
 
     private void ReleaseSelectedCrystal()
     {
@@ -86,6 +92,6 @@ public class TwoCrystalsPuzzleGameMode : ICursorGameMode
 
     private void StopAudio()
     {
-       // Services.Audio.StopLoopSFX("MovingStoneBraiser");
+        // Services.Audio.StopLoopSFX("MovingStoneBraiser");
     }
 }

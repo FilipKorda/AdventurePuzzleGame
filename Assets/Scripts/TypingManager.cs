@@ -1,5 +1,6 @@
 using System.Collections;
 using TMPro;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Localization.Components;
 using UnityEngine.Localization.Settings;
@@ -48,6 +49,12 @@ public class TypingManager : MonoBehaviour
 
     private void OnEnable()
     {
+#if UNITY_EDITOR
+        gameObject.SetActive(false);
+#else
+        gameObject.SetActive(true);
+#endif
+
         LocalizationSettings.SelectedLocaleChanged += OnSelectedLocaleChanged;
         ApplyColorToAllTargets(hiddenTextColor);
 
@@ -317,7 +324,7 @@ public class TypingManager : MonoBehaviour
                 textTimer.text = Mathf.CeilToInt(remaining).ToString();
             }
 
-            yield return null;     
+            yield return null;
         }
 
         yield return null;

@@ -68,7 +68,7 @@ public class StatueCompasPuzzle : MonoBehaviour
             boxCollider.enabled = false;
         }
 
-        Debug.Log("Puzzle solved");
+       // Debug.Log("Puzzle solved");
 
         MoveButton();
         RotateAllStatuesToPoint();

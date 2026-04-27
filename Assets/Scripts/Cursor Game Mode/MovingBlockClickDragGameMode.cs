@@ -10,7 +10,7 @@ public class MovingBlockClickDragGameMode : ICursorGameMode
 
     private Vector3 offset;
     private bool isDragging;
-    private Vector2 lastMousePosition;
+    private Vector2 lastCursorPosition;
     private float maxMovePerFrame = 0.01f;
 
     public void Enter(CursorController controller)
@@ -43,7 +43,6 @@ public class MovingBlockClickDragGameMode : ICursorGameMode
         MovableBlockRotatingPillar pillar =
             controller.CurrentHit.transform.GetComponent<MovableBlockRotatingPillar>();
 
-
         if (pillar == null)
         {
             selectedObject = null;
@@ -55,7 +54,6 @@ public class MovingBlockClickDragGameMode : ICursorGameMode
         movable = pillar;
 
         offset = selectedObject.position - controller.CurrentHit.point;
-
     }
 
     public void OnDragInputStarted(InputAction.CallbackContext context)
@@ -64,9 +62,9 @@ public class MovingBlockClickDragGameMode : ICursorGameMode
             return;
 
         isDragging = true;
-        lastMousePosition = Mouse.current.position.ReadValue();
+        lastCursorPosition = controller.GetCursorScreenPosition();
 
-        Ray ray = controller.GetRayFromScreenPoint(Mouse.current.position.ReadValue());
+        Ray ray = controller.GetRayFromScreenPoint(controller.GetCursorScreenPosition());
         Plane plane = new Plane(Vector3.up, new Vector3(0, selectedObject.position.y, 0));
 
         if (plane.Raycast(ray, out float dist))
@@ -94,12 +92,11 @@ public class MovingBlockClickDragGameMode : ICursorGameMode
         HandleMovement();
     }
 
-
     private void HandleMovement()
     {
-        Vector2 mousePos = Mouse.current.position.ReadValue();
-        Vector2 delta = mousePos - lastMousePosition;
-        lastMousePosition = mousePos;
+        Vector2 cursorPos = controller.GetCursorScreenPosition();
+        Vector2 delta = cursorPos - lastCursorPosition;
+        lastCursorPosition = cursorPos;
 
         Vector3 move;
 

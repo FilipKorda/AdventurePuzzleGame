@@ -51,6 +51,7 @@ public class MorseCodePuzzle : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private LaserBeam laserBeam;
 
+    [SerializeField] private Mirror[] mirrors;
 
     public void MorseCodeSolved()
     {
@@ -66,9 +67,18 @@ public class MorseCodePuzzle : MonoBehaviour
         {
             DisableSegments();
             RotateOneByOneAllSegments();
+            ActiveAllMirrors();
+            Services.Audio.PlaySFX("SafeWinAkaPuzzleWin");
         }
     }
 
+    private void ActiveAllMirrors()
+    {
+        foreach (var mirrors in mirrors)
+        {
+            mirrors.enabled = true;
+        }
+    }
 
     private void DisableSegments()
     {
@@ -85,7 +95,7 @@ public class MorseCodePuzzle : MonoBehaviour
     private void RotateOneByOneAllSegments()
     {
         StartCoroutine(RotateSegmentsCoroutine());
-        Debug.Log("Solved");
+        //Debug.Log("Solved");
     }
 
     private IEnumerator RotateSegmentsCoroutine()
@@ -148,7 +158,7 @@ public class MorseCodePuzzle : MonoBehaviour
 
         MoveWalls();
 
-        Debug.Log("Morse code puzzle activated!");
+        //Debug.Log("Morse code puzzle activated!");
     }
 
     public void MoveWalls()

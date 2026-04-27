@@ -1,6 +1,7 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
-using System.Collections;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class EndPanel : MonoBehaviour
@@ -101,6 +102,7 @@ public class EndPanel : MonoBehaviour
         text.color = color;
         buttonImage.color = colortwo;
         button.interactable = true;
+        SelectEndButton();
     }
 
     private void SetAlpha(float value, params TextMeshProUGUI[] texts)
@@ -111,5 +113,10 @@ public class EndPanel : MonoBehaviour
             color.a = value;
             text.color = color;
         }
+    }
+
+    public void SelectEndButton()
+    {
+        EventSystem.current.SetSelectedGameObject(button.gameObject);
     }
 }

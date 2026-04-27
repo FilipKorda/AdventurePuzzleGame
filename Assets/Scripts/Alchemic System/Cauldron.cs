@@ -158,7 +158,7 @@ public class Cauldron : MonoBehaviour
     {
         if (fireObject == null)
         {
-            Debug.LogWarning("Brak przypisanego 'fireObject' w komponencie Cauldron.");
+           // Debug.LogWarning("Brak przypisanego 'fireObject' w komponencie Cauldron.");
             return false;
         }
 
@@ -248,12 +248,12 @@ public class Cauldron : MonoBehaviour
         if (currentRecipe != null)
         {
             readySolution = currentRecipe.resultingPotion;
-            Debug.Log($"Ukoñczono gotowanie: {readySolution.GetItemName()}");
+         //   Debug.Log($"Ukoñczono gotowanie: {readySolution.GetItemName()}");
         }
         else
         {
             readySolution = badRecipiesSolution;
-            Debug.Log("Ukoñczono gotowanie: nieudany przepis (brudna woda).");
+           // Debug.Log("Ukoñczono gotowanie: nieudany przepis (brudna woda).");
         }
 
         if (cylinder != null && targetMaterial != null)
@@ -295,7 +295,7 @@ public class Cauldron : MonoBehaviour
             }
 
             NotificationSystem.Instance.ShowNotification(localizeStringGetMixture, 3);
-            Debug.Log("Pobrano roztwór z kot³a.");
+           // Debug.Log("Pobrano roztwór z kot³a.");
             return solutionToReturn;
         }
         return null;

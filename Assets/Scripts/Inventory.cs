@@ -91,7 +91,6 @@ public class Inventory : MonoBehaviour
         IPickupable itemToDrop = inventory.Find(item => item.GetItemId() == itemId);
         if (itemToDrop == null)
         {
-            Debug.LogWarning($"Próbowano wyrzuciæ przedmiot o ID {itemId}, ale nie ma go w ekwipunku.");
             return;
         }
 
@@ -102,7 +101,7 @@ public class Inventory : MonoBehaviour
         }
 
         Instantiate(itemPrefab, dropPoint.position, dropPoint.rotation);
-        Debug.Log($"Wyrzucono przedmiot: {itemToDrop.GetItemName()}");
+       
 
         RemoveItemFromInventoryByID(itemId);
         UIManager.Instance.RemoveItemFromUIByID(itemId);

@@ -16,6 +16,7 @@ public class LastPuzzleGameMode : ICursorGameMode
 
     public void OnClickInput(InputAction.CallbackContext context)
     {
+        if (!context.started) return;
         if (!controller.HasHit) return;
 
         Transform hitTransform = controller.CurrentHit.transform;

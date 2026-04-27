@@ -477,7 +477,7 @@ public class UIManager : MonoBehaviour
         int currentSelectedId = GetSelectedItemId();
         if (currentSelectedId == 0)
         {
-           // Debug.Log("Nie wybrano ¿adnego przedmiotu do u¿ycia.");
+            // Debug.Log("Nie wybrano ¿adnego przedmiotu do u¿ycia.");
             return;
         }
 
@@ -610,7 +610,7 @@ public class UIManager : MonoBehaviour
         int currentSelectedId = GetSelectedItemId();
         if (currentSelectedId == 0)
         {
-           // Debug.Log("Nie wybrano ¿adnego przedmiotu do u¿ycia.");
+            // Debug.Log("Nie wybrano ¿adnego przedmiotu do u¿ycia.");
             return;
         }
 
@@ -901,7 +901,7 @@ public class UIManager : MonoBehaviour
 
         if (Ailments.Instance == null)
         {
-            Debug.LogError("Brak instancji Ailments na scenie!");
+            //  Debug.LogError("Brak instancji Ailments na scenie!");
             return;
         }
 
@@ -909,31 +909,31 @@ public class UIManager : MonoBehaviour
         {
             case ItemID.WaterBucket:
                 UseConsumableItem(currentSelectedId);
-                Debug.Log("Wypito (WaterBucket).");
+                // Debug.Log("Wypito (WaterBucket).");
                 Ailments.Instance.ApplyWaterBucketEffect();
                 break;
 
             case ItemID.AcidBucket:
                 UseConsumableItem(currentSelectedId);
-                Debug.Log("Wypito (AcidBucket).");
+                // Debug.Log("Wypito (AcidBucket).");
                 Ailments.Instance.ApplyAcidBucketEffect();
                 break;
 
             case ItemID.BloodBucket:
                 UseConsumableItem(currentSelectedId);
-                Debug.Log("Wypito (BloodBucket).");
+                // Debug.Log("Wypito (BloodBucket).");
                 Ailments.Instance.ApplyBloodBucketEffect();
                 break;
 
             case ItemID.WineBucket:
                 UseConsumableItem(currentSelectedId);
-                Debug.Log("Wypito (WineBucket).");
+                // Debug.Log("Wypito (WineBucket).");
                 Ailments.Instance.ApplyWineBucketEffect();
                 break;
 
             case ItemID.RawMeat:
                 UseConsumableItem(currentSelectedId);
-                Debug.Log("Zjedzono (RawMeat).");
+                //  Debug.Log("Zjedzono (RawMeat).");
                 Ailments.Instance.ApplyRawMeatEffect();
                 break;
 
@@ -945,43 +945,43 @@ public class UIManager : MonoBehaviour
 
             case ItemID.MudWater:
                 UseConsumableItem(currentSelectedId);
-                Debug.Log("Wypito (MudWater).");
+                // Debug.Log("Wypito (MudWater).");
                 Ailments.Instance.ApplyMudWaterEffect();
                 break;
 
             case ItemID.LeafGoodBucket:
                 UseConsumableItem(currentSelectedId);
-                Debug.Log("Zjedzono (LeafGoods).");
+                // Debug.Log("Zjedzono (LeafGoods).");
                 Ailments.Instance.ApplyLeafGoodsEffect();
                 break;
 
             case ItemID.AngryTimeBucket:
                 UseConsumableItem(currentSelectedId);
-                Debug.Log("Zjedzono (AngryTime).");
+                // Debug.Log("Zjedzono (AngryTime).");
                 Ailments.Instance.ApplyAngryTimeEffect();
                 break;
 
             case ItemID.BadMoodBucket:
                 UseConsumableItem(currentSelectedId);
-                Debug.Log("Zjedzono (BadMood).");
+                //  Debug.Log("Zjedzono (BadMood).");
                 Ailments.Instance.ApplyBadMoodEffect();
                 break;
 
             case ItemID.GoodSoupBucket:
                 UseConsumableItem(currentSelectedId);
-                Debug.Log("Zjedzono (GoodSoup).");
+                // Debug.Log("Zjedzono (GoodSoup).");
                 Ailments.Instance.ApplyGoodSoupEffect();
                 break;
 
             case ItemID.HolyCowBucket:
                 UseConsumableItem(currentSelectedId);
-                Debug.Log("Zjedzono (HolyCow).");
+                //Debug.Log("Zjedzono (HolyCow).");
                 Ailments.Instance.ApplyHolyCowEffect();
                 break;
 
             default:
 
-                Debug.Log("Tego przedmiotu nie mo¿na zjeœæ ani wypiæ.");
+                // Debug.Log("Tego przedmiotu nie mo¿na zjeœæ ani wypiæ.");
                 break;
         }
     }
@@ -1009,9 +1009,9 @@ public class UIManager : MonoBehaviour
             || papytusPuzzleWoodenPuzzleSolve.activeInHierarchy || blurCanvas.gameObject.activeInHierarchy
             || safeCodePuzzle.activeInHierarchy || glassesOn || papyrusVerticalPuzzle.activeInHierarchy ||
             cardSymbolsPapirus.activeInHierarchy || arrowDIrectionPapirus.activeInHierarchy || leftPaper.activeInHierarchy
-            || rightPaper.activeInHierarchy || paintingBookPanel.activeInHierarchy || papyrusCageOpen.activeInHierarchy)
+            || rightPaper.activeInHierarchy || paintingBookPanel.activeInHierarchy || papyrusCageOpen.activeInHierarchy || CursorController.Instance.isInPuzzle)
         {
-            Debug.Log("Nie mo¿na wyrzuciæ przedmiotu podczas przegl¹dania czytanej strony.");
+            //Debug.Log("Nie mo¿na wyrzuciæ przedmiotu podczas przegl¹dania czytanej strony.");
             return;
         }
 
@@ -1038,7 +1038,7 @@ public class UIManager : MonoBehaviour
     {
         if (!CanAddItemToUI())
         {
-            Debug.Log("Osi¹gniêto maksymaln¹ liczbê przedmiotów, które mo¿esz nosiæ.");
+           // Debug.Log("Osi¹gniêto maksymaln¹ liczbê przedmiotów, które mo¿esz nosiæ.");
             return;
         }
 

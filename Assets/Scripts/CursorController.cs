@@ -10,7 +10,7 @@ public class CursorController : MonoBehaviour
     [SerializeField] private LayerMask interactableLayer;
     [SerializeField] private PausePanel pausePanel;
 
-    [SerializeField] private float gamepadCursorSpeed = 1200f;
+    [SerializeField] private float gamepadCursorSpeed = 350;
     [SerializeField] private float gamepadDeadzone = 0.15f;
 
     public LayerMask InteractableLayer => interactableLayer;
@@ -34,6 +34,8 @@ public class CursorController : MonoBehaviour
     private Vector2 virtualCursorPosition;
     private Vector2 lastMousePosition;
     private bool usingGamepadCursor;
+
+    public bool isInPuzzle = false;
 
     void Awake()
     {
@@ -157,6 +159,8 @@ public class CursorController : MonoBehaviour
         centerOfScreenImage.gameObject.SetActive(true);
         pausePanel.SetAllowPause(false);
 
+        isInPuzzle = true;
+
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Confined;
     }
@@ -182,6 +186,8 @@ public class CursorController : MonoBehaviour
         centerOfScreen.SetActive(false);
         centerOfScreenImage.gameObject.SetActive(true);
         pausePanel.SetAllowPause(false);
+
+        isInPuzzle = true;
 
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Confined;
@@ -213,6 +219,8 @@ public class CursorController : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
 
+        isInPuzzle = false;
+
         HasHit = false;
     }
 
@@ -238,6 +246,8 @@ public class CursorController : MonoBehaviour
         centerOfScreen.SetActive(true);
         centerOfScreenImage.gameObject.SetActive(false);
         pausePanel.SetAllowPause(true);
+
+        isInPuzzle = false;
 
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
