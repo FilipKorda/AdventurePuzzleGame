@@ -15,6 +15,7 @@ public class ClickDragGameMode : ICursorGameMode
     private float lastMoveTime;
     private float movementStopDelay = 0.1f;
     private float movementThreshold = 0.000001f;
+
     public void Enter(CursorController controller)
     {
         this.controller = controller;
@@ -33,8 +34,25 @@ public class ClickDragGameMode : ICursorGameMode
 
     public void OnClickInput(InputAction.CallbackContext context)
     {
-        if (controller.HasHit)
+        if (context.started)
         {
+            if (!controller.HasHit)
+            {
+                selectedObject = null;
+                isDragging = false;
+                StopAudio();
+                return;
+            }
+
+            if (selectedObject != null)
+            {
+                selectedObject = null;
+                moveArea = null;
+                isDragging = false;
+                StopAudio();
+                return;
+            }
+
             selectedObject = controller.CurrentHit.transform;
             offset = selectedObject.position - controller.CurrentHit.point;
 
@@ -43,26 +61,10 @@ public class ClickDragGameMode : ICursorGameMode
                 moveArea = selectedObject.parent.GetChild(0)
                     .GetComponent<BraiserPuzzleMoveArea>();
             }
-        }
-        else
-        {
-            selectedObject = null;
-        }
-    }
 
-    public void OnDragInputStarted(InputAction.CallbackContext context)
-    {
-        if (!controller.HasHit)
-        {
-            selectedObject = null;
-            StopAudio();
-        }
-
-        if (selectedObject != null)
-        {
             isDragging = true;
 
-            Ray ray = controller.GetRayFromScreenPoint(Mouse.current.position.ReadValue());
+            Ray ray = controller.GetRayFromScreenPoint(controller.GetCursorScreenPosition());
             Plane plane = new Plane(Vector3.up, new Vector3(0, selectedObject.position.y, 0));
 
             if (plane.Raycast(ray, out float dist))
@@ -75,12 +77,25 @@ public class ClickDragGameMode : ICursorGameMode
                 );
             }
         }
+
+        if (context.canceled)
+        {
+            isDragging = false;
+            StopAudio();
+        }
     }
+
+
+
+    public void OnDragInputStarted(InputAction.CallbackContext context)
+    {
+        
+    }
+
 
     public void OnDragInputCanceled(InputAction.CallbackContext context)
     {
-        isDragging = false;
-
+    
     }
 
     public void Tick()
@@ -110,7 +125,7 @@ public class ClickDragGameMode : ICursorGameMode
 
     private bool HandleMovement()
     {
-        Ray ray = controller.GetRayFromScreenPoint(Mouse.current.position.ReadValue());
+        Ray ray = controller.GetRayFromScreenPoint(controller.GetCursorScreenPosition());
         Plane plane = new Plane(Vector3.up, new Vector3(0, selectedObject.position.y, 0));
 
         if (!plane.Raycast(ray, out float dist)) return false;

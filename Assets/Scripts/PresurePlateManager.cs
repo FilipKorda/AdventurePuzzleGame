@@ -47,7 +47,7 @@ public class PresurePlateManager : MonoBehaviour
 
     public void PlatePressed(PressurePlate plate)
     {
-        if(!puzzleIsActivated) return;
+        if (!puzzleIsActivated) return;
 
         if (!pressedSequence.Contains(plate))
             pressedSequence.Add(plate);
@@ -70,7 +70,6 @@ public class PresurePlateManager : MonoBehaviour
             }
             else
             {
-                Debug.Log("PRZEGRANA!");
                 ResetSequence();
             }
         }
@@ -78,8 +77,14 @@ public class PresurePlateManager : MonoBehaviour
 
     private void ResetSequence()
     {
-        foreach (var plate in pressedSequence)
-            plate.ResetPlate();
+        for (int i = 0; i < pressedSequence.Count; i++)
+        {
+            if (i == pressedSequence.Count - 1)
+                pressedSequence[i].StandOnResetPlate();
+            else
+                pressedSequence[i].OtherResetPlate();
+        }
+
 
         pressedSequence.Clear();
     }
@@ -92,12 +97,13 @@ public class PresurePlateManager : MonoBehaviour
         pressurePlate1.isPresureDissabled = true;
         pressurePlate2.isPresureDissabled = true;
         Services.Audio.PlaySFX("SafeWinAkaPuzzleWin");
+        Services.Audio.PlaySFX("MoveGearRoomTen");
     }
 
     private void ResetSequenceAfterWin()
     {
         foreach (var plate in pressedSequence)
-            plate.ResetPlate();
+            plate.StandOnResetPlate();
 
         pressedSequence.Clear();
 

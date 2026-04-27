@@ -915,7 +915,7 @@ MonoBehaviour:
   teleportInterval: 0.75
   hiddenDoorRenderer: {fileID: 0}
   boxColliderHiddenDoor: {fileID: 0}
-  disablePlayer: 1
+  disablePlayer: 0
   disableOnlyMovement: 0
   lampLight: {fileID: 4737187716862764318}
   lampLightGo: {fileID: 0}

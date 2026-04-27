@@ -31,6 +31,11 @@ public class Mirror : MonoBehaviour
         DisableControl();
     }
 
+    private void OnDisable()
+    {
+        DisableControl();
+    }
+
     public void EnableControl()
     {
         mirrorCamera.enabled = true;

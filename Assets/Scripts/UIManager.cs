@@ -477,7 +477,7 @@ public class UIManager : MonoBehaviour
         int currentSelectedId = GetSelectedItemId();
         if (currentSelectedId == 0)
         {
-            Debug.Log("Nie wybrano 풹dnego przedmiotu do u퓓cia.");
+           // Debug.Log("Nie wybrano 풹dnego przedmiotu do u퓓cia.");
             return;
         }
 
@@ -610,7 +610,7 @@ public class UIManager : MonoBehaviour
         int currentSelectedId = GetSelectedItemId();
         if (currentSelectedId == 0)
         {
-            Debug.Log("Nie wybrano 풹dnego przedmiotu do u퓓cia.");
+           // Debug.Log("Nie wybrano 풹dnego przedmiotu do u퓓cia.");
             return;
         }
 
@@ -896,7 +896,6 @@ public class UIManager : MonoBehaviour
         int currentSelectedId = GetSelectedItemId();
         if (currentSelectedId == 0)
         {
-            Debug.Log("Nie wybrano 풹dnego przedmiotu do u퓓cia.");
             return;
         }
 
@@ -1026,7 +1025,7 @@ public class UIManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("Nie wybrano 풹dnego przedmiotu do wyrzucenia.");
+            //Debug.Log("Nie wybrano 풹dnego przedmiotu do wyrzucenia.");
         }
     }
 

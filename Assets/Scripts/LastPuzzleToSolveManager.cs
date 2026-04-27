@@ -16,9 +16,13 @@ public class LastPuzzleToSolveManager : MonoBehaviour
 
     [SerializeField] private RotateAllGearsRoomTen rotateAllGearsRoomTen;
 
+    private bool[,] initialStates;
+
+
     private void Start()
     {
         buttons = new LastPuzzleButton[size.x, size.y];
+        initialStates = new bool[size.x, size.y];
 
         foreach (LastPuzzleButton b in GetComponentsInChildren<LastPuzzleButton>())
         {
@@ -28,7 +32,27 @@ public class LastPuzzleToSolveManager : MonoBehaviour
         }
 
         DisableButtons();
+        SaveInitialStates();
     }
+
+    private void SaveInitialStates()
+    {
+        for (int x = 0; x < size.x; x++)
+            for (int y = 0; y < size.y; y++)
+            {
+                initialStates[x, y] = buttons[x, y].isButtonActive;
+            }
+    }
+
+    public void ResetPuzzle()
+    {
+        for (int x = 0; x < size.x; x++)
+            for (int y = 0; y < size.y; y++)
+            {
+                buttons[x, y].SetState(initialStates[x, y]);
+            }
+    }
+
 
     public void ToggleAt(Vector2Int index)
     {
@@ -72,6 +96,7 @@ public class LastPuzzleToSolveManager : MonoBehaviour
 
     private void MoveChest()
     {
+        Services.Audio.PlaySFX("SafeWinAkaPuzzleWin");
         StartCoroutine(MoveChestCoroutine(chestObject1));
         StartCoroutine(MoveChestCoroutine(chestObject2));
 

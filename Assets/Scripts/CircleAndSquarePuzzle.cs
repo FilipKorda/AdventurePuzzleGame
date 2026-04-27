@@ -46,6 +46,7 @@ public class CircleAndSquarePuzzle : MonoBehaviour
         gameObject.SetActive(true);
 
         playerBehaviour.disableOnlyMovement = true;
+        playerBehaviour.gamepadSensitivity = 25;
         UIManager.Instance.EnableCircleAndSquarePuzzleHintPanel();
 
     }
@@ -58,6 +59,7 @@ public class CircleAndSquarePuzzle : MonoBehaviour
         ResetPuzzle();
         gameObject.SetActive(false);
         playerBehaviour.disableOnlyMovement = false;
+        playerBehaviour.gamepadSensitivity = 100;
         UIManager.Instance.DisableSharedPanelText();
     }
 
@@ -67,6 +69,7 @@ public class CircleAndSquarePuzzle : MonoBehaviour
         blurCanvas.gameObject.SetActive(false);
         gameObject.SetActive(false);
         playerBehaviour.disableOnlyMovement = false;
+        playerBehaviour.gamepadSensitivity = 100;
         UIManager.Instance.DisableSharedPanelText();
         pipePuzzleManager.CheckWInBothPipePuzzle();
         Services.Audio.PlaySFX("SafeWinAkaPuzzleWin");

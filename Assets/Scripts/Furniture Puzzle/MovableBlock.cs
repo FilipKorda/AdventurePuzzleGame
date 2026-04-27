@@ -105,18 +105,82 @@ public class MovableBlock : MonoBehaviour
 
         if (direction == BlockDirection.Vertical)
         {
-            if (input.y > 0.5f)
-                move = Vector3.forward;
-            else if (input.y < -0.5f)
-                move = Vector3.back;
+            Vector3 toCamera = playerBehaviour._playerCamera.transform.position - transform.position;
+            toCamera.y = 0f;
+            toCamera.Normalize();
+
+            Vector3 blockForward = transform.forward;
+            blockForward.y = 0f;
+            blockForward.Normalize();
+
+            Vector3 blockRight = transform.right;
+            blockRight.y = 0f;
+            blockRight.Normalize();
+
+            float forwardDot = Vector3.Dot(toCamera, blockForward);
+            float rightDot = Vector3.Dot(toCamera, blockRight);
+
+            bool lookingMoreFromFrontOrBack = Mathf.Abs(forwardDot) >= Mathf.Abs(rightDot);
+
+            if (lookingMoreFromFrontOrBack)
+            {
+                bool cameraIsBehindBlock = forwardDot > 0f;
+
+                if (input.y > 0.5f)
+                    move = cameraIsBehindBlock ? Vector3.back : Vector3.forward;
+                else if (input.y < -0.5f)
+                    move = cameraIsBehindBlock ? Vector3.forward : Vector3.back;
+            }
+            else
+            {
+                bool cameraIsOnRightSide = rightDot < 0f;
+
+                if (input.x > 0.5f)
+                    move = cameraIsOnRightSide ? Vector3.back : Vector3.forward;
+                else if (input.x < -0.5f)
+                    move = cameraIsOnRightSide ? Vector3.forward : Vector3.back;
+            }
         }
+
         else if (direction == BlockDirection.Horizontal)
         {
-            if (input.x > 0.5f)
-                move = Vector3.right;
-            else if (input.x < -0.5f)
-                move = Vector3.left;
+            Vector3 toCamera = playerBehaviour._playerCamera.transform.position - transform.position;
+            toCamera.y = 0f;
+            toCamera.Normalize();
+
+            Vector3 blockForward = transform.forward;
+            blockForward.y = 0f;
+            blockForward.Normalize();
+
+            Vector3 blockRight = transform.right;
+            blockRight.y = 0f;
+            blockRight.Normalize();
+
+            float forwardDot = Vector3.Dot(toCamera, blockForward);
+            float rightDot = Vector3.Dot(toCamera, blockRight);
+
+            bool lookingMoreFromFrontOrBack = Mathf.Abs(forwardDot) >= Mathf.Abs(rightDot);
+
+            if (lookingMoreFromFrontOrBack)
+            {
+                bool cameraIsBehindBlock = forwardDot > 0f;
+
+                if (input.x > 0.5f)
+                    move = cameraIsBehindBlock ? Vector3.left : Vector3.right;
+                else if (input.x < -0.5f)
+                    move = cameraIsBehindBlock ? Vector3.right : Vector3.left;
+            }
+            else
+            {
+                bool cameraIsOnRightSide = rightDot > 0f;
+
+                if (input.y > 0.5f)
+                    move = cameraIsOnRightSide ? Vector3.left : Vector3.right;
+                else if (input.y < -0.5f)
+                    move = cameraIsOnRightSide ? Vector3.right : Vector3.left;
+            }
         }
+
 
         if (move != Vector3.zero && !IsObstacleInDirection(move))
         {

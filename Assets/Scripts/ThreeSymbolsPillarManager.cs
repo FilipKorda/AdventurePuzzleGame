@@ -22,8 +22,6 @@ public class ThreeSymbolsPillarManager : MonoBehaviour
             animator.SetTrigger("Interact");
             DisalePuzzle();
             Services.Audio.PlaySFX("SafeWinAkaPuzzleWin");
-
-
         }
     }
 

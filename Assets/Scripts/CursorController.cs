@@ -10,6 +10,9 @@ public class CursorController : MonoBehaviour
     [SerializeField] private LayerMask interactableLayer;
     [SerializeField] private PausePanel pausePanel;
 
+    [SerializeField] private float gamepadCursorSpeed = 1200f;
+    [SerializeField] private float gamepadDeadzone = 0.15f;
+
     public LayerMask InteractableLayer => interactableLayer;
     public Camera CurrentCamera { get; private set; }
 
@@ -28,6 +31,10 @@ public class CursorController : MonoBehaviour
     public RaycastHit CurrentHit { get; private set; }
     public bool HasHit { get; set; }
 
+    private Vector2 virtualCursorPosition;
+    private Vector2 lastMousePosition;
+    private bool usingGamepadCursor;
+
     void Awake()
     {
         if (Instance != null)
@@ -35,28 +42,68 @@ public class CursorController : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+
         Instance = this;
     }
 
     void Start()
     {
         centerOfScreenImage.gameObject.SetActive(false);
+
+        Vector2 startPos = new Vector2(Screen.width * 0.5f, Screen.height * 0.5f);
+        virtualCursorPosition = startPos;
+        lastMousePosition = Mouse.current != null ? Mouse.current.position.ReadValue() : startPos;
     }
 
     void Update()
     {
         if (!cursorEnabled) return;
+        if (CurrentCamera == null) return;
 
+        UpdateVirtualCursorPosition();
         UpdateRay();
         currentMode?.Tick();
 
-        centerOfScreenImage.position = Mouse.current.position.ReadValue();
+        centerOfScreenImage.position = virtualCursorPosition;
         LerpCenterOfScreenSize();
+    }
+
+    private void UpdateVirtualCursorPosition()
+    {
+        if (Mouse.current != null)
+        {
+            Vector2 mousePos = Mouse.current.position.ReadValue();
+
+            if ((mousePos - lastMousePosition).sqrMagnitude > 0.0001f)
+            {
+                virtualCursorPosition = mousePos;
+                usingGamepadCursor = false;
+            }
+
+            lastMousePosition = mousePos;
+        }
+
+        if (Gamepad.current != null)
+        {
+            Vector2 stick = Gamepad.current.leftStick.ReadValue();
+
+            if (stick.sqrMagnitude > gamepadDeadzone * gamepadDeadzone)
+            {
+                usingGamepadCursor = true;
+                virtualCursorPosition += new Vector2(
+                    stick.x * gamepadCursorSpeed * Time.deltaTime,
+                    stick.y * gamepadCursorSpeed * Time.deltaTime
+                );
+            }
+        }
+
+        virtualCursorPosition.x = Mathf.Clamp(virtualCursorPosition.x, 0f, Screen.width);
+        virtualCursorPosition.y = Mathf.Clamp(virtualCursorPosition.y, 0f, Screen.height);
     }
 
     private void UpdateRay()
     {
-        CurrentRay = CurrentCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
+        CurrentRay = CurrentCamera.ScreenPointToRay(virtualCursorPosition);
         HasHit = Physics.Raycast(CurrentRay, out RaycastHit hit, rayDistance, interactableLayer);
 
         CurrentHit = hit;
@@ -76,14 +123,31 @@ public class CursorController : MonoBehaviour
         return CurrentCamera.ScreenPointToRay(screenPos);
     }
 
+    public Vector2 GetCursorScreenPosition()
+    {
+        if (usingGamepadCursor)
+            return virtualCursorPosition;
+
+        if (Mouse.current != null)
+            return Mouse.current.position.ReadValue();
+
+        return virtualCursorPosition;
+    }
+
+
     public void EnableCursor(Camera cam)
     {
         CurrentCamera = cam;
-
         cursorEnabled = true;
+
+        virtualCursorPosition = Mouse.current != null
+            ? Mouse.current.position.ReadValue()
+            : new Vector2(Screen.width * 0.5f, Screen.height * 0.5f);
 
         cursorClickButtonInput.action.Enable();
         cursorClickButtonInput.action.started += OnClickButtonInput;
+        cursorClickButtonInput.action.performed += OnClickButtonInput;
+        cursorClickButtonInput.action.canceled += OnClickButtonInput;
 
         cursorDragInput.action.Enable();
         cursorDragInput.action.started += OnDragInputStarted;
@@ -100,14 +164,19 @@ public class CursorController : MonoBehaviour
     public void EnableBraiserCursor(Camera cam)
     {
         CurrentCamera = cam;
-
         cursorEnabled = true;
+
+        virtualCursorPosition = Mouse.current != null
+            ? Mouse.current.position.ReadValue()
+            : new Vector2(Screen.width * 0.5f, Screen.height * 0.5f);
 
         cursorClickButtonInput.action.Enable();
         cursorClickButtonInput.action.started += OnClickButtonInput;
+        cursorClickButtonInput.action.performed += OnClickButtonInput;
+        cursorClickButtonInput.action.canceled += OnClickButtonInput;
 
         cursorDragInput.action.Enable();
-        cursorDragInput.action.performed += OnDragInputStarted;
+        cursorDragInput.action.started += OnDragInputStarted;
         cursorDragInput.action.canceled += OnDragInputCanceled;
 
         centerOfScreen.SetActive(false);
@@ -126,7 +195,10 @@ public class CursorController : MonoBehaviour
         currentMode = null;
 
         cursorClickButtonInput.action.started -= OnClickButtonInput;
+        cursorClickButtonInput.action.performed -= OnClickButtonInput;
+        cursorClickButtonInput.action.canceled -= OnClickButtonInput;
         cursorClickButtonInput.action.Disable();
+
 
         cursorDragInput.action.started -= OnDragInputStarted;
         cursorDragInput.action.canceled -= OnDragInputCanceled;
@@ -152,9 +224,12 @@ public class CursorController : MonoBehaviour
         currentMode = null;
 
         cursorClickButtonInput.action.started -= OnClickButtonInput;
+        cursorClickButtonInput.action.performed -= OnClickButtonInput;
+        cursorClickButtonInput.action.canceled -= OnClickButtonInput;
         cursorClickButtonInput.action.Disable();
 
-        cursorDragInput.action.performed -= OnDragInputStarted;
+
+        cursorDragInput.action.started -= OnDragInputStarted;
         cursorDragInput.action.canceled -= OnDragInputCanceled;
         cursorDragInput.action.Disable();
 

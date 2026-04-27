@@ -120,13 +120,13 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 13340150388248576
-    m_Localized: 'Move [W] and [S]
+    m_Localized: 'Move [WASD]
 
       Press E to leave'
     m_Metadata:
       m_Items: []
   - m_Id: 13340387978792960
-    m_Localized: 'Move [A] and [D]
+    m_Localized: 'Move [WASD]
 
       Press E to leave'
     m_Metadata:

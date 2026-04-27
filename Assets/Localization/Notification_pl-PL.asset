@@ -121,11 +121,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 13340150388248576
-    m_Localized: "Ruch [W] i [S]\nNaci\u015Bnij E \u017Ceby wyj\u015B\u0107"
+    m_Localized: "Ruch [WASD]\nNaci\u015Bnij E \u017Ceby wyj\u015B\u0107"
     m_Metadata:
       m_Items: []
   - m_Id: 13340387978792960
-    m_Localized: "Ruch [A] i [D]\nNaci\u015Bnij E \u017Ceby wyj\u015B\u0107"
+    m_Localized: "Ruch [WASD]\nNaci\u015Bnij E \u017Ceby wyj\u015B\u0107"
     m_Metadata:
       m_Items: []
   - m_Id: 13480168645742592

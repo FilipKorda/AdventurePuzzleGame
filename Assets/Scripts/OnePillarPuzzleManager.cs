@@ -231,6 +231,14 @@ public class OnePillarPuzzleManager : MonoBehaviour
         movingVericalCube1.SetActive(false);
         movingVericalCube2.SetActive(false);
 
+        VerticalCubeWinCollider.enabled = false;
+        VerticalCube1WinCollider.enabled = false;
+        VerticalCube2WinCollider.enabled = false;
+
+        HorizontalCubeWinCollider.enabled = false;
+        HorizontalCube1WinCollider.enabled = false;
+        HorizontalCube2WinCollider.enabled = false;
+
         movingHorizontalCube.SetActive(false);
         movingHorizontalCube1.SetActive(false);
         movingHorizontalCube2.SetActive(false);

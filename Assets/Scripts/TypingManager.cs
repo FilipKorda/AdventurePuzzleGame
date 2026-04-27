@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Localization.Components;
 using UnityEngine.Localization.Settings;
 using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.UI;
 
 public class TypingManager : MonoBehaviour
 {
@@ -25,9 +26,21 @@ public class TypingManager : MonoBehaviour
     [SerializeField] private Color visibleTextColor = Color.white;
     [SerializeField] private PlayerBehaviour playerBehaviour;
 
+    [SerializeField] private CanvasGroup textCanvasGroup;
+    [SerializeField] private CanvasGroup controlsCanvasGroup;
+    [SerializeField] private Image circleBackgroundAnim;
+    [SerializeField] private float defaultTimerDuration = 5f;
+
+    private Coroutine timerCoroutine;
+
+    [SerializeField] private TextMeshProUGUI textTimer;
+
     private void Awake()
     {
         ApplyColorToAllTargets(hiddenTextColor);
+        textCanvasGroup.alpha = 1f;
+        controlsCanvasGroup.alpha = 0f;
+        textTimer.text = string.Empty;
     }
 
     private Coroutine sequenceCoroutine;
@@ -37,6 +50,8 @@ public class TypingManager : MonoBehaviour
     {
         LocalizationSettings.SelectedLocaleChanged += OnSelectedLocaleChanged;
         ApplyColorToAllTargets(hiddenTextColor);
+
+        SetPlayerDisabled(true);
 
         if (playOnEnable)
         {
@@ -81,12 +96,6 @@ public class TypingManager : MonoBehaviour
         }
     }
 
-    public void StartTypingAll()
-    {
-        SetPlayerDisabled(true);
-        StartSequenceFromSources();
-    }
-
     public void StartTyping(int index)
     {
         if (index < 0 || index >= targets.Length)
@@ -120,7 +129,6 @@ public class TypingManager : MonoBehaviour
     {
         if (playOnEnable)
         {
-            SetPlayerDisabled(true);
             StartSequenceFromSources();
         }
         else
@@ -149,6 +157,8 @@ public class TypingManager : MonoBehaviour
 
     private void PrepareTargetsWithoutPlaying()
     {
+        SetPlayerDisabled(true);
+
         if (initializeCoroutine != null)
         {
             StopCoroutine(initializeCoroutine);
@@ -231,15 +241,99 @@ public class TypingManager : MonoBehaviour
 
         sequenceCoroutine = null;
 
+        timerCoroutine = StartCoroutine(StartTimer(5f));
         yield return new WaitForSeconds(5f);
-        DoAfterEndOfTyping();
+        StartCoroutine(ChangeAlfaCanvasGroup(0f, 1f, 1f));
     }
 
     private void DoAfterEndOfTyping()
     {
-        Services.Audio.PlaySFX("StartGameSound");     
+        Services.Audio.PlaySFX("StartGameSound");
         SetPlayerDisabled(false);
         gameObject.SetActive(false);
+    }
+
+    private IEnumerator ChangeAlfaCanvasGroup(float targetTextAlpha, float targetControlsAlpha, float duration = 1f)
+    {
+        if (textCanvasGroup != null)
+        {
+            float elapsed = 0f;
+            float startTextAlpha = textCanvasGroup.alpha;
+
+            while (elapsed < duration)
+            {
+                elapsed += Time.deltaTime;
+                float t = Mathf.Clamp01(elapsed / duration);
+                textCanvasGroup.alpha = Mathf.Lerp(startTextAlpha, targetTextAlpha, t);
+                yield return null;
+            }
+
+            textCanvasGroup.alpha = targetTextAlpha;
+        }
+
+        if (controlsCanvasGroup != null)
+        {
+            float elapsed2 = 0f;
+            float startControlsAlpha = controlsCanvasGroup.alpha;
+
+            while (elapsed2 < duration)
+            {
+                elapsed2 += Time.deltaTime;
+                float t2 = Mathf.Clamp01(elapsed2 / duration);
+                controlsCanvasGroup.alpha = Mathf.Lerp(startControlsAlpha, targetControlsAlpha, t2);
+                yield return null;
+            }
+
+            controlsCanvasGroup.alpha = targetControlsAlpha;
+        }
+
+        timerCoroutine = StartCoroutine(StartTimer(5f));
+        yield return new WaitForSeconds(5f);
+        DoAfterEndOfTyping();
+    }
+
+    private IEnumerator StartTimer(float duration)
+    {
+        if (circleBackgroundAnim != null)
+        {
+            circleBackgroundAnim.fillClockwise = true;
+            circleBackgroundAnim.fillAmount = 0f;
+        }
+
+        float elapsed = 0f;
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float progress = Mathf.Clamp01(elapsed / duration);
+
+            if (circleBackgroundAnim != null)
+            {
+                circleBackgroundAnim.fillAmount = progress;
+            }
+
+            float remaining = Mathf.Max(0f, duration - elapsed);
+            if (textTimer != null)
+            {
+                textTimer.text = Mathf.CeilToInt(remaining).ToString();
+            }
+
+            yield return null;     
+        }
+
+        yield return null;
+        yield return null;
+
+        if (circleBackgroundAnim != null)
+        {
+            circleBackgroundAnim.fillAmount = 0f;
+        }
+
+        if (textTimer != null)
+        {
+            textTimer.text = string.Empty;
+        }
+
+        timerCoroutine = null;
     }
 
     private IEnumerator TypeText(TypingTarget target, string fullText)

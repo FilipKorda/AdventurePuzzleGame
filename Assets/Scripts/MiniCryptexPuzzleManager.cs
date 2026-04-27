@@ -39,7 +39,7 @@ public class MiniCryptexPuzzleManager : MonoBehaviour
     {
         verticalFollowPath.StopSequence();
         boxCollider.enabled = false;
-        Debug.Log("Puzzle Solved!");
         animator.SetTrigger("Interact");
+        Services.Audio.PlaySFX("SafeWinAkaPuzzleWin");
     }
 }
