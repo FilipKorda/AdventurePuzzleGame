@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Controls Shared Data
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.SharedTableData
+  m_TableCollectionName: Controls
+  m_TableCollectionNameGuidString: fe838576f35f74f43a57c8595310214e
+  m_Entries:
+  - m_Id: 4788080640
+    m_Key: Interact
+    m_Metadata:
+      m_Items: []
+  - m_Id: 70936449024
+    m_Key: DropItem
+    m_Metadata:
+      m_Items: []
+  - m_Id: 152779902976
+    m_Key: Navigation
+    m_Metadata:
+      m_Items: []
+  - m_Id: 184090382336
+    m_Key: Movement
+    m_Metadata:
+      m_Items: []
+  - m_Id: 219775520768
+    m_Key: Pause
+    m_Metadata:
+      m_Items: []
+  - m_Id: 255821369344
+    m_Key: UseItem
+    m_Metadata:
+      m_Items: []
+  - m_Id: 438458142720
+    m_Key: Look
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 4011535830200614992
+  references:
+    version: 2
+    RefIds:
+    - rid: 4011535830200614992
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1777363124483

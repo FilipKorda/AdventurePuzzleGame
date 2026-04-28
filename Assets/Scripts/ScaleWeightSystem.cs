@@ -40,7 +40,6 @@ public class ScaleWeightSystem : MonoBehaviour
         foreach (var item in rightSideItems)
             rightWeight += item.Weight;
 
-        Debug.LogWarning("Right side weight: " + rightWeight);
 
         int difference = rightWeight - leftSideWeight;
         scaleLogic.SetBalance(difference);

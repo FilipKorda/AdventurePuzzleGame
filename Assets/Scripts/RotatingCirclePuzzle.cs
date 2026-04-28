@@ -33,6 +33,7 @@ public class RotatingCirclePuzzle : MonoBehaviour
     {
         boxCollider.enabled = false;
 
+        UIManager.Instance.EnableLpmToRotatePanel();
 
         CursorController.Instance.EnableCursor(puzzleCamera);
 
@@ -51,7 +52,7 @@ public class RotatingCirclePuzzle : MonoBehaviour
 
     public void ExitPuzzle()
     {
-
+        UIManager.Instance.DisableSharedPanelText();
         DisableInput();
 
         CursorController.Instance.DisableCursor();
@@ -67,7 +68,7 @@ public class RotatingCirclePuzzle : MonoBehaviour
     public void ExitAfterWin()
     {
         DisableInput();
-
+        UIManager.Instance.DisableSharedPanelText();
         CursorController.Instance.DisableCursor();
 
         boxCollider.enabled = false;

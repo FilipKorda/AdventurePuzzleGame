@@ -130,7 +130,9 @@ MonoBehaviour:
     - rid: 602285015674912967
       type: {class: PersistentVariablesSource, ns: UnityEngine.Localization.SmartFormat.Extensions, asm: Unity.Localization}
       data:
-        m_Groups: []
+        m_Groups:
+        - name: controls
+          group: {fileID: 11400000, guid: 4896b7c3d41583b48a920f84a5b86ccb, type: 2}
     - rid: 602285015674912968
       type: {class: DictionarySource, ns: UnityEngine.Localization.SmartFormat.Extensions, asm: Unity.Localization}
       data: 

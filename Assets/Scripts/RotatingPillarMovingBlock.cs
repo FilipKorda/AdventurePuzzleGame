@@ -36,6 +36,9 @@ public class RotatingPillarMovingBlock : MonoBehaviour
         movingBlockPuzzle.enabled = false;
         CursorController.Instance.EnableCursor(puzzleCamera);
 
+        UIManager.Instance.EnableHoldLPMMPanel();
+
+
         ActiveInput();
         SetAndRotateCameraToTransform();
         StartCameraMovement();
@@ -54,7 +57,7 @@ public class RotatingPillarMovingBlock : MonoBehaviour
         onePillarPuzzleManager.ResetPuzzle();
 
         DisableInput();
-
+        UIManager.Instance.DisableSharedPanelText();
         CursorController.Instance.DisableCursor();
 
         movingBlockPuzzle.enabled = true;
@@ -68,7 +71,7 @@ public class RotatingPillarMovingBlock : MonoBehaviour
     public void ExitAfterWin()
     {
         DisableInput();
-
+        UIManager.Instance.DisableSharedPanelText();
         CursorController.Instance.DisableCursor();
 
         movingBlockPuzzle.enabled = false;

@@ -18,6 +18,7 @@ public class MouseSensitivitySettings : MonoBehaviour
     private void Start()
     {
         sensitivitySlider.SetValueWithoutNotify(MouseSensitivity);
+        sensitivitySlider.onValueChanged.AddListener(OnSensitivityChanged);
     }
 
     public static void SetSensitivity(float value)
@@ -30,10 +31,5 @@ public class MouseSensitivitySettings : MonoBehaviour
         MouseSensitivity = value;
         PlayerPrefs.SetFloat(PrefKey, value);
         PlayerPrefs.Save();
-    }
-
-    private void OnDisable()
-    {
-        OnSensitivityChanged(MouseSensitivity);
     }
 }

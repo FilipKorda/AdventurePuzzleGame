@@ -1,6 +1,5 @@
 using System.Collections;
 using TMPro;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Localization.Components;
 using UnityEngine.Localization.Settings;
@@ -50,7 +49,7 @@ public class TypingManager : MonoBehaviour
     private void OnEnable()
     {
 #if UNITY_EDITOR
-        gameObject.SetActive(false);
+        gameObject.SetActive(true);
 #else
         gameObject.SetActive(true);
 #endif

@@ -10,7 +10,7 @@ public class PlayerBehaviour : MonoBehaviour
     [SerializeField] private Transform playerTransform;
 
     [Header("Sensitivity Settings")]
-    [SerializeField] private float gamepadSensitivity = 100f;
+    public float gamepadSensitivity = 100f;
     [SerializeField] private float mouseSensitivity = 10f;
     private Vector2 currentLookVelocity;
     private Vector2 lookVelocityRef;
@@ -317,7 +317,7 @@ public class PlayerBehaviour : MonoBehaviour
         int currentSelectedId = UIManager.Instance.GetSelectedItemId();
         if (currentSelectedId == 0)
         {
-            Debug.Log("Nie wybrano 풹dnego przedmiotu do u퓓cia.");
+           // Debug.Log("Nie wybrano 풹dnego przedmiotu do u퓓cia.");
             return;
         }
 

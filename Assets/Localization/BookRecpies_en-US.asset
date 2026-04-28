@@ -20,9 +20,10 @@ MonoBehaviour:
     - rid: 602285059237740620
   m_TableData:
   - m_Id: 1518764052480
-    m_Localized: Q and E
+    m_Localized: <sprite name="{controls.AlchemyRecipesQ}"> and <sprite name="{controls.AlchemyRecipesE}">
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 602285059237740620
   - m_Id: 5996040192
     m_Localized: 'Here you can check your potion recipes.
 
@@ -221,3 +222,4 @@ MonoBehaviour:
         m_Entries: 
         m_SharedEntries:
         - id: 5996040192
+        - id: 1518764052480

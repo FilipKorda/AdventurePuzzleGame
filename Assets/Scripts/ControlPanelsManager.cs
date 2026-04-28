@@ -5,12 +5,14 @@ using UnityEngine.InputSystem.LowLevel;
 
 public class ControlPanelsManager : MonoBehaviour
 {
+    public System.Action<bool> OnInputDeviceChanged;
+
     [SerializeField] private GameObject keyboardControlPanels;
     [SerializeField] private GameObject controllerControlPanels;
-
     [SerializeField] private bool defaultToKeyboard = true;
 
     private bool usingController;
+    public bool IsUsingController => usingController;
 
     private void OnEnable()
     {
@@ -51,11 +53,8 @@ public class ControlPanelsManager : MonoBehaviour
             }
         }
 
-        if (Keyboard.current != null)
-        {
-            if (Keyboard.current.anyKey.isPressed)
-                return false;
-        }
+        if (Keyboard.current != null && Keyboard.current.anyKey.isPressed)
+            return false;
 
         if (Mouse.current != null)
         {
@@ -81,9 +80,7 @@ public class ControlPanelsManager : MonoBehaviour
         if (device is Gamepad)
         {
             if (HasMeaningfulControllerInput(eventPtr, device))
-            {
                 SetUsingController(true);
-            }
 
             return;
         }
@@ -91,9 +88,7 @@ public class ControlPanelsManager : MonoBehaviour
         if (device is Keyboard || device is Mouse)
         {
             if (HasMeaningfulKeyboardMouseInput(eventPtr, device))
-            {
                 SetUsingController(false);
-            }
         }
     }
 
@@ -153,5 +148,7 @@ public class ControlPanelsManager : MonoBehaviour
 
         if (controllerControlPanels != null)
             controllerControlPanels.SetActive(usingController);
+
+        OnInputDeviceChanged?.Invoke(usingController);
     }
 }

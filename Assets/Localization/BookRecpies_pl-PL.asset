@@ -16,7 +16,8 @@ MonoBehaviour:
     m_Code: pl-PL
   m_SharedData: {fileID: 11400000, guid: 196636a49d964714d8f9360b2e97f7b1, type: 2}
   m_Metadata:
-    m_Items: []
+    m_Items:
+    - rid: 4011535830200615137
   m_TableData:
   - m_Id: 5996040192
     m_Localized: "Tutaj mo\u017Cesz sprawdza\u0107 swoje receptury na mikstury,\nje\u017Celi
@@ -100,9 +101,16 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1518764052480
-    m_Localized: Q i E
+    m_Localized: <sprite name="{controls.AlchemyRecipesQ}"> i <sprite name="{controls.AlchemyRecipesE}">
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 4011535830200615137
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 4011535830200615137
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 
+        m_SharedEntries:
+        - id: 1518764052480

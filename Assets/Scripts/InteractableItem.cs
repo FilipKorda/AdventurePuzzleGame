@@ -1585,9 +1585,8 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
             else
             {
                 Inventory.Instance.AddItemToInventory(fillMapping.resultingFilledItem);
+                Services.Audio.PlaySFX("PourWater");
             }
-
-
 
             Inventory.Instance.RemoveItemFromInventoryByID(selectedId);
             UIManager.Instance.RemoveItemFromUIByID(selectedId);
@@ -1596,8 +1595,6 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
             {
                 StartCoroutine(CouritineFill());
             }
-
-
 
         }
     }

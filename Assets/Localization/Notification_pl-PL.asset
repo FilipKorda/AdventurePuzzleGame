@@ -16,7 +16,8 @@ MonoBehaviour:
     m_Code: pl-PL
   m_SharedData: {fileID: 11400000, guid: 35546b6b8ebaa304486aa3efa25ad9aa, type: 2}
   m_Metadata:
-    m_Items: []
+    m_Items:
+    - rid: 4011535830200615033
   m_TableData:
   - m_Id: 10504916992
     m_Localized: "Nie mo\u017Cna podnie\u015B\u0107 przedmiotu \u2014 pe\u0142ny
@@ -83,10 +84,12 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 322717163474944
-    m_Localized: "Znajd\u017A poprawn\u0105 sekwencje\nNacisnij [A-D] aby przesuwac
-      wytrych\nNacisnij [E] aby zatwierdzic wybor\nNacisnij [PPM] aby wyj\u015B\u0107"
+    m_Localized: "Znajd\u017A poprawn\u0105 sekwencje\r\nNacisnij     <sprite name=\"{controls.A}\">-<sprite
+      name=\"{controls.D}\"> aby przesuwac wytrych\r\nNacisnij <sprite name=\"{controls.E}\">
+      aby zatwierdzic wybor\r\nNacisnij <sprite name=\"{controls.LPM}\"> aby wyj\u015B\u0107"
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 4011535830200615033
   - m_Id: 5751635437703168
     m_Localized: Nie posiadasz recept
     m_Metadata:
@@ -100,39 +103,54 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 8652465157459968
-    m_Localized: "Nacisnij [F] \u017Ceby prze\u0142\u0105czy\u0107 lampe "
+    m_Localized: "Nacisnij <sprite name=\"{controls.F}\"> \u017Ceby prze\u0142\u0105czy\u0107
+      lampe "
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 4011535830200615033
   - m_Id: 9166761536802816
     m_Localized: Potrzebujesz Terminalu
     m_Metadata:
       m_Items: []
   - m_Id: 11473856986632192
-    m_Localized: "Mysz \u017Ceby ruszy\u0107 \nPPM \u017Ceby wyj\u015B\u0107"
+    m_Localized: "<sprite name=\"{controls.Mouse}\">  \u017Ceby ruszy\u0107 \n<sprite
+      name=\"{controls.LPM}\"> \u017Ceby wyj\u015B\u0107"
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 4011535830200615033
   - m_Id: 11885436626817024
-    m_Localized: "Naci\u015Bnij PPM \u017Ceby si\u0119 napi\u0107 lub zje\u015B\u0107"
+    m_Localized: "Naci\u015Bnij <sprite name=\"{controls.PPM}\"> \u017Ceby si\u0119
+      napi\u0107 lub zje\u015B\u0107\nNaci\u015Bnij <sprite name=\"{controls.Q}\">
+      \u017Aeby wyrzuci\u0107"
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 4011535830200615033
   - m_Id: 12015488773410816
-    m_Localized: "Naci\u015Bnij PPM \u017Ceby obraca\u0107 z\u0119batki\nNaci\u015Bnij
-      E \u017Ceby wyj\u015B\u0107"
+    m_Localized: "Naci\u015Bnij <sprite name=\"{controls.LPM}\"> \u017Ceby obraca\u0107
+      z\u0119batki\nNaci\u015Bnij <sprite name=\"{controls.E} \u017Ceby wyj\u015B\u0107"
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 4011535830200615033
   - m_Id: 13340150388248576
-    m_Localized: "Ruch [WASD]\nNaci\u015Bnij E \u017Ceby wyj\u015B\u0107"
+    m_Localized: "Ruch <sprite name=\"{controls.WFurnitureMovement}\">  <sprite name=\"{controls.SFurnitureMovement}\"><sprite
+      name=\"{controls.AFurnitureMovement}\">  <sprite name=\"{controls.DFurnitureMovement}\">\nNaci\u015Bnij 
+      <sprite name=\"{controls.E}\"> \u017Ceby wyj\u015B\u0107"
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 4011535830200615033
   - m_Id: 13340387978792960
-    m_Localized: "Ruch [WASD]\nNaci\u015Bnij E \u017Ceby wyj\u015B\u0107"
+    m_Localized: "Ruch <sprite name=\"{controls.WFurnitureMovement}\">  <sprite name=\"{controls.SFurnitureMovement}\"><sprite
+      name=\"{controls.AFurnitureMovement}\">  <sprite name=\"{controls.DFurnitureMovement}\">\r\nNaci\u015Bnij 
+      <sprite name=\"{controls.E}\"> \u017Ceby wyj\u015B\u0107"
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 4011535830200615033
   - m_Id: 13480168645742592
-    m_Localized: "Naci\u015Bnij PPM \u017Ceby nacisn\u0105\u0107\nNaci\u015Bnij E
-      \u017Ceby wyj\u015B\u0107"
+    m_Localized: "Naci\u015Bnij <sprite name=\"{controls.LPM}\"> \u017Ceby nacisn\u0105\u0107\nNaci\u015Bnij
+      <sprite name=\"{controls.E} \u017Ceby wyj\u015B\u0107"
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 4011535830200615033
   - m_Id: 13655693615976448
     m_Localized: "Potrzebujesz miecz \u017Ceby go tu postawi\u0107"
     m_Metadata:
@@ -326,39 +344,50 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 27841239883993088
-    m_Localized: "[PPM] Otw\xF3rz/Zamknij t\u0105 ksi\u0105\u017Ck\u0119\n[Q E] Nast\u0119pna
-      strona"
+    m_Localized: "<sprite name=\"{controls.PPM}\"> Otw\xF3rz/Zamknij t\u0105 ksi\u0105\u017Ck\u0119\n<sprite
+      name=\"{controls.AlchemyRecipesQ}\"> <sprite name=\"{controls.AlchemyRecipesE}\">
+      Nast\u0119pna strona"
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 4011535830200615033
   - m_Id: 27844950584741888
-    m_Localized: "[PPM] Otw\xF3rz/Zamknij ten papirus"
+    m_Localized: "<sprite name=\"{controls.PPM}\"> Otw\xF3rz/Zamknij ten papirus"
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 4011535830200615033
   - m_Id: 27853001677099008
-    m_Localized: "[PPM] Otw\xF3rz/Zamknij ksi\u0105\u017Cke"
+    m_Localized: "<sprite name=\"{controls.PPM}\"> Otw\xF3rz/Zamknij ksi\u0105\u017Cke"
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 4011535830200615033
   - m_Id: 27857162942566400
-    m_Localized: "[LPM] \u017Beby zaznaczy\u0107"
+    m_Localized: "<sprite name=\"{controls.LPM}\"> \u017Beby zaznaczy\u0107"
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 4011535830200615033
   - m_Id: 27857690263048192
-    m_Localized: "[LPM]  \u017Beby obraca\u0107"
+    m_Localized: "<sprite name=\"{controls.LPM}\">  \u017Beby obraca\u0107"
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 4011535830200615033
   - m_Id: 27858078009675776
-    m_Localized: "Trzymaj [LPM] \u017Ceby przesun\u0105\u0107 obiekt"
+    m_Localized: "Trzymaj <sprite name=\"{controls.LPM}\"> \u017Ceby przesun\u0105\u0107
+      obiekt"
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 4011535830200615033
   - m_Id: 27861166191824896
-    m_Localized: "[A] Obr\xF3\u0107 w lewo\n[D] Obr\xF3\u0107 w prawo"
+    m_Localized: "<sprite name=\"{controls.A}\"> Obr\xF3\u0107 w lewo\n<sprite name=\"{controls.D}\">
+      Obr\xF3\u0107 w prawo"
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 4011535830200615033
   - m_Id: 27862152557907968
-    m_Localized: "Trzymaj [LPM] \u017Ceby ruszy\u0107\nNaci\u015Bnij [LPM] \u017Ceby
-      obr\xF3ci\u0107"
+    m_Localized: "Trzymaj <sprite name=\"{controls.LPM}\"> \u017Ceby ruszy\u0107\nNaci\u015Bnij
+      <sprite name=\"{controls.LPM}\"> \u017Ceby obr\xF3ci\u0107"
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 4011535830200615033
   - m_Id: 28288381748531200
     m_Localized: "Ale z ciebie mistrz k\u0142amstwa i prawdy xd, GRATULACJE, a klatka
       w\u0142a\u015Bnie posz\u0142a w g\xF3r\u0119 i udost\u0119pni\u0142a ci lustro."
@@ -369,18 +398,23 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 28670327108423680
-    m_Localized: "Naci\u015Bnij [PPM] \u017Ceby zobaczy\u0107 przedmiot\nPrzesu\u0144
-      mysz \u017Ceby obr\xF3ci\u0107"
+    m_Localized: "Naci\u015Bnij <sprite name=\"{controls.PPM}\"> \u017Ceby zobaczy\u0107
+      przedmiot\nPrzesu\u0144 <sprite name=\"{controls.Mouse}\"> \u017Ceby obr\xF3ci\u0107"
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 4011535830200615033
   - m_Id: 28671640995123200
-    m_Localized: "Naci\u015Bnij [F] \u017Ceby za\u0142o\u017Cy\u0107 okulary"
+    m_Localized: "Naci\u015Bnij <sprite name=\"{controls.F}\"> \u017Ceby za\u0142o\u017Cy\u0107
+      okulary"
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 4011535830200615033
   - m_Id: 28671770200657920
-    m_Localized: "Naci\u015Bnij [F], aby zdj\u0105\u0107 okulary"
+    m_Localized: "Naci\u015Bnij <sprite name=\"{controls.F}\"> aby zdj\u0105\u0107
+      okulary"
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 4011535830200615033
   - m_Id: 28876436574326784
     m_Localized: "A moze by\u0107 czym\u015B uderzy\u0142 w t\u0105 \u015Bciane?
       Xd"
@@ -388,4 +422,28 @@ MonoBehaviour:
       m_Items: []
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 4011535830200615033
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 
+        m_SharedEntries:
+        - id: 11473856986632192
+        - id: 11885436626817024
+        - id: 322717163474944
+        - id: 8652465157459968
+        - id: 12015488773410816
+        - id: 13340150388248576
+        - id: 13340387978792960
+        - id: 13480168645742592
+        - id: 27841239883993088
+        - id: 27844950584741888
+        - id: 27853001677099008
+        - id: 27857162942566400
+        - id: 27857690263048192
+        - id: 27858078009675776
+        - id: 27861166191824896
+        - id: 27862152557907968
+        - id: 28670327108423680
+        - id: 28671640995123200
+        - id: 28671770200657920

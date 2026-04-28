@@ -94,6 +94,8 @@ public class RotatingCircleInPuzzle : MonoBehaviour
 
         float time = 0f;
 
+        Services.Audio.PlaySFX("SpinningWooden");
+
         while (time < rotateDuration)
         {
             time += Time.deltaTime;
@@ -124,7 +126,7 @@ public class RotatingCircleInPuzzle : MonoBehaviour
 
         isRotating = false;
         anyCircleIsRotating = false;
-      
+
     }
 
     private List<SymbolMoveData> BuildClockwiseMoves()

@@ -16,7 +16,8 @@ MonoBehaviour:
     m_Code: en-US
   m_SharedData: {fileID: 11400000, guid: 35546b6b8ebaa304486aa3efa25ad9aa, type: 2}
   m_Metadata:
-    m_Items: []
+    m_Items:
+    - rid: 4011535830200615029
   m_TableData:
   - m_Id: 10504916992
     m_Localized: Cannot pick up item - full inventory
@@ -79,10 +80,13 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 322717163474944
-    m_Localized: "Find the correct sequence\nPress [A-D] to move the lockpick \nPress
-      [E] to confirm your selection\nPress [RMB] to leave "
+    m_Localized: "Find the correct sequence\nPress     <sprite name=\"{controls.A}\">-<sprite
+      name=\"{controls.D}\"> to move the lockpick \nPress <sprite name=\"{controls.E}\">
+      to confirm your selection\nPress <sprite name=\"{controls.LPM}\"> to leave
+      \n\n"
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 4011535830200615029
   - m_Id: 5751635437703168
     m_Localized: You dont have recipes
     m_Metadata:
@@ -96,45 +100,62 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 8652465157459968
-    m_Localized: Press [F] to toggle lamp
+    m_Localized: Press <sprite name="{controls.F}"> to toggle lamp
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 4011535830200615029
   - m_Id: 9166761536802816
     m_Localized: U need have Key pad
     m_Metadata:
       m_Items: []
   - m_Id: 11473856986632192
-    m_Localized: 'Mouse to move
+    m_Localized: '<sprite name="{controls.Mouse}"> to move
 
-      RMB to exit'
+      <sprite name="{controls.LPM}">
+      to exit'
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 4011535830200615029
   - m_Id: 11885436626817024
-    m_Localized: Press RMB to Drink or Eat
+    m_Localized: 'Press <sprite name="{controls.PPM}"> to Drink or Eat
+
+      Press
+      <sprite name="{controls.Q}"> to Drop item'
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 4011535830200615029
   - m_Id: 12015488773410816
-    m_Localized: 'Press RMB to Rotate Gear
+    m_Localized: 'Press <sprite name="{controls.LPM}"> to Rotate Gear
 
-      Press E to leave'
+      Press
+      <sprite name="{controls.E}"> to leave'
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 4011535830200615029
   - m_Id: 13340150388248576
-    m_Localized: 'Move [WASD]
+    m_Localized: 'Move <sprite name="{controls.WFurnitureMovement}">  <sprite name="{controls.SFurnitureMovement}"><sprite
+      name="{controls.AFurnitureMovement}"><sprite name="{controls.DFurnitureMovement}">
 
-      Press E to leave'
+      Press
+      <sprite name="{controls.E}"> to leave'
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 4011535830200615029
   - m_Id: 13340387978792960
-    m_Localized: 'Move [WASD]
+    m_Localized: 'Move <sprite name="{controls.WFurnitureMovement}">  <sprite name="{controls.SFurnitureMovement}"><sprite
+      name="{controls.AFurnitureMovement}"><sprite name="{controls.DFurnitureMovement}">
 
-      Press E to leave'
+      Press
+      <sprite name="{controls.E}"> to leave'
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 4011535830200615029
   - m_Id: 13480168645742592
-    m_Localized: "Press RMB to Click \nPress E to leave"
+    m_Localized: "Press <sprite name=\"{controls.LPM}\"> to Click \nPress <sprite
+      name=\"{controls.E}\"> to leave"
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 4011535830200615029
   - m_Id: 13655693615976448
     m_Localized: U need a sword to Place it here
     m_Metadata:
@@ -356,43 +377,55 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 27841239883993088
-    m_Localized: '[PPM] Open/Close this book
+    m_Localized: '<sprite name="{controls.PPM}"> Open/Close this book
 
-      [Q E] Next page'
+      <sprite
+      name="{controls.AlchemyRecipesQ}"> <sprite name="{controls.AlchemyRecipesE}">
+      Next page'
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 4011535830200615029
   - m_Id: 27844950584741888
-    m_Localized: '[PPM] Open/Close this papyrus'
+    m_Localized: <sprite name="{controls.PPM}"> Open/Close this papyrus
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 4011535830200615029
   - m_Id: 27853001677099008
-    m_Localized: '[PPM] Open/Close Book'
+    m_Localized: <sprite name="{controls.PPM}"> Open/Close Book
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 4011535830200615029
   - m_Id: 27857162942566400
-    m_Localized: '[LPM] To Select'
+    m_Localized: <sprite name="{controls.LPM}"> To Select
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 4011535830200615029
   - m_Id: 27857690263048192
-    m_Localized: '[LPM] To Rotate'
+    m_Localized: <sprite name="{controls.LPM}"> To Rotate
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 4011535830200615029
   - m_Id: 27858078009675776
-    m_Localized: Hold [LPM] to move object
+    m_Localized: Hold <sprite name="{controls.LPM}"> to move object
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 4011535830200615029
   - m_Id: 27861166191824896
-    m_Localized: '[A] Rotate Left
+    m_Localized: '<sprite name="{controls.A}"> Rotate Left
 
-      [D] Rotate Right'
+      <sprite name="{controls.D}">
+      Rotate Right'
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 4011535830200615029
   - m_Id: 27862152557907968
-    m_Localized: 'Hold [LPM] to move
+    m_Localized: 'Hold <sprite name="{controls.LPM}"> to move
 
-      Press [LPM] to Rotate'
+      Press <sprite
+      name="{controls.LPM}"> to Rotate'
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 4011535830200615029
   - m_Id: 28288381748531200
     m_Localized: You are such a master of lies and truth xd, CONGRATULATIONS, and
       the cage just went up and provided you with a mirror.
@@ -403,23 +436,51 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 28670327108423680
-    m_Localized: 'Press [PPM] to Inspect Object
+    m_Localized: 'Press <sprite name="{controls.PPM}"> to Inspect Object
 
-      Move Mosue to rotate'
+      Move
+      <sprite name="{controls.Mouse}"> to rotate'
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 4011535830200615029
   - m_Id: 28671640995123200
-    m_Localized: Press [F] To Wear Glasses
+    m_Localized: Press <sprite name="{controls.F}">To Wear Glasses
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 4011535830200615029
   - m_Id: 28671770200657920
-    m_Localized: Press [F] To Unwear Glasses
+    m_Localized: Press <sprite name="{controls.F}"> To Unwear Glasses
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 4011535830200615029
   - m_Id: 28876436574326784
     m_Localized: 'XDDD Maybe hit this wall with something? '
     m_Metadata:
       m_Items: []
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 4011535830200615029
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 
+        m_SharedEntries:
+        - id: 11473856986632192
+        - id: 11885436626817024
+        - id: 322717163474944
+        - id: 8652465157459968
+        - id: 12015488773410816
+        - id: 13340150388248576
+        - id: 13340387978792960
+        - id: 13480168645742592
+        - id: 27862152557907968
+        - id: 27861166191824896
+        - id: 27858078009675776
+        - id: 27857690263048192
+        - id: 27857162942566400
+        - id: 27853001677099008
+        - id: 27844950584741888
+        - id: 27841239883993088
+        - id: 28670327108423680
+        - id: 28671640995123200
+        - id: 28671770200657920

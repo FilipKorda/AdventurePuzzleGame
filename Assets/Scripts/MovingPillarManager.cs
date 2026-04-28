@@ -132,7 +132,7 @@ public class MovingPillarManager : MonoBehaviour
     void OnDragDelta(InputAction.CallbackContext context)
     {
         if (!holdingPPM) return;
-      
+
         Vector2 delta = context.ReadValue<Vector2>();
 
         if (delta.sqrMagnitude > 0.001f)
@@ -140,8 +140,15 @@ public class MovingPillarManager : MonoBehaviour
             hasMoved = true;
         }
 
-        Vector3 offset = new(-delta.x * dragSpeed, 0f, 0f);
-        transform.position += offset;
+        Vector3 offset = new Vector3(-delta.x * dragSpeed, 0f, 0f);
+        Vector3 newPosition = transform.position + offset;
+
+        float minX = Mathf.Min(leftPoint.position.x, rightPoint.position.x);
+        float maxX = Mathf.Max(leftPoint.position.x, rightPoint.position.x);
+
+        newPosition.x = Mathf.Clamp(newPosition.x, minX, maxX);
+
+        transform.position = newPosition;
     }
 
     Transform GetClosestPointPhysical()

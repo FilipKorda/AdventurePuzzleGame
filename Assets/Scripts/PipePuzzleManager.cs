@@ -12,6 +12,8 @@ public class PipePuzzleManager : MonoBehaviour
         if(circleAndSquarePuzzle.winPuzzle && pipeGearPuzzle.puzzleWin && movingBlockPuzzleManager.puzzleWin)
         {
             animator.SetTrigger("Open");
+            Services.Audio.PlaySFX("SafeWinAkaPuzzleWin");
+            Services.Audio.PlaySFX("MovingStoneKryptex");
         }
     }
 }
