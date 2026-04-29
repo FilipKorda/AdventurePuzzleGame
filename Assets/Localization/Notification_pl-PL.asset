@@ -120,8 +120,9 @@ MonoBehaviour:
       - rid: 4011535830200615033
   - m_Id: 11885436626817024
     m_Localized: "Naci\u015Bnij <sprite name=\"{controls.PPM}\"> \u017Ceby si\u0119
-      napi\u0107 lub zje\u015B\u0107\nNaci\u015Bnij <sprite name=\"{controls.Q}\">
-      \u017Aeby wyrzuci\u0107"
+      napi\u0107 lub zje\u015B\u0107\nNaci\u015Bnij <sprite name=\"{controls.LPM}\">
+      \u017Ceby u\u017Cy\u0107\nNaci\u015Bnij <sprite name=\"{controls.Q}\"> \u017Aeby
+      wyrzuci\u0107"
     m_Metadata:
       m_Items:
       - rid: 4011535830200615033
@@ -344,47 +345,56 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 27841239883993088
-    m_Localized: "<sprite name=\"{controls.PPM}\"> Otw\xF3rz/Zamknij t\u0105 ksi\u0105\u017Ck\u0119\n<sprite
-      name=\"{controls.AlchemyRecipesQ}\"> <sprite name=\"{controls.AlchemyRecipesE}\">
-      Nast\u0119pna strona"
+    m_Localized: "Naci\u015Bnij <sprite name=\"{controls.PPM}\"> Otw\xF3rz/Zamknij
+      t\u0105 ksi\u0105\u017Ck\u0119\nNaci\u015Bnij <sprite name=\"{controls.AlchemyRecipesQ}\">
+      <sprite name=\"{controls.AlchemyRecipesE}\"> Nast\u0119pna strona\nNaci\u015Bnij
+      <sprite name=\"{controls.Q}\"> \u017Ceby upu\u015Bci\u0107 przedmiot"
     m_Metadata:
       m_Items:
       - rid: 4011535830200615033
   - m_Id: 27844950584741888
-    m_Localized: "<sprite name=\"{controls.PPM}\"> Otw\xF3rz/Zamknij ten papirus"
+    m_Localized: "Naci\u015Bnij <sprite name=\"{controls.PPM}\"> Otw\xF3rz/Zamknij
+      ten papirus\nNaci\u015Bnij <sprite name=\"{controls.Q}\"> \u017Ceby upu\u015Bci\u0107
+      przedmiot"
     m_Metadata:
       m_Items:
       - rid: 4011535830200615033
   - m_Id: 27853001677099008
-    m_Localized: "<sprite name=\"{controls.PPM}\"> Otw\xF3rz/Zamknij ksi\u0105\u017Cke"
+    m_Localized: "Naci\u015Bnij <sprite name=\"{controls.PPM}\"> Otw\xF3rz/Zamknij
+      ksi\u0105\u017Cke\nNaci\u015Bnij <sprite name=\"{controls.Q}\"> \u017Ceby upu\u015Bci\u0107
+      przedmiot"
     m_Metadata:
       m_Items:
       - rid: 4011535830200615033
   - m_Id: 27857162942566400
-    m_Localized: "<sprite name=\"{controls.LPM}\"> \u017Beby zaznaczy\u0107"
+    m_Localized: "Naci\u015Bnij <sprite name=\"{controls.LPM}\"> \u017Beby zaznaczy\u0107\nNaci\u015Bnij
+      <sprite name=\"{controls.LeavePuzzle}\"> \u017Ceby wyj\u015B\u0107"
     m_Metadata:
       m_Items:
       - rid: 4011535830200615033
   - m_Id: 27857690263048192
-    m_Localized: "<sprite name=\"{controls.LPM}\">  \u017Beby obraca\u0107"
+    m_Localized: "Naci\u015Bnij <sprite name=\"{controls.LPM}\">  \u017Beby obraca\u0107\nNaci\u015Bnij
+      <sprite name=\"{controls.LeavePuzzle}\"> \u017Ceby wyj\u015B\u0107"
     m_Metadata:
       m_Items:
       - rid: 4011535830200615033
   - m_Id: 27858078009675776
     m_Localized: "Trzymaj <sprite name=\"{controls.LPM}\"> \u017Ceby przesun\u0105\u0107
-      obiekt"
+      obiekt\nNaci\u015Bnij <sprite name=\"{controls.LeavePuzzle}\"> \u017Ceby wyj\u015B\u0107"
     m_Metadata:
       m_Items:
       - rid: 4011535830200615033
   - m_Id: 27861166191824896
     m_Localized: "<sprite name=\"{controls.A}\"> Obr\xF3\u0107 w lewo\n<sprite name=\"{controls.D}\">
-      Obr\xF3\u0107 w prawo"
+      Obr\xF3\u0107 w prawo\nNaci\u015Bnij <sprite name=\"{controls.LeavePuzzle}\">
+      \u017Ceby wyj\u015B\u0107"
     m_Metadata:
       m_Items:
       - rid: 4011535830200615033
   - m_Id: 27862152557907968
     m_Localized: "Trzymaj <sprite name=\"{controls.LPM}\"> \u017Ceby ruszy\u0107\nNaci\u015Bnij
-      <sprite name=\"{controls.LPM}\"> \u017Ceby obr\xF3ci\u0107"
+      <sprite name=\"{controls.LPM}\"> \u017Ceby obr\xF3ci\u0107\nNaci\u015Bnij <sprite
+      name=\"{controls.LeavePuzzle}\"> \u017Ceby wyj\u015B\u0107"
     m_Metadata:
       m_Items:
       - rid: 4011535830200615033
@@ -399,6 +409,7 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 28670327108423680
     m_Localized: "Naci\u015Bnij <sprite name=\"{controls.PPM}\"> \u017Ceby zobaczy\u0107
+      przedmiot\nNaci\u015Bnij <sprite name=\"{controls.Q}\"> \u017Ceby wyrzuci\u0107
       przedmiot\nPrzesu\u0144 <sprite name=\"{controls.Mouse}\"> \u017Ceby obr\xF3ci\u0107"
     m_Metadata:
       m_Items:
@@ -420,6 +431,25 @@ MonoBehaviour:
       Xd"
     m_Metadata:
       m_Items: []
+  - m_Id: 31023615950737408
+    m_Localized: "Naci\u015Bnij <sprite name=\"{controls.Q}\"> \u017Ceby wyrzuci\u0107
+      przedmiot"
+    m_Metadata:
+      m_Items:
+      - rid: 4011535830200615033
+  - m_Id: 31024439548465152
+    m_Localized: "Naci\u015Bnij <sprite name=\"{controls.LPM}\"> \u017Ceby u\u017Cy\u0107
+      przedmiot\nNaci\u015Bnij <sprite name=\"{controls.Q}\"> \u017Ceby wyrzuci\u0107
+      przedmiot"
+    m_Metadata:
+      m_Items:
+      - rid: 4011535830200615033
+  - m_Id: 31027367537561600
+    m_Localized: "Naci\u015Bnij <sprite name=\"{controls.LPM}\"> \u017Ceby przesta\u0107
+      czyta\u0107"
+    m_Metadata:
+      m_Items:
+      - rid: 4011535830200615033
   references:
     version: 2
     RefIds:
@@ -447,3 +477,6 @@ MonoBehaviour:
         - id: 28670327108423680
         - id: 28671640995123200
         - id: 28671770200657920
+        - id: 31023615950737408
+        - id: 31024439548465152
+        - id: 31027367537561600

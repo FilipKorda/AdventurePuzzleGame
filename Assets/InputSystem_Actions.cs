@@ -1804,6 +1804,98 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""SafeInput"",
+            ""id"": ""0905837b-3f4d-4e97-b5d0-b95ce7e30228"",
+            ""actions"": [
+                {
+                    ""name"": ""Move"",
+                    ""type"": ""Value"",
+                    ""id"": ""7a674811-777e-4194-8b05-22ea9e970cdc"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Reset"",
+                    ""type"": ""Button"",
+                    ""id"": ""cb67e937-57e9-4d78-9f6f-04fff228f9cd"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""dda5fc87-2287-4637-af93-c551480c56f3"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""ae19962a-77cc-45dc-af65-6d55629c18c0"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""de58a467-6380-45ff-bdff-8a04508ecb0f"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""a130885d-3de7-4ce9-8242-61f3d7ec5e04"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""eb106e9b-b48d-4706-bba8-b4eb2e17c069"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""160a0bae-e29a-4f66-9a5b-626fb8adf237"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Reset"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -1928,6 +2020,10 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_PaintingPuzzle = asset.FindActionMap("PaintingPuzzle", throwIfNotFound: true);
         m_PaintingPuzzle_MoveCardSymbol = m_PaintingPuzzle.FindAction("MoveCardSymbol", throwIfNotFound: true);
         m_PaintingPuzzle_ClickHoldButton = m_PaintingPuzzle.FindAction("ClickHoldButton", throwIfNotFound: true);
+        // SafeInput
+        m_SafeInput = asset.FindActionMap("SafeInput", throwIfNotFound: true);
+        m_SafeInput_Move = m_SafeInput.FindAction("Move", throwIfNotFound: true);
+        m_SafeInput_Reset = m_SafeInput.FindAction("Reset", throwIfNotFound: true);
     }
 
     ~@InputSystem_Actions()
@@ -1941,6 +2037,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         UnityEngine.Debug.Assert(!m_CircleAndSquarePuzzle.enabled, "This will cause a leak and performance issues, InputSystem_Actions.CircleAndSquarePuzzle.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_CursorController.enabled, "This will cause a leak and performance issues, InputSystem_Actions.CursorController.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_PaintingPuzzle.enabled, "This will cause a leak and performance issues, InputSystem_Actions.PaintingPuzzle.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_SafeInput.enabled, "This will cause a leak and performance issues, InputSystem_Actions.SafeInput.Disable() has not been called.");
     }
 
     /// <summary>
@@ -3228,6 +3325,113 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     /// Provides a new <see cref="PaintingPuzzleActions" /> instance referencing this action map.
     /// </summary>
     public PaintingPuzzleActions @PaintingPuzzle => new PaintingPuzzleActions(this);
+
+    // SafeInput
+    private readonly InputActionMap m_SafeInput;
+    private List<ISafeInputActions> m_SafeInputActionsCallbackInterfaces = new List<ISafeInputActions>();
+    private readonly InputAction m_SafeInput_Move;
+    private readonly InputAction m_SafeInput_Reset;
+    /// <summary>
+    /// Provides access to input actions defined in input action map "SafeInput".
+    /// </summary>
+    public struct SafeInputActions
+    {
+        private @InputSystem_Actions m_Wrapper;
+
+        /// <summary>
+        /// Construct a new instance of the input action map wrapper class.
+        /// </summary>
+        public SafeInputActions(@InputSystem_Actions wrapper) { m_Wrapper = wrapper; }
+        /// <summary>
+        /// Provides access to the underlying input action "SafeInput/Move".
+        /// </summary>
+        public InputAction @Move => m_Wrapper.m_SafeInput_Move;
+        /// <summary>
+        /// Provides access to the underlying input action "SafeInput/Reset".
+        /// </summary>
+        public InputAction @Reset => m_Wrapper.m_SafeInput_Reset;
+        /// <summary>
+        /// Provides access to the underlying input action map instance.
+        /// </summary>
+        public InputActionMap Get() { return m_Wrapper.m_SafeInput; }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+        public void Enable() { Get().Enable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+        public void Disable() { Get().Disable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+        public bool enabled => Get().enabled;
+        /// <summary>
+        /// Implicitly converts an <see ref="SafeInputActions" /> to an <see ref="InputActionMap" /> instance.
+        /// </summary>
+        public static implicit operator InputActionMap(SafeInputActions set) { return set.Get(); }
+        /// <summary>
+        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <param name="instance">Callback instance.</param>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+        /// </remarks>
+        /// <seealso cref="SafeInputActions" />
+        public void AddCallbacks(ISafeInputActions instance)
+        {
+            if (instance == null || m_Wrapper.m_SafeInputActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_SafeInputActionsCallbackInterfaces.Add(instance);
+            @Move.started += instance.OnMove;
+            @Move.performed += instance.OnMove;
+            @Move.canceled += instance.OnMove;
+            @Reset.started += instance.OnReset;
+            @Reset.performed += instance.OnReset;
+            @Reset.canceled += instance.OnReset;
+        }
+
+        /// <summary>
+        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <remarks>
+        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+        /// </remarks>
+        /// <seealso cref="SafeInputActions" />
+        private void UnregisterCallbacks(ISafeInputActions instance)
+        {
+            @Move.started -= instance.OnMove;
+            @Move.performed -= instance.OnMove;
+            @Move.canceled -= instance.OnMove;
+            @Reset.started -= instance.OnReset;
+            @Reset.performed -= instance.OnReset;
+            @Reset.canceled -= instance.OnReset;
+        }
+
+        /// <summary>
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="SafeInputActions.UnregisterCallbacks(ISafeInputActions)" />.
+        /// </summary>
+        /// <seealso cref="SafeInputActions.UnregisterCallbacks(ISafeInputActions)" />
+        public void RemoveCallbacks(ISafeInputActions instance)
+        {
+            if (m_Wrapper.m_SafeInputActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        /// <summary>
+        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+        /// </summary>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+        /// </remarks>
+        /// <seealso cref="SafeInputActions.AddCallbacks(ISafeInputActions)" />
+        /// <seealso cref="SafeInputActions.RemoveCallbacks(ISafeInputActions)" />
+        /// <seealso cref="SafeInputActions.UnregisterCallbacks(ISafeInputActions)" />
+        public void SetCallbacks(ISafeInputActions instance)
+        {
+            foreach (var item in m_Wrapper.m_SafeInputActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_SafeInputActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    /// <summary>
+    /// Provides a new <see cref="SafeInputActions" /> instance referencing this action map.
+    /// </summary>
+    public SafeInputActions @SafeInput => new SafeInputActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     /// <summary>
     /// Provides access to the input control scheme.
@@ -3651,5 +3855,27 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnClickHoldButton(InputAction.CallbackContext context);
+    }
+    /// <summary>
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "SafeInput" which allows adding and removing callbacks.
+    /// </summary>
+    /// <seealso cref="SafeInputActions.AddCallbacks(ISafeInputActions)" />
+    /// <seealso cref="SafeInputActions.RemoveCallbacks(ISafeInputActions)" />
+    public interface ISafeInputActions
+    {
+        /// <summary>
+        /// Method invoked when associated input action "Move" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnMove(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Reset" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnReset(InputAction.CallbackContext context);
     }
 }

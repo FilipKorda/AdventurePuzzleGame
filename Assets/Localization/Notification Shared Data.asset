@@ -337,6 +337,18 @@ MonoBehaviour:
     m_Key: CrackInTheWallPickaxe
     m_Metadata:
       m_Items: []
+  - m_Id: 31023615950737408
+    m_Key: DropItem
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31024439548465152
+    m_Key: UseOrDropNotification
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31027367537561600
+    m_Key: LeaveBookNotification
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

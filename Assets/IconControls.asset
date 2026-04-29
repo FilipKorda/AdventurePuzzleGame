@@ -64,6 +64,12 @@ MonoBehaviour:
   - name: Mouse
     variable:
       rid: 4011535830200615167
+  - name: ReadBook
+    variable:
+      rid: 4011535851680694402
+  - name: LeavePuzzle
+    variable:
+      rid: 4011535851680694424
   references:
     version: 2
     RefIds:
@@ -132,6 +138,14 @@ MonoBehaviour:
       data:
         m_Value: ControlsSheet_15
     - rid: 4011535830200615167
-      type: {class: StringGlobalVariable, ns: UnityEngine.Localization.SmartFormat.GlobalVariables, asm: Unity.Localization}
+      type: {class: StringVariable, ns: UnityEngine.Localization.SmartFormat.PersistentVariables, asm: Unity.Localization}
       data:
-        m_Value: 
+        m_Value: ControlsIcons_v2_1
+    - rid: 4011535851680694402
+      type: {class: StringVariable, ns: UnityEngine.Localization.SmartFormat.PersistentVariables, asm: Unity.Localization}
+      data:
+        m_Value: ControlsSheet_3
+    - rid: 4011535851680694424
+      type: {class: StringVariable, ns: UnityEngine.Localization.SmartFormat.PersistentVariables, asm: Unity.Localization}
+      data:
+        m_Value: ControlsIcons_v2_0

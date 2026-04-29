@@ -3,6 +3,11 @@ using UnityEngine;
 
 public class DevStaticManager : MonoBehaviour
 {
+#if UNITY_EDITOR
+
+    [SerializeField] private Transform playerTransform;
+    [SerializeField] private Transform playerStartPosition;
+
     [Header("Obiekty do zmiany statusu Static na false podczas buildu")]
     public List<GameObject> objectsToModify;
 
@@ -18,6 +23,14 @@ public class DevStaticManager : MonoBehaviour
         SetAllStatic(false);
     }
 
+
+
+    [ContextMenu("Set Player Start Position")]
+    public void SetPlayerStartPosition()
+    {
+        playerTransform.SetPositionAndRotation(playerStartPosition.position, playerStartPosition.rotation);
+    }
+
     public void SetAllStatic(bool value)
     {
         int count = 0;
@@ -29,6 +42,8 @@ public class DevStaticManager : MonoBehaviour
                 count++;
             }
         }
+
         Debug.Log($"[DevStaticManager] Zmieniono {count} obiektów na Static = {value}");
     }
+#endif
 }

@@ -120,7 +120,10 @@ MonoBehaviour:
     m_Localized: 'Press <sprite name="{controls.PPM}"> to Drink or Eat
 
       Press
-      <sprite name="{controls.Q}"> to Drop item'
+      <sprite name="{controls.LPM}"> to Use
+
+      Press <sprite name="{controls.Q}">
+      to Drop item'
     m_Metadata:
       m_Items:
       - rid: 4011535830200615029
@@ -377,36 +380,53 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 27841239883993088
-    m_Localized: '<sprite name="{controls.PPM}"> Open/Close this book
+    m_Localized: 'Press <sprite name="{controls.PPM}"> Open/Close this book
 
-      <sprite
-      name="{controls.AlchemyRecipesQ}"> <sprite name="{controls.AlchemyRecipesE}">
-      Next page'
+      Press
+      <sprite name="{controls.AlchemyRecipesQ}"> <sprite name="{controls.AlchemyRecipesE}">
+      Next page
+
+      Press <sprite name="{controls.Q}"> to Drop Item'
     m_Metadata:
       m_Items:
       - rid: 4011535830200615029
   - m_Id: 27844950584741888
-    m_Localized: <sprite name="{controls.PPM}"> Open/Close this papyrus
+    m_Localized: 'Press <sprite name="{controls.PPM}"> Open/Close this papyrus
+
+      Press
+      <sprite name="{controls.Q}"> to Drop Item'
     m_Metadata:
       m_Items:
       - rid: 4011535830200615029
   - m_Id: 27853001677099008
-    m_Localized: <sprite name="{controls.PPM}"> Open/Close Book
+    m_Localized: '<sprite name="{controls.PPM}"> Open/Close Book
+
+      Press <sprite
+      name="{controls.Q}"> to Drop Item'
     m_Metadata:
       m_Items:
       - rid: 4011535830200615029
   - m_Id: 27857162942566400
-    m_Localized: <sprite name="{controls.LPM}"> To Select
+    m_Localized: 'Press <sprite name="{controls.LPM}"> To Select
+
+      Press <sprite
+      name="{controls.LeavePuzzle}"> to leave '
     m_Metadata:
       m_Items:
       - rid: 4011535830200615029
   - m_Id: 27857690263048192
-    m_Localized: <sprite name="{controls.LPM}"> To Rotate
+    m_Localized: 'Press <sprite name="{controls.LPM}"> To Rotate
+
+      Press <sprite
+      name="{controls.LeavePuzzle}"> to leave '
     m_Metadata:
       m_Items:
       - rid: 4011535830200615029
   - m_Id: 27858078009675776
-    m_Localized: Hold <sprite name="{controls.LPM}"> to move object
+    m_Localized: 'Hold <sprite name="{controls.LPM}"> to move object
+
+      Press
+      <sprite name="{controls.LeavePuzzle}"> to leave '
     m_Metadata:
       m_Items:
       - rid: 4011535830200615029
@@ -414,7 +434,9 @@ MonoBehaviour:
     m_Localized: '<sprite name="{controls.A}"> Rotate Left
 
       <sprite name="{controls.D}">
-      Rotate Right'
+      Rotate Right
+
+      Press <sprite name="{controls.LeavePuzzle}"> to leave '
     m_Metadata:
       m_Items:
       - rid: 4011535830200615029
@@ -422,7 +444,10 @@ MonoBehaviour:
     m_Localized: 'Hold <sprite name="{controls.LPM}"> to move
 
       Press <sprite
-      name="{controls.LPM}"> to Rotate'
+      name="{controls.LPM}"> to Rotate
+
+      Press <sprite name="{controls.LeavePuzzle}">
+      to leave '
     m_Metadata:
       m_Items:
       - rid: 4011535830200615029
@@ -436,10 +461,13 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 28670327108423680
-    m_Localized: 'Press <sprite name="{controls.PPM}"> to Inspect Object
+    m_Localized: 'Press <sprite name="{controls.PPM}"> to Inspect Item
 
-      Move
-      <sprite name="{controls.Mouse}"> to rotate'
+      Press
+      <sprite name="{controls.Q}"> to Drop Item
+
+      Move <sprite name="{controls.Mouse}">
+      to rotate'
     m_Metadata:
       m_Items:
       - rid: 4011535830200615029
@@ -457,6 +485,24 @@ MonoBehaviour:
     m_Localized: 'XDDD Maybe hit this wall with something? '
     m_Metadata:
       m_Items: []
+  - m_Id: 31023615950737408
+    m_Localized: Press <sprite name="{controls.Q}"> To Drop Item
+    m_Metadata:
+      m_Items:
+      - rid: 4011535830200615029
+  - m_Id: 31024439548465152
+    m_Localized: 'Press <sprite name="{controls.LPM}"> to use item
+
+      Press <sprite
+      name="{controls.Q}"> To Drop Item'
+    m_Metadata:
+      m_Items:
+      - rid: 4011535830200615029
+  - m_Id: 31027367537561600
+    m_Localized: Press <sprite name="{controls.LPM}"> to stop reading
+    m_Metadata:
+      m_Items:
+      - rid: 4011535830200615029
   references:
     version: 2
     RefIds:
@@ -484,3 +530,6 @@ MonoBehaviour:
         - id: 28670327108423680
         - id: 28671640995123200
         - id: 28671770200657920
+        - id: 31023615950737408
+        - id: 31024439548465152
+        - id: 31027367537561600

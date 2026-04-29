@@ -19,6 +19,7 @@ public class LocalizedControlIconText : MonoBehaviour
     [SerializeField] private string FName = "F";
     [SerializeField] private string EName = "E";
     [SerializeField] private string MouseName = "Mouse";
+    [SerializeField] private string LeavePuzzleName = "LeavePuzzle";
 
     [SerializeField] private string AlchemyRecipesNameE = "AlchemyRecipesE";
     [SerializeField] private string AlchemyRecipesNameQ = "AlchemyRecipesQ";
@@ -77,8 +78,8 @@ public class LocalizedControlIconText : MonoBehaviour
 
         using (PersistentVariablesSource.UpdateScope())
         {
-            SetStringVariable(PpmName, usingController ? controllerXIcon : PpmKeyboardIcon);
-            SetStringVariable(QName, usingController ? controllerBIcon : DropKeyboardIcon);
+            SetStringVariable(PpmName, usingController ? controllerBIcon : PpmKeyboardIcon);
+            SetStringVariable(QName, usingController ? controllerXIcon : DropKeyboardIcon);
 
             SetStringVariable(AlchemyRecipesNameE, usingController ? controllerNavigationIcon : EKeyboardIcon);
             SetStringVariable(AlchemyRecipesNameQ, usingController ? controllerNavigationIcon : DropKeyboardIcon);
@@ -98,6 +99,9 @@ public class LocalizedControlIconText : MonoBehaviour
             SetStringVariable(DFurnitureMovementName, usingController ? controllerNavigationIcon : DKeyboardIcon);
 
             SetStringVariable(MouseName, usingController ? controllerStickIcon : MouseKeyboardIcon);
+
+            SetStringVariable(LeavePuzzleName, usingController ? controllerBIcon : EKeyboardIcon);
+
         }
     }
 

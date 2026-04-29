@@ -51,7 +51,7 @@ public class Inventory : MonoBehaviour
     {
         if (UIManager.Instance != null && !UIManager.Instance.CanAddItemToUI())
         {
-            Debug.Log("Nie mo¿na podnieœæ przedmiotu — masz ju¿ maksymaln¹ liczbê przedmiotów, które mo¿esz nosiæ.");
+            //Debug.Log("Nie mo¿na podnieœæ przedmiotu — masz ju¿ maksymaln¹ liczbê przedmiotów, które mo¿esz nosiæ.");
             return false;
         }
 
@@ -62,7 +62,7 @@ public class Inventory : MonoBehaviour
 
     public void AddToInventoryAlchemyRecipe(IPickupable iPickupable)
     {
-        Debug.LogWarning($"Dodano przedmiot do alchemicznego przepisu: {iPickupable.GetItemId()}");
+       // Debug.LogWarning($"Dodano przedmiot do alchemicznego przepisu: {iPickupable.GetItemId()}");
         inventory.Add(iPickupable);
         recipesCounter.UpdateRecipeCount();
     }
@@ -73,7 +73,7 @@ public class Inventory : MonoBehaviour
         if (itemToRemove != null)
         {
             inventory.Remove(itemToRemove);
-            Debug.LogWarning($"Usuniêto przedmiot: {itemToRemove.GetItemId()}");
+           // Debug.LogWarning($"Usuniêto przedmiot: {itemToRemove.GetItemId()}");
         }
     }
 

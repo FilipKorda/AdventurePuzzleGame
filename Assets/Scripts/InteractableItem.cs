@@ -826,7 +826,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         int currentSelectedId = UIManager.Instance.GetSelectedItemId();
         if (currentSelectedId == 0)
         {
-            Debug.Log("Nie wybrano ¿adnego przedmiotu do u¿ycia.");
+            //Debug.Log("Nie wybrano ¿adnego przedmiotu do u¿ycia.");
             return;
         }
 
@@ -1330,10 +1330,10 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
 
         Services.Audio.PlaySFX("PlaceObject");
 
-        if (craftedSomething)
+  /*      if (craftedSomething)
             Debug.Log("umieszczono obiekt do kraftowania");
         else
-            Debug.Log("nie sie nie dzieje");
+            Debug.Log("nie sie nie dzieje");*/
     }
 
     private void ActiveCrafting()
@@ -1401,13 +1401,13 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
                     InteractableItem newPotion = cauldron.TakeSolution();
                     Inventory.Instance.AddItemToInventory(newPotion);
 
-                    Debug.Log($"Nape³niono pojemnik. Otrzymano: {newPotion.GetItemName()}");
+                   // Debug.Log($"Nape³niono pojemnik. Otrzymano: {newPotion.GetItemName()}");
                 }
                 else
                 {
                     if (localizationString.localizeString != null)
                         NotificationSystem.Instance.ShowNotification(localizationString.localizeString, 3);
-                    Debug.Log("Wybierz pusty pojemnik, aby nabraæ roztwór.");
+                   // Debug.Log("Wybierz pusty pojemnik, aby nabraæ roztwór.");
                 }
             }
             else if (selectedItemId != ItemID.EmptyBucket)
@@ -1455,14 +1455,14 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
             {
                 if (localizationString.localizeString != null)
                     NotificationSystem.Instance.ShowNotification(localizationString.localizeString, 3);
-                Debug.Log("Wybierz pusty pojemnik, aby nabraæ roztwór.");
+               // Debug.Log("Wybierz pusty pojemnik, aby nabraæ roztwór.");
             }
             else
             {
                 if (localizationTwoString.localizeString != null)
                     NotificationSystem.Instance.ShowNotification(localizationTwoString.localizeString, 3);
 
-                Debug.Log("Wybierz sk³adnik z ekwipunku, aby go dodaæ do kot³a.");
+                //Debug.Log("Wybierz sk³adnik z ekwipunku, aby go dodaæ do kot³a.");
             }
         }
     }
@@ -1560,13 +1560,14 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         int selectedId = UIManager.Instance.GetSelectedItemId();
         if (selectedId == -1)
         {
-            Debug.Log("Musisz wybraæ pusty wiadro, aby go nape³niæ.");
+            if (localizationString.localizeString != null)
+                NotificationSystem.Instance.ShowNotification(localizationString.localizeString, 3);
             return;
         }
 
         if (fillMapping == null || fillMapping.requiredEmptyItem == null)
         {
-            Debug.LogError($"Brak zdefiniowanego mapowania 'fillMapping' na obiekcie {gameObject.name}");
+            // Debug.LogError($"Brak zdefiniowanego mapowania 'fillMapping' na obiekcie {gameObject.name}");
             return;
         }
 
@@ -1574,7 +1575,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         {
             if (fillMapping.resultingFilledItem == null)
             {
-                Debug.LogError($"Brak przypisanego przedmiotu 'resultingFilledItem' na obiekcie {gameObject.name}");
+                //Debug.LogError($"Brak przypisanego przedmiotu 'resultingFilledItem' na obiekcie {gameObject.name}");
                 return;
             }
 
@@ -1630,7 +1631,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
 
                     if (localizationString.localizeString != null)
                         NotificationSystem.Instance.ShowNotification(localizationString.localizeString, 3);
-                    Debug.Log("Nie masz animatora");
+                    // Debug.Log("Nie masz animatora");
                 }
 
                 isActualOpen = true;
@@ -1740,6 +1741,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
                 continue;
             }
 
+            Services.Audio.PlaySFX("PlaceObject");
 
             if (requiredId == 26)
             {
@@ -1794,7 +1796,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
 
             Inventory.Instance.RemoveFromInventoryAlchemyRecipe(requiredId);
             recipesCounter.UpdateRecipeCount();
-            Debug.LogWarning($"Znaleziono i usuniêto item o ID: {requiredId}");
+            // Debug.LogWarning($"Znaleziono i usuniêto item o ID: {requiredId}");
         }
 
 
@@ -1829,7 +1831,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
             }
             else
             {
-                Debug.LogWarning($"{gameObject.name} does not have a Rigidbody. Cannot apply force.");
+                //  Debug.LogWarning($"{gameObject.name} does not have a Rigidbody. Cannot apply force.");
             }
         }
     }
