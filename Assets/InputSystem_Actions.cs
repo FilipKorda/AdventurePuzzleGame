@@ -1896,6 +1896,146 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""TreeSymbolsPuzzle"",
+            ""id"": ""0e6031da-39e8-424d-84b0-f1b825771d65"",
+            ""actions"": [
+                {
+                    ""name"": ""Move"",
+                    ""type"": ""Value"",
+                    ""id"": ""2f36e1af-112e-4438-adfd-115aa818c2bd"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""ClickHoldButton"",
+                    ""type"": ""Button"",
+                    ""id"": ""738d255a-52be-4d5d-b87f-0b658c1cf71e"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Hold"",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""526a5cab-5c5c-4e94-82b0-eba7a12c1445"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3da7dc2d-e85d-4cd8-b941-d75d3390e903"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cdbca2aa-a88d-4626-a36c-bbca49d6fe0e"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""ClickHoldButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f6f0c106-61d6-4778-bef2-c6b678cdfed2"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""ClickHoldButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""SphereMaze"",
+            ""id"": ""ed44e9a2-d051-4074-b87f-2467b7fabb8f"",
+            ""actions"": [
+                {
+                    ""name"": ""Move"",
+                    ""type"": ""Value"",
+                    ""id"": ""dfa1a149-ec67-4413-a2ad-5a1e66bbe335"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""ClickHoldButton"",
+                    ""type"": ""Button"",
+                    ""id"": ""8f2cea72-ee74-4fe1-b192-da669ab351b0"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Hold"",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""616d44e1-44d8-4fb7-b1ba-67c2b51b96cf"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0db7b1b6-5a7a-4573-87dc-c9e6981077e1"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""be4310c6-fc0d-436f-a392-e92d3c5b9e4d"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""ClickHoldButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b0737938-2636-4447-9e54-f7a63b2cb81b"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""ClickHoldButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -2024,6 +2164,14 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_SafeInput = asset.FindActionMap("SafeInput", throwIfNotFound: true);
         m_SafeInput_Move = m_SafeInput.FindAction("Move", throwIfNotFound: true);
         m_SafeInput_Reset = m_SafeInput.FindAction("Reset", throwIfNotFound: true);
+        // TreeSymbolsPuzzle
+        m_TreeSymbolsPuzzle = asset.FindActionMap("TreeSymbolsPuzzle", throwIfNotFound: true);
+        m_TreeSymbolsPuzzle_Move = m_TreeSymbolsPuzzle.FindAction("Move", throwIfNotFound: true);
+        m_TreeSymbolsPuzzle_ClickHoldButton = m_TreeSymbolsPuzzle.FindAction("ClickHoldButton", throwIfNotFound: true);
+        // SphereMaze
+        m_SphereMaze = asset.FindActionMap("SphereMaze", throwIfNotFound: true);
+        m_SphereMaze_Move = m_SphereMaze.FindAction("Move", throwIfNotFound: true);
+        m_SphereMaze_ClickHoldButton = m_SphereMaze.FindAction("ClickHoldButton", throwIfNotFound: true);
     }
 
     ~@InputSystem_Actions()
@@ -2038,6 +2186,8 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         UnityEngine.Debug.Assert(!m_CursorController.enabled, "This will cause a leak and performance issues, InputSystem_Actions.CursorController.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_PaintingPuzzle.enabled, "This will cause a leak and performance issues, InputSystem_Actions.PaintingPuzzle.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_SafeInput.enabled, "This will cause a leak and performance issues, InputSystem_Actions.SafeInput.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_TreeSymbolsPuzzle.enabled, "This will cause a leak and performance issues, InputSystem_Actions.TreeSymbolsPuzzle.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_SphereMaze.enabled, "This will cause a leak and performance issues, InputSystem_Actions.SphereMaze.Disable() has not been called.");
     }
 
     /// <summary>
@@ -3432,6 +3582,220 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     /// Provides a new <see cref="SafeInputActions" /> instance referencing this action map.
     /// </summary>
     public SafeInputActions @SafeInput => new SafeInputActions(this);
+
+    // TreeSymbolsPuzzle
+    private readonly InputActionMap m_TreeSymbolsPuzzle;
+    private List<ITreeSymbolsPuzzleActions> m_TreeSymbolsPuzzleActionsCallbackInterfaces = new List<ITreeSymbolsPuzzleActions>();
+    private readonly InputAction m_TreeSymbolsPuzzle_Move;
+    private readonly InputAction m_TreeSymbolsPuzzle_ClickHoldButton;
+    /// <summary>
+    /// Provides access to input actions defined in input action map "TreeSymbolsPuzzle".
+    /// </summary>
+    public struct TreeSymbolsPuzzleActions
+    {
+        private @InputSystem_Actions m_Wrapper;
+
+        /// <summary>
+        /// Construct a new instance of the input action map wrapper class.
+        /// </summary>
+        public TreeSymbolsPuzzleActions(@InputSystem_Actions wrapper) { m_Wrapper = wrapper; }
+        /// <summary>
+        /// Provides access to the underlying input action "TreeSymbolsPuzzle/Move".
+        /// </summary>
+        public InputAction @Move => m_Wrapper.m_TreeSymbolsPuzzle_Move;
+        /// <summary>
+        /// Provides access to the underlying input action "TreeSymbolsPuzzle/ClickHoldButton".
+        /// </summary>
+        public InputAction @ClickHoldButton => m_Wrapper.m_TreeSymbolsPuzzle_ClickHoldButton;
+        /// <summary>
+        /// Provides access to the underlying input action map instance.
+        /// </summary>
+        public InputActionMap Get() { return m_Wrapper.m_TreeSymbolsPuzzle; }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+        public void Enable() { Get().Enable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+        public void Disable() { Get().Disable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+        public bool enabled => Get().enabled;
+        /// <summary>
+        /// Implicitly converts an <see ref="TreeSymbolsPuzzleActions" /> to an <see ref="InputActionMap" /> instance.
+        /// </summary>
+        public static implicit operator InputActionMap(TreeSymbolsPuzzleActions set) { return set.Get(); }
+        /// <summary>
+        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <param name="instance">Callback instance.</param>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+        /// </remarks>
+        /// <seealso cref="TreeSymbolsPuzzleActions" />
+        public void AddCallbacks(ITreeSymbolsPuzzleActions instance)
+        {
+            if (instance == null || m_Wrapper.m_TreeSymbolsPuzzleActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_TreeSymbolsPuzzleActionsCallbackInterfaces.Add(instance);
+            @Move.started += instance.OnMove;
+            @Move.performed += instance.OnMove;
+            @Move.canceled += instance.OnMove;
+            @ClickHoldButton.started += instance.OnClickHoldButton;
+            @ClickHoldButton.performed += instance.OnClickHoldButton;
+            @ClickHoldButton.canceled += instance.OnClickHoldButton;
+        }
+
+        /// <summary>
+        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <remarks>
+        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+        /// </remarks>
+        /// <seealso cref="TreeSymbolsPuzzleActions" />
+        private void UnregisterCallbacks(ITreeSymbolsPuzzleActions instance)
+        {
+            @Move.started -= instance.OnMove;
+            @Move.performed -= instance.OnMove;
+            @Move.canceled -= instance.OnMove;
+            @ClickHoldButton.started -= instance.OnClickHoldButton;
+            @ClickHoldButton.performed -= instance.OnClickHoldButton;
+            @ClickHoldButton.canceled -= instance.OnClickHoldButton;
+        }
+
+        /// <summary>
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="TreeSymbolsPuzzleActions.UnregisterCallbacks(ITreeSymbolsPuzzleActions)" />.
+        /// </summary>
+        /// <seealso cref="TreeSymbolsPuzzleActions.UnregisterCallbacks(ITreeSymbolsPuzzleActions)" />
+        public void RemoveCallbacks(ITreeSymbolsPuzzleActions instance)
+        {
+            if (m_Wrapper.m_TreeSymbolsPuzzleActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        /// <summary>
+        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+        /// </summary>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+        /// </remarks>
+        /// <seealso cref="TreeSymbolsPuzzleActions.AddCallbacks(ITreeSymbolsPuzzleActions)" />
+        /// <seealso cref="TreeSymbolsPuzzleActions.RemoveCallbacks(ITreeSymbolsPuzzleActions)" />
+        /// <seealso cref="TreeSymbolsPuzzleActions.UnregisterCallbacks(ITreeSymbolsPuzzleActions)" />
+        public void SetCallbacks(ITreeSymbolsPuzzleActions instance)
+        {
+            foreach (var item in m_Wrapper.m_TreeSymbolsPuzzleActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_TreeSymbolsPuzzleActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    /// <summary>
+    /// Provides a new <see cref="TreeSymbolsPuzzleActions" /> instance referencing this action map.
+    /// </summary>
+    public TreeSymbolsPuzzleActions @TreeSymbolsPuzzle => new TreeSymbolsPuzzleActions(this);
+
+    // SphereMaze
+    private readonly InputActionMap m_SphereMaze;
+    private List<ISphereMazeActions> m_SphereMazeActionsCallbackInterfaces = new List<ISphereMazeActions>();
+    private readonly InputAction m_SphereMaze_Move;
+    private readonly InputAction m_SphereMaze_ClickHoldButton;
+    /// <summary>
+    /// Provides access to input actions defined in input action map "SphereMaze".
+    /// </summary>
+    public struct SphereMazeActions
+    {
+        private @InputSystem_Actions m_Wrapper;
+
+        /// <summary>
+        /// Construct a new instance of the input action map wrapper class.
+        /// </summary>
+        public SphereMazeActions(@InputSystem_Actions wrapper) { m_Wrapper = wrapper; }
+        /// <summary>
+        /// Provides access to the underlying input action "SphereMaze/Move".
+        /// </summary>
+        public InputAction @Move => m_Wrapper.m_SphereMaze_Move;
+        /// <summary>
+        /// Provides access to the underlying input action "SphereMaze/ClickHoldButton".
+        /// </summary>
+        public InputAction @ClickHoldButton => m_Wrapper.m_SphereMaze_ClickHoldButton;
+        /// <summary>
+        /// Provides access to the underlying input action map instance.
+        /// </summary>
+        public InputActionMap Get() { return m_Wrapper.m_SphereMaze; }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+        public void Enable() { Get().Enable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+        public void Disable() { Get().Disable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+        public bool enabled => Get().enabled;
+        /// <summary>
+        /// Implicitly converts an <see ref="SphereMazeActions" /> to an <see ref="InputActionMap" /> instance.
+        /// </summary>
+        public static implicit operator InputActionMap(SphereMazeActions set) { return set.Get(); }
+        /// <summary>
+        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <param name="instance">Callback instance.</param>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+        /// </remarks>
+        /// <seealso cref="SphereMazeActions" />
+        public void AddCallbacks(ISphereMazeActions instance)
+        {
+            if (instance == null || m_Wrapper.m_SphereMazeActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_SphereMazeActionsCallbackInterfaces.Add(instance);
+            @Move.started += instance.OnMove;
+            @Move.performed += instance.OnMove;
+            @Move.canceled += instance.OnMove;
+            @ClickHoldButton.started += instance.OnClickHoldButton;
+            @ClickHoldButton.performed += instance.OnClickHoldButton;
+            @ClickHoldButton.canceled += instance.OnClickHoldButton;
+        }
+
+        /// <summary>
+        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <remarks>
+        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+        /// </remarks>
+        /// <seealso cref="SphereMazeActions" />
+        private void UnregisterCallbacks(ISphereMazeActions instance)
+        {
+            @Move.started -= instance.OnMove;
+            @Move.performed -= instance.OnMove;
+            @Move.canceled -= instance.OnMove;
+            @ClickHoldButton.started -= instance.OnClickHoldButton;
+            @ClickHoldButton.performed -= instance.OnClickHoldButton;
+            @ClickHoldButton.canceled -= instance.OnClickHoldButton;
+        }
+
+        /// <summary>
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="SphereMazeActions.UnregisterCallbacks(ISphereMazeActions)" />.
+        /// </summary>
+        /// <seealso cref="SphereMazeActions.UnregisterCallbacks(ISphereMazeActions)" />
+        public void RemoveCallbacks(ISphereMazeActions instance)
+        {
+            if (m_Wrapper.m_SphereMazeActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        /// <summary>
+        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+        /// </summary>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+        /// </remarks>
+        /// <seealso cref="SphereMazeActions.AddCallbacks(ISphereMazeActions)" />
+        /// <seealso cref="SphereMazeActions.RemoveCallbacks(ISphereMazeActions)" />
+        /// <seealso cref="SphereMazeActions.UnregisterCallbacks(ISphereMazeActions)" />
+        public void SetCallbacks(ISphereMazeActions instance)
+        {
+            foreach (var item in m_Wrapper.m_SphereMazeActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_SphereMazeActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    /// <summary>
+    /// Provides a new <see cref="SphereMazeActions" /> instance referencing this action map.
+    /// </summary>
+    public SphereMazeActions @SphereMaze => new SphereMazeActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     /// <summary>
     /// Provides access to the input control scheme.
@@ -3877,5 +4241,49 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnReset(InputAction.CallbackContext context);
+    }
+    /// <summary>
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "TreeSymbolsPuzzle" which allows adding and removing callbacks.
+    /// </summary>
+    /// <seealso cref="TreeSymbolsPuzzleActions.AddCallbacks(ITreeSymbolsPuzzleActions)" />
+    /// <seealso cref="TreeSymbolsPuzzleActions.RemoveCallbacks(ITreeSymbolsPuzzleActions)" />
+    public interface ITreeSymbolsPuzzleActions
+    {
+        /// <summary>
+        /// Method invoked when associated input action "Move" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnMove(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "ClickHoldButton" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnClickHoldButton(InputAction.CallbackContext context);
+    }
+    /// <summary>
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "SphereMaze" which allows adding and removing callbacks.
+    /// </summary>
+    /// <seealso cref="SphereMazeActions.AddCallbacks(ISphereMazeActions)" />
+    /// <seealso cref="SphereMazeActions.RemoveCallbacks(ISphereMazeActions)" />
+    public interface ISphereMazeActions
+    {
+        /// <summary>
+        /// Method invoked when associated input action "Move" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnMove(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "ClickHoldButton" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnClickHoldButton(InputAction.CallbackContext context);
     }
 }

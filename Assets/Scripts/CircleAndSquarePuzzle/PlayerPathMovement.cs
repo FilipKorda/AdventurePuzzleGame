@@ -53,11 +53,21 @@ public class PlayerPathMovement : MonoBehaviour
         {
             StartCoroutine(CourutineWinPuzzle());
         }
+
+        if (thisSphereInput != null)
+        {
+            thisSphereInput.action.performed -= OnInputPerformed;
+            thisSphereInput.action.canceled -= OnInputCanceled;
+            thisSphereInput.action.Disable();
+        }
+
+        SetClickAndDrag(false);
     }
 
     private IEnumerator CourutineWinPuzzle()
     {
         yield return null;
+
         circleAndSquarePuzzle.ExitAfterWin();
     }
 
@@ -108,18 +118,18 @@ public class PlayerPathMovement : MonoBehaviour
 
     IEnumerator MoveToTarget()
     {
-       
+        
         Vector3 startPos = transform.position;
         Vector3 endPos = targetPoint.transform.position;
         float t = 0f;
-
+        Services.Audio.PlaySFX("FastMove");
         while (t < 1f)
         {
             t += Time.deltaTime * speed;
             transform.position = Vector3.Lerp(startPos, endPos, t);
             yield return null;
         }
-        Services.Audio.PlaySFX("FastMove");
+        
         transform.position = endPos;
         currentPoint = targetPoint;
 

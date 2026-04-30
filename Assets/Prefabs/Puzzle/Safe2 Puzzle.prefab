@@ -351,6 +351,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 622575f3636db0e419de3651bdb0b2ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SafeDial
+  safeInputMove: {fileID: -4780115264297897622, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  safeInputReset: {fileID: 8230027368351182528, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   safePuzzle: {fileID: 7468267656614449150}
   canRotateDial: 0
   fixedY: 900
@@ -391,3 +393,4 @@ MonoBehaviour:
   boxCollider: {fileID: 0}
   safeDial: {fileID: 8336440882485600449}
   animator: {fileID: 0}
+  animatorOne: {fileID: 0}

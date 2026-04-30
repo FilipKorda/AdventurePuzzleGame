@@ -23,7 +23,6 @@ public class TwoCrystalsPuzzleGameMode : ICursorGameMode
 
     public void OnClickInput(InputAction.CallbackContext context)
     {
-        if (!context.started) return;
         if (!controller.HasHit) return;
 
         Transform hitTransform = controller.CurrentHit.transform;
@@ -53,14 +52,13 @@ public class TwoCrystalsPuzzleGameMode : ICursorGameMode
 
     public void OnDragInputCanceled(InputAction.CallbackContext context)
     {
-        isDragging = false;
-        ReleaseSelectedCrystal();
+      
     }
 
     public void Tick()
     {
         if (selectedCrystal == null) return;
-        if (!isDragging) return;
+      
 
         Vector2 currentCursorPosition = controller.GetCursorScreenPosition();
         Vector2 cursorDelta = currentCursorPosition - lastCursorPosition;

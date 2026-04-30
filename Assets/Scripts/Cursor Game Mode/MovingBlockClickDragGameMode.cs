@@ -13,6 +13,10 @@ public class MovingBlockClickDragGameMode : ICursorGameMode
     private Vector2 lastCursorPosition;
     private float maxMovePerFrame = 0.01f;
 
+    private float mouseMoveSpeed = 0.001f;
+    private float gamepadMoveSpeed = 0.0005f;
+
+
     public void Enter(CursorController controller)
     {
         this.controller = controller;
@@ -30,9 +34,6 @@ public class MovingBlockClickDragGameMode : ICursorGameMode
 
     public void OnClickInput(InputAction.CallbackContext context)
     {
-        if (!context.started)
-            return;
-
         if (!controller.HasHit)
         {
             selectedObject = null;
@@ -81,13 +82,21 @@ public class MovingBlockClickDragGameMode : ICursorGameMode
 
     public void OnDragInputCanceled(InputAction.CallbackContext context)
     {
-        isDragging = false;
+     
     }
 
     public void Tick()
     {
-        if (selectedObject == null || movable == null || !isDragging)
+        if (selectedObject == null)
             return;
+
+        if (!controller.IsClickHeld())
+        {
+            isDragging = false;
+            selectedObject = null;
+            movable = null;
+            return;
+        }
 
         HandleMovement();
     }
@@ -98,15 +107,18 @@ public class MovingBlockClickDragGameMode : ICursorGameMode
         Vector2 delta = cursorPos - lastCursorPosition;
         lastCursorPosition = cursorPos;
 
+        float speed = controller.IsUsingGamepadCursor ? gamepadMoveSpeed : mouseMoveSpeed;
+
         Vector3 move;
 
         if (movable.axis == MoveAxis.X)
-            move = new Vector3(delta.x * 0.01f, 0f, 0f);
+            move = new Vector3(delta.x * speed, 0f, 0f);
         else
-            move = new Vector3(0f, delta.y * 0.01f, 0f);
+            move = new Vector3(0f, delta.y * speed, 0f);
 
         move = Vector3.ClampMagnitude(move, maxMovePerFrame);
 
         movable.TryMove(move);
     }
+
 }

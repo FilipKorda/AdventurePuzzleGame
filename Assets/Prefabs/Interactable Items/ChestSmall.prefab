@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &297672550166718029
 Transform:
   m_ObjectHideFlags: 0
@@ -349,6 +349,7 @@ MonoBehaviour:
   fillMapping:
     requiredEmptyItem: {fileID: 0}
     resultingFilledItem: {fileID: 0}
+  tapBarrelManager: {fileID: 0}
   cauldron: {fileID: 0}
   scroll_BigAcidPotion: {fileID: 0}
   scroll_SmallAngryTimePotion: {fileID: 0}
@@ -449,6 +450,7 @@ MonoBehaviour:
   twoCrystalsPuzzle: {fileID: 0}
   rotatingCirclePuzzle: {fileID: 0}
   twelveDotPuzzle: {fileID: 0}
+  lastPuzzle: {fileID: 0}
   references:
     version: 2
     RefIds: []
