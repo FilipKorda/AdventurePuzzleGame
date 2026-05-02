@@ -1950,6 +1950,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "DevTools",
+            "id": "de18f7d3-83a1-49d4-81c2-762475471faf",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "c916d5e9-a4d7-4661-a909-3b6768186848",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "42a3b336-acbc-4b97-95dd-d8a3f71769a1",
+                    "path": "<Keyboard>/f10",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

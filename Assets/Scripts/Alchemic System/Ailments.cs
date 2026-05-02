@@ -3,7 +3,6 @@ using UnityEngine;
 public class Ailments : MonoBehaviour
 {
     public static Ailments Instance { get; private set; }
-    [SerializeField] private PlayerBehaviour playerBehaviour;
 
     private void Awake()
     {
@@ -19,64 +18,61 @@ public class Ailments : MonoBehaviour
 
     public void ApplyWaterBucketEffect()
     {
-        playerBehaviour.NoEffect();
+        PlayerControlManager.Instance.ApplyWaterBucketEffect();
     }
 
     public void ApplyAcidBucketEffect()
     {
-        playerBehaviour.ApplyAcidEffect(10f);
+        PlayerControlManager.Instance.ApplyAcidBucketEffect();
     }
 
     public void ApplyBloodBucketEffect()
     {
-        playerBehaviour.NoEffect();
+        PlayerControlManager.Instance.ApplyBloodBucketEffect();
     }
 
     public void ApplyWineBucketEffect()
     {
-        playerBehaviour.ApplyDrunkEffect(15f);
+        PlayerControlManager.Instance.ApplyWineBucketEffect();
     }
 
     public void ApplyRawMeatEffect()
     {
-        playerBehaviour.NoEffect();
+        PlayerControlManager.Instance.ApplyRawMeatEffect();
     }
 
     public void ApplyNiceWaterEffect()
     {
-        playerBehaviour.ApplyNiceWaterEffect(10);
+        PlayerControlManager.Instance.ApplyNiceWaterEffect();
     }
 
     public void ApplyMudWaterEffect()
     {
-        playerBehaviour.MudWaterEffect(10);
+        PlayerControlManager.Instance.ApplyMudWaterEffect();
     }
 
     public void ApplyLeafGoodsEffect()
     {
-        playerBehaviour.LeafGoods(10);
+        PlayerControlManager.Instance.ApplyLeafGoodsEffect();
     }
 
     public void ApplyAngryTimeEffect()
     {
-        playerBehaviour.ApplyAngryTime(10);
+        PlayerControlManager.Instance.ApplyAngryTimeEffect();
     }
 
     public void ApplyBadMoodEffect()
     {
-        playerBehaviour.BadMoodTeleport(10);
+        PlayerControlManager.Instance.ApplyBadMoodEffect();
     }
 
     public void ApplyGoodSoupEffect()
     {
-        playerBehaviour.NoEffect();
-        Debug.Log("Efekt z Ailments: Zjedzono dobr¹ zupê. Ciep³o rozchodzi siê po ciele.");
-        // W przysz³oœci: np. player.RestoreHealth(15); player.RestoreHunger(25);
+        PlayerControlManager.Instance.ApplyGoodSoupEffect();
     }
 
     public void ApplyHolyCowEffect()
     {
-        Debug.Log("Efekt z Ailments: Zjedzono 'HolyCow'. Czujesz siê b³ogos³awiony.");
-        playerBehaviour.OpenHiddenDoor(7);
+        PlayerControlManager.Instance.ApplyHolyCowEffect();
     }
 }

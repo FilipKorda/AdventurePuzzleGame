@@ -366,4 +366,16 @@ MonoBehaviour:
   - Id: SecondBellSFX
     Clip: {fileID: 8300000, guid: 0ba2663ec3e3b4d45ad1f2b4e2ff6e8c, type: 3}
     Category: 3
+  - Id: UISelect
+    Clip: {fileID: 8300000, guid: 99e4004c0abe7e141890748df0778596, type: 3}
+    Category: 1
+  - Id: UIClick
+    Clip: {fileID: 8300000, guid: 0082fc2cf15772d48bdaec6dcecc6b37, type: 3}
+    Category: 1
+  - Id: UIBack
+    Clip: {fileID: 8300000, guid: 0ab7f3cab0889a046867618c4d829591, type: 3}
+    Category: 1
+  - Id: UISlider
+    Clip: {fileID: 8300000, guid: ab52d1028cf2a7f42a8768edef539a62, type: 3}
+    Category: 1
   sfxSourcePrefab: {fileID: 6808787666201464470, guid: 561a59515f73e424ba170ae966f504e9, type: 3}

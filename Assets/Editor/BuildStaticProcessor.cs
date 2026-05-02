@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using UnityEditor.Build;
 using UnityEditor.Build.Reporting;
 using UnityEngine;
@@ -51,3 +52,4 @@ public class BuildStaticProcessor : IPreprocessBuildWithReport, IPostprocessBuil
         }
     }
 }
+#endif

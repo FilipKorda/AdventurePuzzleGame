@@ -85,6 +85,10 @@ MonoBehaviour:
     m_Key: Mouse
     m_Metadata:
       m_Items: []
+  - m_Id: 32213918602776576
+    m_Key: FPSCap
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

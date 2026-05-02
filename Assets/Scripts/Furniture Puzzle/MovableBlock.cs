@@ -13,7 +13,7 @@ public class MovableBlock : MonoBehaviour
 {
     [SerializeField] private InputActionReference movableBlockLeaveInput;
     [SerializeField] private InputActionReference movableBlockMoveInput;
-    [SerializeField] private PlayerBehaviour playerBehaviour;
+    //[SerializeField] private PlayerBehaviour playerBehaviour;
     [SerializeField] private FurniturePuzzle furniturePuzzle;
 
     [SerializeField] private BoxCollider itemInteractableCollider;
@@ -50,7 +50,7 @@ public class MovableBlock : MonoBehaviour
             movableBlockMoveInput.action.performed += MoveInput;
         }
 
-        playerBehaviour.disablePlayer = true;
+        PlayerControlManager.Instance.LockPlayer();
         canMove = true;
 
         if (direction == BlockDirection.Vertical)
@@ -77,7 +77,7 @@ public class MovableBlock : MonoBehaviour
             movableBlockMoveInput.action.Disable();
         }
 
-        playerBehaviour.disablePlayer = false;
+        PlayerControlManager.Instance.UnlockPlayer();
         canMove = false;
 
         if (direction == BlockDirection.Vertical)
@@ -105,7 +105,8 @@ public class MovableBlock : MonoBehaviour
 
         if (direction == BlockDirection.Vertical)
         {
-            Vector3 toCamera = playerBehaviour._playerCamera.transform.position - transform.position;
+            Vector3 toCamera = PlayerControlManager.Instance.GetPlayerCamera().transform.position - transform.position;
+
             toCamera.y = 0f;
             toCamera.Normalize();
 
@@ -144,7 +145,7 @@ public class MovableBlock : MonoBehaviour
 
         else if (direction == BlockDirection.Horizontal)
         {
-            Vector3 toCamera = playerBehaviour._playerCamera.transform.position - transform.position;
+            Vector3 toCamera = PlayerControlManager.Instance.GetPlayerCamera().transform.position - transform.position;
             toCamera.y = 0f;
             toCamera.Normalize();
 

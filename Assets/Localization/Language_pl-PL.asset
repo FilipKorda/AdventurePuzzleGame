@@ -82,6 +82,10 @@ MonoBehaviour:
     m_Localized: Mysz
     m_Metadata:
       m_Items: []
+  - m_Id: 32213918602776576
+    m_Localized: Limit Fps
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
