@@ -575,8 +575,8 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
+  near clip plane: 0.1
+  far clip plane: 100
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -859,6 +859,8 @@ MonoBehaviour:
   playerTransform: {fileID: 3870059820769821162}
   gamepadSensitivity: 100
   mouseSensitivity: 10
+  maxLookDeltaPerFrame: 80
+  maxRawLookMagnitude: 200
   moveSpeed: 3
   climbSpeed: 2
   leftLeg: {fileID: 874262374248761276}
@@ -1156,6 +1158,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: c02567e2-b6ef-4773-8b1e-8309c2bb7c25
     m_ActionName: 'CursorController/MouseClickAndDrag[/Mouse/delta,/Mouse/leftButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6e1e781f-7cd6-4b5e-984b-9a3cb605561f
+    m_ActionName: 'CircleAndSquarePuzzle/Click Hold Button[/Mouse/leftButton,/XInputControllerWindows/buttonSouth]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: cb324315-af38-4004-9a01-6167a07e59a8
+    m_ActionName: 'CursorController/Click[/Mouse/leftButton,/XInputControllerWindows/buttonSouth]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2ab4b401-a5ee-414a-a3b2-67cde1626301
+    m_ActionName: 'PaintingPuzzle/MoveCardSymbol[/XInputControllerWindows/leftStick,/Mouse/delta]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e282899c-28e7-4652-87b4-64ef276ea54b
+    m_ActionName: 'PaintingPuzzle/ClickHoldButton[/Mouse/leftButton,/XInputControllerWindows/buttonSouth]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -1251,8 +1269,8 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
+  near clip plane: 0.1
+  far clip plane: 100
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -1562,7 +1580,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d239ae7f2f8a3347b3606db2e3bc84a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AnimationEvent
-  playerBehaviour: {fileID: 708021625724910837}
 --- !u!4 &2320751169826350912 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -5480365423837417073, guid: 1e034f178803cb843854697772c07141, type: 3}
