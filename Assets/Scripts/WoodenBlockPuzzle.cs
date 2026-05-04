@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 public class WoodenBlockPuzzle : MonoBehaviour
 {
     [SerializeField] private InputActionReference woodenPuzzleLeaveInput;
-    [SerializeField] private PlayerBehaviour playerBehaviour;
+    //[SerializeField] private PlayerBehaviour playerBehaviour;
     [SerializeField] private Canvas blurCanvas;
     [SerializeField] private float distanceFromCamera = 1f;
     [SerializeField] private float verticalOffset = 0f;
@@ -24,7 +24,8 @@ public class WoodenBlockPuzzle : MonoBehaviour
             woodenPuzzleLeaveInput.action.Enable();
             woodenPuzzleLeaveInput.action.performed += OnWoodenPuzzlePerformed;
         }
-        StartCoroutine(DisablePlayerLook());
+
+        PlayerControlManager.Instance.DisablePlayerLookTemporarily();
     }
 
     private void OnDisable()
@@ -48,7 +49,7 @@ public class WoodenBlockPuzzle : MonoBehaviour
         blurCanvas.gameObject.SetActive(true);
         gameObject.SetActive(true);
         woodenCreate.enabled = false;
-        playerBehaviour.disableOnlyMovement = true;
+        PlayerControlManager.Instance.LockMovementOnly();
         UIManager.Instance.EnableWoodenPuzzlePanel();
     }
 
@@ -63,7 +64,7 @@ public class WoodenBlockPuzzle : MonoBehaviour
         blurCanvas.gameObject.SetActive(false);
         woodenCreate.enabled = true;
         gameObject.SetActive(false);
-        playerBehaviour.disableOnlyMovement = false;
+        PlayerControlManager.Instance.UnlockMovementOnly();
         UIManager.Instance.DisableSharedPanelText();
     }
 
@@ -96,31 +97,18 @@ public class WoodenBlockPuzzle : MonoBehaviour
         transform.SetPositionAndRotation(position, Quaternion.Euler(0f, 0f, 0f));
     }
 
-    private IEnumerator DisablePlayerLook()
-    {
-        yield return null;
-
-        playerBehaviour.disablePlayer = true;
-
-        playerBehaviour.ResetCameraRotation();
-
-        yield return new WaitForSeconds(0.1f);
-
-        playerBehaviour.disablePlayer = false;
-    }
-
     private void MovePlayerToPosition()
     {
         var player = PlayerLocator.PlayerTransform;
         if (player == null) return;
 
-        if (playerBehaviour.TryGetComponent<CharacterController>(out var controller))
-            controller.enabled = false;
+        PlayerControlManager.Instance.SetCharacterControllerEnabled(false);
+
 
         player.SetPositionAndRotation(point.position, point.rotation);
 
-        if (controller != null)
-            controller.enabled = true;
+        PlayerControlManager.Instance.SetCharacterControllerEnabled(true);
+
     }
 
 }

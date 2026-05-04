@@ -92,6 +92,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private LocalizedString inspectObjectText;
     [SerializeField] private LocalizedString pressFToWearGlasses;
     [SerializeField] private LocalizedString pressFToUnwearGlasses;
+    [SerializeField] private LocalizedString dropItemText;
+    [SerializeField] private LocalizedString useOrDropItemText;
+    [SerializeField] private LocalizedString leaveBookText;
 
     [Header("Papytus Puzzle Wooden Puzzle Solve")]
     [SerializeField] private GameObject papytusPuzzleWoodenPuzzleSolve;
@@ -160,6 +163,21 @@ public class UIManager : MonoBehaviour
     public void DisableSharedPanelText()
     {
         HidePanel();
+    }
+
+    public void EnableLeaveBookPanel()
+    {
+        ShowPanel(leaveBookText);
+    }
+
+    public void EnableUseOrDropItemPanel()
+    {
+        ShowPanel(useOrDropItemText);
+    }
+
+    public void EnableDropItemPanel()
+    {
+        ShowPanel(dropItemText);
     }
 
     public void EnableWearGlassesPanel()
@@ -1004,7 +1022,7 @@ public class UIManager : MonoBehaviour
 
     private void OnDropItemPerformed(InputAction.CallbackContext context)
     {
-        if (readableAndInteractablePanel != null && readableAndInteractablePanel.gameObject.activeInHierarchy
+        if (readableAndInteractablePanel != null && readableAndInteractablePanel.gameObject.activeInHierarchy || readablePanel.gameObject.activeInHierarchy
             || gameModeLockPickPanel.activeInHierarchy || morseAndGlifsBook.activeInHierarchy
             || papytusPuzzleWoodenPuzzleSolve.activeInHierarchy || blurCanvas.gameObject.activeInHierarchy
             || safeCodePuzzle.activeInHierarchy || glassesOn || papyrusVerticalPuzzle.activeInHierarchy ||
@@ -1038,7 +1056,7 @@ public class UIManager : MonoBehaviour
     {
         if (!CanAddItemToUI())
         {
-           // Debug.Log("Osi¹gniêto maksymaln¹ liczbê przedmiotów, które mo¿esz nosiæ.");
+            // Debug.Log("Osi¹gniêto maksymaln¹ liczbê przedmiotów, które mo¿esz nosiæ.");
             return;
         }
 
@@ -1161,12 +1179,12 @@ public class UIManager : MonoBehaviour
     {
         if (itemSlots.Count == 0) return;
 
-
         int prevIndex = selectedItemId - 1;
         if (prevIndex < 0)
         {
             prevIndex = itemSlots.Count - 1;
         }
+
         SelectItem(prevIndex);
     }
 
@@ -1181,6 +1199,16 @@ public class UIManager : MonoBehaviour
 
     private void SelectItem(int index)
     {
+        if (readableAndInteractablePanel != null && readableAndInteractablePanel.gameObject.activeInHierarchy || readablePanel.gameObject.activeInHierarchy
+          || gameModeLockPickPanel.activeInHierarchy || morseAndGlifsBook.activeInHierarchy
+          || papytusPuzzleWoodenPuzzleSolve.activeInHierarchy || blurCanvas.gameObject.activeInHierarchy
+          || safeCodePuzzle.activeInHierarchy || glassesOn || papyrusVerticalPuzzle.activeInHierarchy ||
+          cardSymbolsPapirus.activeInHierarchy || arrowDIrectionPapirus.activeInHierarchy || leftPaper.activeInHierarchy
+          || rightPaper.activeInHierarchy || paintingBookPanel.activeInHierarchy || papyrusCageOpen.activeInHierarchy || CursorController.Instance.isInPuzzle)
+        {
+            return;
+        }
+
         if (itemSlots.Count == 0 || index < 0 || index >= itemSlots.Count)
         {
             if (selectedItemId != -1 && selectedItemId < itemSlots.Count)
@@ -1223,9 +1251,20 @@ public class UIManager : MonoBehaviour
         {
             EnableBookPanel();
         }
+        else if (id == ItemID.Bone || id == ItemID.Spear || id == ItemID.BellStick || id == ItemID.Skull || id == ItemID.Shield)
+        {
+            EnableDropItemPanel();
+        }
+        else if (id == ItemID.Key_Golden || id == ItemID.Key_Rusty || id == ItemID.Key_Rusty_1 || id == ItemID.DiamondKey || id == ItemID.EmeralndKey || id == ItemID.RubyKey || id == ItemID.ShaphereKey
+            || id == ItemID.MissionBook || id == ItemID.Switch_Lever || id == ItemID.Switch_Lever_2 || id == ItemID.LockPick || id == ItemID.Shovel || id == ItemID.hammer || id == ItemID.pickaxe
+            || id == ItemID.Knife || id == ItemID.Knife_1 || id == ItemID.Knife_2 || id == ItemID.Knife_3 || id == ItemID.RawMeat || id == ItemID.PlantRoot || id == ItemID.Leafs || id == ItemID.Flint
+           || id == ItemID.EmptyBucket || id == ItemID.Fork || id == ItemID.Crawbar || id == ItemID.FirstCrystal || id == ItemID.SecondCrystal || id == ItemID.Sword)
+        {
+            EnableUseOrDropItemPanel();
+        }
         else if (id == ItemID.Papyrus || id == ItemID.PapyrusTrianglePuzzle || id == ItemID.SafeCode ||
             id == ItemID.PapyrusVerticalPuzzle || id == ItemID.CardSymbolsPapirus || id == ItemID.ArrowDirectionPuzzles ||
-            id == ItemID.PaperLeft || id == ItemID.PaperRight)
+            id == ItemID.PaperLeft || id == ItemID.PaperRight || id == ItemID.PapytusCageOpen)
         {
             EnablePapyrusPanel();
         }

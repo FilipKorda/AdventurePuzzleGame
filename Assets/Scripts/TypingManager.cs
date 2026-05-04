@@ -24,7 +24,6 @@ public class TypingManager : MonoBehaviour
     [SerializeField] private bool playOnEnable = true;
     [SerializeField] private Color hiddenTextColor = Color.black;
     [SerializeField] private Color visibleTextColor = Color.white;
-    [SerializeField] private PlayerBehaviour playerBehaviour;
 
     [SerializeField] private CanvasGroup textCanvasGroup;
     [SerializeField] private CanvasGroup controlsCanvasGroup;
@@ -49,15 +48,18 @@ public class TypingManager : MonoBehaviour
     private void OnEnable()
     {
 #if UNITY_EDITOR
-        gameObject.SetActive(true);
+        gameObject.SetActive(false);
 #else
         gameObject.SetActive(true);
 #endif
+    }
 
+    private void Start()
+    {
         LocalizationSettings.SelectedLocaleChanged += OnSelectedLocaleChanged;
         ApplyColorToAllTargets(hiddenTextColor);
 
-        SetPlayerDisabled(true);
+        PlayerControlManager.Instance.LockPlayer();
 
         if (playOnEnable)
         {
@@ -145,7 +147,7 @@ public class TypingManager : MonoBehaviour
 
     private void StartSequenceFromSources()
     {
-        SetPlayerDisabled(true);
+        PlayerControlManager.Instance.LockPlayer();
 
         if (initializeCoroutine != null)
         {
@@ -163,7 +165,7 @@ public class TypingManager : MonoBehaviour
 
     private void PrepareTargetsWithoutPlaying()
     {
-        SetPlayerDisabled(true);
+        PlayerControlManager.Instance.LockPlayer();
 
         if (initializeCoroutine != null)
         {
@@ -255,7 +257,7 @@ public class TypingManager : MonoBehaviour
     private void DoAfterEndOfTyping()
     {
         Services.Audio.PlaySFX("StartGameSound");
-        SetPlayerDisabled(false);
+        PlayerControlManager.Instance.UnlockPlayer();
         gameObject.SetActive(false);
     }
 
@@ -367,14 +369,6 @@ public class TypingManager : MonoBehaviour
             {
                 target.textMeshPro.color = color;
             }
-        }
-    }
-
-    private void SetPlayerDisabled(bool isDisabled)
-    {
-        if (playerBehaviour != null)
-        {
-            playerBehaviour.disablePlayer = isDisabled;
         }
     }
 }

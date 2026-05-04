@@ -6,7 +6,7 @@ public class BraiserPuzzle : MonoBehaviour
 {
     [SerializeField] private InputActionReference thisModeInput;
     [SerializeField] private Camera puzzleCamera;
-    [SerializeField] private PlayerBehaviour playerBehaviour;
+    //[SerializeField] private PlayerBehaviour playerBehaviour;
     [SerializeField] private Transform cameraPoint0;
     [SerializeField] private Transform cameraPoint1;
     [SerializeField] private Transform cameraPoint2;
@@ -77,7 +77,7 @@ public class BraiserPuzzle : MonoBehaviour
 
         animator0.SetTrigger("Open");
 
-        playerBehaviour.disablePlayer = true;
+        PlayerControlManager.Instance.LockPlayer();
     }
 
     private void SetAndRotateCamera0ToTransform()
@@ -103,7 +103,7 @@ public class BraiserPuzzle : MonoBehaviour
 
         animator1.SetTrigger("Open");
 
-        playerBehaviour.disablePlayer = true;
+        PlayerControlManager.Instance.LockPlayer();
 
     }
 
@@ -129,8 +129,7 @@ public class BraiserPuzzle : MonoBehaviour
         StartCameraMovement();
 
         animator2.SetTrigger("Open");
-
-        playerBehaviour.disablePlayer = true;
+        PlayerControlManager.Instance.LockPlayer();
 
     }
 
@@ -157,8 +156,7 @@ public class BraiserPuzzle : MonoBehaviour
 
         animator3.SetTrigger("Open");
 
-        playerBehaviour.disablePlayer = true;
-
+        PlayerControlManager.Instance.LockPlayer();
     }
 
     private void SetAndRotateCamera3ToTransform()
@@ -173,7 +171,7 @@ public class BraiserPuzzle : MonoBehaviour
 
     private IEnumerator CouturineMakeCameraMovement()
     {
-        Camera cam = playerBehaviour._playerCamera;
+        Camera cam = PlayerControlManager.Instance.GetPlayerCamera();
 
         Vector3 startPos = cam.transform.position;
         Quaternion startRot = cam.transform.rotation;
@@ -249,8 +247,8 @@ public class BraiserPuzzle : MonoBehaviour
 
         }
 
-        playerBehaviour.disablePlayer = false;
-        playerBehaviour._playerCamera.enabled = true;
+        PlayerControlManager.Instance.UnlockPlayer();
+        PlayerControlManager.Instance.EnableCamera();
 
         puzzleCamera.enabled = false;
     }
@@ -322,8 +320,8 @@ public class BraiserPuzzle : MonoBehaviour
             animator.SetTrigger("Open");
             hiddenDoorAnimator.SetTrigger("Open");
 
-            playerBehaviour.disablePlayer = false;
-            playerBehaviour._playerCamera.enabled = true;
+            PlayerControlManager.Instance.UnlockPlayer();
+            PlayerControlManager.Instance.EnableCamera();
 
             UIManager.Instance.DisableSharedPanelText();
 

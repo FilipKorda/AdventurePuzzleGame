@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class TapBarrelManager : MonoBehaviour
 {
-    [SerializeField] private PlayerBehaviour player;
 
     [SerializeField] private ParticleSystem waterParticle;
 
@@ -25,7 +24,7 @@ public class TapBarrelManager : MonoBehaviour
 
     private IEnumerator CorutinaFillBucket()
     {
-        player.disablePlayer = true;
+        PlayerControlManager.Instance.LockPlayer();
         bucket.SetActive(true);
         yield return RotateGear(180f, gearRotateDuration); 
 
@@ -38,7 +37,7 @@ public class TapBarrelManager : MonoBehaviour
 
         yield return RotateGear(-180f, gearRotateDuration);
         yield return new WaitForSeconds(0.2f);
-        player.disablePlayer = false;
+        PlayerControlManager.Instance.UnlockPlayer();
 
     }
 

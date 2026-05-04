@@ -6,7 +6,7 @@ public class TwoCrystalsPuzzle : MonoBehaviour
 {
     [SerializeField] private InputActionReference thisModeInput;
     [SerializeField] private Camera puzzleCamera;
-    [SerializeField] private PlayerBehaviour playerBehaviour;
+    //[SerializeField] private PlayerBehaviour playerBehaviour;
     [SerializeField] private Transform cameraPoint;
     [SerializeField] private BoxCollider boxCollider;
 
@@ -34,6 +34,8 @@ public class TwoCrystalsPuzzle : MonoBehaviour
     {
         boxCollider.enabled = false;
 
+       
+        UIManager.Instance.EnableLpmToClickPanel();
 
         CursorController.Instance.EnableCursor(puzzleCamera);
 
@@ -41,7 +43,7 @@ public class TwoCrystalsPuzzle : MonoBehaviour
         SetAndRotateCameraToTransform();
         StartCameraMovement();
 
-        playerBehaviour.disablePlayer = true;
+        PlayerControlManager.Instance.LockPlayer();
     }
 
 
@@ -52,15 +54,16 @@ public class TwoCrystalsPuzzle : MonoBehaviour
 
     public void ExitPuzzle()
     {
-
         DisableInput();
+
+        UIManager.Instance.DisableSharedPanelText();
 
         CursorController.Instance.DisableCursor();
 
         boxCollider.enabled = true;
 
-        playerBehaviour.disablePlayer = false;
-        playerBehaviour._playerCamera.enabled = true;
+        PlayerControlManager.Instance.UnlockPlayer();
+        PlayerControlManager.Instance.EnableCamera();
 
         puzzleCamera.enabled = false;
     }
@@ -69,12 +72,14 @@ public class TwoCrystalsPuzzle : MonoBehaviour
     {
         DisableInput();
 
+        UIManager.Instance.DisableSharedPanelText();
+
         CursorController.Instance.DisableCursor();
 
         boxCollider.enabled = false;
 
-        playerBehaviour.disablePlayer = false;
-        playerBehaviour._playerCamera.enabled = true;
+        PlayerControlManager.Instance.UnlockPlayer();
+        PlayerControlManager.Instance.EnableCamera();
 
         puzzleCamera.enabled = false;
     }
@@ -86,7 +91,7 @@ public class TwoCrystalsPuzzle : MonoBehaviour
 
     private IEnumerator CouturineMakeCameraMovement()
     {
-        Camera cam = playerBehaviour._playerCamera;
+        Camera cam = PlayerControlManager.Instance.GetPlayerCamera();
 
         Vector3 startPos = cam.transform.position;
         Quaternion startRot = cam.transform.rotation;
