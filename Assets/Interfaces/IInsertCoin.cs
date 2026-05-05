@@ -1,0 +1,4 @@
+interface IInsertCoin
+{
+    void InsertCoin();
+}

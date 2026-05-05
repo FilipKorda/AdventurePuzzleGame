@@ -1,5 +1,6 @@
 using UnityEditor;
 using UnityEngine;
+using static UnityEngine.Audio.GeneratorInstance;
 
 [CustomEditor(typeof(InteractableItem))]
 public class InteractableItemEditor : Editor
@@ -145,6 +146,10 @@ public class InteractableItemEditor : Editor
     private SerializedProperty lastPuzzle;
 
     private SerializedProperty tapBarrelManager;
+    private SerializedProperty cointAmount;
+    private SerializedProperty slotMachineManager;
+    private SerializedProperty isBetUp;
+
 
 
     private void OnEnable()
@@ -293,6 +298,9 @@ public class InteractableItemEditor : Editor
         lastPuzzle = serializedObject.FindProperty("lastPuzzle");
 
         tapBarrelManager = serializedObject.FindProperty("tapBarrelManager");
+        cointAmount = serializedObject.FindProperty("cointAmount");
+        slotMachineManager = serializedObject.FindProperty("slotMachineManager");
+        isBetUp = serializedObject.FindProperty("isBetUp");
 
     }
 
@@ -607,14 +615,14 @@ public class InteractableItemEditor : Editor
                 break;
 
             case InteractableItem.InteractableType.RotatingPillar:
-                EditorGUILayout.PropertyField(rotatingPillarMovingBlock, new GUIContent("Rotating Pillar Moving Block"));          
+                EditorGUILayout.PropertyField(rotatingPillarMovingBlock, new GUIContent("Rotating Pillar Moving Block"));
                 break;
 
             case InteractableItem.InteractableType.MoveSphereOnePillarPuzzle:
                 EditorGUILayout.PropertyField(moveSphereOnePillarPuzzle, new GUIContent("Move Sphere One Pillar Puzzle"));
                 break;
             case InteractableItem.InteractableType.RotateOnePillar:
-                 EditorGUILayout.PropertyField(moveSphereOnePillarPuzzle, new GUIContent("Move Sphere One Pillar Puzzle"));
+                EditorGUILayout.PropertyField(moveSphereOnePillarPuzzle, new GUIContent("Move Sphere One Pillar Puzzle"));
                 break;
 
             case InteractableItem.InteractableType.PictureTerrainObject:
@@ -639,7 +647,19 @@ public class InteractableItemEditor : Editor
             case InteractableItem.InteractableType.LastPuzzle:
                 EditorGUILayout.PropertyField(lastPuzzle, new GUIContent("Last Puzzle"));
                 break;
-                
+            case InteractableItem.InteractableType.Coin:
+                EditorGUILayout.PropertyField(cointAmount, new GUIContent("Coint Amount"));
+                break;
+            case InteractableItem.InteractableType.PullLeverSlotMachine:
+                EditorGUILayout.PropertyField(slotMachineManager, new GUIContent("Slot Machine Manager"));
+                break;
+            case InteractableItem.InteractableType.InsertCoin:
+                EditorGUILayout.PropertyField(slotMachineManager, new GUIContent("Slot Machine Manager"));
+                break;
+            case InteractableItem.InteractableType.Bet:
+                EditorGUILayout.PropertyField(slotMachineManager, new GUIContent("Slot Machine Manager"));
+                EditorGUILayout.PropertyField(isBetUp, new GUIContent("Is Bet Up"));
+                break;
         }
 
         serializedObject.ApplyModifiedProperties();

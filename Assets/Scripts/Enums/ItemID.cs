@@ -88,11 +88,12 @@ public enum ItemID
     BellStick = 85,
     CardSymbolsPapirus = 86,
     ArrowDirectionPuzzles = 87,
-    PaperLeft = 88, 
+    PaperLeft = 88,
     PaperRight = 89,
     FirstCrystal = 90,
     SecondCrystal = 91,
     PuzzleCircleSymbol = 92,
     PaintingBook = 93,
-    PapytusCageOpen = 94
+    PapytusCageOpen = 94,
+    Coin = 95,
 }

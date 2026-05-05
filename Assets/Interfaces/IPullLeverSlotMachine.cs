@@ -1,0 +1,4 @@
+interface IPullLeverSlotMachine 
+{
+    void PullLever();
+}

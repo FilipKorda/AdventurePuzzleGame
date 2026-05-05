@@ -1,0 +1,4 @@
+interface ICoin
+{
+    void CollectCoin();
+}
