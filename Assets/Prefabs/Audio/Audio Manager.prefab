@@ -378,4 +378,7 @@ MonoBehaviour:
   - Id: UISlider
     Clip: {fileID: 8300000, guid: ab52d1028cf2a7f42a8768edef539a62, type: 3}
     Category: 1
+  - Id: Coin
+    Clip: {fileID: 8300000, guid: 73cc692b43409654db5d17f9ca8bffc0, type: 3}
+    Category: 3
   sfxSourcePrefab: {fileID: 6808787666201464470, guid: 561a59515f73e424ba170ae966f504e9, type: 3}

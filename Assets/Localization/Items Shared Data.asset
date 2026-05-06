@@ -283,6 +283,10 @@ MonoBehaviour:
     m_Key: PaitingClueRoomTen
     m_Metadata:
       m_Items: []
+  - m_Id: 33601703398100992
+    m_Key: Coin
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

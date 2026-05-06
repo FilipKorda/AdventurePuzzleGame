@@ -286,6 +286,10 @@ MonoBehaviour:
     m_Localized: Mysterious book
     m_Metadata:
       m_Items: []
+  - m_Id: 33601703398100992
+    m_Localized: Coin
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

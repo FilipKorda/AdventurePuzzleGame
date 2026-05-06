@@ -23,9 +23,9 @@ public class SlotMachineReel : MonoBehaviour
     private readonly SlotSymbolData[] currentVisibleSymbols = new SlotSymbolData[3];
 
     private Coroutine spinRoutine;
-    private float currentVisualXRotation;
+    private float baseXRotation;
     private float baseYRotation;
-    private float baseZRotation;
+    private float currentVisualZRotation;
 
     public bool IsSpinning => spinRoutine != null;
 
@@ -39,9 +39,9 @@ public class SlotMachineReel : MonoBehaviour
             reelVisual = transform;
 
         Vector3 startEuler = reelVisual.localEulerAngles;
-        currentVisualXRotation = startEuler.x;
+        baseXRotation = startEuler.x;
         baseYRotation = startEuler.y;
-        baseZRotation = startEuler.z;
+        currentVisualZRotation = startEuler.z;
 
         InitializeVisibleSymbols();
         RefreshVisibleSymbols();
@@ -116,8 +116,8 @@ public class SlotMachineReel : MonoBehaviour
 
             if (reelVisual != null)
             {
-                currentVisualXRotation += spinRotationPerStep;
-                reelVisual.localRotation = Quaternion.Euler(currentVisualXRotation, baseYRotation, baseZRotation);
+                currentVisualZRotation += spinRotationPerStep;
+                reelVisual.localRotation = Quaternion.Euler(baseXRotation, baseYRotation, currentVisualZRotation);
             }
 
             float progress = totalSteps <= 1 ? 1f : step / (float)(totalSteps - 1);

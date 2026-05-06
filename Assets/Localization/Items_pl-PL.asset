@@ -286,6 +286,10 @@ MonoBehaviour:
     m_Localized: "Tajemnicza ksi\u0105\u017Cka"
     m_Metadata:
       m_Items: []
+  - m_Id: 33601703398100992
+    m_Localized: Moneta
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
