@@ -123,7 +123,72 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject paintingBookPanel;
     [Header("Papirus Cage Open")]
     [SerializeField] private GameObject papyrusCageOpen;
+    [Header("Coin Holder")]
+    [SerializeField] private GameObject coinHolder;
+    public TextMeshProUGUI coinHolderText;
+    private Coroutine animateRoutine;
 
+    public void RefreshCoinUI(int amount)
+    {
+        coinHolder.SetActive(true);
+        coinHolderText.text = amount.ToString();
+    }
+
+    public void PlayCoinGainAnimation()
+    {
+        if (animateRoutine != null)
+            StopCoroutine(animateRoutine);
+
+        animateRoutine = StartCoroutine(CoinGainAnimation());
+    }
+
+    private IEnumerator CoinGainAnimation()
+    {
+        RectTransform rectTransform = coinHolderText.rectTransform;
+
+        Vector3 startScale = Vector3.one;
+        Vector3 targetScale = new Vector3(1.2f, 1.2f, 1.2f);
+
+        Color startColor = Color.white;
+        Color targetColor = Color.green;
+
+        float duration = 1f;
+        float halfDuration = duration * 0.2f;
+
+        float time = 0f;
+
+        while (time < halfDuration)
+        {
+            time += Time.deltaTime;
+            float t = time / halfDuration;
+
+            rectTransform.localScale = Vector3.Lerp(startScale, targetScale, t);
+            coinHolderText.color = Color.Lerp(startColor, targetColor, t);
+
+            yield return null;
+        }
+
+        rectTransform.localScale = targetScale;
+        coinHolderText.color = targetColor;
+
+        time = 0f;
+
+        while (time < halfDuration)
+        {
+            time += Time.deltaTime;
+            float t = time / halfDuration;
+
+            rectTransform.localScale = Vector3.Lerp(targetScale, startScale, t);
+            coinHolderText.color = Color.Lerp(targetColor, startColor, t);
+
+            yield return null;
+        }
+
+        rectTransform.localScale = startScale;
+        coinHolderText.color = startColor;
+
+        animateRoutine = null;
+    }
 
     public void ShowPanel(LocalizedString localizedString)
     {
@@ -463,9 +528,13 @@ public class UIManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
 
-        pages = new[]
+
+    private void Start()
     {
+        pages = new[]
+{
         bookPage1,
         bookPage2,
         bookPage3,
@@ -473,11 +542,7 @@ public class UIManager : MonoBehaviour
         bookPage5,
         bookPage6
     };
-    }
 
-
-    private void Start()
-    {
         morseAndGlifsBook.SetActive(false);
         papytusPuzzleWoodenPuzzleSolve.SetActive(false);
         cardSymbolsPapirus.SetActive(false);
@@ -486,7 +551,7 @@ public class UIManager : MonoBehaviour
         rightPaper.SetActive(false);
         papyrusCageOpen.SetActive(false);
         paintingBookPanel.SetActive(false);
-
+        coinHolder.SetActive(false);
         DisableSharedPanelText();
     }
 
@@ -495,7 +560,6 @@ public class UIManager : MonoBehaviour
         int currentSelectedId = GetSelectedItemId();
         if (currentSelectedId == 0)
         {
-            // Debug.Log("Nie wybrano ¿adnego przedmiotu do u¿ycia.");
             return;
         }
 

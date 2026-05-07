@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 public class Mirror : MonoBehaviour
 {
     [Header("Mirror Settings")]
-    [SerializeField] private PlayerBehaviour playerBehaviour;
+    //[SerializeField] private PlayerBehaviour playerBehaviour;
 
     [SerializeField] private Transform mirrorRoot;
     [SerializeField] private Transform mirrorPivot;
@@ -41,7 +41,7 @@ public class Mirror : MonoBehaviour
         mirrorCamera.enabled = true;
         enabled = true;
 
-        playerBehaviour.disablePlayer = true;
+        PlayerControlManager.Instance.LockPlayer();
         TogglePlayer(false);
 
         UIManager.Instance.EnableMirrorInputPanel();
@@ -61,10 +61,7 @@ public class Mirror : MonoBehaviour
 
     private void TogglePlayer(bool toggle)
     {
-        playerBehaviour._playerCamera.enabled = toggle;
-        playerBehaviour.GetComponent<MeshRenderer>().enabled = toggle;
-        playerBehaviour.GetComponent<CapsuleCollider>().enabled = toggle;
-        playerBehaviour.GetComponent<CharacterController>().enabled = toggle;
+        PlayerControlManager.Instance.TogglePlayer(toggle);
     }
 
     public void DisableControl()
@@ -72,7 +69,7 @@ public class Mirror : MonoBehaviour
         mirrorCamera.enabled = false;
         enabled = false;
 
-        playerBehaviour.disablePlayer = false;
+        PlayerControlManager.Instance.UnlockPlayer();
         TogglePlayer(true);
 
 

@@ -13,6 +13,8 @@ public class PictureTerrainPuzzleManager : MonoBehaviour
 
     [SerializeField] private LastPuzzleToSolveManager lastPuzzleToSolveManager;
 
+    [SerializeField] private RotateAllGearsRoomTen rotateAllGearsRoomTen;
+
     private void DisableMovingObjects()
     {
         interactableItemsClubs.sphereCollider.enabled = false;
@@ -40,7 +42,9 @@ public class PictureTerrainPuzzleManager : MonoBehaviour
 
     private IEnumerator MoveChestCoroutine()
     {
-        float duration = 4f;
+        rotateAllGearsRoomTen.RotateTenGears();
+        Services.Audio.PlaySFX("ChestMovingStone");
+        float duration = 3f;
         float time = 0f;
         Vector3 startPosition = chestObject.transform.position;
         Vector3 targetPosition = startPosition + new Vector3(0f, 0.29f, 0f);

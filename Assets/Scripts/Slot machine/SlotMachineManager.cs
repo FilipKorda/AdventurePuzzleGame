@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Localization;
 
 public class SlotMachineManager : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class SlotMachineManager : MonoBehaviour
     [Header("Optional")]
     [SerializeField] private Animator slotLeverAnimator;
     [SerializeField] private string leverTriggerName = "Pull";
+    [SerializeField] private Animator coinInsertAnim;
 
     [Header("Credits")]
     [SerializeField] private int currentCredits;
@@ -37,6 +39,23 @@ public class SlotMachineManager : MonoBehaviour
 
     [SerializeField] private Color winningSymbolColor = Color.green;
 
+    private int spinBet;
+
+    [SerializeField] private LocalizedString inserCreditsNotification;
+    [SerializeField] private LocalizedString udontHaveMoneyNotification;
+
+
+    [Header("Demo Mode")]
+    [SerializeField] private bool demoMode = true;
+    [SerializeField][Range(0f, 1f)] private float demoBonusWinChance = 0.35f;
+
+
+    [SerializeField] private float highlightPatternDuration = 0.5f;
+    [SerializeField] private float delayBetweenPatterns = 0.15f;
+
+    private Coroutine highlightRoutine;
+
+    [SerializeField] private float winCountAnimationDuration = 0.35f;
 
     private void Awake()
     {
@@ -52,8 +71,39 @@ public class SlotMachineManager : MonoBehaviour
         RefreshWinText(0);
     }
 
+    public void PullLever()
+    {
+        if (spinRoutine != null)
+            return;
 
-    private void ResetReelColors()
+        if (!HasEnoughCreditsForBet())
+        {
+            if (inserCreditsNotification != null)
+                NotificationSystem.Instance.ShowNotification(inserCreditsNotification, 2);
+            return;
+        }
+
+        spinBet = currentBet;
+        SpendCredits(spinBet);
+        RefreshWinText(0);
+
+        if (slotLeverAnimator != null)
+            slotLeverAnimator.SetTrigger(leverTriggerName);
+
+        if (highlightRoutine != null)
+        {
+            StopCoroutine(highlightRoutine);
+            highlightRoutine = null;
+        }
+
+        ResetAllReelColors();
+
+
+        spinRoutine = StartCoroutine(SpinAllReelsRoutine());
+        Services.Audio.PlaySFX("PULLLEVERSLOTMACHINE");
+    }
+
+    private void ResetAllReelColors()
     {
         if (reels == null)
             return;
@@ -64,56 +114,62 @@ public class SlotMachineManager : MonoBehaviour
                 reels[i].ResetRowColors();
         }
     }
-
-    private void HighlightWinningPatterns(List<SlotPatternData> winningPatterns)
+    private void HighlightSinglePattern(SlotPatternData pattern)
     {
-        if (winningPatterns == null)
+        if (pattern == null || pattern.cells == null)
             return;
+
+        for (int i = 0; i < pattern.cells.Length; i++)
+        {
+            Vector2Int cell = pattern.cells[i];
+
+            if (cell.x < 0 || cell.x >= reels.Length)
+                continue;
+
+            if (reels[cell.x] == null)
+                continue;
+
+            reels[cell.x].SetRowColor(cell.y, winningSymbolColor);
+        }
+    }
+
+    private IEnumerator HighlightWinningPatternsSequence(List<SlotPatternData> winningPatterns)
+    {
+        if (winningPatterns == null || winningPatterns.Count == 0)
+            yield break;
+
+        int displayedWin = 0;
+        RefreshWinText(0);
 
         for (int i = 0; i < winningPatterns.Count; i++)
         {
             SlotPatternData pattern = winningPatterns[i];
 
-            if (pattern == null || pattern.cells == null)
-                continue;
+            ResetAllReelColors();
+            HighlightSinglePattern(pattern);
 
-            for (int j = 0; j < pattern.cells.Length; j++)
-            {
-                Vector2Int cell = pattern.cells[j];
+            int patternWin = SlotWinEvaluator.CalculatePatternWin(currentGrid, pattern, spinBet);
+            int targetWin = displayedWin + patternWin;
 
-                if (cell.x < 0 || cell.x >= reels.Length)
-                    continue;
+            Services.Audio.PlaySFX("WINSLOTMACHINE");
 
-                if (reels[cell.x] == null)
-                    continue;
+            yield return StartCoroutine(AnimateWinText(displayedWin, targetWin, winCountAnimationDuration));
 
-                reels[cell.x].SetRowColor(cell.y, winningSymbolColor);
-            }
+            displayedWin = targetWin;
+
+            yield return new WaitForSeconds(highlightPatternDuration);
+
+            ResetAllReelColors();
+            yield return new WaitForSeconds(delayBetweenPatterns);
         }
-    }
 
-
-    public void PullLever()
-    {
-        if (spinRoutine != null)
-            return;
-
-        if (!HasEnoughCreditsForBet())
+        for (int i = 0; i < winningPatterns.Count; i++)
         {
-            Debug.Log("Wrzuć kredyty, żeby zagrać.");
-            return;
+            HighlightSinglePattern(winningPatterns[i]);
         }
-
-        SpendCredits(currentBet);
-        RefreshWinText(0);
-
-        if (slotLeverAnimator != null && !string.IsNullOrWhiteSpace(leverTriggerName))
-            slotLeverAnimator.SetTrigger(leverTriggerName);
-
-        ResetReelColors();
-
-        spinRoutine = StartCoroutine(SpinAllReelsRoutine());
     }
+
+
 
     private IEnumerator SpinAllReelsRoutine()
     {
@@ -123,13 +179,13 @@ public class SlotMachineManager : MonoBehaviour
             yield break;
         }
 
-        int baseSteps = Random.Range(22, 30);
+        int baseSteps = 22;
 
         for (int i = 0; i < reels.Length; i++)
         {
             if (reels[i] != null)
                 reels[i].SpinWithSteps(baseSteps + (i * extraStepsPerNextReel));
-
+            Services.Audio.PlaySFX("SPINNINGREEL");
             yield return new WaitForSeconds(delayBetweenReels);
         }
 
@@ -153,34 +209,60 @@ public class SlotMachineManager : MonoBehaviour
 
         BuildCurrentGrid();
 
+        if (demoMode)
+            TryApplyDemoBonusWin();
+
+
         List<SlotPatternData> winningPatterns = SlotWinEvaluator.GetWinningPatterns(currentGrid, patterns);
-        HighlightWinningPatterns(winningPatterns);
-
-
-        int totalWin = SlotWinEvaluator.CalculateTotalWin(currentGrid, patterns, currentBet);
+        int totalWin = SlotWinEvaluator.CalculateTotalWin(currentGrid, patterns, spinBet);
 
         if (totalWin > 0)
         {
             currentCredits += totalWin;
             RefreshCreditsText();
         }
+        else
+        {
+            RefreshWinText(0);
+        }
 
-        RefreshWinText(totalWin);
-        Debug.Log("Slot total win: " + totalWin);
+        if (winningPatterns.Count > 0)
+        {
+            if (highlightRoutine != null)
+                StopCoroutine(highlightRoutine);
+
+            highlightRoutine = StartCoroutine(HighlightWinningPatternsSequence(winningPatterns));
+        }
+
 
         spinRoutine = null;
     }
 
-    public void AddCredits(int amount)
+    public void AddCreditsFromInventory(int amount)
     {
         if (IsSpinning)
         {
-            Debug.Log("Nie można dodawać kredytów podczas kręcenia bębnów.");
             return;
         }
 
         if (amount <= 0)
             return;
+
+        if (Inventory.Instance == null)
+        {
+            Debug.Log("Brak Inventory.Instance.");
+            return;
+        }
+
+        if (!Inventory.Instance.SpendCoins(amount))
+        {
+            if (inserCreditsNotification != null)
+                NotificationSystem.Instance.ShowNotification(udontHaveMoneyNotification, 2);
+            return;
+        }
+
+        coinInsertAnim.SetTrigger("Insert");
+        Services.Audio.PlaySFX("SlotMachineInsert");
 
         currentCredits += amount;
 
@@ -194,9 +276,10 @@ public class SlotMachineManager : MonoBehaviour
         RefreshBetText();
     }
 
-    public void InsertCredit()
+
+    public void InsertTenCredits()
     {
-        AddCredits(1);
+        AddCreditsFromInventory(10);
     }
 
     public void IncreaseBet(int amount)
@@ -214,6 +297,8 @@ public class SlotMachineManager : MonoBehaviour
         currentBet = Mathf.Max(1, currentBet);
 
         RefreshBetText();
+        Services.Audio.PlaySFX("PRESSSLOTMACHINEBUTTON");
+
     }
 
     public void DecreaseBet(int amount)
@@ -226,6 +311,8 @@ public class SlotMachineManager : MonoBehaviour
 
         currentBet = Mathf.Max(currentBet - amount, 1);
         RefreshBetText();
+
+        Services.Audio.PlaySFX("PRESSSLOTMACHINEBUTTON");
     }
 
     public bool HasEnoughCreditsForBet()
@@ -244,6 +331,106 @@ public class SlotMachineManager : MonoBehaviour
 
         RefreshCreditsText();
         RefreshBetText();
+    }
+
+    private IEnumerator AnimateWinText(int fromValue, int toValue, float duration)
+    {
+        float time = 0f;
+
+        while (time < duration)
+        {
+            time += Time.deltaTime;
+            float t = Mathf.Clamp01(time / duration);
+
+            int currentValue = Mathf.RoundToInt(Mathf.Lerp(fromValue, toValue, t));
+            RefreshWinText(currentValue);
+
+            yield return null;
+        }
+
+        RefreshWinText(toValue);
+    }
+
+
+    private void TryApplyDemoBonusWin()
+    {
+        List<SlotPatternData> currentWinningPatterns = SlotWinEvaluator.GetWinningPatterns(currentGrid, patterns);
+        if (currentWinningPatterns.Count > 0)
+            return;
+
+        if (Random.value > demoBonusWinChance)
+            return;
+
+        SlotPatternData targetPattern = GetRandomSmallWinPattern();
+        if (targetPattern == null || targetPattern.cells == null || targetPattern.cells.Length == 0)
+            return;
+
+        SlotSymbolData targetSymbol = GetLowestMultiplierSymbol();
+        if (targetSymbol == null)
+            return;
+
+        for (int i = 0; i < targetPattern.cells.Length; i++)
+        {
+            Vector2Int cell = targetPattern.cells[i];
+            currentGrid[cell.x, cell.y] = targetSymbol;
+        }
+
+        ApplyGridToReels();
+        Debug.Log("Demo mode applied a bonus small win.");
+    }
+
+    private SlotPatternData GetRandomSmallWinPattern()
+    {
+        List<SlotPatternData> smallPatterns = new();
+
+        for (int i = 0; i < patterns.Count; i++)
+        {
+            SlotPatternData pattern = patterns[i];
+            if (pattern == null)
+                continue;
+
+            if (pattern.patternMultiplier <= 2f)
+                smallPatterns.Add(pattern);
+        }
+
+        if (smallPatterns.Count == 0)
+            return null;
+
+        return smallPatterns[Random.Range(0, smallPatterns.Count)];
+    }
+
+    private SlotSymbolData GetLowestMultiplierSymbol()
+    {
+        SlotSymbolData lowestSymbol = null;
+
+        for (int x = 0; x < currentGrid.GetLength(0); x++)
+        {
+            for (int y = 0; y < currentGrid.GetLength(1); y++)
+            {
+                SlotSymbolData symbol = currentGrid[x, y];
+                if (symbol == null)
+                    continue;
+
+                if (lowestSymbol == null || symbol.symbolMultiplier < lowestSymbol.symbolMultiplier)
+                    lowestSymbol = symbol;
+            }
+        }
+
+        return lowestSymbol;
+    }
+
+    private void ApplyGridToReels()
+    {
+        for (int column = 0; column < reels.Length && column < currentGrid.GetLength(0); column++)
+        {
+            if (reels[column] == null)
+                continue;
+
+            reels[column].SetVisibleSymbols(
+                currentGrid[column, 0],
+                currentGrid[column, 1],
+                currentGrid[column, 2]);
+        }
     }
 
     private void BuildCurrentGrid()

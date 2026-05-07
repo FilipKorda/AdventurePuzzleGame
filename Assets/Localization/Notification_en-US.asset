@@ -503,6 +503,14 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - rid: 4011535830200615029
+  - m_Id: 33974658938458112
+    m_Localized: Insert coins to play.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33975031652700160
+    m_Localized: You don't have enough coins.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

@@ -16,6 +16,12 @@ public class Inventory : MonoBehaviour
 
     public HashSet<ItemID> CollectedItems = new HashSet<ItemID>();
 
+    [Header("Coins")]
+    [SerializeField] private int currentCoinAmount;
+
+    public int CurrentCoinAmount => currentCoinAmount;
+
+
     private void Awake()
     {
         if (Instance == null)
@@ -35,6 +41,49 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        RefreshCoinUI();
+    }
+
+
+    public void AddCoins(int amount)
+    {
+        if (amount <= 0)
+            return;
+
+        currentCoinAmount += amount;
+        RefreshCoinUI();
+    }
+
+    public bool HasEnoughCoins(int amount)
+    {
+        return currentCoinAmount >= amount;
+    }
+
+    public bool SpendCoins(int amount)
+    {
+        if (amount <= 0)
+            return false;
+
+        if (!HasEnoughCoins(amount))
+            return false;
+
+        currentCoinAmount -= amount;
+        RefreshCoinUI();
+        return true;
+    }
+
+    private void RefreshCoinUI()
+    {
+        if (UIManager.Instance == null)
+            return;
+
+        UIManager.Instance.RefreshCoinUI(currentCoinAmount);
+    }
+
+
+
     public bool HasItemWithId(int itemId)
     {
         return inventory.Any(item => item.GetItemId() == itemId);
@@ -51,7 +100,6 @@ public class Inventory : MonoBehaviour
     {
         if (UIManager.Instance != null && !UIManager.Instance.CanAddItemToUI())
         {
-            //Debug.Log("Nie mo¿na podnieœæ przedmiotu — masz ju¿ maksymaln¹ liczbê przedmiotów, które mo¿esz nosiæ.");
             return false;
         }
 
@@ -62,10 +110,11 @@ public class Inventory : MonoBehaviour
 
     public void AddToInventoryAlchemyRecipe(IPickupable iPickupable)
     {
-       // Debug.LogWarning($"Dodano przedmiot do alchemicznego przepisu: {iPickupable.GetItemId()}");
         inventory.Add(iPickupable);
         recipesCounter.UpdateRecipeCount();
+        recipesCounter.ActiveThisGameObject();
     }
+
 
     public void RemoveFromInventoryAlchemyRecipe(int itemId)
     {
@@ -73,7 +122,6 @@ public class Inventory : MonoBehaviour
         if (itemToRemove != null)
         {
             inventory.Remove(itemToRemove);
-           // Debug.LogWarning($"Usuniêto przedmiot: {itemToRemove.GetItemId()}");
         }
     }
 

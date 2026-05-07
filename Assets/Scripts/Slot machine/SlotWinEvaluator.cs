@@ -27,6 +27,19 @@ public static class SlotWinEvaluator
         return Mathf.RoundToInt(totalWin);
     }
 
+    public static int CalculatePatternWin(SlotSymbolData[,] grid, SlotPatternData pattern, int currentBet)
+    {
+        if (grid == null || pattern == null || currentBet <= 0)
+            return 0;
+
+        if (!TryMatchPattern(grid, pattern, out SlotSymbolData matchedSymbol))
+            return 0;
+
+        float win = currentBet * matchedSymbol.symbolMultiplier * pattern.patternMultiplier;
+        return Mathf.RoundToInt(win);
+    }
+
+
     private static bool TryMatchPattern(SlotSymbolData[,] grid, SlotPatternData pattern, out SlotSymbolData matchedSymbol)
     {
         matchedSymbol = null;

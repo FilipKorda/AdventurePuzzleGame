@@ -33,6 +33,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-pl-PL
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 30452efaa7865f5459f88a823156900f
+    m_Address: Slot Machine_pl-PL
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-pl-PL
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 730615730ae57624e8497e2952645df0
     m_Address: Controls_pl-PL
     m_ReadOnly: 1

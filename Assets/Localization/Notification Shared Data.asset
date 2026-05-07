@@ -349,6 +349,14 @@ MonoBehaviour:
     m_Key: LeaveBookNotification
     m_Metadata:
       m_Items: []
+  - m_Id: 33974658938458112
+    m_Key: Slot Insert Coins
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33975031652700160
+    m_Key: Slot u dont have money
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

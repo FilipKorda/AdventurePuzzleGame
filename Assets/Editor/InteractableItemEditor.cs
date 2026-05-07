@@ -659,6 +659,7 @@ public class InteractableItemEditor : Editor
             case InteractableItem.InteractableType.Bet:
                 EditorGUILayout.PropertyField(slotMachineManager, new GUIContent("Slot Machine Manager"));
                 EditorGUILayout.PropertyField(isBetUp, new GUIContent("Is Bet Up"));
+                EditorGUILayout.PropertyField(animatorProp, new GUIContent("Animator"));
                 break;
         }
 

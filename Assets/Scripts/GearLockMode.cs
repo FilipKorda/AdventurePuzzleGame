@@ -6,7 +6,7 @@ public class GearLockMode : MonoBehaviour
 {
     [SerializeField] private InputActionReference gearModeInput;
     [SerializeField] private BoxCollider doorBoxCollider;
-    [SerializeField] private PlayerBehaviour playerBehaviour;
+   // [SerializeField] private PlayerBehaviour playerBehaviour;
     [SerializeField] private Canvas blurCanvas;
     [SerializeField] private GameObject[] gears;
     [SerializeField] private float distanceFromCamera = 1f;
@@ -23,7 +23,7 @@ public class GearLockMode : MonoBehaviour
             gearModeInput.action.performed += OnGearModePerformed;
         }
 
-        StartCoroutine(DisablePlayerLook());
+        PlayerControlManager.Instance.DisablePlayerLookTemporarily();
     }
 
     private void OnDisable()
@@ -40,26 +40,13 @@ public class GearLockMode : MonoBehaviour
         var player = PlayerLocator.PlayerTransform;
         if (player == null) return;
 
-        if (playerBehaviour.TryGetComponent<CharacterController>(out var controller))
-            controller.enabled = false;
+        PlayerControlManager.Instance.SetCharacterControllerEnabled(false);
+
 
         player.SetPositionAndRotation(point.position, point.rotation);
 
-        if (controller != null)
-            controller.enabled = true;
-    }
+        PlayerControlManager.Instance.SetCharacterControllerEnabled(true);
 
-    private IEnumerator DisablePlayerLook()
-    {
-        yield return null;
-
-        playerBehaviour.disablePlayer = true;
-
-        playerBehaviour.ResetCameraRotation();
-
-        yield return new WaitForSeconds(0.1f);
-
-        playerBehaviour.disablePlayer = false;
     }
 
     private void SpawnThisObjectInFronOfPlayer()
@@ -86,7 +73,7 @@ public class GearLockMode : MonoBehaviour
         blurCanvas.gameObject.SetActive(true);
         gameObject.SetActive(true);
         doorBoxCollider.enabled = false;
-        playerBehaviour.disableOnlyMovement = true;
+        PlayerControlManager.Instance.LockMovementOnly();
         UIManager.Instance.EnableGearModePanel();
     }
 
@@ -106,7 +93,7 @@ public class GearLockMode : MonoBehaviour
 
         ResetGears();
         gameObject.SetActive(false);
-        playerBehaviour.disableOnlyMovement = false;
+        PlayerControlManager.Instance.UnlockMovementOnly();
         UIManager.Instance.DisableSharedPanelText();
     }
 
@@ -156,7 +143,7 @@ public class GearLockMode : MonoBehaviour
         animator.SetTrigger("Open");
         blurCanvas.gameObject.SetActive(false);
         gameObject.SetActive(false);
-        playerBehaviour.disableOnlyMovement = false;
+        PlayerControlManager.Instance.UnlockMovementOnly();
         UIManager.Instance.DisableSharedPanelText();
     }
 

@@ -34,6 +34,8 @@ public class CursorController : MonoBehaviour
     private Vector2 virtualCursorPosition;
     private Vector2 lastMousePosition;
     private bool usingGamepadCursor;
+    public bool IsUsingGamepadCursor => usingGamepadCursor;
+
 
     public bool isInPuzzle = false;
 
@@ -68,6 +70,11 @@ public class CursorController : MonoBehaviour
 
         centerOfScreenImage.position = virtualCursorPosition;
         LerpCenterOfScreenSize();
+    }
+
+    public bool IsClickHeld()
+    {
+        return cursorClickButtonInput != null && cursorClickButtonInput.action.IsPressed();
     }
 
     private void UpdateVirtualCursorPosition()

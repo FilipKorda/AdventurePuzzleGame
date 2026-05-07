@@ -18,7 +18,7 @@ public class EndPanel : MonoBehaviour
 
     [SerializeField] private float fadeDuration = 1f;
     [SerializeField] private float delayBetweenTexts = 0.5f;
-    [SerializeField] private PlayerBehaviour playerBehaviour;
+   // [SerializeField] private PlayerBehaviour playerBehaviour;
 
     [SerializeField] private PausePanel pausePanel;
 
@@ -42,7 +42,7 @@ public class EndPanel : MonoBehaviour
             pausePanel.SetAllowPause(false);
 
         button.interactable = false;
-        playerBehaviour.disablePlayer = true;
+        PlayerControlManager.Instance.LockPlayer();
 
         SetAlpha(0f, firstText, secondText, thierdText, fourthText, fifthText, sixText);
 

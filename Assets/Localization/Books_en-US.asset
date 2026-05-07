@@ -64,7 +64,10 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1847127724032
-    m_Localized: Choose wisely the right lever or the left lever.
+    m_Localized: 'Well, the DEMO is finally over, congratulations. Pull the lever,
+      I know it feels good.
+
+      Choose wisely the right lever or the left lever.'
     m_Metadata:
       m_Items: []
   - m_Id: 2031823900672

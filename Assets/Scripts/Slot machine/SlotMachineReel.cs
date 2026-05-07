@@ -74,16 +74,6 @@ public class SlotMachineReel : MonoBehaviour
     }
 
 
-
-    public void SpinRandom()
-    {
-        if (symbols == null || symbols.Length == 0)
-            return;
-
-        int steps = Random.Range(minSpinSteps, maxSpinSteps + 1);
-        SpinWithSteps(steps);
-    }
-
     public void SpinWithSteps(int steps)
     {
         if (symbols == null || symbols.Length == 0)
@@ -103,6 +93,14 @@ public class SlotMachineReel : MonoBehaviour
             currentVisibleSymbols[1],
             currentVisibleSymbols[2]
         };
+    }
+
+    public void SetVisibleSymbols(SlotSymbolData top, SlotSymbolData middle, SlotSymbolData bottom)
+    {
+        currentVisibleSymbols[0] = top;
+        currentVisibleSymbols[1] = middle;
+        currentVisibleSymbols[2] = bottom;
+        RefreshVisibleSymbols();
     }
 
     private IEnumerator SpinRoutine(int totalSteps)
@@ -126,6 +124,7 @@ public class SlotMachineReel : MonoBehaviour
             yield return new WaitForSeconds(waitTime);
         }
 
+        Services.Audio.PlaySFX("STOPREEL");
         spinRoutine = null;
     }
 
@@ -155,6 +154,8 @@ public class SlotMachineReel : MonoBehaviour
                 continue;
 
             visibleRows[i].sprite = currentVisibleSymbols[i] != null ? currentVisibleSymbols[i].sprite : null;
+            visibleRows[i].color = defaultSymbolColor;
         }
     }
+
 }

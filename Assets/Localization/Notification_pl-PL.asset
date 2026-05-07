@@ -450,6 +450,14 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - rid: 4011535830200615033
+  - m_Id: 33974658938458112
+    m_Localized: "Wrzu\u0107 monety, \u017Ceby zagra\u0107."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33975031652700160
+    m_Localized: "Nie masz wystarczaj\u0105co du\u017Co monet."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

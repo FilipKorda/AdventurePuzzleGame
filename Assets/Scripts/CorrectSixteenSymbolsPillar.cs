@@ -6,7 +6,7 @@ public class CorrectSixteenSymbolsPillar : MonoBehaviour
 {
     [SerializeField] private InputActionReference thisModeInput;
     [SerializeField] private Camera puzzleCamera;
-    [SerializeField] private PlayerBehaviour playerBehaviour;
+    //[SerializeField] private PlayerBehaviour playerBehaviour;
     [SerializeField] private Transform cameraPoint;
     [SerializeField] private BoxCollider boxCollider;
 
@@ -43,7 +43,7 @@ public class CorrectSixteenSymbolsPillar : MonoBehaviour
         SetAndRotateCameraToTransform();
         StartCameraMovement();
 
-        playerBehaviour.disablePlayer = true;
+        PlayerControlManager.Instance.LockPlayer();
     }
 
 
@@ -63,8 +63,9 @@ public class CorrectSixteenSymbolsPillar : MonoBehaviour
 
         boxCollider.enabled = true;
 
-        playerBehaviour.disablePlayer = false;
-        playerBehaviour._playerCamera.enabled = true;
+        PlayerControlManager.Instance.UnlockPlayer();
+        PlayerControlManager.Instance.EnableCamera();
+
 
         puzzleCamera.enabled = false;
     }
@@ -77,8 +78,8 @@ public class CorrectSixteenSymbolsPillar : MonoBehaviour
 
         boxCollider.enabled = false;
 
-        playerBehaviour.disablePlayer = false;
-        playerBehaviour._playerCamera.enabled = true;
+        PlayerControlManager.Instance.UnlockPlayer();
+        PlayerControlManager.Instance.EnableCamera();
 
         puzzleCamera.enabled = false;
     }
@@ -90,7 +91,7 @@ public class CorrectSixteenSymbolsPillar : MonoBehaviour
 
     private IEnumerator CouturineMakeCameraMovement()
     {
-        Camera cam = playerBehaviour._playerCamera;
+        Camera cam = PlayerControlManager.Instance.GetPlayerCamera();
 
         Vector3 startPos = cam.transform.position;
         Quaternion startRot = cam.transform.rotation;

@@ -1,8 +1,12 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class SafeDial : MonoBehaviour
 {
+    [SerializeField] private InputActionReference safeInputMove;
+    [SerializeField] private InputActionReference safeInputReset;
+
     [SerializeField] private SafePuzzle safePuzzle;
 
     const float stepAngle = 3.6f;
@@ -35,8 +39,63 @@ public class SafeDial : MonoBehaviour
         currentValue = 0;
         float angle = currentValue * stepAngle + startModelPosition;
         transform.rotation = Quaternion.Euler(angle, fixedY, fixedZ);
-       // Debug.Log($"Startowa pozycja tarczy: {currentValue}");
+        // Debug.Log($"Startowa pozycja tarczy: {currentValue}");
     }
+
+
+    private void OnEnable()
+    {
+        if (safeInputMove != null)
+        {
+            safeInputMove.action.Enable();
+            safeInputMove.action.performed += OnMoveInput;
+        }
+
+        if (safeInputReset != null)
+        {
+            safeInputReset.action.Enable();
+            safeInputReset.action.performed += OnResetInput;
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (safeInputMove != null)
+        {
+            safeInputMove.action.performed -= OnMoveInput;
+            safeInputMove.action.Disable();
+        }
+
+        if (safeInputReset != null)
+        {
+            safeInputReset.action.performed -= OnResetInput;
+            safeInputReset.action.Disable();
+        }
+    }
+
+
+    private void OnMoveInput(InputAction.CallbackContext context)
+    {
+        if (canRotateDial)
+        {
+            float input = context.ReadValue<float>();
+
+            if (input > 0.5f)
+                Rotate(1);
+            else if (input < 0.5f)
+                Rotate(-1);
+        }
+    }
+
+    private void OnResetInput(InputAction.CallbackContext context)
+    {
+        if (canRotateDial)
+        {
+            AnimationResetDial();
+        }
+    }
+
+
 
     public void InstantResetDial()
     {
@@ -45,28 +104,11 @@ public class SafeDial : MonoBehaviour
         currentValue = 0;
         float angle = currentValue * stepAngle + startModelPosition;
         transform.rotation = Quaternion.Euler(angle, fixedY, fixedZ);
-       // Debug.Log($"Startowa pozycja tarczy: {currentValue}");
-    }
-
-    void Update()
-    {
-        if (canRotateDial)
-        {
-            if (Input.GetKeyDown(KeyCode.D))
-                Rotate(1);
-
-            if (Input.GetKeyDown(KeyCode.A))
-                Rotate(-1);
-
-            if (Input.GetKeyDown(KeyCode.R))
-                AnimationResetDial();
-        }
+        // Debug.Log($"Startowa pozycja tarczy: {currentValue}");
     }
 
     void Rotate(int dir)
     {
-       
-
         currentValue = (currentValue + dir + 100) % 100;
         float angle = currentValue * stepAngle + startModelPosition;
         transform.rotation = Quaternion.Euler(angle, fixedY, fixedZ);
@@ -83,6 +125,8 @@ public class SafeDial : MonoBehaviour
 
     private IEnumerator CoroutineAnimationResetDial()
     {
+        canRotateDial = false;
+
         float totalRotation = 360f * 3;
         float duration = 1.5f;
         float elapsed = 0f;
@@ -103,6 +147,7 @@ public class SafeDial : MonoBehaviour
 
         currentValue = 0;
         transform.rotation = Quaternion.Euler(startModelPosition, fixedY, fixedZ);
+        canRotateDial = true;
     }
 
 
@@ -115,7 +160,7 @@ public class SafeDial : MonoBehaviour
         {
             if (sequenceIndex > 0)
             {
-               // Debug.Log("Zły kierunek! Reset sekwencji.");
+                // Debug.Log("Zły kierunek! Reset sekwencji.");
                 sequenceIndex = 0;
             }
             return;
@@ -124,7 +169,7 @@ public class SafeDial : MonoBehaviour
         if (currentValue == currentStep.number)
         {
             sequenceIndex++;
-          //  Debug.Log($"Poprawny krok {sequenceIndex}/{combination.Length}");
+            //  Debug.Log($"Poprawny krok {sequenceIndex}/{combination.Length}");
 
             if (sequenceIndex >= combination.Length)
             {
@@ -137,6 +182,6 @@ public class SafeDial : MonoBehaviour
     {
         safePuzzle.WinPuzzle();
         canRotateDial = false;
-      //  Debug.Log("win");
+        //  Debug.Log("win");
     }
 }

@@ -15,6 +15,12 @@ public class PlayerBehaviour : MonoBehaviour
     private Vector2 currentLookVelocity;
     private Vector2 lookVelocityRef;
 
+    [SerializeField] private float maxLookDeltaPerFrame = 80f;
+    [SerializeField] private float maxRawLookMagnitude = 200f;
+
+    private bool ignoreNextLookFrame;
+
+
     [Header("Movement Settings")]
     [SerializeField] private float moveSpeed = 5f;
     private float gravity = -9.81f;
@@ -31,6 +37,7 @@ public class PlayerBehaviour : MonoBehaviour
     [SerializeField] private float minSpeedForStep = 0.1f;
     private Coroutine walkRoutine;
     private bool isMoving;
+    private bool canWalk = true;
 
 
     [Header("Camera Settings")]
@@ -128,6 +135,11 @@ public class PlayerBehaviour : MonoBehaviour
     private IRotatingCirclePuzzle lastIRotatingCirclePuzzle;
     private ITwelveDotsPuzzle lastITwelveDotsPuzzle;
     private ILastPuzzle lastILastPuzzle;
+
+    private ICoin lastICoin;
+    private IPullLeverSlotMachine lastIPullLeverSlotMachine;
+    private IInsertCoin lastIInsertCoin;
+    private IBet lastIBet;
 
     private CharacterController characterController;
     private Vector2 inputMovement;
@@ -317,7 +329,7 @@ public class PlayerBehaviour : MonoBehaviour
         int currentSelectedId = UIManager.Instance.GetSelectedItemId();
         if (currentSelectedId == 0)
         {
-           // Debug.Log("Nie wybrano 풹dnego przedmiotu do u퓓cia.");
+            // Debug.Log("Nie wybrano 풹dnego przedmiotu do u퓓cia.");
             return;
         }
 
@@ -505,6 +517,11 @@ public class PlayerBehaviour : MonoBehaviour
             lastIRotatingCirclePuzzle?.EnterRotatingCirclePuzzle();
             lastITwelveDotsPuzzle?.EnterTwelveDotsPuzzle();
             lastILastPuzzle?.EnterLastPuzzle();
+            lastICoin?.CollectCoin();
+            lastIPullLeverSlotMachine?.PullLever();
+            lastIInsertCoin?.InsertCoin();
+            lastIBet?.BetUp();
+            lastIBet?.BetDown();
 
             if (lastIOpenable != null && lastIOpenable.IsOpen())
             {
@@ -571,7 +588,35 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void HandleMovement()
     {
-        if (disablePlayer || isClimbing) return;
+        if (disablePlayer || isClimbing)
+        {
+            ResetMovementState();
+            return;
+        }
+
+        if (disableOnlyMovement)
+        {
+            ResetMovementState();
+            return;
+        }
+
+        if (lastILockPick != null && lastILockPick.IsLockPicking())
+        {
+            ResetMovementState();
+            return;
+        }
+
+        if (lastIReadable != null && lastIReadable.IsReading())
+        {
+            ResetMovementState();
+            return;
+        }
+
+        if (lastIReadableAndInteractable != null && lastIReadableAndInteractable.IsReadingInteractable())
+        {
+            ResetMovementState();
+            return;
+        }
 
         Vector2 finalMoveInput = inputMovement;
         float finalMoveSpeed = moveSpeed;
@@ -616,12 +661,25 @@ public class PlayerBehaviour : MonoBehaviour
         );
 
         characterController.Move(currentVelocity * Time.deltaTime);
-        UpdateWalkCycle();
+
+        if (canWalk)
+        {
+            UpdateWalkCycle();
+        }
+        else
+        {
+            if (walkRoutine != null)
+            {
+                StopCoroutine(walkRoutine);
+                walkRoutine = null;
+                ResetLegs();
+            }
+        }
     }
 
     public void UpdateWalkCycle()
     {
-        if (isMoving)
+        if (isMoving && canWalk)
         {
             if (walkRoutine == null)
                 walkRoutine = StartCoroutine(WalkCycle());
@@ -676,24 +734,96 @@ public class PlayerBehaviour : MonoBehaviour
         leg.localPosition = new Vector3(leg.localPosition.x, stepUpY, leg.localPosition.z);
     }
 
+    private void OnApplicationFocus(bool hasFocus)
+    {
+        if (hasFocus)
+        {
+            ignoreNextLookFrame = true;
+            currentLookVelocity = Vector2.zero;
+            lookVelocityRef = Vector2.zero;
+        }
+    }
+
+
     private void ResetLegs()
     {
         leftLeg.localPosition = new Vector3(leftLeg.localPosition.x, stepUpY, leftLeg.localPosition.z);
         rightLeg.localPosition = new Vector3(rightLeg.localPosition.x, stepUpY, rightLeg.localPosition.z);
     }
 
+    private void ResetLookState()
+    {
+        inputLook = Vector2.zero;
+        currentLookVelocity = Vector2.zero;
+        lookVelocityRef = Vector2.zero;
+        _smoothedDrunkLookInput = Vector2.zero;
+    }
+
+    private void ResetMovementState()
+    {
+        inputMovement = Vector2.zero;
+        currentVelocity = Vector3.zero;
+        _smoothedDrunkMoveInput = Vector2.zero;
+        isMoving = false;
+    }
+
+    public void ClearPlayerInputState()
+    {
+        ResetLookState();
+        ResetMovementState();
+    }
+
     private void HandleLook()
     {
-        if (disablePlayer) { return; }
+        if (disablePlayer)
+        {
+            ResetLookState();
+            return;
+        }
+
+        if (lastILockPick != null && lastILockPick.IsLockPicking())
+        {
+            ResetLookState();
+            return;
+        }
+
+        if (lastIReadable != null && lastIReadable.IsReading())
+        {
+            ResetLookState();
+            return;
+        }
+
+        if (lastIReadableAndInteractable != null && lastIReadableAndInteractable.IsReadingInteractable())
+        {
+            ResetLookState();
+            return;
+        }
+
+        if (cameraTransform == null) return;
+
+        if (ignoreNextLookFrame)
+        {
+            ignoreNextLookFrame = false;
+            ResetLookState();
+            return;
+        }
+
         Vector2 finalLookInput = inputLook;
+
+        if (finalLookInput.sqrMagnitude > maxRawLookMagnitude * maxRawLookMagnitude)
+        {
+            finalLookInput = Vector2.zero;
+            currentLookVelocity = Vector2.zero;
+            lookVelocityRef = Vector2.zero;
+        }
 
         if (isDrunk)
         {
             _smoothedDrunkLookInput = Vector2.Lerp(
-            _smoothedDrunkLookInput,
-            inputLook,
-            drunkLookSmoothing * Time.deltaTime
-        );
+                _smoothedDrunkLookInput,
+                finalLookInput,
+                drunkLookSmoothing * Time.deltaTime
+            );
 
             finalLookInput = _smoothedDrunkLookInput;
 
@@ -704,11 +834,14 @@ public class PlayerBehaviour : MonoBehaviour
         }
 
         currentLookVelocity = Vector2.SmoothDamp(
-        currentLookVelocity,
-        finalLookInput,
-        ref lookVelocityRef,
-        0.08f
-    );
+            currentLookVelocity,
+            finalLookInput,
+            ref lookVelocityRef,
+            0.08f
+        );
+
+        currentLookVelocity.x = Mathf.Clamp(currentLookVelocity.x, -maxLookDeltaPerFrame, maxLookDeltaPerFrame);
+        currentLookVelocity.y = Mathf.Clamp(currentLookVelocity.y, -maxLookDeltaPerFrame, maxLookDeltaPerFrame);
 
         float mouseX = currentLookVelocity.x;
         float mouseY = currentLookVelocity.y;
@@ -720,6 +853,7 @@ public class PlayerBehaviour : MonoBehaviour
 
         cameraTransform.localRotation = Quaternion.Euler(cameraVerticalRotation, 0f, 0f);
     }
+
 
     private void ApplyGravity()
     {
@@ -803,6 +937,10 @@ public class PlayerBehaviour : MonoBehaviour
         lastIRotatingCirclePuzzle = null;
         lastITwelveDotsPuzzle = null;
         lastILastPuzzle = null;
+        lastICoin = null;
+        lastIPullLeverSlotMachine = null;
+        lastIInsertCoin = null;
+        lastIBet = null;
 
         bool hitBlock = Physics.Raycast(ray, out RaycastHit blockHit, raycastRange, blockRaycastLayer);
         bool hitInteractable = Physics.Raycast(ray, out RaycastHit hit, raycastRange, interactableLayer);
@@ -1036,6 +1174,20 @@ public class PlayerBehaviour : MonoBehaviour
                     case InteractableItem.InteractableType.LastPuzzle:
                         lastILastPuzzle = interactableObject;
                         break;
+                    case InteractableItem.InteractableType.Coin:
+                        lastICoin = interactableObject;
+                        break;
+                    case InteractableItem.InteractableType.PullLeverSlotMachine:
+                        lastIPullLeverSlotMachine = interactableObject;
+                        break;
+
+                    case InteractableItem.InteractableType.InsertCoin:
+                        lastIInsertCoin = interactableObject;
+                        break;
+
+                    case InteractableItem.InteractableType.Bet:
+                        lastIBet = interactableObject;
+                        break;
 
                 }
             }
@@ -1081,6 +1233,7 @@ public class PlayerBehaviour : MonoBehaviour
         if (other.CompareTag("Ladder"))
         {
             isClimbing = true;
+            canWalk = true;
         }
     }
 
@@ -1089,6 +1242,7 @@ public class PlayerBehaviour : MonoBehaviour
         if (other.CompareTag("Ladder"))
         {
             isClimbing = false;
+            canWalk = false;
         }
     }
 
@@ -1404,6 +1558,7 @@ public class PlayerBehaviour : MonoBehaviour
     #region Angry Time Effect
     public void ApplyAngryTime(float duration)
     {
+        canWalk = false;
         if (activeAngryTimeCoroutine != null) StopCoroutine(activeAngryTimeCoroutine);
         activeAngryTimeCoroutine = StartCoroutine(AngryTimeCoroutine(duration));
     }
@@ -1414,7 +1569,9 @@ public class PlayerBehaviour : MonoBehaviour
         Services.Audio.PlaySFX("MagicAfterDrink");
         isFlying = true;
         velocity.y = 0;
+
         legMoveSpeed = 0f;
+        canWalk = false;
 
         float timer = 0f;
 
@@ -1430,6 +1587,7 @@ public class PlayerBehaviour : MonoBehaviour
         isFlying = false;
         activeAngryTimeCoroutine = null;
         legMoveSpeed = 1.9f;
+        canWalk = true;
     }
     #endregion
 

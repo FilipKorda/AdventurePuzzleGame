@@ -381,4 +381,22 @@ MonoBehaviour:
   - Id: Coin
     Clip: {fileID: 8300000, guid: 73cc692b43409654db5d17f9ca8bffc0, type: 3}
     Category: 3
+  - Id: PULLLEVERSLOTMACHINE
+    Clip: {fileID: 8300000, guid: fa8a569b1fc09a143ab877bacfeec71a, type: 3}
+    Category: 3
+  - Id: WINSLOTMACHINE
+    Clip: {fileID: 8300000, guid: 592f89df0726caa4b84fa16f50529898, type: 3}
+    Category: 3
+  - Id: SlotMachineInsert
+    Clip: {fileID: 8300000, guid: 2e00de7c979622a43bb9f772f5b1eb7b, type: 3}
+    Category: 3
+  - Id: SPINNINGREEL
+    Clip: {fileID: 8300000, guid: 6bd5f0b679820274b8dc1bdfc89cc1db, type: 3}
+    Category: 3
+  - Id: STOPREEL
+    Clip: {fileID: 8300000, guid: 424b1846c1821fe41850087965be51f5, type: 3}
+    Category: 3
+  - Id: PRESSSLOTMACHINEBUTTON
+    Clip: {fileID: 8300000, guid: ce38ef07de2cee84484d25ba97120d5f, type: 3}
+    Category: 3
   sfxSourcePrefab: {fileID: 6808787666201464470, guid: 561a59515f73e424ba170ae966f504e9, type: 3}

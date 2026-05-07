@@ -1,9 +1,10 @@
+#if UNITY_EDITOR
 using System.Collections.Generic;
 using UnityEngine;
 
 public class DevStaticManager : MonoBehaviour
 {
-#if UNITY_EDITOR
+
 
     [SerializeField] private Transform playerTransform;
     [SerializeField] private Transform playerStartPosition;
@@ -45,5 +46,6 @@ public class DevStaticManager : MonoBehaviour
 
         Debug.Log($"[DevStaticManager] Zmieniono {count} obiektów na Static = {value}");
     }
-#endif
+
 }
+#endif

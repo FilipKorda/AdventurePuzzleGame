@@ -19,6 +19,8 @@ public class MovingWallwithPaintingManager : MonoBehaviour
     [SerializeField] private int flowerWinIndex;
     [SerializeField] private int necklesWinIndex;
 
+    [SerializeField] private BoxCollider[] boxColliders;
+
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.Space))
@@ -36,6 +38,11 @@ public class MovingWallwithPaintingManager : MonoBehaviour
             imageSliderFlower.CurrentIndex == flowerWinIndex &&
             imageSliderNeckles.CurrentIndex == necklesWinIndex)
         {
+            foreach(BoxCollider boxCollider in boxColliders)
+            {
+                boxCollider.enabled = false;
+            }
+
             chestManager.OpenChest();
             MoveGateUp();
             Services.Audio.PlaySFX("SafeWinAkaPuzzleWin");

@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Linq;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Localization;
@@ -13,7 +12,8 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     IBlockButton, INinePadPanel, ICircleAndSquarePuzzle, IRotateCircleAndSquarePuzzle, IPlayerSphereMovement, ILibraryButton,
     ISafe, IBraiser, IFramePuzzle, IWallSwitchOnOff, IPlaceOnScale, IBriefcase, IMovingBlockBriefcase, IPaintingMove,
     IPlacePillarSymbol, IPillarMoveSphere, IRotatingPillar, IRotateOnePillar, IMoveSphereOnePillarPuzzle, IPictureTerrainObject,
-    ICoverAllSquarePuzzle, ICorrectSixteenSymbols, ITwoCrystalsPuzzle, IRotatingCirclePuzzle, ITwelveDotsPuzzle, ILastPuzzle
+    ICoverAllSquarePuzzle, ICorrectSixteenSymbols, ITwoCrystalsPuzzle, IRotatingCirclePuzzle, ITwelveDotsPuzzle, ILastPuzzle, ICoin, IPullLeverSlotMachine,
+    IInsertCoin, IBet
 {
     public enum InteractableType
     {
@@ -74,7 +74,11 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         TwoCrystalsPuzzle,
         RotatingCirclePuzzle,
         TwelveDotsPuzzle,
-        LastPuzzle
+        LastPuzzle,
+        Coin,
+        PullLeverSlotMachine,
+        InsertCoin,
+        Bet
     }
 
     public InteractableType interactableType;
@@ -329,8 +333,14 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     [SerializeField] private RotatingCirclePuzzle rotatingCirclePuzzle;
     [Header("Twelve Dots Puzzle]")]
     [SerializeField] private TwelveDotPuzzle twelveDotPuzzle;
-    [Header("Last Puzzle]")]
+    [Header("Last Puzzle")]
     [SerializeField] private LastPuzzle lastPuzzle;
+    [Header("Coin")]
+    [SerializeField] private int cointAmount;
+    [Header("Slot Machine")]
+    [SerializeField] private SlotMachineManager slotMachineManager;
+    [Header("Bet")]
+    [SerializeField] private bool isBetUp;
 
     private void Awake()
     {
@@ -344,6 +354,45 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
             startPosition = transform.position;
         }
 
+    }
+
+    public void BetUp()
+    {
+        if (slotMachineManager.IsSpinning) return;
+        if (isBetUp)
+            slotMachineManager.IncreaseBet(10);
+
+        animator.SetTrigger("Press");
+    }
+
+    public void BetDown()
+    {
+        if (slotMachineManager.IsSpinning) return;
+        if (!isBetUp)
+            slotMachineManager.DecreaseBet(10);
+
+        animator.SetTrigger("Press");
+    }
+
+    public void InsertCoin()
+    {
+        if (slotMachineManager.IsSpinning) return;
+        slotMachineManager.InsertTenCredits();
+    }
+
+    public void PullLever()
+    {
+        if (slotMachineManager.IsSpinning) return;
+        slotMachineManager.PullLever();
+    }
+
+    public void CollectCoin()
+    {
+        Inventory.Instance.AddCoins(cointAmount);
+        UIManager.Instance.PlayCoinGainAnimation();
+
+        DestroyInteractable();
+        Services.Audio.PlaySFX("Coin");
     }
 
     public void EnterLastPuzzle()
@@ -801,32 +850,11 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
 
     }
 
-    private void OnDrawGizmos()
-    {
-#if UNITY_EDITOR
-        if (objectA != null)
-            DrawRays(objectA.transform.position);
-
-        if (objectB != null)
-            DrawRays(objectB.transform.position);
-#endif
-    }
-
-    private void DrawRays(Vector3 origin)
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(origin, origin + Vector3.up * rayLengthMovingBlockPuzzle);
-        Gizmos.DrawLine(origin, origin + Vector3.down * rayLengthMovingBlockPuzzle);
-        Gizmos.DrawLine(origin, origin + Vector3.left * rayLengthMovingBlockPuzzle);
-        Gizmos.DrawLine(origin, origin + Vector3.right * rayLengthMovingBlockPuzzle);
-    }
-
     public void PlaceSymbol()
     {
         int currentSelectedId = UIManager.Instance.GetSelectedItemId();
         if (currentSelectedId == 0)
         {
-            //Debug.Log("Nie wybrano ¿adnego przedmiotu do u¿ycia.");
             return;
         }
 
@@ -952,9 +980,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     public void PushFurniture()
     {
         movableBlock.TakeControlOfTheThiBlock();
-
     }
-
     public void EnterPipeGearPuzzleMode()
     {
         pipeGearPuzzle.EnterGearLockMode();
@@ -1329,11 +1355,6 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
 
 
         Services.Audio.PlaySFX("PlaceObject");
-
-  /*      if (craftedSomething)
-            Debug.Log("umieszczono obiekt do kraftowania");
-        else
-            Debug.Log("nie sie nie dzieje");*/
     }
 
     private void ActiveCrafting()
@@ -1401,13 +1422,13 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
                     InteractableItem newPotion = cauldron.TakeSolution();
                     Inventory.Instance.AddItemToInventory(newPotion);
 
-                   // Debug.Log($"Nape³niono pojemnik. Otrzymano: {newPotion.GetItemName()}");
+                    // Debug.Log($"Nape³niono pojemnik. Otrzymano: {newPotion.GetItemName()}");
                 }
                 else
                 {
                     if (localizationString.localizeString != null)
                         NotificationSystem.Instance.ShowNotification(localizationString.localizeString, 3);
-                   // Debug.Log("Wybierz pusty pojemnik, aby nabraæ roztwór.");
+                    // Debug.Log("Wybierz pusty pojemnik, aby nabraæ roztwór.");
                 }
             }
             else if (selectedItemId != ItemID.EmptyBucket)
@@ -1455,7 +1476,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
             {
                 if (localizationString.localizeString != null)
                     NotificationSystem.Instance.ShowNotification(localizationString.localizeString, 3);
-               // Debug.Log("Wybierz pusty pojemnik, aby nabraæ roztwór.");
+                // Debug.Log("Wybierz pusty pojemnik, aby nabraæ roztwór.");
             }
             else
             {
@@ -1519,9 +1540,9 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
         }
         else if (isAlchemyRecipe && interactableType == InteractableType.Pickupable)
         {
-            Services.Audio.PlaySFX("GrabRecipe");
             DestroyInteractable();
             Inventory.Instance.AddToInventoryAlchemyRecipe(this);
+            Services.Audio.PlaySFX("GrabRecipe");
         }
     }
 
@@ -1796,7 +1817,6 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
 
             Inventory.Instance.RemoveFromInventoryAlchemyRecipe(requiredId);
             recipesCounter.UpdateRecipeCount();
-            // Debug.LogWarning($"Znaleziono i usuniêto item o ID: {requiredId}");
         }
 
 
@@ -1851,7 +1871,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
                 }
                 else
                 {
-                    Debug.Log("Nie masz animatora");
+                    // Debug.Log("Nie masz animatora");
                 }
             }
         }
@@ -1861,6 +1881,10 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
     {
         if (interactableType == InteractableType.Readable)
         {
+            isActualReading = true;
+
+            PlayerControlManager.Instance.ClearPlayerInputState();
+
             Services.Audio.PlaySFX("ReadBook");
 
             UIManager.Instance.readablePanel.ShowReadablePanel();
@@ -1872,16 +1896,17 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
 
             UIManager.Instance.readablePanel.signatureTextUI.text =
                readableTextData.localizeSignature.GetLocalizedString();
-
-            isActualReading = true;
         }
-
     }
 
     public void OnReadInteractable()
     {
         if (interactableType == InteractableType.ReadableAndInteractableItem)
         {
+            isActualReading = true;
+
+            PlayerControlManager.Instance.ClearPlayerInputState();
+
             UIManager.Instance.readableAndInteractablePanel.ShowReadablePanel();
             UIManager.Instance.readableAndInteractablePanel.headerTextUI.text = readableAndInteractableTextData.headerText.GetLocalizedString();
 
@@ -1895,7 +1920,7 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
                 UIManager.Instance.readableAndInteractablePanel.pressEorQTextUI.text = readableAndInteractableTextData.pressEorQText.GetLocalizedString();
             }
 
-            isActualReading = true;
+
 
             UIManager.Instance.nextPageAction.action.Enable();
             UIManager.Instance.previousPageAction.action.Enable();

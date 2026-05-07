@@ -17,7 +17,7 @@ public class MovingBlockPuzzleManager : MonoBehaviour
     [SerializeField] private float distanceFromCamera = 1f;
     [SerializeField] private float verticalOffset = 0f;
     [SerializeField] private Canvas blurCanvas;
-    [SerializeField] private PlayerBehaviour playerBehaviour;
+    //[SerializeField] private PlayerBehaviour playerBehaviour;
     [SerializeField] private Transform point;
 
     public bool puzzleWin = false;
@@ -40,7 +40,7 @@ public class MovingBlockPuzzleManager : MonoBehaviour
             gearModeInput.action.performed += OnMovingPuzzleModePerformed;
         }
 
-        StartCoroutine(DisablePlayerLook());
+        PlayerControlManager.Instance.DisablePlayerLookTemporarily();
     }
 
     private void OnDisable()
@@ -60,8 +60,9 @@ public class MovingBlockPuzzleManager : MonoBehaviour
         blurCanvas.gameObject.SetActive(true);
         gameObject.SetActive(true);
         puzzlepartCollider.enabled = false;
-        playerBehaviour.disableOnlyMovement = true;
+        PlayerControlManager.Instance.LockMovementOnly();
         UIManager.Instance.EnableLpmToClickPanel();
+        PlayerControlManager.Instance.SetGamepadSens(25);
 
     }
 
@@ -72,7 +73,8 @@ public class MovingBlockPuzzleManager : MonoBehaviour
         blurCanvas.gameObject.SetActive(false);
         ResetObjectPosition();
         gameObject.SetActive(false);
-        playerBehaviour.disableOnlyMovement = false;
+        PlayerControlManager.Instance.UnlockMovementOnly();
+        PlayerControlManager.Instance.SetGamepadSens(100);
         UIManager.Instance.DisableSharedPanelText();
     }
 
@@ -98,13 +100,13 @@ public class MovingBlockPuzzleManager : MonoBehaviour
         var player = PlayerLocator.PlayerTransform;
         if (player == null) return;
 
-        if (playerBehaviour.TryGetComponent<CharacterController>(out var controller))
-            controller.enabled = false;
+        PlayerControlManager.Instance.SetCharacterControllerEnabled(false);
+
 
         player.SetPositionAndRotation(point.position, point.rotation);
 
-        if (controller != null)
-            controller.enabled = true;
+        PlayerControlManager.Instance.SetCharacterControllerEnabled(true);
+
     }
 
     private void SpawnThisObjectInFronOfPlayer()
@@ -118,19 +120,6 @@ public class MovingBlockPuzzleManager : MonoBehaviour
                      + player.right * 0.26f;
 
         transform.SetPositionAndRotation(position, Quaternion.Euler(-90f, 0f, 0f));
-    }
-
-    private IEnumerator DisablePlayerLook()
-    {
-        yield return null;
-
-        playerBehaviour.disablePlayer = true;
-
-        playerBehaviour.ResetCameraRotation();
-
-        yield return new WaitForSeconds(0.1f);
-
-        playerBehaviour.disablePlayer = false;
     }
 
     public void CheckCorrectPositionOfAnObjects()
@@ -159,7 +148,8 @@ public class MovingBlockPuzzleManager : MonoBehaviour
         blurCanvas.gameObject.SetActive(false);
         ResetObjectPosition();
         gameObject.SetActive(false);
-        playerBehaviour.disableOnlyMovement = false;
+        PlayerControlManager.Instance.UnlockMovementOnly();
+        PlayerControlManager.Instance.SetGamepadSens(100);
         UIManager.Instance.DisableSharedPanelText();
 
 
