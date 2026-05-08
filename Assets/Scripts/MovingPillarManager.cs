@@ -46,6 +46,13 @@ public class MovingPillarManager : MonoBehaviour
 
     [SerializeField] private ThreeSymbolsPillarManager threeSymbolsPillarManager;
 
+    private bool isRotating;
+
+    [SerializeField] private float mouseDragSpeed = 0.01f;
+    [SerializeField] private float gamepadDragSpeed = 3.5f;
+
+
+
     void OnEnable()
     {
         if (dragDeltaInput != null)
@@ -106,6 +113,7 @@ public class MovingPillarManager : MonoBehaviour
 
     public void SetClickAndDrag(bool state)
     {
+        if (isRotating) return;
         holdingPPM = state;
 
         if (!state)
@@ -131,6 +139,7 @@ public class MovingPillarManager : MonoBehaviour
 
     void OnDragDelta(InputAction.CallbackContext context)
     {
+        if (isRotating) return;
         if (!holdingPPM) return;
 
         Vector2 delta = context.ReadValue<Vector2>();
@@ -140,8 +149,18 @@ public class MovingPillarManager : MonoBehaviour
             hasMoved = true;
         }
 
-        Vector3 offset = new Vector3(-delta.x * dragSpeed, 0f, 0f);
-        Vector3 newPosition = transform.position + offset;
+        float moveAmount;
+
+        if (context.control.device is Gamepad)
+        {
+            moveAmount = -delta.x * gamepadDragSpeed * Time.deltaTime;
+        }
+        else
+        {
+            moveAmount = -delta.x * mouseDragSpeed;
+        }
+
+        Vector3 newPosition = transform.position + new Vector3(moveAmount, 0f, 0f);
 
         float minX = Mathf.Min(leftPoint.position.x, rightPoint.position.x);
         float maxX = Mathf.Max(leftPoint.position.x, rightPoint.position.x);
@@ -150,6 +169,7 @@ public class MovingPillarManager : MonoBehaviour
 
         transform.position = newPosition;
     }
+
 
     Transform GetClosestPointPhysical()
     {
@@ -218,9 +238,10 @@ public class MovingPillarManager : MonoBehaviour
 
     IEnumerator RotateAndShow(GameObject rotatingObject, Image targetImage, Sprite targetSprite)
     {
+        isRotating = true;
         targetImage.sprite = transparentSymbol;
 
-        int rotations = Random.Range(1, 5);
+        int rotations = Random.Range(1, 3);
         float totalAngle = 360f * rotations;
 
         float time = 0f;
@@ -239,6 +260,7 @@ public class MovingPillarManager : MonoBehaviour
         targetImage.sprite = targetSprite;
 
         threeSymbolsPillarManager.CheckWinPuzzle();
+        isRotating = false;
     }
 
     IEnumerator MoveSmooth(Vector3 target, float smooth)

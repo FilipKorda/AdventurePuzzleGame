@@ -89,6 +89,10 @@ MonoBehaviour:
     m_Key: FPSCap
     m_Metadata:
       m_Items: []
+  - m_Id: 34724604230782976
+    m_Key: Hints
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

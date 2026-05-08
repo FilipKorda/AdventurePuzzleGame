@@ -46,6 +46,14 @@ MonoBehaviour:
     m_Localized: "Rozgl\u0105danie si\u0119"
     m_Metadata:
       m_Items: []
+  - m_Id: 3669704134905856
+    m_Localized: "NAST\u0118PNA STRONA"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3669749651492864
+    m_Localized: POPRZEDNIA STRONA
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

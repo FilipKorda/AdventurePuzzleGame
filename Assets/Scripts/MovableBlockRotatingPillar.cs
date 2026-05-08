@@ -51,7 +51,7 @@ public class MovableBlockRotatingPillar : MonoBehaviour
 
                 if (myBounds.Intersects(other.bounds))
                 {
-                    Debug.Log($"BLOCKED by {other.name}", this);
+                   // Debug.Log($"BLOCKED by {other.name}", this);
                     return true;
                 }
             }

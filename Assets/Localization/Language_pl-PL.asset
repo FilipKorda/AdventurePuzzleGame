@@ -86,6 +86,10 @@ MonoBehaviour:
     m_Localized: Limit Fps
     m_Metadata:
       m_Items: []
+  - m_Id: 34724604230782976
+    m_Localized: Podpowiedzi
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

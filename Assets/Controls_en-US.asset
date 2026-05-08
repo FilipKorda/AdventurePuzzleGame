@@ -46,6 +46,14 @@ MonoBehaviour:
     m_Localized: Look
     m_Metadata:
       m_Items: []
+  - m_Id: 3669704134905856
+    m_Localized: NEXT PAGE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3669749651492864
+    m_Localized: PREVIOUS PAGE
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

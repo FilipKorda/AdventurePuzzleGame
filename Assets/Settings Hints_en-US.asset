@@ -1,0 +1,806 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Settings Hints_en-US
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.StringTable
+  m_LocaleId:
+    m_Code: en-US
+  m_SharedData: {fileID: 11400000, guid: 2844a073f540ea44e87fd2f1554e23de, type: 2}
+  m_Metadata:
+    m_Items:
+    - rid: 6739794259712409707
+  m_TableData:
+  - m_Id: 26665570304
+    m_Localized: "- Each statue has red buttons on it, and they emit a Morse code
+      sound signal that you can decipher from the book. They only activate when you
+      solve the statue puzzle.\r\n\r\n- Correct sequence of symbols, starting from
+      the left in the cryptex\r\n\r\n      <sprite name=\"Code Morse Correct symbols_7\"><sprite
+      name=\"Code Morse Correct symbols_8\"><sprite name=\"Code Morse Correct symbols_9\"><sprite
+      name=\"Code Morse Correct symbols_10\"><sprite name=\"Code Morse Correct symbols_3\"><sprite
+      name=\"Code Morse Correct symbols_4\"><sprite name=\"Code Morse Correct symbols_5\">\n\n-
+      You must confirm this sequence with the button on the counter located in front
+      of the cryptex object."
+    m_Metadata:
+      m_Items:
+      - rid: 6739794259712409707
+  - m_Id: 19533178097664
+    m_Localized: "A huge hall with many hidden puzzles. 20 of them, to be exact.\r\n\r\nClimb
+      the ladder and search the cabinets to find papyri, which are clues to the first
+      puzzles you'll be able to access.\r\n\r\n- Puzzle with 12 rectangles\r\nPress
+      the corresponding rectangles to open two gates.\r\n\r\n- Puzzle with swords\r\nYou
+      must place four swords in the appropriate slots next to the shields and other
+      swords on the wall.\r\n\r\nWhere there are many shelves with various items,
+      you must find papyrus that will allow you to solve puzzles with \"up-down\"
+      buttons.\r\n\r\n- Puzzle with \"up-down\" buttons\r\nThe sequence of this puzzle
+      is: down, up, down, up, down, down, up\r\n\r\n- PIPES PUZZLES\r\n\r\n- Skull
+      and Bones\r\nYou must move the bones and skull to the correct position, indicated
+      by the same bone and skull symbol.\r\n\r\n- Sphere and Spinning Object Puzzle\r\nYou
+      must get the sphere to the end of the maze.\r\n\r\n- 18-Gear Puzzle\r\nYou
+      must create a path from these gears and pipes from the upper arrow to the lower
+      water canisters. You must create three separate closed circuits that lead to
+      separate water canisters.\r\n\r\n- Clock Puzzle\r\nThe currency symbols correspond
+      to the Roman numerals on the clock. The same Roman numerals are on the pedestal
+      below the clock. When you hold the appropriate symbol, you can examine it and
+      see what symbol it represents. You can then match it to the corresponding pedestal,
+      which is symbolized by the same Roman numeral as the currency symbol on the
+      clock.\r\n\r\n- 4x9 Button Puzzle\r\nThe pipe and the books contain hidden
+      symbols and their numbering, which you must reflect in this puzzle.\r\nTIHL\r\n\r\n-
+      Safe Puzzle\r\nYou must enter the correct code: right 13 left 35 right 72 left
+      5\r\n\r\n- Hidden Button Puzzle\r\nIn the bookshelf, after you remove the books,
+      hidden buttons and symbols next to them will appear, which are geometric figures
+      with the appropriate number of vertices. In the center, you'll find instructions
+      that there are N-2 vertices. This means you subtract 2 from the number of vertices
+      on the symbol next to the button and click the buttons that many times. The
+      order in which you click the buttons is also important, as indicated by arrows.
+      To see these symbols and faces, you need to put on goggles.\r\n\r\n- Pickaxe
+      Puzzle\r\nYou need to use the pickaxe on the wall to reach a hidden alcove
+      in the wall where the goggles are located. The wall you can destroy is located
+      between the bookshelves, the safe, and the pipes in the corner of the room.\r\n\r\n-
+      Goggles and Hidden Symbol Puzzle\r\nWhen you put on the goggles, you'll start
+      to see the symbols on the moving tiles. There are four of these tiles, and
+      each has an arrow pointing in a different direction to the wall with the symbols.
+      But to solve the puzzle, you need to choose a symbol that is NOT on the wall
+      and select it.\r\n\r\n- Skeleton and Knight Puzzle\r\nYou must place the corresponding
+      puzzle pieces in the correct spots on the painting.\r\nThe knight painting
+      at the top must have a mace.\r\nThe knight painting at the bottom must have
+      a sword.\r\nThe skeleton painting on the left must have an axe and a helmet.\r\nThe
+      skeleton painting on the right must have a dagger and a Viking helmet with
+      horns.\r\n\r\n- Gear Puzzle\r\nYou must match the color of the door to the
+      other color on another gear. If each color connects with a different color,
+      the door will open.\r\n\r\n- Furniture Puzzle\r\nYou must lift the furniture
+      with the arrow to the spot where the arrow is on the ground.\r\n\r\n- Dark
+      Puzzle\r\nYou must discover the sequence of the green fire in the distance
+      and read it in the book.\r\n     \n     <sprite name=\"Code Morse Correct symbols_6\"><sprite
+      name=\"Code Morse Correct symbols_0\"><sprite name=\"Code Morse Correct symbols_1\"><sprite
+      name=\"Code Morse Correct symbols_2\">\n\r\n- Scale Puzzle\r\nYou must balance
+      the scale so that it shows the same weight on the left and right sides. There
+      are 5 objects you can place on the scale, but you only need to place 3 of them,
+      and the scale will show the same weight on the left and right sides.\r\n\r\nWeight,
+      Cup, and Nail.\r\n\r\n- Diode Puzzle\r\nAll diodes must be lit.\r\n\r\n- Two
+      Brothers Puzzle\r\nThe brothers lie or tell the truth, and the large statues
+      of ABDI and ABDA have banners above them that describe something. You must
+      look for these chests, bookshelves, prison cells, and hidden rooms.\r\nThe
+      solution is left, right, right, left, right.\r\nOne chest is located right
+      in front of the brothers' statues. It says it's true.\r\nThe second chest is
+      located right in front of the prison entrance. He says it's a lie.\r\nThere's
+      a chest in the prison, and we don't know what's inside. We can't see, so it's
+      a lie.\r\nOn the shelf are only books and a candlestick, so it's true.\r\nAnd
+      in the hidden room, there's a chalice, so it's true.\r\nEach hidden item has
+      a symbol next to it, the same as the one on the banner.\r\n\r\n- Mirror Puzzle\r\nYou
+      must guide a beam of light to the appropriate crystal, located above the door."
+    m_Metadata:
+      m_Items:
+      - rid: 6739794259712409707
+  - m_Id: 32678076502016
+    m_Localized: 'Another larger room with lots of puzzles. I counted 16 of them.
+
+      Search
+      the entire room because there are many items you can pick up without solving
+      any puzzles; you''ll need them later. It''s very important to focus on the
+      card symbols: Heart, Diamond, Cross, and Spade.
+
+
+
+      - Candlestick Puzzle
+
+      The
+      first puzzle requires you to read the book and notice that there are larger
+      letters in various places, which tells you to pull the candlestick above the
+      door.
+
+
+
+      - Main Picture Puzzle
+
+      You must arrange the five symbols
+      on the painting, which you will read about in the papyri and books while solving
+      the other puzzles in this room.
+
+
+
+      - Connecting the 12 Dots Puzzle
+
+      You
+      must connect all the dots to create a closed circuit.
+
+
+
+      - Block Puzzle
+
+      You
+      must cover all the squares so there are no empty squares.
+
+
+
+      - Crowbar
+      Puzzle
+
+      You must collect a crowbar and use it to open a broken cabinet.
+
+
+
+      -
+      Dice Puzzle
+
+      You must move two matching dice to their corresponding color-coded
+      spaces.
+
+
+
+      - 6 Wheels Puzzle
+
+      You must copy the order of the symbols
+      as shown on the banners. The color-coded banners indicate which circle has
+      which symbol. They are arranged from left to right on the wall.
+
+
+
+      -
+      Card Symbol Puzzle
+
+      You must copy the same pattern of symbols, but notice
+      that the pattern is wobbly because it broke from the chain, and you must arrange
+      it correctly.
+
+
+
+      - Pressure Plate Puzzle
+
+      You are given two different
+      torn pages that completely give you the sequence in which you must press the
+      pressure plates.
+
+
+
+      - Arrow Puzzle
+
+      You must reproduce the correct
+      sequence of arrow movements from the first arrow to the last row.
+
+
+
+      -
+      Bell Puzzle
+
+      Each bell has a model of a symbol from a card, and the symbols
+      of these cards are revealed on the walls in the order given in the papyrus
+      you unlocked.
+
+
+
+      - Terrain Puzzle
+
+      You must pay attention to the
+      hints written on the walls. They will guide you as to which symbol must be
+      in which place in the terrain. These symbols are also compared in the order
+      shown on the wall when the gates are revealed.
+
+
+
+      - 6 Rectangle Puzzle
+
+      You
+      must slide each rectangle out of the puzzle, but be careful because they are
+      interlocked, and you must pull them out one by one, clearing the path for another
+      rectangle.
+
+
+
+      - 3 Symbol Puzzle
+
+      You must find 3 symbols in this
+      room, insert them into the puzzle, and arrange the symbol sequence.
+
+
+
+      -
+      Maze Puzzle
+
+      You must guide an object through the maze to the location
+      indicated on the ceiling.
+
+
+
+      - 16 Dot Puzzle
+
+      You must make all
+      the dots turn on.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45619555356672
+    m_Localized: "- Search the bookshelf there\u2019s a key there that opens the
+      door to the next room. In that room, there\u2019s also a book that unlocks
+      the next room, but to get the book that\u2019s above you, you\u2019ll need
+      to brew a flying potion."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45970979311616
+    m_Localized: '- There are hidden buttons on the wall in this room; you need to
+      click them, and then a hidden compartment will open, revealing a lever that
+      unlocks the door.
+
+      
+
+      - There is also a bag here that you need
+      to cut open to get the key to the next room.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46168715579392
+    m_Localized: '- The room generally contains only a potion recipe and a bookshelf
+      that unlocks access to the next room; there are branches leading to three other
+      rooms.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46400069193728
+    m_Localized: "- You need to find a shovel and dig up the hammer, which you can
+      use to smash the upside-down pot in the corner of the room. Then you\u2019ll
+      get a key that opens the chests containing the knife you need to cut open the
+      sack.\n\n- The spot to dig is on the right, halfway from the entrance; there\u2019s
+      also a hint on the wall showing where to look for the spot to dig."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46604335992832
+    m_Localized: '- Immediately upon entering the room, there is a lockpick on the
+      right that opens the door. In the center of the cell, you''ll find levers and
+      a book listing the sequence for the three levers.
+
+
+      - The next lever
+      is behind the chair, and the fork on the table corresponds to the third and
+      final lever.
+
+
+      - Move the first and second levers down, and the last
+      one up.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46877116747776
+    m_Localized: "- The main feature is a cauldron where you brew potions that grant
+      you various effects.\n\n- Various ingredients are scattered around the room:
+      meat, twigs, leaves, wine, blood, acid, and water.\n\n- There is also a desk
+      that stores all your collected recipes and shows their contents and how to
+      make a given potion.\n\n- Right now, you\u2019re interested in the flying potion\n-
+      twigs, leaves, meat, wine, and water"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47317971652608
+    m_Localized: "- Take the lanterns, go through the maze, and look for the 5 items
+      needed to build the numeric keypad that opens the door to the next room.\n-
+      The first item is right at the start, in a chest as soon as you enter the maze.\n-
+      Pass one intersection by continuing straight ahead, pass three chairs and an
+      open barrel, then turn right; there you\u2019ll find a key on a chair and the
+      second item on a bookshelf.\n- Keep going straight without turning anywhere;
+      you\u2019ll find a bookshelf with four books, and there you\u2019ll find the
+      third item.\n- Keep going straight again, and there you must use the key on
+      the chest, which contains another item.\n- Now you have to go a very long way,
+      but if you keep staying close to the left wall, you\u2019ll eventually reach
+      the last item, which is in a chest.\n- Then, keep staying close to the left
+      wall, and you\u2019ll reach the exit of the maze; the light will turn off automatically
+      when you get there."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47784936099840
+    m_Localized: '- In the middle of the room is a workbench; there, you must build
+      a numeric keypad to mount on the wall.
+
+
+      - On the wall are symbols seen
+      in the maze; calculate their vertices and enter them one by one into the numeric
+      keypad.
+
+      -3407'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48091367755776
+    m_Localized: '- The book with the Morse code is in the bottom drawer right after
+      you go up the stairs.
+
+      
+
+      - The statues have books that describe
+      their positions. You MUST start by reading the book next to the seated man
+      statue because it explains what the horse statue should do, and once you position
+      the horse statue correctly, the book next to the horse will show you the next
+      statue and its position, and so on.
+
+      
+
+      - Once you solve the puzzle
+      with the statues, they will show you the location of a hidden button in the
+      wall. When you click it, the wall will slide open to reveal the Kryptex.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48312529211392
+    m_Localized: 'Correct positions of the statues
+
+      - Seated male statue -
+      N
+
+      - Horse statue - E
+
+      - Female statue with arms outstretched -
+      N
+
+      - Statue of a man praying - W
+
+      - Statue of a man with a crown
+      - S
+
+      - Female statue with arms at her sides - E
+
+      - Statue of a
+      woman with her arm bent at the elbow - S'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48793477468160
+    m_Localized: "- Each statue has red buttons on it, and these emit a Morse code
+      signal that you can decipher using the book. They are activated only after
+      you solve the statue puzzle.\r\n\r\n- The correct sequence of symbols, starting
+      from the left in the kryptex\n\n      <sprite name=\"Code Morse Correct symbols_3\"><sprite
+      name=\"Code Morse Correct symbols_4\"><sprite name=\"Code Morse Correct symbols_5\"><sprite
+      name=\"Code Morse Correct symbols_6\"><sprite name=\"Code Morse Correct symbols_0\"><sprite
+      name=\"Code Morse Correct symbols_1\"><sprite name=\"Code Morse Correct symbols_2\">\n\n-
+      You must confirm this sequence using the button on the counter located in front
+      of the Kryptex"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49235393531904
+    m_Localized: "- Mirrors that reflect a beam of light.\r\n- You need to direct
+      that beam toward the crystal located just above the door\u2014the large blue
+      crystal."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49836672176128
+    m_Localized: 'A huge hall with many hidden puzzles. 20 of them, to be exact.
+
+      
+
+      Climb
+      the ladder and search the cabinets to find papyri, which are clues to the first
+      puzzles you''ll be able to access.
+
+      
+
+      - Puzzle with 12 rectangles
+
+      Press
+      the corresponding rectangles to open two gates.
+
+      
+
+      - Puzzle with
+      swords
+
+      You must place four swords in the appropriate slots next to
+      the shields and other swords on the wall.
+
+      
+
+      Where there are
+      many shelves with various items, you must find papyrus that will allow you
+      to solve puzzles with "up-down" buttons.
+
+      
+
+      - Puzzle with "up-down"
+      buttons
+
+      The sequence of this puzzle is: down, up, down, up, down, down,
+      up
+
+      
+
+      - PIPES PUZZLES
+
+      
+
+      - Skull and Bones
+
+      You
+      must move the bones and skull to the correct position, indicated by the same
+      bone and skull symbol.
+
+      
+
+      - Sphere and Spinning Object Puzzle
+
+      You
+      must get the sphere to the end of the maze.
+
+      
+
+      - 18-Gear Puzzle
+
+      You
+      must create a path from these gears and pipes from the upper arrow to the lower
+      water canisters. You must create three separate closed circuits that lead to
+      separate water canisters.
+
+      
+
+      - Clock Puzzle
+
+      The currency
+      symbols correspond to the Roman numerals on the clock. The same Roman numerals
+      are on the pedestal below the clock. When you hold the appropriate symbol,
+      you can examine it and see what symbol it represents. You can then match it
+      to the corresponding pedestal, which is symbolized by the same Roman numeral
+      as the currency symbol on the clock.
+
+      
+
+      - 4x9 Button Puzzle
+
+      The
+      pipe and the books contain hidden symbols and their numbering, which you must
+      reflect in this puzzle.
+
+      TIHL
+
+      
+
+      - Safe Puzzle
+
+      You
+      must enter the correct code: right 13 left 35 right 72 left 5
+
+      
+
+      -
+      Hidden Button Puzzle
+
+      In the bookshelf, after you remove the books,
+      hidden buttons and symbols next to them will appear, which are geometric figures
+      with the appropriate number of vertices. In the center, you''ll find instructions
+      that there are N-2 vertices. This means you subtract 2 from the number of vertices
+      on the symbol next to the button and click the buttons that many times. The
+      order in which you click the buttons is also important, as indicated by arrows.
+      To see these symbols and faces, you need to put on goggles.
+
+      
+
+      -
+      Pickaxe Puzzle
+
+      You need to use the pickaxe on the wall to reach a hidden
+      alcove in the wall where the goggles are located. The wall you can destroy
+      is located between the bookshelves, the safe, and the pipes in the corner of
+      the room.
+
+      
+
+      - Goggles and Hidden Symbol Puzzle
+
+      When
+      you put on the goggles, you''ll start to see the symbols on the moving tiles.
+      There are four of these tiles, and each has an arrow pointing in a different
+      direction to the wall with the symbols. But to solve the puzzle, you need to
+      choose a symbol that is NOT on the wall and select it.
+
+      
+
+      - Skeleton
+      and Knight Puzzle
+
+      You must place the corresponding puzzle pieces in
+      the correct spots on the painting.
+
+      The knight painting at the top must
+      have a mace.
+
+      The knight painting at the bottom must have a sword.
+
+      The
+      skeleton painting on the left must have an axe and a helmet.
+
+      The skeleton
+      painting on the right must have a dagger and a Viking helmet with horns.
+
+      
+
+      -
+      Gear Puzzle
+
+      You must match the color of the door to the other color
+      on another gear. If each color connects with a different color, the door will
+      open.
+
+      
+
+      - Furniture Puzzle
+
+      You must lift the furniture
+      with the arrow to the spot where the arrow is on the ground.
+
+      
+
+      -
+      Dark Puzzle
+
+      You must discover the sequence of the green fire in the
+      distance and read it in the book. safdsadfsadfsafsdfsafsadfsadafs
+
+      
+
+      -
+      Scale Puzzle
+
+      You must balance the scale so that it shows the same weight
+      on the left and right sides. There are 5 objects you can place on the scale,
+      but you only need to place 3 of them, and the scale will show the same weight
+      on the left and right sides.
+
+      
+
+      Weight, Cup, and Nail.
+
+      
+
+      -
+      Diode Puzzle
+
+      All diodes must be lit.
+
+      
+
+      - Two Brothers
+      Puzzle
+
+      The brothers lie or tell the truth, and the large statues of
+      ABDI and ABDA have banners above them that describe something. You must look
+      for these chests, bookshelves, prison cells, and hidden rooms.
+
+      The
+      solution is left, right, right, left, right.
+
+      One chest is located right
+      in front of the brothers'' statues. It says it''s true.
+
+      The second
+      chest is located right in front of the prison entrance. He says it''s a lie.
+
+      There''s
+      a chest in the prison, and we don''t know what''s inside. We can''t see, so
+      it''s a lie.
+
+      On the shelf are only books and a candlestick, so it''s
+      true.
+
+      And in the hidden room, there''s a chalice, so it''s true.
+
+      Each
+      hidden item has a symbol next to it, the same as the one on the banner.
+
+      
+
+      -
+      Mirror Puzzle
+
+      You must guide a beam of light to the appropriate crystal,
+      located above the door.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 50607581057024
+    m_Localized: 'Another larger room with lots of puzzles. I counted 16 of them.
+
+      Search
+      the entire room because there are many items you can pick up without solving
+      any puzzles; you''ll need them later. It''s very important to focus on the
+      card symbols: Heart, Diamond, Cross, and Spade.
+
+      
+
+      - Candlestick
+      Puzzle
+
+      The first puzzle requires you to read a book and notice that
+      there are larger letters in various places, which tells you to pull the candlestick
+      above the door.
+
+      
+
+      - Main Picture Puzzle
+
+      You must arrange
+      the five symbols on the painting, which you will read about in the papyri and
+      books while solving the other puzzles in this room.
+
+      
+
+      - Connecting
+      12 Dots Puzzle
+
+      You must connect all the dots to create a closed circuit.
+
+      
+
+      -
+      Block Puzzle
+
+      You must cover all the squares so that there are no empty
+      squares.
+
+      
+
+      - Crowbar Puzzle
+
+      You must take the crowbar
+      and use it to open the broken cabinet.
+
+      
+
+      - Dice Puzzle
+
+      You
+      must move two matching dice to their corresponding color-coded locations.
+
+      
+
+      -
+      6 Wheels Puzzle
+
+      You must copy the order of the symbols as shown on
+      the banners. The color-coded banners indicate which wheel has which symbol.
+      They are arranged from left to right on the wall.
+
+      
+
+      - Card Symbol
+      Puzzle
+
+      You must copy the same pattern of symbols, but notice that the
+      pattern is wobbly because it broke from the chain, and you must arrange it
+      correctly.
+
+      
+
+      - Pressure Plate Puzzle
+
+      You are given two
+      different torn pages that completely give you the sequence in which you must
+      press the pressure plates.
+
+      
+
+      - Arrow Puzzle
+
+      You must
+      reproduce the correct sequence of arrow movements from the first arrow to the
+      last row.
+
+      
+
+      - Bell Puzzle
+
+      Each bell has a model of a
+      symbol from a card, and the symbols of these cards are revealed on the walls
+      in the order given in the papyrus you unlocked.
+
+      
+
+      - Terrain
+      Puzzle
+
+      You must pay attention to the hints written on the walls. They
+      will guide you as to which symbol must be in which place in the terrain. These
+      symbols are also compared in the order shown on the wall when the gates are
+      revealed.
+
+      
+
+      - 6 Rectangle Puzzle
+
+      You must slide each
+      rectangle out of the puzzle, but be careful because they are interlocked, and
+      you must pull them out one by one, clearing the path for another rectangle.
+
+      
+
+      -
+      3 Symbol Puzzle
+
+      You must find 3 symbols in this room, insert them into
+      the puzzle, and arrange the symbol sequence.
+
+      
+
+      - Maze Puzzle
+
+      You
+      must guide an object through the maze to the location indicated on the ceiling.
+
+      
+
+      -
+      16 Dot Puzzle
+
+      You must make all the dots turn on.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 50788598829056
+    m_Localized: First Room
+    m_Metadata:
+      m_Items: []
+  - m_Id: 50866474471424
+    m_Localized: Second Room
+    m_Metadata:
+      m_Items: []
+  - m_Id: 50867871174656
+    m_Localized: Third Room
+    m_Metadata:
+      m_Items: []
+  - m_Id: 50868454182912
+    m_Localized: Fourth Room
+    m_Metadata:
+      m_Items: []
+  - m_Id: 50868856836096
+    m_Localized: Fifth Room
+    m_Metadata:
+      m_Items: []
+  - m_Id: 50869435650048
+    m_Localized: Sixth Room
+    m_Metadata:
+      m_Items: []
+  - m_Id: 50869867663360
+    m_Localized: Seventh Room
+    m_Metadata:
+      m_Items: []
+  - m_Id: 50870274510848
+    m_Localized: Eighth Room
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51061098565632
+    m_Localized: Ninth Room
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51063866806272
+    m_Localized: Tenth Room
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51064370122752
+    m_Localized: Eleventh Room
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51064881827840
+    m_Localized: Twelfth Room
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 6739794259712409707
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 
+        m_SharedEntries:
+        - id: 19533178097664
+        - id: 26665570304

@@ -126,6 +126,11 @@ public class PlayerControlManager : MonoBehaviour
         playerBehaviour.disablePlayer = false;
     }
 
+    public void ClearPlayerInputState()
+    {
+        playerBehaviour.ClearPlayerInputState();
+    }
+
     #region AlimentsEffects
     public void ApplyWaterBucketEffect()
     {

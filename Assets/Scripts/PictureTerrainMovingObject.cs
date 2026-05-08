@@ -153,6 +153,8 @@ public class PictureTerrainMovingObject : MonoBehaviour
         if (nextPoint == null) yield break;
         if (!nextPoint.TryOccupy(this)) yield break;
 
+        Services.Audio.PlaySFX("SnapToPosition");
+
         if (currentPoint != null)
             currentPoint.Release(this);
 

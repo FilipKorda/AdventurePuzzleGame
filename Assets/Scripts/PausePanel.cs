@@ -10,6 +10,8 @@ public class PausePanel : MonoBehaviour
     [SerializeField] private InputActionReference pauseAction;
     [SerializeField] private GameObject[] buttonObjects;
 
+    [SerializeField] private GameObject hintsPanel;
+
     private bool isPaused;
     private bool allowPause = true;
 
@@ -92,6 +94,18 @@ public class PausePanel : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene(mainMenuSceneName);
+    }
+
+    public void ActiveHintsPanel()
+    {
+        hintsPanel.SetActive(true);
+        pausePanel.SetActive(false);
+    }
+
+    public void DeactiveHintsPanel()
+    {
+        hintsPanel.SetActive(false);
+        pausePanel.SetActive(true);
     }
 
     public void SetAllowPause(bool value)

@@ -93,6 +93,11 @@ public class OnePillarPuzzleManager : MonoBehaviour
         horizontalStartPos = movingHorizontalCube.transform.localPosition;
         horizontal1StartPos = movingHorizontalCube1.transform.localPosition;
         horizontal2StartPos = movingHorizontalCube2.transform.localPosition;
+
+        foreach (var rotatingPillar in rotatingPillars)
+        {
+            rotatingPillar.canRotateMoveSphereOnePillarPuzzle = false;
+        }
     }
 
     private void Update()

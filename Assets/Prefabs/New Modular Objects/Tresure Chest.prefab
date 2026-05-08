@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 4243558370894002765}
   - component: {fileID: 3310076122460666161}
   - component: {fileID: 4148943658337358059}
+  - component: {fileID: 5239351543118736685}
   m_Layer: 0
   m_Name: chest top (1)
   m_TagString: Untagged
@@ -217,6 +218,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5239351543118736685
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2912898112125854183}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.013545678, y: 0.009539141, z: 0.006162314}
+  m_Center: {x: -0.0000000021343987, y: -0.00476957, z: 0.00173684}
 --- !u!1 &4182230521748492745
 GameObject:
   m_ObjectHideFlags: 0
@@ -228,6 +250,7 @@ GameObject:
   - component: {fileID: 1643716483485644467}
   - component: {fileID: 4421346006875835263}
   - component: {fileID: 8354806071782683448}
+  - component: {fileID: 1894255996579085817}
   m_Layer: 0
   m_Name: chest bottom (1)
   m_TagString: Untagged
@@ -309,3 +332,24 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1894255996579085817
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4182230521748492745}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.012828457, y: 0.0093223415, z: 0.0041849106}
+  m_Center: {x: -0.0000000020560347, y: 0.0006616551, z: -0.0022500905}
