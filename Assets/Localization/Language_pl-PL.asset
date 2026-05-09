@@ -90,6 +90,22 @@ MonoBehaviour:
     m_Localized: Podpowiedzi
     m_Metadata:
       m_Items: []
+  - m_Id: 35139042385612800
+    m_Localized: "Jeste\u015B pewny?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35139152439955456
+    m_Localized: "Chcesz zobaczy\u0107 porady?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35139247105396736
+    m_Localized: Tak
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35139266248200192
+    m_Localized: Nie
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -124,7 +124,7 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
-  itemSprite: {fileID: 21300000, guid: f35acba215cd7b24dbc613b8c2bd5f5c, type: 3}
+  itemSprite: {fileID: 21300000, guid: 2e244d7e3b9f50d40855c1f7b904fc21, type: 3}
   itemId: 1
   itemIdbyItemId: 1
   pinNumber: 0
@@ -249,6 +249,9 @@ MonoBehaviour:
   rotatingCirclePuzzle: {fileID: 0}
   twelveDotPuzzle: {fileID: 0}
   lastPuzzle: {fileID: 0}
+  cointAmount: 0
+  slotMachineManager: {fileID: 0}
+  isBetUp: 0
   references:
     version: 2
     RefIds: []

@@ -42,122 +42,144 @@ MonoBehaviour:
       Zagadka z mieczami\r\nMusisz umie\u015Bcic 4 miecze w odpowiednich miejsach
       obok tarcz i innych mieczy kt\xF3re znajduj\u0105 si\u0119 na \u015Bcianie.\r\n\r\nTam
       gdzie znajduj\u0119 sie wiele p\xF3\u0142ek z wieloma przedmiotami, musisz
-      znale\u017A\u0107 papirus kt\xF3ry umo\u017Cliwi ci rozwi\u0105zanie zagadkmi
+      znale\u017A\u0107 papirus kt\xF3ry umo\u017Cliwi ci rozwi\u0105zanie zagadki
       z przyciskami \"g\xF3ra-d\xF3\u0142\"\r\n\r\n- Zagadka z przyciskami \"g\xF3ra-d\xF3\u0142\"\r\nSekwencja
       tej zagadki to - d\xF3\u0142 g\xF3ra d\xF3\u0142 g\xF3ra g\xF3ra d\xF3\u0142
-      d\xF3\u0142 g\xF3ra d\xF3\u0142 g\xF3ra\r\n\r\n- ZAGADKI Z RURAMI\r\n\r\n-
-      Czaszka i Ko\u015Bci\r\nMusisz przesun\u0105\u0107 ko\u015Bci i czaszke na
-      odpowiednie miejsce sygnalizowan\u0119 tym samym symbolem ko\u015Bci i czaszki,\r\n\r\n-
+      d\xF3\u0142 g\xF3ra d\xF3\u0142 g\xF3ra.\r\n\r\nZAGADKI Z RURAMI\r\n\r\n- Czaszka
+      i Ko\u015Bci\r\nMusisz przesun\u0105\u0107 ko\u015Bci i czaszke na odpowiednie
+      miejsce sygnalizowan\u0119 tym samym symbolem ko\u015Bci i czaszki.\r\n\r\n-
       Zagadka z Kul\u0105 i kr\u0119c\u0105cym si\u0119 obiektem\r\nMusisz przedosta\u0107
       si\u0119 kula do ko\u0144ca labiryntu.\r\n\r\n- Zagadka z 18 z\u0119batkami\r\nMusisz
-      doprowadzi\u0107 \u015Bcie\u017Cke z tych z\u0119batek i rur od g\xF3rnej strz\u0142aki
-      do dolnych kanistr\xF3w z woda. Musisz stworzy\u0107 3 oddzieln\u0119 zamkni\u0119te
-      obwody kt\xF3re id\u0105 do osobnych karnistr\xF3w z woda.\r\n\r\n- Zagadka
-      z zegarem\r\nSymbole waluty s\u0105 odowiednikami rzymskich syfer na zegarze,
-      takie same rzymskie cyfry s\u0105 na piedestale pod zegarem, jak trzymasz odpowiedni
-      symbol to mo\u017Cesz go obejrze\u0107 i zobaczy\u0107 jaki symbol on posiada.
-      I dopasowa\u0107 go do odpowieniego piedesta\u0142u symbolizowanym t\u0105
-      sam\u0105 rzymsk\u0105 cyfr\u0105 co na zegarze symbol waluty.\r\n\r\n- Zagadka
-      z 4x9 przyciskami\r\nNa rurze jak i na ksi\u0105\u017Ckach s\u0105 ukryte symbole
-      i ich numeracja kt\xF3r\u0105 musisz odzwierceidli\u0107 na w tej zagadce.\r\nTIHL\r\n\r\n-
-      Zagadka z sejfem\r\nMusisz wpisa\u0107 odpowiedni kod - prawo 13 lewo 35 prawo
-      72 lewo 5\r\n\r\n- Zagadka ukrytych przycis\xF3w\r\nW regale z p\xF3\u0142kami
-      jak pozb\u0119dziesz si\u0119 ksi\u0105zek to poka\u017C\u0105 ci sie ukryte
-      przciski i symbole obok nich kt\xF3re s\u0105 figutami geometrycznymi z odpowiednia
-      ilo\u015Bci\u0105 wierzcho\u0142k\xF3w. Na \u015Brodku znajdziesz instrukcje
-      \u017Ce jest N-2, czyli odejmujesz 2 od liczby wierzcho\u0142k\xF3w na symbolu
-      przy przycisku i klikasz tyle razy w przyciski. Te\u017C jest wa\u017Cna kolejno\u015B\u0107
-      w ktorej kilkasz przyciski kt\xF3ra jest zaznaczona strza\u0142kami. \u017Beby
-      zobaczy\u0107 te sybole i buziki musisz za\u0142o\u017Cy\u0107 gogle.\r\n\r\n-
-      Zagadka z kilofem\r\nMusisz u\u017Cy\u0107 kilofa na \u015Bcianie \u017Ceby
-      dosta\u0107 si\u0119 do ykrytej wn\u0119ki w \u015Bcianie w kt\xF3rej znajduj\u0105
-      si\u0119 gogle. \u015Aciane kt\xF3r\u0105 mo\u017Cesz zburzy\u0107 znajduj\u0119
-      si\u0119 miedzy rega\u0142ami z ksi\u0105zkami i sejfem a rurami w k\u0105cie
-      pomieszczenia.\r\n\r\n- Zagadka z gogalmi i ukrytymui symbolami\r\nJak za\u0142o\u017Cysz
-      okulary to zaczenisz widzie\u0107 symbole kt\xF3re znjaduj\u0105 sie na przesuwaj\u0105cych
-      p\u0142ytakch. Takich p\u0142ytek jest 4 i ka\u017Cdy posiada swoj\u0105 strza\u0142k\u0119
-      kt\xF3ra pokazuj\u0119 inny kierunek k\xF3ry pokazuj\u0119 \u015Bcianie na
-      kt\xF3rej s\u0105 symbole. Ale \u017Ceby rozwi\u0105za\u0107 zagadk\u0119 musisz
-      wybra\u0107 wymbol k\xF3rego NIE MA na \u015Bcianie i go zaznaczy\u0107.\r\n\r\n-
-      Zadagka z puzlami szkieleta i rycerza\r\nMusisz umie\u015B\u0107i\u0107 odpowiednie
+      doprowadzi\u0107 \u015Bcie\u017Ck\u0119 z tych z\u0119batek i rur od g\xF3rnych
+      strza\u0142ek do dolnych kanistr\xF3w z woda. Musisz stworzy\u0107 3 oddzieln\u0119
+      zamkni\u0119te obwody kt\xF3re id\u0105 do osobnych karnistr\xF3w z woda.\r\n\r\n-
+      Zagadka z zegarem\r\nSymbole waluty s\u0105 odowiednikami rzymskich syfer na
+      zegarze, takie same rzymskie cyfry s\u0105 na piedestale pod zegarem, jak trzymasz
+      odpowiedni symbol to mo\u017Cesz go obejrze\u0107 i zobaczy\u0107 jaki symbol
+      on posiada. I dopasowa\u0107 go do odpowieniego piedesta\u0142u symbolizowanym
+      t\u0105 sam\u0105 rzymsk\u0105 cyfr\u0105 co na zegarze symbol waluty.\r\n\r\n-
+      Zagadka z 4x9 przyciskami\r\nNa rurze jak i na ksi\u0105\u017Ckach s\u0105
+      ukryte symbole i ich numeracja kt\xF3r\u0105 musisz odzwierciedli\u0107 na
+      w tej zagadce.\r\nRozwi\u0105zanie to TIHL\r\n\r\n- Zagadka z sejfem\r\nProsty
+      sejf kt\xF3ry dzia\u0142a jak prawdziwy sejf, kr\u0119cisz korb\u0105 w lewo
+      albo prawo.\r\nMusisz wpisa\u0107 odpowiedni kod - prawo 13 lewo 35 prawo 72
+      lewo 5\r\n\r\n- Zagadka ukrytych przycis\xF3w\r\nW regale z p\xF3\u0142kami
+      jak pozb\u0119dziesz si\u0119 ksi\u0105\u017Cek to poka\u017C\u0105 ci sie
+      ukryte przciski i symbole obok nich kt\xF3re s\u0105 figurami geometrycznymi
+      z odpowiednia ilo\u015Bci\u0105 wierzcho\u0142k\xF3w. Na \u015Brodku znajdziesz
+      instrukcje co robi\u0107 jest napisane N-2, czyli odejmujesz 2 od liczby wierzcho\u0142k\xF3w
+      na symbolu przy przycisku i klikasz tyle razy w przycisk. Te\u017C jest wa\u017Cna
+      kolejno\u015B\u0107 w kt\xF3rej klikasz przyciski kt\xF3ra jest zaznaczona
+      strza\u0142kami na instrukcji. \u017Beby zobaczy\u0107 te sybole i guziki musisz
+      za\u0142o\u017Cy\u0107 gogle.\r\n\r\n- Zagadka z kilofem\r\nMusisz u\u017Cy\u0107
+      kilofa na \u015Bcianie \u017Ceby dosta\u0107 si\u0119 do ukrytej wn\u0119ki
+      w \u015Bcianie w kt\xF3rej znajduj\u0105 si\u0119 gogle. \u015Aciane kt\xF3r\u0105
+      mo\u017Cesz zburzy\u0107 znajduj\u0119 si\u0119 miedzy rega\u0142ami z ksi\u0105\u017Ckami
+      i sejfem a rurami w k\u0105cie pomieszczenia.\r\n\r\n- Zagadka z gogalmi i
+      ukrytymui symbolami\r\nJak za\u0142o\u017Cysz okulary to zaczenisz widzie\u0107
+      symbole kt\xF3re znjaduj\u0105 sie na przesuwaj\u0105cych p\u0142ytakch. Takich
+      p\u0142ytek jest 4 i ka\u017Cdy posiada swoj\u0105 strza\u0142k\u0119 kt\xF3ra
+      pokazuj\u0119 inny kierunek k\xF3ry pokazuj\u0119 \u015Bcianie na kt\xF3rej
+      s\u0105 symbole. Ale \u017Ceby rozwi\u0105za\u0107 zagadk\u0119 musisz wybra\u0107
+      wymbol k\xF3rego NIE MA na \u015Bcianie i go zaznaczy\u0107.\r\n\r\n- Zadagka
+      z puzlami szkieleta i rycerza\r\nMusisz umie\u015B\u0107i\u0107 odpowiednie
       puzle w odpowienich miejscach na obrazi\u0119.\r\nObraz rycerza na g\xF3rze
-      musi mie\u0107 maczuge\r\nObraz rycerza na dole musi mie\u0107 miecz\r\nObraz
-      szkieleta po lewej musi mie\u0107 siekere i he\u0142m \r\nObraz szkieleta po
-      prawej musi mie\u0107 sztylet i he\u0142m wikinga z rogami \r\n\r\n- Zagadka
+      musi mie\u0107 maczuge.\r\nObraz rycerza na dole musi mie\u0107 miecz.\r\nObraz
+      szkieleta po lewej musi mie\u0107 siekere i he\u0142m.\r\nObraz szkieleta po
+      prawej musi mie\u0107 sztylet i he\u0142m wikinga z rogami.\r\n\r\n- Zagadka
       z z\u0119batkami\r\nW drzwaich musisz dopasowa\u0107 kolor do drugiego koloru
       na innej z\u0119batce, je\u017Celi ka\u017Cdy kolor \u0142\u0105czy si\u0119
-      z innym kolorem to drzwi si\u0119 otworz\u0105.\r\n\r\n- Zagadka z meblami\r\nMusisz
-      wynie\u015B\u0107 mebel z strz\u0142\u0105k\u0105 w miejscu gdzie jest strza\u0142ka
-      na ziemi.\r\n\r\n- Zagadka w ciemno\u015Bci\r\nMusisz odkry\u0107 jak\u0105
-      sekwencje pokazuj\u0119 zielony ogie\u0144 w oddali. I rozczyta\u0107 go w
-      ksi\u0105\u017Cce.\r\n  \n     <sprite name=\"Code Morse Correct symbols_6\"><sprite
-      name=\"Code Morse Correct symbols_0\"><sprite name=\"Code Morse Correct symbols_1\"><sprite
-      name=\"Code Morse Correct symbols_2\">\r\n\r\n- Zagadka z wag\u0105\r\nMusisz
-      wyr\xF3wna\u0107 wage \u017Ceby pokazywa\u0142a z lewej jak i prawej ten sam
-      ci\u0119\u017Car. Jest 5 obiekt\xF3w kt\xF3re mo\u017Cesz umie\u015Bcic na
-      wadz\u0119. ale wystarczy \u017Ce tylko 3 z nich w\u0142o\u017Cysz i waga bedzie
-      pokazywa\u0107 t\u0105 sam\u0105 wage z lewej i prawej strony. \r\nOdwa\u017Cnik,
-      Kubek i gw\xF3\u017Ad\u017A.\r\n\r\n- Zagadka z diodami\r\nWszyskie diody musz\u0105
-      swie\u0107i\u0107.\r\n\r\n- Zagadka 2 braci\r\nBracia k\u0142ami\u0105 lub
-      m\xF3wi\u0105 prawde i wielkie pos\u0105gi ABDI i ABDA, maj\u0105 nad sob\u0105
-      banery kt\xF3re co\u015B opisuj\u0105 i musisz szuka\u0107 tych skrzy\u0144,
-      rega\u0142\xF3w z ksi\u0105zkami, cel wieziennych i ukrytych pomieszcze\u0144.\r\nRozi\u0105zanie
-      to lewo Prawo Prawo Lewo Prawo.\r\nJedna skrzynia znajduj\u0119 sie tu\u017C
-      przed statu\u0142ami braci. M\xF3wi ze to prawda.\r\nDruga skrzynia znajduj\u0119
-      si\u0119 tu\u017C przed wej\u015Bciem do wiezienia.  M\xF3wi \u017Ce to k\u0142amstwo.\r\nW
-      wi\u0119zieniu jest skrzynia w kt\xF3rej nie wiemu co jest. Bo nie widzimy
-      wie\u0107 to k\u0142amstwo\r\nNa p\xF3\u0142ce znajuj\u0105 sie tylko ksiazki
-      i \u015Bwiecznik wiec to prawda\r\nI w ukrytym pomieszczeniu jet kielich, wie\u0107
-      to prawda.\r\nKa\u017Cdy ukryty element posiada symbol ko\u0142o siebie taki
-      sam jaki jest na banerze.\r\n\r\n- Zagadka z lustrami\r\nMusisz doprowadzi\u0107
-      promie\u0144 \u015Bwiat\u0142a do odpowiedniego kryszta\u0142u kt\xF3ry znajduj\u0119
-      si\u0119 nad drzwiami."
+      z innym kolorem to drzwi si\u0119 otworz\u0105.\r\n\r\n- Zagadka z meblami\r\nPrzesuwasz
+      meble prz\xF3d, ty\u0142, lewo albo prawo.\r\nMusisz wynie\u015B\u0107 mebel
+      z strz\u0142\u0105k\u0105 w miejscu gdzie jest strza\u0142ka na ziemi.\r\n\r\n-
+      Zagadka w ciemno\u015Bci\r\nMusisz odkry\u0107 jak\u0105 sekwencje pokazuj\u0119
+      2 zielone p\u0142omienie ognia w oddali. One pokazuj\u0105 4 sekwencje ruchu.
+      I musisz rozczyta\u0107 go w ksi\u0105\u017Cce.\r\n  \r\n     <sprite name=\"Code
+      Morse Correct symbols_6\"><sprite name=\"Code Morse Correct symbols_0\"><sprite
+      name=\"Code Morse Correct symbols_1\"><sprite name=\"Code Morse Correct symbols_2\">\r\n\r\n-
+      Zagadka z wag\u0105\r\nMusisz wyr\xF3wna\u0107 wage \u017Ceby pokazywa\u0142a
+      z lewej jak i prawej ten sam ci\u0119\u017Car. Jest 5 obiekt\xF3w kt\xF3re
+      mo\u017Cesz umie\u015Bcic na wadz\u0119. ale wystarczy \u017Ce tylko 3 z nich
+      w\u0142o\u017Cysz i waga bedzie pokazywa\u0107 t\u0105 sam\u0105 wage z lewej
+      i prawej strony. \r\nOdwa\u017Cnik, Kubek i gw\xF3\u017Ad\u017A.\r\n\r\n- Zagadka
+      z diodami\r\nWszyskie diody musz\u0105 swie\u0107i\u0107.\r\n\r\n- Zagadka
+      2 braci\r\nBracia k\u0142ami\u0105 lub m\xF3wi\u0105 prawde i wielkie pos\u0105gi
+      ABDI i ABDA, maj\u0105 nad sob\u0105 banery kt\xF3re co\u015B opisuj\u0105
+      i musisz szuka\u0107 tych skrzy\u0144, rega\u0142\xF3w z ksi\u0105zkami, cel
+      wieziennych i ukrytych pomieszcze\u0144.\r\nRozi\u0105zanie to lewo Prawo Prawo
+      Lewo Prawo.\r\nJedna skrzynia znajduj\u0119 sie tu\u017C przed statu\u0142ami
+      braci. M\xF3wi ze to prawda.\r\nDruga skrzynia znajduj\u0119 si\u0119 tu\u017C
+      przed wej\u015Bciem do wiezienia.  M\xF3wi \u017Ce to k\u0142amstwo.\r\nW wi\u0119zieniu
+      jest skrzynia w kt\xF3rej nie wiemu co jest. Bo nie widzimy wie\u0107 to k\u0142amstwo\r\nNa
+      p\xF3\u0142ce znajuj\u0105 sie tylko ksiazki i \u015Bwiecznik wiec to prawda\r\nI
+      w ukrytym pomieszczeniu jet kielich, wie\u0107 to prawda.\r\nKa\u017Cdy ukryty
+      element posiada symbol ko\u0142o siebie taki sam jaki jest na banerze.\r\n\r\n-
+      Zagadka z lustrami\r\nMusisz doprowadzi\u0107 promie\u0144 \u015Bwiat\u0142a
+      do odpowiedniego kryszta\u0142u kt\xF3ry znajduj\u0119 si\u0119 nad drzwiami."
     m_Metadata:
       m_Items:
       - rid: 6739794259712409708
   - m_Id: 32678076502016
-    m_Localized: "Kolejny wiekszy pok\xF3j z du\u017C\u0105 ilo\u015Bci\u0105 zagadek.
-      Naliczy\u0142em ich 16.\r\nPrzeszukaj ca\u0142\u0105 sale bo jest wiele przedmiot\xF3w
-      kt\xF3re mo\u017Cesz podnie\u015B\u0107 nie rozwi\u0105zuj\u0105c \u017Cadej
-      zagadki one b\u0119d\u0105 ci potrzebne p\xF3\u017Aniej. Bardzo wa\u017Cna
-      sprawa skup si\u0119 na symbolach karcianych. Serce , diament, krzy\u017C i
-      pik.\r\n\r\n- Zagadka \u015Awiecznik\r\nPierwsza zagadka jest taka \u017Ce
-      musisz przeczyta\u0107 ksi\u0105\u017Cke i zauwazy\u0107\u017Ce s\u0105 wieksze
-      litery w r\xF3\u017Cnych miejsach. kt\xF3re m\xF3wi ci ze musisz poci\u0105gn\u0105\u0107
-      za \u015Bwiecznik kt\xF3ry znajduj\u0119 si\u0119 nad drzwami.\r\n\r\n- G\u0142\xF3wna
-      Zagadka z obrazem\r\nMusisz ustawi\u0107 odpowiednie 5 symboli na obrazie kt\xF3re
-      przeczytasz w papirusach i ksi\u0105\u017Ckach podczas gdy b\u0119dziesz rozwi\u0105zywa\u0107
-      inne zagadki w tym pokoju.\r\n\r\n- Zagadka \u0141\u0105czenie 12 kropek\r\nMusisz
-      po\u0142aczy\u0107 wszyskie kropki tak \u017Ceby powsta\u0142 zamkn\u0119ty
-      obw\xF3d.\r\n\r\n- Zagadka Blokowa\r\nMusisz zakry\u0107 wszyskie kwadraty
-      \u017Ceby nie by\u0142o pustego pola.\r\n\r\n- Zagadka \u0141om\r\nMusisz zebra\u0107
-      \u0142om i otworzy\u0107 tym \u0142omem zepsut\u0105 szafk\u0119.\r\n\r\n-
-      Zagadka z kostkami\r\nMusisz przeprowadzi\u0107 2 odpowiedni\u0119 kostki na
-      odpowiednie miesjca. zaznaczone kolorystycznie.\r\n\r\n- Zagadka 6 k\xF3\u0142\r\nMusisz
-      odwzorowa\u0107 kolejno\u015Bc symboli taki jaki jest na banaerach, kolorystycznie
-      banery pokazuj\u0105 kt\xF3re ko\u0142o ma jaki symbol, s\u0105 one ustawione
-      od lewej do prawej na \u015Bcienie.\r\n\r\n- Zagadka z symbolami kart\r\nMusisz
-      odwzorowa\u0107 taki sam wz\xF3r symboli, ale zauwa\u017C \u017Ce wz\xF3r sie
-      chybocze bo si\u0119 zerwa\u0142 z \u0142ancuha i musisz odpowiednio go u\u0142o\u017Cy\u0107.\r\n\r\n-
-      Zagadka p\u0142ytek naciskowych\r\nDosta\u0142e\u015B 2 r\xF3\u017Cne porwane
-      strony kt\xF3re w ca\u0142o\u015Bci daj\u0105 ci sekwencje w kt\xF3rej musisz
-      nacisn\u0105c p\u0142ytki naciskowe.\r\n\r\n- Zagadka strza\u0142ek\r\nMusisz
-      odwzorowa\u0107 odpowedni\u0105 sekwencje ruchu strz\u0105\u0142ek od 1 strz\u0142aki
+    m_Localized: "Kolejny wi\u0119kszy pok\xF3j z du\u017C\u0105 ilo\u015Bci\u0105
+      zagadek. Naliczy\u0142em dok\u0142adnie 16 zagadek.\r\nPrzeszukaj ca\u0142\u0105
+      sale bo jest wiele przedmiot\xF3w kt\xF3re mo\u017Cesz podnie\u015B\u0107 nie
+      rozwi\u0105zuj\u0105c \u017Cadej zagadki one b\u0119d\u0105 ci potrzebne p\xF3\u017Aniej.
+      Bardzo wa\u017Cna sprawa skup si\u0119 na symbolach karcianych. Serce, diament,
+      krzy\u017C i pik.\r\n\r\n- Zagadka \u015Awiecznik\r\nPierwsza zagadka jest
+      taka \u017Ce musisz przeczyta\u0107 ksi\u0105\u017Cke i zauwa\u017Cy\u0107
+      \u017Ce s\u0105 wieksze litery w r\xF3\u017Cnych miejsach kt\xF3re m\xF3wi\u0105
+      ci \u017Ce musisz poci\u0105gn\u0105\u0107 za \u015Bwiecznik kt\xF3ry znajduj\u0119
+      si\u0119 nad drzwami.\r\n\r\n- G\u0142\xF3wna Zagadka z obrazem\r\nMusisz ustawi\u0107
+      odpowiednie 5 symboli na obrazie kt\xF3re przeczytasz w papirusach i ksi\u0105\u017Ckach
+      podczas gdy b\u0119dziesz rozwi\u0105zywa\u0107 inne zagadki w tym pokoju.\r\nRozwi\u0105zanie
+      to Kret, u\u015Bmiechni\u0119ta buzia, maczuga, \u017C\xF3\u0142ty tulipan,
+      czarny medalion\r\n\r\n- Zagadka \u0141\u0105czenie 12 kropek\r\nMusisz po\u0142\u0105czy\u0107
+      wszyskie kropki tak \u017Ceby powsta\u0142 zamkn\u0119ty obw\xF3d. Jest wiele
+      sekwencji rozwi\u0105zania tej zagadki. Co najmniej 4 r\xF3\u017Cne sekwencje
+      po\u0142\u0105cze\u0144, ale mo\u017Cliwe \u017Ce jest ich wi\u0119cej. xd\r\n\r\n-
+      Zagadka Blokowa\r\nMusisz wcisn\u0105\u0107 wszyskie kwadratowe przyciski tak
+      \u017Ceby ka\u017Cdy przycisk by\u0142 wci\u015Bni\u0119ty, czerwone pola s\u0105
+      wy\u0142\u0105czone z zagadki i blokuj\u0105 ci poruszanie si\u0119.\r\n\r\n-
+      Zagadka \u0141om\r\nMusisz zabra\u0107 \u0142om i otworzy\u0107 tym \u0142omem
+      zepsut\u0105 szafk\u0119 w kt\xF3rej znajduj\u0119 si\u0119 potrzebny przedmiot
+      do rozwi\u0105zania innej zagadki.\r\n\r\n- Zagadka z kostkami\r\nMusisz przeprowadzi\u0107
+      2 kostki na odpowiednie miesjca. S\u0105 one zaznaczone kolorystycznie. Dolna
+      kostka musi znale\u017A\u0107 si\u0119 na g\xF3rze planszy a g\xF3rna kostka
+      na dole planszy.\r\n\r\n- Zagadka 6 k\xF3\u0142\r\nMusisz odwzorowa\u0107 kolejno\u015Bc
+      symboli taki jaki jest na banaerach, kolorystycznie banery pokazuj\u0105 kt\xF3re
+      ko\u0142o ma jaki symbol, s\u0105 one ustawione od lewej do prawej na \u015Bcienie
+      jak i w zagadce.\r\n\r\n- Zagadka z symbolami kart\r\nMusisz odwzorowa\u0107
+      taki sam wz\xF3r symboli, ale zauwa\u017C \u017Ce wz\xF3r sie chybocze bo si\u0119
+      zerwa\u0142 z \u0142a\u0144cucha i musisz odpowiednio go u\u0142o\u017Cy\u0107
+      bior\u0105c pod uwag\u0119 rotacje wisz\u0105cego panelu.\r\n\r\n- Zagadka
+      p\u0142ytek naciskowych\r\nDosta\u0142e\u015B 2 r\xF3\u017Cne porwane strony
+      kt\xF3re w ca\u0142o\u015Bci daj\u0105 ci sekwencje w kt\xF3rej musisz nacisn\u0105\u0107
+      p\u0142ytki naciskowe.\r\nRozwi\u0105zanie to pierwsza p\u0142ytka naciskowa
+      znajduj\u0119 si\u0119 ko\u0142o dzwonk\xF3w, kolejna p\u0142ytka jest od razu
+      przy drzwiach wej\u015Bciowych do tego pokoju, a ostatnia znajduj\u0119 si\u0119
+      przy bramie wyj\u015Bciowej z tego pokoju.\r\n\r\n- Zagadka strza\u0142ek\r\nMusisz
+      odwzorowa\u0107 odpowiedni\u0105 sekwencje ruchu strza\u0142ek od 1 strza\u0142ki
       do ostatniej pokolei.\r\n\r\n- Zagadka dzwon\xF3w\r\nKa\u017Cdy dzwon ma przy
       sobie model symbolu z karty i na \u015Bcianach ujawniaj\u0105 sie symbole tych
-      kart w kolejno\u015Bci kt\xF3ra jest podana w papirusie kt\xF3ry odblokowa\u0142e\u015B.\r\n\r\n-
-      Zagadka z terenem \r\nMusisz patrze\u0107 na podpoweidzi kt\xF3re s\u0105 napisan\u0119
-      na \u015Bcianch one ciebie pokieruj\u0105 kt\xF3ry symbol musi by\u0107 na
-      kt\xF3rym miejscu w terenie, te\u017C te symbole s\u0105 por\xF3wnane w kolejno\u015Bci
-      kt\xF3ra jest na \u015Bciane gdy bramy si\u0119 ods\u0142onia.\r\n\r\n- Zagadka
-      6 prostok\u0105t\xF3w\r\nMusisz wysun\u0105\u0107 ka\u017Cdy prostok\u0105t
-      z zagadki, ale uwa\u017Caj bo one sie bloku\u0105 o siebie i musisz je pokoeli
-      wyci\u0105ga\u0107 udostepniaj\u0105\u0107 sobie droge dla innego prostok\u0105ta.\r\n\r\n-
-      Zagadka 3 symboli\r\nMusisz znale\u017A\u0107 w tym pokoju 3 symbole, w\u0142ozy\u0107
-      je do zagadki  i u\u0142o\u017Cy\u0107 sekwencje symboli.\r\n\r\n- Zagadka
-      Labiryntu\r\nMusisz przeprowadzi\u0107 obiekt przez labirynt do miejsca ktory
-      jest pokazany na suficie.\r\n\r\n- Zagadka 16 kropek\r\nMusisz sprawi\u0107
-      \u017Ceby wszyskie kropki by\u0142y w\u0142\u0105czone.\r\n"
+      kart w kolejno\u015Bci kt\xF3ra jest podana w papirusie kt\xF3ry odblokowa\u0142e\u015B
+      wcze\u015Bniej.\nKolejno\u015B\u0107 symboli przy dzwonach w kt\xF3re musisz
+      uderzy\u0107:\r\n     <sprite name=\"More Symbols For Text_5\"><sprite name=\"More
+      Symbols For Text_3\"><sprite name=\"More Symbols For Text_2\"><sprite name=\"More
+      Symbols For Text_4\">\r\n\r\n- Zagadka z terenem \r\nMusisz patrze\u0107 na
+      podpowiedzi kt\xF3re s\u0105 napisan\u0119 na \u015Bcianch one ciebie pokieruj\u0105
+      kt\xF3ry symbol musi by\u0107 na kt\xF3rym miejscu w terenie, te\u017C te symbole
+      s\u0105 por\xF3wnane w kolejno\u015Bci kt\xF3ra jest na \u015Bciane gdy bramy
+      si\u0119 otworz\u0105.\r\n\r\n- Zagadka 6 prostok\u0105t\xF3w\r\nMusisz wysun\u0105\u0107
+      ka\u017Cdy prostok\u0105t z zagadki, ale uwa\u017Caj bo one sie blokuj\u0105
+      o siebie i musisz je po kolei wyci\u0105ga\u0107 udost\u0119pniaj\u0105\u0107
+      sobie droge dla innego prostok\u0105ta.\r\n\r\n- Zagadka 3 symboli\r\nMusisz
+      znale\u017A\u0107 w tym pokoju 3 symbole, w\u0142o\u017Cy\u0107 je do zagadki
+      i u\u0142o\u017Cy\u0107 sekwencje symboli.\r\nRozwi\u0105zanie to:\r\n    
+      <sprite name=\"More Symbols For Text_0\"><sprite name=\"More Symbols For Text_1\"><sprite
+      name=\"More Symbols For Text_0\">\r\n\r\n- Zagadka Labiryntu\r\nMusisz przeprowadzi\u0107
+      obiekt przez labirynt do miejsca kt\xF3ry jest pokazany na suficie.\r\n\r\n-
+      Zagadka 16 kropek\r\nMusisz sprawi\u0107 \u017Ceby wszyskie kropki by\u0142y
+      w\u0142\u0105czone.\r\n"
     m_Metadata:
       m_Items: []
   - m_Id: 45619555356672

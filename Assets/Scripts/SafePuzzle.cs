@@ -9,7 +9,7 @@ public class SafePuzzle : MonoBehaviour
     [SerializeField] private float verticalOffset = 0f;
     [SerializeField] private float horizontalOffset = 0f;
     [SerializeField] private Canvas blurCanvas;
-    [SerializeField] private PlayerBehaviour playerBehaviour;
+    //[SerializeField] private PlayerBehaviour playerBehaviour;
     [SerializeField] private Transform point;
     [SerializeField] private BoxCollider boxCollider;
 
@@ -42,22 +42,23 @@ public class SafePuzzle : MonoBehaviour
         var player = PlayerLocator.PlayerTransform;
         if (player == null) return;
 
-        if (playerBehaviour.TryGetComponent<CharacterController>(out var controller))
-            controller.enabled = false;
+        PlayerControlManager.Instance.SetCharacterControllerEnabled(false);
+
 
         player.SetPositionAndRotation(point.position, point.rotation);
 
-        if (controller != null)
-            controller.enabled = true;
+        PlayerControlManager.Instance.SetCharacterControllerEnabled(true);
+
     }
 
     private IEnumerator DisablePlayerLook()
     {
         yield return null;
 
-        playerBehaviour.disablePlayer = true;
+        PlayerControlManager.Instance.LockPlayer();
 
-        playerBehaviour.ResetCameraRotation();
+        PlayerControlManager.Instance.ResetCamera();
+
 
         yield return new WaitForSeconds(0.1f);
     }
@@ -88,7 +89,7 @@ public class SafePuzzle : MonoBehaviour
         blurCanvas.gameObject.SetActive(true);
         gameObject.SetActive(true);
         boxCollider.enabled = false;
-        playerBehaviour.disableOnlyMovement = true;
+        PlayerControlManager.Instance.LockMovementOnly();
         UIManager.Instance.EnableSafeRotateCodeTextPanel();
     }
 
@@ -99,10 +100,10 @@ public class SafePuzzle : MonoBehaviour
         blurCanvas.gameObject.SetActive(false);
         ResetPuzzle();
         gameObject.SetActive(false);
-        playerBehaviour.disableOnlyMovement = false;
+        PlayerControlManager.Instance.UnlockMovementOnly();
         UIManager.Instance.DisableSharedPanelText();
 
-        playerBehaviour.disablePlayer = false;
+        PlayerControlManager.Instance.UnlockPlayer();
     }
 
     private void ResetPuzzle()
@@ -127,10 +128,10 @@ public class SafePuzzle : MonoBehaviour
 
         blurCanvas.gameObject.SetActive(false);
         gameObject.SetActive(false);
-        playerBehaviour.disableOnlyMovement = false;
+        PlayerControlManager.Instance.UnlockMovementOnly();
         UIManager.Instance.DisableSharedPanelText();
 
-        playerBehaviour.disablePlayer = false;
+        PlayerControlManager.Instance.UnlockPlayer();
 
         animatorOne.SetTrigger("Open");
     }
