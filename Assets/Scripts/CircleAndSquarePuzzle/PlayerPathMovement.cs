@@ -52,16 +52,16 @@ public class PlayerPathMovement : MonoBehaviour
         if (currentPoint.isEnd)
         {
             StartCoroutine(CourutineWinPuzzle());
-        }
 
-        if (thisSphereInput != null)
-        {
-            thisSphereInput.action.performed -= OnInputPerformed;
-            thisSphereInput.action.canceled -= OnInputCanceled;
-            thisSphereInput.action.Disable();
-        }
+            if (thisSphereInput != null)
+            {
+                thisSphereInput.action.performed -= OnInputPerformed;
+                thisSphereInput.action.canceled -= OnInputCanceled;
+                thisSphereInput.action.Disable();
+            }
 
-        SetClickAndDrag(false);
+            SetClickAndDrag(false);
+        }
     }
 
     private IEnumerator CourutineWinPuzzle()
@@ -118,7 +118,6 @@ public class PlayerPathMovement : MonoBehaviour
 
     IEnumerator MoveToTarget()
     {
-        
         Vector3 startPos = transform.position;
         Vector3 endPos = targetPoint.transform.position;
         float t = 0f;
@@ -216,25 +215,7 @@ public class PlayerPathMovement : MonoBehaviour
         raycastLenght = resetPosition.changeRaycastLenght ? 0.12f : 0.25f;
     }
 
-
-    void OnDrawGizmosSelected()
-    {
-#if UNITY_EDITOR
-        if (currentPoint == null) return;
-
-        DrawRay(Vector3.up);
-        DrawRay(Vector3.down);
-        DrawRay(Vector3.back);
-        DrawRay(Vector3.forward);
-#endif
-    }
-
     public float centerOffset;
 
-    void DrawRay(Vector3 dir)
-    {
-        Gizmos.color = Color.cyan;
-        Vector3 origin = currentPoint.transform.position + dir * centerOffset;
-        Gizmos.DrawLine(origin, origin + dir * raycastLenght);
-    }
+
 }

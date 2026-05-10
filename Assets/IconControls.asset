@@ -70,6 +70,9 @@ MonoBehaviour:
   - name: LeavePuzzle
     variable:
       rid: 4011535851680694424
+  - name: R
+    variable:
+      rid: 6739794305282998384
   references:
     version: 2
     RefIds:
@@ -149,3 +152,7 @@ MonoBehaviour:
       type: {class: StringVariable, ns: UnityEngine.Localization.SmartFormat.PersistentVariables, asm: Unity.Localization}
       data:
         m_Value: ControlsIcons_v2_0
+    - rid: 6739794305282998384
+      type: {class: StringGlobalVariable, ns: UnityEngine.Localization.SmartFormat.GlobalVariables, asm: Unity.Localization}
+      data:
+        m_Value: 

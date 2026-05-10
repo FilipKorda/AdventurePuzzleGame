@@ -385,8 +385,9 @@ MonoBehaviour:
       m_Items:
       - rid: 4011535830200615033
   - m_Id: 27861166191824896
-    m_Localized: "<sprite name=\"{controls.A}\"> Obr\xF3\u0107 w lewo\n<sprite name=\"{controls.D}\">
-      Obr\xF3\u0107 w prawo\nNaci\u015Bnij <sprite name=\"{controls.LeavePuzzle}\">
+    m_Localized: "Naci\u015Bnij  <sprite name=\"{controls.R}\"> \u017Ceby zresetowa\u0107\nNaci\u015Bnij   
+      <sprite name=\"{controls.A}\"> Obr\xF3\u0107 w lewo\nNaci\u015Bnij        <sprite
+      name=\"{controls.D}\"> Obr\xF3\u0107 w prawo\nNaci\u015Bnij <sprite name=\"{controls.LeavePuzzle}\">
       \u017Ceby wyj\u015B\u0107"
     m_Metadata:
       m_Items:

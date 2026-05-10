@@ -6,7 +6,7 @@ public class RotatingPillarMovingBlock : MonoBehaviour
 {
     [SerializeField] private InputActionReference thisModeInput;
     [SerializeField] private Camera puzzleCamera;
-    [SerializeField] private PlayerBehaviour playerBehaviour;
+   // [SerializeField] private PlayerBehaviour playerBehaviour;
     [SerializeField] private Transform cameraPoint;
     [SerializeField] private BoxCollider movingBlockPuzzle;
 
@@ -43,7 +43,7 @@ public class RotatingPillarMovingBlock : MonoBehaviour
         SetAndRotateCameraToTransform();
         StartCameraMovement();
 
-        playerBehaviour.disablePlayer = true;
+        PlayerControlManager.Instance.LockPlayer();
     }
 
 
@@ -62,8 +62,8 @@ public class RotatingPillarMovingBlock : MonoBehaviour
 
         movingBlockPuzzle.enabled = true;
 
-        playerBehaviour.disablePlayer = false;
-        playerBehaviour._playerCamera.enabled = true;
+        PlayerControlManager.Instance.UnlockPlayer();
+        PlayerControlManager.Instance.EnableCamera();
 
         puzzleCamera.enabled = false;
     }
@@ -76,8 +76,8 @@ public class RotatingPillarMovingBlock : MonoBehaviour
 
         movingBlockPuzzle.enabled = false;
 
-        playerBehaviour.disablePlayer = false;
-        playerBehaviour._playerCamera.enabled = true;
+        PlayerControlManager.Instance.UnlockPlayer();
+        PlayerControlManager.Instance.EnableCamera();
 
         puzzleCamera.enabled = false;
     }
@@ -89,7 +89,7 @@ public class RotatingPillarMovingBlock : MonoBehaviour
 
     private IEnumerator CouturineMakeCameraMovement()
     {
-        Camera cam = playerBehaviour._playerCamera;
+        Camera cam = PlayerControlManager.Instance.GetPlayerCamera();
 
         Vector3 startPos = cam.transform.position;
         Quaternion startRot = cam.transform.rotation;

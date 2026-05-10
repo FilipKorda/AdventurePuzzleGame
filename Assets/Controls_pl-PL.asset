@@ -54,6 +54,22 @@ MonoBehaviour:
     m_Localized: POPRZEDNIA STRONA
     m_Metadata:
       m_Items: []
+  - m_Id: 4392808553402368
+    m_Localized: Obejrzyj
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4393001092927488
+    m_Localized: Reset
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4393117740716032
+    m_Localized: "Wyjd\u017A"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4393187303247872
+    m_Localized: Magia
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

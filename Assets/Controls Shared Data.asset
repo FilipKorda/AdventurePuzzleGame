@@ -51,6 +51,22 @@ MonoBehaviour:
     m_Key: Previous Page
     m_Metadata:
       m_Items: []
+  - m_Id: 4392808553402368
+    m_Key: Inspect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4393001092927488
+    m_Key: Reset
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4393117740716032
+    m_Key: Leave
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4393187303247872
+    m_Key: Magic
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

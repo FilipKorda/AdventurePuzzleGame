@@ -39,7 +39,6 @@ public class SafeDial : MonoBehaviour
         currentValue = 0;
         float angle = currentValue * stepAngle + startModelPosition;
         transform.rotation = Quaternion.Euler(angle, fixedY, fixedZ);
-        // Debug.Log($"Startowa pozycja tarczy: {currentValue}");
     }
 
 
@@ -104,7 +103,6 @@ public class SafeDial : MonoBehaviour
         currentValue = 0;
         float angle = currentValue * stepAngle + startModelPosition;
         transform.rotation = Quaternion.Euler(angle, fixedY, fixedZ);
-        // Debug.Log($"Startowa pozycja tarczy: {currentValue}");
     }
 
     void Rotate(int dir)
@@ -160,7 +158,6 @@ public class SafeDial : MonoBehaviour
         {
             if (sequenceIndex > 0)
             {
-                // Debug.Log("Zły kierunek! Reset sekwencji.");
                 sequenceIndex = 0;
             }
             return;
@@ -169,7 +166,6 @@ public class SafeDial : MonoBehaviour
         if (currentValue == currentStep.number)
         {
             sequenceIndex++;
-            //  Debug.Log($"Poprawny krok {sequenceIndex}/{combination.Length}");
 
             if (sequenceIndex >= combination.Length)
             {
@@ -182,6 +178,5 @@ public class SafeDial : MonoBehaviour
     {
         safePuzzle.WinPuzzle();
         canRotateDial = false;
-        //  Debug.Log("win");
     }
 }

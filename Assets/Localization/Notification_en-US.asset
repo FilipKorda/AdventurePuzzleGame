@@ -431,9 +431,12 @@ MonoBehaviour:
       m_Items:
       - rid: 4011535830200615029
   - m_Id: 27861166191824896
-    m_Localized: '<sprite name="{controls.A}"> Rotate Left
+    m_Localized: 'Press <sprite name="{controls.R}"> To Reset Safe
 
-      <sprite name="{controls.D}">
+      Press    
+      <sprite name="{controls.A}"> Rotate Left
+
+      Press        <sprite name="{controls.D}">
       Rotate Right
 
       Press <sprite name="{controls.LeavePuzzle}"> to leave '
