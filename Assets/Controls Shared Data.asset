@@ -67,6 +67,10 @@ MonoBehaviour:
     m_Key: Magic
     m_Metadata:
       m_Items: []
+  - m_Id: 4690961592766464
+    m_Key: Controls
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

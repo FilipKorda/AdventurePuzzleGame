@@ -9,11 +9,13 @@ public class ReadablePanel : MonoBehaviour
 
     public void ShowReadablePanel()
     {
+        UIManager.Instance.EnableLeaveBookPanel();
         gameObject.SetActive(true);
     }
 
     public void HideReadablePanel()
     {
+        UIManager.Instance.DisableSharedPanelText();
         gameObject.SetActive(false);
     }
 }

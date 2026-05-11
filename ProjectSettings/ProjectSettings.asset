@@ -197,7 +197,7 @@ PlayerSettings:
   keepLoadedShadersAlive: 0
   StripUnusedMeshComponents: 0
   strictShaderVariantMatching: 0
-  VertexChannelCompressionMask: -1
+  VertexChannelCompressionMask: 0
   iPhoneSdkVersion: 988
   iOSSimulatorArchitecture: 0
   iOSTargetOSVersionString: 15.0
@@ -902,7 +902,7 @@ PlayerSettings:
     PS5: 1
     QNX: 1
     ReservedCFE: 1
-    Standalone: 2
+    Standalone: 1
     VisionOS: 1
     WebGL: 1
     Windows Store Apps: 1
@@ -995,7 +995,7 @@ PlayerSettings:
   hmiCpuConfiguration: 
   hmiLogStartupTiming: 0
   qnxGraphicConfPath: 
-  apiCompatibilityLevel: 6
+  apiCompatibilityLevel: 3
   captureStartupLogs: {}
   activeInputHandler: 2
   windowsGamepadBackendHint: 0

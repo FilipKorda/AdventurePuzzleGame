@@ -280,19 +280,6 @@ MonoBehaviour:
       z rek\u0105 zgi\u0119ta w \u0142okciu - S"
     m_Metadata:
       m_Items: []
-  - m_Id: 48793477468160
-    m_Localized: "- Ka\u017Cdy pos\u0105g ma czerwone guziki na sobie i one daj\u0105
-      sygna\u0142 d\u017Awi\u0119kowy kodu morsa kt\xF3ry jeste\u015B w stanie rozczyta\u0107 
-      z ksi\u0105\u017Cki. One si\u0119 aktywuj\u0105 dopiero w momencie rozwi\u0105zania
-      zagadki z pos\u0105gami.\r\n\r\n- Poprawna sekwencja symboli id\u0105c od lewej
-      w kryptexie\n\n      <sprite name=\"Code Morse Correct symbols_3\"><sprite
-      name=\"Code Morse Correct symbols_4\"><sprite name=\"Code Morse Correct symbols_5\"><sprite
-      name=\"Code Morse Correct symbols_6\"><sprite name=\"Code Morse Correct symbols_0\"><sprite
-      name=\"Code Morse Correct symbols_1\"><sprite name=\"Code Morse Correct symbols_2\">\n\n-
-      Musisz zatwierdzi\u0107 t\u0105 sekwencje guzikiem na ladzie kt\xF3ry znajduj\u0119
-      si\u0119 przed obiektem kryptexu"
-    m_Metadata:
-      m_Items: []
   - m_Id: 49235393531904
     m_Localized: "- Lustra kt\xF3re odbijaj\u0105 promie\u0144 \u015Bwiat\u0142a.\r\n-
       Musisz doprowadzi\u0107 ten promie\u0144 do kryszta\u0142u kt\xF3ry znajduj\u0119

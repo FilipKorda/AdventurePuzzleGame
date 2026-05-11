@@ -34,32 +34,29 @@ public class TypingManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI textTimer;
 
+    private Coroutine sequenceCoroutine;
+    private Coroutine initializeCoroutine;
+
     private void Awake()
     {
+#if UNITY_EDITOR
+        gameObject.SetActive(false);
+#else
+    gameObject.SetActive(true);
+#endif
+
         ApplyColorToAllTargets(hiddenTextColor);
         textCanvasGroup.alpha = 1f;
         controlsCanvasGroup.alpha = 0f;
         textTimer.text = string.Empty;
     }
 
-    private Coroutine sequenceCoroutine;
-    private Coroutine initializeCoroutine;
 
-    private void OnEnable()
-    {
-#if UNITY_EDITOR
-        gameObject.SetActive(false);
-#else
-        gameObject.SetActive(true);
-#endif
-    }
 
     private void Start()
     {
         LocalizationSettings.SelectedLocaleChanged += OnSelectedLocaleChanged;
         ApplyColorToAllTargets(hiddenTextColor);
-
-        PlayerControlManager.Instance.LockPlayer();
 
         if (playOnEnable)
         {
