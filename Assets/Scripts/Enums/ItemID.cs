@@ -96,4 +96,5 @@ public enum ItemID
     PaintingBook = 93,
     PapytusCageOpen = 94,
     Coin = 95,
+    Carrot = 96,
 }

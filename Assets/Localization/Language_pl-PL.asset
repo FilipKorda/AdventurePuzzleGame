@@ -106,6 +106,34 @@ MonoBehaviour:
     m_Localized: Nie
     m_Metadata:
       m_Items: []
+  - m_Id: 36520727593373696
+    m_Localized: Bonus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36529341225783296
+    m_Localized: "Czy sko\u0144czy\u0142e\u015B demo?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36529512084951040
+    m_Localized: Prawdopodobnie nie
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36529783712272384
+    m_Localized: "To w sumie b\u0119dziesz zaskoczony."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36530213112532992
+    m_Localized: Wchodzisz? Wychodzisz?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36530683625361408
+    m_Localized: "Wychodz\u0119"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36530890656206848
+    m_Localized: "Wchodz\u0119"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

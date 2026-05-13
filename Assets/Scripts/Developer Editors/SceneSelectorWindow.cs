@@ -25,6 +25,11 @@ public class SceneSelectorWindow : EditorWindow
         {
             OpenScene("Gameplay");
         }
+
+        if (GUILayout.Button("Bonus", GUILayout.Height(40)))
+        {
+            OpenScene("Bonus");
+        }
     }
 
     void OpenScene(string sceneName)

@@ -109,6 +109,36 @@ MonoBehaviour:
     m_Key: No
     m_Metadata:
       m_Items: []
+  - m_Id: 36520727593373696
+    m_Key: Bonus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36529341225783296
+    m_Key: Finish Demo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36529512084951040
+    m_Key: 'ProbablyNot
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36529783712272384
+    m_Key: WillBeSupreised
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36530213112532992
+    m_Key: InOut
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36530683625361408
+    m_Key: Out
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36530890656206848
+    m_Key: In
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
