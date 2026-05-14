@@ -99,7 +99,7 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
-  itemSprite: {fileID: 21300000, guid: c33f9df1112fd8548a63a7f14c6f0bed, type: 3}
+  itemSprite: {fileID: 21300000, guid: 09b149bc7640f0440af46f85a4e36925, type: 3}
   itemId: 56
   itemIdbyItemId: 56
   pinNumber: 0
@@ -116,11 +116,13 @@ MonoBehaviour:
   itemPrefab: {fileID: 7432061190679069686, guid: e217fbb48d6aa7444a6457b2a888f1d9, type: 3}
   isActualReading: 0
   isAlchemyRecipe: 0
+  isWeightObject: 0
   requiredUses: 3
   providedLiquidType: 0
   fillMapping:
     requiredEmptyItem: {fileID: 0}
     resultingFilledItem: {fileID: 0}
+  tapBarrelManager: {fileID: 0}
   cauldron: {fileID: 0}
   scroll_BigAcidPotion: {fileID: 0}
   scroll_SmallAngryTimePotion: {fileID: 0}
@@ -147,9 +149,19 @@ MonoBehaviour:
   highlightColor: {r: 0, g: 0, b: 0, a: 0}
   statueCompasPuzzle: {fileID: 0}
   rotationDuration: 0.5
+  objectA: {fileID: 0}
+  objectB: {fileID: 0}
+  moveDistanceMovingBlockPuzzle: 1
+  moveSpeedMovingBlockPuzzle: 5
+  rayLengthMovingBlockPuzzle: 0.45
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 0
+  movingBlockPuzzleManager: {fileID: 0}
   linkedReadable: {fileID: 0}
   directionTextSet: {fileID: 0}
   cryptexRotateDuration: 0.25
+  isShorterCryptexSound: 0
   mirror: {fileID: 0}
   gearLockMode: {fileID: 0}
   gearRotateDuration: 0.25
@@ -163,6 +175,58 @@ MonoBehaviour:
   swordPuzzle: {fileID: 0}
   triangleEnum: 0
   puzzleManager: {fileID: 0}
+  shrine: {fileID: 0}
+  pillar: {fileID: 0}
+  grave: {fileID: 0}
+  brokenPillar: {fileID: 0}
+  woodenSword: {fileID: 0}
+  isSymbolPlace: 0
+  clockSymbolsManager: {fileID: 0}
+  blockPanel: {fileID: 0}
+  ninePadPanelManager: {fileID: 0}
+  buttonIsPressed: 0
+  circleAndSquarePuzzle: {fileID: 0}
+  playerPathMovement: {fileID: 0}
+  libraryButtonsManager: {fileID: 0}
+  libraryButtonInt: 0
+  safePuzzle: {fileID: 0}
+  braiserPuzzle: {fileID: 0}
+  braiserInt: 0
+  swordPuzzlePiece: {fileID: 0}
+  clubPuzzlePiece: {fileID: 0}
+  skeletonSwordPiece: {fileID: 0}
+  skeletonWarAxePiece: {fileID: 0}
+  skeletonHelmetPiece: {fileID: 0}
+  skeletonFullHelmetPiece: {fileID: 0}
+  framePuzzlemanager: {fileID: 0}
+  wallSwitchOnOffManager: {fileID: 0}
+  switchType: 0
+  scaleWeightSystem: {fileID: 0}
+  weight: {fileID: 0}
+  mainBottle: {fileID: 0}
+  mainMug: {fileID: 0}
+  nail: {fileID: 0}
+  hatch: {fileID: 0}
+  briefcaseManager: {fileID: 0}
+  movingBlockBriefcase: {fileID: 0}
+  imageSlider: {fileID: 0}
+  symbol0: {fileID: 0}
+  symbol1: {fileID: 0}
+  symbol2: {fileID: 0}
+  movingPillarManager: {fileID: 0}
+  rotatingPillarMovingBlock: {fileID: 0}
+  moveSphereOnePillarPuzzle: {fileID: 0}
+  canRotateMoveSphereOnePillarPuzzle: 1
+  pictureTerrainMovingObject: {fileID: 0}
+  coverAllSquarePuzzlePillar: {fileID: 0}
+  correctSixteenSymbolsPillar: {fileID: 0}
+  twoCrystalsPuzzle: {fileID: 0}
+  rotatingCirclePuzzle: {fileID: 0}
+  twelveDotPuzzle: {fileID: 0}
+  lastPuzzle: {fileID: 0}
+  cointAmount: 0
+  slotMachineManager: {fileID: 0}
+  isBetUp: 0
   references:
     version: 2
     RefIds: []

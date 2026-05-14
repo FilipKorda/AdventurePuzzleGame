@@ -116,7 +116,7 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
-  itemSprite: {fileID: 21300000, guid: c33f9df1112fd8548a63a7f14c6f0bed, type: 3}
+  itemSprite: {fileID: 21300000, guid: 09b149bc7640f0440af46f85a4e36925, type: 3}
   itemId: 87
   itemIdbyItemId: 87
   pinNumber: 0
@@ -139,6 +139,7 @@ MonoBehaviour:
   fillMapping:
     requiredEmptyItem: {fileID: 0}
     resultingFilledItem: {fileID: 0}
+  tapBarrelManager: {fileID: 0}
   cauldron: {fileID: 0}
   scroll_BigAcidPotion: {fileID: 0}
   scroll_SmallAngryTimePotion: {fileID: 0}
@@ -234,6 +235,15 @@ MonoBehaviour:
   moveSphereOnePillarPuzzle: {fileID: 0}
   canRotateMoveSphereOnePillarPuzzle: 1
   pictureTerrainMovingObject: {fileID: 0}
+  coverAllSquarePuzzlePillar: {fileID: 0}
+  correctSixteenSymbolsPillar: {fileID: 0}
+  twoCrystalsPuzzle: {fileID: 0}
+  rotatingCirclePuzzle: {fileID: 0}
+  twelveDotPuzzle: {fileID: 0}
+  lastPuzzle: {fileID: 0}
+  cointAmount: 0
+  slotMachineManager: {fileID: 0}
+  isBetUp: 0
   references:
     version: 2
     RefIds: []
