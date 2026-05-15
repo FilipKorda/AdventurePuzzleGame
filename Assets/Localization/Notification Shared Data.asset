@@ -361,6 +361,10 @@ MonoBehaviour:
     m_Key: EatOrDrop
     m_Metadata:
       m_Items: []
+  - m_Id: 36930301899067392
+    m_Key: Last Book NOtifi
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

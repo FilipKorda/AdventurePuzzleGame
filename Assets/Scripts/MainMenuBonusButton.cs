@@ -22,4 +22,17 @@ public class MainMenuBonusButton : MonoBehaviour
             bonusButton.SetActive(false);
         }
     }
+
+    public void IsBonusButtonClicked()
+    {
+        if (BonusUnlockProgress.HasPlayedGame())
+        {
+            bonusButton.SetActive(true);
+        }
+        else
+
+        {
+            bonusButton.SetActive(false);
+        }
+    }
 }

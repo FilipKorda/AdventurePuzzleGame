@@ -18,12 +18,13 @@ public class EndPanel : MonoBehaviour
 
     [SerializeField] private float fadeDuration = 1f;
     [SerializeField] private float delayBetweenTexts = 0.5f;
-   // [SerializeField] private PlayerBehaviour playerBehaviour;
 
     [SerializeField] private PausePanel pausePanel;
+    [SerializeField] private GameObject coinsGameObject;
 
     private void OnEnable()
     {
+        coinsGameObject.SetActive(false);
         StartCoroutine(StartEndPanel());
     }
 

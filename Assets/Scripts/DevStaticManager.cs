@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class DevStaticManager : MonoBehaviour
 {
-
-
     [SerializeField] private Transform playerTransform;
     [SerializeField] private Transform playerStartPosition;
 
     [Header("Obiekty do zmiany statusu Static na false podczas buildu")]
     public List<GameObject> objectsToModify;
+
+
+    public OpenDoorDeveloper[] openDoorDevelopers;
 
     [ContextMenu("Ustaw wszystko na Static = TRUE")]
     public void SetStaticTrue()
@@ -24,7 +25,23 @@ public class DevStaticManager : MonoBehaviour
         SetAllStatic(false);
     }
 
+    [ContextMenu("Open Door = FALSE")]
+    public void OpenDoorFalse()
+    {
+        foreach (var door in openDoorDevelopers)
+        {
+            door.openDoor = false;
+        }
+    }
 
+    [ContextMenu("Open Door = TRUE")]
+    public void OpenDoorTrue()
+    {
+        foreach (var door in openDoorDevelopers)
+        {
+            door.openDoor = true;
+        }
+    }
 
     [ContextMenu("Set Player Start Position")]
     public void SetPlayerStartPosition()

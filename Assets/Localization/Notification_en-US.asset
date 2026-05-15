@@ -522,6 +522,10 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - rid: 4011535830200615029
+  - m_Id: 36930301899067392
+    m_Localized: HOLY COW
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

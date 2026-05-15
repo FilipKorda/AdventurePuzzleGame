@@ -16,7 +16,7 @@ public class InspectSymbolObject : MonoBehaviour
     [SerializeField] private GameObject skeletonHelmetPieceObject;
     [SerializeField] private GameObject skeletonFullHelmetPieceObject;
 
-    [SerializeField] private PlayerBehaviour playerBehaviour;
+    //[SerializeField] private PlayerBehaviour playerBehaviour;
 
     private GameObject currentObject;
 
@@ -110,13 +110,14 @@ public class InspectSymbolObject : MonoBehaviour
 
     public void DisablePlayerLook()
     {       
-        playerBehaviour.ResetCameraRotation();
-        playerBehaviour.disablePlayer = true;
+        
+        PlayerControlManager.Instance.ResetCamera();
+        PlayerControlManager.Instance.LockPlayer();
     }
 
     public void ActivePlayer()
     {
-        playerBehaviour.disablePlayer = false;
+        PlayerControlManager.Instance.UnlockPlayer();
         var rotation = currentObject.GetComponent<InspectObjectRotation>();
         if (rotation != null)
             rotation.StopRotation();

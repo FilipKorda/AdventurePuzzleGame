@@ -324,63 +324,80 @@ public class PlayerBehaviour : MonoBehaviour
             Services.Audio.PlaySFX("ToogleLampOff");
     }
 
+    private Coroutine glassesRoutine;
+    private bool isGlassesTransitionRunning;
+
+
     public void ToggleGlasses(InputAction.CallbackContext context)
     {
         int currentSelectedId = UIManager.Instance.GetSelectedItemId();
         if (currentSelectedId == 0)
-        {
-            // Debug.Log("Nie wybrano ¿adnego przedmiotu do u¿ycia.");
             return;
-        }
 
-        if (currentSelectedId == 66)
+        if (currentSelectedId != 66)
+            return;
+
+        if (UIManager.Instance.glassesOn)
+            UIManager.Instance.EnableUnwearGlassesPanel();
+        else
+            UIManager.Instance.EnableWearGlassesPanel();
+
+        if (!context.performed)
+            return;
+
+        if (isGlassesTransitionRunning)
+            return;
+
+        bool targetState = !UIManager.Instance.glassesOn;
+        UIManager.Instance.glassesOn = targetState;
+
+        if (glassesRoutine != null)
         {
-            if (UIManager.Instance.glassesOn)
-            {
-                UIManager.Instance.EnableUnwearGlassesPanel();
-            }
-            else
-            {
-                UIManager.Instance.EnableWearGlassesPanel();
-            }
-
-            if (!context.performed) return;
-            if (isAnimating) return;
-
-            UIManager.Instance.glassesOn = !UIManager.Instance.glassesOn;
-            isAnimating = true;
-
-            if (UIManager.Instance.glassesOn)
-            {
-                glassesAnimator.SetTrigger("Active");
-                PlaySequence();
-            }
-            else
-            {
-                glassesAnimator.SetTrigger("Deactive");
-                Shader.SetGlobalFloat("_SpiritVision", 0f);
-                UIManager.Instance.ChangeVissionGlasesToDeactive();
-                glassesEffectQuad.SetActive(false);
-            }
+            StopCoroutine(glassesRoutine);
+            glassesRoutine = null;
         }
+
+        glassesRoutine = StartCoroutine(GlassesRoutine(targetState));
     }
 
-    private void PlaySequence()
+    private IEnumerator GlassesRoutine(bool enableGlasses)
     {
-        if (isGlassesEffectRunning) return;
-        UIManager.Instance.ChangeVissionGlasesToActive();
-        StartCoroutine(Sequence());
+        isGlassesTransitionRunning = true;
+        isGlassesEffectRunning = false;
+
+        Shader.SetGlobalFloat("_SpiritVision", 0f);
+        glassesEffectQuad.SetActive(false);
+
+        if (enableGlasses)
+        {
+            glassesAnimator.SetTrigger("Active");
+            UIManager.Instance.ChangeVissionGlasesToActive();
+
+            yield return new WaitForSeconds(1.08f);
+            glassesEffectQuad.SetActive(true);
+
+            yield return new WaitForSeconds(0.2f);
+
+            yield return StartCoroutine(PlaySpiritVisionFlicker());
+        }
+        else
+        {
+            glassesAnimator.SetTrigger("Deactive");
+            UIManager.Instance.ChangeVissionGlasesToDeactive();
+
+            Shader.SetGlobalFloat("_SpiritVision", 0f);
+            glassesEffectQuad.SetActive(false);
+
+            yield return new WaitForSeconds(0.2f);
+        }
+
+        glassesRoutine = null;
+        isGlassesTransitionRunning = false;
     }
 
-    IEnumerator Sequence()
+    private IEnumerator PlaySpiritVisionFlicker()
     {
         isGlassesEffectRunning = true;
-
-
-        yield return new WaitForSeconds(1.08f);
-        glassesEffectQuad.SetActive(true);
-
-        yield return new WaitForSeconds(0.2f);
 
         Shader.SetGlobalFloat("_SpiritVision", 1f);
         yield return new WaitForSeconds(0.3f);
@@ -417,7 +434,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     public void OnLook(InputAction.CallbackContext context)
     {
-        if (disablePlayer) { return; }
+        if (disablePlayer) return;
         if (lastILockPick != null && lastILockPick.IsLockPicking()) return;
         if (lastIReadable != null && lastIReadable.IsReading()) return;
         if (lastIReadableAndInteractable != null && lastIReadableAndInteractable.IsReadingInteractable()) return;
@@ -426,13 +443,20 @@ public class PlayerBehaviour : MonoBehaviour
 
         if (context.control.device is Mouse)
         {
-            inputLook = MouseSensitivitySettings.MouseSensitivity * mouseSensitivity * Time.deltaTime * rawInput;
+            inputLook = MouseSensitivitySettings.MouseSensitivity * mouseSensitivity * mouseInputScale * rawInput;
         }
         else
         {
             inputLook = MouseSensitivitySettings.MouseSensitivity * gamepadSensitivity * Time.deltaTime * rawInput;
         }
     }
+
+
+    private float GetClampedDeltaTime()
+    {
+        return Mathf.Min(Time.deltaTime, 0.0333f);
+    }
+
 
     public void OnInteract(InputAction.CallbackContext context)
     {
@@ -584,13 +608,20 @@ public class PlayerBehaviour : MonoBehaviour
         _playerCamera.fieldOfView = Mathf.Lerp(_playerCamera.fieldOfView, targetFOV, fovChangeSpeed * Time.deltaTime);
     }
 
-
-
     private void HandleMovement()
     {
-        if (disablePlayer || isClimbing)
+        float dt = GetClampedDeltaTime();
+
+        if (disablePlayer)
         {
             ResetMovementState();
+            return;
+        }
+
+        if (isClimbing)
+        {
+            currentVelocity = Vector3.zero;
+            isMoving = false;
             return;
         }
 
@@ -621,7 +652,6 @@ public class PlayerBehaviour : MonoBehaviour
         Vector2 finalMoveInput = inputMovement;
         float finalMoveSpeed = moveSpeed;
 
-        //footstep sound logic
         isMoving = inputMovement.sqrMagnitude > 0.01f;
 
         if (isDrunk)
@@ -629,7 +659,7 @@ public class PlayerBehaviour : MonoBehaviour
             _smoothedDrunkMoveInput = Vector2.Lerp(
                 _smoothedDrunkMoveInput,
                 inputMovement,
-                drunkMovementSmoothing * Time.deltaTime
+                drunkMovementSmoothing * dt
             );
 
             finalMoveInput = _smoothedDrunkMoveInput;
@@ -657,25 +687,21 @@ public class PlayerBehaviour : MonoBehaviour
         currentVelocity = Vector3.Lerp(
             currentVelocity,
             targetVelocity,
-            10f * Time.deltaTime
+            10f * dt
         );
 
-        characterController.Move(currentVelocity * Time.deltaTime);
+        characterController.Move(currentVelocity * dt);
 
         if (canWalk)
-        {
             UpdateWalkCycle();
-        }
-        else
+        else if (walkRoutine != null)
         {
-            if (walkRoutine != null)
-            {
-                StopCoroutine(walkRoutine);
-                walkRoutine = null;
-                ResetLegs();
-            }
+            StopCoroutine(walkRoutine);
+            walkRoutine = null;
+            ResetLegs();
         }
     }
+
 
     public void UpdateWalkCycle()
     {
@@ -739,10 +765,25 @@ public class PlayerBehaviour : MonoBehaviour
         if (hasFocus)
         {
             ignoreNextLookFrame = true;
-            currentLookVelocity = Vector2.zero;
-            lookVelocityRef = Vector2.zero;
+            ClearPlayerInputState();
+            velocity = Vector3.zero;
+        }
+        else
+        {
+            ClearPlayerInputState();
+            velocity = Vector3.zero;
         }
     }
+
+    private void OnApplicationPause(bool pauseStatus)
+    {
+        ClearPlayerInputState();
+        velocity = Vector3.zero;
+
+        if (!pauseStatus)
+            ignoreNextLookFrame = true;
+    }
+
 
 
     private void ResetLegs()
@@ -775,6 +816,8 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void HandleLook()
     {
+        float dt = GetClampedDeltaTime();
+
         if (disablePlayer)
         {
             ResetLookState();
@@ -822,7 +865,7 @@ public class PlayerBehaviour : MonoBehaviour
             _smoothedDrunkLookInput = Vector2.Lerp(
                 _smoothedDrunkLookInput,
                 finalLookInput,
-                drunkLookSmoothing * Time.deltaTime
+                drunkLookSmoothing * dt
             );
 
             finalLookInput = _smoothedDrunkLookInput;
@@ -830,14 +873,16 @@ public class PlayerBehaviour : MonoBehaviour
             float swayX = Mathf.Sin(Time.time * drunkSwaySpeed) * drunkSwayAmount;
             float swayY = Mathf.Cos(Time.time * drunkSwaySpeed * 0.7f) * drunkSwayAmount;
 
-            finalLookInput += new Vector2(swayX, swayY) * Time.deltaTime;
+            finalLookInput += new Vector2(swayX, swayY) * dt;
         }
 
         currentLookVelocity = Vector2.SmoothDamp(
             currentLookVelocity,
             finalLookInput,
             ref lookVelocityRef,
-            0.08f
+            0.08f,
+            Mathf.Infinity,
+            dt
         );
 
         currentLookVelocity.x = Mathf.Clamp(currentLookVelocity.x, -maxLookDeltaPerFrame, maxLookDeltaPerFrame);
@@ -854,13 +899,24 @@ public class PlayerBehaviour : MonoBehaviour
         cameraTransform.localRotation = Quaternion.Euler(cameraVerticalRotation, 0f, 0f);
     }
 
+    [SerializeField] private float mouseInputScale = 0.01f;
+
 
     private void ApplyGravity()
     {
-        if (disablePlayer) { return; }
-        if (isClimbing || isFlying)
+        float dt = GetClampedDeltaTime();
+
+        if (disablePlayer) return;
+
+        if (isClimbing)
         {
-            velocity.y = 0;
+            velocity.y = 0f;
+            return;
+        }
+
+        if (isFlying)
+        {
+            velocity.y = 0f;
             return;
         }
 
@@ -869,9 +925,10 @@ public class PlayerBehaviour : MonoBehaviour
             velocity.y = -2f;
         }
 
-        velocity.y += gravity * Time.deltaTime;
-        characterController.Move(velocity * Time.deltaTime);
+        velocity.y += gravity * dt;
+        characterController.Move(velocity * dt);
     }
+
 
     private void HandleRaycast()
     {
@@ -1219,9 +1276,9 @@ public class PlayerBehaviour : MonoBehaviour
         if (characterController.isGrounded && inputMovement.y < -0.1f)
         {
             isClimbing = false;
+            velocity.y = 0f;
             return;
         }
-
 
         Vector3 climbDirection = new Vector3(0, inputMovement.y, 0);
         characterController.Move(climbSpeed * Time.deltaTime * climbDirection);
@@ -1229,22 +1286,28 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (disablePlayer) { return; }
+        if (disablePlayer) return;
+
         if (other.CompareTag("Ladder"))
         {
             isClimbing = true;
-            canWalk = true;
+            canWalk = false;
+            velocity.y = 0f;
+            currentVelocity = Vector3.zero;
         }
     }
+
 
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Ladder"))
         {
             isClimbing = false;
-            canWalk = false;
+            canWalk = true;
+            velocity.y = 0f;
         }
     }
+
 
     private void UpdateDotVisibility(bool isVisible)
     {

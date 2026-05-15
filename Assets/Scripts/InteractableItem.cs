@@ -1920,8 +1920,6 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
                 UIManager.Instance.readableAndInteractablePanel.pressEorQTextUI.text = readableAndInteractableTextData.pressEorQText.GetLocalizedString();
             }
 
-
-
             UIManager.Instance.nextPageAction.action.Enable();
             UIManager.Instance.previousPageAction.action.Enable();
         }
@@ -1959,10 +1957,6 @@ public class InteractableItem : MonoBehaviour, IPickupable, IBookThrowable, IOpe
             if (animator != null)
             {
                 animator.SetTrigger("Interact");
-            }
-            else
-            {
-                Debug.Log("Nie masz animatora");
             }
             Services.Audio.PlaySFX("WallButtonPress");
             onAllWallButtonPressed?.Invoke();

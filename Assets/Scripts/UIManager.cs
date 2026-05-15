@@ -95,6 +95,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private LocalizedString dropItemText;
     [SerializeField] private LocalizedString useOrDropItemText;
     [SerializeField] private LocalizedString leaveBookText;
+    [SerializeField] private LocalizedString eatOrDropText;
 
     [Header("Papytus Puzzle Wooden Puzzle Solve")]
     [SerializeField] private GameObject papytusPuzzleWoodenPuzzleSolve;
@@ -243,6 +244,11 @@ public class UIManager : MonoBehaviour
     public void EnableDropItemPanel()
     {
         ShowPanel(dropItemText);
+    }
+
+    public void EnableEatOrDropItemPanel()
+    {
+        ShowPanel(eatOrDropText);
     }
 
     public void EnableWearGlassesPanel()
@@ -945,6 +951,8 @@ public class UIManager : MonoBehaviour
             readableAndInteractablePanel.mainTextUI.text =
                 data.bookPages[data.currentPageIndex].GetLocalizedString();
         }
+
+        Services.Audio.PlaySFX("ReadBook");
     }
 
     private void OnPreviousPage(InputAction.CallbackContext context)
@@ -970,6 +978,7 @@ public class UIManager : MonoBehaviour
             readableAndInteractablePanel.mainTextUI.text =
                 data.bookPages[data.currentPageIndex].GetLocalizedString();
         }
+        Services.Audio.PlaySFX("ReadBook");
     }
 
 
@@ -1021,7 +1030,7 @@ public class UIManager : MonoBehaviour
 
             case ItemID.NiceWater:
                 UseConsumableItem(currentSelectedId);
-                Debug.Log("Wypito (NiceWater).");
+                // Debug.Log("Wypito (NiceWater).");
                 Ailments.Instance.ApplyNiceWaterEffect();
                 break;
 
@@ -1060,6 +1069,11 @@ public class UIManager : MonoBehaviour
                 //Debug.Log("Zjedzono (HolyCow).");
                 Ailments.Instance.ApplyHolyCowEffect();
                 break;
+            case ItemID.Carrot:
+                UseConsumableItem(currentSelectedId);
+
+                Ailments.Instance.ApplyRawMeatEffect();
+                break;
 
             default:
 
@@ -1072,7 +1086,7 @@ public class UIManager : MonoBehaviour
     {
         DisableSharedPanelText();
 
-        if (itemId == 24 || itemId == 37)
+        if (itemId == 24 || itemId == 37 || itemId == 96)
         {
             Services.Audio.PlaySFX("Eat");
         }
@@ -1325,6 +1339,10 @@ public class UIManager : MonoBehaviour
            || id == ItemID.EmptyBucket || id == ItemID.Fork || id == ItemID.Crawbar || id == ItemID.FirstCrystal || id == ItemID.SecondCrystal || id == ItemID.Sword)
         {
             EnableUseOrDropItemPanel();
+        }
+        else if (id == ItemID.Carrot)
+        {
+            EnableEatOrDropItemPanel();
         }
         else if (id == ItemID.Papyrus || id == ItemID.PapyrusTrianglePuzzle || id == ItemID.SafeCode ||
             id == ItemID.PapyrusVerticalPuzzle || id == ItemID.CardSymbolsPapirus || id == ItemID.ArrowDirectionPuzzles ||

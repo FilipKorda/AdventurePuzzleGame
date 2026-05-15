@@ -13,7 +13,6 @@ public class MovableBlock : MonoBehaviour
 {
     [SerializeField] private InputActionReference movableBlockLeaveInput;
     [SerializeField] private InputActionReference movableBlockMoveInput;
-    //[SerializeField] private PlayerBehaviour playerBehaviour;
     [SerializeField] private FurniturePuzzle furniturePuzzle;
 
     [SerializeField] private BoxCollider itemInteractableCollider;
@@ -29,6 +28,7 @@ public class MovableBlock : MonoBehaviour
     private bool canMove;
     private bool isMoving = false;
 
+    private Coroutine moveBlockRoutine;
 
     public void DisabelThisMovableBlock()
     {
@@ -186,10 +186,11 @@ public class MovableBlock : MonoBehaviour
         if (move != Vector3.zero && !IsObstacleInDirection(move))
         {
             Services.Audio.PlaySFX("FurnitureMove");
-            StartCoroutine(MoveBlockCoroutine(move * gridSize, 2.9f));
+            moveBlockRoutine = StartCoroutine(MoveBlockCoroutine(move * gridSize, 2.9f));
+
         }
     }
-
+    private bool reachedEnd;
     private IEnumerator MoveBlockCoroutine(Vector3 moveVector, float duration)
     {
         isMoving = true;
@@ -211,13 +212,22 @@ public class MovableBlock : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (EndCollider == null) return;
-        if (other == EndCollider)
-        {
-            LeaveControlOfThisBlock();
+        if (other != EndCollider) return;
+        if (reachedEnd) return;
+        reachedEnd = true;
 
-            StartCoroutine(MoveToTarget(new Vector3(0f, 0f, -3f), Quaternion.Euler(0f, 0f, 0f), 0.6f));
+        if (moveBlockRoutine != null)
+        {
+            StopCoroutine(moveBlockRoutine);
+            moveBlockRoutine = null;
         }
+
+        isMoving = false;
+        LeaveControlOfThisBlock();
+
+        StartCoroutine(MoveToTarget(new Vector3(0f, 0f, -3f), Quaternion.Euler(0f, 0f, 0f), 2f));
     }
+
 
     private IEnumerator MoveToTarget(Vector3 targetPosition, Quaternion targetRotation, float duration)
     {
@@ -243,6 +253,7 @@ public class MovableBlock : MonoBehaviour
         {
             furniturePuzzle.DisableAllMovableBlocks();
             furniturePuzzle.ActiveOpenShelf();
+            Services.Audio.PlaySFX("SafeWinAkaPuzzleWin");
         }
     }
 

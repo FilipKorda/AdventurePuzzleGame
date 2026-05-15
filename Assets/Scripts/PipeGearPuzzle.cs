@@ -10,7 +10,7 @@ public class PipeGearPuzzle : MonoBehaviour
     [SerializeField] private float distanceFromCamera = 1f;
     [SerializeField] private float verticalOffset = 0f;
     [SerializeField] private GearCorrectIndexes[] correctGear90Indexes;
-    [SerializeField] private PlayerBehaviour playerBehaviour;
+    //[SerializeField] private PlayerBehaviour playerBehaviour;
     [SerializeField] private Transform point;
     [SerializeField] private BoxCollider pipeGearPuzzleCollider;
     [SerializeField] private PipePuzzleManager pipePuzzleManager;
@@ -24,7 +24,7 @@ public class PipeGearPuzzle : MonoBehaviour
             gearModeInput.action.performed += OnGearModePerformed;
         }
 
-        StartCoroutine(DisablePlayerLook());
+        PlayerControlManager.Instance.DisablePlayerLookTemporarily();
     }
 
     private void OnDisable()
@@ -43,8 +43,8 @@ public class PipeGearPuzzle : MonoBehaviour
         blurCanvas.gameObject.SetActive(true);
         gameObject.SetActive(true);
         pipeGearPuzzleCollider.enabled = false;
-        playerBehaviour.disableOnlyMovement = true;
-        UIManager.Instance.EnableGearModePanel();
+        PlayerControlManager.Instance.LockMovementOnly();
+        UIManager.Instance.EnableLpmToRotatePanel();
     }
 
     public void ExitGearLockMode()
@@ -63,8 +63,8 @@ public class PipeGearPuzzle : MonoBehaviour
 
         ResetGears();
         gameObject.SetActive(false);
-        playerBehaviour.disableOnlyMovement = false;
-        UIManager.Instance.DisableGearModePanel();
+        PlayerControlManager.Instance.UnlockMovementOnly();
+        UIManager.Instance.DisableSharedPanelText();
     }
 
     private void OnGearModePerformed(InputAction.CallbackContext context)
@@ -78,13 +78,13 @@ public class PipeGearPuzzle : MonoBehaviour
         var player = PlayerLocator.PlayerTransform;
         if (player == null) return;
 
-        if (playerBehaviour.TryGetComponent<CharacterController>(out var controller))
-            controller.enabled = false;
+        PlayerControlManager.Instance.SetCharacterControllerEnabled(false);
+
 
         player.SetPositionAndRotation(point.position, point.rotation);
 
-        if (controller != null)
-            controller.enabled = true;
+        PlayerControlManager.Instance.SetCharacterControllerEnabled(true);
+
     }
 
     private void SpawnThisObjectInFronOfPlayer()
@@ -98,19 +98,6 @@ public class PipeGearPuzzle : MonoBehaviour
                      + player.right * -0.1f;
 
         transform.SetPositionAndRotation(position, Quaternion.Euler(-90f, 0f, 0f));
-    }
-
-    private IEnumerator DisablePlayerLook()
-    {
-        yield return null;
-
-        playerBehaviour.disablePlayer = true;
-
-        playerBehaviour.ResetCameraRotation();
-
-        yield return new WaitForSeconds(0.1f);
-
-        playerBehaviour.disablePlayer = false;
     }
 
     private void ResetGears()
@@ -164,8 +151,8 @@ public class PipeGearPuzzle : MonoBehaviour
         pipePuzzleManager.CheckWInBothPipePuzzle();
         blurCanvas.gameObject.SetActive(false);
         gameObject.SetActive(false);
-        playerBehaviour.disableOnlyMovement = false;
-        UIManager.Instance.DisableGearModePanel();
+        PlayerControlManager.Instance.UnlockMovementOnly();
+        UIManager.Instance.DisableSharedPanelText();
     }
 
 }
