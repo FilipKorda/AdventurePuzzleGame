@@ -11,9 +11,11 @@ public class PausePanel : MonoBehaviour
     [SerializeField] private GameObject[] buttonObjects;
 
     [SerializeField] private GameObject hintsPanel;
+    [SerializeField] private GameObject tipsPanel;
 
     private bool isPaused;
     private bool allowPause = true;
+    private bool hintPanelWasOpen = false;
 
     private void OnEnable()
     {
@@ -98,13 +100,36 @@ public class PausePanel : MonoBehaviour
 
     public void ActiveHintsPanel()
     {
+        hintPanelWasOpen = true;
         hintsPanel.SetActive(true);
+        tipsPanel.SetActive(false);
         pausePanel.SetActive(false);
     }
 
     public void DeactiveHintsPanel()
     {
         hintsPanel.SetActive(false);
+        pausePanel.SetActive(true);
+    }
+
+    public void ActiveAreUSurePanel()
+    {
+        if(hintPanelWasOpen)
+        {
+            hintsPanel.SetActive(true);
+            pausePanel.SetActive(false);
+        }
+        else
+        {
+            tipsPanel.SetActive(true);
+            pausePanel.SetActive(false);
+        }
+       
+    }
+
+    public void DeactiveAreUSurePanel()
+    {
+        tipsPanel.SetActive(false);
         pausePanel.SetActive(true);
     }
 

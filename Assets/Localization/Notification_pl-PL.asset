@@ -148,7 +148,7 @@ MonoBehaviour:
       - rid: 4011535830200615033
   - m_Id: 13480168645742592
     m_Localized: "Naci\u015Bnij <sprite name=\"{controls.LPM}\"> \u017Ceby nacisn\u0105\u0107\nNaci\u015Bnij
-      <sprite name=\"{controls.E} \u017Ceby wyj\u015B\u0107"
+      <sprite name=\"{controls.E}\"> \u017Ceby wyj\u015B\u0107"
     m_Metadata:
       m_Items:
       - rid: 4011535830200615033
@@ -320,7 +320,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 26686804474482688
-    m_Localized: Pin Pad
+    m_Localized: Konsola numeryczna
     m_Metadata:
       m_Items: []
   - m_Id: 26688481336250368
@@ -459,6 +459,12 @@ MonoBehaviour:
     m_Localized: "Nie masz wystarczaj\u0105co du\u017Co monet."
     m_Metadata:
       m_Items: []
+  - m_Id: 36803216970895360
+    m_Localized: "Naci\u015Bnij <sprite name=\"{controls.PPM}\"> \u017Ceby zje\u015B\u0107\nNaci\u015Bnij
+      <sprite name=\"{controls.Q}\"> \u017Ceby wyrzuci\u0107"
+    m_Metadata:
+      m_Items:
+      - rid: 4011535830200615033
   references:
     version: 2
     RefIds:
@@ -489,3 +495,4 @@ MonoBehaviour:
         - id: 31023615950737408
         - id: 31024439548465152
         - id: 31027367537561600
+        - id: 36803216970895360

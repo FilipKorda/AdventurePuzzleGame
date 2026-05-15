@@ -9,7 +9,9 @@ public class ButtonSequencePuzzle : MonoBehaviour
     [SerializeField] private GameObject rightHandle;
 
     [SerializeField] private int[] sequence;
-    private int index;
+
+    private int[] pressedSequence;
+    private int pressedCount;
 
     [SerializeField] private PictureTerrainMovingObject[] pictureTerrainMovingObjects;
     [SerializeField] private WallTrapdoorsManager wallTrapdoorsManager;
@@ -17,21 +19,39 @@ public class ButtonSequencePuzzle : MonoBehaviour
 
     [SerializeField] private RotateAllGearsRoomTen rotateAllGearsRoomTen;
 
+    [SerializeField] private PressArrowButton[] pressArrowButtons;
+
+    private void Awake()
+    {
+        pressedSequence = new int[sequence.Length];
+    }
+
     public void PressButton(int buttonId)
     {
-        if (sequence[index] == buttonId)
-        {
-            index++;
+        if (pressedCount >= sequence.Length)
+            return;
 
-            if (index == sequence.Length)
+        pressedSequence[pressedCount] = buttonId;
+        pressedCount++;
+
+        if (pressedCount == sequence.Length)
+        {
+            CheckSequence();
+        }
+    }
+
+    private void CheckSequence()
+    {
+        for (int i = 0; i < sequence.Length; i++)
+        {
+            if (pressedSequence[i] != sequence[i])
             {
-                WinPuzzle();
+                ResetPuzzle();
+                return;
             }
         }
-        else
-        {
-            ResetPuzzle();
-        }
+
+        WinPuzzle();
     }
 
     private void WinPuzzle()
@@ -42,8 +62,25 @@ public class ButtonSequencePuzzle : MonoBehaviour
 
     private void ResetPuzzle()
     {
-        index = 0;
+        pressedCount = 0;
+        StartCoroutine(ResetPuzzleNextFrame());
     }
+
+    private IEnumerator ResetPuzzleNextFrame()
+    {
+        yield return new WaitForSeconds(0.5f);
+        ResetButtons();
+    }
+
+
+    private void ResetButtons()
+    {
+        foreach (var item in pressArrowButtons)
+        {
+            item.ForceResetButton();
+        }
+    }
+
 
     private void MovePilalrDown()
     {

@@ -82,8 +82,8 @@ MonoBehaviour:
       spot where the arrow is on the ground.\n\n- Dark Puzzle\nYou must discover
       the sequence shown by the two green flames in the distance. They represent
       four sequences of movement. And you must decipher it in the book.\n\n     <sprite
-      name=\"Morse Code Correct symbols_6\"><sprite name=\"Morse Code Correct symbols_0\"><sprite
-      name=\"Morse Code Correct symbols_1\"><sprite name=\"Morse Code Correct symbols_2\">\n\n-
+      name=\"Code Morse Correct symbols_6\"><sprite name=\"Code Morse Correct symbols_0\"><sprite
+      name=\"Code Morse Correct symbols_1\"><sprite name=\"Code Morse Correct symbols_2\">\n\n-
       Scale Puzzle\nYou must balance the scale so that it shows the same weight on
       the left and right sides. There are 5 objects you can place on the scale, but
       you only need to place 3 of them, and the scale will show the same weight on

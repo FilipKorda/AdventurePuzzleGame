@@ -357,6 +357,10 @@ MonoBehaviour:
     m_Key: Slot u dont have money
     m_Metadata:
       m_Items: []
+  - m_Id: 36803216970895360
+    m_Key: EatOrDrop
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

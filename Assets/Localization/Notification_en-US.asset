@@ -356,7 +356,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 26686804474482688
-    m_Localized: Konsola numeryczna
+    m_Localized: Pin Pad
     m_Metadata:
       m_Items: []
   - m_Id: 26688481336250368
@@ -514,6 +514,14 @@ MonoBehaviour:
     m_Localized: You don't have enough coins.
     m_Metadata:
       m_Items: []
+  - m_Id: 36803216970895360
+    m_Localized: 'Press <sprite name="{controls.PPM}"> to Eat
+
+      Press <sprite
+      name="{controls.Q}"> To Drop Item'
+    m_Metadata:
+      m_Items:
+      - rid: 4011535830200615029
   references:
     version: 2
     RefIds:
@@ -544,3 +552,4 @@ MonoBehaviour:
         - id: 31023615950737408
         - id: 31024439548465152
         - id: 31027367537561600
+        - id: 36803216970895360
