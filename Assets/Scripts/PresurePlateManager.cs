@@ -89,6 +89,7 @@ public class PresurePlateManager : MonoBehaviour
         pressedSequence.Clear();
     }
 
+    [ContextMenu("Win Puzzle")]
     private void WinPuzzle()
     {
         StartMoveUp();

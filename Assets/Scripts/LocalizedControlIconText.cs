@@ -20,6 +20,7 @@ public class LocalizedControlIconText : MonoBehaviour
     [SerializeField] private string EName = "E";
     [SerializeField] private string MouseName = "Mouse";
     [SerializeField] private string LeavePuzzleName = "LeavePuzzle";
+    [SerializeField] private string RName = "R";
 
     [SerializeField] private string AlchemyRecipesNameE = "AlchemyRecipesE";
     [SerializeField] private string AlchemyRecipesNameQ = "AlchemyRecipesQ";
@@ -45,7 +46,7 @@ public class LocalizedControlIconText : MonoBehaviour
 
     [SerializeField] private string MouseKeyboardIcon = "ControlsIcons_v2_1";
 
-
+    [SerializeField] private string RKeyboardIcon = "ControlsSheetJustR_0";
 
     [Header("Controller Sprite Names")]
     [SerializeField] private string controllerAIcon = "ControlsSheet_7";
@@ -101,6 +102,8 @@ public class LocalizedControlIconText : MonoBehaviour
             SetStringVariable(MouseName, usingController ? controllerStickIcon : MouseKeyboardIcon);
 
             SetStringVariable(LeavePuzzleName, usingController ? controllerBIcon : EKeyboardIcon);
+
+            SetStringVariable(RName, usingController ? controllerYIcon : RKeyboardIcon);
 
         }
     }

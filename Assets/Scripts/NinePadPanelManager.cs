@@ -54,7 +54,6 @@ public class NinePadPanelManager : MonoBehaviour
         PlayerControlManager.Instance.SetGamepadSens(25);
         UIManager.Instance.EnableLpmToClickPanel();
 
-    //    Debug.Log("Wszedłeś w część Puzzle Pipe!");
     }
 
     public void ExitMovingPuzzleMode()
